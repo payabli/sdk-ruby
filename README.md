@@ -1,0 +1,108 @@
+# Payabli Ruby Library
+
+[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fpayabli%2Fsdk-ruby)
+
+The Payabli Ruby library provides convenient access to the Payabli APIs from Ruby.
+
+## Table of Contents
+
+- [Documentation](#documentation)
+- [Reference](#reference)
+- [Usage](#usage)
+- [Environments](#environments)
+- [Errors](#errors)
+- [Advanced](#advanced)
+  - [Timeouts](#timeouts)
+- [Contributing](#contributing)
+
+## Documentation
+
+API reference documentation is available [here](https://docs.payabli.com).
+
+## Reference
+
+A full reference for this library is available [here](https://github.com/payabli/sdk-ruby/blob/HEAD/./reference.md).
+
+## Usage
+
+Instantiate and use the client with the following:
+
+```ruby
+require "payabli"
+
+client = Payabli::Client.new(api_key: '<value>');
+
+client.money_in.getpaid();
+```
+
+## Environments
+
+This SDK allows you to configure different environments or custom URLs for API requests. You can either use the predefined environments or specify your own custom URL.
+### Environments
+```ruby
+require "payabli"
+
+payabli = Payabli::Client.new(
+    base_url: Payabli::Environment::Sandbox
+)
+```
+
+### Custom URL
+```ruby
+require "payabli"
+
+client = Payabli::Client.new(
+    base_url: "https://example.com"
+)
+```
+
+## Errors
+
+Failed API calls will raise errors that can be rescued from granularly.
+
+```ruby
+require "payabli"
+
+client = Payabli::Client.new(
+    base_url: "https://example.com"
+)
+
+begin
+    result = client.money_in.getpaid
+rescue Payabli::Errors::TimeoutError
+    puts "API didn't respond before our timeout elapsed"
+rescue Payabli::Errors::ServiceUnavailableError
+    puts "API returned status 503, is probably overloaded, try again later"
+rescue Payabli::Errors::ServerError
+    puts "API returned some other 5xx status, this is probably a bug"
+rescue Payabli::Errors::ResponseError => e
+    puts "API returned an unexpected status other than 5xx: #{e.code} {e.message}"
+rescue Payabli::Errors::ApiError => e
+    puts "Some other error occurred when calling the API: {e.message}"
+end
+```
+
+## Advanced
+
+### Timeouts
+
+The SDK defaults to a 60 second timeout. Use the `timeout` option to configure this behavior.
+
+```ruby
+require "payabli"
+
+response = client.money_in.getpaid(
+    ...,
+    timeout: 30  # 30 second timeout
+)
+```
+
+## Contributing
+
+While we value open-source contributions to this SDK, this library is generated programmatically.
+Additions made directly to this library would have to be moved over to our generation code,
+otherwise they would be overwritten upon the next generated release. Feel free to open a PR as
+a proof of concept, but know that we will not be able to merge it as-is. We suggest opening
+an issue first to discuss with us!
+
+On the other hand, contributions to the README are always very welcome!

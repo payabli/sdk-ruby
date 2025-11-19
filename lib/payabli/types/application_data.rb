@@ -1,0 +1,77 @@
+# frozen_string_literal: true
+
+module Payabli
+  module Types
+    class ApplicationData < Internal::Types::Model
+      field :services, -> { Payabli::Types::Services }, optional: true, nullable: false
+      field :annual_revenue, -> { Integer }, optional: true, nullable: false, api_name: "annualRevenue"
+      field :attachments, -> { Internal::Types::Array[Payabli::Types::FileContent] }, optional: true, nullable: false
+      field :avgmonthly, -> { Integer }, optional: true, nullable: false
+      field :baddress, -> { String }, optional: true, nullable: false
+      field :baddress_1, -> { String }, optional: true, nullable: false, api_name: "baddress1"
+      field :bank_data, -> { Payabli::Types::Bank }, optional: true, nullable: false, api_name: "bankData"
+      field :bcity, -> { String }, optional: true, nullable: false
+      field :bcountry, -> { String }, optional: true, nullable: false
+      field :binperson, -> { Integer }, optional: true, nullable: false
+      field :binphone, -> { Integer }, optional: true, nullable: false
+      field :binweb, -> { Integer }, optional: true, nullable: false
+      field :bstate, -> { String }, optional: true, nullable: false
+      field :bsummary, -> { String }, optional: true, nullable: false
+      field :btype, -> { Payabli::Types::OwnType }, optional: true, nullable: false
+      field :bzip, -> { String }, optional: true, nullable: false
+      field :contacts, -> { Internal::Types::Array[Payabli::Types::Contacts] }, optional: true, nullable: false
+      field :dbaname, -> { String }, optional: true, nullable: false
+      field :ein, -> { String }, optional: true, nullable: false
+      field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointId"
+      field :faxnumber, -> { String }, optional: true, nullable: false
+      field :highticketamt, -> { Integer }, optional: true, nullable: false
+      field :legalname, -> { String }, optional: true, nullable: false
+      field :license, -> { String }, optional: true, nullable: false
+      field :licstate, -> { String }, optional: true, nullable: false
+      field :maddress, -> { String }, optional: true, nullable: false
+      field :maddress_1, -> { String }, optional: true, nullable: false, api_name: "maddress1"
+      field :mcc, -> { String }, optional: true, nullable: false
+      field :mcity, -> { String }, optional: true, nullable: false
+      field :mcountry, -> { String }, optional: true, nullable: false
+      field :mstate, -> { String }, optional: true, nullable: false
+      field :mzip, -> { String }, optional: true, nullable: false
+      field :org_id, -> { Integer }, optional: true, nullable: false, api_name: "orgId"
+      field :ownership, -> { Internal::Types::Array[Payabli::Types::Owners] }, optional: true, nullable: false
+      field :payout_average_monthly_volume, lambda {
+        Integer
+      }, optional: true, nullable: false, api_name: "payoutAverageMonthlyVolume"
+      field :payout_average_ticket_limit, lambda {
+        Integer
+      }, optional: true, nullable: false, api_name: "payoutAverageTicketLimit"
+      field :payout_credit_limit, -> { Integer }, optional: true, nullable: false, api_name: "payoutCreditLimit"
+      field :payout_high_ticket_amount, lambda {
+        Integer
+      }, optional: true, nullable: false, api_name: "payoutHighTicketAmount"
+      field :phonenumber, -> { String }, optional: true, nullable: false
+      field :recipient_email, -> { String }, optional: true, nullable: false, api_name: "recipientEmail"
+      field :recipient_email_notification, lambda {
+        Internal::Types::Boolean
+      }, optional: true, nullable: false, api_name: "recipientEmailNotification"
+      field :resumable, -> { Internal::Types::Boolean }, optional: true, nullable: false
+      field :signer, -> { Payabli::Types::SignerDataRequest }, optional: true, nullable: false
+      field :startdate, -> { String }, optional: true, nullable: false
+      field :taxfillname, -> { String }, optional: true, nullable: false
+      field :template_id, -> { Integer }, optional: true, nullable: false, api_name: "templateId"
+      field :ticketamt, -> { Integer }, optional: true, nullable: false
+      field :website, -> { String }, optional: true, nullable: false
+      field :when_charged, -> { Payabli::Types::Whencharged }, optional: true, nullable: false, api_name: "whenCharged"
+      field :when_delivered, lambda {
+        Payabli::Types::Whendelivered
+      }, optional: true, nullable: false, api_name: "whenDelivered"
+      field :when_provided, lambda {
+        Payabli::Types::Whenprovided
+      }, optional: true, nullable: false, api_name: "whenProvided"
+      field :when_refunded, lambda {
+        Payabli::Types::Whenrefunded
+      }, optional: true, nullable: false, api_name: "whenRefunded"
+      field :rep_code, -> { String }, optional: true, nullable: false, api_name: "RepCode"
+      field :rep_name, -> { String }, optional: true, nullable: false, api_name: "RepName"
+      field :rep_office, -> { String }, optional: true, nullable: false, api_name: "RepOffice"
+    end
+  end
+end
