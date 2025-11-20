@@ -70,7 +70,7 @@ client.bill.add_bill(entry: '8cfec329267');
 </dl>
 </details>
 
-<details><summary><code>client.bill.delete_attached_from_bill(filename, id_bill) -> Payabli::Bill::Types::BillResponse</code></summary>
+<details><summary><code>client.bill.delete_attached_from_bill(id_bill, filename) -> Payabli::Bill::Types::BillResponse</code></summary>
 <dl>
 <dd>
 
@@ -115,6 +115,14 @@ client.bill.delete_attached_from_bill(
 <dl>
 <dd>
 
+**id_bill:** `Integer` — Payabli ID for the bill. Get this ID by querying `/api/Query/bills/` for the entrypoint or the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **filename:** `String` 
 
 The filename in Payabli. Filename is `zipName` in response to a
@@ -133,14 +141,6 @@ request to `/api/Invoice/{idInvoice}`. Here, the filename is
     ]
   }
   ```
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**id_bill:** `Integer` — Payabli ID for the bill. Get this ID by querying `/api/Query/bills/` for the entrypoint or the organization.
     
 </dd>
 </dl>
@@ -279,7 +279,7 @@ client.bill.edit_bill({
 </dl>
 </details>
 
-<details><summary><code>client.bill.get_attached_from_bill(filename, id_bill) -> Payabli::Types::FileContent</code></summary>
+<details><summary><code>client.bill.get_attached_from_bill(id_bill, filename) -> Payabli::Types::FileContent</code></summary>
 <dl>
 <dd>
 
@@ -325,6 +325,14 @@ client.bill.get_attached_from_bill(
 <dl>
 <dd>
 
+**id_bill:** `Integer` — Payabli ID for the bill. Get this ID by querying `/api/Query/bills/` for the entrypoint or the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **filename:** `String` 
 
 The filename in Payabli. Filename is `zipName` in response to a request to `/api/Invoice/{idInvoice}`. Here, the filename is `0_Bill.pdf``. 
@@ -338,14 +346,6 @@ The filename in Payabli. Filename is `zipName` in response to a request to `/api
     }
   ]
 }
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**id_bill:** `Integer` — Payabli ID for the bill. Get this ID by querying `/api/Query/bills/` for the entrypoint or the organization.
     
 </dd>
 </dl>
@@ -848,7 +848,7 @@ client.bill.send_to_approval_bill(
 </dl>
 </details>
 
-<details><summary><code>client.bill.set_approved_bill(approved, id_bill) -> Payabli::Bill::Types::SetApprovedBillResponse</code></summary>
+<details><summary><code>client.bill.set_approved_bill(id_bill, approved) -> Payabli::Bill::Types::SetApprovedBillResponse</code></summary>
 <dl>
 <dd>
 
@@ -893,7 +893,7 @@ client.bill.set_approved_bill(
 <dl>
 <dd>
 
-**approved:** `String` — String representing the approved status. Accepted values: 'true' or 'false'.
+**id_bill:** `Integer` — Payabli ID for the bill. Get this ID by querying `/api/Query/bills/` for the entrypoint or the organization.
     
 </dd>
 </dl>
@@ -901,7 +901,7 @@ client.bill.set_approved_bill(
 <dl>
 <dd>
 
-**id_bill:** `Integer` — Payabli ID for the bill. Get this ID by querying `/api/Query/bills/` for the entrypoint or the organization.
+**approved:** `String` — String representing the approved status. Accepted values: 'true' or 'false'.
     
 </dd>
 </dl>
@@ -1865,7 +1865,7 @@ client.charge_backs.get_chargeback();
 </dl>
 </details>
 
-<details><summary><code>client.charge_backs.get_chargeback_attachment(file_name, id) -> String</code></summary>
+<details><summary><code>client.charge_backs.get_chargeback_attachment(id, file_name) -> String</code></summary>
 <dl>
 <dd>
 
@@ -1893,7 +1893,7 @@ client.charge_backs.get_chargeback_attachment();
 <dl>
 <dd>
 
-**file_name:** `String` — The chargeback attachment's file name.
+**id:** `Integer` — The ID of chargeback or return record.
     
 </dd>
 </dl>
@@ -1901,7 +1901,7 @@ client.charge_backs.get_chargeback_attachment();
 <dl>
 <dd>
 
-**id:** `Integer` — The ID of chargeback or return record.
+**file_name:** `String` — The chargeback attachment's file name.
     
 </dd>
 </dl>
@@ -2086,7 +2086,7 @@ The device registration code or serial number, depending on the model.
 </dl>
 </details>
 
-<details><summary><code>client.cloud.history_device(device_id, entry) -> Payabli::Types::CloudQueryApiResponse</code></summary>
+<details><summary><code>client.cloud.history_device(entry, device_id) -> Payabli::Types::CloudQueryApiResponse</code></summary>
 <dl>
 <dd>
 
@@ -2128,7 +2128,7 @@ client.cloud.history_device();
 <dl>
 <dd>
 
-**device_id:** `String` — ID of the cloud device. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -2136,7 +2136,7 @@ client.cloud.history_device();
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**device_id:** `String` — ID of the cloud device. 
     
 </dd>
 </dl>
@@ -2210,7 +2210,7 @@ client.cloud.list_device(entry: '8cfec329267');
 </dl>
 </details>
 
-<details><summary><code>client.cloud.remove_device(device_id, entry) -> Payabli::Cloud::Types::RemoveDeviceResponse</code></summary>
+<details><summary><code>client.cloud.remove_device(entry, device_id) -> Payabli::Cloud::Types::RemoveDeviceResponse</code></summary>
 <dl>
 <dd>
 
@@ -2252,7 +2252,7 @@ client.cloud.remove_device();
 <dl>
 <dd>
 
-**device_id:** `String` — ID of the cloud device. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -2260,7 +2260,7 @@ client.cloud.remove_device();
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**device_id:** `String` — ID of the cloud device. 
     
 </dd>
 </dl>
@@ -2808,7 +2808,7 @@ Example: `dbaname(ct)=hoa` returns all records with a `dbaname` containing "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.export.export_batch_details(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_batch_details(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -2842,7 +2842,7 @@ client.export.export_batch_details(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -2850,7 +2850,7 @@ client.export.export_batch_details(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -3108,7 +3108,7 @@ Example: `amount(gt)=20` return all records with amount greater than 20.00
 </dl>
 </details>
 
-<details><summary><code>client.export.export_batches(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_batches(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -3156,7 +3156,7 @@ client.export.export_batches(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -3164,7 +3164,7 @@ client.export.export_batches(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -3414,7 +3414,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.export.export_batches_out(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_batches_out(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -3462,7 +3462,7 @@ client.export.export_batches_out(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -3470,7 +3470,7 @@ client.export.export_batches_out(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -3682,7 +3682,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.export.export_bills(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_bills(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -3730,7 +3730,7 @@ client.export.export_bills(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -3738,7 +3738,7 @@ client.export.export_bills(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -3986,7 +3986,7 @@ Example: totalAmount(gt)=20  return all records with totalAmount greater than 20
 </dl>
 </details>
 
-<details><summary><code>client.export.export_chargebacks(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_chargebacks(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -4034,7 +4034,7 @@ client.export.export_chargebacks(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -4042,7 +4042,7 @@ client.export.export_chargebacks(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -4332,7 +4332,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.export_customers(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_customers(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -4380,7 +4380,7 @@ client.export.export_customers(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -4388,7 +4388,7 @@ client.export.export_customers(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -4664,7 +4664,7 @@ balance(gt)=20 return all records with balance greater than 20.00
 </dl>
 </details>
 
-<details><summary><code>client.export.export_invoices(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_invoices(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -4712,7 +4712,7 @@ client.export.export_invoices(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -4720,7 +4720,7 @@ client.export.export_invoices(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -5167,7 +5167,7 @@ Example: name(ct)=hoa  return all records where name contains "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.export.export_payout(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_payout(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -5215,7 +5215,7 @@ client.export.export_payout(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -5223,7 +5223,7 @@ client.export.export_payout(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -5619,7 +5619,7 @@ Example: `dbaname(ct)=hoa` returns all records with `dbaname` containing "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.export.export_settlements(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_settlements(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -5667,7 +5667,7 @@ client.export.export_settlements(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -5675,7 +5675,7 @@ client.export.export_settlements(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -5963,7 +5963,7 @@ Example: `settledAmount(gt)=20` returns all records with a `settledAmount` great
 </dl>
 </details>
 
-<details><summary><code>client.export.export_subscriptions(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_subscriptions(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -6011,7 +6011,7 @@ client.export.export_subscriptions(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -6019,7 +6019,7 @@ client.export.export_subscriptions(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -6311,7 +6311,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.export_transactions(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_transactions(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -6359,7 +6359,7 @@ client.export.export_transactions(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -6367,7 +6367,7 @@ client.export.export_transactions(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -6667,7 +6667,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.export_transfer_details(entry, format, transfer_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_transfer_details(format, entry, transfer_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -6717,7 +6717,7 @@ client.export.export_transfer_details(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -6725,7 +6725,7 @@ client.export.export_transfer_details(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -6970,7 +6970,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.export.export_vendors(entry, format) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_vendors(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
 <dl>
 <dd>
 
@@ -7018,7 +7018,7 @@ client.export.export_vendors(
 <dl>
 <dd>
 
-**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
+**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
     
 </dd>
 </dl>
@@ -7026,7 +7026,7 @@ client.export.export_vendors(
 <dl>
 <dd>
 
-**format:** `Payabli::Export::Types::ExportFormat1` — Format for the export, either XLSX or CSV. 
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/api-reference/api-overview#entrypoint-vs-entry)
     
 </dd>
 </dl>
@@ -7740,7 +7740,7 @@ client.invoice.add_invoice(entry: '8cfec329267');
 </dl>
 </details>
 
-<details><summary><code>client.invoice.delete_attached_from_invoice(filename, id_invoice) -> Payabli::Invoice::Types::InvoiceResponseWithoutData</code></summary>
+<details><summary><code>client.invoice.delete_attached_from_invoice(id_invoice, filename) -> Payabli::Invoice::Types::InvoiceResponseWithoutData</code></summary>
 <dl>
 <dd>
 
@@ -7782,6 +7782,14 @@ client.invoice.delete_attached_from_invoice();
 <dl>
 <dd>
 
+**id_invoice:** `Integer` — Invoice ID
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **filename:** `String` 
 
 The filename in Payabli. Filename is `zipName` in response to a request to `/api/Invoice/{idInvoice}`. Here, the filename is `0_Bill.pdf``. 
@@ -7795,14 +7803,6 @@ The filename in Payabli. Filename is `zipName` in response to a request to `/api
     }
   ]
 }
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**id_invoice:** `Integer` — Invoice ID
     
 </dd>
 </dl>
@@ -7938,7 +7938,7 @@ client.invoice.edit_invoice(idInvoice: 332);
 </dl>
 </details>
 
-<details><summary><code>client.invoice.get_attached_file_from_invoice(filename, id_invoice) -> Payabli::Types::FileContent</code></summary>
+<details><summary><code>client.invoice.get_attached_file_from_invoice(id_invoice, filename) -> Payabli::Types::FileContent</code></summary>
 <dl>
 <dd>
 
@@ -7966,8 +7966,8 @@ Retrieves a file attached to an invoice.
 
 ```ruby
 client.invoice.get_attached_file_from_invoice(
-  filename: 'filename',
-  idInvoice: 1
+  idInvoice: 1,
+  filename: 'filename'
 );
 ```
 </dd>
@@ -7979,6 +7979,14 @@ client.invoice.get_attached_file_from_invoice(
 
 <dl>
 <dd>
+
+<dl>
+<dd>
+
+**id_invoice:** `Integer` — Invoice ID
+    
+</dd>
+</dl>
 
 <dl>
 <dd>
@@ -7998,14 +8006,6 @@ The filename in Payabli. Filename is `zipName` in the response to a request to `
     ]
   }
   ```
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**id_invoice:** `Integer` — Invoice ID
     
 </dd>
 </dl>
@@ -9051,7 +9051,7 @@ client.money_in.authorize();
 </dl>
 </details>
 
-<details><summary><code>client.money_in.capture(amount, trans_id) -> Payabli::MoneyIn::Types::CaptureResponse</code></summary>
+<details><summary><code>client.money_in.capture(trans_id, amount) -> Payabli::MoneyIn::Types::CaptureResponse</code></summary>
 <dl>
 <dd>
 
@@ -9098,7 +9098,7 @@ client.money_in.capture();
 <dl>
 <dd>
 
-**amount:** `Integer` — Amount to be captured. The amount can't be greater the original total amount of the transaction. `0` captures the total amount authorized in the transaction. Partial captures aren't supported.
+**trans_id:** `String` — ReferenceId for the transaction (PaymentId).
     
 </dd>
 </dl>
@@ -9106,7 +9106,7 @@ client.money_in.capture();
 <dl>
 <dd>
 
-**trans_id:** `String` — ReferenceId for the transaction (PaymentId).
+**amount:** `Integer` — Amount to be captured. The amount can't be greater the original total amount of the transaction. `0` captures the total amount authorized in the transaction. Partial captures aren't supported.
     
 </dd>
 </dl>
@@ -9488,7 +9488,7 @@ client.money_in.getpaid();
 </dl>
 </details>
 
-<details><summary><code>client.money_in.reverse(amount, trans_id) -> Payabli::MoneyIn::Types::ReverseResponse</code></summary>
+<details><summary><code>client.money_in.reverse(trans_id, amount) -> Payabli::MoneyIn::Types::ReverseResponse</code></summary>
 <dl>
 <dd>
 
@@ -9530,6 +9530,14 @@ client.money_in.reverse();
 <dl>
 <dd>
 
+**trans_id:** `String` — ReferenceId for the transaction (PaymentId).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **amount:** `Integer` 
 
 
@@ -9541,14 +9549,6 @@ An amount equal to zero will refunds the total amount authorized minus any servi
     
 </dd>
 </dl>
-
-<dl>
-<dd>
-
-**trans_id:** `String` — ReferenceId for the transaction (PaymentId).
-    
-</dd>
-</dl>
 </dd>
 </dl>
 
@@ -9557,7 +9557,7 @@ An amount equal to zero will refunds the total amount authorized minus any servi
 </dl>
 </details>
 
-<details><summary><code>client.money_in.refund(amount, trans_id) -> Payabli::MoneyIn::Types::RefundResponse</code></summary>
+<details><summary><code>client.money_in.refund(trans_id, amount) -> Payabli::MoneyIn::Types::RefundResponse</code></summary>
 <dl>
 <dd>
 
@@ -9599,6 +9599,14 @@ client.money_in.refund();
 <dl>
 <dd>
 
+**trans_id:** `String` — ReferenceId for the transaction (PaymentId).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **amount:** `Integer` 
 
 
@@ -9607,14 +9615,6 @@ Amount to refund from original transaction, minus any service fees charged on th
 The amount provided can't be greater than the original total amount of the transaction, minus service fees. For example, if a transaction was \$90 plus a \$10 service fee, you can refund up to \$90.
 
 An amount equal to zero will refund the total amount authorized minus any service fee.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**trans_id:** `String` — ReferenceId for the transaction (PaymentId).
     
 </dd>
 </dl>
@@ -18823,7 +18823,7 @@ List of comparison accepted - enclosed between parentheses:
 </details>
 
 ## Statistic
-<details><summary><code>client.statistic.basic_stats(entry_id, freq, level, mode) -> Internal::Types::Array[Payabli::Statistic::Types::StatBasicQueryRecord]</code></summary>
+<details><summary><code>client.statistic.basic_stats(mode, freq, level, entry_id) -> Internal::Types::Array[Payabli::Statistic::Types::StatBasicQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -18872,7 +18872,23 @@ client.statistic.basic_stats(
 <dl>
 <dd>
 
-**entry_id:** `Integer` — Identifier in Payabli for the entity.
+**mode:** `String` 
+
+Mode for the request. Allowed values:
+
+- `custom` - Allows you to set a custom date range
+- `ytd` - Year To Date
+- `mtd` - Month To Date
+- `wtd` - Week To Date
+- `today` - All current day
+- `m12` - Last 12 months
+- `d30` - Last 30 days
+- `h24` - Last 24 hours
+- `lasty` - Last Year
+- `lastm` - Last Month
+- `lastw` - Last Week
+- `yesterday` - Last Day
+  
     
 </dd>
 </dl>
@@ -18909,23 +18925,7 @@ The entry level for the request:
 <dl>
 <dd>
 
-**mode:** `String` 
-
-Mode for the request. Allowed values:
-
-- `custom` - Allows you to set a custom date range
-- `ytd` - Year To Date
-- `mtd` - Month To Date
-- `wtd` - Week To Date
-- `today` - All current day
-- `m12` - Last 12 months
-- `d30` - Last 30 days
-- `h24` - Last 24 hours
-- `lasty` - Last Year
-- `lastm` - Last Month
-- `lastw` - Last Week
-- `yesterday` - Last Day
-  
+**entry_id:** `Integer` — Identifier in Payabli for the entity.
     
 </dd>
 </dl>
@@ -18975,7 +18975,7 @@ Valid formats:
 </dl>
 </details>
 
-<details><summary><code>client.statistic.customer_basic_stats(customer_id, freq, mode) -> Internal::Types::Array[Payabli::Statistic::Types::SubscriptionStatsQueryRecord]</code></summary>
+<details><summary><code>client.statistic.customer_basic_stats(mode, freq, customer_id) -> Internal::Types::Array[Payabli::Statistic::Types::SubscriptionStatsQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -19021,7 +19021,21 @@ client.statistic.customer_basic_stats(
 <dl>
 <dd>
 
-**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in PartnerHub. 
+**mode:** `String` 
+
+Mode for request. Allowed values:
+
+- `ytd` - Year To Date
+- `mtd` - Month To Date
+- `wtd` - Week To Date
+- `today` - All current day
+- `m12` - Last 12 months
+- `d30` - Last 30 days
+- `h24` - Last 24 hours
+- `lasty` - Last Year
+- `lastm` - Last Month
+- `lastw` - Last Week
+- `yesterday` - Last Day
     
 </dd>
 </dl>
@@ -19046,21 +19060,7 @@ For example, `w` groups the results by week.
 <dl>
 <dd>
 
-**mode:** `String` 
-
-Mode for request. Allowed values:
-
-- `ytd` - Year To Date
-- `mtd` - Month To Date
-- `wtd` - Week To Date
-- `today` - All current day
-- `m12` - Last 12 months
-- `d30` - Last 30 days
-- `h24` - Last 24 hours
-- `lasty` - Last Year
-- `lastm` - Last Month
-- `lastw` - Last Week
-- `yesterday` - Last Day
+**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in PartnerHub. 
     
 </dd>
 </dl>
@@ -19080,7 +19080,7 @@ Mode for request. Allowed values:
 </dl>
 </details>
 
-<details><summary><code>client.statistic.sub_stats(entry_id, interval, level) -> Internal::Types::Array[Payabli::Statistic::Types::StatBasicQueryRecord]</code></summary>
+<details><summary><code>client.statistic.sub_stats(interval, level, entry_id) -> Internal::Types::Array[Payabli::Statistic::Types::StatBasicQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -19126,14 +19126,6 @@ client.statistic.sub_stats(
 <dl>
 <dd>
 
-**entry_id:** `Integer` — Identifier in Payabli for the entity.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **interval:** `String` 
 
 Interval to get the data. Allowed values:
@@ -19162,6 +19154,14 @@ The entry level for the request:
 <dl>
 <dd>
 
+**entry_id:** `Integer` — Identifier in Payabli for the entity.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **parameters:** `Internal::Types::Hash[String, String]` — List of parameters
     
 </dd>
@@ -19174,7 +19174,7 @@ The entry level for the request:
 </dl>
 </details>
 
-<details><summary><code>client.statistic.vendor_basic_stats(freq, id_vendor, mode) -> Internal::Types::Array[Payabli::Statistic::Types::StatisticsVendorQueryRecord]</code></summary>
+<details><summary><code>client.statistic.vendor_basic_stats(mode, freq, id_vendor) -> Internal::Types::Array[Payabli::Statistic::Types::StatisticsVendorQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -19220,6 +19220,28 @@ client.statistic.vendor_basic_stats(
 <dl>
 <dd>
 
+**mode:** `String` 
+
+Mode for request. Allowed values:
+
+- `ytd` - Year To Date
+- `mtd` - Month To Date
+- `wtd` - Week To Date
+- `today` - All current day
+- `m12` - Last 12 months
+- `d30` - Last 30 days
+- `h24` - Last 24 hours
+- `lasty` - Last Year
+- `lastm` - Last Month
+- `lastw` - Last Week
+- `yesterday` - Last Day
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **freq:** `String` 
 
 Frequency to group series. Allowed values:
@@ -19238,28 +19260,6 @@ For example, `w` groups the results by week.
 <dd>
 
 **id_vendor:** `Integer` — Vendor ID.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**mode:** `String` 
-
-Mode for request. Allowed values:
-
-- `ytd` - Year To Date
-- `mtd` - Month To Date
-- `wtd` - Week To Date
-- `today` - All current day
-- `m12` - Last 12 months
-- `d30` - Last 30 days
-- `h24` - Last 24 hours
-- `lasty` - Last Year
-- `lastm` - Last Month
-- `lastw` - Last Week
-- `yesterday` - Last Day
     
 </dd>
 </dl>
@@ -19594,7 +19594,7 @@ client.templates.delete_template();
 </dl>
 </details>
 
-<details><summary><code>client.templates.getlink_template(ignore_empty, template_id) -> Payabli::Types::BoardingLinkApiResponse</code></summary>
+<details><summary><code>client.templates.getlink_template(template_id, ignore_empty) -> Payabli::Types::BoardingLinkApiResponse</code></summary>
 <dl>
 <dd>
 
@@ -19636,7 +19636,7 @@ client.templates.getlink_template();
 <dl>
 <dd>
 
-**ignore_empty:** `Internal::Types::Boolean` — Ignore read-only and empty fields Default is `false`. If `ignoreEmpty` = `false` and any field is empty, then the request returns a failure response. If `ignoreEmpty` = `true`, the request returns the boarding link name regardless of whether fields are empty.
+**template_id:** `Integer` — The boarding template ID. Can be found at the end of the boarding template URL in PartnerHub. Example: `https://partner-sandbox.payabli.com/myorganization/boarding/edittemplate/80`. Here, the template ID is `80`.
     
 </dd>
 </dl>
@@ -19644,7 +19644,7 @@ client.templates.getlink_template();
 <dl>
 <dd>
 
-**template_id:** `Integer` — The boarding template ID. Can be found at the end of the boarding template URL in PartnerHub. Example: `https://partner-sandbox.payabli.com/myorganization/boarding/edittemplate/80`. Here, the template ID is `80`.
+**ignore_empty:** `Internal::Types::Boolean` — Ignore read-only and empty fields Default is `false`. If `ignoreEmpty` = `false` and any field is empty, then the request returns a failure response. If `ignoreEmpty` = `true`, the request returns the boarding link name regardless of whether fields are empty.
     
 </dd>
 </dl>
@@ -20633,7 +20633,7 @@ client.user.logout_user();
 </dl>
 </details>
 
-<details><summary><code>client.user.resend_mfa_code(entry, entry_type, usrname) -> Payabli::Types::PayabliApiResponseMfaBasic</code></summary>
+<details><summary><code>client.user.resend_mfa_code(usrname, entry, entry_type) -> Payabli::Types::PayabliApiResponseMfaBasic</code></summary>
 <dl>
 <dd>
 
@@ -20661,6 +20661,14 @@ client.user.resend_mfa_code();
 <dl>
 <dd>
 
+**usrname:** `String` —  
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **entry:** `String` —  
     
 </dd>
@@ -20670,14 +20678,6 @@ client.user.resend_mfa_code();
 <dd>
 
 **entry_type:** `Integer` —  
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**usrname:** `String` —  
     
 </dd>
 </dl>
