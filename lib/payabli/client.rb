@@ -2,15 +2,14 @@
 
 module Payabli
   class Client
-    # @param base_url [String | nil]
+    # @param base_url [String, nil]
     # @param api_key [String]
     #
-    # @return [Payabli::Client]
+    # @return [void]
     def initialize(base_url:, api_key:)
       @raw_client = Payabli::Internal::Http::RawClient.new(
         base_url: base_url,
         headers: {
-          "User-Agent": "payabli-sdk/1.0.1",
           "X-Fern-Language": "Ruby",
           requestToken: api_key.to_s
         }

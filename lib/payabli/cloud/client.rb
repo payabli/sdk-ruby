@@ -5,16 +5,22 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::Cloud::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
 
       # Register a cloud device to an entrypoint. See [Devices Quickstart](/developers/developer-guides/devices-quickstart#devices-quickstart) for a complete guide.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Cloud::Types::DeviceEntry]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::Cloud::Types::AddDeviceResponse]
       def add_device(request_options: {}, **params)
@@ -45,9 +51,15 @@ module Payabli
 
       # Retrieve the registration history for a device.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      # @option params [String] :device_id
       #
       # @return [Payabli::Types::CloudQueryApiResponse]
       def history_device(request_options: {}, **params)
@@ -72,9 +84,15 @@ module Payabli
 
       # Get a list of cloud devices registered to an entrypoint.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      # @option params [Boolean, nil] :force_refresh
       #
       # @return [Payabli::Types::CloudQueryApiResponse]
       def list_device(request_options: {}, **params)
@@ -106,9 +124,15 @@ module Payabli
 
       # Remove a cloud device from an entrypoint.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      # @option params [String] :device_id
       #
       # @return [Payabli::Cloud::Types::RemoveDeviceResponse]
       def remove_device(request_options: {}, **params)

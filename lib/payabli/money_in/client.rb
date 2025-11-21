@@ -5,7 +5,7 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::MoneyIn::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
@@ -14,9 +14,15 @@ module Payabli
       #
       # **Note**: Only card transactions can be authorized. This endpoint can't be used for ACH transactions.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::MoneyIn::Types::TransRequestBody]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Boolean, nil] :force_customer_creation
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::MoneyIn::Types::AuthResponse]
       def authorize(request_options: {}, **params)
@@ -54,9 +60,15 @@ module Payabli
       #   Capture an [authorized
       # transaction](/api-reference/moneyin/authorize-a-transaction) to complete the transaction and move funds from the customer to merchant account.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
+      # @option params [Integer] :amount
       #
       # @return [Payabli::MoneyIn::Types::CaptureResponse]
       def capture(request_options: {}, **params)
@@ -83,9 +95,14 @@ module Payabli
       #
       # You can use this endpoint to capture both full and partial amounts of the original authorized transaction. See [Capture an authorized transaction](/developers/developer-guides/pay-in-auth-and-capture) for more information about this endpoint.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::MoneyIn::Types::CaptureRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
       #
       # @return [Payabli::MoneyIn::Types::CaptureResponse]
       def capture_auth(request_options: {}, **params)
@@ -113,9 +130,15 @@ module Payabli
       #
       # This feature must be enabled by Payabli on a per-merchant basis. Contact support for help.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::MoneyIn::Types::RequestCredit]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Boolean, nil] :force_customer_creation
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::Types::PayabliApiResponse0]
       def credit(request_options: {}, **params)
@@ -152,9 +175,14 @@ module Payabli
 
       # Retrieve a processed transaction's details.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
       #
       # @return [Payabli::Types::TransactionQueryRecordsCustomer]
       def details(request_options: {}, **params)
@@ -179,9 +207,18 @@ module Payabli
 
       # Make a single transaction. This method authorizes and captures a payment in one step.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::MoneyIn::Types::TransRequestBody]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Boolean, nil] :ach_validation
+      # @option params [Boolean, nil] :force_customer_creation
+      # @option params [Boolean, nil] :include_details
+      # @option params [String, nil] :idempotency_key
+      # @option params [String, nil] :validation_code
       #
       # @return [Payabli::MoneyIn::Types::PayabliApiResponseGetPaid]
       def getpaid(request_options: {}, **params)
@@ -216,9 +253,15 @@ module Payabli
 
       # A reversal either refunds or voids a transaction independent of the transaction's settlement status. Send a reversal request for a transaction, and Payabli automatically determines whether it's a refund or void. You don't need to know whether the transaction is settled or not.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
+      # @option params [Integer] :amount
       #
       # @return [Payabli::MoneyIn::Types::ReverseResponse]
       def reverse(request_options: {}, **params)
@@ -243,9 +286,15 @@ module Payabli
 
       # Refund a transaction that has settled and send money back to the account holder. If a transaction hasn't been settled, void it instead.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
+      # @option params [Integer] :amount
       #
       # @return [Payabli::MoneyIn::Types::RefundResponse]
       def refund(request_options: {}, **params)
@@ -270,9 +319,15 @@ module Payabli
 
       # Refunds a settled transaction with split instructions.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::MoneyIn::Types::RequestRefund]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::MoneyIn::Types::RefundWithInstructionsResponse]
       def refund_with_instructions(request_options: {}, **params)
@@ -303,9 +358,14 @@ module Payabli
 
       # Reverse microdeposits that are used to verify customer account ownership and access. The `transId` value is returned in the success response for the original credit transaction made with `api/MoneyIn/makecredit`.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
       #
       # @return [Payabli::Types::PayabliApiResponse]
       def reverse_credit(request_options: {}, **params)
@@ -330,9 +390,15 @@ module Payabli
 
       # Send a payment receipt for a transaction.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
+      # @option params [String, nil] :email
       #
       # @return [Payabli::MoneyIn::Types::ReceiptResponse]
       def send_receipt_2_trans(request_options: {}, **params)
@@ -364,9 +430,14 @@ module Payabli
 
       # Validates a card number without running a transaction or authorizing a charge.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::MoneyIn::Types::RequestPaymentValidate]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::MoneyIn::Types::ValidateResponse]
       def validate(request_options: {}, **params)
@@ -395,9 +466,14 @@ module Payabli
 
       # Cancel a transaction that hasn't been settled yet. Voiding non-captured authorizations prevents future captures. If a transaction has been settled, refund it instead.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
       #
       # @return [Payabli::MoneyIn::Types::VoidResponse]
       def void(request_options: {}, **params)

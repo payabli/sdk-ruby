@@ -5,14 +5,19 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::Ocr::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
 
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Ocr::Types::FileContentImageOnly]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Payabli::Ocr::Types::TypeResult] :type_result
       #
       # @return [Payabli::Ocr::Types::PayabliApiResponseOcr]
       def ocr_document_form(request_options: {}, **params)
@@ -36,9 +41,14 @@ module Payabli
         end
       end
 
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Ocr::Types::FileContentImageOnly]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Payabli::Ocr::Types::TypeResult] :type_result
       #
       # @return [Payabli::Ocr::Types::PayabliApiResponseOcr]
       def ocr_document_json(request_options: {}, **params)

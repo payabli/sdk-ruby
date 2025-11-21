@@ -5,16 +5,24 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::MoneyOut::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
 
       # Authorizes transaction for payout. Authorized transactions aren't flagged for settlement until captured. Use `referenceId` returned in the response to capture the transaction.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::MoneyOutTypes::Types::AuthorizePayoutBody]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Boolean, nil] :allow_duplicated_bills
+      # @option params [Boolean, nil] :do_not_create_bills
+      # @option params [Boolean, nil] :force_vendor_creation
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::MoneyOutTypes::Types::AuthCapturePayoutResponse]
       def authorize_out(request_options: {}, **params)
@@ -49,9 +57,13 @@ module Payabli
 
       # Cancels an array of payout transactions.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [Payabli::MoneyOutTypes::Types::CaptureAllOutResponse]
       def cancel_all_out(request_options: {}, **params)
@@ -77,9 +89,14 @@ module Payabli
 
       # Cancel a payout transaction by ID.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :reference_id
       #
       # @return [Payabli::Types::PayabliApiResponse0000]
       def cancel_out_get(request_options: {}, **params)
@@ -104,9 +121,14 @@ module Payabli
 
       # Cancel a payout transaction by ID.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :reference_id
       #
       # @return [Payabli::Types::PayabliApiResponse0000]
       def cancel_out_delete(request_options: {}, **params)
@@ -131,9 +153,14 @@ module Payabli
 
       # Captures an array of authorized payout transactions for settlement. The maximum number of transactions that can be captured in a single request is 500.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::MoneyOutTypes::Types::CaptureAllOutResponse]
       def capture_all_out(request_options: {}, **params)
@@ -159,9 +186,15 @@ module Payabli
 
       # Captures a single authorized payout transaction by ID.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :reference_id
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::MoneyOutTypes::Types::AuthCapturePayoutResponse]
       def capture_out(request_options: {}, **params)
@@ -186,9 +219,14 @@ module Payabli
 
       # Returns details for a processed money out transaction.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
       #
       # @return [Payabli::Types::BillDetailResponse]
       def payout_details(request_options: {}, **params)
@@ -213,9 +251,14 @@ module Payabli
 
       # Retrieves vCard details for a single card in an entrypoint.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :card_token
       #
       # @return [Payabli::MoneyOutTypes::Types::VCardGetResponse]
       def v_card_get(request_options: {}, **params)
@@ -240,9 +283,13 @@ module Payabli
 
       # Sends a virtual card link via email to the vendor associated with the `transId`.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::MoneyOut::Types::SendVCardLinkRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [Payabli::MoneyOutTypes::Types::OperationResult]
       def send_v_card_link(request_options: {}, **params)
@@ -273,9 +320,14 @@ module Payabli
       # The check image is returned in the response body as a base64-encoded string.
       # The check image is only available for payouts that have been processed.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :asset_name
       #
       # @return [String]
       def get_check_image(request_options: {}, **params)

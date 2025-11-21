@@ -5,16 +5,20 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::Boarding::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
 
       # Creates a boarding application in an organization. This endpoint requires an application API token.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Boarding::Types::AddApplicationRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def add_application(request_options: {}, **params)
@@ -40,9 +44,14 @@ module Payabli
 
       # Deletes a boarding application by ID.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :app_id
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def delete_application(request_options: {}, **params)
@@ -67,9 +76,14 @@ module Payabli
 
       # Retrieves the details for a boarding application by ID.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :app_id
       #
       # @return [Payabli::Types::ApplicationDetailsRecord]
       def get_application(request_options: {}, **params)
@@ -94,9 +108,14 @@ module Payabli
 
       # Gets a boarding application by authentication information. This endpoint requires an `application` API token.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Boarding::Types::RequestAppByAuth]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :x_id
       #
       # @return [Payabli::Types::ApplicationQueryRecord]
       def get_application_by_auth(request_options: {}, **params)
@@ -127,9 +146,14 @@ module Payabli
 
       # Retrieves details for a boarding link, by ID.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :boarding_link_id
       #
       # @return [Payabli::Types::BoardingLinkQueryRecord]
       def get_by_id_link_application(request_options: {}, **params)
@@ -154,9 +178,14 @@ module Payabli
 
       # Get details for a boarding link using the boarding template ID. This endpoint requires an application API token.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :template_id
       #
       # @return [Payabli::Types::BoardingLinkQueryRecord]
       def get_by_template_id_link_application(request_options: {}, **params)
@@ -181,9 +210,16 @@ module Payabli
 
       # Retrieves a link and the verification code used to log into an existing boarding application. You can also use this endpoint to send a link and referenceId for an existing boarding application to an email address. The recipient can use the referenceId and email address to access and edit the application.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :app_id
+      # @option params [String] :mail_2
+      # @option params [Boolean, nil] :send_email
       #
       # @return [Payabli::Types::PayabliApiResponse00]
       def get_external_application(request_options: {}, **params)
@@ -215,9 +251,14 @@ module Payabli
 
       # Retrieves the details for a boarding link, by reference name. This endpoint requires an application API token.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :boarding_link_reference
       #
       # @return [Payabli::Types::BoardingLinkQueryRecord]
       def get_link_application(request_options: {}, **params)
@@ -242,9 +283,19 @@ module Payabli
 
       # Returns a list of boarding applications for an organization. Use filters to limit results. Include the `exportFormat` query parameter to return the results as a file instead of a JSON response.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :org_id
+      # @option params [Payabli::Types::ExportFormat, nil] :export_format
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :sort_by
       #
       # @return [Payabli::Types::QueryBoardingAppsListResponse]
       def list_applications(request_options: {}, **params)
@@ -280,9 +331,18 @@ module Payabli
 
       # Return a list of boarding links for an organization. Use filters to limit results.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :org_id
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :sort_by
       #
       # @return [Payabli::Types::QueryBoardingLinksResponse]
       def list_boarding_links(request_options: {}, **params)
@@ -317,9 +377,14 @@ module Payabli
 
       # Updates a boarding application by ID. This endpoint requires an application API token.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Types::ApplicationData]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :app_id
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def update_application(request_options: {}, **params)

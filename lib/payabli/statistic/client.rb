@@ -5,16 +5,27 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::Statistic::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
 
       # Retrieves the basic statistics for an organization or a paypoint, for a given time period, grouped by a particular frequency.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :mode
+      # @option params [String] :freq
+      # @option params [Integer] :level
+      # @option params [Integer] :entry_id
+      # @option params [String, nil] :end_date
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :start_date
       #
       # @return [Array[Payabli::Statistic::Types::StatBasicQueryRecord]]
       def basic_stats(request_options: {}, **params)
@@ -46,9 +57,17 @@ module Payabli
 
       # Retrieves the basic statistics for a customer for a specific time period, grouped by a selected frequency.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :mode
+      # @option params [String] :freq
+      # @option params [Integer] :customer_id
+      # @option params [Hash[String, String, nil], nil] :parameters
       #
       # @return [Array[Payabli::Statistic::Types::SubscriptionStatsQueryRecord]]
       def customer_basic_stats(request_options: {}, **params)
@@ -78,9 +97,17 @@ module Payabli
 
       # Retrieves the subscription statistics for a given interval for a paypoint or organization.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :interval
+      # @option params [Integer] :level
+      # @option params [Integer] :entry_id
+      # @option params [Hash[String, String, nil], nil] :parameters
       #
       # @return [Array[Payabli::Statistic::Types::StatBasicQueryRecord]]
       def sub_stats(request_options: {}, **params)
@@ -110,9 +137,17 @@ module Payabli
 
       # Retrieve the basic statistics about a vendor for a given time period, grouped by frequency.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :mode
+      # @option params [String] :freq
+      # @option params [Integer] :id_vendor
+      # @option params [Hash[String, String, nil], nil] :parameters
       #
       # @return [Array[Payabli::Statistic::Types::StatisticsVendorQueryRecord]]
       def vendor_basic_stats(request_options: {}, **params)
