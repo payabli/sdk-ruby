@@ -5,16 +5,21 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::Import::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
 
       # Import a list of bills from a CSV file. See the [Import Guide](/developers/developer-guides/bills-add#import-bills) for more help and an example file.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [void]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
       #
       # @return [Payabli::Types::PayabliApiResponseImport]
       def import_bills(request_options: {}, **params)
@@ -43,9 +48,15 @@ module Payabli
 
       # Import a list of customers from a CSV file. See the [Import Guide](/developers/developer-guides/entities-customers#import-customers) for more help and example files.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [void]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Payabli::Types::Entrypointfield] :entry
+      # @option params [Integer, nil] :replace_existing
       #
       # @return [Payabli::Types::PayabliApiResponseImport]
       def import_customer(request_options: {}, **params)
@@ -74,9 +85,14 @@ module Payabli
 
       # Import a list of vendors from a CSV file. See the [Import Guide](/developers/developer-guides/entities-vendors#import-vendors) for more help and example files.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [void]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Payabli::Types::Entrypointfield] :entry
       #
       # @return [Payabli::Types::PayabliApiResponseImport]
       def import_vendor(request_options: {}, **params)

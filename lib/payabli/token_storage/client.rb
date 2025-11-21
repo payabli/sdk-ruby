@@ -5,16 +5,25 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::TokenStorage::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
 
       # Saves a payment method for reuse. This call exchanges sensitive payment information for a token that can be used to process future transactions. The `ReferenceId` value in the response is the `storedMethodId` to use with transactions.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::TokenStorage::Types::RequestTokenStorage]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Boolean, nil] :ach_validation
+      # @option params [Payabli::TokenStorage::Types::CreateAnonymous] :create_anonymous
+      # @option params [Boolean, nil] :force_customer_creation
+      # @option params [Payabli::TokenStorage::Types::Temporary] :temporary
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::TokenStorage::Types::AddMethodResponse]
       def add_method(request_options: {}, **params)
@@ -50,9 +59,16 @@ module Payabli
 
       # Retrieves details for a saved payment method.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :method_id
+      # @option params [Integer, nil] :card_expiration_format
+      # @option params [Boolean, nil] :include_temporary
       #
       # @return [Payabli::TokenStorage::Types::GetMethodResponse]
       def get_method(request_options: {}, **params)
@@ -85,9 +101,14 @@ module Payabli
 
       # Deletes a saved payment method.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :method_id
       #
       # @return [Payabli::Types::PayabliApiResponsePaymethodDelete]
       def remove_method(request_options: {}, **params)
@@ -112,9 +133,15 @@ module Payabli
 
       # Updates a saved payment method.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::TokenStorage::Types::RequestTokenStorage]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :method_id
+      # @option params [Boolean, nil] :ach_validation
       #
       # @return [Payabli::Types::PayabliApiResponsePaymethodDelete]
       def update_method(request_options: {}, **params)

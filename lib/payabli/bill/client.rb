@@ -5,16 +5,22 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::Bill::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
 
       # Creates a bill in an entrypoint.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Bill::Types::BillOutData]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::Bill::Types::BillResponse]
       def add_bill(request_options: {}, **params)
@@ -43,9 +49,16 @@ module Payabli
 
       # Delete a file attached to a bill.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
+      # @option params [String] :filename
+      # @option params [Boolean, nil] :return_object
       #
       # @return [Payabli::Bill::Types::BillResponse]
       def delete_attached_from_bill(request_options: {}, **params)
@@ -77,9 +90,14 @@ module Payabli
 
       # Deletes a bill by ID.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
       #
       # @return [Payabli::Bill::Types::BillResponse]
       def delete_bill(request_options: {}, **params)
@@ -104,9 +122,14 @@ module Payabli
 
       # Updates a bill by ID.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Bill::Types::BillOutData]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
       #
       # @return [Payabli::Bill::Types::EditBillResponse]
       def edit_bill(request_options: {}, **params)
@@ -132,9 +155,16 @@ module Payabli
 
       # Retrieves a file attached to a bill, either as a binary file or as a Base64-encoded string.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
+      # @option params [String] :filename
+      # @option params [Boolean, nil] :return_object
       #
       # @return [Payabli::Types::FileContent]
       def get_attached_from_bill(request_options: {}, **params)
@@ -166,9 +196,14 @@ module Payabli
 
       # Retrieves a bill by ID from an entrypoint.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
       #
       # @return [Payabli::Bill::Types::GetBillResponse]
       def get_bill(request_options: {}, **params)
@@ -193,9 +228,19 @@ module Payabli
 
       # Retrieve a list of bills for an entrypoint. Use filters to limit results. Include the `exportFormat` query parameter to return the results as a file instead of a JSON response.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      # @option params [Payabli::Types::ExportFormat, nil] :export_format
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :sort_by
       #
       # @return [Payabli::Types::BillQueryResponse]
       def list_bills(request_options: {}, **params)
@@ -231,9 +276,19 @@ module Payabli
 
       # Retrieve a list of bills for an organization. Use filters to limit results. Include the `exportFormat` query parameter to return the results as a file instead of a JSON response.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :org_id
+      # @option params [Payabli::Types::ExportFormat, nil] :export_format
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :sort_by
       #
       # @return [Payabli::Types::BillQueryResponse]
       def list_bills_org(request_options: {}, **params)
@@ -269,9 +324,14 @@ module Payabli
 
       # Modify the list of users the bill is sent to for approval.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
       #
       # @return [Payabli::Bill::Types::ModifyApprovalBillResponse]
       def modify_approval_bill(request_options: {}, **params)
@@ -297,9 +357,16 @@ module Payabli
 
       # Send a bill to a user or list of users to approve.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
+      # @option params [Boolean, nil] :autocreate_user
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::Bill::Types::BillResponse]
       def send_to_approval_bill(request_options: {}, **params)
@@ -332,9 +399,16 @@ module Payabli
 
       # Approve or disapprove a bill by ID.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
+      # @option params [String] :approved
+      # @option params [String, nil] :email
       #
       # @return [Payabli::Bill::Types::SetApprovedBillResponse]
       def set_approved_bill(request_options: {}, **params)

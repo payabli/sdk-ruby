@@ -5,16 +5,23 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::Invoice::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
 
       # Creates an invoice in an entrypoint.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Invoice::Types::InvoiceDataRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      # @option params [Boolean, nil] :force_customer_creation
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::Invoice::Types::InvoiceResponseWithoutData]
       def add_invoice(request_options: {}, **params)
@@ -50,9 +57,15 @@ module Payabli
 
       # Deletes an invoice that's attached to a file.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_invoice
+      # @option params [String] :filename
       #
       # @return [Payabli::Invoice::Types::InvoiceResponseWithoutData]
       def delete_attached_from_invoice(request_options: {}, **params)
@@ -77,9 +90,14 @@ module Payabli
 
       # Deletes a single invoice from an entrypoint.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_invoice
       #
       # @return [Payabli::Invoice::Types::InvoiceResponseWithoutData]
       def delete_invoice(request_options: {}, **params)
@@ -104,9 +122,15 @@ module Payabli
 
       # Updates details for a single invoice in an entrypoint.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Invoice::Types::InvoiceDataRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_invoice
+      # @option params [Boolean, nil] :force_customer_creation
       #
       # @return [Payabli::Invoice::Types::InvoiceResponseWithoutData]
       def edit_invoice(request_options: {}, **params)
@@ -142,9 +166,16 @@ module Payabli
 
       # Retrieves a file attached to an invoice.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_invoice
+      # @option params [String] :filename
+      # @option params [Boolean, nil] :return_object
       #
       # @return [Payabli::Types::FileContent]
       def get_attached_file_from_invoice(request_options: {}, **params)
@@ -176,9 +207,14 @@ module Payabli
 
       # Retrieves a single invoice by ID.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_invoice
       #
       # @return [Payabli::Invoice::Types::GetInvoiceRecord]
       def get_invoice(request_options: {}, **params)
@@ -203,9 +239,14 @@ module Payabli
 
       # Retrieves the next available invoice number for a paypoint.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
       #
       # @return [Payabli::Invoice::Types::InvoiceNumberResponse]
       def get_invoice_number(request_options: {}, **params)
@@ -230,9 +271,19 @@ module Payabli
 
       # Returns a list of invoices for an entrypoint. Use filters to limit results. Include the `exportFormat` query parameter to return the results as a file instead of a JSON response.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      # @option params [Payabli::Types::ExportFormat, nil] :export_format
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :sort_by
       #
       # @return [Payabli::Invoice::Types::QueryInvoiceResponse]
       def list_invoices(request_options: {}, **params)
@@ -268,9 +319,19 @@ module Payabli
 
       # Returns a list of invoices for an org. Use filters to limit results. Include the `exportFormat` query parameter to return the results as a file instead of a JSON response.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :org_id
+      # @option params [Payabli::Types::ExportFormat, nil] :export_format
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :sort_by
       #
       # @return [Payabli::Invoice::Types::QueryInvoiceResponse]
       def list_invoices_org(request_options: {}, **params)
@@ -306,9 +367,16 @@ module Payabli
 
       # Sends an invoice from an entrypoint via email.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_invoice
+      # @option params [Boolean, nil] :attachfile
+      # @option params [String, nil] :mail_2
       #
       # @return [Payabli::Invoice::Types::SendInvoiceResponse]
       def send_invoice(request_options: {}, **params)
@@ -341,9 +409,14 @@ module Payabli
 
       # Export a single invoice in PDF format.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_invoice
       #
       # @return [Hash[String, Hash[String, Object]]]
       def get_invoice_pdf(request_options: {}, **params)

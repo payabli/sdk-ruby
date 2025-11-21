@@ -5,16 +5,21 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [Payabli::Subscription::Client]
+      # @return [void]
       def initialize(client:)
         @client = client
       end
 
       # Retrieves a single subscription's details.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :sub_id
       #
       # @return [Payabli::Types::SubscriptionQueryRecords]
       def get_subscription(request_options: {}, **params)
@@ -39,9 +44,15 @@ module Payabli
 
       # Creates a subscription or scheduled payment to run at a specified time and frequency.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Subscription::Types::SubscriptionRequestBody]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Boolean, nil] :force_customer_creation
+      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::Subscription::Types::AddSubscriptionResponse]
       def new_subscription(request_options: {}, **params)
@@ -74,9 +85,14 @@ module Payabli
 
       # Deletes a subscription, autopay, or recurring payment and prevents future charges.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
-      # @param params [Hash[untyped, untyped]]
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :sub_id
       #
       # @return [Payabli::Subscription::Types::RemoveSubscriptionResponse]
       def remove_subscription(request_options: {}, **params)
@@ -101,9 +117,14 @@ module Payabli
 
       # Updates a subscription's details.
       #
-      # @param request_options [Payabli::RequestOptions]
-      #
+      # @param request_options [Hash]
       # @param params [Payabli::Subscription::Types::RequestUpdateSchedule]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :sub_id
       #
       # @return [Payabli::Subscription::Types::UpdateSubscriptionResponse]
       def update_subscription(request_options: {}, **params)
