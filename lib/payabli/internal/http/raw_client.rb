@@ -39,6 +39,11 @@ module Payabli
           conn.continue_timeout = @timeout
 
           conn.request(http_request)
+          # begin
+          #   conn.request(http_request)
+          # rescue StandardError => e
+          #   raise HttpError, "HTTP request failed: #{e.message}"
+          # end
         end
 
         # @param request [Payabli::Internal::Http::BaseRequest] The HTTP request.
@@ -91,7 +96,7 @@ module Payabli
 
           http = Net::HTTP.new(url.host, port)
           http.use_ssl = is_https
-          http.max_retries = @max_retries
+          http.max_retries = 0
           http
         end
       end

@@ -5,22 +5,16 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::LineItem::Client]
       def initialize(client:)
         @client = client
       end
 
       # Adds products and services to an entrypoint's catalog. These are used as line items for invoicing and transactions. In the response, "responseData" displays the item's code.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Types::LineItem]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :entry
-      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::Types::PayabliApiResponse6]
       def add_item(request_options: {}, **params)
@@ -49,14 +43,9 @@ module Payabli
 
       # Deletes an item.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :line_item_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::LineItem::Types::DeleteItemResponse]
       def delete_item(request_options: {}, **params)
@@ -81,14 +70,9 @@ module Payabli
 
       # Gets an item by ID.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :line_item_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::LineItemQueryRecord]
       def get_item(request_options: {}, **params)
@@ -113,18 +97,9 @@ module Payabli
 
       # Retrieves a list of line items and their details from an entrypoint. Line items are also known as items, products, and services. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :entry
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
-      # @option params [String, nil] :sort_by
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::QueryResponseItems]
       def list_line_items(request_options: {}, **params)
@@ -159,14 +134,9 @@ module Payabli
 
       # Updates an item.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Types::LineItem]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :line_item_id
       #
       # @return [Payabli::Types::PayabliApiResponse6]
       def update_item(request_options: {}, **params)

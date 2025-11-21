@@ -5,21 +5,16 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::Organization::Client]
       def initialize(client:)
         @client = client
       end
 
       # Creates an organization under a parent organization. This is also referred to as a suborganization.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Organization::Types::AddOrganizationRequest]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::Organization::Types::AddOrganizationResponse]
       def add_organization(request_options: {}, **params)
@@ -49,14 +44,9 @@ module Payabli
 
       # Delete an organization by ID.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :org_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Organization::Types::DeleteOrganizationResponse]
       def delete_organization(request_options: {}, **params)
@@ -81,14 +71,9 @@ module Payabli
 
       # Updates an organization's details by ID.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Organization::Types::OrganizationData]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :org_id
       #
       # @return [Payabli::Organization::Types::EditOrganizationResponse]
       def edit_organization(request_options: {}, **params)
@@ -120,14 +105,9 @@ module Payabli
 
       # Gets an organization's basic information by entry name (entrypoint identifier).
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :entry
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::OrganizationQueryRecord]
       def get_basic_organization(request_options: {}, **params)
@@ -152,14 +132,9 @@ module Payabli
 
       # Gets an organizations basic details by org ID.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :org_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::OrganizationQueryRecord]
       def get_basic_organization_by_id(request_options: {}, **params)
@@ -184,14 +159,9 @@ module Payabli
 
       # Retrieves details for an organization by ID.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :org_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::OrganizationQueryRecord]
       def get_organization(request_options: {}, **params)
@@ -216,14 +186,9 @@ module Payabli
 
       # Retrieves an organization's settings.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :org_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::SettingsQueryRecord]
       def get_settings_organization(request_options: {}, **params)

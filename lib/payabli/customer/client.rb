@@ -5,7 +5,7 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::Customer::Client]
       def initialize(client:)
         @client = client
       end
@@ -13,17 +13,9 @@ module Payabli
       # Creates a customer in an entrypoint. An identifier is required to create customer records. Change your identifier settings in Settings > Custom Fields in PartnerHub.
       # If you don't include an identifier, the record is rejected.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Types::CustomerData]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Types::Entrypointfield] :entry
-      # @option params [Boolean, nil] :force_customer_creation
-      # @option params [Integer, nil] :replace_existing
-      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::Types::PayabliApiResponseCustomerQuery]
       def add_customer(request_options: {}, **params)
@@ -60,14 +52,9 @@ module Payabli
 
       # Delete a customer record.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :customer_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def delete_customer(request_options: {}, **params)
@@ -92,14 +79,9 @@ module Payabli
 
       # Retrieves a customer's record and details.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :customer_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::CustomerQueryRecords]
       def get_customer(request_options: {}, **params)
@@ -124,15 +106,9 @@ module Payabli
 
       # Links a customer to a transaction by ID.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :customer_id
-      # @option params [String] :trans_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def link_customer_transaction(request_options: {}, **params)
@@ -157,14 +133,9 @@ module Payabli
 
       # Sends the consent opt-in email to the customer email address in the customer record.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :customer_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def request_consent(request_options: {}, **params)
@@ -189,14 +160,9 @@ module Payabli
 
       # Update a customer record. Include only the fields you want to change.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Types::CustomerData]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :customer_id
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def update_customer(request_options: {}, **params)

@@ -5,21 +5,16 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::Templates::Client]
       def initialize(client:)
         @client = client
       end
 
       # Deletes a template by ID.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :template_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::PayabliApiResponseTemplateId]
       def delete_template(request_options: {}, **params)
@@ -44,15 +39,9 @@ module Payabli
 
       # Generates a boarding link from a boarding template.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :template_id
-      # @option params [Boolean] :ignore_empty
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::BoardingLinkApiResponse]
       def getlink_template(request_options: {}, **params)
@@ -77,14 +66,9 @@ module Payabli
 
       # Retrieves a boarding template's details by ID.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :template_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::TemplateQueryRecord]
       def get_template(request_options: {}, **params)
@@ -109,18 +93,9 @@ module Payabli
 
       # Retrieves a list of boarding templates for an organization. Use filters to limit results. You can't make a request that includes filters from the API console in the documentation. The response won't be filtered. Instead, copy the request, remove `parameters=` and run the request in a different client.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :org_id
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
-      # @option params [String, nil] :sort_by
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::TemplateQueryResponse]
       def list_templates(request_options: {}, **params)

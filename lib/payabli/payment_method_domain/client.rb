@@ -5,20 +5,16 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::PaymentMethodDomain::Client]
       def initialize(client:)
         @client = client
       end
 
       # Add a payment method domain to an organization or paypoint.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::PaymentMethodDomain::Types::AddPaymentMethodDomainRequest]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [Payabli::Types::AddPaymentMethodDomainApiResponse]
       def add_payment_method_domain(request_options: {}, **params)
@@ -47,14 +43,9 @@ module Payabli
 
       # Cascades a payment method domain to all child entities. All paypoints and suborganization under this parent will inherit this domain and its settings.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :domain_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::PaymentMethodDomainGeneralResponse]
       def cascade_payment_method_domain(request_options: {}, **params)
@@ -79,14 +70,9 @@ module Payabli
 
       # Delete a payment method domain. You can't delete an inherited domain, you must delete a domain at the organization level.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :domain_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::PaymentMethodDomain::Types::DeletePaymentMethodDomainResponse]
       def delete_payment_method_domain(request_options: {}, **params)
@@ -111,14 +97,9 @@ module Payabli
 
       # Get the details for a payment method domain.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :domain_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::PaymentMethodDomainApiResponse]
       def get_payment_method_domain(request_options: {}, **params)
@@ -143,17 +124,9 @@ module Payabli
 
       # Get a list of payment method domains that belong to a PSP, organization, or paypoint.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer, nil] :entity_id
-      # @option params [String, nil] :entity_type
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::PaymentMethodDomain::Types::ListPaymentMethodDomainsResponse]
       def list_payment_method_domains(request_options: {}, **params)
@@ -188,14 +161,9 @@ module Payabli
 
       # Update a payment method domain's configuration values.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::PaymentMethodDomain::Types::UpdatePaymentMethodDomainRequest]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :domain_id
       #
       # @return [Payabli::Types::PaymentMethodDomainGeneralResponse]
       def update_payment_method_domain(request_options: {}, **params)
@@ -226,14 +194,9 @@ module Payabli
 
       # Verify a new payment method domain. If verification is successful, Apple Pay is automatically activated for the domain.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :domain_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::PaymentMethodDomainGeneralResponse]
       def verify_payment_method_domain(request_options: {}, **params)

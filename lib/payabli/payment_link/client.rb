@@ -5,24 +5,16 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::PaymentLink::Client]
       def initialize(client:)
         @client = client
       end
 
       # Generates a payment link for an invoice from the invoice ID.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBody]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id_invoice
-      # @option params [Boolean, nil] :amount_fixed
-      # @option params [String, nil] :mail_2
-      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
       def add_pay_link_from_invoice(request_options: {}, **params)
@@ -59,17 +51,9 @@ module Payabli
 
       # Generates a payment link for a bill from the bill ID.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBody]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :bill_id
-      # @option params [Boolean, nil] :amount_fixed
-      # @option params [String, nil] :mail_2
-      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
       def add_pay_link_from_bill(request_options: {}, **params)
@@ -106,14 +90,9 @@ module Payabli
 
       # Deletes a payment link by ID.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :pay_link_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
       def delete_pay_link_from_id(request_options: {}, **params)
@@ -138,14 +117,9 @@ module Payabli
 
       # Retrieves a payment link by ID.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :paylink_id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::PaymentLink::Types::GetPayLinkFromIdResponse]
       def get_pay_link_from_id(request_options: {}, **params)
@@ -170,14 +144,9 @@ module Payabli
 
       # Send a payment link to the specified email addresses or phone numbers.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Types::PushPayLinkRequest]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :pay_link_id
       #
       # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
       def push_pay_link_from_id(request_options: {}, **params)
@@ -203,15 +172,9 @@ module Payabli
 
       # Refresh a payment link's content after an update.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :pay_link_id
-      # @option params [Boolean, nil] :amount_fixed
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
       def refresh_pay_link_from_id(request_options: {}, **params)
@@ -243,16 +206,9 @@ module Payabli
 
       # Sends a payment link to the specified email addresses.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :pay_link_id
-      # @option params [Boolean, nil] :attachfile
-      # @option params [String, nil] :mail_2
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
       def send_pay_link_from_id(request_options: {}, **params)
@@ -285,14 +241,9 @@ module Payabli
 
       # Updates a payment link's details.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::PaymentLink::Types::PayLinkUpdateData]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :pay_link_id
       #
       # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
       def update_pay_link_from_id(request_options: {}, **params)
@@ -324,18 +275,9 @@ module Payabli
 
       # Generates a vendor payment link for a specific bill lot number. This allows you to pay all bills with the same lot number for a vendor with a single payment link.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBody]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :lot_number
-      # @option params [Payabli::Types::Entry] :entry_point
-      # @option params [String] :vendor_number
-      # @option params [String, nil] :mail_2
-      # @option params [String, nil] :amount_fixed
       #
       # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
       def add_pay_link_from_bill_lot_number(request_options: {}, **params)

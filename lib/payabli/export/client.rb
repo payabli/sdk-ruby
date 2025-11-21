@@ -5,26 +5,16 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::Export::Client]
       def initialize(client:)
         @client = client
       end
 
       # Export a list of boarding applications for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_applications(request_options: {}, **params)
@@ -57,19 +47,9 @@ module Payabli
         end
       end
 
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_batch_details(request_options: {}, **params)
@@ -102,19 +82,9 @@ module Payabli
         end
       end
 
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_batch_details_org(request_options: {}, **params)
@@ -149,19 +119,9 @@ module Payabli
 
       # Export a list of batches for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_batches(request_options: {}, **params)
@@ -196,19 +156,9 @@ module Payabli
 
       # Export a list of batches for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_batches_org(request_options: {}, **params)
@@ -243,19 +193,9 @@ module Payabli
 
       # Export a list of money out batches for a paypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_batches_out(request_options: {}, **params)
@@ -290,19 +230,9 @@ module Payabli
 
       # Export a list of money out batches for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_batches_out_org(request_options: {}, **params)
@@ -337,19 +267,9 @@ module Payabli
 
       # Export a list of bills for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_bills(request_options: {}, **params)
@@ -384,19 +304,9 @@ module Payabli
 
       # Export a list of bills for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_bills_org(request_options: {}, **params)
@@ -431,19 +341,9 @@ module Payabli
 
       # Export a list of chargebacks and ACH returns for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_chargebacks(request_options: {}, **params)
@@ -478,19 +378,9 @@ module Payabli
 
       # Export a list of chargebacks and ACH returns for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_chargebacks_org(request_options: {}, **params)
@@ -525,19 +415,9 @@ module Payabli
 
       # Export a list of customers for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_customers(request_options: {}, **params)
@@ -572,19 +452,9 @@ module Payabli
 
       # Exports a list of customers for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_customers_org(request_options: {}, **params)
@@ -619,19 +489,9 @@ module Payabli
 
       # Export list of invoices for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_invoices(request_options: {}, **params)
@@ -666,19 +526,9 @@ module Payabli
 
       # Export a list of invoices for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_invoices_org(request_options: {}, **params)
@@ -713,19 +563,9 @@ module Payabli
 
       # Export a list of child organizations (suborganizations) for a parent organization.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_organizations(request_options: {}, **params)
@@ -760,19 +600,9 @@ module Payabli
 
       # Export a list of payouts and their statuses for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_payout(request_options: {}, **params)
@@ -807,19 +637,9 @@ module Payabli
 
       # Export a list of payouts and their details for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_payout_org(request_options: {}, **params)
@@ -854,19 +674,9 @@ module Payabli
 
       # Export a list of paypoints in an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_paypoints(request_options: {}, **params)
@@ -901,19 +711,9 @@ module Payabli
 
       # Export a list of settled transactions for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_settlements(request_options: {}, **params)
@@ -948,19 +748,9 @@ module Payabli
 
       # Export a list of settled transactions for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_settlements_org(request_options: {}, **params)
@@ -995,19 +785,9 @@ module Payabli
 
       # Export a list of subscriptions for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_subscriptions(request_options: {}, **params)
@@ -1042,19 +822,9 @@ module Payabli
 
       # Export a list of subscriptions for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_subscriptions_org(request_options: {}, **params)
@@ -1089,19 +859,9 @@ module Payabli
 
       # Export a list of transactions for an entrypoint in a file in XLXS or CSV format. Use filters to limit results. If you don't specify a date range in the request, the last two months of data are returned.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_transactions(request_options: {}, **params)
@@ -1136,19 +896,9 @@ module Payabli
 
       # Export a list of transactions for an org in a file in XLSX or CSV format. Use filters to limit results. If you don't specify a date range in the request, the last two months of data are returned.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_transactions_org(request_options: {}, **params)
@@ -1183,21 +933,9 @@ module Payabli
 
       # Export a list of transfer details for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [Integer] :transfer_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
-      # @option params [String, nil] :sort_by
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_transfer_details(request_options: {}, **params)
@@ -1233,19 +971,9 @@ module Payabli
 
       # Get a list of transfers for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
-      # @option params [String, nil] :sort_by
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_transfers(request_options: {}, **params)
@@ -1281,19 +1009,9 @@ module Payabli
 
       # Export a list of vendors for an entrypoint. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [String] :entry
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_vendors(request_options: {}, **params)
@@ -1328,19 +1046,9 @@ module Payabli
 
       # Export a list of vendors for an organization. Use filters to limit results.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Export::Types::ExportFormat1] :format
-      # @option params [Integer] :org_id
-      # @option params [String, nil] :columns_export
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
-      # @option params [Hash[String, String, nil], nil] :parameters
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Hash[String, Hash[String, Object]]]
       def export_vendors_org(request_options: {}, **params)

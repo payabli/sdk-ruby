@@ -5,20 +5,16 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::Wallet::Client]
       def initialize(client:)
         @client = client
       end
 
       # Configure and activate Apple Pay for a Payabli organization
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Wallet::Types::ConfigureOrganizationRequestApplePay]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [Payabli::Types::ConfigureApplePayOrganizationApiResponse]
       def configure_apple_pay_organization(request_options: {}, **params)
@@ -47,13 +43,9 @@ module Payabli
 
       # Configure and activate Apple Pay for a Payabli paypoint
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Wallet::Types::ConfigurePaypointRequestApplePay]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [Payabli::Types::ConfigureApplePaypointApiResponse]
       def configure_apple_pay_paypoint(request_options: {}, **params)
@@ -82,13 +74,9 @@ module Payabli
 
       # Configure and activate Google Pay for a Payabli organization
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Wallet::Types::ConfigureOrganizationRequestGooglePay]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [Payabli::Types::ConfigureApplePayOrganizationApiResponse]
       def configure_google_pay_organization(request_options: {}, **params)
@@ -117,13 +105,9 @@ module Payabli
 
       # Configure and activate Google Pay for a Payabli paypoint
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Wallet::Types::ConfigurePaypointRequestGooglePay]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [Payabli::Types::ConfigureGooglePaypointApiResponse]
       def configure_google_pay_paypoint(request_options: {}, **params)

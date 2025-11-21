@@ -5,22 +5,16 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::HostedPaymentPages::Client]
       def initialize(client:)
         @client = client
       end
 
       # Loads all of a payment page's details including `pageIdentifier` and `validationCode`. This endpoint requires an `application` API token.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :entry
-      # @option params [String] :subdomain
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Types::PayabliPages]
       def load_page(request_options: {}, **params)
@@ -47,15 +41,9 @@ module Payabli
       # Creates a new payment page for a paypoint.
       # Note: this operation doesn't create a new paypoint, just a payment page for an existing paypoint. Paypoints are created by the Payabli team when a boarding application is approved.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Types::PayabliPages]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :entry
-      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def new_page(request_options: {}, **params)
@@ -84,15 +72,9 @@ module Payabli
 
       # Updates a payment page in a paypoint.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Types::PayabliPages]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :entry
-      # @option params [String] :subdomain
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def save_page(request_options: {}, **params)

@@ -5,22 +5,16 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::ChargeBacks::Client]
       def initialize(client:)
         @client = client
       end
 
       # Add a response to a chargeback or ACH return.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::ChargeBacks::Types::ResponseChargeBack]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id
-      # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::ChargeBacks::Types::AddResponseResponse]
       def add_response(request_options: {}, **params)
@@ -51,14 +45,9 @@ module Payabli
 
       # Retrieves a chargeback record and its details.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::ChargeBacks::Types::ChargebackQueryRecords]
       def get_chargeback(request_options: {}, **params)
@@ -81,15 +70,9 @@ module Payabli
         end
       end
 
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id
-      # @option params [String] :file_name
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [String]
       def get_chargeback_attachment(request_options: {}, **params)

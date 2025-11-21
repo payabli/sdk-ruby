@@ -5,7 +5,7 @@ module Payabli
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
-      # @return [void]
+      # @return [Payabli::Notificationlogs::Client]
       def initialize(client:)
         @client = client
       end
@@ -16,15 +16,9 @@ module Payabli
       #
       # This endpoint requires the `notifications_create` OR `notifications_read` permission.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Notificationlogs::Types::NotificationLogSearchRequest]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer, nil] :page_size
-      # @option params [Integer, nil] :page
       #
       # @return [Array[Payabli::Notificationlogs::Types::NotificationLog]]
       def search_notification_logs(request_options: {}, **params)
@@ -57,14 +51,9 @@ module Payabli
       # Get detailed information for a specific notification log entry.
       # This endpoint requires the `notifications_create` OR `notifications_read` permission.
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :uuid
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Notificationlogs::Types::NotificationLogDetail]
       def get_notification_log(request_options: {}, **params)
@@ -91,14 +80,9 @@ module Payabli
       #
       # **Permissions:** notifications_create
       #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :uuid
+      # @param request_options [Payabli::RequestOptions]
+      #
+      # @param params [Hash[untyped, untyped]]
       #
       # @return [Payabli::Notificationlogs::Types::NotificationLogDetail]
       def retry_notification_log(request_options: {}, **params)
@@ -126,13 +110,9 @@ module Payabli
       #
       # This endpoint requires the `notifications_create` permission.
       #
-      # @param request_options [Hash]
+      # @param request_options [Payabli::RequestOptions]
+      #
       # @param params [Payabli::Notificationlogs::Types::BulkRetryRequest]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [untyped]
       def bulk_retry_notification_logs(request_options: {}, **params)
