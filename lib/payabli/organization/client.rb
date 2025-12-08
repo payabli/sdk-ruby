@@ -23,27 +23,27 @@ module Payabli
       #
       # @return [Payabli::Organization::Types::AddOrganizationResponse]
       def add_organization(request_options: {}, **params)
-        _body_prop_names = %i[services billing_info contacts has_billing has_residual org_address org_city org_country
-                              org_entry_name org_id org_logo org_name org_parent_id org_state org_timezone org_type org_website org_zip reply_to_email]
-        _body_bag = params.slice(*_body_prop_names)
+        body_prop_names = %i[services billing_info contacts has_billing has_residual org_address org_city org_country org_entry_name org_id org_logo org_name org_parent_id org_state org_timezone org_type org_website org_zip reply_to_email]
+        body_bag = params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Organization",
-          body: Payabli::Organization::Types::AddOrganizationRequest.new(_body_bag).to_h
+          body: Payabli::Organization::Types::AddOrganizationRequest.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Organization::Types::AddOrganizationResponse.load(_response.body)
+          Payabli::Organization::Types::AddOrganizationResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -60,22 +60,23 @@ module Payabli
       #
       # @return [Payabli::Organization::Types::DeleteOrganizationResponse]
       def delete_organization(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Organization/#{params[:org_id]}"
+          path: "Organization/#{params[:org_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Organization::Types::DeleteOrganizationResponse.load(_response.body)
+          Payabli::Organization::Types::DeleteOrganizationResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -92,29 +93,29 @@ module Payabli
       #
       # @return [Payabli::Organization::Types::EditOrganizationResponse]
       def edit_organization(request_options: {}, **params)
-        _path_param_names = %i[org_id]
-        _body = params.except(*_path_param_names)
-        _body_prop_names = %i[services billing_info contacts has_billing has_residual org_address org_city org_country
-                              org_entry_name organization_data_org_id org_logo org_name org_parent_id org_state org_timezone org_type org_website org_zip reply_to_email]
-        _body_bag = _body.slice(*_body_prop_names)
+        path_param_names = %i[org_id]
+        body_params = params.except(*path_param_names)
+        body_prop_names = %i[services billing_info contacts has_billing has_residual org_address org_city org_country org_entry_name organization_data_org_id org_logo org_name org_parent_id org_state org_timezone org_type org_website org_zip reply_to_email]
+        body_bag = body_params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "PUT",
           path: "Organization/#{params[:org_id]}",
-          body: Payabli::Organization::Types::OrganizationData.new(_body_bag).to_h
+          body: Payabli::Organization::Types::OrganizationData.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Organization::Types::EditOrganizationResponse.load(_response.body)
+          Payabli::Organization::Types::EditOrganizationResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -131,22 +132,23 @@ module Payabli
       #
       # @return [Payabli::Types::OrganizationQueryRecord]
       def get_basic_organization(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Organization/basic/#{params[:entry]}"
+          path: "Organization/basic/#{params[:entry]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::OrganizationQueryRecord.load(_response.body)
+          Payabli::Types::OrganizationQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -163,22 +165,23 @@ module Payabli
       #
       # @return [Payabli::Types::OrganizationQueryRecord]
       def get_basic_organization_by_id(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Organization/basicById/#{params[:org_id]}"
+          path: "Organization/basicById/#{params[:org_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::OrganizationQueryRecord.load(_response.body)
+          Payabli::Types::OrganizationQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -195,22 +198,23 @@ module Payabli
       #
       # @return [Payabli::Types::OrganizationQueryRecord]
       def get_organization(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Organization/read/#{params[:org_id]}"
+          path: "Organization/read/#{params[:org_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::OrganizationQueryRecord.load(_response.body)
+          Payabli::Types::OrganizationQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -227,22 +231,23 @@ module Payabli
       #
       # @return [Payabli::Types::SettingsQueryRecord]
       def get_settings_organization(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Organization/settings/#{params[:org_id]}"
+          path: "Organization/settings/#{params[:org_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::SettingsQueryRecord.load(_response.body)
+          Payabli::Types::SettingsQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

@@ -10,7 +10,8 @@ module Payabli
         @client = client
       end
 
-      # Register a cloud device to an entrypoint. See [Devices Quickstart](/developers/developer-guides/devices-quickstart#devices-quickstart) for a complete guide.
+      # Register a cloud device to an entrypoint. See [Devices
+      # Quickstart](/developers/developer-guides/devices-quickstart#devices-quickstart) for a complete guide.
       #
       # @param request_options [Hash]
       # @param params [Payabli::Cloud::Types::DeviceEntry]
@@ -24,28 +25,29 @@ module Payabli
       #
       # @return [Payabli::Cloud::Types::AddDeviceResponse]
       def add_device(request_options: {}, **params)
-        _path_param_names = %i[entry]
-        _body = params.except(*_path_param_names)
-        _body_prop_names = %i[description registration_code]
-        _body_bag = _body.slice(*_body_prop_names)
+        path_param_names = %i[entry]
+        body_params = params.except(*path_param_names)
+        body_prop_names = %i[description registration_code]
+        body_bag = body_params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Cloud/register/#{params[:entry]}",
-          body: Payabli::Cloud::Types::DeviceEntry.new(_body_bag).to_h
+          body: Payabli::Cloud::Types::DeviceEntry.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Cloud::Types::AddDeviceResponse.load(_response.body)
+          Payabli::Cloud::Types::AddDeviceResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -63,22 +65,23 @@ module Payabli
       #
       # @return [Payabli::Types::CloudQueryApiResponse]
       def history_device(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Cloud/history/#{params[:entry]}/#{params[:device_id]}"
+          path: "Cloud/history/#{params[:entry]}/#{params[:device_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::CloudQueryApiResponse.load(_response.body)
+          Payabli::Types::CloudQueryApiResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -97,28 +100,29 @@ module Payabli
       # @return [Payabli::Types::CloudQueryApiResponse]
       def list_device(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[force_refresh]
-        _query = {}
-        _query["forceRefresh"] = params[:force_refresh] if params.key?(:force_refresh)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[force_refresh]
+        query_params = {}
+        query_params["forceRefresh"] = params[:force_refresh] if params.key?(:force_refresh)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Cloud/list/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::CloudQueryApiResponse.load(_response.body)
+          Payabli::Types::CloudQueryApiResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -136,22 +140,23 @@ module Payabli
       #
       # @return [Payabli::Cloud::Types::RemoveDeviceResponse]
       def remove_device(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Cloud/register/#{params[:entry]}/#{params[:device_id]}"
+          path: "Cloud/register/#{params[:entry]}/#{params[:device_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Cloud::Types::RemoveDeviceResponse.load(_response.body)
+          Payabli::Cloud::Types::RemoveDeviceResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

@@ -10,7 +10,8 @@ module Payabli
         @client = client
       end
 
-      # Import a list of bills from a CSV file. See the [Import Guide](/developers/developer-guides/bills-add#import-bills) for more help and an example file.
+      # Import a list of bills from a CSV file. See the [Import
+      # Guide](/developers/developer-guides/bills-add#import-bills) for more help and an example file.
       #
       # @param request_options [Hash]
       # @param params [void]
@@ -27,26 +28,29 @@ module Payabli
 
         body.add_part(params[:file].to_form_data_part(name: "file")) if params[:file]
 
-        _request = Payabli::Internal::Multipart::Request.new(
-          method: POST,
+        request = Payabli::Internal::Multipart::Request.new(
+          base_url: request_options[:base_url],
+          method: "POST",
           path: "Import/billsForm/#{params[:entry]}",
-          body: body
+          body: body,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponseImport.load(_response.body)
+          Payabli::Types::PayabliApiResponseImport.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Import a list of customers from a CSV file. See the [Import Guide](/developers/developer-guides/entities-customers#import-customers) for more help and example files.
+      # Import a list of customers from a CSV file. See the [Import
+      # Guide](/developers/developer-guides/entities-customers#import-customers) for more help and example files.
       #
       # @param request_options [Hash]
       # @param params [void]
@@ -64,26 +68,29 @@ module Payabli
 
         body.add_part(params[:file].to_form_data_part(name: "file")) if params[:file]
 
-        _request = Payabli::Internal::Multipart::Request.new(
-          method: POST,
+        request = Payabli::Internal::Multipart::Request.new(
+          base_url: request_options[:base_url],
+          method: "POST",
           path: "Import/customersForm/#{params[:entry]}",
-          body: body
+          body: body,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponseImport.load(_response.body)
+          Payabli::Types::PayabliApiResponseImport.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Import a list of vendors from a CSV file. See the [Import Guide](/developers/developer-guides/entities-vendors#import-vendors) for more help and example files.
+      # Import a list of vendors from a CSV file. See the [Import
+      # Guide](/developers/developer-guides/entities-vendors#import-vendors) for more help and example files.
       #
       # @param request_options [Hash]
       # @param params [void]
@@ -100,22 +107,24 @@ module Payabli
 
         body.add_part(params[:file].to_form_data_part(name: "file")) if params[:file]
 
-        _request = Payabli::Internal::Multipart::Request.new(
-          method: POST,
+        request = Payabli::Internal::Multipart::Request.new(
+          base_url: request_options[:base_url],
+          method: "POST",
           path: "Import/vendorsForm/#{params[:entry]}",
-          body: body
+          body: body,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponseImport.load(_response.body)
+          Payabli::Types::PayabliApiResponseImport.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

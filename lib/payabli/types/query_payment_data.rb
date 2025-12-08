@@ -12,9 +12,7 @@ module Payabli
       field :initiator, -> { String }, optional: true, nullable: false, api_name: "Initiator"
       field :masked_account, -> { String }, optional: true, nullable: false, api_name: "MaskedAccount"
       field :order_description, -> { String }, optional: true, nullable: false, api_name: "orderDescription"
-      field :payment_details, lambda {
-        Payabli::Types::PaymentDetail
-      }, optional: true, nullable: false, api_name: "paymentDetails"
+      field :payment_details, -> { Payabli::Types::PaymentDetail }, optional: true, nullable: false, api_name: "paymentDetails"
       field :sequence, -> { String }, optional: true, nullable: false, api_name: "Sequence"
       field :signature_data, -> { String }, optional: true, nullable: false, api_name: "SignatureData"
       field :stored_id, -> { String }, optional: true, nullable: false, api_name: "StoredId"

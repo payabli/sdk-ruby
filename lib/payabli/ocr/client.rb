@@ -10,6 +10,11 @@ module Payabli
         @client = client
       end
 
+      # Use this endpoint to upload an image file for OCR processing. The accepted file formats include PDF, JPG, JPEG,
+      # PNG, and GIF. Specify the desired type of result (either 'bill' or 'invoice') in the path parameter
+      # `typeResult`. The response will contain the OCR processing results, including extracted data such as bill
+      # number, vendor information, bill items, and more.
+      #
       # @param request_options [Hash]
       # @param params [Payabli::Ocr::Types::FileContentImageOnly]
       # @option request_options [String] :base_url
@@ -21,26 +26,32 @@ module Payabli
       #
       # @return [Payabli::Ocr::Types::PayabliApiResponseOcr]
       def ocr_document_form(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "/Import/ocrDocumentForm/#{params[:type_result]}",
-          body: Payabli::Ocr::Types::FileContentImageOnly.new(params).to_h
+          body: Payabli::Ocr::Types::FileContentImageOnly.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Ocr::Types::PayabliApiResponseOcr.load(_response.body)
+          Payabli::Ocr::Types::PayabliApiResponseOcr.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
+      # Use this endpoint to submit a Base64-encoded image file for OCR processing. The accepted file formats include
+      # PDF, JPG, JPEG, PNG, and GIF. Specify the desired type of result (either 'bill' or 'invoice') in the path
+      # parameter `typeResult`. The response will contain the OCR processing results, including extracted data such as
+      # bill number, vendor information, bill items, and more.
+      #
       # @param request_options [Hash]
       # @param params [Payabli::Ocr::Types::FileContentImageOnly]
       # @option request_options [String] :base_url
@@ -52,23 +63,24 @@ module Payabli
       #
       # @return [Payabli::Ocr::Types::PayabliApiResponseOcr]
       def ocr_document_json(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "/Import/ocrDocumentJson/#{params[:type_result]}",
-          body: Payabli::Ocr::Types::FileContentImageOnly.new(params).to_h
+          body: Payabli::Ocr::Types::FileContentImageOnly.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Ocr::Types::PayabliApiResponseOcr.load(_response.body)
+          Payabli::Ocr::Types::PayabliApiResponseOcr.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

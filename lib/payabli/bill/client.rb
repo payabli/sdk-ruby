@@ -24,26 +24,27 @@ module Payabli
       #
       # @return [Payabli::Bill::Types::BillResponse]
       def add_bill(request_options: {}, **params)
-        _path_param_names = %i[entry]
-        _body = params.except(*_path_param_names)
+        path_param_names = %i[entry]
+        body_params = params.except(*path_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Bill/single/#{params[:entry]}",
-          body: Payabli::Bill::Types::BillOutData.new(_body).to_h
+          body: Payabli::Bill::Types::BillOutData.new(body_params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::BillResponse.load(_response.body)
+          Payabli::Bill::Types::BillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -63,28 +64,29 @@ module Payabli
       # @return [Payabli::Bill::Types::BillResponse]
       def delete_attached_from_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[return_object]
-        _query = {}
-        _query["returnObject"] = params[:return_object] if params.key?(:return_object)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[return_object]
+        query_params = {}
+        query_params["returnObject"] = params[:return_object] if params.key?(:return_object)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "DELETE",
           path: "Bill/attachedFileFromBill/#{params[:id_bill]}/#{params[:filename]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::BillResponse.load(_response.body)
+          Payabli::Bill::Types::BillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -101,22 +103,23 @@ module Payabli
       #
       # @return [Payabli::Bill::Types::BillResponse]
       def delete_bill(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Bill/#{params[:id_bill]}"
+          path: "Bill/#{params[:id_bill]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::BillResponse.load(_response.body)
+          Payabli::Bill::Types::BillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -133,23 +136,24 @@ module Payabli
       #
       # @return [Payabli::Bill::Types::EditBillResponse]
       def edit_bill(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "PUT",
           path: "Bill/#{params[:id_bill]}",
-          body: Payabli::Bill::Types::BillOutData.new(params).to_h
+          body: Payabli::Bill::Types::BillOutData.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::EditBillResponse.load(_response.body)
+          Payabli::Bill::Types::EditBillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -169,28 +173,29 @@ module Payabli
       # @return [Payabli::Types::FileContent]
       def get_attached_from_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[return_object]
-        _query = {}
-        _query["returnObject"] = params[:return_object] if params.key?(:return_object)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[return_object]
+        query_params = {}
+        query_params["returnObject"] = params[:return_object] if params.key?(:return_object)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Bill/attachedFileFromBill/#{params[:id_bill]}/#{params[:filename]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::FileContent.load(_response.body)
+          Payabli::Types::FileContent.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -207,26 +212,28 @@ module Payabli
       #
       # @return [Payabli::Bill::Types::GetBillResponse]
       def get_bill(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Bill/#{params[:id_bill]}"
+          path: "Bill/#{params[:id_bill]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::GetBillResponse.load(_response.body)
+          Payabli::Bill::Types::GetBillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Retrieve a list of bills for an entrypoint. Use filters to limit results. Include the `exportFormat` query parameter to return the results as a file instead of a JSON response.
+      # Retrieve a list of bills for an entrypoint. Use filters to limit results. Include the `exportFormat` query
+      # parameter to return the results as a file instead of a JSON response.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -245,36 +252,38 @@ module Payabli
       # @return [Payabli::Types::BillQueryResponse]
       def list_bills(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[export_format from_record limit_record parameters sort_by]
-        _query = {}
-        _query["exportFormat"] = params[:export_format] if params.key?(:export_format)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        _query["sortBy"] = params[:sort_by] if params.key?(:sort_by)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
+        query_params = {}
+        query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Query/bills/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::BillQueryResponse.load(_response.body)
+          Payabli::Types::BillQueryResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Retrieve a list of bills for an organization. Use filters to limit results. Include the `exportFormat` query parameter to return the results as a file instead of a JSON response.
+      # Retrieve a list of bills for an organization. Use filters to limit results. Include the `exportFormat` query
+      # parameter to return the results as a file instead of a JSON response.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -293,32 +302,33 @@ module Payabli
       # @return [Payabli::Types::BillQueryResponse]
       def list_bills_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[export_format from_record limit_record parameters sort_by]
-        _query = {}
-        _query["exportFormat"] = params[:export_format] if params.key?(:export_format)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        _query["sortBy"] = params[:sort_by] if params.key?(:sort_by)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
+        query_params = {}
+        query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Query/bills/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::BillQueryResponse.load(_response.body)
+          Payabli::Types::BillQueryResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -335,23 +345,24 @@ module Payabli
       #
       # @return [Payabli::Bill::Types::ModifyApprovalBillResponse]
       def modify_approval_bill(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "PUT",
           path: "Bill/approval/#{params[:id_bill]}",
-          body: params
+          body: params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::ModifyApprovalBillResponse.load(_response.body)
+          Payabli::Bill::Types::ModifyApprovalBillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -370,30 +381,34 @@ module Payabli
       #
       # @return [Payabli::Bill::Types::BillResponse]
       def send_to_approval_bill(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[autocreate_user]
-        _query = {}
-        _query["autocreateUser"] = params[:autocreate_user] if params.key?(:autocreate_user)
-        params = params.except(*_query_param_names)
+        path_param_names = %i[id_bill]
+        body_params = params.except(*path_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        params = Payabli::Internal::Types::Utils.symbolize_keys(params)
+        query_param_names = %i[autocreate_user]
+        query_params = {}
+        query_params["autocreateUser"] = params[:autocreate_user] if params.key?(:autocreate_user)
+        params = params.except(*query_param_names)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Bill/approval/#{params[:id_bill]}",
-          query: _query,
-          body: _body
+          query: query_params,
+          body: body_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::BillResponse.load(_response.body)
+          Payabli::Bill::Types::BillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -413,28 +428,29 @@ module Payabli
       # @return [Payabli::Bill::Types::SetApprovedBillResponse]
       def set_approved_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[email]
-        _query = {}
-        _query["email"] = params[:email] if params.key?(:email)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[email]
+        query_params = {}
+        query_params["email"] = params[:email] if params.key?(:email)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Bill/approval/#{params[:id_bill]}/#{params[:approved]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::SetApprovedBillResponse.load(_response.body)
+          Payabli::Bill::Types::SetApprovedBillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

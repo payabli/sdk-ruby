@@ -99,7 +99,7 @@ Delete a file attached to a bill.
 ```ruby
 client.bill.delete_attached_from_bill(
   filename: '0_Bill.pdf',
-  idBill: 285
+  id_bill: 285
 );
 ```
 </dd>
@@ -187,7 +187,7 @@ Deletes a bill by ID.
 <dd>
 
 ```ruby
-client.bill.delete_bill();
+client.bill.delete_bill(id_bill: 285);
 ```
 </dd>
 </dl>
@@ -241,10 +241,11 @@ Updates a bill by ID.
 <dd>
 
 ```ruby
-client.bill.edit_bill({
-  netAmount: 3762.87,
-  billDate: '2025-07-01'
-});
+client.bill.edit_bill(
+  id_bill: 285,
+  bill_date: '2025-07-01',
+  net_amount: 3762.87
+);
 ```
 </dd>
 </dl>
@@ -308,8 +309,8 @@ Retrieves a file attached to a bill, either as a binary file or as a Base64-enco
 ```ruby
 client.bill.get_attached_from_bill(
   filename: '0_Bill.pdf',
-  idBill: 285,
-  returnObject: true
+  id_bill: 285,
+  return_object: true
 );
 ```
 </dd>
@@ -392,7 +393,7 @@ Retrieves a bill by ID from an entrypoint.
 <dd>
 
 ```ruby
-client.bill.get_bill();
+client.bill.get_bill(id_bill: 285);
 ```
 </dd>
 </dl>
@@ -448,9 +449,9 @@ Retrieve a list of bills for an entrypoint. Use filters to limit results. Includ
 ```ruby
 client.bill.list_bills(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -590,10 +591,10 @@ Retrieve a list of bills for an organization. Use filters to limit results. Incl
 
 ```ruby
 client.bill.list_bills_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -732,7 +733,7 @@ Modify the list of users the bill is sent to for approval.
 <dd>
 
 ```ruby
-client.bill.modify_approval_bill();
+client.bill.modify_approval_bill(id_bill: 285);
 ```
 </dd>
 </dl>
@@ -795,8 +796,8 @@ Send a bill to a user or list of users to approve.
 
 ```ruby
 client.bill.send_to_approval_bill(
-  idBill: 285,
-  idempotencyKey: '6B29FC40-CA47-1067-B31D-00DD010662DA'
+  id_bill: 285,
+  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA'
 );
 ```
 </dd>
@@ -877,7 +878,7 @@ Approve or disapprove a bill by ID.
 ```ruby
 client.bill.set_approved_bill(
   approved: 'true',
-  idBill: 285
+  id_bill: 285
 );
 ```
 </dd>
@@ -1003,7 +1004,7 @@ Deletes a boarding application by ID.
 <dd>
 
 ```ruby
-client.boarding.delete_application();
+client.boarding.delete_application(app_id: 352);
 ```
 </dd>
 </dl>
@@ -1057,7 +1058,7 @@ Retrieves the details for a boarding application by ID.
 <dd>
 
 ```ruby
-client.boarding.get_application();
+client.boarding.get_application(app_id: 352);
 ```
 </dd>
 </dl>
@@ -1112,9 +1113,9 @@ Gets a boarding application by authentication information. This endpoint require
 
 ```ruby
 client.boarding.get_application_by_auth(
-  xId: '17E',
+  x_id: '17E',
   email: 'admin@email.com',
-  referenceId: 'n6UCd1f1ygG7'
+  reference_id: 'n6UCd1f1ygG7'
 );
 ```
 </dd>
@@ -1185,7 +1186,7 @@ Retrieves details for a boarding link, by ID.
 <dd>
 
 ```ruby
-client.boarding.get_by_id_link_application();
+client.boarding.get_by_id_link_application(boarding_link_id: 91);
 ```
 </dd>
 </dl>
@@ -1239,7 +1240,7 @@ Get details for a boarding link using the boarding template ID. This endpoint re
 <dd>
 
 ```ruby
-client.boarding.get_by_template_id_link_application();
+client.boarding.get_by_template_id_link_application(template_id: 80);
 ```
 </dd>
 </dl>
@@ -1294,8 +1295,8 @@ Retrieves a link and the verification code used to log into an existing boarding
 
 ```ruby
 client.boarding.get_external_application(
-  appId: 352,
-  mail2: 'mail2'
+  app_id: 352,
+  mail_2: 'mail2'
 );
 ```
 </dd>
@@ -1366,7 +1367,7 @@ Retrieves the details for a boarding link, by reference name. This endpoint requ
 <dd>
 
 ```ruby
-client.boarding.get_link_application();
+client.boarding.get_link_application(boarding_link_reference: 'myorgaccountname-00091');
 ```
 </dd>
 </dl>
@@ -1421,10 +1422,10 @@ Returns a list of boarding applications for an organization. Use filters to limi
 
 ```ruby
 client.boarding.list_applications(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -1556,10 +1557,10 @@ Return a list of boarding links for an organization. Use filters to limit result
 
 ```ruby
 client.boarding.list_boarding_links(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -1678,7 +1679,7 @@ Updates a boarding application by ID. This endpoint requires an application API 
 <dd>
 
 ```ruby
-client.boarding.update_application({});
+client.boarding.update_application(app_id: 352);
 ```
 </dd>
 </dl>
@@ -1743,7 +1744,7 @@ Add a response to a chargeback or ACH return.
 ```ruby
 client.charge_backs.add_response(
   id: 1000000,
-  idempotencyKey: '6B29FC40-CA47-1067-B31D-00DD010662DA'
+  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA'
 );
 ```
 </dd>
@@ -1838,7 +1839,7 @@ Retrieves a chargeback record and its details.
 <dd>
 
 ```ruby
-client.charge_backs.get_chargeback();
+client.charge_backs.get_chargeback(id: 1000000);
 ```
 </dd>
 </dl>
@@ -1869,6 +1870,20 @@ client.charge_backs.get_chargeback();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a chargeback attachment file by its file name.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -1878,7 +1893,10 @@ client.charge_backs.get_chargeback();
 <dd>
 
 ```ruby
-client.charge_backs.get_chargeback_attachment();
+client.charge_backs.get_chargeback_attachment(
+  id: 1000000,
+  file_name: 'fileName'
+);
 ```
 </dd>
 </dl>
@@ -1942,10 +1960,10 @@ Captures a check for Remote Deposit Capture (RDC) using the provided check image
 
 ```ruby
 client.check_capture.check_processing(
-  entryPoint: '47abcfea12',
-  frontImage: '/9j/4AAQSkZJRgABAQEASABIAAD...',
-  rearImage: '/9j/4AAQSkZJRgABAQEASABIAAD...',
-  checkAmount: 12550
+  entry_point: '47abcfea12',
+  front_image: '/9j/4AAQSkZJRgABAQEASABIAAD...',
+  rear_image: '/9j/4AAQSkZJRgABAQEASABIAAD...',
+  check_amount: 12550
 );
 ```
 </dd>
@@ -2027,7 +2045,7 @@ Register a cloud device to an entrypoint. See [Devices Quickstart](/developers/d
 ```ruby
 client.cloud.add_device(
   entry: '8cfec329267',
-  registrationCode: 'YS7DS5',
+  registration_code: 'YS7DS5',
   description: 'Front Desk POS'
 );
 ```
@@ -2113,7 +2131,10 @@ Retrieve the registration history for a device.
 <dd>
 
 ```ruby
-client.cloud.history_device();
+client.cloud.history_device(
+  device_id: 'WXGDWB',
+  entry: '8cfec329267'
+);
 ```
 </dd>
 </dl>
@@ -2237,7 +2258,10 @@ Remove a cloud device from an entrypoint.
 <dd>
 
 ```ruby
-client.cloud.remove_device();
+client.cloud.remove_device(
+  device_id: '6c361c7d-674c-44cc-b790-382b75d1xxx',
+  entry: '8cfec329267'
+);
 ```
 </dd>
 </dl>
@@ -2387,7 +2411,7 @@ Delete a customer record.
 <dd>
 
 ```ruby
-client.customer.delete_customer();
+client.customer.delete_customer(customer_id: 998);
 ```
 </dd>
 </dl>
@@ -2441,7 +2465,7 @@ Retrieves a customer's record and details.
 <dd>
 
 ```ruby
-client.customer.get_customer();
+client.customer.get_customer(customer_id: 998);
 ```
 </dd>
 </dl>
@@ -2495,7 +2519,10 @@ Links a customer to a transaction by ID.
 <dd>
 
 ```ruby
-client.customer.link_customer_transaction();
+client.customer.link_customer_transaction(
+  customer_id: 998,
+  trans_id: '45-as456777hhhhhhhhhh77777777-324'
+);
 ```
 </dd>
 </dl>
@@ -2557,7 +2584,7 @@ Sends the consent opt-in email to the customer email address in the customer rec
 <dd>
 
 ```ruby
-client.customer.request_consent();
+client.customer.request_consent(customer_id: 998);
 ```
 </dd>
 </dl>
@@ -2611,15 +2638,16 @@ Update a customer record. Include only the fields you want to change.
 <dd>
 
 ```ruby
-client.customer.update_customer({
+client.customer.update_customer(
+  customer_id: 998,
   firstname: 'Irene',
   lastname: 'Canizales',
-  address1: "145 Bishop's Trail",
+  address_1: "145 Bishop's Trail",
   city: 'Mountain City',
   state: 'TN',
   zip: '37612',
   country: 'US'
-});
+);
 ```
 </dd>
 </dl>
@@ -2655,7 +2683,7 @@ client.customer.update_customer({
 </details>
 
 ## Export
-<details><summary><code>client.export.export_applications(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_applications(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -2683,11 +2711,10 @@ Export a list of boarding applications for an organization. Use filters to limit
 
 ```ruby
 client.export.export_applications(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -2808,9 +2835,23 @@ Example: `dbaname(ct)=hoa` returns all records with a `dbaname` containing "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.export.export_batch_details(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_batch_details(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This endpoint is deprecated. Export batch details for a paypoint. Use filters to limit results.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -2823,10 +2864,9 @@ Example: `dbaname(ct)=hoa` returns all records with a `dbaname` containing "hoa"
 ```ruby
 client.export.export_batch_details(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -2958,9 +2998,23 @@ Example: `amount(gt)=20` return all records with amount greater than 20.00
 </dl>
 </details>
 
-<details><summary><code>client.export.export_batch_details_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_batch_details_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This endpoint is deprecated. Export batch details for an organization. Use filters to limit results.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -2972,11 +3026,10 @@ Example: `amount(gt)=20` return all records with amount greater than 20.00
 
 ```ruby
 client.export.export_batch_details_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -3108,7 +3161,7 @@ Example: `amount(gt)=20` return all records with amount greater than 20.00
 </dl>
 </details>
 
-<details><summary><code>client.export.export_batches(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_batches(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -3137,10 +3190,9 @@ Export a list of batches for an entrypoint. Use filters to limit results.
 ```ruby
 client.export.export_batches(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -3262,7 +3314,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.export.export_batches_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_batches_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -3290,11 +3342,10 @@ Export a list of batches for an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_batches_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -3414,7 +3465,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.export.export_batches_out(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_batches_out(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -3443,10 +3494,9 @@ Export a list of money out batches for a paypoint. Use filters to limit results.
 ```ruby
 client.export.export_batches_out(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -3548,7 +3598,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.export.export_batches_out_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_batches_out_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -3576,11 +3626,10 @@ Export a list of money out batches for an organization. Use filters to limit res
 
 ```ruby
 client.export.export_batches_out_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -3682,7 +3731,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.export.export_bills(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_bills(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -3711,10 +3760,9 @@ Export a list of bills for an entrypoint. Use filters to limit results.
 ```ruby
 client.export.export_bills(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -3834,7 +3882,7 @@ Example: totalAmount(gt)=20  return all records with totalAmount greater than 20
 </dl>
 </details>
 
-<details><summary><code>client.export.export_bills_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_bills_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -3862,11 +3910,10 @@ Export a list of bills for an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_bills_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -3986,7 +4033,7 @@ Example: totalAmount(gt)=20  return all records with totalAmount greater than 20
 </dl>
 </details>
 
-<details><summary><code>client.export.export_chargebacks(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_chargebacks(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -4015,10 +4062,9 @@ Export a list of chargebacks and ACH returns for an entrypoint. Use filters to l
 ```ruby
 client.export.export_chargebacks(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -4159,7 +4205,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.export_chargebacks_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_chargebacks_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -4187,11 +4233,10 @@ Export a list of chargebacks and ACH returns for an organization. Use filters to
 
 ```ruby
 client.export.export_chargebacks_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -4332,7 +4377,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.export_customers(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_customers(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -4361,10 +4406,9 @@ Export a list of customers for an entrypoint. Use filters to limit results.
 ```ruby
 client.export.export_customers(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -4498,7 +4542,7 @@ balance(gt)=20 return all records with balance greater than 20.00
 </dl>
 </details>
 
-<details><summary><code>client.export.export_customers_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_customers_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -4526,11 +4570,10 @@ Exports a list of customers for an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_customers_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -4664,7 +4707,7 @@ balance(gt)=20 return all records with balance greater than 20.00
 </dl>
 </details>
 
-<details><summary><code>client.export.export_invoices(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_invoices(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -4693,10 +4736,9 @@ Export list of invoices for an entrypoint. Use filters to limit results.
 ```ruby
 client.export.export_invoices(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -4840,7 +4882,7 @@ Example: `totalAmount(gt)=20` returns all records with `totalAmount` greater tha
 </dl>
 </details>
 
-<details><summary><code>client.export.export_invoices_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_invoices_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -4868,11 +4910,10 @@ Export a list of invoices for an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_invoices_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -5016,7 +5057,7 @@ Example: totalAmount(gt)=20  return all records with totalAmount greater than 20
 </dl>
 </details>
 
-<details><summary><code>client.export.export_organizations(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_organizations(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -5044,11 +5085,10 @@ Export a list of child organizations (suborganizations) for a parent organizatio
 
 ```ruby
 client.export.export_organizations(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -5167,7 +5207,7 @@ Example: name(ct)=hoa  return all records where name contains "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.export.export_payout(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_payout(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -5196,10 +5236,9 @@ Export a list of payouts and their statuses for an entrypoint. Use filters to li
 ```ruby
 client.export.export_payout(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -5317,7 +5356,7 @@ Example: totalAmount(gt)=20 return all records with totalAmount greater than 20.
 </dl>
 </details>
 
-<details><summary><code>client.export.export_payout_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_payout_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -5345,11 +5384,10 @@ Export a list of payouts and their details for an organization. Use filters to l
 
 ```ruby
 client.export.export_payout_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -5467,7 +5505,7 @@ Example: totalAmount(gt)=20 return all records with totalAmount greater than 20.
 </dl>
 </details>
 
-<details><summary><code>client.export.export_paypoints(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_paypoints(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -5495,11 +5533,10 @@ Export a list of paypoints in an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_paypoints(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -5619,7 +5656,7 @@ Example: `dbaname(ct)=hoa` returns all records with `dbaname` containing "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.export.export_settlements(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_settlements(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -5648,10 +5685,9 @@ Export a list of settled transactions for an entrypoint. Use filters to limit re
 ```ruby
 client.export.export_settlements(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -5791,7 +5827,7 @@ Example: `settledAmount(gt)=20` returns all records with a `settledAmount` great
 </dl>
 </details>
 
-<details><summary><code>client.export.export_settlements_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_settlements_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -5819,11 +5855,10 @@ Export a list of settled transactions for an organization. Use filters to limit 
 
 ```ruby
 client.export.export_settlements_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -5963,7 +5998,7 @@ Example: `settledAmount(gt)=20` returns all records with a `settledAmount` great
 </dl>
 </details>
 
-<details><summary><code>client.export.export_subscriptions(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_subscriptions(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -5992,10 +6027,9 @@ Export a list of subscriptions for an entrypoint. Use filters to limit results.
 ```ruby
 client.export.export_subscriptions(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -6137,7 +6171,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.export_subscriptions_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_subscriptions_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -6165,11 +6199,10 @@ Export a list of subscriptions for an organization. Use filters to limit results
 
 ```ruby
 client.export.export_subscriptions_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -6311,7 +6344,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.export_transactions(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_transactions(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -6340,10 +6373,9 @@ Export a list of transactions for an entrypoint in a file in XLXS or CSV format.
 ```ruby
 client.export.export_transactions(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -6489,7 +6521,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.export_transactions_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_transactions_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -6517,11 +6549,10 @@ Export a list of transactions for an org in a file in XLSX or CSV format. Use fi
 
 ```ruby
 client.export.export_transactions_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -6667,7 +6698,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.export_transfer_details(format, entry, transfer_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_transfer_details(format, entry, transfer_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -6696,12 +6727,11 @@ Export a list of transfer details for an entrypoint. Use filters to limit result
 ```ruby
 client.export.export_transfer_details(
   entry: '8cfec329267',
-  format: ,
-  transferId: 1000000,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000,
-  sortBy: 'desc(field_name)'
+  transfer_id: 1000000,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -6827,7 +6857,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.export.export_transfers(entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_transfers(entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -6856,10 +6886,10 @@ Get a list of transfers for an entrypoint. Use filters to limit results.
 ```ruby
 client.export.export_transfers(
   entry: '8cfec329267',
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000,
-  sortBy: 'desc(field_name)'
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -6970,7 +7000,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.export.export_vendors(format, entry) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_vendors(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -6999,10 +7029,9 @@ Export a list of vendors for an entrypoint. Use filters to limit results.
 ```ruby
 client.export.export_vendors(
   entry: '8cfec329267',
-  format: ,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -7126,7 +7155,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.export_vendors_org(format, org_id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.export.export_vendors_org(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -7154,11 +7183,10 @@ Export a list of vendors for an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_vendors_org(
-  format: ,
-  orgId: 123,
-  columnsExport: 'BatchDate:Batch_Date,PaypointName:Legal_name',
-  fromRecord: 251,
-  limitRecord: 1000
+  org_id: 123,
+  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  from_record: 251,
+  limit_record: 1000
 );
 ```
 </dd>
@@ -7310,7 +7338,10 @@ Loads all of a payment page's details including `pageIdentifier` and `validation
 <dd>
 
 ```ruby
-client.hosted_payment_pages.load_page();
+client.hosted_payment_pages.load_page(
+  entry: '8cfec329267',
+  subdomain: 'pay-your-fees-1'
+);
 ```
 </dd>
 </dl>
@@ -7376,7 +7407,7 @@ Note: this operation doesn't create a new paypoint, just a payment page for an e
 ```ruby
 client.hosted_payment_pages.new_page(
   entry: '8cfec329267',
-  idempotencyKey: '6B29FC40-CA47-1067-B31D-00DD010662DA'
+  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA'
 );
 ```
 </dd>
@@ -7447,7 +7478,10 @@ Updates a payment page in a paypoint.
 <dd>
 
 ```ruby
-client.hosted_payment_pages.save_page({});
+client.hosted_payment_pages.save_page(
+  entry: '8cfec329267',
+  subdomain: 'pay-your-fees-1'
+);
 ```
 </dd>
 </dl>
@@ -7767,7 +7801,10 @@ Deletes an invoice that's attached to a file.
 <dd>
 
 ```ruby
-client.invoice.delete_attached_from_invoice();
+client.invoice.delete_attached_from_invoice(
+  filename: '0_Bill.pdf',
+  id_invoice: 23548884
+);
 ```
 </dd>
 </dl>
@@ -7841,7 +7878,7 @@ Deletes a single invoice from an entrypoint.
 <dd>
 
 ```ruby
-client.invoice.delete_invoice();
+client.invoice.delete_invoice(id_invoice: 23548884);
 ```
 </dd>
 </dl>
@@ -7895,7 +7932,7 @@ Updates details for a single invoice in an entrypoint.
 <dd>
 
 ```ruby
-client.invoice.edit_invoice(idInvoice: 332);
+client.invoice.edit_invoice(id_invoice: 332);
 ```
 </dd>
 </dl>
@@ -7966,7 +8003,7 @@ Retrieves a file attached to an invoice.
 
 ```ruby
 client.invoice.get_attached_file_from_invoice(
-  idInvoice: 1,
+  id_invoice: 1,
   filename: 'filename'
 );
 ```
@@ -8052,7 +8089,7 @@ Retrieves a single invoice by ID.
 <dd>
 
 ```ruby
-client.invoice.get_invoice();
+client.invoice.get_invoice(id_invoice: 23548884);
 ```
 </dd>
 </dl>
@@ -8106,7 +8143,7 @@ Retrieves the next available invoice number for a paypoint.
 <dd>
 
 ```ruby
-client.invoice.get_invoice_number();
+client.invoice.get_invoice_number(entry: '8cfec329267');
 ```
 </dd>
 </dl>
@@ -8162,9 +8199,9 @@ Returns a list of invoices for an entrypoint. Use filters to limit results. Incl
 ```ruby
 client.invoice.list_invoices(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -8324,10 +8361,10 @@ Returns a list of invoices for an org. Use filters to limit results. Include the
 
 ```ruby
 client.invoice.list_invoices_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -8487,9 +8524,9 @@ Sends an invoice from an entrypoint via email.
 
 ```ruby
 client.invoice.send_invoice(
-  idInvoice: 23548884,
+  id_invoice: 23548884,
   attachfile: true,
-  mail2: 'tamara@example.com'
+  mail_2: 'tamara@example.com'
 );
 ```
 </dd>
@@ -8533,7 +8570,7 @@ client.invoice.send_invoice(
 </dl>
 </details>
 
-<details><summary><code>client.invoice.get_invoice_pdf(id_invoice) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.invoice.get_invoice_pdf(id_invoice) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -8560,7 +8597,7 @@ Export a single invoice in PDF format.
 <dd>
 
 ```ruby
-client.invoice.get_invoice_pdf();
+client.invoice.get_invoice_pdf(id_invoice: 23548884);
 ```
 </dd>
 </dl>
@@ -8685,7 +8722,7 @@ Deletes an item.
 <dd>
 
 ```ruby
-client.line_item.delete_item();
+client.line_item.delete_item(line_item_id: 700);
 ```
 </dd>
 </dl>
@@ -8739,7 +8776,7 @@ Gets an item by ID.
 <dd>
 
 ```ruby
-client.line_item.get_item();
+client.line_item.get_item(line_item_id: 700);
 ```
 </dd>
 </dl>
@@ -8795,9 +8832,9 @@ Retrieves a list of line items and their details from an entrypoint. Line items 
 ```ruby
 client.line_item.list_line_items(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -8940,10 +8977,11 @@ Updates an item.
 <dd>
 
 ```ruby
-client.line_item.update_item({
-  itemCost: 12.45,
-  itemQty: 1
-});
+client.line_item.update_item(
+  line_item_id: 700,
+  item_cost: 12.45,
+  item_qty: 1
+);
 ```
 </dd>
 </dl>
@@ -9083,7 +9121,10 @@ transaction](/api-reference/moneyin/authorize-a-transaction) to complete the tra
 <dd>
 
 ```ruby
-client.money_in.capture();
+client.money_in.capture(
+  trans_id: '10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13',
+  amount: 0
+);
 ```
 </dd>
 </dl>
@@ -9147,12 +9188,13 @@ You can use this endpoint to capture both full and partial amounts of the origin
 <dd>
 
 ```ruby
-client.money_in.capture_auth({
-  paymentDetails: {
-    totalAmount: 105,
-    serviceFee: 5
+client.money_in.capture_auth(
+  trans_id: '10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13',
+  payment_details: {
+    total_amount: 105,
+    service_fee: 5
   }
-});
+);
 ```
 </dd>
 </dl>
@@ -9217,21 +9259,21 @@ This feature must be enabled by Payabli on a per-merchant basis. Contact support
 
 ```ruby
 client.money_in.credit(
-  idempotencyKey: '6B29FC40-CA47-1067-B31D-00DD010662DA',
-  customerData: {
-    billingAddress1: '5127 Linkwood ave',
-    customerNumber: '100'
+  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA',
+  customer_data: {
+    billing_address_1: '5127 Linkwood ave',
+    customer_number: '100'
   },
   entrypoint: 'my-entrypoint',
-  paymentDetails: {
-    serviceFee: 0,
-    totalAmount: 1
+  payment_details: {
+    service_fee: 0,
+    total_amount: 1
   },
-  paymentMethod: {
-    achAccount: '88354454',
-    achHolder: 'John Smith',
-    achRouting: '021000021',
-    method: 'ach'
+  payment_method: {
+    ach_account: '88354454',
+    ach_holder: 'John Smith',
+    ach_routing: '021000021',
+    method_: 'ach'
   }
 );
 ```
@@ -9367,7 +9409,7 @@ Retrieve a processed transaction's details.
 <dd>
 
 ```ruby
-client.money_in.details();
+client.money_in.details(trans_id: '45-as456777hhhhhhhhhh77777777-324');
 ```
 </dd>
 </dl>
@@ -9515,7 +9557,10 @@ A reversal either refunds or voids a transaction independent of the transaction'
 <dd>
 
 ```ruby
-client.money_in.reverse();
+client.money_in.reverse(
+  amount: 0,
+  trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723'
+);
 ```
 </dd>
 </dl>
@@ -9584,7 +9629,10 @@ Refund a transaction that has settled and send money back to the account holder.
 <dd>
 
 ```ruby
-client.money_in.refund();
+client.money_in.refund(
+  amount: 0,
+  trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723'
+);
 ```
 </dd>
 </dl>
@@ -9654,20 +9702,20 @@ Refunds a settled transaction with split instructions.
 
 ```ruby
 client.money_in.refund_with_instructions(
-  transId: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723',
-  idempotencyKey: '8A29FC40-CA47-1067-B31D-00DD010662DB',
+  trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723',
+  idempotency_key: '8A29FC40-CA47-1067-B31D-00DD010662DB',
   source: 'api',
-  orderDescription: 'Materials deposit',
+  order_description: 'Materials deposit',
   amount: 100,
-  refundDetails: {
-    splitRefunding: [{
-      originationEntryPoint: '7f1a381696',
-      accountId: '187-342',
+  refund_details: {
+    split_refunding: [{
+      origination_entry_point: '7f1a381696',
+      account_id: '187-342',
       description: 'Refunding undelivered materials',
       amount: 60
     }, {
-      originationEntryPoint: '7f1a381696',
-      accountId: '187-343',
+      origination_entry_point: '7f1a381696',
+      account_id: '187-343',
       description: 'Refunding deposit for undelivered materials',
       amount: 40
     }]
@@ -9789,7 +9837,7 @@ Reverse microdeposits that are used to verify customer account ownership and acc
 <dd>
 
 ```ruby
-client.money_in.reverse_credit();
+client.money_in.reverse_credit(trans_id: '45-as456777hhhhhhhhhh77777777-324');
 ```
 </dd>
 </dl>
@@ -9844,7 +9892,7 @@ Send a payment receipt for a transaction.
 
 ```ruby
 client.money_in.send_receipt_2_trans(
-  transId: '45-as456777hhhhhhhhhh77777777-324',
+  trans_id: '45-as456777hhhhhhhhhh77777777-324',
   email: 'example@email.com'
 );
 ```
@@ -9913,13 +9961,13 @@ Validates a card number without running a transaction or authorizing a charge.
 
 ```ruby
 client.money_in.validate(
-  idempotencyKey: '6B29FC40-CA47-1067-B31D-00DD010662DA',
-  entryPoint: 'entry132',
-  paymentMethod: {
+  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA',
+  entry_point: 'entry132',
+  payment_method: {
     cardnumber: '4360000001000005',
     cardexp: '12/29',
     cardzip: '14602-8328',
-    cardHolder: 'Dianne Becker-Smith'
+    card_holder: 'Dianne Becker-Smith'
   }
 );
 ```
@@ -10015,7 +10063,7 @@ Cancel a transaction that hasn't been settled yet. Voiding non-captured authoriz
 <dd>
 
 ```ruby
-client.money_in.void();
+client.money_in.void(trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723');
 ```
 </dd>
 </dl>
@@ -10210,7 +10258,7 @@ Cancel a payout transaction by ID.
 <dd>
 
 ```ruby
-client.money_out.cancel_out_get();
+client.money_out.cancel_out_get(reference_id: '129-219');
 ```
 </dd>
 </dl>
@@ -10264,7 +10312,7 @@ Cancel a payout transaction by ID.
 <dd>
 
 ```ruby
-client.money_out.cancel_out_delete();
+client.money_out.cancel_out_delete(reference_id: '129-219');
 ```
 </dd>
 </dl>
@@ -10380,7 +10428,7 @@ Captures a single authorized payout transaction by ID.
 <dd>
 
 ```ruby
-client.money_out.capture_out(referenceId: '129-219');
+client.money_out.capture_out(reference_id: '129-219');
 ```
 </dd>
 </dl>
@@ -10442,7 +10490,7 @@ Returns details for a processed money out transaction.
 <dd>
 
 ```ruby
-client.money_out.payout_details();
+client.money_out.payout_details(trans_id: '45-as456777hhhhhhhhhh77777777-324');
 ```
 </dd>
 </dl>
@@ -10496,7 +10544,7 @@ Retrieves vCard details for a single card in an entrypoint.
 <dd>
 
 ```ruby
-client.money_out.v_card_get();
+client.money_out.v_card_get(card_token: '20230403315245421165');
 ```
 </dd>
 </dl>
@@ -10550,7 +10598,7 @@ Sends a virtual card link via email to the vendor associated with the `transId`.
 <dd>
 
 ```ruby
-client.money_out.send_v_card_link(transId: '01K33Z6YQZ6GD5QVKZ856MJBSC');
+client.money_out.send_v_card_link(trans_id: '01K33Z6YQZ6GD5QVKZ856MJBSC');
 ```
 </dd>
 </dl>
@@ -10606,7 +10654,7 @@ The check image is only available for payouts that have been processed.
 <dd>
 
 ```ruby
-client.money_out.get_check_image();
+client.money_out.get_check_image(asset_name: 'check133832686289732320_01JKBNZ5P32JPTZY8XXXX000000.pdf');
 ```
 </dd>
 </dl>
@@ -10726,7 +10774,7 @@ Deletes a single notification or autogenerated report.
 <dd>
 
 ```ruby
-client.notification.delete_notification();
+client.notification.delete_notification(n_id: '1717');
 ```
 </dd>
 </dl>
@@ -10780,7 +10828,7 @@ Retrieves a single notification or autogenerated report's details.
 <dd>
 
 ```ruby
-client.notification.get_notification();
+client.notification.get_notification(n_id: '1717');
 ```
 </dd>
 </dl>
@@ -10834,7 +10882,7 @@ Update a notification or autogenerated report.
 <dd>
 
 ```ruby
-client.notification.update_notification();
+client.notification.update_notification(n_id: '1717');
 ```
 </dd>
 </dl>
@@ -10869,7 +10917,7 @@ client.notification.update_notification();
 </dl>
 </details>
 
-<details><summary><code>client.notification.get_report_file(id) -> Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]</code></summary>
+<details><summary><code>client.notification.get_report_file(id) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -10896,7 +10944,7 @@ Gets a copy of a generated report by ID.
 <dd>
 
 ```ruby
-client.notification.get_report_file();
+client.notification.get_report_file(id: 1000000);
 ```
 </dd>
 </dl>
@@ -10955,7 +11003,7 @@ This endpoint requires the `notifications_create` OR `notifications_read` permis
 <dd>
 
 ```ruby
-client.notificationlogs.search_notification_logs(pageSize: 20);
+client.notificationlogs.search_notification_logs(page_size: 20);
 ```
 </dd>
 </dl>
@@ -11026,7 +11074,7 @@ This endpoint requires the `notifications_create` OR `notifications_read` permis
 <dd>
 
 ```ruby
-client.notificationlogs.get_notification_log();
+client.notificationlogs.get_notification_log(uuid: '550e8400-e29b-41d4-a716-446655440000');
 ```
 </dd>
 </dl>
@@ -11082,7 +11130,7 @@ Retry sending a specific notification.
 <dd>
 
 ```ruby
-client.notificationlogs.retry_notification_log();
+client.notificationlogs.retry_notification_log(uuid: '550e8400-e29b-41d4-a716-446655440000');
 ```
 </dd>
 </dl>
@@ -11171,6 +11219,20 @@ client.notificationlogs.bulk_retry_notification_logs();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to upload an image file for OCR processing. The accepted file formats include PDF, JPG, JPEG, PNG, and GIF. Specify the desired type of result (either 'bill' or 'invoice') in the path parameter `typeResult`. The response will contain the OCR processing results, including extracted data such as bill number, vendor information, bill items, and more.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -11180,7 +11242,7 @@ client.notificationlogs.bulk_retry_notification_logs();
 <dd>
 
 ```ruby
-client.ocr.ocr_document_form({});
+client.ocr.ocr_document_form(type_result: 'typeResult');
 ```
 </dd>
 </dl>
@@ -11219,6 +11281,20 @@ client.ocr.ocr_document_form({});
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to submit a Base64-encoded image file for OCR processing. The accepted file formats include PDF, JPG, JPEG, PNG, and GIF. Specify the desired type of result (either 'bill' or 'invoice') in the path parameter `typeResult`. The response will contain the OCR processing results, including extracted data such as bill number, vendor information, bill items, and more.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -11228,7 +11304,7 @@ client.ocr.ocr_document_form({});
 <dd>
 
 ```ruby
-client.ocr.ocr_document_json({});
+client.ocr.ocr_document_json(type_result: 'typeResult');
 ```
 </dd>
 </dl>
@@ -11292,42 +11368,42 @@ Creates an organization under a parent organization. This is also referred to as
 
 ```ruby
 client.organization.add_organization(
-  idempotencyKey: '6B29FC40-CA47-1067-B31D-00DD010662DA',
-  billingInfo: {
-    achAccount: '123123123',
-    achRouting: '123123123',
-    billingAddress: '123 Walnut Street',
-    billingCity: 'Johnson City',
-    billingCountry: 'US',
-    billingState: 'TN',
-    billingZip: '37615'
+  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA',
+  billing_info: {
+    ach_account: '123123123',
+    ach_routing: '123123123',
+    billing_address: '123 Walnut Street',
+    billing_city: 'Johnson City',
+    billing_country: 'US',
+    billing_state: 'TN',
+    billing_zip: '37615'
   },
   contacts: [{
-    contactEmail: 'herman@hermanscoatings.com',
-    contactName: 'Herman Martinez',
-    contactPhone: '3055550000',
-    contactTitle: 'Owner'
+    contact_email: 'herman@hermanscoatings.com',
+    contact_name: 'Herman Martinez',
+    contact_phone: '3055550000',
+    contact_title: 'Owner'
   }],
-  hasBilling: true,
-  hasResidual: true,
-  orgAddress: '123 Walnut Street',
-  orgCity: 'Johnson City',
-  orgCountry: 'US',
-  orgEntryName: 'pilgrim-planner',
-  orgId: '123',
-  orgLogo: {
-    fContent: 'TXkgdGVzdCBmaWxlHJ==...',
+  has_billing: true,
+  has_residual: true,
+  org_address: '123 Walnut Street',
+  org_city: 'Johnson City',
+  org_country: 'US',
+  org_entry_name: 'pilgrim-planner',
+  org_id: '123',
+  org_logo: {
+    f_content: 'TXkgdGVzdCBmaWxlHJ==...',
     filename: 'my-doc.pdf',
     furl: 'https://mysite.com/my-doc.pdf'
   },
-  orgName: 'Pilgrim Planner',
-  orgParentId: 236,
-  orgState: 'TN',
-  orgTimezone: -5,
-  orgType: 0,
-  orgWebsite: 'www.pilgrimageplanner.com',
-  orgZip: '37615',
-  replyToEmail: 'email@example.com'
+  org_name: 'Pilgrim Planner',
+  org_parent_id: 236,
+  org_state: 'TN',
+  org_timezone: -5,
+  org_type: 0,
+  org_website: 'www.pilgrimageplanner.com',
+  org_zip: '37615',
+  reply_to_email: 'email@example.com'
 );
 ```
 </dd>
@@ -11534,7 +11610,7 @@ Delete an organization by ID.
 <dd>
 
 ```ruby
-client.organization.delete_organization();
+client.organization.delete_organization(org_id: 123);
 ```
 </dd>
 </dl>
@@ -11589,24 +11665,24 @@ Updates an organization's details by ID.
 
 ```ruby
 client.organization.edit_organization(
-  orgId: 123,
+  org_id: 123,
   contacts: [{
-    contactEmail: 'herman@hermanscoatings.com',
-    contactName: 'Herman Martinez',
-    contactPhone: '3055550000',
-    contactTitle: 'Owner'
+    contact_email: 'herman@hermanscoatings.com',
+    contact_name: 'Herman Martinez',
+    contact_phone: '3055550000',
+    contact_title: 'Owner'
   }],
-  orgAddress: '123 Walnut Street',
-  orgCity: 'Johnson City',
-  orgCountry: 'US',
-  orgEntryName: 'pilgrim-planner',
-  organizationDataOrgId: '123',
-  orgName: 'Pilgrim Planner',
-  orgState: 'TN',
-  orgTimezone: -5,
-  orgType: 0,
-  orgWebsite: 'www.pilgrimageplanner.com',
-  orgZip: '37615'
+  org_address: '123 Walnut Street',
+  org_city: 'Johnson City',
+  org_country: 'US',
+  org_entry_name: 'pilgrim-planner',
+  organization_data_org_id: '123',
+  org_name: 'Pilgrim Planner',
+  org_state: 'TN',
+  org_timezone: -5,
+  org_type: 0,
+  org_website: 'www.pilgrimageplanner.com',
+  org_zip: '37615'
 );
 ```
 </dd>
@@ -11813,7 +11889,7 @@ Gets an organization's basic information by entry name (entrypoint identifier).
 <dd>
 
 ```ruby
-client.organization.get_basic_organization();
+client.organization.get_basic_organization(entry: '8cfec329267');
 ```
 </dd>
 </dl>
@@ -11867,7 +11943,7 @@ Gets an organizations basic details by org ID.
 <dd>
 
 ```ruby
-client.organization.get_basic_organization_by_id();
+client.organization.get_basic_organization_by_id(org_id: 123);
 ```
 </dd>
 </dl>
@@ -11921,7 +11997,7 @@ Retrieves details for an organization by ID.
 <dd>
 
 ```ruby
-client.organization.get_organization();
+client.organization.get_organization(org_id: 123);
 ```
 </dd>
 </dl>
@@ -11975,7 +12051,7 @@ Retrieves an organization's settings.
 <dd>
 
 ```ruby
-client.organization.get_settings_organization();
+client.organization.get_settings_organization(org_id: 123);
 ```
 </dd>
 </dl>
@@ -12031,8 +12107,8 @@ Generates a payment link for an invoice from the invoice ID.
 
 ```ruby
 client.payment_link.add_pay_link_from_invoice(
-  idInvoice: 23548884,
-  mail2: 'jo@example.com; ceo@example.com'
+  id_invoice: 23548884,
+  mail_2: 'jo@example.com; ceo@example.com'
 );
 ```
 </dd>
@@ -12120,8 +12196,8 @@ Generates a payment link for a bill from the bill ID.
 
 ```ruby
 client.payment_link.add_pay_link_from_bill(
-  billId: 23548884,
-  mail2: 'jo@example.com; ceo@example.com'
+  bill_id: 23548884,
+  mail_2: 'jo@example.com; ceo@example.com'
 );
 ```
 </dd>
@@ -12208,7 +12284,7 @@ Deletes a payment link by ID.
 <dd>
 
 ```ruby
-client.payment_link.delete_pay_link_from_id();
+client.payment_link.delete_pay_link_from_id(pay_link_id: 'payLinkId');
 ```
 </dd>
 </dl>
@@ -12262,7 +12338,7 @@ Retrieves a payment link by ID.
 <dd>
 
 ```ruby
-client.payment_link.get_pay_link_from_id();
+client.payment_link.get_pay_link_from_id(paylink_id: 'paylinkId');
 ```
 </dd>
 </dl>
@@ -12316,7 +12392,7 @@ Send a payment link to the specified email addresses or phone numbers.
 <dd>
 
 ```ruby
-client.payment_link.push_pay_link_from_id();
+client.payment_link.push_pay_link_from_id(pay_link_id: 'payLinkId');
 ```
 </dd>
 </dl>
@@ -12378,7 +12454,7 @@ Refresh a payment link's content after an update.
 <dd>
 
 ```ruby
-client.payment_link.refresh_pay_link_from_id(payLinkId: 'payLinkId');
+client.payment_link.refresh_pay_link_from_id(pay_link_id: 'payLinkId');
 ```
 </dd>
 </dl>
@@ -12441,8 +12517,8 @@ Sends a payment link to the specified email addresses.
 
 ```ruby
 client.payment_link.send_pay_link_from_id(
-  payLinkId: 'payLinkId',
-  mail2: 'jo@example.com; ceo@example.com'
+  pay_link_id: 'payLinkId',
+  mail_2: 'jo@example.com; ceo@example.com'
 );
 ```
 </dd>
@@ -12514,7 +12590,7 @@ Updates a payment link's details.
 
 ```ruby
 client.payment_link.update_pay_link_from_id(
-  payLinkId: '332-c277b704-1301',
+  pay_link_id: '332-c277b704-1301',
   notes: {
     enabled: true,
     header: 'Additional Notes',
@@ -12522,7 +12598,7 @@ client.payment_link.update_pay_link_from_id(
     placeholder: 'Enter any additional notes here',
     value: ''
   },
-  paymentButton: {
+  payment_button: {
     enabled: true,
     label: 'Pay Now',
     order: 0
@@ -12654,11 +12730,11 @@ Generates a vendor payment link for a specific bill lot number. This allows you 
 
 ```ruby
 client.payment_link.add_pay_link_from_bill_lot_number(
-  lotNumber: 'LOT-2024-001',
-  entryPoint: 'billing',
-  vendorNumber: 'VENDOR-123',
-  mail2: 'customer@example.com; billing@example.com',
-  amountFixed: 'true'
+  lot_number: 'LOT-2024-001',
+  entry_point: 'billing',
+  vendor_number: 'VENDOR-123',
+  mail_2: 'customer@example.com; billing@example.com',
+  amount_fixed: 'true'
 );
 ```
 </dd>
@@ -12755,14 +12831,14 @@ Add a payment method domain to an organization or paypoint.
 
 ```ruby
 client.payment_method_domain.add_payment_method_domain(
-  domainName: 'checkout.example.com',
-  entityId: 109,
-  entityType: 'paypoint',
-  applePay: {
-    isEnabled: true
+  domain_name: 'checkout.example.com',
+  entity_id: 109,
+  entity_type: 'paypoint',
+  apple_pay: {
+    is_enabled: true
   },
-  googlePay: {
-    isEnabled: true
+  google_pay: {
+    is_enabled: true
   }
 );
 ```
@@ -12850,7 +12926,7 @@ Cascades a payment method domain to all child entities. All paypoints and suborg
 <dd>
 
 ```ruby
-client.payment_method_domain.cascade_payment_method_domain();
+client.payment_method_domain.cascade_payment_method_domain(domain_id: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5');
 ```
 </dd>
 </dl>
@@ -12904,7 +12980,7 @@ Delete a payment method domain. You can't delete an inherited domain, you must d
 <dd>
 
 ```ruby
-client.payment_method_domain.delete_payment_method_domain();
+client.payment_method_domain.delete_payment_method_domain(domain_id: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5');
 ```
 </dd>
 </dl>
@@ -12958,7 +13034,7 @@ Get the details for a payment method domain.
 <dd>
 
 ```ruby
-client.payment_method_domain.get_payment_method_domain();
+client.payment_method_domain.get_payment_method_domain(domain_id: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5');
 ```
 </dd>
 </dl>
@@ -13013,8 +13089,8 @@ Get a list of payment method domains that belong to a PSP, organization, or payp
 
 ```ruby
 client.payment_method_domain.list_payment_method_domains(
-  entityId: 1147,
-  entityType: 'paypoint'
+  entity_id: 1147,
+  entity_type: 'paypoint'
 );
 ```
 </dd>
@@ -13102,12 +13178,12 @@ Update a payment method domain's configuration values.
 
 ```ruby
 client.payment_method_domain.update_payment_method_domain(
-  domainId: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5',
-  applePay: {
-    isEnabled: false
+  domain_id: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5',
+  apple_pay: {
+    is_enabled: false
   },
-  googlePay: {
-    isEnabled: false
+  google_pay: {
+    is_enabled: false
   }
 );
 ```
@@ -13179,7 +13255,7 @@ Verify a new payment method domain. If verification is successful, Apple Pay is 
 <dd>
 
 ```ruby
-client.payment_method_domain.verify_payment_method_domain();
+client.payment_method_domain.verify_payment_method_domain(domain_id: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5');
 ```
 </dd>
 </dl>
@@ -13234,7 +13310,7 @@ Gets the basic details for a paypoint.
 <dd>
 
 ```ruby
-client.paypoint.get_basic_entry();
+client.paypoint.get_basic_entry(entry: '8cfec329267');
 ```
 </dd>
 </dl>
@@ -13288,7 +13364,7 @@ Retrieves the basic details for a paypoint by ID.
 <dd>
 
 ```ruby
-client.paypoint.get_basic_entry_by_id();
+client.paypoint.get_basic_entry_by_id(id_paypoint: '198');
 ```
 </dd>
 </dl>
@@ -13404,7 +13480,10 @@ Gets the details for single payment page for a paypoint.
 <dd>
 
 ```ruby
-client.paypoint.get_page();
+client.paypoint.get_page(
+  entry: '8cfec329267',
+  subdomain: 'pay-your-fees-1'
+);
 ```
 </dd>
 </dl>
@@ -13466,7 +13545,10 @@ Deletes a payment page in a paypoint.
 <dd>
 
 ```ruby
-client.paypoint.remove_page();
+client.paypoint.remove_page(
+  entry: '8cfec329267',
+  subdomain: 'pay-your-fees-1'
+);
 ```
 </dd>
 </dl>
@@ -13528,7 +13610,7 @@ Updates a paypoint logo.
 <dd>
 
 ```ruby
-client.paypoint.save_logo({});
+client.paypoint.save_logo(entry: '8cfec329267');
 ```
 </dd>
 </dl>
@@ -13590,7 +13672,7 @@ Retrieves an paypoint's basic settings like custom fields, identifiers, and invo
 <dd>
 
 ```ruby
-client.paypoint.settings_page();
+client.paypoint.settings_page(entry: '8cfec329267');
 ```
 </dd>
 </dl>
@@ -13644,17 +13726,17 @@ Migrates a paypoint to a new parent organization.
 <dd>
 
 ```ruby
-client.paypoint.migrate({
-  entryPoint: '473abc123def',
-  newParentOrganizationId: 123,
-  notificationRequest: {
-    notificationUrl: 'https://webhook-test.yoursie.com',
-    webHeaderParameters: [{
+client.paypoint.migrate(
+  entry_point: '473abc123def',
+  new_parent_organization_id: 123,
+  notification_request: {
+    notification_url: 'https://webhook-test.yoursie.com',
+    web_header_parameters: [{
       key: 'testheader',
       value: '1234567890'
     }]
   }
-});
+);
 ```
 </dd>
 </dl>
@@ -13712,9 +13794,9 @@ unsettled transactions for a paypoint. Use filters to limit results. Include the
 ```ruby
 client.query.list_batch_details(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -13887,10 +13969,10 @@ Retrieve a list of batches and their details, including settled and unsettled tr
 
 ```ruby
 client.query.list_batch_details_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -14063,9 +14145,9 @@ Retrieve a list of batches for a paypoint. Use filters to limit results. Include
 ```ruby
 client.query.list_batches(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -14216,10 +14298,10 @@ Retrieve a list of batches for an org. Use filters to limit results. Include the
 
 ```ruby
 client.query.list_batches_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -14371,9 +14453,9 @@ Retrieve a list of MoneyOut batches for a paypoint. Use filters to limit results
 ```ruby
 client.query.list_batches_out(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -14486,10 +14568,10 @@ Retrieve a list of MoneyOut batches for an org. Use filters to limit results. In
 
 ```ruby
 client.query.list_batches_out_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -14618,9 +14700,9 @@ Retrieves a list of chargebacks and returned transactions for a paypoint. Use fi
 ```ruby
 client.query.list_chargebacks(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -14788,10 +14870,10 @@ Retrieve a list of chargebacks and returned transactions for an org. Use filters
 
 ```ruby
 client.query.list_chargebacks_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -14962,9 +15044,9 @@ Retrieves a list of customers for a paypoint. Use filters to limit results. Incl
 ```ruby
 client.query.list_customers(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -15126,10 +15208,10 @@ Retrieves a list of customers for an org. Use filters to limit results. Include 
 
 ```ruby
 client.query.list_customers_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -15292,9 +15374,9 @@ Returns a list of all reports generated in the last 60 days for a single entrypo
 ```ruby
 client.query.list_notification_reports(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -15421,10 +15503,10 @@ Returns a list of all reports generated in the last 60 days for an organization.
 
 ```ruby
 client.query.list_notification_reports_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -15550,9 +15632,9 @@ Returns a list of notifications for an entrypoint. Use filters to limit results.
 ```ruby
 client.query.list_notifications(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -15681,10 +15763,10 @@ Return a list of notifications for an organization. Use filters to limit results
 
 ```ruby
 client.query.list_notifications_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -15813,10 +15895,10 @@ Retrieves a list of an organization's suborganizations and their full details su
 
 ```ruby
 client.query.list_organizations(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -15966,9 +16048,9 @@ Retrieves a list of money out transactions (payouts) for a paypoint. Use filters
 ```ruby
 client.query.list_payout(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -16144,10 +16226,10 @@ Retrieves a list of money out transactions (payouts) for an organization. Use fi
 
 ```ruby
 client.query.list_payout_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -16322,10 +16404,10 @@ Returns a list of paypoints in an organization. Use filters to limit results. In
 
 ```ruby
 client.query.list_paypoints(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -16480,9 +16562,9 @@ Retrieve a list of settled transactions for a paypoint. Use filters to limit res
 ```ruby
 client.query.list_settlements(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -16655,10 +16737,10 @@ Retrieve a list of settled transactions for an organization. Include the `export
 
 ```ruby
 client.query.list_settlements_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -16832,9 +16914,9 @@ Returns a list of subscriptions for a single paypoint. Use filters to limit resu
 ```ruby
 client.query.list_subscriptions(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -17007,10 +17089,10 @@ Returns a list of subscriptions for a single org. Use filters to limit results. 
 
 ```ruby
 client.query.list_subscriptions_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -17191,9 +17273,9 @@ For example, this request parameters filter for transactions between April 01, 2
 ```ruby
 client.query.list_transactions(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -17388,10 +17470,10 @@ curl --request GET \
 
 ```ruby
 client.query.list_transactions_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -17573,7 +17655,7 @@ Retrieve a list of transfer details records for a paypoint. Use filters to limit
 ```ruby
 client.query.list_transfer_details(
   entry: '47862acd',
-  transferId: 123456
+  transfer_id: 123456
 );
 ```
 </dd>
@@ -17718,8 +17800,8 @@ Retrieve a list of transfers for a paypoint. Use filters to limit results. Inclu
 ```ruby
 client.query.list_transfers(
   entry: '47862acd',
-  fromRecord: 0,
-  limitRecord: 20
+  from_record: 0,
+  limit_record: 20
 );
 ```
 </dd>
@@ -17851,9 +17933,9 @@ Retrieve a list of transfers for an org. Use filters to limit results. Include t
 
 ```ruby
 client.query.list_transfers_org(
-  orgId: 123,
-  fromRecord: 0,
-  limitRecord: 20
+  org_id: 123,
+  from_record: 0,
+  limit_record: 20
 );
 ```
 </dd>
@@ -17982,10 +18064,10 @@ Get list of users for an org. Use filters to limit results.
 
 ```ruby
 client.query.list_users_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -18117,9 +18199,9 @@ Get list of users for a paypoint. Use filters to limit results.
 ```ruby
 client.query.list_users_paypoint(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -18251,9 +18333,9 @@ Retrieve a list of vendors for an entrypoint. Use filters to limit results. Incl
 ```ruby
 client.query.list_vendors(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -18404,10 +18486,10 @@ Retrieve a list of vendors for an organization. Use filters to limit results. In
 
 ```ruby
 client.query.list_vendors_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -18559,9 +18641,9 @@ Retrieve a list of vcards (virtual credit cards) issued for an entrypoint. Use f
 ```ruby
 client.query.list_vcards(
   entry: '8cfec329267',
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -18704,10 +18786,10 @@ Retrieve a list of vcards (virtual credit cards) issued for an organization. Use
 
 ```ruby
 client.query.list_vcards_org(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -18823,7 +18905,7 @@ List of comparison accepted - enclosed between parentheses:
 </details>
 
 ## Statistic
-<details><summary><code>client.statistic.basic_stats(mode, freq, level, entry_id) -> Internal::Types::Array[Payabli::Statistic::Types::StatBasicQueryRecord]</code></summary>
+<details><summary><code>client.statistic.basic_stats(mode, freq, level, entry_id) -> Internal::Types::Array[Payabli::Statistic::Types::StatBasicExtendedQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -18851,12 +18933,12 @@ Retrieves the basic statistics for an organization or a paypoint, for a given ti
 
 ```ruby
 client.statistic.basic_stats(
-  entryId: 1000000,
+  entry_id: 1000000,
   freq: 'm',
   level: 1,
   mode: 'ytd',
-  endDate: '2023-05-23',
-  startDate: '2023-03-23'
+  end_date: '2025-11-01',
+  start_date: '2025-11-30'
 );
 ```
 </dd>
@@ -19003,7 +19085,7 @@ Retrieves the basic statistics for a customer for a specific time period, groupe
 
 ```ruby
 client.statistic.customer_basic_stats(
-  customerId: 998,
+  customer_id: 998,
   freq: 'm',
   mode: 'ytd'
 );
@@ -19108,7 +19190,7 @@ Retrieves the subscription statistics for a given interval for a paypoint or org
 
 ```ruby
 client.statistic.sub_stats(
-  entryId: 1000000,
+  entry_id: 1000000,
   interval: '30',
   level: 1
 );
@@ -19203,7 +19285,7 @@ Retrieve the basic statistics about a vendor for a given time period, grouped by
 ```ruby
 client.statistic.vendor_basic_stats(
   freq: 'm',
-  idVendor: 1,
+  id_vendor: 1,
   mode: 'ytd'
 );
 ```
@@ -19307,7 +19389,7 @@ Retrieves a single subscription's details.
 <dd>
 
 ```ruby
-client.subscription.get_subscription();
+client.subscription.get_subscription(sub_id: 263);
 ```
 </dd>
 </dl>
@@ -19431,7 +19513,7 @@ Deletes a subscription, autopay, or recurring payment and prevents future charge
 <dd>
 
 ```ruby
-client.subscription.remove_subscription();
+client.subscription.remove_subscription(sub_id: 396);
 ```
 </dd>
 </dl>
@@ -19486,8 +19568,8 @@ Updates a subscription's details.
 
 ```ruby
 client.subscription.update_subscription(
-  subId: 231,
-  setPause: true
+  sub_id: 231,
+  set_pause: true
 );
 ```
 </dd>
@@ -19567,7 +19649,7 @@ Deletes a template by ID.
 <dd>
 
 ```ruby
-client.templates.delete_template();
+client.templates.delete_template(template_id: 80);
 ```
 </dd>
 </dl>
@@ -19621,7 +19703,10 @@ Generates a boarding link from a boarding template.
 <dd>
 
 ```ruby
-client.templates.getlink_template();
+client.templates.getlink_template(
+  ignore_empty: true,
+  template_id: 80
+);
 ```
 </dd>
 </dl>
@@ -19683,7 +19768,7 @@ Retrieves a boarding template's details by ID.
 <dd>
 
 ```ruby
-client.templates.get_template();
+client.templates.get_template(template_id: 80);
 ```
 </dd>
 </dl>
@@ -19738,10 +19823,10 @@ Retrieves a list of boarding templates for an organization. Use filters to limit
 
 ```ruby
 client.templates.list_templates(
-  orgId: 123,
-  fromRecord: 251,
-  limitRecord: 0,
-  sortBy: 'desc(field_name)'
+  org_id: 123,
+  from_record: 251,
+  limit_record: 0,
+  sort_by: 'desc(field_name)'
 );
 ```
 </dd>
@@ -19969,9 +20054,9 @@ Retrieves details for a saved payment method.
 
 ```ruby
 client.token_storage.get_method(
-  methodId: '32-8877drt00045632-678',
-  cardExpirationFormat: 1,
-  includeTemporary: false
+  method_id: '32-8877drt00045632-678',
+  card_expiration_format: 1,
+  include_temporary: false
 );
 ```
 </dd>
@@ -20052,7 +20137,7 @@ Deletes a saved payment method.
 <dd>
 
 ```ruby
-client.token_storage.remove_method();
+client.token_storage.remove_method(method_id: '32-8877drt00045632-678');
 ```
 </dd>
 </dl>
@@ -20106,7 +20191,7 @@ Updates a saved payment method.
 <dd>
 
 ```ruby
-client.token_storage.update_method(methodId: '32-8877drt00045632-678');
+client.token_storage.update_method(method_id: '32-8877drt00045632-678');
 ```
 </dd>
 </dl>
@@ -20154,6 +20239,20 @@ client.token_storage.update_method(methodId: '32-8877drt00045632-678');
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to add a new user to an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -20163,7 +20262,7 @@ client.token_storage.update_method(methodId: '32-8877drt00045632-678');
 <dd>
 
 ```ruby
-client.user.add_user({});
+client.user.add_user();
 ```
 </dd>
 </dl>
@@ -20194,6 +20293,20 @@ client.user.add_user({});
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to refresh the authentication token for a user within an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -20218,6 +20331,20 @@ client.user.auth_refresh_user();
 <details><summary><code>client.user.auth_reset_user(request) -> Payabli::User::Types::AuthResetUserResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to initiate a password reset for a user within an organization.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -20377,6 +20504,20 @@ client.user.auth_user(provider: 'provider');
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to change the password for a user within an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -20417,6 +20558,20 @@ client.user.change_psw_user();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to delete a specific user within an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -20426,7 +20581,7 @@ client.user.change_psw_user();
 <dd>
 
 ```ruby
-client.user.delete_user();
+client.user.delete_user(user_id: 1000000);
 ```
 </dd>
 </dl>
@@ -20457,6 +20612,20 @@ client.user.delete_user();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to enable or disable multi-factor authentication (MFA) for a user within an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -20466,7 +20635,7 @@ client.user.delete_user();
 <dd>
 
 ```ruby
-client.user.edit_mfa_user({});
+client.user.edit_mfa_user(user_id: 1000000);
 ```
 </dd>
 </dl>
@@ -20505,6 +20674,20 @@ client.user.edit_mfa_user({});
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to modify the details of a specific user within an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -20514,7 +20697,7 @@ client.user.edit_mfa_user({});
 <dd>
 
 ```ruby
-client.user.edit_user({});
+client.user.edit_user(user_id: 1000000);
 ```
 </dd>
 </dl>
@@ -20553,6 +20736,20 @@ client.user.edit_user({});
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to retrieve information about a specific user within an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -20563,7 +20760,7 @@ client.user.edit_user({});
 
 ```ruby
 client.user.get_user(
-  userId: 1000000,
+  user_id: 1000000,
   entry: '478ae1234'
 );
 ```
@@ -20612,6 +20809,20 @@ client.user.get_user(
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to log a user out from the system.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -20637,6 +20848,20 @@ client.user.logout_user();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Resends the MFA code to the user via the selected MFA mode (email or SMS).
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -20646,7 +20871,11 @@ client.user.logout_user();
 <dd>
 
 ```ruby
-client.user.resend_mfa_code();
+client.user.resend_mfa_code(
+  entry: 'Entry',
+  entry_type: 1,
+  usrname: 'usrname'
+);
 ```
 </dd>
 </dl>
@@ -20692,6 +20921,20 @@ client.user.resend_mfa_code();
 <details><summary><code>client.user.validate_mfa_user(request) -> Payabli::Types::PayabliApiResponseUserMfa</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this endpoint to validate the multi-factor authentication (MFA) code for a user within an organization.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -20765,48 +21008,49 @@ Creates a vendor in an entrypoint.
 <dd>
 
 ```ruby
-client.vendor.add_vendor({
-  vendorNumber: '1234',
-  name1: "Herman's Coatings and Masonry",
-  name2: '<string>',
-  ein: '12-3456789',
-  phone: '5555555555',
-  email: 'example@email.com',
-  address1: '123 Ocean Drive',
-  address2: 'Suite 400',
-  city: 'Miami',
-  state: 'FL',
-  zip: '33139',
-  country: 'US',
-  mcc: '7777',
-  locationCode: 'MIA123',
-  contacts: [{
-    contactName: 'Herman Martinez',
-    contactEmail: 'example@email.com',
-    contactTitle: 'Owner',
-    contactPhone: '3055550000'
-  }],
-  billingData: {
+client.vendor.add_vendor(
+  entry: '8cfec329267',
+  vendor_number: '1234',
+  address_1: '123 Ocean Drive',
+  address_2: 'Suite 400',
+  billing_data: {
     id: 123,
-    bankName: 'Country Bank',
-    routingAccount: '123123123',
-    accountNumber: '123123123',
-    bankAccountHolderName: 'Gruzya Adventure Outfitters LLC',
-    bankAccountFunction: 0
+    bank_name: 'Country Bank',
+    routing_account: '123123123',
+    account_number: '123123123',
+    bank_account_holder_name: 'Gruzya Adventure Outfitters LLC',
+    bank_account_function: 0
   },
-  paymentMethod: 'managed',
-  vendorStatus: 1,
-  remitAddress1: '123 Walnut Street',
-  remitAddress2: 'Suite 900',
-  remitCity: 'Miami',
-  remitState: 'FL',
-  remitZip: '31113',
-  remitCountry: 'US',
-  payeeName1: '<string>',
-  payeeName2: '<string>',
-  customerVendorAccount: 'A-37622',
-  internalReferenceId: 123
-});
+  city: 'Miami',
+  contacts: [{
+    contact_name: 'Herman Martinez',
+    contact_email: 'example@email.com',
+    contact_title: 'Owner',
+    contact_phone: '3055550000'
+  }],
+  country: 'US',
+  customer_vendor_account: 'A-37622',
+  ein: '12-3456789',
+  email: 'example@email.com',
+  internal_reference_id: 123,
+  location_code: 'MIA123',
+  mcc: '7777',
+  name_1: "Herman's Coatings and Masonry",
+  name_2: '<string>',
+  payee_name_1: '<string>',
+  payee_name_2: '<string>',
+  payment_method: 'managed',
+  phone: '5555555555',
+  remit_address_1: '123 Walnut Street',
+  remit_address_2: 'Suite 900',
+  remit_city: 'Miami',
+  remit_country: 'US',
+  remit_state: 'FL',
+  remit_zip: '31113',
+  state: 'FL',
+  vendor_status: 1,
+  zip: '33139'
+);
 ```
 </dd>
 </dl>
@@ -20868,7 +21112,7 @@ Delete a vendor.
 <dd>
 
 ```ruby
-client.vendor.delete_vendor();
+client.vendor.delete_vendor(id_vendor: 1);
 ```
 </dd>
 </dl>
@@ -20922,9 +21166,10 @@ Updates a vendor's information. Send only the fields you need to update.
 <dd>
 
 ```ruby
-client.vendor.edit_vendor({
-  name1: "Theodore's Janitorial"
-});
+client.vendor.edit_vendor(
+  id_vendor: 1,
+  name_1: "Theodore's Janitorial"
+);
 ```
 </dd>
 </dl>
@@ -20986,7 +21231,7 @@ Retrieves a vendor's details.
 <dd>
 
 ```ruby
-client.vendor.get_vendor();
+client.vendor.get_vendor(id_vendor: 1);
 ```
 </dd>
 </dl>
@@ -21043,8 +21288,8 @@ Configure and activate Apple Pay for a Payabli organization
 ```ruby
 client.wallet.configure_apple_pay_organization(
   cascade: true,
-  isEnabled: true,
-  orgId: 901
+  is_enabled: true,
+  org_id: 901
 );
 ```
 </dd>
@@ -21117,7 +21362,7 @@ Configure and activate Apple Pay for a Payabli paypoint
 ```ruby
 client.wallet.configure_apple_pay_paypoint(
   entry: '8cfec329267',
-  isEnabled: true
+  is_enabled: true
 );
 ```
 </dd>
@@ -21182,8 +21427,8 @@ Configure and activate Google Pay for a Payabli organization
 ```ruby
 client.wallet.configure_google_pay_organization(
   cascade: true,
-  isEnabled: true,
-  orgId: 901
+  is_enabled: true,
+  org_id: 901
 );
 ```
 </dd>
@@ -21256,7 +21501,7 @@ Configure and activate Google Pay for a Payabli paypoint
 ```ruby
 client.wallet.configure_google_pay_paypoint(
   entry: '8cfec329267',
-  isEnabled: true
+  is_enabled: true
 );
 ```
 </dd>

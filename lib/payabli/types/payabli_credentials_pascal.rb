@@ -13,9 +13,7 @@ module Payabli
       field :cfee_max, -> { Integer }, optional: true, nullable: false, api_name: "CfeeMax"
       field :account_id, -> { String }, optional: true, nullable: false, api_name: "AccountId"
       field :reference_id, -> { Integer }, optional: true, nullable: false, api_name: "ReferenceId"
-      field :accept_same_day_ach, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "acceptSameDayACH"
+      field :accept_same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "acceptSameDayACH"
       field :currency, -> { String }, optional: true, nullable: false, api_name: "Currency"
     end
   end

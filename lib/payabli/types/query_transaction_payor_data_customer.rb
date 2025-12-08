@@ -3,9 +3,7 @@
 module Payabli
   module Types
     class QueryTransactionPayorDataCustomer < Internal::Types::Model
-      field :identifiers, lambda {
-        Internal::Types::Array[Internal::Types::Hash[String, Object]]
-      }, optional: true, nullable: false, api_name: "Identifiers"
+      field :identifiers, -> { Internal::Types::Array[Object] }, optional: true, nullable: false, api_name: "Identifiers"
       field :first_name, -> { String }, optional: true, nullable: false, api_name: "FirstName"
       field :last_name, -> { String }, optional: true, nullable: false, api_name: "LastName"
       field :company_name, -> { String }, optional: true, nullable: false, api_name: "CompanyName"
@@ -26,9 +24,7 @@ module Payabli
       field :shipping_country, -> { String }, optional: true, nullable: false, api_name: "ShippingCountry"
       field :customer_id, -> { Integer }, optional: true, nullable: false, api_name: "customerId"
       field :customer_status, -> { Integer }, optional: true, nullable: false, api_name: "customerStatus"
-      field :additional_data, lambda {
-        Internal::Types::Hash[String, String]
-      }, optional: true, nullable: false, api_name: "AdditionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "AdditionalData"
     end
   end
 end

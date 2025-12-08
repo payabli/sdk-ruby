@@ -15,9 +15,7 @@ module Payabli
         field :item_cost, -> { Integer }, optional: true, nullable: false, api_name: "itemCost"
         field :item_qty, -> { Integer }, optional: true, nullable: false, api_name: "itemQty"
         field :item_mode, -> { Integer }, optional: true, nullable: false, api_name: "itemMode"
-        field :item_categories, lambda {
-          Internal::Types::Array[String]
-        }, optional: true, nullable: false, api_name: "itemCategories"
+        field :item_categories, -> { Internal::Types::Array[String] }, optional: true, nullable: false, api_name: "itemCategories"
       end
     end
   end

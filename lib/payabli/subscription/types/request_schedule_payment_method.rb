@@ -3,7 +3,8 @@
 module Payabli
   module Subscription
     module Types
-      # Information about the payment method for the transaction. Required and recommended fields for each payment method type are described in each schema below.
+      # Information about the payment method for the transaction. Required and recommended fields for each payment
+      # method type are described in each schema below.
       class RequestSchedulePaymentMethod < Internal::Types::Model
         extend Payabli::Internal::Types::Union
 

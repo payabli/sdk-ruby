@@ -18,17 +18,11 @@ module Payabli
         field :ocr_amount, -> { String }, optional: true, nullable: false, api_name: "ocrAmount"
         field :ocr_amount_status, -> { String }, optional: true, nullable: false, api_name: "ocrAmountStatus"
         field :ocr_amount_confidence, -> { String }, optional: true, nullable: false, api_name: "ocrAmountConfidence"
-        field :amount_discrepancy_detected, lambda {
-          Internal::Types::Boolean
-        }, optional: false, nullable: false, api_name: "amountDiscrepancyDetected"
-        field :endorsement_detected, lambda {
-          Internal::Types::Boolean
-        }, optional: false, nullable: false, api_name: "endorsementDetected"
+        field :amount_discrepancy_detected, -> { Internal::Types::Boolean }, optional: false, nullable: false, api_name: "amountDiscrepancyDetected"
+        field :endorsement_detected, -> { Internal::Types::Boolean }, optional: false, nullable: false, api_name: "endorsementDetected"
         field :errors, -> { Internal::Types::Array[String] }, optional: true, nullable: false
         field :messages, -> { Internal::Types::Array[String] }, optional: true, nullable: false
-        field :car_lar_match_confidence, lambda {
-          String
-        }, optional: true, nullable: false, api_name: "carLarMatchConfidence"
+        field :car_lar_match_confidence, -> { String }, optional: true, nullable: false, api_name: "carLarMatchConfidence"
         field :car_lar_match_status, -> { String }, optional: true, nullable: false, api_name: "carLarMatchStatus"
         field :front_image, -> { String }, optional: true, nullable: false, api_name: "frontImage"
         field :rear_image, -> { String }, optional: true, nullable: false, api_name: "rearImage"

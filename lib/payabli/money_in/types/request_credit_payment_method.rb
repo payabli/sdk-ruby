@@ -6,9 +6,7 @@ module Payabli
       # Object describing the ACH payment method to use for transaction.
       class RequestCreditPaymentMethod < Internal::Types::Model
         field :ach_account, -> { String }, optional: true, nullable: false, api_name: "achAccount"
-        field :ach_account_type, lambda {
-          Payabli::Types::Achaccounttype
-        }, optional: true, nullable: false, api_name: "achAccountType"
+        field :ach_account_type, -> { Payabli::Types::Achaccounttype }, optional: true, nullable: false, api_name: "achAccountType"
         field :ach_code, -> { String }, optional: true, nullable: false, api_name: "achCode"
         field :ach_holder, -> { String }, optional: true, nullable: false, api_name: "achHolder"
         field :ach_routing, -> { String }, optional: true, nullable: false, api_name: "achRouting"

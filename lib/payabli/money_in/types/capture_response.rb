@@ -10,9 +10,7 @@ module Payabli
         field :room_id, -> { Integer }, optional: false, nullable: false, api_name: "roomId"
         field :is_success, -> { Internal::Types::Boolean }, optional: false, nullable: false, api_name: "isSuccess"
         field :response_text, -> { String }, optional: false, nullable: false, api_name: "responseText"
-        field :response_data, lambda {
-          Payabli::MoneyIn::Types::CaptureResponseData
-        }, optional: false, nullable: false, api_name: "responseData"
+        field :response_data, -> { Payabli::MoneyIn::Types::CaptureResponseData }, optional: false, nullable: false, api_name: "responseData"
       end
     end
   end

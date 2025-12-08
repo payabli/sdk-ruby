@@ -23,22 +23,23 @@ module Payabli
       #
       # @return [Payabli::Types::SubscriptionQueryRecords]
       def get_subscription(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Subscription/#{params[:sub_id]}"
+          path: "Subscription/#{params[:sub_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::SubscriptionQueryRecords.load(_response.body)
+          Payabli::Types::SubscriptionQueryRecords.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -57,29 +58,30 @@ module Payabli
       # @return [Payabli::Subscription::Types::AddSubscriptionResponse]
       def new_subscription(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[force_customer_creation]
-        _query = {}
-        _query["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[force_customer_creation]
+        query_params = {}
+        query_params["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Subscription/add",
-          query: _query,
-          body: Payabli::Subscription::Types::SubscriptionRequestBody.new(params).to_h
+          query: query_params,
+          body: Payabli::Subscription::Types::SubscriptionRequestBody.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Subscription::Types::AddSubscriptionResponse.load(_response.body)
+          Payabli::Subscription::Types::AddSubscriptionResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -96,22 +98,23 @@ module Payabli
       #
       # @return [Payabli::Subscription::Types::RemoveSubscriptionResponse]
       def remove_subscription(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Subscription/#{params[:sub_id]}"
+          path: "Subscription/#{params[:sub_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Subscription::Types::RemoveSubscriptionResponse.load(_response.body)
+          Payabli::Subscription::Types::RemoveSubscriptionResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -128,28 +131,29 @@ module Payabli
       #
       # @return [Payabli::Subscription::Types::UpdateSubscriptionResponse]
       def update_subscription(request_options: {}, **params)
-        _path_param_names = %i[sub_id]
-        _body = params.except(*_path_param_names)
-        _body_prop_names = %i[payment_details schedule_details set_pause]
-        _body_bag = _body.slice(*_body_prop_names)
+        path_param_names = %i[sub_id]
+        body_params = params.except(*path_param_names)
+        body_prop_names = %i[payment_details schedule_details set_pause]
+        body_bag = body_params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "PUT",
           path: "Subscription/#{params[:sub_id]}",
-          body: Payabli::Subscription::Types::RequestUpdateSchedule.new(_body_bag).to_h
+          body: Payabli::Subscription::Types::RequestUpdateSchedule.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Subscription::Types::UpdateSubscriptionResponse.load(_response.body)
+          Payabli::Subscription::Types::UpdateSubscriptionResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

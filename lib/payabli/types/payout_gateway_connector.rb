@@ -10,9 +10,7 @@ module Payabli
       field :descriptor, -> { String }, optional: true, nullable: false, api_name: "Descriptor"
       field :gateway_id, -> { Integer }, optional: true, nullable: false, api_name: "gatewayID"
       field :enabled, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "Enabled"
-      field :enable_ach_validation, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "EnableACHValidation"
+      field :enable_ach_validation, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "EnableACHValidation"
       field :test_mode, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "TestMode"
     end
   end

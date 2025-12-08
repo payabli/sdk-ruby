@@ -7,9 +7,7 @@ module Payabli
       class RequestSchedulePaymentMethodInitiator < Internal::Types::Model
         field :initiator, -> { String }, optional: true, nullable: false
         field :stored_method_id, -> { String }, optional: true, nullable: false, api_name: "storedMethodId"
-        field :stored_method_usage_type, lambda {
-          String
-        }, optional: true, nullable: false, api_name: "storedMethodUsageType"
+        field :stored_method_usage_type, -> { String }, optional: true, nullable: false, api_name: "storedMethodUsageType"
       end
     end
   end

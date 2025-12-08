@@ -2,7 +2,8 @@
 
 module Payabli
   module Types
-    # Information about the point of interaction device (also known as a terminal or cloud device) used to process the transaction.
+    # Information about the point of interaction device (also known as a terminal or cloud device) used to process the
+    # transaction.
     class PoiDevice < Internal::Types::Model
       field :connected, -> { Internal::Types::Boolean }, optional: true, nullable: false
       field :date_de_registered, -> { String }, optional: true, nullable: false, api_name: "dateDeRegistered"

@@ -7,9 +7,7 @@ module Payabli
       field :average_ticket_amount, -> { Integer }, optional: true, nullable: false, api_name: "AverageTicketAmount"
       field :b_address_1, -> { String }, optional: true, nullable: false, api_name: "BAddress1"
       field :b_address_2, -> { String }, optional: true, nullable: false, api_name: "BAddress2"
-      field :bank_data, lambda {
-        Internal::Types::Array[Payabli::Types::Bank]
-      }, optional: true, nullable: false, api_name: "BankData"
+      field :bank_data, -> { Internal::Types::Array[Payabli::Types::Bank] }, optional: true, nullable: false, api_name: "BankData"
       field :b_city, -> { String }, optional: true, nullable: false, api_name: "BCity"
       field :b_country, -> { String }, optional: true, nullable: false, api_name: "BCountry"
       field :b_fax, -> { String }, optional: true, nullable: false, api_name: "BFax"
@@ -23,20 +21,14 @@ module Payabli
       field :b_summary, -> { String }, optional: true, nullable: false, api_name: "BSummary"
       field :b_time_zone, -> { Integer }, optional: true, nullable: false, api_name: "BTimeZone"
       field :b_zip, -> { String }, optional: true, nullable: false, api_name: "BZip"
-      field :contact_data, lambda {
-        Internal::Types::Array[Payabli::Types::Contacts]
-      }, optional: true, nullable: false, api_name: "ContactData"
+      field :contact_data, -> { Internal::Types::Array[Payabli::Types::Contacts] }, optional: true, nullable: false, api_name: "ContactData"
       field :created_at, -> { String }, optional: true, nullable: false, api_name: "CreatedAt"
       field :dba_name, -> { String }, optional: true, nullable: false, api_name: "DbaName"
       field :documents_ref, -> { String }, optional: true, nullable: false, api_name: "DocumentsRef"
       field :ein, -> { String }, optional: true, nullable: false, api_name: "Ein"
-      field :entry_points, lambda {
-        Internal::Types::Array[Payabli::Types::PaypointEntryConfig]
-      }, optional: true, nullable: false, api_name: "EntryPoints"
+      field :entry_points, -> { Internal::Types::Array[Payabli::Types::PaypointEntryConfig] }, optional: true, nullable: false, api_name: "EntryPoints"
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
-      field :external_processor_information, lambda {
-        String
-      }, optional: true, nullable: false, api_name: "ExternalProcessorInformation"
+      field :external_processor_information, -> { String }, optional: true, nullable: false, api_name: "ExternalProcessorInformation"
       field :high_ticket_amount, -> { Integer }, optional: true, nullable: false, api_name: "HighTicketAmount"
       field :id_paypoint, -> { Integer }, optional: true, nullable: false, api_name: "IdPaypoint"
       field :last_modified, -> { String }, optional: true, nullable: false, api_name: "LastModified"
@@ -52,9 +44,7 @@ module Payabli
       field :m_zip, -> { String }, optional: true, nullable: false, api_name: "MZip"
       field :org_id, -> { Integer }, optional: true, nullable: false, api_name: "OrgId"
       field :org_parent_name, -> { String }, optional: true, nullable: false, api_name: "OrgParentName"
-      field :owner_data, lambda {
-        Internal::Types::Array[Payabli::Types::Owners]
-      }, optional: true, nullable: false, api_name: "OwnerData"
+      field :owner_data, -> { Internal::Types::Array[Payabli::Types::Owners] }, optional: true, nullable: false, api_name: "OwnerData"
       field :own_type, -> { Payabli::Types::OwnType }, optional: true, nullable: false, api_name: "OwnType"
       field :paypoint_status, -> { Integer }, optional: true, nullable: false, api_name: "PaypointStatus"
       field :sales_code, -> { String }, optional: true, nullable: false, api_name: "SalesCode"
@@ -64,12 +54,8 @@ module Payabli
       field :template_id, -> { Integer }, optional: true, nullable: false, api_name: "TemplateId"
       field :website_address, -> { String }, optional: true, nullable: false, api_name: "WebsiteAddress"
       field :whencharged, -> { Payabli::Types::Whencharged }, optional: true, nullable: false, api_name: "Whencharged"
-      field :whendelivered, lambda {
-        Payabli::Types::Whendelivered
-      }, optional: true, nullable: false, api_name: "Whendelivered"
-      field :whenprovided, lambda {
-        Payabli::Types::Whenprovided
-      }, optional: true, nullable: false, api_name: "Whenprovided"
+      field :whendelivered, -> { Payabli::Types::Whendelivered }, optional: true, nullable: false, api_name: "Whendelivered"
+      field :whenprovided, -> { Payabli::Types::Whenprovided }, optional: true, nullable: false, api_name: "Whenprovided"
       field :whenrefund, -> { Payabli::Types::Whenrefunded }, optional: true, nullable: false, api_name: "Whenrefund"
     end
   end

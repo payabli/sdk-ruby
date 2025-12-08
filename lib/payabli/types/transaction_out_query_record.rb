@@ -24,22 +24,14 @@ module Payabli
       field :check_number, -> { String }, optional: true, nullable: false, api_name: "CheckNumber"
       field :check_data, -> { Payabli::Types::FileContent }, optional: true, nullable: false, api_name: "CheckData"
       field :payment_id, -> { String }, optional: true, nullable: false, api_name: "PaymentId"
-      field :payment_data, lambda {
-        Payabli::Types::QueryPaymentData
-      }, optional: true, nullable: false, api_name: "PaymentData"
-      field :bills, lambda {
-        Internal::Types::Array[Payabli::Types::BillPayOutData]
-      }, optional: true, nullable: false, api_name: "Bills"
-      field :events, lambda {
-        Internal::Types::Array[Payabli::Types::QueryTransactionEvents]
-      }, optional: true, nullable: false, api_name: "Events"
+      field :payment_data, -> { Payabli::Types::QueryPaymentData }, optional: true, nullable: false, api_name: "PaymentData"
+      field :bills, -> { Internal::Types::Array[Payabli::Types::BillPayOutData] }, optional: true, nullable: false, api_name: "Bills"
+      field :events, -> { Internal::Types::Array[Payabli::Types::QueryTransactionEvents] }, optional: true, nullable: false, api_name: "Events"
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
       field :entry_name, -> { String }, optional: true, nullable: false, api_name: "EntryName"
       field :gateway, -> { String }, optional: true, nullable: false, api_name: "Gateway"
       field :batch_id, -> { String }, optional: true, nullable: false, api_name: "BatchId"
-      field :has_vcard_transactions, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "HasVcardTransactions"
+      field :has_vcard_transactions, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "HasVcardTransactions"
       field :is_same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "IsSameDayACH"
       field :schedule_id, -> { Integer }, optional: true, nullable: false, api_name: "ScheduleId"
       field :settlement_status, -> { String }, optional: true, nullable: false, api_name: "SettlementStatus"

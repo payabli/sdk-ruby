@@ -5,15 +5,11 @@ module Payabli
     module Types
       class GetMethodResponseResponseData < Internal::Types::Model
         field :aba, -> { String }, optional: true, nullable: false
-        field :ach_holder_type, lambda {
-          Payabli::Types::AchHolderType
-        }, optional: true, nullable: false, api_name: "achHolderType"
+        field :ach_holder_type, -> { Payabli::Types::AchHolderType }, optional: true, nullable: false, api_name: "achHolderType"
         field :ach_sec_code, -> { String }, optional: true, nullable: false, api_name: "achSecCode"
         field :bin, -> { String }, optional: true, nullable: false
         field :bin_data, -> { Payabli::Types::BinData }, optional: true, nullable: false, api_name: "binData"
-        field :customers, lambda {
-          Internal::Types::Array[Payabli::TokenStorage::Types::GetMethodResponseResponseDataCustomersItem]
-        }, optional: true, nullable: false
+        field :customers, -> { Internal::Types::Array[Payabli::TokenStorage::Types::GetMethodResponseResponseDataCustomersItem] }, optional: true, nullable: false
         field :descriptor, -> { String }, optional: true, nullable: false
         field :exp_date, -> { String }, optional: true, nullable: false, api_name: "expDate"
         field :holder_name, -> { String }, optional: true, nullable: false, api_name: "holderName"

@@ -17,12 +17,8 @@ module Payabli
       field :country, -> { String }, optional: true, nullable: false, api_name: "Country"
       field :mcc, -> { String }, optional: true, nullable: false, api_name: "Mcc"
       field :location_code, -> { String }, optional: true, nullable: false, api_name: "LocationCode"
-      field :contacts, lambda {
-        Internal::Types::Array[Payabli::Types::Contacts]
-      }, optional: true, nullable: false, api_name: "Contacts"
-      field :billing_data, lambda {
-        Payabli::Types::BillingDataResponse
-      }, optional: true, nullable: false, api_name: "BillingData"
+      field :contacts, -> { Internal::Types::Array[Payabli::Types::Contacts] }, optional: true, nullable: false, api_name: "Contacts"
+      field :billing_data, -> { Payabli::Types::BillingDataResponse }, optional: true, nullable: false, api_name: "BillingData"
       field :payment_method, -> { String }, optional: true, nullable: false, api_name: "PaymentMethod"
       field :vendor_status, -> { Integer }, optional: true, nullable: false, api_name: "VendorStatus"
       field :vendor_id, -> { Integer }, optional: true, nullable: false, api_name: "VendorId"
@@ -46,9 +42,7 @@ module Payabli
       field :custom_field_2, -> { String }, optional: true, nullable: false, api_name: "customField2"
       field :customer_vendor_account, -> { String }, optional: true, nullable: false, api_name: "customerVendorAccount"
       field :internal_reference_id, -> { Integer }, optional: true, nullable: false, api_name: "InternalReferenceId"
-      field :additional_data, lambda {
-        Internal::Types::Hash[String, Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]]
-      }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, Internal::Types::Hash[String, Object]] }, optional: true, nullable: false, api_name: "additionalData"
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
     end
   end

@@ -10,7 +10,8 @@ module Payabli
         @client = client
       end
 
-      # Creates a customer in an entrypoint. An identifier is required to create customer records. Change your identifier settings in Settings > Custom Fields in PartnerHub.
+      # Creates a customer in an entrypoint. An identifier is required to create customer records. Change your
+      # identifier settings in Settings > Custom Fields in PartnerHub.
       # If you don't include an identifier, the record is rejected.
       #
       # @param request_options [Hash]
@@ -27,34 +28,35 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponseCustomerQuery]
       def add_customer(request_options: {}, **params)
-        _path_param_names = %i[entry]
-        _body = params.except(*_path_param_names)
+        path_param_names = %i[entry]
+        body_params = params.except(*path_param_names)
 
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[force_customer_creation replace_existing]
-        _query = {}
-        _query["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
-        _query["replaceExisting"] = params[:replace_existing] if params.key?(:replace_existing)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[force_customer_creation replace_existing]
+        query_params = {}
+        query_params["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
+        query_params["replaceExisting"] = params[:replace_existing] if params.key?(:replace_existing)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Customer/single/#{params[:entry]}",
-          query: _query,
-          body: Payabli::Types::CustomerData.new(_body).to_h
+          query: query_params,
+          body: Payabli::Types::CustomerData.new(body_params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponseCustomerQuery.load(_response.body)
+          Payabli::Types::PayabliApiResponseCustomerQuery.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -71,22 +73,23 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def delete_customer(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Customer/#{params[:customer_id]}"
+          path: "Customer/#{params[:customer_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(_response.body)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -103,22 +106,23 @@ module Payabli
       #
       # @return [Payabli::Types::CustomerQueryRecords]
       def get_customer(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Customer/#{params[:customer_id]}"
+          path: "Customer/#{params[:customer_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::CustomerQueryRecords.load(_response.body)
+          Payabli::Types::CustomerQueryRecords.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -136,22 +140,23 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def link_customer_transaction(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Customer/link/#{params[:customer_id]}/#{params[:trans_id]}"
+          path: "Customer/link/#{params[:customer_id]}/#{params[:trans_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(_response.body)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -168,22 +173,23 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def request_consent(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
-          path: "Customer/#{params[:customer_id]}/consent"
+          path: "Customer/#{params[:customer_id]}/consent",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(_response.body)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -200,23 +206,24 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def update_customer(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "PUT",
           path: "Customer/#{params[:customer_id]}",
-          body: Payabli::Types::CustomerData.new(params).to_h
+          body: Payabli::Types::CustomerData.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(_response.body)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

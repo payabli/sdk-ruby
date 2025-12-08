@@ -7,9 +7,7 @@ module Payabli
       field :fee_amount, -> { Integer }, optional: true, nullable: false, api_name: "feeAmount"
       field :operation, -> { String }, optional: true, nullable: false
       field :refund_id, -> { Integer }, optional: true, nullable: false, api_name: "refundId"
-      field :response_data, lambda {
-        Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]
-      }, optional: true, nullable: false, api_name: "responseData"
+      field :response_data, -> { Internal::Types::Hash[String, Object] }, optional: true, nullable: false, api_name: "responseData"
       field :settlement_status, -> { Integer }, optional: true, nullable: false, api_name: "settlementStatus"
       field :transaction_time, -> { String }, optional: true, nullable: false, api_name: "transactionTime"
       field :trans_status, -> { Integer }, optional: true, nullable: false, api_name: "transStatus"

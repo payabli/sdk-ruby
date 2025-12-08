@@ -22,23 +22,24 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def add_application(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Boarding/app",
-          body: Payabli::Boarding::Types::AddApplicationRequest.new(params).to_h
+          body: Payabli::Boarding::Types::AddApplicationRequest.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(_response.body)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -55,22 +56,23 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def delete_application(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Boarding/app/#{params[:app_id]}"
+          path: "Boarding/app/#{params[:app_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(_response.body)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -87,22 +89,23 @@ module Payabli
       #
       # @return [Payabli::Types::ApplicationDetailsRecord]
       def get_application(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Boarding/read/#{params[:app_id]}"
+          path: "Boarding/read/#{params[:app_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::ApplicationDetailsRecord.load(_response.body)
+          Payabli::Types::ApplicationDetailsRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -119,28 +122,29 @@ module Payabli
       #
       # @return [Payabli::Types::ApplicationQueryRecord]
       def get_application_by_auth(request_options: {}, **params)
-        _path_param_names = %i[x_id]
-        _body = params.except(*_path_param_names)
-        _body_prop_names = %i[email reference_id]
-        _body_bag = _body.slice(*_body_prop_names)
+        path_param_names = %i[x_id]
+        body_params = params.except(*path_param_names)
+        body_prop_names = %i[email reference_id]
+        body_bag = body_params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Boarding/read/#{params[:x_id]}",
-          body: Payabli::Boarding::Types::RequestAppByAuth.new(_body_bag).to_h
+          body: Payabli::Boarding::Types::RequestAppByAuth.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::ApplicationQueryRecord.load(_response.body)
+          Payabli::Types::ApplicationQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -157,22 +161,23 @@ module Payabli
       #
       # @return [Payabli::Types::BoardingLinkQueryRecord]
       def get_by_id_link_application(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Boarding/linkbyId/#{params[:boarding_link_id]}"
+          path: "Boarding/linkbyId/#{params[:boarding_link_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::BoardingLinkQueryRecord.load(_response.body)
+          Payabli::Types::BoardingLinkQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -189,26 +194,29 @@ module Payabli
       #
       # @return [Payabli::Types::BoardingLinkQueryRecord]
       def get_by_template_id_link_application(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Boarding/linkbyTemplate/#{params[:template_id]}"
+          path: "Boarding/linkbyTemplate/#{params[:template_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::BoardingLinkQueryRecord.load(_response.body)
+          Payabli::Types::BoardingLinkQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Retrieves a link and the verification code used to log into an existing boarding application. You can also use this endpoint to send a link and referenceId for an existing boarding application to an email address. The recipient can use the referenceId and email address to access and edit the application.
+      # Retrieves a link and the verification code used to log into an existing boarding application. You can also use
+      # this endpoint to send a link and referenceId for an existing boarding application to an email address. The
+      # recipient can use the referenceId and email address to access and edit the application.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -224,28 +232,29 @@ module Payabli
       # @return [Payabli::Types::PayabliApiResponse00]
       def get_external_application(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[send_email]
-        _query = {}
-        _query["sendEmail"] = params[:send_email] if params.key?(:send_email)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[send_email]
+        query_params = {}
+        query_params["sendEmail"] = params[:send_email] if params.key?(:send_email)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "PUT",
           path: "Boarding/applink/#{params[:app_id]}/#{params[:mail_2]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00.load(_response.body)
+          Payabli::Types::PayabliApiResponse00.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -262,26 +271,28 @@ module Payabli
       #
       # @return [Payabli::Types::BoardingLinkQueryRecord]
       def get_link_application(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Boarding/link/#{params[:boarding_link_reference]}"
+          path: "Boarding/link/#{params[:boarding_link_reference]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::BoardingLinkQueryRecord.load(_response.body)
+          Payabli::Types::BoardingLinkQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Returns a list of boarding applications for an organization. Use filters to limit results. Include the `exportFormat` query parameter to return the results as a file instead of a JSON response.
+      # Returns a list of boarding applications for an organization. Use filters to limit results. Include the
+      # `exportFormat` query parameter to return the results as a file instead of a JSON response.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -300,32 +311,33 @@ module Payabli
       # @return [Payabli::Types::QueryBoardingAppsListResponse]
       def list_applications(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[export_format from_record limit_record parameters sort_by]
-        _query = {}
-        _query["exportFormat"] = params[:export_format] if params.key?(:export_format)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        _query["sortBy"] = params[:sort_by] if params.key?(:sort_by)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
+        query_params = {}
+        query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Query/boarding/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::QueryBoardingAppsListResponse.load(_response.body)
+          Payabli::Types::QueryBoardingAppsListResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -347,31 +359,32 @@ module Payabli
       # @return [Payabli::Types::QueryBoardingLinksResponse]
       def list_boarding_links(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[from_record limit_record parameters sort_by]
-        _query = {}
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        _query["sortBy"] = params[:sort_by] if params.key?(:sort_by)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[from_record limit_record parameters sort_by]
+        query_params = {}
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Query/boardinglinks/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::QueryBoardingLinksResponse.load(_response.body)
+          Payabli::Types::QueryBoardingLinksResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -388,23 +401,24 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def update_application(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "PUT",
           path: "Boarding/app/#{params[:app_id]}",
-          body: Payabli::Types::ApplicationData.new(params).to_h
+          body: Payabli::Types::ApplicationData.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(_response.body)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

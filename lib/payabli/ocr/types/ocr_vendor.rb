@@ -19,9 +19,7 @@ module Payabli
         field :mcc, -> { String }, optional: true, nullable: false
         field :location_code, -> { String }, optional: true, nullable: false, api_name: "locationCode"
         field :contacts, -> { Internal::Types::Array[Payabli::Types::Contacts] }, optional: true, nullable: false
-        field :billing_data, lambda {
-          Payabli::Ocr::Types::OcrVendorBillingData
-        }, optional: true, nullable: false, api_name: "billingData"
+        field :billing_data, -> { Payabli::Ocr::Types::OcrVendorBillingData }, optional: true, nullable: false, api_name: "billingData"
         field :payment_method, -> { String }, optional: true, nullable: false, api_name: "paymentMethod"
         field :vendor_status, -> { Integer }, optional: true, nullable: false, api_name: "vendorStatus"
         field :remit_address_1, -> { String }, optional: true, nullable: false, api_name: "remitAddress1"
@@ -32,15 +30,11 @@ module Payabli
         field :remit_country, -> { String }, optional: true, nullable: false, api_name: "remitCountry"
         field :payee_name_1, -> { String }, optional: true, nullable: false, api_name: "payeeName1"
         field :payee_name_2, -> { String }, optional: true, nullable: false, api_name: "payeeName2"
-        field :customer_vendor_account, lambda {
-          String
-        }, optional: true, nullable: false, api_name: "customerVendorAccount"
+        field :customer_vendor_account, -> { String }, optional: true, nullable: false, api_name: "customerVendorAccount"
         field :internal_reference_id, -> { Integer }, optional: true, nullable: false, api_name: "internalReferenceId"
         field :custom_field_1, -> { String }, optional: true, nullable: false, api_name: "customField1"
         field :custom_field_2, -> { String }, optional: true, nullable: false, api_name: "customField2"
-        field :additional_data, lambda {
-          Payabli::Ocr::Types::OcrVendorAdditionalData
-        }, optional: true, nullable: false, api_name: "additionalData"
+        field :additional_data, -> { Payabli::Ocr::Types::OcrVendorAdditionalData }, optional: true, nullable: false, api_name: "additionalData"
       end
     end
   end

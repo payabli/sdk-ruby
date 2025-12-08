@@ -16,9 +16,7 @@ module Payabli
       field :bank_account_function, -> { Integer }, optional: true, nullable: false, api_name: "bankAccountFunction"
       field :verified, -> { Internal::Types::Boolean }, optional: true, nullable: false
       field :status, -> { Integer }, optional: true, nullable: false
-      field :services, lambda {
-        Internal::Types::Array[Internal::Types::Hash[String, Object]]
-      }, optional: true, nullable: false
+      field :services, -> { Internal::Types::Array[Object] }, optional: true, nullable: false
       field :default, -> { Internal::Types::Boolean }, optional: true, nullable: false
     end
   end

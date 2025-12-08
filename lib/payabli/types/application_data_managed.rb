@@ -7,9 +7,7 @@ module Payabli
       field :attachments, -> { Internal::Types::Array[Payabli::Types::FileContent] }, optional: true, nullable: false
       field :baddress, -> { String }, optional: true, nullable: false
       field :baddress_1, -> { String }, optional: true, nullable: false, api_name: "baddress1"
-      field :bank_data, lambda {
-        Internal::Types::Array[Payabli::Types::Bank]
-      }, optional: true, nullable: false, api_name: "bankData"
+      field :bank_data, -> { Internal::Types::Array[Payabli::Types::Bank] }, optional: true, nullable: false, api_name: "bankData"
       field :bcity, -> { String }, optional: true, nullable: false
       field :bcountry, -> { String }, optional: true, nullable: false
       field :boarding_link_id, -> { String }, optional: true, nullable: false, api_name: "boardingLinkId"
@@ -17,9 +15,7 @@ module Payabli
       field :bsummary, -> { String }, optional: true, nullable: false
       field :btype, -> { Payabli::Types::OwnType }, optional: true, nullable: false
       field :bzip, -> { String }, optional: true, nullable: false
-      field :contacts, lambda {
-        Internal::Types::Array[Payabli::Types::ApplicationDataManagedContactsItem]
-      }, optional: true, nullable: false
+      field :contacts, -> { Internal::Types::Array[Payabli::Types::ApplicationDataManagedContactsItem] }, optional: true, nullable: false
       field :dbaname, -> { String }, optional: true, nullable: false
       field :ein, -> { String }, optional: true, nullable: false
       field :faxnumber, -> { String }, optional: true, nullable: false
@@ -34,14 +30,10 @@ module Payabli
       field :mstate, -> { String }, optional: true, nullable: false
       field :mzip, -> { String }, optional: true, nullable: false
       field :org_id, -> { Integer }, optional: true, nullable: false, api_name: "orgId"
-      field :ownership, lambda {
-        Internal::Types::Array[Payabli::Types::ApplicationDataManagedOwnershipItem]
-      }, optional: true, nullable: false
+      field :ownership, -> { Internal::Types::Array[Payabli::Types::ApplicationDataManagedOwnershipItem] }, optional: true, nullable: false
       field :phonenumber, -> { String }, optional: true, nullable: false
       field :recipient_email, -> { String }, optional: true, nullable: false, api_name: "recipientEmail"
-      field :recipient_email_notification, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "recipientEmailNotification"
+      field :recipient_email_notification, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "recipientEmailNotification"
       field :resumable, -> { Internal::Types::Boolean }, optional: true, nullable: false
       field :signer, -> { Payabli::Types::SignerDataRequest }, optional: false, nullable: false
       field :startdate, -> { String }, optional: true, nullable: false

@@ -4,9 +4,7 @@ module Payabli
   module Types
     class QueryBoardingLinksResponseRecordsItem < Internal::Types::Model
       field :accept_oauth, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "AcceptOauth"
-      field :accept_register, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "AcceptRegister"
+      field :accept_register, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "AcceptRegister"
       field :entry_attributes, -> { String }, optional: true, nullable: false, api_name: "EntryAttributes"
       field :id, -> { Integer }, optional: true, nullable: false, api_name: "Id"
       field :last_updated, -> { String }, optional: true, nullable: false, api_name: "LastUpdated"

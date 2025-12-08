@@ -22,23 +22,24 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponseNotifications]
       def add_notification(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Notification",
-          body: Payabli::Notification::Types::AddNotificationRequest.new(params).to_h
+          body: Payabli::Notification::Types::AddNotificationRequest.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponseNotifications.load(_response.body)
+          Payabli::Types::PayabliApiResponseNotifications.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -55,22 +56,23 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponseNotifications]
       def delete_notification(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Notification/#{params[:n_id]}"
+          path: "Notification/#{params[:n_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponseNotifications.load(_response.body)
+          Payabli::Types::PayabliApiResponseNotifications.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -87,22 +89,23 @@ module Payabli
       #
       # @return [Payabli::Types::NotificationQueryRecord]
       def get_notification(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Notification/#{params[:n_id]}"
+          path: "Notification/#{params[:n_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::NotificationQueryRecord.load(_response.body)
+          Payabli::Types::NotificationQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -119,23 +122,24 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponseNotifications]
       def update_notification(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "PUT",
           path: "Notification/#{params[:n_id]}",
-          body: Payabli::Notification::Types::UpdateNotificationRequest.new(params).to_h
+          body: Payabli::Notification::Types::UpdateNotificationRequest.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponseNotifications.load(_response.body)
+          Payabli::Types::PayabliApiResponseNotifications.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -150,24 +154,25 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def get_report_file(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/notificationReport/#{params[:id]}"
+          path: "Export/notificationReport/#{params[:id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

@@ -13,17 +13,11 @@ module Payabli
       field :bin_card_category, -> { String }, optional: true, nullable: false, api_name: "binCardCategory"
       field :bin_card_issuer, -> { String }, optional: true, nullable: false, api_name: "binCardIssuer"
       field :bin_card_issuer_country, -> { String }, optional: true, nullable: false, api_name: "binCardIssuerCountry"
-      field :bin_card_issuer_country_code_a_2, lambda {
-        String
-      }, optional: true, nullable: false, api_name: "binCardIssuerCountryCodeA2"
-      field :bin_card_issuer_country_number, lambda {
-        String
-      }, optional: true, nullable: false, api_name: "binCardIssuerCountryNumber"
+      field :bin_card_issuer_country_code_a_2, -> { String }, optional: true, nullable: false, api_name: "binCardIssuerCountryCodeA2"
+      field :bin_card_issuer_country_number, -> { String }, optional: true, nullable: false, api_name: "binCardIssuerCountryNumber"
       field :bin_card_is_regulated, -> { String }, optional: true, nullable: false, api_name: "binCardIsRegulated"
       field :bin_card_use_category, -> { String }, optional: true, nullable: false, api_name: "binCardUseCategory"
-      field :bin_card_issuer_country_code_a_3, lambda {
-        String
-      }, optional: true, nullable: false, api_name: "binCardIssuerCountryCodeA3"
+      field :bin_card_issuer_country_code_a_3, -> { String }, optional: true, nullable: false, api_name: "binCardIssuerCountryCodeA3"
     end
   end
 end

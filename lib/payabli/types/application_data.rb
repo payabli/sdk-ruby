@@ -37,21 +37,13 @@ module Payabli
       field :mzip, -> { String }, optional: true, nullable: false
       field :org_id, -> { Integer }, optional: true, nullable: false, api_name: "orgId"
       field :ownership, -> { Internal::Types::Array[Payabli::Types::Owners] }, optional: true, nullable: false
-      field :payout_average_monthly_volume, lambda {
-        Integer
-      }, optional: true, nullable: false, api_name: "payoutAverageMonthlyVolume"
-      field :payout_average_ticket_limit, lambda {
-        Integer
-      }, optional: true, nullable: false, api_name: "payoutAverageTicketLimit"
+      field :payout_average_monthly_volume, -> { Integer }, optional: true, nullable: false, api_name: "payoutAverageMonthlyVolume"
+      field :payout_average_ticket_limit, -> { Integer }, optional: true, nullable: false, api_name: "payoutAverageTicketLimit"
       field :payout_credit_limit, -> { Integer }, optional: true, nullable: false, api_name: "payoutCreditLimit"
-      field :payout_high_ticket_amount, lambda {
-        Integer
-      }, optional: true, nullable: false, api_name: "payoutHighTicketAmount"
+      field :payout_high_ticket_amount, -> { Integer }, optional: true, nullable: false, api_name: "payoutHighTicketAmount"
       field :phonenumber, -> { String }, optional: true, nullable: false
       field :recipient_email, -> { String }, optional: true, nullable: false, api_name: "recipientEmail"
-      field :recipient_email_notification, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "recipientEmailNotification"
+      field :recipient_email_notification, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "recipientEmailNotification"
       field :resumable, -> { Internal::Types::Boolean }, optional: true, nullable: false
       field :signer, -> { Payabli::Types::SignerDataRequest }, optional: true, nullable: false
       field :startdate, -> { String }, optional: true, nullable: false
@@ -60,15 +52,9 @@ module Payabli
       field :ticketamt, -> { Integer }, optional: true, nullable: false
       field :website, -> { String }, optional: true, nullable: false
       field :when_charged, -> { Payabli::Types::Whencharged }, optional: true, nullable: false, api_name: "whenCharged"
-      field :when_delivered, lambda {
-        Payabli::Types::Whendelivered
-      }, optional: true, nullable: false, api_name: "whenDelivered"
-      field :when_provided, lambda {
-        Payabli::Types::Whenprovided
-      }, optional: true, nullable: false, api_name: "whenProvided"
-      field :when_refunded, lambda {
-        Payabli::Types::Whenrefunded
-      }, optional: true, nullable: false, api_name: "whenRefunded"
+      field :when_delivered, -> { Payabli::Types::Whendelivered }, optional: true, nullable: false, api_name: "whenDelivered"
+      field :when_provided, -> { Payabli::Types::Whenprovided }, optional: true, nullable: false, api_name: "whenProvided"
+      field :when_refunded, -> { Payabli::Types::Whenrefunded }, optional: true, nullable: false, api_name: "whenRefunded"
       field :rep_code, -> { String }, optional: true, nullable: false, api_name: "RepCode"
       field :rep_name, -> { String }, optional: true, nullable: false, api_name: "RepName"
       field :rep_office, -> { String }, optional: true, nullable: false, api_name: "RepOffice"

@@ -17,12 +17,8 @@ module Payabli
       field :zip, -> { String }, optional: true, nullable: false
       field :country, -> { String }, optional: true, nullable: false
       field :acceptance, -> { Internal::Types::Boolean }, optional: true, nullable: false
-      field :signed_document_reference, lambda {
-        String
-      }, optional: true, nullable: false, api_name: "signedDocumentReference"
-      field :pci_attestation, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "pciAttestation"
+      field :signed_document_reference, -> { String }, optional: true, nullable: false, api_name: "signedDocumentReference"
+      field :pci_attestation, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "pciAttestation"
       field :attestation_date, -> { String }, optional: true, nullable: false, api_name: "attestationDate"
       field :sign_date, -> { String }, optional: true, nullable: false, api_name: "signDate"
       field :additional_data, -> { String }, optional: true, nullable: false, api_name: "additionalData"

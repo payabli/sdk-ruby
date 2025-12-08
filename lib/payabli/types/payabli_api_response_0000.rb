@@ -8,9 +8,7 @@ module Payabli
       field :response_text, -> { String }, optional: false, nullable: false, api_name: "responseText"
       field :page_identifier, -> { String }, optional: true, nullable: false, api_name: "pageIdentifier"
       field :response_code, -> { Integer }, optional: true, nullable: false, api_name: "responseCode"
-      field :response_data, lambda {
-        Payabli::Types::PayabliApiResponse0ResponseData
-      }, optional: true, nullable: false, api_name: "responseData"
+      field :response_data, -> { Payabli::Types::PayabliApiResponse0ResponseData }, optional: true, nullable: false, api_name: "responseData"
     end
   end
 end

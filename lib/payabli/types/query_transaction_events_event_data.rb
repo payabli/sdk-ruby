@@ -6,7 +6,7 @@ module Payabli
     class QueryTransactionEventsEventData < Internal::Types::Model
       extend Payabli::Internal::Types::Union
 
-      member -> { Internal::Types::Hash[String, Internal::Types::Hash[String, Object]] }
+      member -> { Internal::Types::Hash[String, Object] }
       member -> { String }
     end
   end

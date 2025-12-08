@@ -5,16 +5,12 @@ module Payabli
     class PaypointData < Internal::Types::Model
       field :address_1, -> { String }, optional: true, nullable: false, api_name: "address1"
       field :address_2, -> { String }, optional: true, nullable: false, api_name: "address2"
-      field :bank_data, lambda {
-        Internal::Types::Array[Payabli::Types::Bank]
-      }, optional: true, nullable: false, api_name: "bankData"
+      field :bank_data, -> { Internal::Types::Array[Payabli::Types::Bank] }, optional: true, nullable: false, api_name: "bankData"
       field :boarding_id, -> { Integer }, optional: true, nullable: false, api_name: "boardingId"
       field :city, -> { String }, optional: true, nullable: false
       field :contacts, -> { Internal::Types::Array[Payabli::Types::Contacts] }, optional: true, nullable: false
       field :country, -> { String }, optional: true, nullable: false
-      field :credentials, lambda {
-        Internal::Types::Array[Payabli::Types::PayabliCredentialsPascal]
-      }, optional: true, nullable: false
+      field :credentials, -> { Internal::Types::Array[Payabli::Types::PayabliCredentialsPascal] }, optional: true, nullable: false
       field :dba_name, -> { String }, optional: true, nullable: false, api_name: "dbaName"
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
       field :fax, -> { String }, optional: true, nullable: false

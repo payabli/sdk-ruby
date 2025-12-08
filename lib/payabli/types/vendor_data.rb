@@ -4,9 +4,7 @@ module Payabli
   module Types
     class VendorData < Internal::Types::Model
       field :vendor_number, -> { String }, optional: true, nullable: false, api_name: "vendorNumber"
-      field :additional_data, lambda {
-        Internal::Types::Hash[String, Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]]
-      }, optional: true, nullable: false, api_name: "AdditionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, Internal::Types::Hash[String, Object]] }, optional: true, nullable: false, api_name: "AdditionalData"
       field :address_1, -> { String }, optional: true, nullable: false, api_name: "address1"
       field :address_2, -> { String }, optional: true, nullable: false, api_name: "address2"
       field :billing_data, -> { Payabli::Types::BillingData }, optional: true, nullable: false, api_name: "billingData"

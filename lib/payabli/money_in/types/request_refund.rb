@@ -10,9 +10,7 @@ module Payabli
         field :ipaddress, -> { String }, optional: true, nullable: false
         field :order_description, -> { String }, optional: true, nullable: false, api_name: "orderDescription"
         field :order_id, -> { String }, optional: true, nullable: false, api_name: "orderId"
-        field :refund_details, lambda {
-          Payabli::Types::RefundDetail
-        }, optional: true, nullable: false, api_name: "refundDetails"
+        field :refund_details, -> { Payabli::Types::RefundDetail }, optional: true, nullable: false, api_name: "refundDetails"
         field :source, -> { String }, optional: true, nullable: false
       end
     end

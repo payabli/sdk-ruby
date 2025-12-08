@@ -28,9 +28,7 @@ module Payabli
       field :taxfillname, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false
       field :visible, -> { Internal::Types::Boolean }, optional: true, nullable: false
       field :website, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false
-      field :additional_data, lambda {
-        Payabli::Types::TemplateAdditionalDataSection
-      }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Payabli::Types::TemplateAdditionalDataSection }, optional: true, nullable: false, api_name: "additionalData"
     end
   end
 end

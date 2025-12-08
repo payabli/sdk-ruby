@@ -3,17 +3,13 @@
 module Payabli
   module Types
     class BillDetailResponse < Internal::Types::Model
-      field :bills, lambda {
-        Internal::Types::Array[Payabli::Types::BillDetailsResponse]
-      }, optional: true, nullable: false, api_name: "Bills"
+      field :bills, -> { Internal::Types::Array[Payabli::Types::BillDetailsResponse] }, optional: true, nullable: false, api_name: "Bills"
       field :check_data, -> { Payabli::Types::FileContent }, optional: true, nullable: false, api_name: "CheckData"
       field :check_number, -> { String }, optional: true, nullable: false, api_name: "CheckNumber"
       field :comments, -> { String }, optional: true, nullable: false, api_name: "Comments"
       field :created_date, -> { String }, optional: true, nullable: false, api_name: "CreatedDate"
       field :created_at, -> { String }, optional: true, nullable: false, api_name: "CreatedAt"
-      field :events, lambda {
-        Internal::Types::Array[Payabli::Types::QueryTransactionEvents]
-      }, optional: true, nullable: false, api_name: "Events"
+      field :events, -> { Internal::Types::Array[Payabli::Types::QueryTransactionEvents] }, optional: true, nullable: false, api_name: "Events"
       field :fee_amount, -> { Integer }, optional: true, nullable: false, api_name: "FeeAmount"
       field :gateway, -> { String }, optional: true, nullable: false, api_name: "Gateway"
       field :id_out, -> { Integer }, optional: true, nullable: false, api_name: "IdOut"
@@ -21,9 +17,7 @@ module Payabli
       field :net_amount, -> { Integer }, optional: true, nullable: false, api_name: "NetAmount"
       field :parent_org_name, -> { String }, optional: true, nullable: false, api_name: "ParentOrgName"
       field :parent_org_id, -> { Integer }, optional: true, nullable: false, api_name: "ParentOrgId"
-      field :payment_data, lambda {
-        Payabli::Types::QueryPaymentData
-      }, optional: true, nullable: false, api_name: "PaymentData"
+      field :payment_data, -> { Payabli::Types::QueryPaymentData }, optional: true, nullable: false, api_name: "PaymentData"
       field :payment_group, -> { String }, optional: true, nullable: false, api_name: "PaymentGroup"
       field :payment_id, -> { String }, optional: true, nullable: false, api_name: "PaymentId"
       field :payment_method, -> { String }, optional: true, nullable: false, api_name: "PaymentMethod"
@@ -38,9 +32,7 @@ module Payabli
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
       field :entry_name, -> { String }, optional: true, nullable: false, api_name: "EntryName"
       field :batch_id, -> { String }, optional: true, nullable: false, api_name: "BatchId"
-      field :has_vcard_transactions, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "HasVcardTransactions"
+      field :has_vcard_transactions, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "HasVcardTransactions"
       field :is_same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "IsSameDayACH"
       field :schedule_id, -> { Integer }, optional: true, nullable: false, api_name: "ScheduleId"
       field :settlement_status, -> { Integer }, optional: true, nullable: false, api_name: "SettlementStatus"

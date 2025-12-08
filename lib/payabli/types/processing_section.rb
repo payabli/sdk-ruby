@@ -14,18 +14,10 @@ module Payabli
       field :sub_header, -> { String }, optional: true, nullable: false, api_name: "subHeader"
       field :ticketamt, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false
       field :visible, -> { Internal::Types::Boolean }, optional: true, nullable: false
-      field :when_charged, lambda {
-        Payabli::Types::TemplateElement
-      }, optional: true, nullable: false, api_name: "whenCharged"
-      field :when_delivered, lambda {
-        Payabli::Types::TemplateElement
-      }, optional: true, nullable: false, api_name: "whenDelivered"
-      field :when_provided, lambda {
-        Payabli::Types::TemplateElement
-      }, optional: true, nullable: false, api_name: "whenProvided"
-      field :when_refunded, lambda {
-        Payabli::Types::TemplateElement
-      }, optional: true, nullable: false, api_name: "whenRefunded"
+      field :when_charged, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "whenCharged"
+      field :when_delivered, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "whenDelivered"
+      field :when_provided, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "whenProvided"
+      field :when_refunded, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "whenRefunded"
     end
   end
 end

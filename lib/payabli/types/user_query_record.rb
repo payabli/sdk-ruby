@@ -3,9 +3,7 @@
 module Payabli
   module Types
     class UserQueryRecord < Internal::Types::Model
-      field :access, lambda {
-        Internal::Types::Array[Payabli::Types::UsrAccess]
-      }, optional: true, nullable: false, api_name: "Access"
+      field :access, -> { Internal::Types::Array[Payabli::Types::UsrAccess] }, optional: true, nullable: false, api_name: "Access"
       field :additional_data, -> { String }, optional: true, nullable: false, api_name: "AdditionalData"
       field :created_at, -> { String }, optional: true, nullable: false, api_name: "createdAt"
       field :email, -> { String }, optional: true, nullable: false, api_name: "Email"
@@ -13,9 +11,7 @@ module Payabli
       field :last_access, -> { String }, optional: true, nullable: false, api_name: "lastAccess"
       field :name, -> { String }, optional: true, nullable: false, api_name: "Name"
       field :phone, -> { String }, optional: true, nullable: false, api_name: "Phone"
-      field :scope, lambda {
-        Internal::Types::Array[Payabli::Types::OrgXScope]
-      }, optional: true, nullable: false, api_name: "Scope"
+      field :scope, -> { Internal::Types::Array[Payabli::Types::OrgXScope] }, optional: true, nullable: false, api_name: "Scope"
       field :sn_data, -> { String }, optional: true, nullable: false, api_name: "snData"
       field :sn_identifier, -> { String }, optional: true, nullable: false, api_name: "snIdentifier"
       field :sn_provider, -> { String }, optional: true, nullable: false, api_name: "snProvider"

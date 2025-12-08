@@ -10,7 +10,8 @@ module Payabli
         @client = client
       end
 
-      # Loads all of a payment page's details including `pageIdentifier` and `validationCode`. This endpoint requires an `application` API token.
+      # Loads all of a payment page's details including `pageIdentifier` and `validationCode`. This endpoint requires an
+      # `application` API token.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -24,28 +25,30 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliPages]
       def load_page(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "Paypoint/load/#{params[:entry]}/#{params[:subdomain]}"
+          path: "Paypoint/load/#{params[:entry]}/#{params[:subdomain]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliPages.load(_response.body)
+          Payabli::Types::PayabliPages.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
       #
       # Creates a new payment page for a paypoint.
-      # Note: this operation doesn't create a new paypoint, just a payment page for an existing paypoint. Paypoints are created by the Payabli team when a boarding application is approved.
+      # Note: this operation doesn't create a new paypoint, just a payment page for an existing paypoint. Paypoints are
+      # created by the Payabli team when a boarding application is approved.
       #
       # @param request_options [Hash]
       # @param params [Payabli::Types::PayabliPages]
@@ -59,26 +62,27 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def new_page(request_options: {}, **params)
-        _path_param_names = %i[entry]
-        _body = params.except(*_path_param_names)
+        path_param_names = %i[entry]
+        body_params = params.except(*path_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Paypoint/#{params[:entry]}",
-          body: Payabli::Types::PayabliPages.new(_body).to_h
+          body: Payabli::Types::PayabliPages.new(body_params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(_response.body)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -96,23 +100,24 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def save_page(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "PUT",
           path: "Paypoint/#{params[:entry]}/#{params[:subdomain]}",
-          body: Payabli::Types::PayabliPages.new(params).to_h
+          body: Payabli::Types::PayabliPages.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(_response.body)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

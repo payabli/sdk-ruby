@@ -16,9 +16,7 @@ module Payabli
         field :hold_amount, -> { Integer }, optional: false, nullable: true, api_name: "HoldAmount"
         field :released_amount, -> { Integer }, optional: false, nullable: true, api_name: "ReleasedAmount"
         field :billing_fees_amount, -> { Integer }, optional: false, nullable: true, api_name: "BillingFeesAmount"
-        field :third_party_paid_amount, lambda {
-          Integer
-        }, optional: false, nullable: true, api_name: "ThirdPartyPaidAmount"
+        field :third_party_paid_amount, -> { Integer }, optional: false, nullable: true, api_name: "ThirdPartyPaidAmount"
         field :adjustments_amount, -> { Integer }, optional: false, nullable: true, api_name: "AdjustmentsAmount"
         field :net_funded_amount, -> { Integer }, optional: false, nullable: true, api_name: "NetFundedAmount"
       end

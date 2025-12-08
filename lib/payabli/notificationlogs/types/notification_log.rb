@@ -15,9 +15,7 @@ module Payabli
         field :created_date, -> { String }, optional: false, nullable: false, api_name: "createdDate"
         field :success_date, -> { String }, optional: false, nullable: true, api_name: "successDate"
         field :last_failed_date, -> { String }, optional: false, nullable: true, api_name: "lastFailedDate"
-        field :is_in_progress, lambda {
-          Internal::Types::Boolean
-        }, optional: false, nullable: false, api_name: "isInProgress"
+        field :is_in_progress, -> { Internal::Types::Boolean }, optional: false, nullable: false, api_name: "isInProgress"
       end
     end
   end

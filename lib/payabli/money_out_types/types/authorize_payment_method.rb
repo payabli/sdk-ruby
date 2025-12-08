@@ -7,7 +7,8 @@ module Payabli
       # - `{ method: "managed" }` - Managed payment method
       # - `{ method: "vcard" }` - Virtual card payment method
       # - `{ method: "check" }` - Check payment method
-      # - `{ method: "ach", achHolder: "...", achRouting: "...", achAccount: "...", achAccountType: "..." }` - ACH payment method with bank details
+      # - `{ method: "ach", achHolder: "...", achRouting: "...", achAccount: "...", achAccountType: "..." }` - ACH
+      # payment method with bank details
       # - `{ method: "ach", storedMethodId: "..." }` - ACH payment method using stored method ID
       class AuthorizePaymentMethod < Internal::Types::Model
         field :method_, -> { String }, optional: false, nullable: false, api_name: "method"
@@ -16,14 +17,10 @@ module Payabli
         field :ach_account, -> { String }, optional: true, nullable: false, api_name: "achAccount"
         field :ach_account_type, -> { String }, optional: true, nullable: false, api_name: "achAccountType"
         field :ach_code, -> { String }, optional: true, nullable: false, api_name: "achCode"
-        field :ach_holder_type, lambda {
-          Payabli::Types::AchHolderType
-        }, optional: true, nullable: false, api_name: "achHolderType"
+        field :ach_holder_type, -> { Payabli::Types::AchHolderType }, optional: true, nullable: false, api_name: "achHolderType"
         field :stored_method_id, -> { String }, optional: true, nullable: false, api_name: "storedMethodId"
         field :initiator, -> { String }, optional: true, nullable: false
-        field :stored_method_usage_type, lambda {
-          String
-        }, optional: true, nullable: false, api_name: "storedMethodUsageType"
+        field :stored_method_usage_type, -> { String }, optional: true, nullable: false, api_name: "storedMethodUsageType"
       end
     end
   end

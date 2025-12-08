@@ -5,20 +5,12 @@ module Payabli
     class BillQueryRecord2 < Internal::Types::Model
       field :accounting_field_1, -> { String }, optional: false, nullable: true, api_name: "AccountingField1"
       field :accounting_field_2, -> { String }, optional: false, nullable: true, api_name: "AccountingField2"
-      field :additional_data, lambda {
-        Internal::Types::Hash[String, String]
-      }, optional: false, nullable: true, api_name: "AdditionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: false, nullable: true, api_name: "AdditionalData"
       field :batch_number, -> { String }, optional: false, nullable: true, api_name: "BatchNumber"
-      field :bill_approvals, lambda {
-        Internal::Types::Array[Payabli::Types::BillQueryRecord2BillApprovalsItem]
-      }, optional: false, nullable: true, api_name: "billApprovals"
+      field :bill_approvals, -> { Internal::Types::Array[Payabli::Types::BillQueryRecord2BillApprovalsItem] }, optional: false, nullable: true, api_name: "billApprovals"
       field :bill_date, -> { String }, optional: false, nullable: true, api_name: "BillDate"
-      field :bill_events, lambda {
-        Internal::Types::Array[Payabli::Types::GeneralEvents]
-      }, optional: false, nullable: true, api_name: "billEvents"
-      field :bill_items, lambda {
-        Internal::Types::Array[Payabli::Types::BillItem]
-      }, optional: false, nullable: true, api_name: "BillItems"
+      field :bill_events, -> { Internal::Types::Array[Payabli::Types::GeneralEvents] }, optional: false, nullable: true, api_name: "billEvents"
+      field :bill_items, -> { Internal::Types::Array[Payabli::Types::BillItem] }, optional: false, nullable: true, api_name: "BillItems"
       field :bill_number, -> { String }, optional: false, nullable: true, api_name: "BillNumber"
       field :comments, -> { String }, optional: false, nullable: true, api_name: "Comments"
       field :created_at, -> { String }, optional: false, nullable: true, api_name: "CreatedAt"
@@ -37,9 +29,7 @@ module Payabli
       field :parent_org_id, -> { Integer }, optional: false, nullable: true, api_name: "ParentOrgId"
       field :parent_org_name, -> { String }, optional: false, nullable: true, api_name: "ParentOrgName"
       field :payment_id, -> { String }, optional: false, nullable: true, api_name: "PaymentId"
-      field :payment_method, lambda {
-        Payabli::Types::BillQueryRecord2PaymentMethod
-      }, optional: false, nullable: true, api_name: "PaymentMethod"
+      field :payment_method, -> { Payabli::Types::BillQueryRecord2PaymentMethod }, optional: false, nullable: true, api_name: "PaymentMethod"
       field :paylink_id, -> { String }, optional: false, nullable: true, api_name: "paylinkId"
       field :paypoint_dbaname, -> { String }, optional: false, nullable: true, api_name: "PaypointDbaname"
       field :paypoint_entryname, -> { String }, optional: false, nullable: true, api_name: "PaypointEntryname"
@@ -48,9 +38,7 @@ module Payabli
       field :status, -> { Integer }, optional: false, nullable: true, api_name: "Status"
       field :terms, -> { String }, optional: false, nullable: true, api_name: "Terms"
       field :total_amount, -> { Integer }, optional: false, nullable: true, api_name: "TotalAmount"
-      field :transaction, lambda {
-        Payabli::Types::TransactionOutQueryRecord
-      }, optional: false, nullable: true, api_name: "Transaction"
+      field :transaction, -> { Payabli::Types::TransactionOutQueryRecord }, optional: false, nullable: true, api_name: "Transaction"
       field :vendor, -> { Payabli::Types::VendorOutData }, optional: false, nullable: true, api_name: "Vendor"
     end
   end

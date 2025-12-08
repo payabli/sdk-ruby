@@ -11,9 +11,7 @@ module Payabli
       field :avgmonthly, -> { Integer }, optional: true, nullable: false
       field :baddress, -> { String }, optional: true, nullable: false
       field :baddress_1, -> { String }, optional: true, nullable: false, api_name: "baddress1"
-      field :bank_data, lambda {
-        Payabli::Types::ApplicationDataPayInBankData
-      }, optional: false, nullable: false, api_name: "bankData"
+      field :bank_data, -> { Payabli::Types::ApplicationDataPayInBankData }, optional: false, nullable: false, api_name: "bankData"
       field :bcity, -> { String }, optional: true, nullable: false
       field :bcountry, -> { String }, optional: true, nullable: false
       field :binperson, -> { Integer }, optional: true, nullable: false
@@ -24,9 +22,7 @@ module Payabli
       field :bsummary, -> { String }, optional: true, nullable: false
       field :btype, -> { Payabli::Types::OwnType }, optional: true, nullable: false
       field :bzip, -> { String }, optional: true, nullable: false
-      field :contacts, lambda {
-        Internal::Types::Array[Payabli::Types::ApplicationDataPayInContactsItem]
-      }, optional: true, nullable: false
+      field :contacts, -> { Internal::Types::Array[Payabli::Types::ApplicationDataPayInContactsItem] }, optional: true, nullable: false
       field :credit_limit, -> { String }, optional: true, nullable: false, api_name: "creditLimit"
       field :dba_name, -> { String }, optional: true, nullable: false, api_name: "dbaName"
       field :ein, -> { String }, optional: true, nullable: false
@@ -44,15 +40,11 @@ module Payabli
       field :mstate, -> { String }, optional: true, nullable: false
       field :mzip, -> { String }, optional: true, nullable: false
       field :org_id, -> { Integer }, optional: true, nullable: false, api_name: "orgId"
-      field :ownership, lambda {
-        Internal::Types::Array[Payabli::Types::ApplicationDataPayInOwnershipItem]
-      }, optional: true, nullable: false
+      field :ownership, -> { Internal::Types::Array[Payabli::Types::ApplicationDataPayInOwnershipItem] }, optional: true, nullable: false
       field :phonenumber, -> { String }, optional: false, nullable: false
       field :processing_region, -> { String }, optional: false, nullable: false, api_name: "processingRegion"
       field :recipient_email, -> { String }, optional: true, nullable: false, api_name: "recipientEmail"
-      field :recipient_email_notification, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "recipientEmailNotification"
+      field :recipient_email_notification, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "recipientEmailNotification"
       field :resumable, -> { Internal::Types::Boolean }, optional: true, nullable: false
       field :signer, -> { Payabli::Types::SignerDataRequest }, optional: false, nullable: false
       field :startdate, -> { String }, optional: true, nullable: false
@@ -61,15 +53,9 @@ module Payabli
       field :ticketamt, -> { Integer }, optional: true, nullable: false
       field :website, -> { String }, optional: true, nullable: false
       field :when_charged, -> { Payabli::Types::Whencharged }, optional: false, nullable: false, api_name: "whenCharged"
-      field :when_delivered, lambda {
-        Payabli::Types::Whendelivered
-      }, optional: false, nullable: false, api_name: "whenDelivered"
-      field :when_provided, lambda {
-        Payabli::Types::Whenprovided
-      }, optional: false, nullable: false, api_name: "whenProvided"
-      field :when_refunded, lambda {
-        Payabli::Types::Whenrefunded
-      }, optional: false, nullable: false, api_name: "whenRefunded"
+      field :when_delivered, -> { Payabli::Types::Whendelivered }, optional: false, nullable: false, api_name: "whenDelivered"
+      field :when_provided, -> { Payabli::Types::Whenprovided }, optional: false, nullable: false, api_name: "whenProvided"
+      field :when_refunded, -> { Payabli::Types::Whenrefunded }, optional: false, nullable: false, api_name: "whenRefunded"
       field :additional_data, -> { String }, optional: true, nullable: false, api_name: "additionalData"
       field :rep_code, -> { String }, optional: true, nullable: false, api_name: "RepCode"
       field :rep_name, -> { String }, optional: true, nullable: false, api_name: "RepName"

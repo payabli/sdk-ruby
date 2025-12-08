@@ -21,28 +21,18 @@ module Payabli
         field :order_id, -> { String }, optional: false, nullable: false, api_name: "OrderId"
         field :net_amount, -> { Integer }, optional: false, nullable: false, api_name: "NetAmount"
         field :transaction_time, -> { String }, optional: false, nullable: false, api_name: "TransactionTime"
-        field :customer, lambda {
-          Payabli::Types::QueryTransactionPayorData
-        }, optional: false, nullable: false, api_name: "Customer"
-        field :payment_data, lambda {
-          Payabli::Types::QueryPaymentData
-        }, optional: false, nullable: false, api_name: "PaymentData"
+        field :customer, -> { Payabli::Types::QueryTransactionPayorData }, optional: false, nullable: false, api_name: "Customer"
+        field :payment_data, -> { Payabli::Types::QueryPaymentData }, optional: false, nullable: false, api_name: "PaymentData"
         field :paypoint_legalname, -> { String }, optional: false, nullable: false, api_name: "PaypointLegalname"
         field :paypoint_dbaname, -> { String }, optional: false, nullable: false, api_name: "PaypointDbaname"
         field :parent_org_name, -> { String }, optional: false, nullable: false, api_name: "ParentOrgName"
         field :parent_org_id, -> { Integer }, optional: false, nullable: false, api_name: "ParentOrgId"
         field :paypoint_entryname, -> { String }, optional: false, nullable: false, api_name: "PaypointEntryname"
-        field :responses, lambda {
-          Internal::Types::Array[Payabli::ChargeBacks::Types::ChargeBackResponse]
-        }, optional: false, nullable: false, api_name: "Responses"
-        field :transaction, lambda {
-          Payabli::Types::TransactionQueryRecords
-        }, optional: false, nullable: false, api_name: "Transaction"
+        field :responses, -> { Internal::Types::Array[Payabli::ChargeBacks::Types::ChargeBackResponse] }, optional: false, nullable: false, api_name: "Responses"
+        field :transaction, -> { Payabli::Types::TransactionQueryRecords }, optional: false, nullable: false, api_name: "Transaction"
         field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
         field :pageidentifier, -> { String }, optional: true, nullable: false
-        field :messages, lambda {
-          Internal::Types::Array[Payabli::ChargeBacks::Types::ChargebackMessage]
-        }, optional: false, nullable: false
+        field :messages, -> { Internal::Types::Array[Payabli::ChargeBacks::Types::ChargebackMessage] }, optional: false, nullable: false
         field :service_group, -> { String }, optional: false, nullable: false, api_name: "ServiceGroup"
         field :dispute_type, -> { String }, optional: false, nullable: false, api_name: "DisputeType"
         field :processor_name, -> { String }, optional: false, nullable: false, api_name: "ProcessorName"

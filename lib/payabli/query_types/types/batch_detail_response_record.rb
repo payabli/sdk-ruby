@@ -17,31 +17,23 @@ module Payabli
         field :gateway_trans_id, -> { String }, optional: false, nullable: false, api_name: "GatewayTransId"
         field :order_id, -> { String }, optional: false, nullable: false, api_name: "OrderId"
         field :trans_method, -> { String }, optional: false, nullable: false, api_name: "TransMethod"
-        field :payment_data, lambda {
-          Payabli::Types::QueryPaymentData
-        }, optional: false, nullable: true, api_name: "PaymentData"
+        field :payment_data, -> { Payabli::Types::QueryPaymentData }, optional: false, nullable: true, api_name: "PaymentData"
         field :net_amount, -> { Integer }, optional: false, nullable: false, api_name: "NetAmount"
         field :operation, -> { String }, optional: false, nullable: false, api_name: "Operation"
         field :category, -> { String }, optional: false, nullable: false, api_name: "Category"
         field :source, -> { String }, optional: false, nullable: true, api_name: "Source"
         field :status, -> { Integer }, optional: false, nullable: false, api_name: "Status"
         field :transaction_time, -> { String }, optional: false, nullable: false, api_name: "TransactionTime"
-        field :customer, lambda {
-          Payabli::Types::QueryTransactionPayorData
-        }, optional: false, nullable: true, api_name: "Customer"
+        field :customer, -> { Payabli::Types::QueryTransactionPayorData }, optional: false, nullable: true, api_name: "Customer"
         field :settlement_date, -> { String }, optional: false, nullable: false, api_name: "SettlementDate"
-        field :payment_settlement_status, lambda {
-          Integer
-        }, optional: false, nullable: false, api_name: "PaymentSettlementStatus"
+        field :payment_settlement_status, -> { Integer }, optional: false, nullable: false, api_name: "PaymentSettlementStatus"
         field :batch_status, -> { Integer }, optional: false, nullable: false, api_name: "BatchStatus"
         field :deposit_date, -> { String }, optional: false, nullable: false, api_name: "DepositDate"
         field :expected_deposit_date, -> { String }, optional: false, nullable: false, api_name: "ExpectedDepositDate"
         field :masked_account, -> { String }, optional: false, nullable: false, api_name: "MaskedAccount"
         field :created_at, -> { String }, optional: false, nullable: false, api_name: "CreatedAt"
         field :paypoint_legalname, -> { String }, optional: false, nullable: false, api_name: "PaypointLegalname"
-        field :response_data, lambda {
-          Payabli::Types::QueryResponseData
-        }, optional: false, nullable: true, api_name: "ResponseData"
+        field :response_data, -> { Payabli::Types::QueryResponseData }, optional: false, nullable: true, api_name: "ResponseData"
         field :paypoint_dbaname, -> { String }, optional: false, nullable: false, api_name: "PaypointDbaname"
         field :parent_org_name, -> { String }, optional: false, nullable: false, api_name: "ParentOrgName"
         field :parent_org_id, -> { Integer }, optional: false, nullable: false, api_name: "ParentOrgId"
@@ -49,9 +41,7 @@ module Payabli
         field :device_id, -> { String }, optional: false, nullable: true, api_name: "DeviceId"
         field :retrieval_id, -> { Integer }, optional: false, nullable: false, api_name: "RetrievalId"
         field :chargeback_id, -> { Integer }, optional: false, nullable: false, api_name: "ChargebackId"
-        field :ach_holder_type, lambda {
-          Payabli::Types::AchHolderType
-        }, optional: false, nullable: false, api_name: "AchHolderType"
+        field :ach_holder_type, -> { Payabli::Types::AchHolderType }, optional: false, nullable: false, api_name: "AchHolderType"
         field :ach_sec_code, -> { String }, optional: false, nullable: false, api_name: "AchSecCode"
         field :connector_name, -> { String }, optional: false, nullable: false, api_name: "ConnectorName"
         field :entrypage_id, -> { Integer }, optional: false, nullable: false, api_name: "EntrypageId"
@@ -62,17 +52,11 @@ module Payabli
         field :pending_fee_amount, -> { Integer }, optional: false, nullable: false, api_name: "PendingFeeAmount"
         field :refund_id, -> { Integer }, optional: false, nullable: false, api_name: "RefundId"
         field :returned_id, -> { Integer }, optional: false, nullable: false, api_name: "ReturnedId"
-        field :split_funding_instructions, lambda {
-          Internal::Types::Array[Payabli::Types::SplitFundingContent]
-        }, optional: false, nullable: false, api_name: "splitFundingInstructions"
+        field :split_funding_instructions, -> { Internal::Types::Array[Payabli::Types::SplitFundingContent] }, optional: false, nullable: false, api_name: "splitFundingInstructions"
         field :total_amount, -> { Integer }, optional: false, nullable: false, api_name: "TotalAmount"
-        field :cfee_transactions, lambda {
-          Internal::Types::Array[Payabli::Types::QueryCFeeTransaction]
-        }, optional: false, nullable: false, api_name: "CfeeTransactions"
+        field :cfee_transactions, -> { Internal::Types::Array[Payabli::Types::QueryCFeeTransaction] }, optional: false, nullable: false, api_name: "CfeeTransactions"
         field :invoice_data, -> { Payabli::Types::BillData }, optional: false, nullable: true, api_name: "invoiceData"
-        field :transaction_events, lambda {
-          Internal::Types::Array[Payabli::Types::QueryTransactionEvents]
-        }, optional: false, nullable: false, api_name: "TransactionEvents"
+        field :transaction_events, -> { Internal::Types::Array[Payabli::Types::QueryTransactionEvents] }, optional: false, nullable: false, api_name: "TransactionEvents"
         field :external_paypoint_id, -> { String }, optional: false, nullable: false, api_name: "externalPaypointID"
         field :is_hold, -> { Integer }, optional: false, nullable: false, api_name: "isHold"
       end

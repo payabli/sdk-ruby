@@ -33,21 +33,11 @@ module Payabli
       field :sn_data, -> { String }, optional: true, nullable: false, api_name: "snData"
       field :last_updated, -> { String }, optional: true, nullable: false, api_name: "LastUpdated"
       field :created, -> { String }, optional: true, nullable: false, api_name: "Created"
-      field :additional_fields, lambda {
-        Internal::Types::Hash[String, String]
-      }, optional: true, nullable: false, api_name: "AdditionalFields"
-      field :identifier_fields, lambda {
-        Internal::Types::Array[String]
-      }, optional: true, nullable: false, api_name: "IdentifierFields"
-      field :subscriptions, lambda {
-        Internal::Types::Array[Payabli::Types::SubscriptionQueryRecords]
-      }, optional: true, nullable: false, api_name: "Subscriptions"
-      field :stored_methods, lambda {
-        Internal::Types::Array[Payabli::Types::MethodQueryRecords]
-      }, optional: true, nullable: false, api_name: "StoredMethods"
-      field :customer_summary, lambda {
-        Payabli::Types::CustomerSummaryRecord
-      }, optional: true, nullable: false, api_name: "customerSummary"
+      field :additional_fields, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "AdditionalFields"
+      field :identifier_fields, -> { Internal::Types::Array[String] }, optional: true, nullable: false, api_name: "IdentifierFields"
+      field :subscriptions, -> { Internal::Types::Array[Payabli::Types::SubscriptionQueryRecords] }, optional: true, nullable: false, api_name: "Subscriptions"
+      field :stored_methods, -> { Internal::Types::Array[Payabli::Types::MethodQueryRecords] }, optional: true, nullable: false, api_name: "StoredMethods"
+      field :customer_summary, -> { Payabli::Types::CustomerSummaryRecord }, optional: true, nullable: false, api_name: "customerSummary"
       field :paypoint_legalname, -> { String }, optional: true, nullable: false, api_name: "PaypointLegalname"
       field :paypoint_dbaname, -> { String }, optional: true, nullable: false, api_name: "PaypointDbaname"
       field :parent_org_name, -> { String }, optional: true, nullable: false, api_name: "ParentOrgName"
@@ -55,9 +45,7 @@ module Payabli
       field :paypoint_entryname, -> { String }, optional: true, nullable: false, api_name: "PaypointEntryname"
       field :pageidentifier, -> { String }, optional: true, nullable: false
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
-      field :customer_consent, lambda {
-        Payabli::Types::CustomerQueryRecordsCustomerConsent
-      }, optional: true, nullable: false, api_name: "customerConsent"
+      field :customer_consent, -> { Payabli::Types::CustomerQueryRecordsCustomerConsent }, optional: true, nullable: false, api_name: "customerConsent"
     end
   end
 end

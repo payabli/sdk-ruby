@@ -5,9 +5,7 @@ module Payabli
     module Types
       class ResponseDataRefunds < Internal::Types::Model
         field :auth_code, -> { String }, optional: false, nullable: false, api_name: "authCode"
-        field :expected_processing_date_time, lambda {
-          String
-        }, optional: false, nullable: true, api_name: "expectedProcessingDateTime"
+        field :expected_processing_date_time, -> { String }, optional: false, nullable: true, api_name: "expectedProcessingDateTime"
         field :avs_response_text, -> { String }, optional: true, nullable: false, api_name: "avsResponseText"
         field :customer_id, -> { Integer }, optional: false, nullable: true, api_name: "customerId"
         field :cvv_response_text, -> { String }, optional: false, nullable: true, api_name: "cvvResponseText"

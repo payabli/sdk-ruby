@@ -3,9 +3,7 @@
 module Payabli
   module Types
     class OrganizationQueryRecord < Internal::Types::Model
-      field :services, lambda {
-        Internal::Types::Array[Payabli::Types::OrganizationQueryRecordServicesItem]
-      }, optional: true, nullable: false
+      field :services, -> { Internal::Types::Array[Payabli::Types::OrganizationQueryRecordServicesItem] }, optional: true, nullable: false
       field :billing_info, -> { Payabli::Types::Instrument }, optional: true, nullable: false, api_name: "billingInfo"
       field :contacts, -> { Internal::Types::Array[Payabli::Types::Contacts] }, optional: true, nullable: false
       field :created_at, -> { String }, optional: true, nullable: false, api_name: "createdAt"
@@ -27,9 +25,7 @@ module Payabli
       field :org_type, -> { Integer }, optional: true, nullable: false, api_name: "orgType"
       field :org_website, -> { String }, optional: true, nullable: false, api_name: "orgWebsite"
       field :org_zip, -> { String }, optional: true, nullable: false, api_name: "orgZip"
-      field :recipient_email_notification, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "recipientEmailNotification"
+      field :recipient_email_notification, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "recipientEmailNotification"
       field :reply_to_email, -> { String }, optional: true, nullable: false, api_name: "replyToEmail"
       field :resumable, -> { Internal::Types::Boolean }, optional: true, nullable: false
       field :summary, -> { Payabli::Types::SummaryOrg }, optional: true, nullable: false

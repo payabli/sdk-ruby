@@ -6,9 +6,7 @@ module Payabli
       field :account_number, -> { String }, optional: true, nullable: false, api_name: "accountNumber"
       field :bank_account_function, -> { Integer }, optional: true, nullable: false, api_name: "bankAccountFunction"
       field :bank_account_holder_name, -> { String }, optional: true, nullable: false, api_name: "bankAccountHolderName"
-      field :bank_account_holder_type, lambda {
-        Payabli::Types::BankAccountHolderType
-      }, optional: true, nullable: false, api_name: "bankAccountHolderType"
+      field :bank_account_holder_type, -> { Payabli::Types::BankAccountHolderType }, optional: true, nullable: false, api_name: "bankAccountHolderType"
       field :bank_name, -> { String }, optional: true, nullable: false, api_name: "bankName"
       field :id, -> { Integer }, optional: true, nullable: false
       field :routing_account, -> { String }, optional: true, nullable: false, api_name: "routingAccount"

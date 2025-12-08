@@ -6,9 +6,7 @@ module Payabli
       field :enabled, -> { Internal::Types::Boolean }, optional: true, nullable: false
       field :invoice_link, -> { Payabli::Types::LabelElement }, optional: true, nullable: false, api_name: "invoiceLink"
       field :order, -> { Integer }, optional: true, nullable: false
-      field :view_invoice_details, lambda {
-        Payabli::Types::LabelElement
-      }, optional: true, nullable: false, api_name: "viewInvoiceDetails"
+      field :view_invoice_details, -> { Payabli::Types::LabelElement }, optional: true, nullable: false, api_name: "viewInvoiceDetails"
     end
   end
 end

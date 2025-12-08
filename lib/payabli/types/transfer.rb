@@ -19,9 +19,7 @@ module Payabli
       field :parent_org_entry_name, -> { String }, optional: false, nullable: true, api_name: "parentOrgEntryName"
       field :parent_org_logo, -> { String }, optional: false, nullable: true, api_name: "parentOrgLogo"
       field :external_paypoint_id, -> { String }, optional: false, nullable: true, api_name: "externalPaypointID"
-      field :bank_account, lambda {
-        Payabli::Types::TransferBankAccount
-      }, optional: false, nullable: true, api_name: "bankAccount"
+      field :bank_account, -> { Payabli::Types::TransferBankAccount }, optional: false, nullable: true, api_name: "bankAccount"
       field :transfer_date, -> { String }, optional: false, nullable: false, api_name: "transferDate"
       field :processor, -> { String }, optional: false, nullable: false
       field :transfer_status, -> { Integer }, optional: false, nullable: false, api_name: "transferStatus"
@@ -35,9 +33,7 @@ module Payabli
       field :adjustments_amount, -> { Integer }, optional: false, nullable: false, api_name: "adjustmentsAmount"
       field :net_transfer_amount, -> { Integer }, optional: false, nullable: false, api_name: "netTransferAmount"
       field :split_amount, -> { Integer }, optional: false, nullable: true, api_name: "splitAmount"
-      field :events_data, lambda {
-        Internal::Types::Array[Payabli::Types::GeneralEvents]
-      }, optional: false, nullable: true, api_name: "eventsData"
+      field :events_data, -> { Internal::Types::Array[Payabli::Types::GeneralEvents] }, optional: false, nullable: true, api_name: "eventsData"
       field :messages, -> { Internal::Types::Array[Payabli::Types::TransferMessage] }, optional: false, nullable: true
     end
   end

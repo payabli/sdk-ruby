@@ -10,9 +10,7 @@ module Payabli
       field :content, -> { String }, optional: false, nullable: true, api_name: "Content"
       field :created_at, -> { String }, optional: false, nullable: true, api_name: "CreatedAt"
       field :message_type, -> { Integer }, optional: false, nullable: true, api_name: "MessageType"
-      field :message_properties, lambda {
-        Payabli::Types::TransferMessageProperties
-      }, optional: false, nullable: true, api_name: "MessageProperties"
+      field :message_properties, -> { Payabli::Types::TransferMessageProperties }, optional: false, nullable: true, api_name: "MessageProperties"
     end
   end
 end

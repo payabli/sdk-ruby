@@ -9,9 +9,7 @@ module Payabli
         field :additional_data, -> { String }, optional: true, nullable: false, api_name: "additionalData"
         field :attachments, -> { Internal::Types::Array[Payabli::Types::FileContent] }, optional: true, nullable: false
         field :bill_date, -> { String }, optional: true, nullable: false, api_name: "billDate"
-        field :bill_items, lambda {
-          Internal::Types::Array[Payabli::Types::BillItem]
-        }, optional: true, nullable: false, api_name: "billItems"
+        field :bill_items, -> { Internal::Types::Array[Payabli::Types::BillItem] }, optional: true, nullable: false, api_name: "billItems"
         field :bill_number, -> { String }, optional: true, nullable: false, api_name: "billNumber"
         field :comments, -> { String }, optional: true, nullable: false
         field :discount, -> { Integer }, optional: true, nullable: false
@@ -21,9 +19,7 @@ module Payabli
         field :lot_number, -> { String }, optional: true, nullable: false, api_name: "lotNumber"
         field :mode, -> { Integer }, optional: true, nullable: false
         field :net_amount, -> { Integer }, optional: true, nullable: false, api_name: "netAmount"
-        field :scheduled_options, lambda {
-          Payabli::Bill::Types::BillOutDataScheduledOptions
-        }, optional: true, nullable: false, api_name: "scheduledOptions"
+        field :scheduled_options, -> { Payabli::Bill::Types::BillOutDataScheduledOptions }, optional: true, nullable: false, api_name: "scheduledOptions"
         field :status, -> { Integer }, optional: true, nullable: false
         field :terms, -> { String }, optional: true, nullable: false
         field :total_amount, -> { Integer }, optional: true, nullable: false, api_name: "totalAmount"

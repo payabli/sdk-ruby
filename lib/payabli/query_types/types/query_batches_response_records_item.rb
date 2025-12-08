@@ -7,9 +7,7 @@ module Payabli
         field :id_batch, -> { Integer }, optional: false, nullable: true, api_name: "IdBatch"
         field :batch_number, -> { String }, optional: false, nullable: true, api_name: "BatchNumber"
         field :transfer_identifier, -> { String }, optional: false, nullable: true, api_name: "TransferIdentifier"
-        field :events_data, lambda {
-          Internal::Types::Array[Payabli::Types::GeneralEvents]
-        }, optional: false, nullable: true, api_name: "EventsData"
+        field :events_data, -> { Internal::Types::Array[Payabli::Types::GeneralEvents] }, optional: false, nullable: true, api_name: "EventsData"
         field :connector_name, -> { String }, optional: false, nullable: true, api_name: "ConnectorName"
         field :batch_date, -> { String }, optional: false, nullable: true, api_name: "BatchDate"
         field :batch_amount, -> { Integer }, optional: false, nullable: true, api_name: "BatchAmount"
@@ -35,9 +33,7 @@ module Payabli
         field :expected_deposit_date, -> { String }, optional: false, nullable: true, api_name: "ExpectedDepositDate"
         field :deposit_date, -> { String }, optional: false, nullable: true, api_name: "DepositDate"
         field :transfer_date, -> { String }, optional: false, nullable: true, api_name: "TransferDate"
-        field :transfer, lambda {
-          Payabli::QueryTypes::Types::QueryBatchesTransfer
-        }, optional: false, nullable: true, api_name: "Transfer"
+        field :transfer, -> { Payabli::QueryTypes::Types::QueryBatchesTransfer }, optional: false, nullable: true, api_name: "Transfer"
       end
     end
   end

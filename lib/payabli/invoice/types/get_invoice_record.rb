@@ -41,24 +41,16 @@ module Payabli
         field :shipping_phone, -> { String }, optional: false, nullable: false, api_name: "shippingPhone"
         field :summary_commodity_code, -> { String }, optional: false, nullable: false, api_name: "summaryCommodityCode"
         field :items, -> { Internal::Types::Array[Payabli::Types::BillItem] }, optional: false, nullable: false
-        field :customer, lambda {
-          Payabli::Types::PayorDataResponse
-        }, optional: false, nullable: false, api_name: "Customer"
+        field :customer, -> { Payabli::Types::PayorDataResponse }, optional: false, nullable: false, api_name: "Customer"
         field :paylink_id, -> { String }, optional: false, nullable: false, api_name: "paylinkId"
-        field :bill_events, lambda {
-          Internal::Types::Array[Payabli::Types::GeneralEvents]
-        }, optional: false, nullable: false, api_name: "billEvents"
-        field :scheduled_options, lambda {
-          Payabli::Types::BillOptions
-        }, optional: false, nullable: false, api_name: "scheduledOptions"
+        field :bill_events, -> { Internal::Types::Array[Payabli::Types::GeneralEvents] }, optional: false, nullable: false, api_name: "billEvents"
+        field :scheduled_options, -> { Payabli::Types::BillOptions }, optional: false, nullable: false, api_name: "scheduledOptions"
         field :paypoint_legalname, -> { String }, optional: false, nullable: false, api_name: "PaypointLegalname"
         field :paypoint_dbaname, -> { String }, optional: false, nullable: false, api_name: "PaypointDbaname"
         field :paypoint_entryname, -> { String }, optional: false, nullable: false, api_name: "PaypointEntryname"
         field :parent_org_name, -> { String }, optional: false, nullable: false, api_name: "ParentOrgName"
         field :additional_data, -> { String }, optional: true, nullable: false, api_name: "AdditionalData"
-        field :documents_ref, lambda {
-          Payabli::Types::DocumentsRef
-        }, optional: false, nullable: false, api_name: "DocumentsRef"
+        field :documents_ref, -> { Payabli::Types::DocumentsRef }, optional: false, nullable: false, api_name: "DocumentsRef"
         field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
       end
     end

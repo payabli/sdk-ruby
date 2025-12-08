@@ -18,21 +18,13 @@ module Payabli
       field :country, -> { String }, optional: false, nullable: false, api_name: "Country"
       field :mcc, -> { String }, optional: false, nullable: false, api_name: "Mcc"
       field :location_code, -> { String }, optional: false, nullable: false, api_name: "LocationCode"
-      field :contacts, lambda {
-        Internal::Types::Array[Payabli::Types::ContactsResponse]
-      }, optional: false, nullable: false, api_name: "Contacts"
-      field :billing_data, lambda {
-        Payabli::Types::VendorResponseBillingData
-      }, optional: false, nullable: false, api_name: "BillingData"
-      field :payment_method, lambda {
-        Payabli::Types::VendorDataResponsePaymentMethod
-      }, optional: false, nullable: false, api_name: "PaymentMethod"
+      field :contacts, -> { Internal::Types::Array[Payabli::Types::ContactsResponse] }, optional: false, nullable: false, api_name: "Contacts"
+      field :billing_data, -> { Payabli::Types::VendorResponseBillingData }, optional: false, nullable: false, api_name: "BillingData"
+      field :payment_method, -> { Payabli::Types::VendorDataResponsePaymentMethod }, optional: false, nullable: false, api_name: "PaymentMethod"
       field :vendor_status, -> { Integer }, optional: false, nullable: false, api_name: "VendorStatus"
       field :vendor_id, -> { Integer }, optional: false, nullable: false, api_name: "VendorId"
       field :enrollment_status, -> { String }, optional: true, nullable: false, api_name: "EnrollmentStatus"
-      field :summary, lambda {
-        Payabli::Types::VendorResponseSummary
-      }, optional: false, nullable: false, api_name: "Summary"
+      field :summary, -> { Payabli::Types::VendorResponseSummary }, optional: false, nullable: false, api_name: "Summary"
       field :paypoint_legalname, -> { String }, optional: false, nullable: false, api_name: "PaypointLegalname"
       field :paypoint_dbaname, -> { String }, optional: false, nullable: false, api_name: "PaypointDbaname"
       field :paypoint_entryname, -> { String }, optional: false, nullable: false, api_name: "PaypointEntryname"
@@ -52,13 +44,9 @@ module Payabli
       field :custom_field_2, -> { String }, optional: false, nullable: false, api_name: "customField2"
       field :customer_vendor_account, -> { String }, optional: true, nullable: false, api_name: "customerVendorAccount"
       field :internal_reference_id, -> { Integer }, optional: false, nullable: false, api_name: "InternalReferenceId"
-      field :additional_data, lambda {
-        Internal::Types::Hash[String, String]
-      }, optional: false, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: false, nullable: false, api_name: "additionalData"
       field :external_paypoint_id, -> { String }, optional: false, nullable: false, api_name: "externalPaypointID"
-      field :stored_methods, lambda {
-        Internal::Types::Array[Payabli::Types::VendorResponseStoredMethod]
-      }, optional: false, nullable: false, api_name: "StoredMethods"
+      field :stored_methods, -> { Internal::Types::Array[Payabli::Types::VendorResponseStoredMethod] }, optional: false, nullable: false, api_name: "StoredMethods"
     end
   end
 end

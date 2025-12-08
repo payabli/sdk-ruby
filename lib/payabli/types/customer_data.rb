@@ -27,12 +27,8 @@ module Payabli
       field :shipping_country, -> { String }, optional: true, nullable: false, api_name: "shippingCountry"
       field :balance, -> { Integer }, optional: true, nullable: false
       field :time_zone, -> { Integer }, optional: true, nullable: false, api_name: "timeZone"
-      field :additional_fields, lambda {
-        Internal::Types::Hash[String, String]
-      }, optional: true, nullable: false, api_name: "additionalFields"
-      field :identifier_fields, lambda {
-        Internal::Types::Array[String]
-      }, optional: true, nullable: false, api_name: "identifierFields"
+      field :additional_fields, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "additionalFields"
+      field :identifier_fields, -> { Internal::Types::Array[String] }, optional: true, nullable: false, api_name: "identifierFields"
       field :created_at, -> { String }, optional: true, nullable: false, api_name: "createdAt"
     end
   end

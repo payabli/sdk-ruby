@@ -3,14 +3,10 @@
 module Payabli
   module Types
     class VendorQueryRecord < Internal::Types::Model
-      field :additional_data, lambda {
-        Internal::Types::Hash[String, Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]]
-      }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, Internal::Types::Hash[String, Object]] }, optional: true, nullable: false, api_name: "additionalData"
       field :address_1, -> { String }, optional: true, nullable: false, api_name: "Address1"
       field :address_2, -> { String }, optional: true, nullable: false, api_name: "Address2"
-      field :billing_data, lambda {
-        Payabli::Types::BillingDataResponse
-      }, optional: true, nullable: false, api_name: "BillingData"
+      field :billing_data, -> { Payabli::Types::BillingDataResponse }, optional: true, nullable: false, api_name: "BillingData"
       field :city, -> { String }, optional: true, nullable: false, api_name: "City"
       field :contacts, -> { Payabli::Types::ContactsResponse }, optional: true, nullable: false, api_name: "Contacts"
       field :country, -> { String }, optional: true, nullable: false, api_name: "Country"
@@ -45,9 +41,7 @@ module Payabli
       field :remit_state, -> { String }, optional: true, nullable: false, api_name: "remitState"
       field :remit_zip, -> { String }, optional: true, nullable: false, api_name: "remitZip"
       field :state, -> { String }, optional: true, nullable: false, api_name: "State"
-      field :stored_methods, lambda {
-        Internal::Types::Array[Payabli::Types::VendorResponseStoredMethod]
-      }, optional: true, nullable: false, api_name: "StoredMethods"
+      field :stored_methods, -> { Internal::Types::Array[Payabli::Types::VendorResponseStoredMethod] }, optional: true, nullable: false, api_name: "StoredMethods"
       field :summary, -> { Payabli::Types::VendorSummary }, optional: true, nullable: false, api_name: "Summary"
       field :vendor_id, -> { Integer }, optional: true, nullable: false, api_name: "VendorId"
       field :vendor_number, -> { String }, optional: true, nullable: false, api_name: "VendorNumber"

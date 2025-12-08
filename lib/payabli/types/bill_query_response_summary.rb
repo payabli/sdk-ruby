@@ -16,9 +16,7 @@ module Payabli
       field :totalamountintransit, -> { Integer }, optional: true, nullable: false
       field :totalamountoverdue, -> { Integer }, optional: true, nullable: false
       field :totalamountpaid, -> { Integer }, optional: true, nullable: false
-      field :totalamountsent_2_approval, lambda {
-        Integer
-      }, optional: true, nullable: false, api_name: "totalamountsent2approval"
+      field :totalamountsent_2_approval, -> { Integer }, optional: true, nullable: false, api_name: "totalamountsent2approval"
       field :totalapproved, -> { Integer }, optional: true, nullable: false
       field :totalcancel, -> { Integer }, optional: true, nullable: false
       field :totaldisapproved, -> { Integer }, optional: true, nullable: false

@@ -16,12 +16,8 @@ module Payabli
       field :state, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false
       field :zip, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false
       field :acceptance, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false
-      field :signed_document_reference, lambda {
-        Payabli::Types::TemplateElement
-      }, optional: true, nullable: false, api_name: "signedDocumentReference"
-      field :additional_data, lambda {
-        Payabli::Types::TemplateAdditionalDataSection
-      }, optional: true, nullable: false, api_name: "additionalData"
+      field :signed_document_reference, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "signedDocumentReference"
+      field :additional_data, -> { Payabli::Types::TemplateAdditionalDataSection }, optional: true, nullable: false, api_name: "additionalData"
     end
   end
 end

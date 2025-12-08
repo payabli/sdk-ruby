@@ -5,33 +5,25 @@ module Payabli
     class QueryPayoutTransactionRecordsItem < Internal::Types::Model
       field :batch_number, -> { String }, optional: true, nullable: false, api_name: "BatchNumber"
       field :batch_id, -> { Integer }, optional: true, nullable: false, api_name: "BatchId"
-      field :bills, lambda {
-        Internal::Types::Array[Payabli::Types::BillPayOutData]
-      }, optional: true, nullable: false, api_name: "Bills"
+      field :bills, -> { Internal::Types::Array[Payabli::Types::BillPayOutData] }, optional: true, nullable: false, api_name: "Bills"
       field :card_token, -> { String }, optional: true, nullable: false, api_name: "CardToken"
       field :check_data, -> { Payabli::Types::FileContent }, optional: true, nullable: false, api_name: "CheckData"
       field :check_number, -> { String }, optional: true, nullable: false, api_name: "CheckNumber"
       field :comments, -> { String }, optional: true, nullable: false, api_name: "Comments"
       field :created_at, -> { String }, optional: true, nullable: false, api_name: "CreatedAt"
       field :entry_name, -> { String }, optional: true, nullable: false, api_name: "EntryName"
-      field :events, lambda {
-        Internal::Types::Array[Payabli::Types::QueryTransactionEvents]
-      }, optional: true, nullable: false, api_name: "Events"
+      field :events, -> { Internal::Types::Array[Payabli::Types::QueryTransactionEvents] }, optional: true, nullable: false, api_name: "Events"
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
       field :fee_amount, -> { Integer }, optional: true, nullable: false, api_name: "FeeAmount"
       field :gateway, -> { String }, optional: true, nullable: false, api_name: "Gateway"
-      field :has_vcard_transactions, lambda {
-        Internal::Types::Boolean
-      }, optional: true, nullable: false, api_name: "HasVcardTransactions"
+      field :has_vcard_transactions, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "HasVcardTransactions"
       field :id_out, -> { Integer }, optional: true, nullable: false, api_name: "IdOut"
       field :is_same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "IsSameDayACH"
       field :last_updated, -> { String }, optional: true, nullable: false, api_name: "LastUpdated"
       field :net_amount, -> { Integer }, optional: true, nullable: false, api_name: "NetAmount"
       field :parent_org_name, -> { String }, optional: true, nullable: false, api_name: "ParentOrgName"
       field :parent_org_id, -> { Integer }, optional: true, nullable: false, api_name: "ParentOrgId"
-      field :payment_data, lambda {
-        Payabli::Types::QueryPayoutTransactionRecordsItemPaymentData
-      }, optional: true, nullable: false, api_name: "PaymentData"
+      field :payment_data, -> { Payabli::Types::QueryPayoutTransactionRecordsItemPaymentData }, optional: true, nullable: false, api_name: "PaymentData"
       field :payment_id, -> { String }, optional: true, nullable: false, api_name: "PaymentId"
       field :payment_method, -> { String }, optional: true, nullable: false, api_name: "PaymentMethod"
       field :payment_status, -> { String }, optional: true, nullable: false, api_name: "PaymentStatus"

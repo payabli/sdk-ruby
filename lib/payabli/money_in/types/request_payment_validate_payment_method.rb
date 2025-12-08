@@ -5,9 +5,7 @@ module Payabli
     module Types
       # Object describing payment method to use for validation.
       class RequestPaymentValidatePaymentMethod < Internal::Types::Model
-        field :method_, lambda {
-          Payabli::MoneyIn::Types::RequestPaymentValidatePaymentMethodMethod
-        }, optional: false, nullable: false, api_name: "method"
+        field :method_, -> { Payabli::MoneyIn::Types::RequestPaymentValidatePaymentMethodMethod }, optional: false, nullable: false, api_name: "method"
         field :cardnumber, -> { String }, optional: false, nullable: false
         field :cardexp, -> { String }, optional: false, nullable: false
         field :cardzip, -> { String }, optional: false, nullable: false

@@ -22,30 +22,32 @@ module Payabli
       #
       # @return [Payabli::Types::AddPaymentMethodDomainApiResponse]
       def add_payment_method_domain(request_options: {}, **params)
-        _body_prop_names = %i[apple_pay google_pay domain_name entity_id entity_type]
-        _body_bag = params.slice(*_body_prop_names)
+        body_prop_names = %i[apple_pay google_pay domain_name entity_id entity_type]
+        body_bag = params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "PaymentMethodDomain",
-          body: Payabli::PaymentMethodDomain::Types::AddPaymentMethodDomainRequest.new(_body_bag).to_h
+          body: Payabli::PaymentMethodDomain::Types::AddPaymentMethodDomainRequest.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::AddPaymentMethodDomainApiResponse.load(_response.body)
+          Payabli::Types::AddPaymentMethodDomainApiResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Cascades a payment method domain to all child entities. All paypoints and suborganization under this parent will inherit this domain and its settings.
+      # Cascades a payment method domain to all child entities. All paypoints and suborganization under this parent will
+      # inherit this domain and its settings.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -58,26 +60,28 @@ module Payabli
       #
       # @return [Payabli::Types::PaymentMethodDomainGeneralResponse]
       def cascade_payment_method_domain(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
-          path: "PaymentMethodDomain/#{params[:domain_id]}/cascade"
+          path: "PaymentMethodDomain/#{params[:domain_id]}/cascade",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PaymentMethodDomainGeneralResponse.load(_response.body)
+          Payabli::Types::PaymentMethodDomainGeneralResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Delete a payment method domain. You can't delete an inherited domain, you must delete a domain at the organization level.
+      # Delete a payment method domain. You can't delete an inherited domain, you must delete a domain at the
+      # organization level.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -90,22 +94,23 @@ module Payabli
       #
       # @return [Payabli::PaymentMethodDomain::Types::DeletePaymentMethodDomainResponse]
       def delete_payment_method_domain(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "DELETE",
-          path: "PaymentMethodDomain/#{params[:domain_id]}"
+          path: "PaymentMethodDomain/#{params[:domain_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentMethodDomain::Types::DeletePaymentMethodDomainResponse.load(_response.body)
+          Payabli::PaymentMethodDomain::Types::DeletePaymentMethodDomainResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -122,22 +127,23 @@ module Payabli
       #
       # @return [Payabli::Types::PaymentMethodDomainApiResponse]
       def get_payment_method_domain(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "PaymentMethodDomain/#{params[:domain_id]}"
+          path: "PaymentMethodDomain/#{params[:domain_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PaymentMethodDomainApiResponse.load(_response.body)
+          Payabli::Types::PaymentMethodDomainApiResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -158,31 +164,32 @@ module Payabli
       # @return [Payabli::PaymentMethodDomain::Types::ListPaymentMethodDomainsResponse]
       def list_payment_method_domains(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[entity_id entity_type from_record limit_record]
-        _query = {}
-        _query["entityId"] = params[:entity_id] if params.key?(:entity_id)
-        _query["entityType"] = params[:entity_type] if params.key?(:entity_type)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        params.except(*_query_param_names)
+        query_param_names = %i[entity_id entity_type from_record limit_record]
+        query_params = {}
+        query_params["entityId"] = params[:entity_id] if params.key?(:entity_id)
+        query_params["entityType"] = params[:entity_type] if params.key?(:entity_type)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "PaymentMethodDomain/list",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentMethodDomain::Types::ListPaymentMethodDomainsResponse.load(_response.body)
+          Payabli::PaymentMethodDomain::Types::ListPaymentMethodDomainsResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -199,32 +206,34 @@ module Payabli
       #
       # @return [Payabli::Types::PaymentMethodDomainGeneralResponse]
       def update_payment_method_domain(request_options: {}, **params)
-        _path_param_names = %i[domain_id]
-        _body = params.except(*_path_param_names)
-        _body_prop_names = %i[apple_pay google_pay]
-        _body_bag = _body.slice(*_body_prop_names)
+        path_param_names = %i[domain_id]
+        body_params = params.except(*path_param_names)
+        body_prop_names = %i[apple_pay google_pay]
+        body_bag = body_params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "PATCH",
           path: "PaymentMethodDomain/#{params[:domain_id]}",
-          body: Payabli::PaymentMethodDomain::Types::UpdatePaymentMethodDomainRequest.new(_body_bag).to_h
+          body: Payabli::PaymentMethodDomain::Types::UpdatePaymentMethodDomainRequest.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PaymentMethodDomainGeneralResponse.load(_response.body)
+          Payabli::Types::PaymentMethodDomainGeneralResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Verify a new payment method domain. If verification is successful, Apple Pay is automatically activated for the domain.
+      # Verify a new payment method domain. If verification is successful, Apple Pay is automatically activated for the
+      # domain.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -237,22 +246,23 @@ module Payabli
       #
       # @return [Payabli::Types::PaymentMethodDomainGeneralResponse]
       def verify_payment_method_domain(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
-          path: "PaymentMethodDomain/#{params[:domain_id]}/verify"
+          path: "PaymentMethodDomain/#{params[:domain_id]}/verify",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PaymentMethodDomainGeneralResponse.load(_response.body)
+          Payabli::Types::PaymentMethodDomainGeneralResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

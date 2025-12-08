@@ -12,9 +12,7 @@ module Payabli
       field :holder_name, -> { String }, optional: false, nullable: true, api_name: "HolderName"
       field :ach_sec_code, -> { String }, optional: false, nullable: true, api_name: "AchSecCode"
       field :ach_holder_type, -> { String }, optional: false, nullable: true, api_name: "AchHolderType"
-      field :is_validated_ach, lambda {
-        Internal::Types::Boolean
-      }, optional: false, nullable: true, api_name: "IsValidatedACH"
+      field :is_validated_ach, -> { Internal::Types::Boolean }, optional: false, nullable: true, api_name: "IsValidatedACH"
       field :bin, -> { String }, optional: false, nullable: true, api_name: "BIN"
       field :bin_data, -> { String }, optional: false, nullable: true, api_name: "binData"
       field :aba, -> { String }, optional: false, nullable: true, api_name: "ABA"

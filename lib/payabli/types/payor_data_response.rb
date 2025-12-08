@@ -4,9 +4,7 @@ module Payabli
   module Types
     # Customer information.
     class PayorDataResponse < Internal::Types::Model
-      field :additional_data, lambda {
-        Internal::Types::Hash[String, Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]]
-      }, optional: false, nullable: true, api_name: "AdditionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, Internal::Types::Hash[String, Object]] }, optional: false, nullable: true, api_name: "AdditionalData"
       field :billing_address_1, -> { String }, optional: false, nullable: true, api_name: "BillingAddress1"
       field :billing_address_2, -> { String }, optional: false, nullable: true, api_name: "BillingAddress2"
       field :billing_city, -> { String }, optional: false, nullable: true, api_name: "BillingCity"
@@ -20,9 +18,7 @@ module Payabli
       field :customer_number, -> { String }, optional: false, nullable: true, api_name: "CustomerNumber"
       field :customer_status, -> { Integer }, optional: false, nullable: true, api_name: "customerStatus"
       field :first_name, -> { String }, optional: false, nullable: true, api_name: "FirstName"
-      field :identifiers, lambda {
-        Internal::Types::Array[String]
-      }, optional: false, nullable: true, api_name: "Identifiers"
+      field :identifiers, -> { Internal::Types::Array[String] }, optional: false, nullable: true, api_name: "Identifiers"
       field :last_name, -> { String }, optional: false, nullable: true, api_name: "LastName"
       field :shipping_address_1, -> { String }, optional: false, nullable: true, api_name: "ShippingAddress1"
       field :shipping_address_2, -> { String }, optional: false, nullable: true, api_name: "ShippingAddress2"

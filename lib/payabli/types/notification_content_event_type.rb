@@ -34,6 +34,7 @@ module Payabli
       APPROVED_APPLICATION = "ApprovedApplication"
       FAILED_BOARDING_APPLICATION = "FailedBoardingApplication"
       SUBMITTED_APPLICATION = "SubmittedApplication"
+      UNDER_WRITING_APPLICATION = "UnderWritingApplication"
       ACTIVATED_MERCHANT = "ActivatedMerchant"
       RECEIVED_CHARGE_BACK = "ReceivedChargeBack"
       CHARGEBACK_UPDATED = "ChargebackUpdated"

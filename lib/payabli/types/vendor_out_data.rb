@@ -3,16 +3,12 @@
 module Payabli
   module Types
     class VendorOutData < Internal::Types::Model
-      field :additional_data, lambda {
-        Internal::Types::Hash[String, Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]]
-      }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, Internal::Types::Hash[String, Object]] }, optional: true, nullable: false, api_name: "additionalData"
       field :address_1, -> { String }, optional: true, nullable: false, api_name: "Address1"
       field :address_2, -> { String }, optional: true, nullable: false, api_name: "Address2"
       field :billing_data, -> { Payabli::Types::BillingData }, optional: true, nullable: false, api_name: "BillingData"
       field :city, -> { String }, optional: false, nullable: false, api_name: "City"
-      field :contacts, lambda {
-        Internal::Types::Array[Payabli::Types::Contacts]
-      }, optional: true, nullable: false, api_name: "Contacts"
+      field :contacts, -> { Internal::Types::Array[Payabli::Types::Contacts] }, optional: true, nullable: false, api_name: "Contacts"
       field :country, -> { String }, optional: false, nullable: false, api_name: "Country"
       field :customer_vendor_account, -> { String }, optional: true, nullable: false, api_name: "customerVendorAccount"
       field :ein, -> { String }, optional: false, nullable: false, api_name: "EIN"
@@ -24,9 +20,7 @@ module Payabli
       field :name_2, -> { String }, optional: true, nullable: false, api_name: "Name2"
       field :payee_name_1, -> { String }, optional: true, nullable: false, api_name: "payeeName1"
       field :payee_name_2, -> { String }, optional: true, nullable: false, api_name: "payeeName2"
-      field :payment_method, lambda {
-        Payabli::Types::VendorPaymentMethod
-      }, optional: true, nullable: false, api_name: "PaymentMethod"
+      field :payment_method, -> { Payabli::Types::VendorPaymentMethod }, optional: true, nullable: false, api_name: "PaymentMethod"
       field :phone, -> { String }, optional: false, nullable: false, api_name: "Phone"
       field :remit_address_1, -> { String }, optional: true, nullable: false, api_name: "remitAddress1"
       field :remit_address_2, -> { String }, optional: true, nullable: false, api_name: "remitAddress2"

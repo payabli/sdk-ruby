@@ -26,37 +26,40 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_applications(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/boarding/#{params[:format]}/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
+      # This endpoint is deprecated. Export batch details for a paypoint. Use filters to limit results.
+      #
       # @param request_options [Hash]
       # @param params [Hash]
       # @option request_options [String] :base_url
@@ -71,37 +74,40 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_batch_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batchDetails/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
+      # This endpoint is deprecated. Export batch details for an organization. Use filters to limit results.
+      #
       # @param request_options [Hash]
       # @param params [Hash]
       # @option request_options [String] :base_url
@@ -116,34 +122,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_batch_details_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batchDetails/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -163,34 +170,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_batches(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batches/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -210,34 +218,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_batches_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batches/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -257,34 +266,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_batches_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batchesOut/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -304,34 +314,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_batches_out_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batchesOut/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -351,34 +362,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_bills(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/bills/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -398,34 +410,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_bills_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/bills/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -445,34 +458,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_chargebacks(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/chargebacks/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -492,34 +506,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_chargebacks_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/chargebacks/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -539,34 +554,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_customers(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/customers/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -586,34 +602,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_customers_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/customers/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -633,34 +650,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_invoices(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/invoices/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -680,34 +698,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_invoices_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/invoices/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -727,34 +746,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_organizations(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/organizations/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -774,34 +794,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_payout(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/payouts/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -821,34 +842,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_payout_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/payouts/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -868,34 +890,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_paypoints(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/paypoints/#{params[:format]}/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -915,34 +938,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_settlements(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/settlements/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -962,34 +986,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_settlements_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/settlements/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -1009,34 +1034,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_subscriptions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/subscriptions/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -1056,38 +1082,40 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_subscriptions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/subscriptions/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Export a list of transactions for an entrypoint in a file in XLXS or CSV format. Use filters to limit results. If you don't specify a date range in the request, the last two months of data are returned.
+      # Export a list of transactions for an entrypoint in a file in XLXS or CSV format. Use filters to limit results.
+      # If you don't specify a date range in the request, the last two months of data are returned.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -1103,38 +1131,40 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_transactions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/transactions/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Export a list of transactions for an org in a file in XLSX or CSV format. Use filters to limit results. If you don't specify a date range in the request, the last two months of data are returned.
+      # Export a list of transactions for an org in a file in XLSX or CSV format. Use filters to limit results. If you
+      # don't specify a date range in the request, the last two months of data are returned.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -1150,34 +1180,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_transactions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/transactions/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -1199,35 +1230,36 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_transfer_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters sort_by]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        _query["sortBy"] = params[:sort_by] if params.key?(:sort_by)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters sort_by]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/transferDetails/#{params[:format]}/#{params[:entry]}/#{params[:transfer_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -1247,35 +1279,36 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_transfers(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters sort_by]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        _query["sortBy"] = params[:sort_by] if params.key?(:sort_by)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters sort_by]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/transfers/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -1295,34 +1328,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_vendors(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/vendors/#{params[:format]}/#{params[:entry]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -1342,34 +1376,35 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Hash[String, Hash[String, Object]]]
+      # @return [Hash[String, Object]]
       def export_vendors_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[columns_export from_record limit_record parameters]
-        _query = {}
-        _query["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
-        _query["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        _query["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        _query["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[columns_export from_record limit_record parameters]
+        query_params = {}
+        query_params["columnsExport"] = params[:columns_export] if params.key?(:columns_export)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "Export/vendors/#{params[:format]}/org/#{params[:org_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::File.load(_response.body)
+          Payabli::Types::File.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

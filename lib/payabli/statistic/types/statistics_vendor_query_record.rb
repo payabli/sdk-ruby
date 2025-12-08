@@ -8,9 +8,7 @@ module Payabli
         field :active, -> { Integer }, optional: false, nullable: false
         field :active_volume, -> { Integer }, optional: false, nullable: false, api_name: "activeVolume"
         field :sent_to_approval, -> { Integer }, optional: false, nullable: false, api_name: "sentToApproval"
-        field :sent_to_approval_volume, lambda {
-          Integer
-        }, optional: false, nullable: false, api_name: "sentToApprovalVolume"
+        field :sent_to_approval_volume, -> { Integer }, optional: false, nullable: false, api_name: "sentToApprovalVolume"
         field :to_approval, -> { Integer }, optional: false, nullable: false, api_name: "toApproval"
         field :to_approval_volume, -> { Integer }, optional: false, nullable: false, api_name: "toApprovalVolume"
         field :approved, -> { Integer }, optional: false, nullable: false

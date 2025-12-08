@@ -15,15 +15,11 @@ module Payabli
         field :total_bills, -> { Integer }, optional: true, nullable: false, api_name: "TotalBills"
         field :active_bills_amount, -> { Integer }, optional: true, nullable: false, api_name: "ActiveBillsAmount"
         field :pending_bills_amount, -> { Integer }, optional: true, nullable: false, api_name: "PendingBillsAmount"
-        field :in_transit_bills_amount, lambda {
-          Integer
-        }, optional: true, nullable: false, api_name: "InTransitBillsAmount"
+        field :in_transit_bills_amount, -> { Integer }, optional: true, nullable: false, api_name: "InTransitBillsAmount"
         field :paid_bills_amount, -> { Integer }, optional: true, nullable: false, api_name: "PaidBillsAmount"
         field :overdue_bills_amount, -> { Integer }, optional: true, nullable: false, api_name: "OverdueBillsAmount"
         field :approved_bills_amount, -> { Integer }, optional: true, nullable: false, api_name: "ApprovedBillsAmount"
-        field :disapproved_bills_amount, lambda {
-          Integer
-        }, optional: true, nullable: false, api_name: "DisapprovedBillsAmount"
+        field :disapproved_bills_amount, -> { Integer }, optional: true, nullable: false, api_name: "DisapprovedBillsAmount"
         field :total_bills_amount, -> { Integer }, optional: true, nullable: false, api_name: "TotalBillsAmount"
       end
     end

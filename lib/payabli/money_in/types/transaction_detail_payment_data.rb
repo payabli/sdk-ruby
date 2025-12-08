@@ -11,17 +11,13 @@ module Payabli
         field :holder_name, -> { String }, optional: false, nullable: false, api_name: "holderName"
         field :stored_id, -> { String }, optional: false, nullable: true, api_name: "storedId"
         field :initiator, -> { String }, optional: false, nullable: true
-        field :stored_method_usage_type, lambda {
-          String
-        }, optional: false, nullable: true, api_name: "storedMethodUsageType"
+        field :stored_method_usage_type, -> { String }, optional: false, nullable: true, api_name: "storedMethodUsageType"
         field :sequence, -> { String }, optional: false, nullable: true
         field :order_description, -> { String }, optional: false, nullable: false, api_name: "orderDescription"
         field :account_id, -> { String }, optional: false, nullable: true, api_name: "accountId"
         field :signature_data, -> { String }, optional: false, nullable: true, api_name: "signatureData"
         field :bin_data, -> { Payabli::Types::BinData }, optional: false, nullable: true, api_name: "binData"
-        field :payment_details, lambda {
-          Payabli::MoneyIn::Types::TransactionDetailPaymentDetails
-        }, optional: false, nullable: false, api_name: "paymentDetails"
+        field :payment_details, -> { Payabli::MoneyIn::Types::TransactionDetailPaymentDetails }, optional: false, nullable: false, api_name: "paymentDetails"
       end
     end
   end

@@ -6,9 +6,7 @@ module Payabli
       field :entry, -> { String }, optional: true, nullable: false
       field :is_enabled, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "isEnabled"
       field :wallet_type, -> { String }, optional: true, nullable: false, api_name: "walletType"
-      field :wallet_data, lambda {
-        Payabli::Types::AppleWalletData
-      }, optional: true, nullable: false, api_name: "walletData"
+      field :wallet_data, -> { Payabli::Types::AppleWalletData }, optional: true, nullable: false, api_name: "walletData"
     end
   end
 end

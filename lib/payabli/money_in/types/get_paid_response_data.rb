@@ -5,9 +5,7 @@ module Payabli
     module Types
       # Response data for GetPaid transactions
       class GetPaidResponseData < Internal::Types::Model
-        field :transaction_details, lambda {
-          Payabli::MoneyIn::Types::TransactionDetailRecord
-        }, optional: true, nullable: false, api_name: "transactionDetails"
+        field :transaction_details, -> { Payabli::MoneyIn::Types::TransactionDetailRecord }, optional: true, nullable: false, api_name: "transactionDetails"
         field :auth_code, -> { String }, optional: true, nullable: false, api_name: "authCode"
         field :reference_id, -> { String }, optional: false, nullable: false, api_name: "referenceId"
         field :result_code, -> { Integer }, optional: false, nullable: false, api_name: "resultCode"

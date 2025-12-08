@@ -5,9 +5,7 @@ module Payabli
     class LineItemQueryRecord < Internal::Types::Model
       field :created_at, -> { String }, optional: true, nullable: false, api_name: "createdAt"
       field :id, -> { Integer }, optional: true, nullable: false
-      field :item_categories, lambda {
-        Internal::Types::Array[String]
-      }, optional: true, nullable: false, api_name: "itemCategories"
+      field :item_categories, -> { Internal::Types::Array[String] }, optional: true, nullable: false, api_name: "itemCategories"
       field :item_commodity_code, -> { String }, optional: true, nullable: false, api_name: "itemCommodityCode"
       field :item_cost, -> { Integer }, optional: false, nullable: false, api_name: "itemCost"
       field :item_description, -> { String }, optional: true, nullable: false, api_name: "itemDescription"

@@ -10,7 +10,9 @@ module Payabli
         @client = client
       end
 
-      # Authorize a card transaction. This returns an authorization code and reserves funds for the merchant. Authorized transactions aren't flagged for settlement until [captured](/api-reference/moneyin/capture-an-authorized-transaction).
+      # Authorize a card transaction. This returns an authorization code and reserves funds for the merchant. Authorized
+      # transactions aren't flagged for settlement until
+      # [captured](/api-reference/moneyin/capture-an-authorized-transaction).
       #
       # **Note**: Only card transactions can be authorized. This endpoint can't be used for ACH transactions.
       #
@@ -27,38 +29,41 @@ module Payabli
       # @return [Payabli::MoneyIn::Types::AuthResponse]
       def authorize(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[force_customer_creation]
-        _query = {}
-        _query["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[force_customer_creation]
+        query_params = {}
+        query_params["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "MoneyIn/authorize",
-          query: _query,
-          body: Payabli::MoneyIn::Types::TransRequestBody.new(params).to_h
+          query: query_params,
+          body: Payabli::MoneyIn::Types::TransRequestBody.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::AuthResponse.load(_response.body)
+          Payabli::MoneyIn::Types::AuthResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
       # <Warning>
-      #   This endpoint is deprecated and will be sunset on November 24, 2025. Migrate to [POST `/capture/{transId}`](/api-reference/moneyin/capture-an-authorized-transaction)`.
+      # This endpoint is deprecated and will be sunset on November 24, 2025. Migrate to [POST
+      # `/capture/{transId}`](/api-reference/moneyin/capture-an-authorized-transaction)`.
       # </Warning>
       #
       #   Capture an [authorized
-      # transaction](/api-reference/moneyin/authorize-a-transaction) to complete the transaction and move funds from the customer to merchant account.
+      # transaction](/api-reference/moneyin/authorize-a-transaction) to complete the transaction and move funds from the
+      # customer to merchant account.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -72,28 +77,32 @@ module Payabli
       #
       # @return [Payabli::MoneyIn::Types::CaptureResponse]
       def capture(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/capture/#{params[:trans_id]}/#{params[:amount]}"
+          path: "MoneyIn/capture/#{params[:trans_id]}/#{params[:amount]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::CaptureResponse.load(_response.body)
+          Payabli::MoneyIn::Types::CaptureResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Capture an [authorized transaction](/api-reference/moneyin/authorize-a-transaction) to complete the transaction and move funds from the customer to merchant account.
+      # Capture an [authorized transaction](/api-reference/moneyin/authorize-a-transaction) to complete the transaction
+      # and move funds from the customer to merchant account.
       #
-      # You can use this endpoint to capture both full and partial amounts of the original authorized transaction. See [Capture an authorized transaction](/developers/developer-guides/pay-in-auth-and-capture) for more information about this endpoint.
+      # You can use this endpoint to capture both full and partial amounts of the original authorized transaction. See
+      # [Capture an authorized transaction](/developers/developer-guides/pay-in-auth-and-capture) for more information
+      # about this endpoint.
       #
       # @param request_options [Hash]
       # @param params [Payabli::MoneyIn::Types::CaptureRequest]
@@ -106,27 +115,29 @@ module Payabli
       #
       # @return [Payabli::MoneyIn::Types::CaptureResponse]
       def capture_auth(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "MoneyIn/capture/#{params[:trans_id]}",
-          body: Payabli::MoneyIn::Types::CaptureRequest.new(params).to_h
+          body: Payabli::MoneyIn::Types::CaptureRequest.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::CaptureResponse.load(_response.body)
+          Payabli::MoneyIn::Types::CaptureResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Make a temporary microdeposit in a customer account to verify the customer's ownership and access to the target account. Reverse the microdeposit with `reverseCredit`.
+      # Make a temporary microdeposit in a customer account to verify the customer's ownership and access to the target
+      # account. Reverse the microdeposit with `reverseCredit`.
       #
       # This feature must be enabled by Payabli on a per-merchant basis. Contact support for help.
       #
@@ -142,34 +153,34 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse0]
       def credit(request_options: {}, **params)
-        _body_prop_names = %i[account_id customer_data entrypoint order_description order_id payment_details
-                              payment_method source subdomain]
-        _body_bag = params.slice(*_body_prop_names)
+        body_prop_names = %i[account_id customer_data entrypoint order_description order_id payment_details payment_method source subdomain]
+        body_bag = params.slice(*body_prop_names)
 
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[force_customer_creation]
-        _query = {}
-        _query["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
-        params.except(*_query_param_names)
+        query_param_names = %i[force_customer_creation]
+        query_params = {}
+        query_params["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
+        params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "MoneyIn/makecredit",
-          query: _query,
-          body: Payabli::MoneyIn::Types::RequestCredit.new(_body_bag).to_h
+          query: query_params,
+          body: Payabli::MoneyIn::Types::RequestCredit.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse0.load(_response.body)
+          Payabli::Types::PayabliApiResponse0.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -186,22 +197,23 @@ module Payabli
       #
       # @return [Payabli::Types::TransactionQueryRecordsCustomer]
       def details(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/details/#{params[:trans_id]}"
+          path: "MoneyIn/details/#{params[:trans_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::TransactionQueryRecordsCustomer.load(_response.body)
+          Payabli::Types::TransactionQueryRecordsCustomer.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -223,35 +235,38 @@ module Payabli
       # @return [Payabli::MoneyIn::Types::PayabliApiResponseGetPaid]
       def getpaid(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[ach_validation force_customer_creation include_details]
-        _query = {}
-        _query["achValidation"] = params[:ach_validation] if params.key?(:ach_validation)
-        _query["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
-        _query["includeDetails"] = params[:include_details] if params.key?(:include_details)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[ach_validation force_customer_creation include_details]
+        query_params = {}
+        query_params["achValidation"] = params[:ach_validation] if params.key?(:ach_validation)
+        query_params["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
+        query_params["includeDetails"] = params[:include_details] if params.key?(:include_details)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "MoneyIn/getpaid",
-          query: _query,
-          body: Payabli::MoneyIn::Types::TransRequestBody.new(params).to_h
+          query: query_params,
+          body: Payabli::MoneyIn::Types::TransRequestBody.new(params).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::PayabliApiResponseGetPaid.load(_response.body)
+          Payabli::MoneyIn::Types::PayabliApiResponseGetPaid.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # A reversal either refunds or voids a transaction independent of the transaction's settlement status. Send a reversal request for a transaction, and Payabli automatically determines whether it's a refund or void. You don't need to know whether the transaction is settled or not.
+      # A reversal either refunds or voids a transaction independent of the transaction's settlement status. Send a
+      # reversal request for a transaction, and Payabli automatically determines whether it's a refund or void. You
+      # don't need to know whether the transaction is settled or not.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -265,26 +280,28 @@ module Payabli
       #
       # @return [Payabli::MoneyIn::Types::ReverseResponse]
       def reverse(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/reverse/#{params[:trans_id]}/#{params[:amount]}"
+          path: "MoneyIn/reverse/#{params[:trans_id]}/#{params[:amount]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::ReverseResponse.load(_response.body)
+          Payabli::MoneyIn::Types::ReverseResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Refund a transaction that has settled and send money back to the account holder. If a transaction hasn't been settled, void it instead.
+      # Refund a transaction that has settled and send money back to the account holder. If a transaction hasn't been
+      # settled, void it instead.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -298,22 +315,23 @@ module Payabli
       #
       # @return [Payabli::MoneyIn::Types::RefundResponse]
       def refund(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/refund/#{params[:trans_id]}/#{params[:amount]}"
+          path: "MoneyIn/refund/#{params[:trans_id]}/#{params[:amount]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::RefundResponse.load(_response.body)
+          Payabli::MoneyIn::Types::RefundResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -331,32 +349,34 @@ module Payabli
       #
       # @return [Payabli::MoneyIn::Types::RefundWithInstructionsResponse]
       def refund_with_instructions(request_options: {}, **params)
-        _path_param_names = %i[trans_id]
-        _body = params.except(*_path_param_names)
-        _body_prop_names = %i[amount ipaddress order_description order_id refund_details source]
-        _body_bag = _body.slice(*_body_prop_names)
+        path_param_names = %i[trans_id]
+        body_params = params.except(*path_param_names)
+        body_prop_names = %i[amount ipaddress order_description order_id refund_details source]
+        body_bag = body_params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "MoneyIn/refund/#{params[:trans_id]}",
-          body: Payabli::MoneyIn::Types::RequestRefund.new(_body_bag).to_h
+          body: Payabli::MoneyIn::Types::RequestRefund.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::RefundWithInstructionsResponse.load(_response.body)
+          Payabli::MoneyIn::Types::RefundWithInstructionsResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Reverse microdeposits that are used to verify customer account ownership and access. The `transId` value is returned in the success response for the original credit transaction made with `api/MoneyIn/makecredit`.
+      # Reverse microdeposits that are used to verify customer account ownership and access. The `transId` value is
+      # returned in the success response for the original credit transaction made with `api/MoneyIn/makecredit`.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -369,22 +389,23 @@ module Payabli
       #
       # @return [Payabli::Types::PayabliApiResponse]
       def reverse_credit(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/reverseCredit/#{params[:trans_id]}"
+          path: "MoneyIn/reverseCredit/#{params[:trans_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse.load(_response.body)
+          Payabli::Types::PayabliApiResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -403,28 +424,29 @@ module Payabli
       # @return [Payabli::MoneyIn::Types::ReceiptResponse]
       def send_receipt_2_trans(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.symbolize_keys(params)
-        _query_param_names = %i[email]
-        _query = {}
-        _query["email"] = params[:email] if params.key?(:email)
-        params = params.except(*_query_param_names)
+        query_param_names = %i[email]
+        query_params = {}
+        query_params["email"] = params[:email] if params.key?(:email)
+        params = params.except(*query_param_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
           path: "MoneyIn/sendreceipt/#{params[:trans_id]}",
-          query: _query
+          query: query_params,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::ReceiptResponse.load(_response.body)
+          Payabli::MoneyIn::Types::ReceiptResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -441,30 +463,32 @@ module Payabli
       #
       # @return [Payabli::MoneyIn::Types::ValidateResponse]
       def validate(request_options: {}, **params)
-        _body_prop_names = %i[account_id entry_point order_description order_id payment_method]
-        _body_bag = params.slice(*_body_prop_names)
+        body_prop_names = %i[account_id entry_point order_description order_id payment_method]
+        body_bag = params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "MoneyIn/validate",
-          body: Payabli::MoneyIn::Types::RequestPaymentValidate.new(_body_bag).to_h
+          body: Payabli::MoneyIn::Types::RequestPaymentValidate.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::ValidateResponse.load(_response.body)
+          Payabli::MoneyIn::Types::ValidateResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
-      # Cancel a transaction that hasn't been settled yet. Voiding non-captured authorizations prevents future captures. If a transaction has been settled, refund it instead.
+      # Cancel a transaction that hasn't been settled yet. Voiding non-captured authorizations prevents future captures.
+      # If a transaction has been settled, refund it instead.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -477,22 +501,23 @@ module Payabli
       #
       # @return [Payabli::MoneyIn::Types::VoidResponse]
       def void(request_options: {}, **params)
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/void/#{params[:trans_id]}"
+          path: "MoneyIn/void/#{params[:trans_id]}",
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::VoidResponse.load(_response.body)
+          Payabli::MoneyIn::Types::VoidResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

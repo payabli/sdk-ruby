@@ -43,7 +43,7 @@ This SDK allows you to configure different environments or custom URLs for API r
 require "payabli"
 
 payabli = Payabli::Client.new(
-    base_url: Payabli::Environment::Sandbox
+    base_url: Payabli::Environment::SANDBOX
 )
 ```
 
@@ -76,9 +76,9 @@ rescue Payabli::Errors::ServiceUnavailableError
 rescue Payabli::Errors::ServerError
     puts "API returned some other 5xx status, this is probably a bug"
 rescue Payabli::Errors::ResponseError => e
-    puts "API returned an unexpected status other than 5xx: #{e.code} {e.message}"
+    puts "API returned an unexpected status other than 5xx: #{e.code} #{e.message}"
 rescue Payabli::Errors::ApiError => e
-    puts "Some other error occurred when calling the API: {e.message}"
+    puts "Some other error occurred when calling the API: #{e.message}"
 end
 ```
 

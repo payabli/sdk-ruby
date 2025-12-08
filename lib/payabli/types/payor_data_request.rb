@@ -4,9 +4,7 @@ module Payabli
   module Types
     # Customer information. May be required, depending on the paypoint's settings. Required for subscriptions.
     class PayorDataRequest < Internal::Types::Model
-      field :additional_data, lambda {
-        Internal::Types::Hash[String, Internal::Types::Hash[String, Internal::Types::Hash[String, Object]]]
-      }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, Internal::Types::Hash[String, Object]] }, optional: true, nullable: false, api_name: "additionalData"
       field :billing_address_1, -> { String }, optional: true, nullable: false, api_name: "billingAddress1"
       field :billing_address_2, -> { String }, optional: true, nullable: false, api_name: "billingAddress2"
       field :billing_city, -> { String }, optional: true, nullable: false, api_name: "billingCity"
@@ -19,9 +17,7 @@ module Payabli
       field :customer_id, -> { Integer }, optional: true, nullable: false, api_name: "customerId"
       field :customer_number, -> { String }, optional: true, nullable: false, api_name: "customerNumber"
       field :first_name, -> { String }, optional: true, nullable: false, api_name: "firstName"
-      field :identifier_fields, lambda {
-        Internal::Types::Array[String]
-      }, optional: true, nullable: false, api_name: "identifierFields"
+      field :identifier_fields, -> { Internal::Types::Array[String] }, optional: true, nullable: false, api_name: "identifierFields"
       field :last_name, -> { String }, optional: true, nullable: false, api_name: "lastName"
       field :shipping_address_1, -> { String }, optional: true, nullable: false, api_name: "shippingAddress1"
       field :shipping_address_2, -> { String }, optional: true, nullable: false, api_name: "shippingAddress2"

@@ -17,9 +17,7 @@ module Payabli
       field :batch_processed_amount, -> { Integer }, optional: true, nullable: false, api_name: "BatchProcessedAmount"
       field :batch_processed_records, -> { Integer }, optional: true, nullable: false, api_name: "BatchProcessedRecords"
       field :batch_processing_amount, -> { Integer }, optional: true, nullable: false, api_name: "BatchProcessingAmount"
-      field :batch_processing_records, lambda {
-        Integer
-      }, optional: true, nullable: false, api_name: "BatchProcessingRecords"
+      field :batch_processing_records, -> { Integer }, optional: true, nullable: false, api_name: "BatchProcessingRecords"
       field :batch_records, -> { Integer }, optional: true, nullable: false, api_name: "BatchRecords"
       field :batch_status, -> { Integer }, optional: true, nullable: false, api_name: "BatchStatus"
       field :batch_status_text, -> { String }, optional: true, nullable: false, api_name: "BatchStatusText"

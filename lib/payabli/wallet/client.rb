@@ -22,26 +22,27 @@ module Payabli
       #
       # @return [Payabli::Types::ConfigureApplePayOrganizationApiResponse]
       def configure_apple_pay_organization(request_options: {}, **params)
-        _body_prop_names = %i[cascade is_enabled org_id]
-        _body_bag = params.slice(*_body_prop_names)
+        body_prop_names = %i[cascade is_enabled org_id]
+        body_bag = params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Wallet/applepay/configure-organization",
-          body: Payabli::Wallet::Types::ConfigureOrganizationRequestApplePay.new(_body_bag).to_h
+          body: Payabli::Wallet::Types::ConfigureOrganizationRequestApplePay.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::ConfigureApplePayOrganizationApiResponse.load(_response.body)
+          Payabli::Types::ConfigureApplePayOrganizationApiResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -57,26 +58,27 @@ module Payabli
       #
       # @return [Payabli::Types::ConfigureApplePaypointApiResponse]
       def configure_apple_pay_paypoint(request_options: {}, **params)
-        _body_prop_names = %i[entry is_enabled]
-        _body_bag = params.slice(*_body_prop_names)
+        body_prop_names = %i[entry is_enabled]
+        body_bag = params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Wallet/applepay/configure-paypoint",
-          body: Payabli::Wallet::Types::ConfigurePaypointRequestApplePay.new(_body_bag).to_h
+          body: Payabli::Wallet::Types::ConfigurePaypointRequestApplePay.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::ConfigureApplePaypointApiResponse.load(_response.body)
+          Payabli::Types::ConfigureApplePaypointApiResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -92,26 +94,27 @@ module Payabli
       #
       # @return [Payabli::Types::ConfigureApplePayOrganizationApiResponse]
       def configure_google_pay_organization(request_options: {}, **params)
-        _body_prop_names = %i[cascade is_enabled org_id]
-        _body_bag = params.slice(*_body_prop_names)
+        body_prop_names = %i[cascade is_enabled org_id]
+        body_bag = params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Wallet/googlepay/configure-organization",
-          body: Payabli::Wallet::Types::ConfigureOrganizationRequestGooglePay.new(_body_bag).to_h
+          body: Payabli::Wallet::Types::ConfigureOrganizationRequestGooglePay.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::ConfigureApplePayOrganizationApiResponse.load(_response.body)
+          Payabli::Types::ConfigureApplePayOrganizationApiResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
 
@@ -127,26 +130,27 @@ module Payabli
       #
       # @return [Payabli::Types::ConfigureGooglePaypointApiResponse]
       def configure_google_pay_paypoint(request_options: {}, **params)
-        _body_prop_names = %i[entry is_enabled]
-        _body_bag = params.slice(*_body_prop_names)
+        body_prop_names = %i[entry is_enabled]
+        body_bag = params.slice(*body_prop_names)
 
-        _request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url] || Payabli::Environment::SANDBOX,
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
           method: "POST",
           path: "Wallet/googlepay/configure-paypoint",
-          body: Payabli::Wallet::Types::ConfigurePaypointRequestGooglePay.new(_body_bag).to_h
+          body: Payabli::Wallet::Types::ConfigurePaypointRequestGooglePay.new(body_bag).to_h,
+          request_options: request_options
         )
         begin
-          _response = @client.send(_request)
+          response = @client.send(request)
         rescue Net::HTTPRequestTimeout
           raise Payabli::Errors::TimeoutError
         end
-        code = _response.code.to_i
+        code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::ConfigureGooglePaypointApiResponse.load(_response.body)
+          Payabli::Types::ConfigureGooglePaypointApiResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(_response.body, code: code)
+          raise error_class.new(response.body, code: code)
         end
       end
     end

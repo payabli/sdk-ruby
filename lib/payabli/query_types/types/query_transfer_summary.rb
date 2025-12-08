@@ -11,9 +11,7 @@ module Payabli
         field :gross_transfer_amount, -> { Integer }, optional: false, nullable: true, api_name: "grossTransferAmount"
         field :release_amount, -> { Integer }, optional: false, nullable: true, api_name: "releaseAmount"
         field :third_party_paid, -> { Integer }, optional: false, nullable: true, api_name: "thirdPartyPaid"
-        field :total_net_amount_transfer, lambda {
-          Integer
-        }, optional: false, nullable: true, api_name: "totalNetAmountTransfer"
+        field :total_net_amount_transfer, -> { Integer }, optional: false, nullable: true, api_name: "totalNetAmountTransfer"
         field :split_amount, -> { Integer }, optional: false, nullable: true, api_name: "splitAmount"
         field :service_fees, -> { Integer }, optional: false, nullable: true, api_name: "serviceFees"
         field :net_batch_amount, -> { Integer }, optional: false, nullable: true, api_name: "netBatchAmount"

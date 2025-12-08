@@ -23,9 +23,7 @@ module Payabli
         field :misc_2, -> { String }, optional: true, nullable: false, api_name: "misc2"
         field :date_created, -> { String }, optional: true, nullable: false, api_name: "dateCreated"
         field :date_modified, -> { String }, optional: true, nullable: false, api_name: "dateModified"
-        field :associated_vendor, lambda {
-          Payabli::MoneyOutTypes::Types::VCardGetResponseAssociatedVendor
-        }, optional: true, nullable: false, api_name: "associatedVendor"
+        field :associated_vendor, -> { Payabli::MoneyOutTypes::Types::VCardGetResponseAssociatedVendor }, optional: true, nullable: false, api_name: "associatedVendor"
         field :associated_customer, -> { String }, optional: true, nullable: false, api_name: "associatedCustomer"
         field :parent_org_name, -> { String }, optional: true, nullable: false, api_name: "ParentOrgName"
         field :paypoint_dbaname, -> { String }, optional: true, nullable: false, api_name: "PaypointDbaname"
