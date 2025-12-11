@@ -39,10 +39,21 @@ class NotificationWireTest < Minitest::Test
 
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.notification.add_notification(request_options: { base_url: WIREMOCK_BASE_URL,
-                                                            additional_headers: {
-                                                              "X-Test-Id" => "notification.add_notification.0"
-                                                            } })
+    client.notification.add_notification(
+      content: {
+        event_type: "CreatedApplication"
+      },
+      frequency: "untilcancelled",
+      method_: "web",
+      owner_id: "236",
+      owner_type: 0,
+      status: 1,
+      target: "https://webhook.site/2871b8f8-edc7-441a-b376-98d8c8e33275",
+      request_options: { base_url: WIREMOCK_BASE_URL,
+                         additional_headers: {
+                           "X-Test-Id" => "notification.add_notification.0"
+                         } }
+    )
 
     verify_request_count(
       test_id: test_id,
@@ -104,6 +115,15 @@ class NotificationWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.notification.update_notification(
       n_id: "1717",
+      content: {
+        event_type: "ApprovedPayment"
+      },
+      frequency: "untilcancelled",
+      method_: "email",
+      owner_id: "136",
+      owner_type: 0,
+      status: 1,
+      target: "newemail@email.com",
       request_options: { base_url: WIREMOCK_BASE_URL,
                          additional_headers: {
                            "X-Test-Id" => "notification.update_notification.0"

@@ -61,10 +61,35 @@ class SubscriptionWireTest < Minitest::Test
 
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.subscription.new_subscription(request_options: { base_url: WIREMOCK_BASE_URL,
-                                                            additional_headers: {
-                                                              "X-Test-Id" => "subscription.new_subscription.0"
-                                                            } })
+    client.subscription.new_subscription(
+      customer_data: {
+        customer_id: 4440
+      },
+      entry_point: "f743aed24a",
+      payment_details: {
+        service_fee: 0,
+        total_amount: 100
+      },
+      payment_method: {
+        cardcvv: "123",
+        cardexp: "02/25",
+        card_holder: "John Cassian",
+        cardnumber: "4111111111111111",
+        cardzip: "37615",
+        initiator: "payor",
+        method_: "card"
+      },
+      schedule_details: {
+        end_date: "03-20-2025",
+        frequency: "weekly",
+        plan_id: 1,
+        start_date: "09-20-2024"
+      },
+      request_options: { base_url: WIREMOCK_BASE_URL,
+                         additional_headers: {
+                           "X-Test-Id" => "subscription.new_subscription.0"
+                         } }
+    )
 
     verify_request_count(
       test_id: test_id,

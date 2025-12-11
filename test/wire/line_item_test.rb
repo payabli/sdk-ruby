@@ -41,6 +41,14 @@ class LineItemWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.line_item.add_item(
       entry: "47cae3d74",
+      item_commodity_code: "010",
+      item_cost: 12.45,
+      item_description: "Deposit for materials",
+      item_mode: 0,
+      item_product_code: "M-DEPOSIT",
+      item_product_name: "Materials deposit",
+      item_qty: 1,
+      item_unit_of_measure: "SqFt",
       request_options: { base_url: WIREMOCK_BASE_URL,
                          additional_headers: {
                            "X-Test-Id" => "line_item.add_item.0"

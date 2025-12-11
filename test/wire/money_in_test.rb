@@ -39,10 +39,30 @@ class MoneyInWireTest < Minitest::Test
 
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.authorize(request_options: { base_url: WIREMOCK_BASE_URL,
-                                                 additional_headers: {
-                                                   "X-Test-Id" => "money_in.authorize.0"
-                                                 } })
+    client.money_in.authorize(
+      customer_data: {
+        customer_id: 4440
+      },
+      entry_point: "f743aed24a",
+      ipaddress: "255.255.255.255",
+      payment_details: {
+        service_fee: 0,
+        total_amount: 100
+      },
+      payment_method: {
+        cardcvv: "999",
+        cardexp: "02/27",
+        card_holder: "John Cassian",
+        cardnumber: "4111111111111111",
+        cardzip: "12345",
+        initiator: "payor",
+        method_: "card"
+      },
+      request_options: { base_url: WIREMOCK_BASE_URL,
+                         additional_headers: {
+                           "X-Test-Id" => "money_in.authorize.0"
+                         } }
+    )
 
     verify_request_count(
       test_id: test_id,
@@ -120,6 +140,7 @@ class MoneyInWireTest < Minitest::Test
       },
       payment_method: {
         ach_account: "88354454",
+        ach_account_type: "Checking",
         ach_holder: "John Smith",
         ach_routing: "021000021",
         method_: "ach"
@@ -166,10 +187,30 @@ class MoneyInWireTest < Minitest::Test
 
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.getpaid(request_options: { base_url: WIREMOCK_BASE_URL,
-                                               additional_headers: {
-                                                 "X-Test-Id" => "money_in.getpaid.0"
-                                               } })
+    client.money_in.getpaid(
+      customer_data: {
+        customer_id: 4440
+      },
+      entry_point: "f743aed24a",
+      ipaddress: "255.255.255.255",
+      payment_details: {
+        service_fee: 0,
+        total_amount: 100
+      },
+      payment_method: {
+        cardcvv: "999",
+        cardexp: "02/27",
+        card_holder: "John Cassian",
+        cardnumber: "4111111111111111",
+        cardzip: "12345",
+        initiator: "payor",
+        method_: "card"
+      },
+      request_options: { base_url: WIREMOCK_BASE_URL,
+                         additional_headers: {
+                           "X-Test-Id" => "money_in.getpaid.0"
+                         } }
+    )
 
     verify_request_count(
       test_id: test_id,
@@ -319,6 +360,7 @@ class MoneyInWireTest < Minitest::Test
       idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
       entry_point: "entry132",
       payment_method: {
+        method_: "card",
         cardnumber: "4360000001000005",
         cardexp: "12/29",
         cardzip: "14602-8328",

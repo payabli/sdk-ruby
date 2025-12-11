@@ -41,6 +41,39 @@ class BillWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.bill.add_bill(
       entry: "8cfec329267",
+      accounting_field_1: "MyInternalId",
+      attachments: [{
+        ftype: "pdf",
+        filename: "my-doc.pdf",
+        furl: "https://mysite.com/my-doc.pdf"
+      }],
+      bill_date: "2024-07-01",
+      bill_items: [{
+        item_product_code: "M-DEPOSIT",
+        item_product_name: "Materials deposit",
+        item_description: "Deposit for materials",
+        item_commodity_code: "010",
+        item_unit_of_measure: "SqFt",
+        item_cost: 5,
+        item_qty: 1,
+        item_mode: 0,
+        item_categories: ["deposits"],
+        item_total_amount: 123,
+        item_tax_amount: 7,
+        item_tax_rate: 0.075
+      }],
+      bill_number: "ABC-123",
+      comments: "Deposit for materials",
+      due_date: "2024-07-01",
+      end_date: "2024-07-01",
+      frequency: "monthly",
+      mode: 0,
+      net_amount: 3762.87,
+      status: -99,
+      terms: "NET30",
+      vendor: {
+        vendor_number: "1234-A"
+      },
       request_options: { base_url: WIREMOCK_BASE_URL,
                          additional_headers: {
                            "X-Test-Id" => "bill.add_bill.0"
@@ -228,6 +261,7 @@ class BillWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.bill.modify_approval_bill(
       id_bill: 285,
+      request: ["string"],
       request_options: { base_url: WIREMOCK_BASE_URL,
                          additional_headers: {
                            "X-Test-Id" => "bill.modify_approval_bill.0"
@@ -251,6 +285,7 @@ class BillWireTest < Minitest::Test
     client.bill.send_to_approval_bill(
       id_bill: 285,
       idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
+      body: ["string"],
       request_options: { base_url: WIREMOCK_BASE_URL,
                          additional_headers: {
                            "X-Test-Id" => "bill.send_to_approval_bill.0"

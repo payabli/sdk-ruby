@@ -66,6 +66,7 @@ class OrganizationWireTest < Minitest::Test
       org_logo: {
         f_content: "TXkgdGVzdCBmaWxlHJ==...",
         filename: "my-doc.pdf",
+        ftype: "pdf",
         furl: "https://mysite.com/my-doc.pdf"
       },
       org_name: "Pilgrim Planner",

@@ -49,7 +49,9 @@ class VendorWireTest < Minitest::Test
         bank_name: "Country Bank",
         routing_account: "123123123",
         account_number: "123123123",
+        type_account: "Checking",
         bank_account_holder_name: "Gruzya Adventure Outfitters LLC",
+        bank_account_holder_type: "Business",
         bank_account_function: 0
       },
       city: "Miami",

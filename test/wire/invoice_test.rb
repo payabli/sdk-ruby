@@ -41,6 +41,32 @@ class InvoiceWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.invoice.add_invoice(
       entry: "8cfec329267",
+      customer_data: {
+        first_name: "Tamara",
+        last_name: "Bagratoni",
+        customer_number: "3"
+      },
+      invoice_data: {
+        items: [{
+          item_product_name: "Adventure Consult",
+          item_description: "Consultation for Georgian tours",
+          item_cost: 100,
+          item_qty: 1,
+          item_mode: 1
+        }, {
+          item_product_name: "Deposit ",
+          item_description: "Deposit for trip planning",
+          item_cost: 882.37,
+          item_qty: 1
+        }],
+        invoice_date: "2025-10-19",
+        invoice_type: 0,
+        invoice_status: 1,
+        frequency: "one-time",
+        invoice_amount: 982.37,
+        discount: 10,
+        invoice_number: "INV-3"
+      },
       request_options: { base_url: WIREMOCK_BASE_URL,
                          additional_headers: {
                            "X-Test-Id" => "invoice.add_invoice.0"
@@ -108,6 +134,17 @@ class InvoiceWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.invoice.edit_invoice(
       id_invoice: 332,
+      invoice_data: {
+        items: [{
+          item_product_name: "Deposit",
+          item_description: "Deposit for trip planning",
+          item_cost: 882.37,
+          item_qty: 1
+        }],
+        invoice_date: "2025-10-19",
+        invoice_amount: 982.37,
+        invoice_number: "INV-6"
+      },
       request_options: { base_url: WIREMOCK_BASE_URL,
                          additional_headers: {
                            "X-Test-Id" => "invoice.edit_invoice.0"

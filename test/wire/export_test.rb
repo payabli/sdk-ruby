@@ -40,6 +40,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_applications(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -66,6 +67,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_batch_details(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -90,6 +92,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_batch_details_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -116,6 +119,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_batches(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -140,6 +144,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_batches_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -166,6 +171,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_batches_out(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -190,6 +196,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_batches_out_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -216,6 +223,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_bills(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -240,6 +248,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_bills_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -266,6 +275,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_chargebacks(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -290,6 +300,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_chargebacks_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -316,6 +327,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_customers(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -340,6 +352,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_customers_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -366,6 +379,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_invoices(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -390,6 +404,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_invoices_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -415,6 +430,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_organizations(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -441,6 +457,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_payout(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -465,6 +482,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_payout_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -490,6 +508,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_paypoints(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -516,6 +535,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_settlements(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -540,6 +560,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_settlements_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -566,6 +587,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_subscriptions(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -590,6 +612,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_subscriptions_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -616,6 +639,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_transactions(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -640,6 +664,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_transactions_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -666,6 +691,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_transfer_details(
       entry: "8cfec329267",
+      format: "csv",
       transfer_id: 1_000_000,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -719,6 +745,7 @@ class ExportWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_vendors(
       entry: "8cfec329267",
+      format: "csv",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -743,6 +770,7 @@ class ExportWireTest < Minitest::Test
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.export.export_vendors_org(
+      format: "csv",
       org_id: 123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,

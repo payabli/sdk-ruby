@@ -39,10 +39,25 @@ class TokenStorageWireTest < Minitest::Test
 
     require "payabli"
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.token_storage.add_method(request_options: { base_url: WIREMOCK_BASE_URL,
-                                                       additional_headers: {
-                                                         "X-Test-Id" => "token_storage.add_method.0"
-                                                       } })
+    client.token_storage.add_method(
+      customer_data: {
+        customer_id: 4440
+      },
+      entry_point: "f743aed24a",
+      fallback_auth: true,
+      payment_method: {
+        cardcvv: "123",
+        cardexp: "02/25",
+        card_holder: "John Doe",
+        cardnumber: "4111111111111111",
+        cardzip: "12345",
+        method_: "card"
+      },
+      request_options: { base_url: WIREMOCK_BASE_URL,
+                         additional_headers: {
+                           "X-Test-Id" => "token_storage.add_method.0"
+                         } }
+    )
 
     verify_request_count(
       test_id: test_id,
@@ -106,6 +121,19 @@ class TokenStorageWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.token_storage.update_method(
       method_id: "32-8877drt00045632-678",
+      customer_data: {
+        customer_id: 4440
+      },
+      entry_point: "f743aed24a",
+      fallback_auth: true,
+      payment_method: {
+        cardcvv: "123",
+        cardexp: "02/25",
+        card_holder: "John Doe",
+        cardnumber: "4111111111111111",
+        cardzip: "12345",
+        method_: "card"
+      },
       request_options: { base_url: WIREMOCK_BASE_URL,
                          additional_headers: {
                            "X-Test-Id" => "token_storage.update_method.0"

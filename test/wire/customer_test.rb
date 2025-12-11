@@ -41,6 +41,17 @@ class CustomerWireTest < Minitest::Test
     client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
     client.customer.add_customer(
       entry: "8cfec329267",
+      customer_number: "12356ACB",
+      firstname: "Irene",
+      lastname: "Canizales",
+      email: "irene@canizalesconcrete.com",
+      address_1: "123 Bishop's Trail",
+      city: "Mountain City",
+      state: "TN",
+      zip: "37612",
+      country: "US",
+      time_zone: -5,
+      identifier_fields: ["email"],
       request_options: { base_url: WIREMOCK_BASE_URL,
                          additional_headers: {
                            "X-Test-Id" => "customer.add_customer.0"
