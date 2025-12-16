@@ -4,7 +4,7 @@ module Payabli
   module Types
     # Customer information.
     class PayorDataResponse < Internal::Types::Model
-      field :additional_data, -> { Internal::Types::Hash[String, Internal::Types::Hash[String, Object]] }, optional: false, nullable: true, api_name: "AdditionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: false, nullable: true, api_name: "AdditionalData"
       field :billing_address_1, -> { String }, optional: false, nullable: true, api_name: "BillingAddress1"
       field :billing_address_2, -> { String }, optional: false, nullable: true, api_name: "BillingAddress2"
       field :billing_city, -> { String }, optional: false, nullable: true, api_name: "BillingCity"

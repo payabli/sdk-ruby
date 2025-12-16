@@ -5,7 +5,7 @@ module Payabli
     module Frequency
       extend Payabli::Internal::Types::Enum
 
-      ONE_TIME = "one-time"
+      ONE_TIME = "onetime"
       WEEKLY = "weekly"
       EVERY_2_WEEKS = "every2weeks"
       EVERY_6_MONTHS = "every6months"

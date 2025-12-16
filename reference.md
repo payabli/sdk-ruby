@@ -8481,17 +8481,19 @@ client.invoice.add_invoice(
       item_description: 'Consultation for Georgian tours',
       item_cost: 100,
       item_qty: 1,
-      item_mode: 1
+      item_mode: 1,
+      item_total_amount: 1
     }, {
       item_product_name: 'Deposit ',
       item_description: 'Deposit for trip planning',
       item_cost: 882.37,
-      item_qty: 1
+      item_qty: 1,
+      item_total_amount: 1
     }],
     invoice_date: '2025-10-19',
     invoice_type: 0,
     invoice_status: 1,
-    frequency: 'one-time',
+    frequency: 'onetime',
     invoice_amount: 982.37,
     discount: 10,
     invoice_number: 'INV-3'
