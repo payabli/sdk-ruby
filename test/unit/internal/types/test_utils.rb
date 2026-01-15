@@ -2,26 +2,26 @@
 
 require "test_helper"
 
-describe Payabli::Internal::Types::Utils do
-  Utils = Payabli::Internal::Types::Utils
+describe PayabliSdk::Internal::Types::Utils do
+  Utils = PayabliSdk::Internal::Types::Utils
 
   module TestUtils
-    class M < Payabli::Internal::Types::Model
+    class M < PayabliSdk::Internal::Types::Model
       field :value, String
     end
 
-    class UnionMemberA < Payabli::Internal::Types::Model
+    class UnionMemberA < PayabliSdk::Internal::Types::Model
       literal :type, "A"
       field :only_on_a, String
     end
 
-    class UnionMemberB < Payabli::Internal::Types::Model
+    class UnionMemberB < PayabliSdk::Internal::Types::Model
       literal :type, "B"
       field :only_on_b, String
     end
 
     module U
-      extend Payabli::Internal::Types::Union
+      extend PayabliSdk::Internal::Types::Union
 
       discriminant :type
 
@@ -29,8 +29,8 @@ describe Payabli::Internal::Types::Utils do
       member -> { UnionMemberB }, key: "B"
     end
 
-    SymbolStringHash = Payabli::Internal::Types::Hash[Symbol, String]
-    SymbolModelHash = -> { Payabli::Internal::Types::Hash[Symbol, TestUtils::M] }
+    SymbolStringHash = PayabliSdk::Internal::Types::Hash[Symbol, String]
+    SymbolModelHash = -> { PayabliSdk::Internal::Types::Hash[Symbol, TestUtils::M] }
   end
 
   describe ".coerce" do
@@ -58,7 +58,7 @@ describe Payabli::Internal::Types::Utils do
       end
 
       it "raises an error if value cannot be coerced and strict" do
-        assert_raises Payabli::Internal::Errors::TypeError do
+        assert_raises PayabliSdk::Internal::Errors::TypeError do
           Utils.coerce(String, Object.new, strict: true)
         end
       end
@@ -77,7 +77,7 @@ describe Payabli::Internal::Types::Utils do
       end
 
       it "raises an error if value cannot be coerced and strict" do
-        assert_raises Payabli::Internal::Errors::TypeError do
+        assert_raises PayabliSdk::Internal::Errors::TypeError do
           Utils.coerce(Symbol, Object.new, strict: true)
         end
       end
@@ -100,7 +100,7 @@ describe Payabli::Internal::Types::Utils do
       end
 
       it "raises an error if value cannot be coerced and strict" do
-        assert_raises Payabli::Internal::Errors::TypeError do
+        assert_raises PayabliSdk::Internal::Errors::TypeError do
           Utils.coerce(Integer, Object.new, strict: true)
         end
       end
@@ -122,7 +122,7 @@ describe Payabli::Internal::Types::Utils do
       end
 
       it "raises an error if value cannot be coerced and strict" do
-        assert_raises Payabli::Internal::Errors::TypeError do
+        assert_raises PayabliSdk::Internal::Errors::TypeError do
           Utils.coerce(Float, Object.new, strict: true)
         end
       end
@@ -150,7 +150,7 @@ describe Payabli::Internal::Types::Utils do
 
     describe "Enum" do
       module ExampleEnum
-        extend Payabli::Internal::Types::Enum
+        extend PayabliSdk::Internal::Types::Enum
 
         FOO = :FOO
         BAR = :BAR
@@ -168,9 +168,9 @@ describe Payabli::Internal::Types::Utils do
     end
 
     describe "Array" do
-      StringArray = Payabli::Internal::Types::Array[String]
-      ModelArray = -> { Payabli::Internal::Types::Array[TestUtils::M] }
-      UnionArray = -> { Payabli::Internal::Types::Array[TestUtils::U] }
+      StringArray = PayabliSdk::Internal::Types::Array[String]
+      ModelArray = -> { PayabliSdk::Internal::Types::Array[TestUtils::M] }
+      UnionArray = -> { PayabliSdk::Internal::Types::Array[TestUtils::U] }
 
       it "coerces an array of literals" do
         assert_equal %w[a b c], Utils.coerce(StringArray, %w[a b c])

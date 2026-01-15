@@ -12,7 +12,10 @@ The Payabli Ruby library provides convenient access to the Payabli APIs from Rub
 - [Environments](#environments)
 - [Errors](#errors)
 - [Advanced](#advanced)
+  - [Retries](#retries)
   - [Timeouts](#timeouts)
+  - [Additional Headers](#additional-headers)
+  - [Additional Query Parameters](#additional-query-parameters)
 - [Contributing](#contributing)
 
 ## Documentation
@@ -59,18 +62,18 @@ client.money_in.getpaid(
 This SDK allows you to configure different environments or custom URLs for API requests. You can either use the predefined environments or specify your own custom URL.
 ### Environments
 ```ruby
-require "payabli"
+require "payabli_sdk"
 
-payabli = Payabli::Client.new(
-    base_url: Payabli::Environment::SANDBOX
+payabli_sdk = PayabliSdk::Client.new(
+    base_url: PayabliSdk::Environment::SANDBOX
 )
 ```
 
 ### Custom URL
 ```ruby
-require "payabli"
+require "payabli_sdk"
 
-client = Payabli::Client.new(
+client = PayabliSdk::Client.new(
     base_url: "https://example.com"
 )
 ```
@@ -80,39 +83,95 @@ client = Payabli::Client.new(
 Failed API calls will raise errors that can be rescued from granularly.
 
 ```ruby
-require "payabli"
+require "payabli_sdk"
 
-client = Payabli::Client.new(
+client = PayabliSdk::Client.new(
     base_url: "https://example.com"
 )
 
 begin
     result = client.money_in.getpaid
-rescue Payabli::Errors::TimeoutError
+rescue PayabliSdk::Errors::TimeoutError
     puts "API didn't respond before our timeout elapsed"
-rescue Payabli::Errors::ServiceUnavailableError
+rescue PayabliSdk::Errors::ServiceUnavailableError
     puts "API returned status 503, is probably overloaded, try again later"
-rescue Payabli::Errors::ServerError
+rescue PayabliSdk::Errors::ServerError
     puts "API returned some other 5xx status, this is probably a bug"
-rescue Payabli::Errors::ResponseError => e
+rescue PayabliSdk::Errors::ResponseError => e
     puts "API returned an unexpected status other than 5xx: #{e.code} #{e.message}"
-rescue Payabli::Errors::ApiError => e
+rescue PayabliSdk::Errors::ApiError => e
     puts "Some other error occurred when calling the API: #{e.message}"
 end
 ```
 
 ## Advanced
 
+### Retries
+
+The SDK is instrumented with automatic retries. A request will be retried as long as the request is deemed
+retryable and the number of retry attempts has not grown larger than the configured retry limit (default: 2).
+
+A request is deemed retryable when any of the following HTTP status codes is returned:
+
+- [408](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408) (Timeout)
+- [429](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) (Too Many Requests)
+- [5XX](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500) (Internal Server Errors)
+
+Use the `max_retries` option to configure this behavior.
+
+```ruby
+require "payabli_sdk"
+
+client = PayabliSdk::Client.new(
+    base_url: "https://example.com",
+    max_retries: 3  # Configure max retries (default is 2)
+)
+```
+
 ### Timeouts
 
 The SDK defaults to a 60 second timeout. Use the `timeout` option to configure this behavior.
 
 ```ruby
-require "payabli"
+require "payabli_sdk"
 
 response = client.money_in.getpaid(
     ...,
     timeout: 30  # 30 second timeout
+)
+```
+
+### Additional Headers
+
+If you would like to send additional headers as part of the request, use the `additional_headers` request option.
+
+```ruby
+require "payabli_sdk"
+
+response = client.money_in.getpaid(
+    ...,
+    request_options: {
+        additional_headers: {
+            "X-Custom-Header" => "custom-value"
+        }
+    }
+)
+```
+
+### Additional Query Parameters
+
+If you would like to send additional query parameters as part of the request, use the `additional_query_parameters` request option.
+
+```ruby
+require "payabli_sdk"
+
+response = client.money_in.getpaid(
+    ...,
+    request_options: {
+        additional_query_parameters: {
+            "custom_param" => "custom-value"
+        }
+    }
 )
 ```
 

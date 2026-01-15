@@ -1,45 +1,21 @@
 # frozen_string_literal: true
 
-require_relative "wire_helper"
-require "net/http"
-require "json"
-require "uri"
-require "payabli"
+require_relative "wiremock_test_case"
 
-class MoneyOutWireTest < Minitest::Test
-  WIREMOCK_BASE_URL = "http://localhost:8080"
-  WIREMOCK_ADMIN_URL = "http://localhost:8080/__admin"
-
+class MoneyOutWireTest < WireMockTestCase
   def setup
     super
-    return if ENV["RUN_WIRE_TESTS"] == "true"
 
-    skip "Wire tests are disabled by default. Set RUN_WIRE_TESTS=true to enable them."
-  end
-
-  def verify_request_count(test_id:, method:, url_path:, expected:, query_params: nil)
-    uri = URI("#{WIREMOCK_ADMIN_URL}/requests/find")
-    http = Net::HTTP.new(uri.host, uri.port)
-    post_request = Net::HTTP::Post.new(uri.path, { "Content-Type" => "application/json" })
-
-    request_body = { "method" => method, "urlPath" => url_path }
-    request_body["headers"] = { "X-Test-Id" => { "equalTo" => test_id } }
-    request_body["queryParameters"] = query_params.transform_values { |v| { "equalTo" => v } } if query_params
-
-    post_request.body = request_body.to_json
-    response = http.request(post_request)
-    result = JSON.parse(response.body)
-    requests = result["requests"] || []
-
-    assert_equal expected, requests.length, "Expected #{expected} requests, found #{requests.length}"
+    @client = PayabliSdk::Client.new(
+      api_key: "test-api-key",
+      base_url: WIREMOCK_BASE_URL
+    )
   end
 
   def test_money_out_authorize_out_with_wiremock
     test_id = "money_out.authorize_out.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_out.authorize_out(
+    @client.money_out.authorize_out(
       entry_point: "48acde49",
       order_description: "Window Painting",
       payment_method: {
@@ -55,10 +31,11 @@ class MoneyOutWireTest < Minitest::Test
       invoice_data: [{
         bill_id: 54_323
       }],
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_out.authorize_out.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.authorize_out.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -73,14 +50,13 @@ class MoneyOutWireTest < Minitest::Test
   def test_money_out_cancel_all_out_with_wiremock
     test_id = "money_out.cancel_all_out.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_out.cancel_all_out(
+    @client.money_out.cancel_all_out(
       request: %w[2-29 2-28 2-27],
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_out.cancel_all_out.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.cancel_all_out.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -95,14 +71,13 @@ class MoneyOutWireTest < Minitest::Test
   def test_money_out_cancel_out_get_with_wiremock
     test_id = "money_out.cancel_out_get.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_out.cancel_out_get(
+    @client.money_out.cancel_out_get(
       reference_id: "129-219",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_out.cancel_out_get.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.cancel_out_get.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -117,14 +92,13 @@ class MoneyOutWireTest < Minitest::Test
   def test_money_out_cancel_out_delete_with_wiremock
     test_id = "money_out.cancel_out_delete.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_out.cancel_out_delete(
+    @client.money_out.cancel_out_delete(
       reference_id: "129-219",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_out.cancel_out_delete.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.cancel_out_delete.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -139,14 +113,13 @@ class MoneyOutWireTest < Minitest::Test
   def test_money_out_capture_all_out_with_wiremock
     test_id = "money_out.capture_all_out.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_out.capture_all_out(
+    @client.money_out.capture_all_out(
       body: %w[2-29 2-28 2-27],
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_out.capture_all_out.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.capture_all_out.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -161,14 +134,13 @@ class MoneyOutWireTest < Minitest::Test
   def test_money_out_capture_out_with_wiremock
     test_id = "money_out.capture_out.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_out.capture_out(
+    @client.money_out.capture_out(
       reference_id: "129-219",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_out.capture_out.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.capture_out.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -183,14 +155,13 @@ class MoneyOutWireTest < Minitest::Test
   def test_money_out_payout_details_with_wiremock
     test_id = "money_out.payout_details.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_out.payout_details(
+    @client.money_out.payout_details(
       trans_id: "45-as456777hhhhhhhhhh77777777-324",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_out.payout_details.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.payout_details.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -205,14 +176,13 @@ class MoneyOutWireTest < Minitest::Test
   def test_money_out_v_card_get_with_wiremock
     test_id = "money_out.v_card_get.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_out.v_card_get(
+    @client.money_out.v_card_get(
       card_token: "20230403315245421165",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_out.v_card_get.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.v_card_get.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -227,14 +197,13 @@ class MoneyOutWireTest < Minitest::Test
   def test_money_out_send_v_card_link_with_wiremock
     test_id = "money_out.send_v_card_link.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_out.send_v_card_link(
+    @client.money_out.send_v_card_link(
       trans_id: "01K33Z6YQZ6GD5QVKZ856MJBSC",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_out.send_v_card_link.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.send_v_card_link.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -249,14 +218,13 @@ class MoneyOutWireTest < Minitest::Test
   def test_money_out_get_check_image_with_wiremock
     test_id = "money_out.get_check_image.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_out.get_check_image(
+    @client.money_out.get_check_image(
       asset_name: "check133832686289732320_01JKBNZ5P32JPTZY8XXXX000000.pdf",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_out.get_check_image.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.get_check_image.0"
+        }
+      }
     )
 
     verify_request_count(

@@ -1,8 +1,9 @@
 {
-  "cliVersion": "3.22.1",
+  "cliVersion": "3.32.0",
   "generatorName": "fernapi/fern-ruby-sdk",
-  "generatorVersion": "1.0.0-rc66",
+  "generatorVersion": "1.0.0-rc80",
   "generatorConfig": {
     "enableWireTests": true
-  }
+  },
+  "sdkVersion": "2.1.6"
 }

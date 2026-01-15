@@ -1,45 +1,21 @@
 # frozen_string_literal: true
 
-require_relative "wire_helper"
-require "net/http"
-require "json"
-require "uri"
-require "payabli"
+require_relative "wiremock_test_case"
 
-class OrganizationWireTest < Minitest::Test
-  WIREMOCK_BASE_URL = "http://localhost:8080"
-  WIREMOCK_ADMIN_URL = "http://localhost:8080/__admin"
-
+class OrganizationWireTest < WireMockTestCase
   def setup
     super
-    return if ENV["RUN_WIRE_TESTS"] == "true"
 
-    skip "Wire tests are disabled by default. Set RUN_WIRE_TESTS=true to enable them."
-  end
-
-  def verify_request_count(test_id:, method:, url_path:, expected:, query_params: nil)
-    uri = URI("#{WIREMOCK_ADMIN_URL}/requests/find")
-    http = Net::HTTP.new(uri.host, uri.port)
-    post_request = Net::HTTP::Post.new(uri.path, { "Content-Type" => "application/json" })
-
-    request_body = { "method" => method, "urlPath" => url_path }
-    request_body["headers"] = { "X-Test-Id" => { "equalTo" => test_id } }
-    request_body["queryParameters"] = query_params.transform_values { |v| { "equalTo" => v } } if query_params
-
-    post_request.body = request_body.to_json
-    response = http.request(post_request)
-    result = JSON.parse(response.body)
-    requests = result["requests"] || []
-
-    assert_equal expected, requests.length, "Expected #{expected} requests, found #{requests.length}"
+    @client = PayabliSdk::Client.new(
+      api_key: "test-api-key",
+      base_url: WIREMOCK_BASE_URL
+    )
   end
 
   def test_organization_add_organization_with_wiremock
     test_id = "organization.add_organization.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.organization.add_organization(
+    @client.organization.add_organization(
       idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
       billing_info: {
         ach_account: "123123123",
@@ -77,10 +53,11 @@ class OrganizationWireTest < Minitest::Test
       org_website: "www.pilgrimageplanner.com",
       org_zip: "37615",
       reply_to_email: "email@example.com",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "organization.add_organization.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "organization.add_organization.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -95,14 +72,13 @@ class OrganizationWireTest < Minitest::Test
   def test_organization_delete_organization_with_wiremock
     test_id = "organization.delete_organization.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.organization.delete_organization(
+    @client.organization.delete_organization(
       org_id: 123,
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "organization.delete_organization.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "organization.delete_organization.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -117,9 +93,7 @@ class OrganizationWireTest < Minitest::Test
   def test_organization_edit_organization_with_wiremock
     test_id = "organization.edit_organization.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.organization.edit_organization(
+    @client.organization.edit_organization(
       org_id: 123,
       contacts: [{
         contact_email: "herman@hermanscoatings.com",
@@ -138,10 +112,11 @@ class OrganizationWireTest < Minitest::Test
       org_type: 0,
       org_website: "www.pilgrimageplanner.com",
       org_zip: "37615",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "organization.edit_organization.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "organization.edit_organization.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -156,14 +131,13 @@ class OrganizationWireTest < Minitest::Test
   def test_organization_get_basic_organization_with_wiremock
     test_id = "organization.get_basic_organization.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.organization.get_basic_organization(
+    @client.organization.get_basic_organization(
       entry: "8cfec329267",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "organization.get_basic_organization.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "organization.get_basic_organization.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -178,14 +152,13 @@ class OrganizationWireTest < Minitest::Test
   def test_organization_get_basic_organization_by_id_with_wiremock
     test_id = "organization.get_basic_organization_by_id.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.organization.get_basic_organization_by_id(
+    @client.organization.get_basic_organization_by_id(
       org_id: 123,
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "organization.get_basic_organization_by_id.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "organization.get_basic_organization_by_id.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -200,14 +173,13 @@ class OrganizationWireTest < Minitest::Test
   def test_organization_get_organization_with_wiremock
     test_id = "organization.get_organization.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.organization.get_organization(
+    @client.organization.get_organization(
       org_id: 123,
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "organization.get_organization.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "organization.get_organization.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -222,14 +194,13 @@ class OrganizationWireTest < Minitest::Test
   def test_organization_get_settings_organization_with_wiremock
     test_id = "organization.get_settings_organization.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.organization.get_settings_organization(
+    @client.organization.get_settings_organization(
       org_id: 123,
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "organization.get_settings_organization.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "organization.get_settings_organization.0"
+        }
+      }
     )
 
     verify_request_count(

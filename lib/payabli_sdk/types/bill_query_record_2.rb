@@ -1,0 +1,45 @@
+# frozen_string_literal: true
+
+module PayabliSdk
+  module Types
+    class BillQueryRecord2 < Internal::Types::Model
+      field :accounting_field_1, -> { String }, optional: false, nullable: true, api_name: "AccountingField1"
+      field :accounting_field_2, -> { String }, optional: false, nullable: true, api_name: "AccountingField2"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: false, nullable: true, api_name: "AdditionalData"
+      field :batch_number, -> { String }, optional: false, nullable: true, api_name: "BatchNumber"
+      field :bill_approvals, -> { Internal::Types::Array[PayabliSdk::Types::BillQueryRecord2BillApprovalsItem] }, optional: false, nullable: true, api_name: "billApprovals"
+      field :bill_date, -> { String }, optional: false, nullable: true, api_name: "BillDate"
+      field :bill_events, -> { Internal::Types::Array[PayabliSdk::Types::GeneralEvents] }, optional: false, nullable: true, api_name: "billEvents"
+      field :bill_items, -> { Internal::Types::Array[PayabliSdk::Types::BillItem] }, optional: false, nullable: true, api_name: "BillItems"
+      field :bill_number, -> { String }, optional: false, nullable: true, api_name: "BillNumber"
+      field :comments, -> { String }, optional: false, nullable: true, api_name: "Comments"
+      field :created_at, -> { String }, optional: false, nullable: true, api_name: "CreatedAt"
+      field :discount, -> { Integer }, optional: false, nullable: true, api_name: "Discount"
+      field :documents_ref, -> { String }, optional: false, nullable: true, api_name: "DocumentsRef"
+      field :due_date, -> { String }, optional: false, nullable: true, api_name: "DueDate"
+      field :end_date, -> { String }, optional: false, nullable: true, api_name: "EndDate"
+      field :entity_id, -> { String }, optional: false, nullable: true, api_name: "EntityID"
+      field :external_paypoint_id, -> { String }, optional: false, nullable: true, api_name: "externalPaypointID"
+      field :frequency, -> { PayabliSdk::Types::Frequency }, optional: false, nullable: true, api_name: "Frequency"
+      field :id_bill, -> { Integer }, optional: false, nullable: true, api_name: "IdBill"
+      field :last_updated, -> { String }, optional: false, nullable: true, api_name: "LastUpdated"
+      field :lot_number, -> { String }, optional: false, nullable: true, api_name: "LotNumber"
+      field :mode, -> { Integer }, optional: false, nullable: true, api_name: "Mode"
+      field :net_amount, -> { Integer }, optional: false, nullable: true, api_name: "NetAmount"
+      field :parent_org_id, -> { Integer }, optional: false, nullable: true, api_name: "ParentOrgId"
+      field :parent_org_name, -> { String }, optional: false, nullable: true, api_name: "ParentOrgName"
+      field :payment_id, -> { String }, optional: false, nullable: true, api_name: "PaymentId"
+      field :payment_method, -> { PayabliSdk::Types::BillQueryRecord2PaymentMethod }, optional: false, nullable: true, api_name: "PaymentMethod"
+      field :paylink_id, -> { String }, optional: false, nullable: true, api_name: "paylinkId"
+      field :paypoint_dbaname, -> { String }, optional: false, nullable: true, api_name: "PaypointDbaname"
+      field :paypoint_entryname, -> { String }, optional: false, nullable: true, api_name: "PaypointEntryname"
+      field :paypoint_legalname, -> { String }, optional: false, nullable: true, api_name: "PaypointLegalname"
+      field :source, -> { String }, optional: false, nullable: true, api_name: "Source"
+      field :status, -> { Integer }, optional: false, nullable: true, api_name: "Status"
+      field :terms, -> { String }, optional: false, nullable: true, api_name: "Terms"
+      field :total_amount, -> { Integer }, optional: false, nullable: true, api_name: "TotalAmount"
+      field :transaction, -> { PayabliSdk::Types::TransactionOutQueryRecord }, optional: false, nullable: true, api_name: "Transaction"
+      field :vendor, -> { PayabliSdk::Types::VendorOutData }, optional: false, nullable: true, api_name: "Vendor"
+    end
+  end
+end

@@ -1,53 +1,30 @@
 # frozen_string_literal: true
 
-require_relative "wire_helper"
-require "net/http"
-require "json"
-require "uri"
-require "payabli"
+require_relative "wiremock_test_case"
 
-class QueryWireTest < Minitest::Test
-  WIREMOCK_BASE_URL = "http://localhost:8080"
-  WIREMOCK_ADMIN_URL = "http://localhost:8080/__admin"
-
+class QueryWireTest < WireMockTestCase
   def setup
     super
-    return if ENV["RUN_WIRE_TESTS"] == "true"
 
-    skip "Wire tests are disabled by default. Set RUN_WIRE_TESTS=true to enable them."
-  end
-
-  def verify_request_count(test_id:, method:, url_path:, expected:, query_params: nil)
-    uri = URI("#{WIREMOCK_ADMIN_URL}/requests/find")
-    http = Net::HTTP.new(uri.host, uri.port)
-    post_request = Net::HTTP::Post.new(uri.path, { "Content-Type" => "application/json" })
-
-    request_body = { "method" => method, "urlPath" => url_path }
-    request_body["headers"] = { "X-Test-Id" => { "equalTo" => test_id } }
-    request_body["queryParameters"] = query_params.transform_values { |v| { "equalTo" => v } } if query_params
-
-    post_request.body = request_body.to_json
-    response = http.request(post_request)
-    result = JSON.parse(response.body)
-    requests = result["requests"] || []
-
-    assert_equal expected, requests.length, "Expected #{expected} requests, found #{requests.length}"
+    @client = PayabliSdk::Client.new(
+      api_key: "test-api-key",
+      base_url: WIREMOCK_BASE_URL
+    )
   end
 
   def test_query_list_batch_details_with_wiremock
     test_id = "query.list_batch_details.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_batch_details(
+    @client.query.list_batch_details(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_batch_details.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_batch_details.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -62,17 +39,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_batch_details_org_with_wiremock
     test_id = "query.list_batch_details_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_batch_details_org(
+    @client.query.list_batch_details_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_batch_details_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_batch_details_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -87,17 +63,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_batches_with_wiremock
     test_id = "query.list_batches.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_batches(
+    @client.query.list_batches(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_batches.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_batches.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -112,17 +87,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_batches_org_with_wiremock
     test_id = "query.list_batches_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_batches_org(
+    @client.query.list_batches_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_batches_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_batches_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -137,17 +111,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_batches_out_with_wiremock
     test_id = "query.list_batches_out.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_batches_out(
+    @client.query.list_batches_out(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_batches_out.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_batches_out.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -162,17 +135,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_batches_out_org_with_wiremock
     test_id = "query.list_batches_out_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_batches_out_org(
+    @client.query.list_batches_out_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_batches_out_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_batches_out_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -187,17 +159,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_chargebacks_with_wiremock
     test_id = "query.list_chargebacks.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_chargebacks(
+    @client.query.list_chargebacks(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_chargebacks.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_chargebacks.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -212,17 +183,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_chargebacks_org_with_wiremock
     test_id = "query.list_chargebacks_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_chargebacks_org(
+    @client.query.list_chargebacks_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_chargebacks_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_chargebacks_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -237,17 +207,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_customers_with_wiremock
     test_id = "query.list_customers.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_customers(
+    @client.query.list_customers(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_customers.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_customers.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -262,17 +231,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_customers_org_with_wiremock
     test_id = "query.list_customers_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_customers_org(
+    @client.query.list_customers_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_customers_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_customers_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -287,17 +255,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_notification_reports_with_wiremock
     test_id = "query.list_notification_reports.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_notification_reports(
+    @client.query.list_notification_reports(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_notification_reports.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_notification_reports.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -312,17 +279,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_notification_reports_org_with_wiremock
     test_id = "query.list_notification_reports_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_notification_reports_org(
+    @client.query.list_notification_reports_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_notification_reports_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_notification_reports_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -337,17 +303,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_notifications_with_wiremock
     test_id = "query.list_notifications.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_notifications(
+    @client.query.list_notifications(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_notifications.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_notifications.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -362,17 +327,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_notifications_org_with_wiremock
     test_id = "query.list_notifications_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_notifications_org(
+    @client.query.list_notifications_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_notifications_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_notifications_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -387,17 +351,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_organizations_with_wiremock
     test_id = "query.list_organizations.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_organizations(
+    @client.query.list_organizations(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_organizations.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_organizations.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -412,17 +375,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_payout_with_wiremock
     test_id = "query.list_payout.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_payout(
+    @client.query.list_payout(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_payout.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_payout.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -437,17 +399,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_payout_org_with_wiremock
     test_id = "query.list_payout_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_payout_org(
+    @client.query.list_payout_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_payout_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_payout_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -462,17 +423,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_paypoints_with_wiremock
     test_id = "query.list_paypoints.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_paypoints(
+    @client.query.list_paypoints(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_paypoints.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_paypoints.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -487,17 +447,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_settlements_with_wiremock
     test_id = "query.list_settlements.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_settlements(
+    @client.query.list_settlements(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_settlements.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_settlements.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -512,17 +471,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_settlements_org_with_wiremock
     test_id = "query.list_settlements_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_settlements_org(
+    @client.query.list_settlements_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_settlements_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_settlements_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -537,17 +495,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_subscriptions_with_wiremock
     test_id = "query.list_subscriptions.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_subscriptions(
+    @client.query.list_subscriptions(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_subscriptions.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_subscriptions.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -562,17 +519,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_subscriptions_org_with_wiremock
     test_id = "query.list_subscriptions_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_subscriptions_org(
+    @client.query.list_subscriptions_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_subscriptions_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_subscriptions_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -587,17 +543,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_transactions_with_wiremock
     test_id = "query.list_transactions.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_transactions(
+    @client.query.list_transactions(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_transactions.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_transactions.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -612,17 +567,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_transactions_org_with_wiremock
     test_id = "query.list_transactions_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_transactions_org(
+    @client.query.list_transactions_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_transactions_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_transactions_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -637,15 +591,14 @@ class QueryWireTest < Minitest::Test
   def test_query_list_transfer_details_with_wiremock
     test_id = "query.list_transfer_details.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_transfer_details(
+    @client.query.list_transfer_details(
       entry: "47862acd",
       transfer_id: 123_456,
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_transfer_details.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_transfer_details.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -660,16 +613,15 @@ class QueryWireTest < Minitest::Test
   def test_query_list_transfers_with_wiremock
     test_id = "query.list_transfers.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_transfers(
+    @client.query.list_transfers(
       entry: "47862acd",
       from_record: 0,
       limit_record: 20,
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_transfers.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_transfers.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -684,16 +636,15 @@ class QueryWireTest < Minitest::Test
   def test_query_list_transfers_org_with_wiremock
     test_id = "query.list_transfers_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_transfers_org(
+    @client.query.list_transfers_org(
       org_id: 123,
       from_record: 0,
       limit_record: 20,
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_transfers_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_transfers_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -708,17 +659,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_users_org_with_wiremock
     test_id = "query.list_users_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_users_org(
+    @client.query.list_users_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_users_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_users_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -733,17 +683,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_users_paypoint_with_wiremock
     test_id = "query.list_users_paypoint.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_users_paypoint(
+    @client.query.list_users_paypoint(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_users_paypoint.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_users_paypoint.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -758,17 +707,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_vendors_with_wiremock
     test_id = "query.list_vendors.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_vendors(
+    @client.query.list_vendors(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_vendors.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_vendors.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -783,17 +731,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_vendors_org_with_wiremock
     test_id = "query.list_vendors_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_vendors_org(
+    @client.query.list_vendors_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_vendors_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_vendors_org.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -808,17 +755,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_vcards_with_wiremock
     test_id = "query.list_vcards.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_vcards(
+    @client.query.list_vcards(
       entry: "8cfec329267",
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_vcards.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_vcards.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -833,17 +779,16 @@ class QueryWireTest < Minitest::Test
   def test_query_list_vcards_org_with_wiremock
     test_id = "query.list_vcards_org.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.query.list_vcards_org(
+    @client.query.list_vcards_org(
       org_id: 123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "query.list_vcards_org.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_vcards_org.0"
+        }
+      }
     )
 
     verify_request_count(

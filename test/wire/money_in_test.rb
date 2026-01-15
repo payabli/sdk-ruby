@@ -1,45 +1,21 @@
 # frozen_string_literal: true
 
-require_relative "wire_helper"
-require "net/http"
-require "json"
-require "uri"
-require "payabli"
+require_relative "wiremock_test_case"
 
-class MoneyInWireTest < Minitest::Test
-  WIREMOCK_BASE_URL = "http://localhost:8080"
-  WIREMOCK_ADMIN_URL = "http://localhost:8080/__admin"
-
+class MoneyInWireTest < WireMockTestCase
   def setup
     super
-    return if ENV["RUN_WIRE_TESTS"] == "true"
 
-    skip "Wire tests are disabled by default. Set RUN_WIRE_TESTS=true to enable them."
-  end
-
-  def verify_request_count(test_id:, method:, url_path:, expected:, query_params: nil)
-    uri = URI("#{WIREMOCK_ADMIN_URL}/requests/find")
-    http = Net::HTTP.new(uri.host, uri.port)
-    post_request = Net::HTTP::Post.new(uri.path, { "Content-Type" => "application/json" })
-
-    request_body = { "method" => method, "urlPath" => url_path }
-    request_body["headers"] = { "X-Test-Id" => { "equalTo" => test_id } }
-    request_body["queryParameters"] = query_params.transform_values { |v| { "equalTo" => v } } if query_params
-
-    post_request.body = request_body.to_json
-    response = http.request(post_request)
-    result = JSON.parse(response.body)
-    requests = result["requests"] || []
-
-    assert_equal expected, requests.length, "Expected #{expected} requests, found #{requests.length}"
+    @client = PayabliSdk::Client.new(
+      api_key: "test-api-key",
+      base_url: WIREMOCK_BASE_URL
+    )
   end
 
   def test_money_in_authorize_with_wiremock
     test_id = "money_in.authorize.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.authorize(
+    @client.money_in.authorize(
       customer_data: {
         customer_id: 4440
       },
@@ -58,10 +34,11 @@ class MoneyInWireTest < Minitest::Test
         initiator: "payor",
         method_: "card"
       },
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.authorize.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.authorize.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -76,15 +53,14 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_capture_with_wiremock
     test_id = "money_in.capture.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.capture(
+    @client.money_in.capture(
       trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
       amount: 0,
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.capture.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.capture.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -99,18 +75,17 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_capture_auth_with_wiremock
     test_id = "money_in.capture_auth.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.capture_auth(
+    @client.money_in.capture_auth(
       trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
       payment_details: {
         total_amount: 105,
         service_fee: 5
       },
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.capture_auth.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.capture_auth.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -125,9 +100,7 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_credit_with_wiremock
     test_id = "money_in.credit.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.credit(
+    @client.money_in.credit(
       idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
       customer_data: {
         billing_address_1: "5127 Linkwood ave",
@@ -145,10 +118,11 @@ class MoneyInWireTest < Minitest::Test
         ach_routing: "021000021",
         method_: "ach"
       },
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.credit.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.credit.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -163,14 +137,13 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_details_with_wiremock
     test_id = "money_in.details.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.details(
+    @client.money_in.details(
       trans_id: "45-as456777hhhhhhhhhh77777777-324",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.details.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.details.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -185,9 +158,7 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_getpaid_with_wiremock
     test_id = "money_in.getpaid.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.getpaid(
+    @client.money_in.getpaid(
       customer_data: {
         customer_id: 4440
       },
@@ -206,10 +177,11 @@ class MoneyInWireTest < Minitest::Test
         initiator: "payor",
         method_: "card"
       },
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.getpaid.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.getpaid.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -224,15 +196,14 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_reverse_with_wiremock
     test_id = "money_in.reverse.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.reverse(
+    @client.money_in.reverse(
       amount: 0,
       trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.reverse.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.reverse.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -247,15 +218,14 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_refund_with_wiremock
     test_id = "money_in.refund.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.refund(
+    @client.money_in.refund(
       amount: 0,
       trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.refund.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.refund.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -270,9 +240,7 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_refund_with_instructions_with_wiremock
     test_id = "money_in.refund_with_instructions.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.refund_with_instructions(
+    @client.money_in.refund_with_instructions(
       trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
       idempotency_key: "8A29FC40-CA47-1067-B31D-00DD010662DB",
       source: "api",
@@ -291,10 +259,11 @@ class MoneyInWireTest < Minitest::Test
           amount: 40
         }]
       },
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.refund_with_instructions.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.refund_with_instructions.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -309,14 +278,13 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_reverse_credit_with_wiremock
     test_id = "money_in.reverse_credit.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.reverse_credit(
+    @client.money_in.reverse_credit(
       trans_id: "45-as456777hhhhhhhhhh77777777-324",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.reverse_credit.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.reverse_credit.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -331,15 +299,14 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_send_receipt_2_trans_with_wiremock
     test_id = "money_in.send_receipt_2_trans.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.send_receipt_2_trans(
+    @client.money_in.send_receipt_2_trans(
       trans_id: "45-as456777hhhhhhhhhh77777777-324",
       email: "example@email.com",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.send_receipt_2_trans.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.send_receipt_2_trans.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -354,9 +321,7 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_validate_with_wiremock
     test_id = "money_in.validate.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.validate(
+    @client.money_in.validate(
       idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
       entry_point: "entry132",
       payment_method: {
@@ -366,10 +331,11 @@ class MoneyInWireTest < Minitest::Test
         cardzip: "14602-8328",
         card_holder: "Dianne Becker-Smith"
       },
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.validate.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.validate.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -384,20 +350,184 @@ class MoneyInWireTest < Minitest::Test
   def test_money_in_void_with_wiremock
     test_id = "money_in.void.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.money_in.void(
+    @client.money_in.void(
       trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "money_in.void.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.void.0"
+        }
+      }
     )
 
     verify_request_count(
       test_id: test_id,
       method: "GET",
       url_path: "/MoneyIn/void/10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_money_in_getpaidv_2_with_wiremock
+    test_id = "money_in.getpaidv_2.0"
+
+    @client.money_in.getpaidv_2(
+      customer_data: {
+        customer_id: 4440
+      },
+      entry_point: "f743aed24a",
+      ipaddress: "255.255.255.255",
+      payment_details: {
+        service_fee: 0,
+        total_amount: 100
+      },
+      payment_method: {
+        cardcvv: "999",
+        cardexp: "02/27",
+        card_holder: "John Cassian",
+        cardnumber: "4111111111111111",
+        cardzip: "12345",
+        initiator: "payor",
+        method_: "card"
+      },
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.getpaidv_2.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/getpaid",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_money_in_authorizev_2_with_wiremock
+    test_id = "money_in.authorizev_2.0"
+
+    @client.money_in.authorizev_2(
+      customer_data: {
+        customer_id: 4440
+      },
+      entry_point: "f743aed24a",
+      ipaddress: "255.255.255.255",
+      payment_details: {
+        service_fee: 0,
+        total_amount: 100
+      },
+      payment_method: {
+        cardcvv: "999",
+        cardexp: "02/27",
+        card_holder: "John Cassian",
+        cardnumber: "4111111111111111",
+        cardzip: "12345",
+        initiator: "payor",
+        method_: "card"
+      },
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.authorizev_2.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/authorize",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_money_in_capturev_2_with_wiremock
+    test_id = "money_in.capturev_2.0"
+
+    @client.money_in.capturev_2(
+      trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
+      payment_details: {
+        total_amount: 105,
+        service_fee: 5
+      },
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.capturev_2.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/capture/10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_money_in_refundv_2_with_wiremock
+    test_id = "money_in.refundv_2.0"
+
+    @client.money_in.refundv_2(
+      trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.refundv_2.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/refund/10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_money_in_refundv_2_amount_with_wiremock
+    test_id = "money_in.refundv_2_amount.0"
+
+    @client.money_in.refundv_2_amount(
+      trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      amount: 0,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.refundv_2_amount.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/refund/10-3ffa27df-b171-44e0-b251-e95fbfc7a723/0",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_money_in_voidv_2_with_wiremock
+    test_id = "money_in.voidv_2.0"
+
+    @client.money_in.voidv_2(
+      trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_in.voidv_2.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/void/10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
       query_params: nil,
       expected: 1
     )

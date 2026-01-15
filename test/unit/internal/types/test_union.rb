@@ -2,27 +2,27 @@
 
 require "test_helper"
 
-describe Payabli::Internal::Types::Union do
-  class Rectangle < Payabli::Internal::Types::Model
+describe PayabliSdk::Internal::Types::Union do
+  class Rectangle < PayabliSdk::Internal::Types::Model
     literal :type, "square"
 
     field :area, Float
   end
 
-  class Circle < Payabli::Internal::Types::Model
+  class Circle < PayabliSdk::Internal::Types::Model
     literal :type, "circle"
 
     field :area, Float
   end
 
-  class Pineapple < Payabli::Internal::Types::Model
+  class Pineapple < PayabliSdk::Internal::Types::Model
     literal :type, "pineapple"
 
     field :area, Float
   end
 
   module Shape
-    extend Payabli::Internal::Types::Union
+    extend PayabliSdk::Internal::Types::Union
 
     discriminant :type
 
@@ -31,7 +31,7 @@ describe Payabli::Internal::Types::Union do
   end
 
   module StringOrInteger
-    extend Payabli::Internal::Types::Union
+    extend PayabliSdk::Internal::Types::Union
 
     member String
     member Integer

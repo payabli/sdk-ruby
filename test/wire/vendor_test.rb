@@ -1,45 +1,21 @@
 # frozen_string_literal: true
 
-require_relative "wire_helper"
-require "net/http"
-require "json"
-require "uri"
-require "payabli"
+require_relative "wiremock_test_case"
 
-class VendorWireTest < Minitest::Test
-  WIREMOCK_BASE_URL = "http://localhost:8080"
-  WIREMOCK_ADMIN_URL = "http://localhost:8080/__admin"
-
+class VendorWireTest < WireMockTestCase
   def setup
     super
-    return if ENV["RUN_WIRE_TESTS"] == "true"
 
-    skip "Wire tests are disabled by default. Set RUN_WIRE_TESTS=true to enable them."
-  end
-
-  def verify_request_count(test_id:, method:, url_path:, expected:, query_params: nil)
-    uri = URI("#{WIREMOCK_ADMIN_URL}/requests/find")
-    http = Net::HTTP.new(uri.host, uri.port)
-    post_request = Net::HTTP::Post.new(uri.path, { "Content-Type" => "application/json" })
-
-    request_body = { "method" => method, "urlPath" => url_path }
-    request_body["headers"] = { "X-Test-Id" => { "equalTo" => test_id } }
-    request_body["queryParameters"] = query_params.transform_values { |v| { "equalTo" => v } } if query_params
-
-    post_request.body = request_body.to_json
-    response = http.request(post_request)
-    result = JSON.parse(response.body)
-    requests = result["requests"] || []
-
-    assert_equal expected, requests.length, "Expected #{expected} requests, found #{requests.length}"
+    @client = PayabliSdk::Client.new(
+      api_key: "test-api-key",
+      base_url: WIREMOCK_BASE_URL
+    )
   end
 
   def test_vendor_add_vendor_with_wiremock
     test_id = "vendor.add_vendor.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.vendor.add_vendor(
+    @client.vendor.add_vendor(
       entry: "8cfec329267",
       vendor_number: "1234",
       address_1: "123 Ocean Drive",
@@ -83,10 +59,11 @@ class VendorWireTest < Minitest::Test
       state: "FL",
       vendor_status: 1,
       zip: "33139",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "vendor.add_vendor.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "vendor.add_vendor.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -101,14 +78,13 @@ class VendorWireTest < Minitest::Test
   def test_vendor_delete_vendor_with_wiremock
     test_id = "vendor.delete_vendor.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.vendor.delete_vendor(
+    @client.vendor.delete_vendor(
       id_vendor: 1,
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "vendor.delete_vendor.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "vendor.delete_vendor.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -123,15 +99,14 @@ class VendorWireTest < Minitest::Test
   def test_vendor_edit_vendor_with_wiremock
     test_id = "vendor.edit_vendor.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.vendor.edit_vendor(
+    @client.vendor.edit_vendor(
       id_vendor: 1,
       name_1: "Theodore's Janitorial",
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "vendor.edit_vendor.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "vendor.edit_vendor.0"
+        }
+      }
     )
 
     verify_request_count(
@@ -146,14 +121,13 @@ class VendorWireTest < Minitest::Test
   def test_vendor_get_vendor_with_wiremock
     test_id = "vendor.get_vendor.0"
 
-    require "payabli"
-    client = Payabli::Client.new(base_url: WIREMOCK_BASE_URL, api_key: "<value>")
-    client.vendor.get_vendor(
+    @client.vendor.get_vendor(
       id_vendor: 1,
-      request_options: { base_url: WIREMOCK_BASE_URL,
-                         additional_headers: {
-                           "X-Test-Id" => "vendor.get_vendor.0"
-                         } }
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "vendor.get_vendor.0"
+        }
+      }
     )
 
     verify_request_count(

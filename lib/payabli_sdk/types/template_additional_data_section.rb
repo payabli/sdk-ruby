@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+
+module PayabliSdk
+  module Types
+    class TemplateAdditionalDataSection < Internal::Types::Model
+      field :visible, -> { Internal::Types::Boolean }, optional: false, nullable: false
+      field :fields, -> { Internal::Types::Hash[String, PayabliSdk::Types::TemplateAdditionalDataField] }, optional: false, nullable: false
+    end
+  end
+end

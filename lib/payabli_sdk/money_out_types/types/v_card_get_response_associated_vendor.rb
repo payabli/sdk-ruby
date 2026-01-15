@@ -1,0 +1,55 @@
+# frozen_string_literal: true
+
+module PayabliSdk
+  module MoneyOutTypes
+    module Types
+      # Information about the associated vendor.
+      class VCardGetResponseAssociatedVendor < Internal::Types::Model
+        field :vendor_number, -> { String }, optional: true, nullable: false, api_name: "VendorNumber"
+        field :name_1, -> { String }, optional: true, nullable: false, api_name: "Name1"
+        field :name_2, -> { String }, optional: true, nullable: false, api_name: "Name2"
+        field :ein, -> { String }, optional: true, nullable: false, api_name: "EIN"
+        field :phone, -> { String }, optional: true, nullable: false, api_name: "Phone"
+        field :email, -> { String }, optional: true, nullable: false, api_name: "Email"
+        field :remit_email, -> { String }, optional: true, nullable: false, api_name: "RemitEmail"
+        field :address_1, -> { String }, optional: true, nullable: false, api_name: "Address1"
+        field :address_2, -> { String }, optional: true, nullable: false, api_name: "Address2"
+        field :city, -> { String }, optional: true, nullable: false, api_name: "City"
+        field :state, -> { String }, optional: true, nullable: false, api_name: "State"
+        field :zip, -> { String }, optional: true, nullable: false, api_name: "Zip"
+        field :country, -> { String }, optional: true, nullable: false, api_name: "Country"
+        field :mcc, -> { String }, optional: true, nullable: false, api_name: "Mcc"
+        field :location_code, -> { String }, optional: true, nullable: false, api_name: "LocationCode"
+        field :contacts, -> { Internal::Types::Array[PayabliSdk::MoneyOutTypes::Types::VCardGetResponseContact] }, optional: true, nullable: false, api_name: "Contacts"
+        field :billing_data, -> { PayabliSdk::MoneyOutTypes::Types::VCardGetResponseAssociatedVendorBillingData }, optional: true, nullable: false, api_name: "BillingData"
+        field :payment_method, -> { String }, optional: true, nullable: false, api_name: "PaymentMethod"
+        field :vendor_status, -> { Integer }, optional: true, nullable: false, api_name: "VendorStatus"
+        field :vendor_id, -> { Integer }, optional: true, nullable: false, api_name: "VendorId"
+        field :enrollment_status, -> { String }, optional: true, nullable: false, api_name: "EnrollmentStatus"
+        field :summary, -> { PayabliSdk::MoneyOutTypes::Types::VCardGetResponseAssociatedVendorSummary }, optional: true, nullable: false, api_name: "Summary"
+        field :paypoint_legalname, -> { String }, optional: true, nullable: false, api_name: "PaypointLegalname"
+        field :paypoint_dbaname, -> { String }, optional: true, nullable: false, api_name: "PaypointDbaname"
+        field :paypoint_entryname, -> { String }, optional: true, nullable: false, api_name: "PaypointEntryname"
+        field :parent_org_name, -> { String }, optional: true, nullable: false, api_name: "ParentOrgName"
+        field :parent_org_id, -> { Integer }, optional: true, nullable: false, api_name: "ParentOrgId"
+        field :created_date, -> { String }, optional: true, nullable: false, api_name: "CreatedDate"
+        field :last_updated, -> { String }, optional: true, nullable: false, api_name: "LastUpdated"
+        field :remit_address_1, -> { String }, optional: true, nullable: false, api_name: "remitAddress1"
+        field :remit_address_2, -> { String }, optional: true, nullable: false, api_name: "remitAddress2"
+        field :remit_city, -> { String }, optional: true, nullable: false, api_name: "remitCity"
+        field :remit_state, -> { String }, optional: true, nullable: false, api_name: "remitState"
+        field :remit_zip, -> { String }, optional: true, nullable: false, api_name: "remitZip"
+        field :remit_country, -> { String }, optional: true, nullable: false, api_name: "remitCountry"
+        field :payee_name_1, -> { String }, optional: true, nullable: false, api_name: "payeeName1"
+        field :payee_name_2, -> { String }, optional: true, nullable: false, api_name: "payeeName2"
+        field :custom_field_1, -> { String }, optional: true, nullable: false, api_name: "customField1"
+        field :custom_field_2, -> { String }, optional: true, nullable: false, api_name: "customField2"
+        field :customer_vendor_account, -> { String }, optional: true, nullable: false, api_name: "customerVendorAccount"
+        field :internal_reference_id, -> { Integer }, optional: true, nullable: false, api_name: "InternalReferenceId"
+        field :additional_data, -> { String }, optional: true, nullable: false, api_name: "additionalData"
+        field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
+        field :stored_methods, -> { String }, optional: true, nullable: false, api_name: "StoredMethods"
+      end
+    end
+  end
+end
