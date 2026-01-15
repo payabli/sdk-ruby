@@ -8,6 +8,7 @@ The Payabli Ruby library provides convenient access to the Payabli APIs from Rub
 
 - [Documentation](#documentation)
 - [Reference](#reference)
+- [Passing Query Parameters](#passing-query-parameters)
 - [Usage](#usage)
 - [Environments](#environments)
 - [Errors](#errors)
@@ -25,6 +26,31 @@ API reference documentation is available [here](https://docs.payabli.com).
 ## Reference
 
 A full reference for this library is available [here](https://github.com/payabli/sdk-ruby/blob/HEAD/./reference.md).
+
+## Passing Query Parameters
+
+```ruby
+client = Payabli::Client.new(
+    api_key: "API_KEY",
+    base_url: Payabli::Environment::SANDBOX
+)
+
+entry_point = "ENTRYPOINT"
+
+result = client.query.list_customers(
+  request_options: {
+    additional_query_parameters: {
+      "email(ct)": "test@example.com",
+    }
+  }, 
+  **{
+    entry: entry_point,
+  }
+)
+
+puts result.to_h
+```
+
 
 ## Usage
 
