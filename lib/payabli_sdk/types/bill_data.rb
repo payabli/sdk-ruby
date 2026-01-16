@@ -3,7 +3,7 @@
 module PayabliSdk
   module Types
     class BillData < Internal::Types::Model
-      field :additional_data, -> { String }, optional: true, nullable: false, api_name: "AdditionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "AdditionalData"
       field :attachments, -> { Internal::Types::Array[PayabliSdk::Types::FileContent] }, optional: true, nullable: false
       field :company, -> { String }, optional: true, nullable: false
       field :discount, -> { Integer }, optional: true, nullable: false
