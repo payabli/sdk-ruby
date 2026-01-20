@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    payabli_sdk (2.2.6)
+    payabli_sdk (2.2.8)
 
 GEM
   remote: https://rubygems.org/
