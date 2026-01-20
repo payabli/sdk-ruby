@@ -49,7 +49,7 @@ module PayabliSdk
         field :paypoint_dbaname, -> { String }, optional: false, nullable: false, api_name: "PaypointDbaname"
         field :paypoint_entryname, -> { String }, optional: false, nullable: false, api_name: "PaypointEntryname"
         field :parent_org_name, -> { String }, optional: false, nullable: false, api_name: "ParentOrgName"
-        field :additional_data, -> { String }, optional: true, nullable: false, api_name: "AdditionalData"
+        field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "AdditionalData"
         field :documents_ref, -> { PayabliSdk::Types::DocumentsRef }, optional: false, nullable: false, api_name: "DocumentsRef"
         field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
       end
