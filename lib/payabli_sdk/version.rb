@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module PayabliSdk
-  VERSION = "2.2.4"
+  VERSION = "2.2.6"
 end
