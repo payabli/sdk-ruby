@@ -5,8 +5,8 @@ module PayabliSdk
     class PayabliCredentialsPascal < Internal::Types::Model
       field :service, -> { String }, optional: true, nullable: false, api_name: "Service"
       field :mode, -> { Integer }, optional: true, nullable: false, api_name: "Mode"
-      field :min_ticket, -> { Integer }, optional: false, nullable: false, api_name: "MinTicket"
-      field :max_ticket, -> { Integer }, optional: false, nullable: false, api_name: "MaxTicket"
+      field :min_ticket, -> { Integer }, optional: true, nullable: false, api_name: "MinTicket"
+      field :max_ticket, -> { Integer }, optional: true, nullable: false, api_name: "MaxTicket"
       field :cfee_fix, -> { Integer }, optional: true, nullable: false, api_name: "CfeeFix"
       field :cfee_float, -> { Integer }, optional: true, nullable: false, api_name: "CfeeFloat"
       field :cfee_min, -> { Integer }, optional: true, nullable: false, api_name: "CfeeMin"

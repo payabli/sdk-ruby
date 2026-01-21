@@ -3,7 +3,7 @@
 module PayabliSdk
   module Types
     module MinTicket
-      # MinTicket is an alias for Object
+      # MinTicket is an alias for Float
 
       # @option str [String]
       #

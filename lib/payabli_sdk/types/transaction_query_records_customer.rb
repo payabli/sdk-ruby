@@ -15,7 +15,7 @@ module PayabliSdk
       field :external_processor_information, -> { String }, optional: true, nullable: false, api_name: "ExternalProcessorInformation"
       field :fee_amount, -> { Integer }, optional: true, nullable: false, api_name: "FeeAmount"
       field :gateway_trans_id, -> { String }, optional: true, nullable: false, api_name: "GatewayTransId"
-      field :invoice_data, -> { PayabliSdk::Types::BillData }, optional: true, nullable: false, api_name: "InvoiceData"
+      field :invoice_data, -> { PayabliSdk::Types::BillData }, optional: true, nullable: false, api_name: "invoiceData"
       field :method_, -> { String }, optional: true, nullable: false, api_name: "Method"
       field :net_amount, -> { Integer }, optional: true, nullable: false, api_name: "NetAmount"
       field :operation, -> { String }, optional: true, nullable: false, api_name: "Operation"

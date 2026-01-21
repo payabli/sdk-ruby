@@ -3,7 +3,7 @@
 module PayabliSdk
   module Types
     module MaxTicket
-      # MaxTicket is an alias for Object
+      # MaxTicket is an alias for Float
 
       # @option str [String]
       #
