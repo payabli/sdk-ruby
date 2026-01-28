@@ -6,7 +6,7 @@ class CustomerWireTest < WireMockTestCase
   def setup
     super
 
-    @client = PayabliSdk::Client.new(
+    @client = Payabli::Client.new(
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )

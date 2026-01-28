@@ -2,15 +2,15 @@
 
 require "test_helper"
 
-describe PayabliSdk::Internal::Types::Model do
+describe Payabli::Internal::Types::Model do
   module StringInteger
-    extend PayabliSdk::Internal::Types::Union
+    extend Payabli::Internal::Types::Union
 
     member String
     member Integer
   end
 
-  class ExampleModel < PayabliSdk::Internal::Types::Model
+  class ExampleModel < Payabli::Internal::Types::Model
     field :name, String
     field :rating, StringInteger, optional: true
     field :year, Integer, optional: true, nullable: true, api_name: "yearOfRelease"
@@ -24,11 +24,11 @@ describe PayabliSdk::Internal::Types::Model do
     field :type, String, default: "example"
   end
 
-  class ExampleChild < PayabliSdk::Internal::Types::Model
+  class ExampleChild < Payabli::Internal::Types::Model
     field :value, String
   end
 
-  class ExampleParent < PayabliSdk::Internal::Types::Model
+  class ExampleParent < Payabli::Internal::Types::Model
     field :child, ExampleChild
   end
 
@@ -113,7 +113,7 @@ describe PayabliSdk::Internal::Types::Model do
   end
 
   describe "#inspect" do
-    class SensitiveModel < PayabliSdk::Internal::Types::Model
+    class SensitiveModel < Payabli::Internal::Types::Model
       field :username, String
       field :password, String
       field :client_secret, String

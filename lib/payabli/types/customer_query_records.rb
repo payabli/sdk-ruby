@@ -1,0 +1,51 @@
+# frozen_string_literal: true
+
+module Payabli
+  module Types
+    class CustomerQueryRecords < Internal::Types::Model
+      field :customer_id, -> { Integer }, optional: true, nullable: false, api_name: "customerId"
+      field :customer_number, -> { String }, optional: true, nullable: false, api_name: "customerNumber"
+      field :customer_username, -> { String }, optional: true, nullable: false, api_name: "customerUsername"
+      field :customer_status, -> { Integer }, optional: true, nullable: false, api_name: "customerStatus"
+      field :company, -> { String }, optional: true, nullable: false, api_name: "Company"
+      field :firstname, -> { String }, optional: true, nullable: false, api_name: "Firstname"
+      field :lastname, -> { String }, optional: true, nullable: false, api_name: "Lastname"
+      field :phone, -> { String }, optional: true, nullable: false, api_name: "Phone"
+      field :email, -> { String }, optional: true, nullable: false, api_name: "Email"
+      field :address, -> { String }, optional: true, nullable: false, api_name: "Address"
+      field :address_1, -> { String }, optional: true, nullable: false, api_name: "Address1"
+      field :city, -> { String }, optional: true, nullable: false, api_name: "City"
+      field :state, -> { String }, optional: true, nullable: false, api_name: "State"
+      field :zip, -> { String }, optional: true, nullable: false, api_name: "Zip"
+      field :country, -> { String }, optional: true, nullable: false, api_name: "Country"
+      field :shipping_address, -> { String }, optional: true, nullable: false, api_name: "ShippingAddress"
+      field :shipping_address_1, -> { String }, optional: true, nullable: false, api_name: "ShippingAddress1"
+      field :shipping_city, -> { String }, optional: true, nullable: false, api_name: "ShippingCity"
+      field :shipping_state, -> { String }, optional: true, nullable: false, api_name: "ShippingState"
+      field :shipping_zip, -> { String }, optional: true, nullable: false, api_name: "ShippingZip"
+      field :shipping_country, -> { String }, optional: true, nullable: false, api_name: "ShippingCountry"
+      field :balance, -> { Integer }, optional: true, nullable: false, api_name: "Balance"
+      field :time_zone, -> { Integer }, optional: true, nullable: false, api_name: "TimeZone"
+      field :mfa, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "MFA"
+      field :mfa_mode, -> { Integer }, optional: true, nullable: false, api_name: "MFAMode"
+      field :sn_provider, -> { String }, optional: true, nullable: false, api_name: "snProvider"
+      field :sn_identifier, -> { String }, optional: true, nullable: false, api_name: "snIdentifier"
+      field :sn_data, -> { String }, optional: true, nullable: false, api_name: "snData"
+      field :last_updated, -> { String }, optional: true, nullable: false, api_name: "LastUpdated"
+      field :created, -> { String }, optional: true, nullable: false, api_name: "Created"
+      field :additional_fields, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "AdditionalFields"
+      field :identifier_fields, -> { Internal::Types::Array[String] }, optional: true, nullable: false, api_name: "IdentifierFields"
+      field :subscriptions, -> { Internal::Types::Array[Payabli::Types::SubscriptionQueryRecords] }, optional: true, nullable: false, api_name: "Subscriptions"
+      field :stored_methods, -> { Internal::Types::Array[Payabli::Types::MethodQueryRecords] }, optional: true, nullable: false, api_name: "StoredMethods"
+      field :customer_summary, -> { Payabli::Types::CustomerSummaryRecord }, optional: true, nullable: false, api_name: "customerSummary"
+      field :paypoint_legalname, -> { String }, optional: true, nullable: false, api_name: "PaypointLegalname"
+      field :paypoint_dbaname, -> { String }, optional: true, nullable: false, api_name: "PaypointDbaname"
+      field :parent_org_name, -> { String }, optional: true, nullable: false, api_name: "ParentOrgName"
+      field :parent_org_id, -> { Integer }, optional: true, nullable: false, api_name: "ParentOrgId"
+      field :paypoint_entryname, -> { String }, optional: true, nullable: false, api_name: "PaypointEntryname"
+      field :pageidentifier, -> { String }, optional: true, nullable: false
+      field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
+      field :customer_consent, -> { Payabli::Types::CustomerQueryRecordsCustomerConsent }, optional: true, nullable: false, api_name: "customerConsent"
+    end
+  end
+end

@@ -6,7 +6,7 @@ class QueryWireTest < WireMockTestCase
   def setup
     super
 
-    @client = PayabliSdk::Client.new(
+    @client = Payabli::Client.new(
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -651,6 +651,76 @@ class QueryWireTest < WireMockTestCase
       test_id: test_id,
       method: "GET",
       url_path: "/Query/transfers/org/123",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_query_list_transfers_out_org_with_wiremock
+    test_id = "query.list_transfers_out_org.0"
+
+    @client.query.list_transfers_out_org(
+      org_id: 77,
+      from_record: 0,
+      limit_record: 20,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_transfers_out_org.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/transfersOut/org/77",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_query_list_transfers_out_paypoint_with_wiremock
+    test_id = "query.list_transfers_out_paypoint.0"
+
+    @client.query.list_transfers_out_paypoint(
+      entry: "47cade237",
+      from_record: 0,
+      limit_record: 20,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_transfers_out_paypoint.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/transfersOut/47cade237",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_query_list_transfer_details_out_with_wiremock
+    test_id = "query.list_transfer_details_out.0"
+
+    @client.query.list_transfer_details_out(
+      entry: "47ace2b25",
+      transfer_id: 4521,
+      from_record: 0,
+      limit_record: 20,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_transfer_details_out.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/transferDetailsOut/47ace2b25/4521",
       query_params: nil,
       expected: 1
     )

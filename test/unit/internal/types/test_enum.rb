@@ -2,10 +2,10 @@
 
 require "test_helper"
 
-describe PayabliSdk::Internal::Types::Enum do
+describe Payabli::Internal::Types::Enum do
   module EnumTest
     module ExampleEnum
-      extend PayabliSdk::Internal::Types::Enum
+      extend Payabli::Internal::Types::Enum
 
       FOO = :foo
       BAR = :bar
@@ -34,7 +34,7 @@ describe PayabliSdk::Internal::Types::Enum do
     end
 
     it "raises an error if value is not a member with strictness on" do
-      assert_raises PayabliSdk::Internal::Errors::TypeError do
+      assert_raises Payabli::Internal::Errors::TypeError do
         EnumTest::ExampleEnum.coerce(1, strict: true)
       end
     end

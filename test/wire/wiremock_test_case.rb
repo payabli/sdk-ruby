@@ -5,7 +5,7 @@ require_relative "wire_helper"
 require "net/http"
 require "json"
 require "uri"
-require "payabli_sdk"
+require "payabli"
 
 # Base test case for WireMock-based wire tests.
 #
