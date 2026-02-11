@@ -8,7 +8,6 @@ module Payabli
         field :transfer_detail_id, -> { Integer }, optional: false, nullable: true, api_name: "transferDetailId"
         field :transfer_id, -> { Integer }, optional: false, nullable: true, api_name: "transferId"
         field :transaction_id, -> { String }, optional: false, nullable: true, api_name: "transactionId"
-        field :id_out, -> { Integer }, optional: false, nullable: true, api_name: "idOut"
         field :id_out, -> { Integer }, optional: false, nullable: true, api_name: "IdOut"
         field :method_, -> { String }, optional: false, nullable: true, api_name: "method"
         field :type, -> { String }, optional: false, nullable: true

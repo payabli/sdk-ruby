@@ -235,4 +235,26 @@ class MoneyOutWireTest < WireMockTestCase
       expected: 1
     )
   end
+
+  def test_money_out_update_check_payment_status_with_wiremock
+    test_id = "money_out.update_check_payment_status.0"
+
+    @client.money_out.update_check_payment_status(
+      trans_id: "TRANS123456",
+      check_payment_status: "5",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.update_check_payment_status.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "PATCH",
+      url_path: "/MoneyOut/status/TRANS123456/5",
+      query_params: nil,
+      expected: 1
+    )
+  end
 end

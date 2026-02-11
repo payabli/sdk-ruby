@@ -377,6 +377,56 @@ module Payabli
         error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
         raise error_class.new(response.body, code: code)
       end
+
+      # Updates the status of a processed check payment transaction. This endpoint handles the status transition,
+      # updates related bills, creates audit events, and triggers notifications.
+      #
+      # The transaction must meet all of the following criteria:
+      # - **Status**: Must be in Processing or Processed status.
+      # - **Payment method**: Must be a check payment method.
+      #
+      # ### Allowed status values
+      #
+      # | Value | Status | Description |
+      # |-------|--------|-------------|
+      # | `0` | Cancelled/Voided | Cancels the check transaction. Reverts associated bills to their previous state
+      # (Approved or Active), creates "Cancelled" events, and sends a `payout_transaction_voidedcancelled` notification
+      # if the notification is enabled. |
+      # | `5` | Paid | Marks the check transaction as paid. Updates associated bills to "Paid" status, creates "Paid"
+      # events, and sends a `payout_transaction_paid` notification if the notification is enabled. |
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
+      # @option params [Payabli::MoneyOutTypes::Types::AllowedCheckPaymentStatus] :check_payment_status
+      #
+      # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
+      def update_check_payment_status(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "PATCH",
+          path: "MoneyOut/status/#{params[:trans_id]}/#{params[:check_payment_status]}",
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
     end
   end
 end
