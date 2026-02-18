@@ -28,41 +28,41 @@ Creates a bill in an entrypoint.
 
 ```ruby
 client.bill.add_bill(
-  entry: '8cfec329267',
-  accounting_field_1: 'MyInternalId',
+  entry: "8cfec329267",
+  accounting_field_1: "MyInternalId",
   attachments: [{
-    ftype: 'pdf',
-    filename: 'my-doc.pdf',
-    furl: 'https://mysite.com/my-doc.pdf'
+    ftype: "pdf",
+    filename: "my-doc.pdf",
+    furl: "https://mysite.com/my-doc.pdf"
   }],
-  bill_date: '2024-07-01',
+  bill_date: "2024-07-01",
   bill_items: [{
-    item_product_code: 'M-DEPOSIT',
-    item_product_name: 'Materials deposit',
-    item_description: 'Deposit for materials',
-    item_commodity_code: '010',
-    item_unit_of_measure: 'SqFt',
+    item_product_code: "M-DEPOSIT",
+    item_product_name: "Materials deposit",
+    item_description: "Deposit for materials",
+    item_commodity_code: "010",
+    item_unit_of_measure: "SqFt",
     item_cost: 5,
     item_qty: 1,
     item_mode: 0,
-    item_categories: ['deposits'],
+    item_categories: ["deposits"],
     item_total_amount: 123,
     item_tax_amount: 7,
     item_tax_rate: 0.075
   }],
-  bill_number: 'ABC-123',
-  comments: 'Deposit for materials',
-  due_date: '2024-07-01',
-  end_date: '2024-07-01',
-  frequency: 'monthly',
+  bill_number: "ABC-123",
+  comments: "Deposit for materials",
+  due_date: "2024-07-01",
+  end_date: "2024-07-01",
+  frequency: "monthly",
   mode: 0,
   net_amount: 3762.87,
   status: -99,
-  terms: 'NET30',
+  terms: "NET30",
   vendor: {
-    vendor_number: '1234-A'
+    vendor_number: "1234-A"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -141,9 +141,9 @@ Delete a file attached to a bill.
 
 ```ruby
 client.bill.delete_attached_from_bill(
-  filename: '0_Bill.pdf',
+  filename: "0_Bill.pdf",
   id_bill: 285
-);
+)
 ```
 </dd>
 </dl>
@@ -238,7 +238,7 @@ Deletes a bill by ID.
 <dd>
 
 ```ruby
-client.bill.delete_bill(id_bill: 285);
+client.bill.delete_bill(id_bill: 285)
 ```
 </dd>
 </dl>
@@ -302,9 +302,9 @@ Updates a bill by ID.
 ```ruby
 client.bill.edit_bill(
   id_bill: 285,
-  bill_date: '2025-07-01',
+  bill_date: "2025-07-01",
   net_amount: 3762.87
-);
+)
 ```
 </dd>
 </dl>
@@ -375,10 +375,10 @@ Retrieves a file attached to a bill, either as a binary file or as a Base64-enco
 
 ```ruby
 client.bill.get_attached_from_bill(
-  filename: '0_Bill.pdf',
+  filename: "0_Bill.pdf",
   id_bill: 285,
   return_object: true
-);
+)
 ```
 </dd>
 </dl>
@@ -468,7 +468,7 @@ Retrieves a bill by ID from an entrypoint.
 <dd>
 
 ```ruby
-client.bill.get_bill(id_bill: 285);
+client.bill.get_bill(id_bill: 285)
 ```
 </dd>
 </dl>
@@ -531,11 +531,11 @@ Retrieve a list of bills for an entrypoint. Use filters to limit results. Includ
 
 ```ruby
 client.bill.list_bills(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -685,8 +685,8 @@ client.bill.list_bills_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -834,8 +834,8 @@ Modify the list of users the bill is sent to for approval.
 ```ruby
 client.bill.modify_approval_bill(
   id_bill: 285,
-  request: ['string']
-);
+  request: ["string"]
+)
 ```
 </dd>
 </dl>
@@ -907,9 +907,9 @@ Send a bill to a user or list of users to approve.
 ```ruby
 client.bill.send_to_approval_bill(
   id_bill: 285,
-  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA',
-  body: ['string']
-);
+  idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
+  body: ["string"]
+)
 ```
 </dd>
 </dl>
@@ -996,9 +996,9 @@ Approve or disapprove a bill by ID.
 
 ```ruby
 client.bill.set_approved_bill(
-  approved: 'true',
+  approved: "true",
   id_bill: 285
-);
+)
 ```
 </dd>
 </dl>
@@ -1088,93 +1088,93 @@ client.boarding.add_application(
     }
   },
   annual_revenue: 1000,
-  average_bill_size: '500',
-  average_monthly_bill: '5650',
+  average_bill_size: "500",
+  average_monthly_bill: "5650",
   avgmonthly: 1000,
-  baddress: '123 Walnut Street',
-  baddress_1: 'Suite 103',
+  baddress: "123 Walnut Street",
+  baddress_1: "Suite 103",
   bank_data: {},
-  bcity: 'New Vegas',
-  bcountry: 'US',
+  bcity: "New Vegas",
+  bcountry: "US",
   binperson: 60,
   binphone: 20,
   binweb: 20,
-  bstate: 'FL',
-  bsummary: 'Brick and mortar store that sells office supplies',
-  btype: 'Limited Liability Company',
-  bzip: '33000',
+  bstate: "FL",
+  bsummary: "Brick and mortar store that sells office supplies",
+  btype: "Limited Liability Company",
+  bzip: "33000",
   contacts: [{
-    contact_email: 'herman@hermanscoatings.com',
-    contact_name: 'Herman Martinez',
-    contact_phone: '3055550000',
-    contact_title: 'Owner'
+    contact_email: "herman@hermanscoatings.com",
+    contact_name: "Herman Martinez",
+    contact_phone: "3055550000",
+    contact_title: "Owner"
   }],
-  credit_limit: 'creditLimit',
-  dba_name: 'Sunshine Gutters',
-  ein: '123456789',
-  faxnumber: '1234567890',
+  credit_limit: "creditLimit",
+  dba_name: "Sunshine Gutters",
+  ein: "123456789",
+  faxnumber: "1234567890",
   highticketamt: 1000,
-  legal_name: 'Sunshine Services, LLC',
-  license: '2222222FFG',
-  licstate: 'CA',
-  maddress: '123 Walnut Street',
-  maddress_1: 'STE 900',
-  mcc: '7777',
-  mcity: 'Johnson City',
-  mcountry: 'US',
-  mstate: 'TN',
-  mzip: '37615',
+  legal_name: "Sunshine Services, LLC",
+  license: "2222222FFG",
+  licstate: "CA",
+  maddress: "123 Walnut Street",
+  maddress_1: "STE 900",
+  mcc: "7777",
+  mcity: "Johnson City",
+  mcountry: "US",
+  mstate: "TN",
+  mzip: "37615",
   org_id: 123,
   ownership: [{
-    oaddress: '33 North St',
-    ocity: 'Any City',
-    ocountry: 'US',
-    odriverstate: 'CA',
-    ostate: 'CA',
-    ownerdob: '01/01/1990',
-    ownerdriver: 'CA6677778',
-    owneremail: 'test@email.com',
-    ownername: 'John Smith',
+    oaddress: "33 North St",
+    ocity: "Any City",
+    ocountry: "US",
+    odriverstate: "CA",
+    ostate: "CA",
+    ownerdob: "01/01/1990",
+    ownerdriver: "CA6677778",
+    owneremail: "test@email.com",
+    ownername: "John Smith",
     ownerpercent: 100,
-    ownerphone_1: '555888111',
-    ownerphone_2: '555888111',
-    ownerssn: '123456789',
-    ownertitle: 'CEO',
-    ozip: '55555'
+    ownerphone_1: "555888111",
+    ownerphone_2: "555888111",
+    ownerssn: "123456789",
+    ownertitle: "CEO",
+    ozip: "55555"
   }],
-  phonenumber: '1234567890',
-  processing_region: 'US',
-  recipient_email: 'josephray@example.com',
+  phonenumber: "1234567890",
+  processing_region: "US",
+  recipient_email: "josephray@example.com",
   recipient_email_notification: true,
   resumable: true,
   signer: {
-    address: '33 North St',
-    address_1: 'STE 900',
-    city: 'Bristol',
-    country: 'US',
-    dob: '01/01/1976',
-    email: 'test@email.com',
-    name: 'John Smith',
-    phone: '555888111',
-    ssn: '123456789',
-    state: 'TN',
-    zip: '55555',
+    address: "33 North St",
+    address_1: "STE 900",
+    city: "Bristol",
+    country: "US",
+    dob: "01/01/1976",
+    email: "test@email.com",
+    name: "John Smith",
+    phone: "555888111",
+    ssn: "123456789",
+    state: "TN",
+    zip: "55555",
     pci_attestation: true,
-    signed_document_reference: 'https://example.com/signed-document.pdf',
-    attestation_date: '04/20/2025',
-    sign_date: '04/20/2025',
+    signed_document_reference: "https://example.com/signed-document.pdf",
+    attestation_date: "04/20/2025",
+    sign_date: "04/20/2025",
     additional_data: '{"deviceId":"499585-389fj484-3jcj8hj3","session":"fifji4-fiu443-fn4843","timeWithCompany":"6 Years"}'
   },
-  startdate: '01/01/1990',
-  tax_fill_name: 'Sunshine LLC',
+  startdate: "01/01/1990",
+  tax_fill_name: "Sunshine LLC",
   template_id: 22,
   ticketamt: 1000,
-  website: 'www.example.com',
-  when_charged: 'When Service Provided',
-  when_delivered: 'Over 30 Days',
-  when_provided: '30 Days or Less',
-  when_refunded: '30 Days or Less'
-);
+  website: "www.example.com",
+  when_charged: "When Service Provided",
+  when_delivered: "Over 30 Days",
+  when_provided: "30 Days or Less",
+  when_refunded: "30 Days or Less"
+)
 ```
 </dd>
 </dl>
@@ -1236,7 +1236,7 @@ Deletes a boarding application by ID.
 <dd>
 
 ```ruby
-client.boarding.delete_application(app_id: 352);
+client.boarding.delete_application(app_id: 352)
 ```
 </dd>
 </dl>
@@ -1298,7 +1298,7 @@ Retrieves the details for a boarding application by ID.
 <dd>
 
 ```ruby
-client.boarding.get_application(app_id: 352);
+client.boarding.get_application(app_id: 352)
 ```
 </dd>
 </dl>
@@ -1361,10 +1361,10 @@ Gets a boarding application by authentication information. This endpoint require
 
 ```ruby
 client.boarding.get_application_by_auth(
-  x_id: '17E',
-  email: 'admin@email.com',
-  reference_id: 'n6UCd1f1ygG7'
-);
+  x_id: "17E",
+  email: "admin@email.com",
+  reference_id: "n6UCd1f1ygG7"
+)
 ```
 </dd>
 </dl>
@@ -1442,7 +1442,7 @@ Retrieves details for a boarding link, by ID.
 <dd>
 
 ```ruby
-client.boarding.get_by_id_link_application(boarding_link_id: 91);
+client.boarding.get_by_id_link_application(boarding_link_id: 91)
 ```
 </dd>
 </dl>
@@ -1504,7 +1504,7 @@ Get details for a boarding link using the boarding template ID. This endpoint re
 <dd>
 
 ```ruby
-client.boarding.get_by_template_id_link_application(template_id: 80);
+client.boarding.get_by_template_id_link_application(template_id: 80)
 ```
 </dd>
 </dl>
@@ -1568,8 +1568,8 @@ Retrieves a link and the verification code used to log into an existing boarding
 ```ruby
 client.boarding.get_external_application(
   app_id: 352,
-  mail_2: 'mail2'
-);
+  mail_2: "mail2"
+)
 ```
 </dd>
 </dl>
@@ -1647,7 +1647,7 @@ Retrieves the details for a boarding link, by reference name. This endpoint requ
 <dd>
 
 ```ruby
-client.boarding.get_link_application(boarding_link_reference: 'myorgaccountname-00091');
+client.boarding.get_link_application(boarding_link_reference: "myorgaccountname-00091")
 ```
 </dd>
 </dl>
@@ -1713,8 +1713,8 @@ client.boarding.list_applications(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -1856,8 +1856,8 @@ client.boarding.list_boarding_links(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -1983,7 +1983,7 @@ Updates a boarding application by ID. This endpoint requires an application API 
 <dd>
 
 ```ruby
-client.boarding.update_application(app_id: 352);
+client.boarding.update_application(app_id: 352)
 ```
 </dd>
 </dl>
@@ -2056,8 +2056,8 @@ Add a response to a chargeback or ACH return.
 ```ruby
 client.charge_backs.add_response(
   id: 1000000,
-  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA'
-);
+  idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA"
+)
 ```
 </dd>
 </dl>
@@ -2159,7 +2159,7 @@ Retrieves a chargeback record and its details.
 <dd>
 
 ```ruby
-client.charge_backs.get_chargeback(id: 1000000);
+client.charge_backs.get_chargeback(id: 1000000)
 ```
 </dd>
 </dl>
@@ -2223,8 +2223,8 @@ Retrieves a chargeback attachment file by its file name.
 ```ruby
 client.charge_backs.get_chargeback_attachment(
   id: 1000000,
-  file_name: 'fileName'
-);
+  file_name: "fileName"
+)
 ```
 </dd>
 </dl>
@@ -2296,11 +2296,11 @@ Captures a check for Remote Deposit Capture (RDC) using the provided check image
 
 ```ruby
 client.check_capture.check_processing(
-  entry_point: '47abcfea12',
-  front_image: '/9j/4AAQSkZJRgABAQEASABIAAD...',
-  rear_image: '/9j/4AAQSkZJRgABAQEASABIAAD...',
+  entry_point: "47abcfea12",
+  front_image: "/9j/4AAQSkZJRgABAQEASABIAAD...",
+  rear_image: "/9j/4AAQSkZJRgABAQEASABIAAD...",
   check_amount: 12550
-);
+)
 ```
 </dd>
 </dl>
@@ -2388,10 +2388,10 @@ Register a cloud device to an entrypoint. See [Devices Quickstart](/developers/d
 
 ```ruby
 client.cloud.add_device(
-  entry: '8cfec329267',
-  registration_code: 'YS7DS5',
-  description: 'Front Desk POS'
-);
+  entry: "8cfec329267",
+  registration_code: "YS7DS5",
+  description: "Front Desk POS"
+)
 ```
 </dd>
 </dl>
@@ -2484,9 +2484,9 @@ Retrieve the registration history for a device.
 
 ```ruby
 client.cloud.history_device(
-  device_id: 'WXGDWB',
-  entry: '8cfec329267'
-);
+  device_id: "WXGDWB",
+  entry: "8cfec329267"
+)
 ```
 </dd>
 </dl>
@@ -2556,7 +2556,7 @@ Get a list of cloud devices registered to an entrypoint.
 <dd>
 
 ```ruby
-client.cloud.list_device(entry: '8cfec329267');
+client.cloud.list_device(entry: "8cfec329267")
 ```
 </dd>
 </dl>
@@ -2627,9 +2627,9 @@ Remove a cloud device from an entrypoint.
 
 ```ruby
 client.cloud.remove_device(
-  device_id: '6c361c7d-674c-44cc-b790-382b75d1xxx',
-  entry: '8cfec329267'
-);
+  device_id: "6c361c7d-674c-44cc-b790-382b75d1xxx",
+  entry: "8cfec329267"
+)
 ```
 </dd>
 </dl>
@@ -2702,19 +2702,19 @@ If you don't include an identifier, the record is rejected.
 
 ```ruby
 client.customer.add_customer(
-  entry: '8cfec329267',
-  customer_number: '12356ACB',
-  firstname: 'Irene',
-  lastname: 'Canizales',
-  email: 'irene@canizalesconcrete.com',
+  entry: "8cfec329267",
+  customer_number: "12356ACB",
+  firstname: "Irene",
+  lastname: "Canizales",
+  email: "irene@canizalesconcrete.com",
   address_1: "123 Bishop's Trail",
-  city: 'Mountain City',
-  state: 'TN',
-  zip: '37612',
-  country: 'US',
+  city: "Mountain City",
+  state: "TN",
+  zip: "37612",
+  country: "US",
   time_zone: -5,
-  identifier_fields: ['email']
-);
+  identifier_fields: ["email"]
+)
 ```
 </dd>
 </dl>
@@ -2808,7 +2808,7 @@ Delete a customer record.
 <dd>
 
 ```ruby
-client.customer.delete_customer(customer_id: 998);
+client.customer.delete_customer(customer_id: 998)
 ```
 </dd>
 </dl>
@@ -2870,7 +2870,7 @@ Retrieves a customer's record and details.
 <dd>
 
 ```ruby
-client.customer.get_customer(customer_id: 998);
+client.customer.get_customer(customer_id: 998)
 ```
 </dd>
 </dl>
@@ -2934,8 +2934,8 @@ Links a customer to a transaction by ID.
 ```ruby
 client.customer.link_customer_transaction(
   customer_id: 998,
-  trans_id: '45-as456777hhhhhhhhhh77777777-324'
-);
+  trans_id: "45-as456777hhhhhhhhhh77777777-324"
+)
 ```
 </dd>
 </dl>
@@ -3005,7 +3005,7 @@ Sends the consent opt-in email to the customer email address in the customer rec
 <dd>
 
 ```ruby
-client.customer.request_consent(customer_id: 998);
+client.customer.request_consent(customer_id: 998)
 ```
 </dd>
 </dl>
@@ -3069,14 +3069,14 @@ Update a customer record. Include only the fields you want to change.
 ```ruby
 client.customer.update_customer(
   customer_id: 998,
-  firstname: 'Irene',
-  lastname: 'Canizales',
+  firstname: "Irene",
+  lastname: "Canizales",
   address_1: "145 Bishop's Trail",
-  city: 'Mountain City',
-  state: 'TN',
-  zip: '37612',
-  country: 'US'
-);
+  city: "Mountain City",
+  state: "TN",
+  zip: "37612",
+  country: "US"
+)
 ```
 </dd>
 </dl>
@@ -3148,12 +3148,12 @@ Export a list of boarding applications for an organization. Use filters to limit
 
 ```ruby
 client.export.export_applications(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -3309,12 +3309,12 @@ This endpoint is deprecated. Export batch details for a paypoint. Use filters to
 
 ```ruby
 client.export.export_batch_details(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -3481,12 +3481,12 @@ This endpoint is deprecated. Export batch details for an organization. Use filte
 
 ```ruby
 client.export.export_batch_details_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -3653,12 +3653,12 @@ Export a list of batches for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_batches(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -3815,12 +3815,12 @@ Export a list of batches for an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_batches_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -3975,12 +3975,12 @@ Export a list of money out batches for a paypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_batches_out(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -4117,12 +4117,12 @@ Export a list of money out batches for an organization. Use filters to limit res
 
 ```ruby
 client.export.export_batches_out_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -4259,12 +4259,12 @@ Export a list of bills for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_bills(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -4419,12 +4419,12 @@ Export a list of bills for an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_bills_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -4579,12 +4579,12 @@ Export a list of chargebacks and ACH returns for an entrypoint. Use filters to l
 
 ```ruby
 client.export.export_chargebacks(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -4760,12 +4760,12 @@ Export a list of chargebacks and ACH returns for an organization. Use filters to
 
 ```ruby
 client.export.export_chargebacks_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -4941,12 +4941,12 @@ Export a list of customers for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_customers(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -5115,12 +5115,12 @@ Exports a list of customers for an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_customers_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -5289,12 +5289,12 @@ Export list of invoices for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_invoices(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -5473,12 +5473,12 @@ Export a list of invoices for an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_invoices_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -5657,12 +5657,12 @@ Export a list of child organizations (suborganizations) for a parent organizatio
 
 ```ruby
 client.export.export_organizations(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -5816,12 +5816,12 @@ Export a list of payouts and their statuses for an entrypoint. Use filters to li
 
 ```ruby
 client.export.export_payout(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -5974,12 +5974,12 @@ Export a list of payouts and their details for an organization. Use filters to l
 
 ```ruby
 client.export.export_payout_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -6132,12 +6132,12 @@ Export a list of paypoints in an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_paypoints(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -6292,12 +6292,12 @@ Export a list of settled transactions for an entrypoint. Use filters to limit re
 
 ```ruby
 client.export.export_settlements(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -6472,12 +6472,12 @@ Export a list of settled transactions for an organization. Use filters to limit 
 
 ```ruby
 client.export.export_settlements_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -6652,12 +6652,12 @@ Export a list of subscriptions for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_subscriptions(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -6834,12 +6834,12 @@ Export a list of subscriptions for an organization. Use filters to limit results
 
 ```ruby
 client.export.export_subscriptions_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -7016,12 +7016,12 @@ Export a list of transactions for an entrypoint in a file in XLXS or CSV format.
 
 ```ruby
 client.export.export_transactions(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -7202,12 +7202,12 @@ Export a list of transactions for an org in a file in XLSX or CSV format. Use fi
 
 ```ruby
 client.export.export_transactions_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -7388,14 +7388,14 @@ Export a list of transfer details for an entrypoint. Use filters to limit result
 
 ```ruby
 client.export.export_transfer_details(
-  entry: '8cfec329267',
-  format: 'csv',
+  entry: "8cfec329267",
+  format: "csv",
   transfer_id: 1000000,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -7556,12 +7556,12 @@ Get a list of transfers for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_transfers(
-  entry: '8cfec329267',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -7707,12 +7707,12 @@ Export a list of vendors for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_vendors(
-  entry: '8cfec329267',
-  format: 'csv',
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  entry: "8cfec329267",
+  format: "csv",
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -7871,12 +7871,12 @@ Export a list of vendors for an organization. Use filters to limit results.
 
 ```ruby
 client.export.export_vendors_org(
-  format: 'csv',
+  format: "csv",
   org_id: 123,
-  columns_export: 'BatchDate:Batch_Date,PaypointName:Legal_name',
+  columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
-);
+)
 ```
 </dd>
 </dl>
@@ -8036,9 +8036,9 @@ Loads all of a payment page's details including `pageIdentifier` and `validation
 
 ```ruby
 client.hosted_payment_pages.load_page(
-  entry: '8cfec329267',
-  subdomain: 'pay-your-fees-1'
-);
+  entry: "8cfec329267",
+  subdomain: "pay-your-fees-1"
+)
 ```
 </dd>
 </dl>
@@ -8111,9 +8111,9 @@ Note: this operation doesn't create a new paypoint, just a payment page for an e
 
 ```ruby
 client.hosted_payment_pages.new_page(
-  entry: '8cfec329267',
-  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA'
-);
+  entry: "8cfec329267",
+  idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA"
+)
 ```
 </dd>
 </dl>
@@ -8192,9 +8192,9 @@ Updates a payment page in a paypoint.
 
 ```ruby
 client.hosted_payment_pages.save_page(
-  entry: '8cfec329267',
-  subdomain: 'pay-your-fees-1'
-);
+  entry: "8cfec329267",
+  subdomain: "pay-your-fees-1"
+)
 ```
 </dd>
 </dl>
@@ -8273,7 +8273,7 @@ Import a list of bills from a CSV file. See the [Import Guide](/developers/devel
 <dd>
 
 ```ruby
-client.import.import_bills(entry: '8cfec329267');
+client.import.import_bills(entry: "8cfec329267")
 ```
 </dd>
 </dl>
@@ -8335,7 +8335,7 @@ Import a list of customers from a CSV file. See the [Import Guide](/developers/d
 <dd>
 
 ```ruby
-client.import.import_customer(entry: '8cfec329267');
+client.import.import_customer(entry: "8cfec329267")
 ```
 </dd>
 </dl>
@@ -8405,7 +8405,7 @@ Import a list of vendors from a CSV file. See the [Import Guide](/developers/dev
 <dd>
 
 ```ruby
-client.import.import_vendor(entry: '8cfec329267');
+client.import.import_vendor(entry: "8cfec329267")
 ```
 </dd>
 </dl>
@@ -8469,36 +8469,36 @@ Creates an invoice in an entrypoint.
 
 ```ruby
 client.invoice.add_invoice(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   customer_data: {
-    first_name: 'Tamara',
-    last_name: 'Bagratoni',
-    customer_number: '3'
+    first_name: "Tamara",
+    last_name: "Bagratoni",
+    customer_number: "3"
   },
   invoice_data: {
     items: [{
-      item_product_name: 'Adventure Consult',
-      item_description: 'Consultation for Georgian tours',
+      item_product_name: "Adventure Consult",
+      item_description: "Consultation for Georgian tours",
       item_cost: 100,
       item_qty: 1,
       item_mode: 1,
       item_total_amount: 1
     }, {
-      item_product_name: 'Deposit ',
-      item_description: 'Deposit for trip planning',
+      item_product_name: "Deposit ",
+      item_description: "Deposit for trip planning",
       item_cost: 882.37,
       item_qty: 1,
       item_total_amount: 1
     }],
-    invoice_date: '2025-10-19',
+    invoice_date: "2025-10-19",
     invoice_type: 0,
     invoice_status: 1,
-    frequency: 'onetime',
+    frequency: "onetime",
     invoice_amount: 982.37,
     discount: 10,
-    invoice_number: 'INV-3'
+    invoice_number: "INV-3"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -8585,9 +8585,9 @@ Deletes an invoice that's attached to a file.
 
 ```ruby
 client.invoice.delete_attached_from_invoice(
-  filename: '0_Bill.pdf',
+  filename: "0_Bill.pdf",
   id_invoice: 23548884
-);
+)
 ```
 </dd>
 </dl>
@@ -8669,7 +8669,7 @@ Deletes a single invoice from an entrypoint.
 <dd>
 
 ```ruby
-client.invoice.delete_invoice(id_invoice: 23548884);
+client.invoice.delete_invoice(id_invoice: 23548884)
 ```
 </dd>
 </dl>
@@ -8735,16 +8735,16 @@ client.invoice.edit_invoice(
   id_invoice: 332,
   invoice_data: {
     items: [{
-      item_product_name: 'Deposit',
-      item_description: 'Deposit for trip planning',
+      item_product_name: "Deposit",
+      item_description: "Deposit for trip planning",
       item_cost: 882.37,
       item_qty: 1
     }],
-    invoice_date: '2025-10-19',
+    invoice_date: "2025-10-19",
     invoice_amount: 982.37,
-    invoice_number: 'INV-6'
+    invoice_number: "INV-6"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -8824,8 +8824,8 @@ Retrieves a file attached to an invoice.
 ```ruby
 client.invoice.get_attached_file_from_invoice(
   id_invoice: 1,
-  filename: 'filename'
-);
+  filename: "filename"
+)
 ```
 </dd>
 </dl>
@@ -8917,7 +8917,7 @@ Retrieves a single invoice by ID.
 <dd>
 
 ```ruby
-client.invoice.get_invoice(id_invoice: 23548884);
+client.invoice.get_invoice(id_invoice: 23548884)
 ```
 </dd>
 </dl>
@@ -8979,7 +8979,7 @@ Retrieves the next available invoice number for a paypoint.
 <dd>
 
 ```ruby
-client.invoice.get_invoice_number(entry: '8cfec329267');
+client.invoice.get_invoice_number(entry: "8cfec329267")
 ```
 </dd>
 </dl>
@@ -9042,11 +9042,11 @@ Returns a list of invoices for an entrypoint. Use filters to limit results. Incl
 
 ```ruby
 client.invoice.list_invoices(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -9216,8 +9216,8 @@ client.invoice.list_invoices_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -9386,8 +9386,8 @@ Sends an invoice from an entrypoint via email.
 client.invoice.send_invoice(
   id_invoice: 23548884,
   attachfile: true,
-  mail_2: 'tamara@example.com'
-);
+  mail_2: "tamara@example.com"
+)
 ```
 </dd>
 </dl>
@@ -9465,7 +9465,7 @@ Export a single invoice in PDF format.
 <dd>
 
 ```ruby
-client.invoice.get_invoice_pdf(id_invoice: 23548884);
+client.invoice.get_invoice_pdf(id_invoice: 23548884)
 ```
 </dd>
 </dl>
@@ -9529,16 +9529,16 @@ Adds products and services to an entrypoint's catalog. These are used as line it
 
 ```ruby
 client.line_item.add_item(
-  entry: '47cae3d74',
-  item_commodity_code: '010',
+  entry: "47cae3d74",
+  item_commodity_code: "010",
   item_cost: 12.45,
-  item_description: 'Deposit for materials',
+  item_description: "Deposit for materials",
   item_mode: 0,
-  item_product_code: 'M-DEPOSIT',
-  item_product_name: 'Materials deposit',
+  item_product_code: "M-DEPOSIT",
+  item_product_name: "Materials deposit",
   item_qty: 1,
-  item_unit_of_measure: 'SqFt'
-);
+  item_unit_of_measure: "SqFt"
+)
 ```
 </dd>
 </dl>
@@ -9616,7 +9616,7 @@ Deletes an item.
 <dd>
 
 ```ruby
-client.line_item.delete_item(line_item_id: 700);
+client.line_item.delete_item(line_item_id: 700)
 ```
 </dd>
 </dl>
@@ -9678,7 +9678,7 @@ Gets an item by ID.
 <dd>
 
 ```ruby
-client.line_item.get_item(line_item_id: 700);
+client.line_item.get_item(line_item_id: 700)
 ```
 </dd>
 </dl>
@@ -9741,11 +9741,11 @@ Retrieves a list of line items and their details from an entrypoint. Line items 
 
 ```ruby
 client.line_item.list_line_items(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -9899,7 +9899,7 @@ client.line_item.update_item(
   line_item_id: 700,
   item_cost: 12.45,
   item_qty: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -9978,22 +9978,22 @@ client.money_in.authorize(
   customer_data: {
     customer_id: 4440
   },
-  entry_point: 'f743aed24a',
-  ipaddress: '255.255.255.255',
+  entry_point: "f743aed24a",
+  ipaddress: "255.255.255.255",
   payment_details: {
     service_fee: 0,
     total_amount: 100
   },
   payment_method: {
-    cardcvv: '999',
-    cardexp: '02/27',
-    card_holder: 'John Cassian',
-    cardnumber: '4111111111111111',
-    cardzip: '12345',
-    initiator: 'payor',
-    method_: 'card'
+    cardcvv: "999",
+    cardexp: "02/27",
+    card_holder: "John Cassian",
+    cardnumber: "4111111111111111",
+    cardzip: "12345",
+    initiator: "payor",
+    method_: "card"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -10077,9 +10077,9 @@ transaction](/developers/api-reference/moneyin/authorize-a-transaction) to compl
 
 ```ruby
 client.money_in.capture(
-  trans_id: '10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13',
+  trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
   amount: 0
-);
+)
 ```
 </dd>
 </dl>
@@ -10156,12 +10156,12 @@ Consider migrating to the [v2 Capture endpoint](/developers/api-reference/moneyi
 
 ```ruby
 client.money_in.capture_auth(
-  trans_id: '10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13',
+  trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
   payment_details: {
     total_amount: 105,
     service_fee: 5
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -10234,24 +10234,24 @@ This feature must be enabled by Payabli on a per-merchant basis. Contact support
 
 ```ruby
 client.money_in.credit(
-  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA',
+  idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
   customer_data: {
-    billing_address_1: '5127 Linkwood ave',
-    customer_number: '100'
+    billing_address_1: "5127 Linkwood ave",
+    customer_number: "100"
   },
-  entrypoint: 'my-entrypoint',
+  entrypoint: "my-entrypoint",
   payment_details: {
     service_fee: 0,
     total_amount: 1
   },
   payment_method: {
-    ach_account: '88354454',
-    ach_account_type: 'Checking',
-    ach_holder: 'John Smith',
-    ach_routing: '021000021',
-    method_: 'ach'
+    ach_account: "88354454",
+    ach_account_type: "Checking",
+    ach_holder: "John Smith",
+    ach_routing: "021000021",
+    method_: "ach"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -10393,7 +10393,7 @@ Retrieve a processed transaction's details.
 <dd>
 
 ```ruby
-client.money_in.details(trans_id: '45-as456777hhhhhhhhhh77777777-324');
+client.money_in.details(trans_id: "45-as456777hhhhhhhhhh77777777-324")
 ```
 </dd>
 </dl>
@@ -10463,22 +10463,22 @@ client.money_in.getpaid(
   customer_data: {
     customer_id: 4440
   },
-  entry_point: 'f743aed24a',
-  ipaddress: '255.255.255.255',
+  entry_point: "f743aed24a",
+  ipaddress: "255.255.255.255",
   payment_details: {
     service_fee: 0,
     total_amount: 100
   },
   payment_method: {
-    cardcvv: '999',
-    cardexp: '02/27',
-    card_holder: 'John Cassian',
-    cardnumber: '4111111111111111',
-    cardzip: '12345',
-    initiator: 'payor',
-    method_: 'card'
+    cardcvv: "999",
+    cardexp: "02/27",
+    card_holder: "John Cassian",
+    cardnumber: "4111111111111111",
+    cardzip: "12345",
+    initiator: "payor",
+    method_: "card"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -10582,8 +10582,8 @@ A reversal either refunds or voids a transaction independent of the transaction'
 ```ruby
 client.money_in.reverse(
   amount: 0,
-  trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723'
-);
+  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
+)
 ```
 </dd>
 </dl>
@@ -10666,8 +10666,8 @@ Refund a transaction that has settled and send money back to the account holder.
 ```ruby
 client.money_in.refund(
   amount: 0,
-  trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723'
-);
+  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
+)
 ```
 </dd>
 </dl>
@@ -10745,25 +10745,25 @@ Refunds a settled transaction with split instructions.
 
 ```ruby
 client.money_in.refund_with_instructions(
-  trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723',
-  idempotency_key: '8A29FC40-CA47-1067-B31D-00DD010662DB',
-  source: 'api',
-  order_description: 'Materials deposit',
+  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+  idempotency_key: "8A29FC40-CA47-1067-B31D-00DD010662DB",
+  source: "api",
+  order_description: "Materials deposit",
   amount: 100,
   refund_details: {
     split_refunding: [{
-      origination_entry_point: '7f1a381696',
-      account_id: '187-342',
-      description: 'Refunding undelivered materials',
+      origination_entry_point: "7f1a381696",
+      account_id: "187-342",
+      description: "Refunding undelivered materials",
       amount: 60
     }, {
-      origination_entry_point: '7f1a381696',
-      account_id: '187-343',
-      description: 'Refunding deposit for undelivered materials',
+      origination_entry_point: "7f1a381696",
+      account_id: "187-343",
+      description: "Refunding deposit for undelivered materials",
       amount: 40
     }]
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -10888,7 +10888,7 @@ Reverse microdeposits that are used to verify customer account ownership and acc
 <dd>
 
 ```ruby
-client.money_in.reverse_credit(trans_id: '45-as456777hhhhhhhhhh77777777-324');
+client.money_in.reverse_credit(trans_id: "45-as456777hhhhhhhhhh77777777-324")
 ```
 </dd>
 </dl>
@@ -10951,9 +10951,9 @@ Send a payment receipt for a transaction.
 
 ```ruby
 client.money_in.send_receipt_2_trans(
-  trans_id: '45-as456777hhhhhhhhhh77777777-324',
-  email: 'example@email.com'
-);
+  trans_id: "45-as456777hhhhhhhhhh77777777-324",
+  email: "example@email.com"
+)
 ```
 </dd>
 </dl>
@@ -11028,16 +11028,16 @@ Validates a card number without running a transaction or authorizing a charge.
 
 ```ruby
 client.money_in.validate(
-  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA',
-  entry_point: 'entry132',
+  idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
+  entry_point: "entry132",
   payment_method: {
-    method_: 'card',
-    cardnumber: '4360000001000005',
-    cardexp: '12/29',
-    cardzip: '14602-8328',
-    card_holder: 'Dianne Becker-Smith'
+    method_: "card",
+    cardnumber: "4360000001000005",
+    cardexp: "12/29",
+    cardzip: "14602-8328",
+    card_holder: "Dianne Becker-Smith"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -11143,7 +11143,7 @@ Cancel a transaction that hasn't been settled yet. Voiding non-captured authoriz
 <dd>
 
 ```ruby
-client.money_in.void(trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723');
+client.money_in.void(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
 ```
 </dd>
 </dl>
@@ -11209,22 +11209,22 @@ client.money_in.getpaidv_2(
   customer_data: {
     customer_id: 4440
   },
-  entry_point: 'f743aed24a',
-  ipaddress: '255.255.255.255',
+  entry_point: "f743aed24a",
+  ipaddress: "255.255.255.255",
   payment_details: {
     service_fee: 0,
     total_amount: 100
   },
   payment_method: {
-    cardcvv: '999',
-    cardexp: '02/27',
-    card_holder: 'John Cassian',
-    cardnumber: '4111111111111111',
-    cardzip: '12345',
-    initiator: 'payor',
-    method_: 'card'
+    cardcvv: "999",
+    cardexp: "02/27",
+    card_holder: "John Cassian",
+    cardnumber: "4111111111111111",
+    cardzip: "12345",
+    initiator: "payor",
+    method_: "card"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -11324,22 +11324,22 @@ client.money_in.authorizev_2(
   customer_data: {
     customer_id: 4440
   },
-  entry_point: 'f743aed24a',
-  ipaddress: '255.255.255.255',
+  entry_point: "f743aed24a",
+  ipaddress: "255.255.255.255",
   payment_details: {
     service_fee: 0,
     total_amount: 100
   },
   payment_method: {
-    cardcvv: '999',
-    cardexp: '02/27',
-    card_holder: 'John Cassian',
-    cardnumber: '4111111111111111',
-    cardzip: '12345',
-    initiator: 'payor',
-    method_: 'card'
+    cardcvv: "999",
+    cardexp: "02/27",
+    card_holder: "John Cassian",
+    cardnumber: "4111111111111111",
+    cardzip: "12345",
+    initiator: "payor",
+    method_: "card"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -11418,12 +11418,12 @@ Capture an authorized transaction to complete the transaction and move funds fro
 
 ```ruby
 client.money_in.capturev_2(
-  trans_id: '10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13',
+  trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
   payment_details: {
     total_amount: 105,
     service_fee: 5
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -11495,7 +11495,7 @@ This is the v2 version of the refund endpoint, and returns the unified response 
 <dd>
 
 ```ruby
-client.money_in.refundv_2(trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723');
+client.money_in.refundv_2(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
 ```
 </dd>
 </dl>
@@ -11560,9 +11560,9 @@ This is the v2 version of the refund endpoint, and returns the unified response 
 
 ```ruby
 client.money_in.refundv_2_amount(
-  trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723',
+  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
   amount: 0
-);
+)
 ```
 </dd>
 </dl>
@@ -11632,7 +11632,7 @@ Cancel a transaction that hasn't been settled yet. Voiding non-captured authoriz
 <dd>
 
 ```ruby
-client.money_in.voidv_2(trans_id: '10-3ffa27df-b171-44e0-b251-e95fbfc7a723');
+client.money_in.voidv_2(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
 ```
 </dd>
 </dl>
@@ -11696,22 +11696,22 @@ Authorizes transaction for payout. Authorized transactions aren't flagged for se
 
 ```ruby
 client.money_out.authorize_out(
-  entry_point: '48acde49',
-  order_description: 'Window Painting',
+  entry_point: "48acde49",
+  order_description: "Window Painting",
   payment_method: {
-    method_: 'managed'
+    method_: "managed"
   },
   payment_details: {
     total_amount: 47,
     unbundled: false
   },
   vendor_data: {
-    vendor_number: '7895433'
+    vendor_number: "7895433"
   },
   invoice_data: [{
     bill_id: 54323
   }]
-);
+)
 ```
 </dd>
 </dl>
@@ -11805,7 +11805,7 @@ Cancels an array of payout transactions.
 <dd>
 
 ```ruby
-client.money_out.cancel_all_out(request: ['2-29', '2-28', '2-27']);
+client.money_out.cancel_all_out(request: %w[2-29 2-28 2-27])
 ```
 </dd>
 </dl>
@@ -11867,7 +11867,7 @@ Cancel a payout transaction by ID.
 <dd>
 
 ```ruby
-client.money_out.cancel_out_get(reference_id: '129-219');
+client.money_out.cancel_out_get(reference_id: "129-219")
 ```
 </dd>
 </dl>
@@ -11929,7 +11929,7 @@ Cancel a payout transaction by ID.
 <dd>
 
 ```ruby
-client.money_out.cancel_out_delete(reference_id: '129-219');
+client.money_out.cancel_out_delete(reference_id: "129-219")
 ```
 </dd>
 </dl>
@@ -11991,7 +11991,7 @@ Captures an array of authorized payout transactions for settlement. The maximum 
 <dd>
 
 ```ruby
-client.money_out.capture_all_out(body: ['2-29', '2-28', '2-27']);
+client.money_out.capture_all_out(body: %w[2-29 2-28 2-27])
 ```
 </dd>
 </dl>
@@ -12061,7 +12061,7 @@ Captures a single authorized payout transaction by ID.
 <dd>
 
 ```ruby
-client.money_out.capture_out(reference_id: '129-219');
+client.money_out.capture_out(reference_id: "129-219")
 ```
 </dd>
 </dl>
@@ -12131,7 +12131,7 @@ Returns details for a processed money out transaction.
 <dd>
 
 ```ruby
-client.money_out.payout_details(trans_id: '45-as456777hhhhhhhhhh77777777-324');
+client.money_out.payout_details(trans_id: "45-as456777hhhhhhhhhh77777777-324")
 ```
 </dd>
 </dl>
@@ -12193,7 +12193,7 @@ Retrieves vCard details for a single card in an entrypoint.
 <dd>
 
 ```ruby
-client.money_out.v_card_get(card_token: '20230403315245421165');
+client.money_out.v_card_get(card_token: "20230403315245421165")
 ```
 </dd>
 </dl>
@@ -12255,7 +12255,7 @@ Sends a virtual card link via email to the vendor associated with the `transId`.
 <dd>
 
 ```ruby
-client.money_out.send_v_card_link(trans_id: '01K33Z6YQZ6GD5QVKZ856MJBSC');
+client.money_out.send_v_card_link(trans_id: "01K33Z6YQZ6GD5QVKZ856MJBSC")
 ```
 </dd>
 </dl>
@@ -12319,7 +12319,7 @@ The check image is only available for payouts that have been processed.
 <dd>
 
 ```ruby
-client.money_out.get_check_image(asset_name: 'check133832686289732320_01JKBNZ5P32JPTZY8XXXX000000.pdf');
+client.money_out.get_check_image(asset_name: "check133832686289732320_01JKBNZ5P32JPTZY8XXXX000000.pdf")
 ```
 </dd>
 </dl>
@@ -12404,9 +12404,9 @@ The transaction must meet all of the following criteria:
 
 ```ruby
 client.money_out.update_check_payment_status(
-  trans_id: 'TRANS123456',
-  check_payment_status: '5'
-);
+  trans_id: "TRANS123456",
+  check_payment_status: "5"
+)
 ```
 </dd>
 </dl>
@@ -12479,15 +12479,15 @@ Create a new notification or autogenerated report.
 ```ruby
 client.notification.add_notification(
   content: {
-    event_type: 'CreatedApplication'
+    event_type: "CreatedApplication"
   },
-  frequency: 'untilcancelled',
-  method_: 'web',
-  owner_id: '236',
+  frequency: "untilcancelled",
+  method_: "web",
+  owner_id: "236",
   owner_type: 0,
   status: 1,
-  target: 'https://webhook.site/2871b8f8-edc7-441a-b376-98d8c8e33275'
-);
+  target: "https://webhook.site/2871b8f8-edc7-441a-b376-98d8c8e33275"
+)
 ```
 </dd>
 </dl>
@@ -12549,7 +12549,7 @@ Deletes a single notification or autogenerated report.
 <dd>
 
 ```ruby
-client.notification.delete_notification(n_id: '1717');
+client.notification.delete_notification(n_id: "1717")
 ```
 </dd>
 </dl>
@@ -12611,7 +12611,7 @@ Retrieves a single notification or autogenerated report's details.
 <dd>
 
 ```ruby
-client.notification.get_notification(n_id: '1717');
+client.notification.get_notification(n_id: "1717")
 ```
 </dd>
 </dl>
@@ -12674,17 +12674,17 @@ Update a notification or autogenerated report.
 
 ```ruby
 client.notification.update_notification(
-  n_id: '1717',
+  n_id: "1717",
   content: {
-    event_type: 'ApprovedPayment'
+    event_type: "ApprovedPayment"
   },
-  frequency: 'untilcancelled',
-  method_: 'email',
-  owner_id: '136',
+  frequency: "untilcancelled",
+  method_: "email",
+  owner_id: "136",
   owner_type: 0,
   status: 1,
-  target: 'newemail@email.com'
-);
+  target: "newemail@email.com"
+)
 ```
 </dd>
 </dl>
@@ -12754,7 +12754,7 @@ Gets a copy of a generated report by ID.
 <dd>
 
 ```ruby
-client.notification.get_report_file(id: 1000000);
+client.notification.get_report_file(id: 1000000)
 ```
 </dd>
 </dl>
@@ -12823,12 +12823,12 @@ This endpoint requires the `notifications_create` OR `notifications_read` permis
 ```ruby
 client.notificationlogs.search_notification_logs(
   page_size: 20,
-  start_date: '2024-01-01T00:00:00Z',
-  end_date: '2024-01-31T23:59:59Z',
-  notification_event: 'ActivatedMerchant',
+  start_date: "2024-01-01T00:00:00Z",
+  end_date: "2024-01-31T23:59:59Z",
+  notification_event: "ActivatedMerchant",
   succeeded: true,
   org_id: 12345
-);
+)
 ```
 </dd>
 </dl>
@@ -12907,7 +12907,7 @@ This endpoint requires the `notifications_create` OR `notifications_read` permis
 <dd>
 
 ```ruby
-client.notificationlogs.get_notification_log(uuid: '550e8400-e29b-41d4-a716-446655440000');
+client.notificationlogs.get_notification_log(uuid: "550e8400-e29b-41d4-a716-446655440000")
 ```
 </dd>
 </dl>
@@ -12971,7 +12971,7 @@ Retry sending a specific notification.
 <dd>
 
 ```ruby
-client.notificationlogs.retry_notification_log(uuid: '550e8400-e29b-41d4-a716-446655440000');
+client.notificationlogs.retry_notification_log(uuid: "550e8400-e29b-41d4-a716-446655440000")
 ```
 </dd>
 </dl>
@@ -13036,7 +13036,7 @@ This endpoint requires the `notifications_create` permission.
 <dd>
 
 ```ruby
-client.notificationlogs.bulk_retry_notification_logs(request: ['550e8400-e29b-41d4-a716-446655440000', '550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440002']);
+client.notificationlogs.bulk_retry_notification_logs(request: %w[550e8400-e29b-41d4-a716-446655440000 550e8400-e29b-41d4-a716-446655440001 550e8400-e29b-41d4-a716-446655440002])
 ```
 </dd>
 </dl>
@@ -13099,7 +13099,7 @@ Use this endpoint to upload an image file for OCR processing. The accepted file 
 <dd>
 
 ```ruby
-client.ocr.ocr_document_form(type_result: 'typeResult');
+client.ocr.ocr_document_form(type_result: "typeResult")
 ```
 </dd>
 </dl>
@@ -13169,7 +13169,7 @@ Use this endpoint to submit a Base64-encoded image file for OCR processing. The 
 <dd>
 
 ```ruby
-client.ocr.ocr_document_json(type_result: 'typeResult');
+client.ocr.ocr_document_json(type_result: "typeResult")
 ```
 </dd>
 </dl>
@@ -13241,44 +13241,44 @@ Creates an organization under a parent organization. This is also referred to as
 
 ```ruby
 client.organization.add_organization(
-  idempotency_key: '6B29FC40-CA47-1067-B31D-00DD010662DA',
+  idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
   billing_info: {
-    ach_account: '123123123',
-    ach_routing: '123123123',
-    billing_address: '123 Walnut Street',
-    billing_city: 'Johnson City',
-    billing_country: 'US',
-    billing_state: 'TN',
-    billing_zip: '37615'
+    ach_account: "123123123",
+    ach_routing: "123123123",
+    billing_address: "123 Walnut Street",
+    billing_city: "Johnson City",
+    billing_country: "US",
+    billing_state: "TN",
+    billing_zip: "37615"
   },
   contacts: [{
-    contact_email: 'herman@hermanscoatings.com',
-    contact_name: 'Herman Martinez',
-    contact_phone: '3055550000',
-    contact_title: 'Owner'
+    contact_email: "herman@hermanscoatings.com",
+    contact_name: "Herman Martinez",
+    contact_phone: "3055550000",
+    contact_title: "Owner"
   }],
   has_billing: true,
   has_residual: true,
-  org_address: '123 Walnut Street',
-  org_city: 'Johnson City',
-  org_country: 'US',
-  org_entry_name: 'pilgrim-planner',
-  org_id: '123',
+  org_address: "123 Walnut Street",
+  org_city: "Johnson City",
+  org_country: "US",
+  org_entry_name: "pilgrim-planner",
+  org_id: "123",
   org_logo: {
-    f_content: 'TXkgdGVzdCBmaWxlHJ==...',
-    filename: 'my-doc.pdf',
-    ftype: 'pdf',
-    furl: 'https://mysite.com/my-doc.pdf'
+    f_content: "TXkgdGVzdCBmaWxlHJ==...",
+    filename: "my-doc.pdf",
+    ftype: "pdf",
+    furl: "https://mysite.com/my-doc.pdf"
   },
-  org_name: 'Pilgrim Planner',
+  org_name: "Pilgrim Planner",
   org_parent_id: 236,
-  org_state: 'TN',
+  org_state: "TN",
   org_timezone: -5,
   org_type: 0,
-  org_website: 'www.pilgrimageplanner.com',
-  org_zip: '37615',
-  reply_to_email: 'email@example.com'
-);
+  org_website: "www.pilgrimageplanner.com",
+  org_zip: "37615",
+  reply_to_email: "email@example.com"
+)
 ```
 </dd>
 </dl>
@@ -13492,7 +13492,7 @@ Delete an organization by ID.
 <dd>
 
 ```ruby
-client.organization.delete_organization(org_id: 123);
+client.organization.delete_organization(org_id: 123)
 ```
 </dd>
 </dl>
@@ -13557,23 +13557,23 @@ Updates an organization's details by ID.
 client.organization.edit_organization(
   org_id: 123,
   contacts: [{
-    contact_email: 'herman@hermanscoatings.com',
-    contact_name: 'Herman Martinez',
-    contact_phone: '3055550000',
-    contact_title: 'Owner'
+    contact_email: "herman@hermanscoatings.com",
+    contact_name: "Herman Martinez",
+    contact_phone: "3055550000",
+    contact_title: "Owner"
   }],
-  org_address: '123 Walnut Street',
-  org_city: 'Johnson City',
-  org_country: 'US',
-  org_entry_name: 'pilgrim-planner',
-  organization_data_org_id: '123',
-  org_name: 'Pilgrim Planner',
-  org_state: 'TN',
+  org_address: "123 Walnut Street",
+  org_city: "Johnson City",
+  org_country: "US",
+  org_entry_name: "pilgrim-planner",
+  organization_data_org_id: "123",
+  org_name: "Pilgrim Planner",
+  org_state: "TN",
   org_timezone: -5,
   org_type: 0,
-  org_website: 'www.pilgrimageplanner.com',
-  org_zip: '37615'
-);
+  org_website: "www.pilgrimageplanner.com",
+  org_zip: "37615"
+)
 ```
 </dd>
 </dl>
@@ -13787,7 +13787,7 @@ Gets an organization's basic information by entry name (entrypoint identifier).
 <dd>
 
 ```ruby
-client.organization.get_basic_organization(entry: '8cfec329267');
+client.organization.get_basic_organization(entry: "8cfec329267")
 ```
 </dd>
 </dl>
@@ -13849,7 +13849,7 @@ Gets an organizations basic details by org ID.
 <dd>
 
 ```ruby
-client.organization.get_basic_organization_by_id(org_id: 123);
+client.organization.get_basic_organization_by_id(org_id: 123)
 ```
 </dd>
 </dl>
@@ -13911,7 +13911,7 @@ Retrieves details for an organization by ID.
 <dd>
 
 ```ruby
-client.organization.get_organization(org_id: 123);
+client.organization.get_organization(org_id: 123)
 ```
 </dd>
 </dl>
@@ -13973,7 +13973,7 @@ Retrieves an organization's settings.
 <dd>
 
 ```ruby
-client.organization.get_settings_organization(org_id: 123);
+client.organization.get_settings_organization(org_id: 123)
 ```
 </dd>
 </dl>
@@ -14038,26 +14038,26 @@ Generates a payment link for an invoice from the invoice ID.
 ```ruby
 client.payment_link.add_pay_link_from_invoice(
   id_invoice: 23548884,
-  mail_2: 'jo@example.com; ceo@example.com',
+  mail_2: "jo@example.com; ceo@example.com",
   contact_us: {
-    email_label: 'Email',
+    email_label: "Email",
     enabled: true,
-    header: 'Contact Us',
+    header: "Contact Us",
     order: 0,
     payment_icons: true,
-    phone_label: 'Phone'
+    phone_label: "Phone"
   },
   invoices: {
     enabled: true,
     invoice_link: {
       enabled: true,
-      label: 'View Invoice',
+      label: "View Invoice",
       order: 0
     },
     order: 0,
     view_invoice_details: {
       enabled: true,
-      label: 'Invoice Details',
+      label: "Invoice Details",
       order: 0
     }
   },
@@ -14067,31 +14067,31 @@ client.payment_link.add_pay_link_from_invoice(
   },
   message_before_paying: {
     enabled: true,
-    label: 'Please review your payment details',
+    label: "Please review your payment details",
     order: 0
   },
   notes: {
     enabled: true,
-    header: 'Additional Notes',
+    header: "Additional Notes",
     order: 0,
-    placeholder: 'Enter any additional notes here',
-    value: ''
+    placeholder: "Enter any additional notes here",
+    value: ""
   },
   page: {
-    description: 'Complete your payment securely',
+    description: "Complete your payment securely",
     enabled: true,
-    header: 'Payment Page',
+    header: "Payment Page",
     order: 0
   },
   payment_button: {
     enabled: true,
-    label: 'Pay Now',
+    label: "Pay Now",
     order: 0
   },
   payment_methods: {
     all_methods_checked: true,
     enabled: true,
-    header: 'Payment Methods',
+    header: "Payment Methods",
     methods: {
       amex: true,
       apple_pay: true,
@@ -14103,9 +14103,9 @@ client.payment_link.add_pay_link_from_invoice(
     order: 0,
     settings: {
       apple_pay: {
-        button_style: 'black',
-        button_type: 'pay',
-        language: 'en-US'
+        button_style: "black",
+        button_type: "pay",
+        language: "en-US"
       }
     }
   },
@@ -14115,36 +14115,36 @@ client.payment_link.add_pay_link_from_invoice(
       display: true,
       fixed: true,
       identifier: true,
-      label: 'Full Name',
-      name: 'fullName',
+      label: "Full Name",
+      name: "fullName",
       order: 0,
       required: true,
-      validation: 'alpha',
-      value: '',
+      validation: "alpha",
+      value: "",
       width: 0
     }],
-    header: 'Payor Information',
+    header: "Payor Information",
     order: 0
   },
   review: {
     enabled: true,
-    header: 'Review Payment',
+    header: "Review Payment",
     order: 0
   },
   settings: {
     color: "#000000",
-    custom_css_url: 'https://example.com/custom.css',
-    language: 'en',
+    custom_css_url: "https://example.com/custom.css",
+    language: "en",
     page_logo: {
-      f_content: 'PHN2ZyB2aWV3Qm94PSIwIDAgODAwIDEwMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMTAwMCIgZmlsbD0id2hpdGUiLz4KICAKICA8IS0tIENvbXBhbnkgSGVhZGVyIC0tPgogIDx0ZXh0IHg9IjQwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJjM2U1MCI+R3J1enlhIEFkdmVudHVyZSBPdXRmaXR0ZXJzPC90ZXh0PgogIDxsaW5lIHgxPSI0MCIgeTE9IjgwIiB4Mj0iNzYwIiB5Mj0iODAiIHN0cm9rZT0iIzJjM2U1MCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgCiAgPCEtLSBDb21wYW55IERldGFpbHMgLS0+CiAgPHRleHQgeD0iNDAiIHk9IjExMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj4xMjMgTW91bnRhaW4gVmlldyBSb2FkPC90ZXh0PgogIDx0ZXh0IHg9IjQwIiB5PSIxMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+VGJpbGlzaSwgR2VvcmdpYSAwMTA1PC90ZXh0PgogIDx0ZXh0IHg9IjQwIiB5PSIxNTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+VGVsOiArOTk1IDMyIDEyMyA0NTY3PC90ZXh0PgogIDx0ZXh0IHg9IjQwIiB5PSIxNzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+RW1haWw6IGluZm9AZ3J1enlhYWR2ZW50dXJlcy5jb208L3RleHQ+CgogIDwhLS0gSW52b2ljZSBUaXRsZSAtLT4KICA8dGV4dCB4PSI2MDAiIHk9IjExMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJjM2U1MCI+SU5WT0lDRTwvdGV4dD4KICA8dGV4dCB4PSI2MDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj5EYXRlOiAxMi8xMS8yMDI0PC90ZXh0PgogIDx0ZXh0IHg9IjYwMCIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPkludm9pY2UgIzogR1JaLTIwMjQtMTEyMzwvdGV4dD4KCiAgPCEtLSBCaWxsIFRvIFNlY3Rpb24gLS0+CiAgPHRleHQgeD0iNDAiIHk9IjIyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJjM2U1MCI+QklMTCBUTzo8L3RleHQ+CiAgPHJlY3QgeD0iNDAiIHk9IjIzNSIgd2lkdGg9IjMwMCIgaGVpZ2h0PSI4MCIgZmlsbD0iI2Y3ZjlmYSIvPgogIDx0ZXh0IHg9IjUwIiB5PSIyNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+W0N1c3RvbWVyIE5hbWVdPC90ZXh0PgogIDx0ZXh0IHg9IjUwIiB5PSIyODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+W0FkZHJlc3MgTGluZSAxXTwvdGV4dD4KICA8dGV4dCB4PSI1MCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPltDaXR5LCBDb3VudHJ5XTwvdGV4dD4KCiAgPCEtLSBUYWJsZSBIZWFkZXJzIC0tPgogIDxyZWN0IHg9IjQwIiB5PSIzNDAiIHdpZHRoPSI3MjAiIGhlaWdodD0iMzAiIGZpbGw9IiMyYzNlNTAiLz4KICA8dGV4dCB4PSI1MCIgeT0iMzYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSI+RGVzY3JpcHRpb248L3RleHQ+CiAgPHRleHQgeD0iNDUwIiB5PSIzNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIj5RdWFudGl0eTwvdGV4dD4KICA8dGV4dCB4PSI1NTAiIHk9IjM2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPlJhdGU8L3RleHQ+CiAgPHRleHQgeD0iNjgwIiB5PSIzNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIj5BbW91bnQ8L3RleHQ+CgogIDwhLS0gVGFibGUgUm93cyAtLT4KICA8cmVjdCB4PSI0MCIgeT0iMzcwIiB3aWR0aD0iNzIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZjdmOWZhIi8+CiAgPHRleHQgeD0iNTAiIHk9IjM5MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj5Nb3VudGFpbiBDbGltYmluZyBFcXVpcG1lbnQgUmVudGFsPC90ZXh0PgogIDx0ZXh0IHg9IjQ1MCIgeT0iMzkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPjE8L3RleHQ+CiAgPHRleHQgeD0iNTUwIiB5PSIzOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+JDI1MC4wMDwvdGV4dD4KICA8dGV4dCB4PSI2ODAiIHk9IjM5MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj4kMjUwLjAwPC90ZXh0PgoKICA8cmVjdCB4PSI0MCIgeT0iNDAwIiB3aWR0aD0iNzIwIiBoZWlnaHQ9IjMwIiBmaWxsPSJ3aGl0ZSIvPgogIDx0ZXh0IHg9IjUwIiB5PSI0MjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+R3VpZGVkIFRyZWsgUGFja2FnZSAtIDIgRGF5czwvdGV4dD4KICA8dGV4dCB4PSI0NTAiIHk9IjQyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj4xPC90ZXh0PgogIDx0ZXh0IHg9IjU1MCIgeT0iNDIwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPiQ0MDAuMDA8L3RleHQ+CiAgPHRleHQgeD0iNjgwIiB5PSI0MjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+JDQwMC4wMDwvdGV4dD4KCiAgPHJlY3QgeD0iNDAiIHk9IjQzMCIgd2lkdGg9IjcyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2Y3ZjlmYSIvPgogIDx0ZXh0IHg9IjUwIiB5PSI0NTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+U2FmZXR5IEVxdWlwbWVudCBQYWNrYWdlPC90ZXh0PgogIDx0ZXh0IHg9IjQ1MCIgeT0iNDUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPjE8L3RleHQ+CiAgPHRleHQgeD0iNTUwIiB5PSI0NTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+JDE1MC4wMDwvdGV4dD4KICA8dGV4dCB4PSI2ODAiIHk9IjQ1MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj4kMTUwLjAwPC90ZXh0PgoKICA8IS0tIFRvdGFscyAtLT4KICA8bGluZSB4MT0iNDAiIHkxPSI0ODAiIHgyPSI3NjAiIHkyPSI0ODAiIHN0cm9rZT0iIzJjM2U1MCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPHRleHQgeD0iNTUwIiB5PSI1MTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMzNDQ5NWUiPlN1YnRvdGFsOjwvdGV4dD4KICA8dGV4dCB4PSI2ODAiIHk9IjUxMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj4kODAwLjAwPC90ZXh0PgogIDx0ZXh0IHg9IjU1MCIgeT0iNTM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzQ0OTVlIj5UYXggKDE4JSk6PC90ZXh0PgogIDx0ZXh0IHg9IjY4MCIgeT0iNTM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPiQxNDQuMDA8L3RleHQ+CiAgPHRleHQgeD0iNTUwIiB5PSI1NzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyYzNlNTAiPlRvdGFsOjwvdGV4dD4KICA8dGV4dCB4PSI2ODAiIHk9IjU3MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJjM2U1MCI+JDk0NC4wMDwvdGV4dD4KCiAgPCEtLSBQYXltZW50IFRlcm1zIC0tPgogIDx0ZXh0IHg9IjQwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyYzNlNTAiPlBheW1lbnQgVGVybXM8L3RleHQ+CiAgPHRleHQgeD0iNDAiIHk9IjY3MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj5QYXltZW50IGlzIGR1ZSB3aXRoaW4gMzAgZGF5czwvdGV4dD4KICA8dGV4dCB4PSI0MCIgeT0iNjkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPlBsZWFzZSBpbmNsdWRlIGludm9pY2UgbnVtYmVyIG9uIHBheW1lbnQ8L3RleHQ+CgogIDwhLS0gQmFuayBEZXRhaWxzIC0tPgogIDx0ZXh0IHg9IjQwIiB5PSI3MzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyYzNlNTAiPkJhbmsgRGV0YWlsczwvdGV4dD4KICA8dGV4dCB4PSI0MCIgeT0iNzYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPkJhbms6IEJhbmsgb2YgR2VvcmdpYTwvdGV4dD4KICA8dGV4dCB4PSI0MCIgeT0iNzgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPklCQU46IEdFMTIzNDU2Nzg5MDEyMzQ1Njc4PC90ZXh0PgogIDx0ZXh0IHg9IjQwIiB5PSI4MDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+U1dJRlQ6IEJBR0FHRTIyPC90ZXh0PgoKICA8IS0tIEZvb3RlciAtLT4KICA8bGluZSB4MT0iNDAiIHkxPSI5MDAiIHgyPSI3NjAiIHkyPSI5MDAiIHN0cm9rZT0iIzJjM2U1MCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPHRleHQgeD0iNDAiIHk9IjkzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjN2Y4YzhkIj5UaGFuayB5b3UgZm9yIGNob29zaW5nIEdydXp5YSBBZHZlbnR1cmUgT3V0Zml0dGVyczwvdGV4dD4KICA8dGV4dCB4PSI0MCIgeT0iOTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM3ZjhjOGQiPnd3dy5ncnV6eWFhZHZlbnR1cmVzLmNvbTwvdGV4dD4KPC9zdmc+Cg==',
-      filename: 'logo.jpg',
-      ftype: 'jpg',
-      furl: ''
+      f_content: "PHN2ZyB2aWV3Qm94PSIwIDAgODAwIDEwMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMTAwMCIgZmlsbD0id2hpdGUiLz4KICAKICA8IS0tIENvbXBhbnkgSGVhZGVyIC0tPgogIDx0ZXh0IHg9IjQwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJjM2U1MCI+R3J1enlhIEFkdmVudHVyZSBPdXRmaXR0ZXJzPC90ZXh0PgogIDxsaW5lIHgxPSI0MCIgeTE9IjgwIiB4Mj0iNzYwIiB5Mj0iODAiIHN0cm9rZT0iIzJjM2U1MCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgCiAgPCEtLSBDb21wYW55IERldGFpbHMgLS0+CiAgPHRleHQgeD0iNDAiIHk9IjExMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj4xMjMgTW91bnRhaW4gVmlldyBSb2FkPC90ZXh0PgogIDx0ZXh0IHg9IjQwIiB5PSIxMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+VGJpbGlzaSwgR2VvcmdpYSAwMTA1PC90ZXh0PgogIDx0ZXh0IHg9IjQwIiB5PSIxNTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+VGVsOiArOTk1IDMyIDEyMyA0NTY3PC90ZXh0PgogIDx0ZXh0IHg9IjQwIiB5PSIxNzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+RW1haWw6IGluZm9AZ3J1enlhYWR2ZW50dXJlcy5jb208L3RleHQ+CgogIDwhLS0gSW52b2ljZSBUaXRsZSAtLT4KICA8dGV4dCB4PSI2MDAiIHk9IjExMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJjM2U1MCI+SU5WT0lDRTwvdGV4dD4KICA8dGV4dCB4PSI2MDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj5EYXRlOiAxMi8xMS8yMDI0PC90ZXh0PgogIDx0ZXh0IHg9IjYwMCIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPkludm9pY2UgIzogR1JaLTIwMjQtMTEyMzwvdGV4dD4KCiAgPCEtLSBCaWxsIFRvIFNlY3Rpb24gLS0+CiAgPHRleHQgeD0iNDAiIHk9IjIyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJjM2U1MCI+QklMTCBUTzo8L3RleHQ+CiAgPHJlY3QgeD0iNDAiIHk9IjIzNSIgd2lkdGg9IjMwMCIgaGVpZ2h0PSI4MCIgZmlsbD0iI2Y3ZjlmYSIvPgogIDx0ZXh0IHg9IjUwIiB5PSIyNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+W0N1c3RvbWVyIE5hbWVdPC90ZXh0PgogIDx0ZXh0IHg9IjUwIiB5PSIyODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+W0FkZHJlc3MgTGluZSAxXTwvdGV4dD4KICA8dGV4dCB4PSI1MCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPltDaXR5LCBDb3VudHJ5XTwvdGV4dD4KCiAgPCEtLSBUYWJsZSBIZWFkZXJzIC0tPgogIDxyZWN0IHg9IjQwIiB5PSIzNDAiIHdpZHRoPSI3MjAiIGhlaWdodD0iMzAiIGZpbGw9IiMyYzNlNTAiLz4KICA8dGV4dCB4PSI1MCIgeT0iMzYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSI+RGVzY3JpcHRpb248L3RleHQ+CiAgPHRleHQgeD0iNDUwIiB5PSIzNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIj5RdWFudGl0eTwvdGV4dD4KICA8dGV4dCB4PSI1NTAiIHk9IjM2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPlJhdGU8L3RleHQ+CiAgPHRleHQgeD0iNjgwIiB5PSIzNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIj5BbW91bnQ8L3RleHQ+CgogIDwhLS0gVGFibGUgUm93cyAtLT4KICA8cmVjdCB4PSI0MCIgeT0iMzcwIiB3aWR0aD0iNzIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZjdmOWZhIi8+CiAgPHRleHQgeD0iNTAiIHk9IjM5MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj5Nb3VudGFpbiBDbGltYmluZyBFcXVpcG1lbnQgUmVudGFsPC90ZXh0PgogIDx0ZXh0IHg9IjQ1MCIgeT0iMzkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPjE8L3RleHQ+CiAgPHRleHQgeD0iNTUwIiB5PSIzOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+JDI1MC4wMDwvdGV4dD4KICA8dGV4dCB4PSI2ODAiIHk9IjM5MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj4kMjUwLjAwPC90ZXh0PgoKICA8cmVjdCB4PSI0MCIgeT0iNDAwIiB3aWR0aD0iNzIwIiBoZWlnaHQ9IjMwIiBmaWxsPSJ3aGl0ZSIvPgogIDx0ZXh0IHg9IjUwIiB5PSI0MjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+R3VpZGVkIFRyZWsgUGFja2FnZSAtIDIgRGF5czwvdGV4dD4KICA8dGV4dCB4PSI0NTAiIHk9IjQyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj4xPC90ZXh0PgogIDx0ZXh0IHg9IjU1MCIgeT0iNDIwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPiQ0MDAuMDA8L3RleHQ+CiAgPHRleHQgeD0iNjgwIiB5PSI0MjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+JDQwMC4wMDwvdGV4dD4KCiAgPHJlY3QgeD0iNDAiIHk9IjQzMCIgd2lkdGg9IjcyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2Y3ZjlmYSIvPgogIDx0ZXh0IHg9IjUwIiB5PSI0NTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+U2FmZXR5IEVxdWlwbWVudCBQYWNrYWdlPC90ZXh0PgogIDx0ZXh0IHg9IjQ1MCIgeT0iNDUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPjE8L3RleHQ+CiAgPHRleHQgeD0iNTUwIiB5PSI0NTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+JDE1MC4wMDwvdGV4dD4KICA8dGV4dCB4PSI2ODAiIHk9IjQ1MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj4kMTUwLjAwPC90ZXh0PgoKICA8IS0tIFRvdGFscyAtLT4KICA8bGluZSB4MT0iNDAiIHkxPSI0ODAiIHgyPSI3NjAiIHkyPSI0ODAiIHN0cm9rZT0iIzJjM2U1MCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPHRleHQgeD0iNTUwIiB5PSI1MTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMzNDQ5NWUiPlN1YnRvdGFsOjwvdGV4dD4KICA8dGV4dCB4PSI2ODAiIHk9IjUxMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj4kODAwLjAwPC90ZXh0PgogIDx0ZXh0IHg9IjU1MCIgeT0iNTM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzQ0OTVlIj5UYXggKDE4JSk6PC90ZXh0PgogIDx0ZXh0IHg9IjY4MCIgeT0iNTM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPiQxNDQuMDA8L3RleHQ+CiAgPHRleHQgeD0iNTUwIiB5PSI1NzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyYzNlNTAiPlRvdGFsOjwvdGV4dD4KICA8dGV4dCB4PSI2ODAiIHk9IjU3MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJjM2U1MCI+JDk0NC4wMDwvdGV4dD4KCiAgPCEtLSBQYXltZW50IFRlcm1zIC0tPgogIDx0ZXh0IHg9IjQwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyYzNlNTAiPlBheW1lbnQgVGVybXM8L3RleHQ+CiAgPHRleHQgeD0iNDAiIHk9IjY3MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzQ0OTVlIj5QYXltZW50IGlzIGR1ZSB3aXRoaW4gMzAgZGF5czwvdGV4dD4KICA8dGV4dCB4PSI0MCIgeT0iNjkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPlBsZWFzZSBpbmNsdWRlIGludm9pY2UgbnVtYmVyIG9uIHBheW1lbnQ8L3RleHQ+CgogIDwhLS0gQmFuayBEZXRhaWxzIC0tPgogIDx0ZXh0IHg9IjQwIiB5PSI3MzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyYzNlNTAiPkJhbmsgRGV0YWlsczwvdGV4dD4KICA8dGV4dCB4PSI0MCIgeT0iNzYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPkJhbms6IEJhbmsgb2YgR2VvcmdpYTwvdGV4dD4KICA8dGV4dCB4PSI0MCIgeT0iNzgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzNDQ5NWUiPklCQU46IEdFMTIzNDU2Nzg5MDEyMzQ1Njc4PC90ZXh0PgogIDx0ZXh0IHg9IjQwIiB5PSI4MDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzM0NDk1ZSI+U1dJRlQ6IEJBR0FHRTIyPC90ZXh0PgoKICA8IS0tIEZvb3RlciAtLT4KICA8bGluZSB4MT0iNDAiIHkxPSI5MDAiIHgyPSI3NjAiIHkyPSI5MDAiIHN0cm9rZT0iIzJjM2U1MCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPHRleHQgeD0iNDAiIHk9IjkzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjN2Y4YzhkIj5UaGFuayB5b3UgZm9yIGNob29zaW5nIEdydXp5YSBBZHZlbnR1cmUgT3V0Zml0dGVyczwvdGV4dD4KICA8dGV4dCB4PSI0MCIgeT0iOTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM3ZjhjOGQiPnd3dy5ncnV6eWFhZHZlbnR1cmVzLmNvbTwvdGV4dD4KPC9zdmc+Cg==",
+      filename: "logo.jpg",
+      ftype: "jpg",
+      furl: ""
     },
     redirect_after_approve: true,
-    redirect_after_approve_url: 'https://example.com/success'
+    redirect_after_approve_url: "https://example.com/success"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -14240,14 +14240,14 @@ Generates a payment link for a bill from the bill ID.
 ```ruby
 client.payment_link.add_pay_link_from_bill(
   bill_id: 23548884,
-  mail_2: 'jo@example.com; ceo@example.com',
+  mail_2: "jo@example.com; ceo@example.com",
   contact_us: {
-    email_label: 'Email',
+    email_label: "Email",
     enabled: true,
-    header: 'Contact Us',
+    header: "Contact Us",
     order: 0,
     payment_icons: true,
-    phone_label: 'Phone'
+    phone_label: "Phone"
   },
   logo: {
     enabled: true,
@@ -14255,31 +14255,31 @@ client.payment_link.add_pay_link_from_bill(
   },
   message_before_paying: {
     enabled: true,
-    label: 'Please review your payment details',
+    label: "Please review your payment details",
     order: 0
   },
   notes: {
     enabled: true,
-    header: 'Additional Notes',
+    header: "Additional Notes",
     order: 0,
-    placeholder: 'Enter any additional notes here',
-    value: ''
+    placeholder: "Enter any additional notes here",
+    value: ""
   },
   page: {
-    description: 'Get paid securely',
+    description: "Get paid securely",
     enabled: true,
-    header: 'Payment Page',
+    header: "Payment Page",
     order: 0
   },
   payment_button: {
     enabled: true,
-    label: 'Pay Now',
+    label: "Pay Now",
     order: 0
   },
   payment_methods: {
     all_methods_checked: true,
     enabled: true,
-    header: 'Payment Methods',
+    header: "Payment Methods",
     methods: {
       amex: true,
       apple_pay: true,
@@ -14296,27 +14296,27 @@ client.payment_link.add_pay_link_from_bill(
       display: true,
       fixed: true,
       identifier: true,
-      label: 'Full Name',
-      name: 'fullName',
+      label: "Full Name",
+      name: "fullName",
       order: 0,
       required: true,
-      validation: 'alpha',
-      value: '',
+      validation: "alpha",
+      value: "",
       width: 0
     }],
-    header: 'Payor Information',
+    header: "Payor Information",
     order: 0
   },
   review: {
     enabled: true,
-    header: 'Review Payment',
+    header: "Review Payment",
     order: 0
   },
   settings: {
     color: "#000000",
-    language: 'en'
+    language: "en"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -14410,7 +14410,7 @@ Deletes a payment link by ID.
 <dd>
 
 ```ruby
-client.payment_link.delete_pay_link_from_id(pay_link_id: 'payLinkId');
+client.payment_link.delete_pay_link_from_id(pay_link_id: "payLinkId")
 ```
 </dd>
 </dl>
@@ -14472,7 +14472,7 @@ Retrieves a payment link by ID.
 <dd>
 
 ```ruby
-client.payment_link.get_pay_link_from_id(paylink_id: 'paylinkId');
+client.payment_link.get_pay_link_from_id(paylink_id: "paylinkId")
 ```
 </dd>
 </dl>
@@ -14534,7 +14534,7 @@ Send a payment link to the specified email addresses or phone numbers.
 <dd>
 
 ```ruby
-client.payment_link.push_pay_link_from_id(pay_link_id: 'payLinkId');
+client.payment_link.push_pay_link_from_id(pay_link_id: "payLinkId")
 ```
 </dd>
 </dl>
@@ -14604,7 +14604,7 @@ Refresh a payment link's content after an update.
 <dd>
 
 ```ruby
-client.payment_link.refresh_pay_link_from_id(pay_link_id: 'payLinkId');
+client.payment_link.refresh_pay_link_from_id(pay_link_id: "payLinkId")
 ```
 </dd>
 </dl>
@@ -14675,9 +14675,9 @@ Sends a payment link to the specified email addresses.
 
 ```ruby
 client.payment_link.send_pay_link_from_id(
-  pay_link_id: 'payLinkId',
-  mail_2: 'jo@example.com; ceo@example.com'
-);
+  pay_link_id: "payLinkId",
+  mail_2: "jo@example.com; ceo@example.com"
+)
 ```
 </dd>
 </dl>
@@ -14756,20 +14756,20 @@ Updates a payment link's details.
 
 ```ruby
 client.payment_link.update_pay_link_from_id(
-  pay_link_id: '332-c277b704-1301',
+  pay_link_id: "332-c277b704-1301",
   notes: {
     enabled: true,
-    header: 'Additional Notes',
+    header: "Additional Notes",
     order: 0,
-    placeholder: 'Enter any additional notes here',
-    value: ''
+    placeholder: "Enter any additional notes here",
+    value: ""
   },
   payment_button: {
     enabled: true,
-    label: 'Pay Now',
+    label: "Pay Now",
     order: 0
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -14904,18 +14904,18 @@ Generates a vendor payment link for a specific bill lot number. This allows you 
 
 ```ruby
 client.payment_link.add_pay_link_from_bill_lot_number(
-  lot_number: 'LOT-2024-001',
-  entry_point: 'billing',
-  vendor_number: 'VENDOR-123',
-  mail_2: 'customer@example.com; billing@example.com',
-  amount_fixed: 'true',
+  lot_number: "LOT-2024-001",
+  entry_point: "billing",
+  vendor_number: "VENDOR-123",
+  mail_2: "customer@example.com; billing@example.com",
+  amount_fixed: "true",
   contact_us: {
-    email_label: 'Email',
+    email_label: "Email",
     enabled: true,
-    header: 'Contact Us',
+    header: "Contact Us",
     order: 0,
     payment_icons: true,
-    phone_label: 'Phone'
+    phone_label: "Phone"
   },
   logo: {
     enabled: true,
@@ -14923,31 +14923,31 @@ client.payment_link.add_pay_link_from_bill_lot_number(
   },
   message_before_paying: {
     enabled: true,
-    label: 'Please review your payment details',
+    label: "Please review your payment details",
     order: 0
   },
   notes: {
     enabled: true,
-    header: 'Additional Notes',
+    header: "Additional Notes",
     order: 0,
-    placeholder: 'Enter any additional notes here',
-    value: ''
+    placeholder: "Enter any additional notes here",
+    value: ""
   },
   page: {
-    description: 'Get paid securely',
+    description: "Get paid securely",
     enabled: true,
-    header: 'Payment Page',
+    header: "Payment Page",
     order: 0
   },
   payment_button: {
     enabled: true,
-    label: 'Pay Now',
+    label: "Pay Now",
     order: 0
   },
   payment_methods: {
     all_methods_checked: true,
     enabled: true,
-    header: 'Payment Methods',
+    header: "Payment Methods",
     methods: {
       amex: true,
       apple_pay: true,
@@ -14964,27 +14964,27 @@ client.payment_link.add_pay_link_from_bill_lot_number(
       display: true,
       fixed: true,
       identifier: true,
-      label: 'Full Name',
-      name: 'fullName',
+      label: "Full Name",
+      name: "fullName",
       order: 0,
       required: true,
-      validation: 'alpha',
-      value: '',
+      validation: "alpha",
+      value: "",
       width: 0
     }],
-    header: 'Payor Information',
+    header: "Payor Information",
     order: 0
   },
   review: {
     enabled: true,
-    header: 'Review Payment',
+    header: "Review Payment",
     order: 0
   },
   settings: {
     color: "#000000",
-    language: 'en'
+    language: "en"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -15088,16 +15088,16 @@ Add a payment method domain to an organization or paypoint.
 
 ```ruby
 client.payment_method_domain.add_payment_method_domain(
-  domain_name: 'checkout.example.com',
+  domain_name: "checkout.example.com",
   entity_id: 109,
-  entity_type: 'paypoint',
+  entity_type: "paypoint",
   apple_pay: {
     is_enabled: true
   },
   google_pay: {
     is_enabled: true
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -15191,7 +15191,7 @@ Cascades a payment method domain to all child entities. All paypoints and suborg
 <dd>
 
 ```ruby
-client.payment_method_domain.cascade_payment_method_domain(domain_id: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5');
+client.payment_method_domain.cascade_payment_method_domain(domain_id: "pmd_b8237fa45c964d8a9ef27160cd42b8c5")
 ```
 </dd>
 </dl>
@@ -15253,7 +15253,7 @@ Delete a payment method domain. You can't delete an inherited domain, you must d
 <dd>
 
 ```ruby
-client.payment_method_domain.delete_payment_method_domain(domain_id: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5');
+client.payment_method_domain.delete_payment_method_domain(domain_id: "pmd_b8237fa45c964d8a9ef27160cd42b8c5")
 ```
 </dd>
 </dl>
@@ -15315,7 +15315,7 @@ Get the details for a payment method domain.
 <dd>
 
 ```ruby
-client.payment_method_domain.get_payment_method_domain(domain_id: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5');
+client.payment_method_domain.get_payment_method_domain(domain_id: "pmd_b8237fa45c964d8a9ef27160cd42b8c5")
 ```
 </dd>
 </dl>
@@ -15379,8 +15379,8 @@ Get a list of payment method domains that belong to a PSP, organization, or payp
 ```ruby
 client.payment_method_domain.list_payment_method_domains(
   entity_id: 1147,
-  entity_type: 'paypoint'
-);
+  entity_type: "paypoint"
+)
 ```
 </dd>
 </dl>
@@ -15475,14 +15475,14 @@ Update a payment method domain's configuration values.
 
 ```ruby
 client.payment_method_domain.update_payment_method_domain(
-  domain_id: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5',
+  domain_id: "pmd_b8237fa45c964d8a9ef27160cd42b8c5",
   apple_pay: {
     is_enabled: false
   },
   google_pay: {
     is_enabled: false
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -15560,7 +15560,7 @@ Verify a new payment method domain. If verification is successful, Apple Pay is 
 <dd>
 
 ```ruby
-client.payment_method_domain.verify_payment_method_domain(domain_id: 'pmd_b8237fa45c964d8a9ef27160cd42b8c5');
+client.payment_method_domain.verify_payment_method_domain(domain_id: "pmd_b8237fa45c964d8a9ef27160cd42b8c5")
 ```
 </dd>
 </dl>
@@ -15623,7 +15623,7 @@ Gets the basic details for a paypoint.
 <dd>
 
 ```ruby
-client.paypoint.get_basic_entry(entry: '8cfec329267');
+client.paypoint.get_basic_entry(entry: "8cfec329267")
 ```
 </dd>
 </dl>
@@ -15685,7 +15685,7 @@ Retrieves the basic details for a paypoint by ID.
 <dd>
 
 ```ruby
-client.paypoint.get_basic_entry_by_id(id_paypoint: '198');
+client.paypoint.get_basic_entry_by_id(id_paypoint: "198")
 ```
 </dd>
 </dl>
@@ -15747,7 +15747,7 @@ Gets the details for a single paypoint.
 <dd>
 
 ```ruby
-client.paypoint.get_entry_config(entry: '8cfec329267');
+client.paypoint.get_entry_config(entry: "8cfec329267")
 ```
 </dd>
 </dl>
@@ -15818,9 +15818,9 @@ Gets the details for single payment page for a paypoint.
 
 ```ruby
 client.paypoint.get_page(
-  entry: '8cfec329267',
-  subdomain: 'pay-your-fees-1'
-);
+  entry: "8cfec329267",
+  subdomain: "pay-your-fees-1"
+)
 ```
 </dd>
 </dl>
@@ -15891,9 +15891,9 @@ Deletes a payment page in a paypoint.
 
 ```ruby
 client.paypoint.remove_page(
-  entry: '8cfec329267',
-  subdomain: 'pay-your-fees-1'
-);
+  entry: "8cfec329267",
+  subdomain: "pay-your-fees-1"
+)
 ```
 </dd>
 </dl>
@@ -15963,7 +15963,7 @@ Updates a paypoint logo.
 <dd>
 
 ```ruby
-client.paypoint.save_logo(entry: '8cfec329267');
+client.paypoint.save_logo(entry: "8cfec329267")
 ```
 </dd>
 </dl>
@@ -16033,7 +16033,7 @@ Retrieves an paypoint's basic settings like custom fields, identifiers, and invo
 <dd>
 
 ```ruby
-client.paypoint.settings_page(entry: '8cfec329267');
+client.paypoint.settings_page(entry: "8cfec329267")
 ```
 </dd>
 </dl>
@@ -16096,16 +16096,16 @@ Migrates a paypoint to a new parent organization.
 
 ```ruby
 client.paypoint.migrate(
-  entry_point: '473abc123def',
+  entry_point: "473abc123def",
   new_parent_organization_id: 123,
   notification_request: {
-    notification_url: 'https://webhook-test.yoursie.com',
+    notification_url: "https://webhook-test.yoursie.com",
     web_header_parameters: [{
-      key: 'testheader',
-      value: '1234567890'
+      key: "testheader",
+      value: "1234567890"
     }]
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -16170,11 +16170,11 @@ unsettled transactions for a paypoint. Use filters to limit results. Include the
 
 ```ruby
 client.query.list_batch_details(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -16357,8 +16357,8 @@ client.query.list_batch_details_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -16537,11 +16537,11 @@ Retrieve a list of batches for a paypoint. Use filters to limit results. Include
 
 ```ruby
 client.query.list_batches(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -16702,8 +16702,8 @@ client.query.list_batches_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -16861,11 +16861,11 @@ Retrieve a list of MoneyOut batches for a paypoint. Use filters to limit results
 
 ```ruby
 client.query.list_batches_out(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -16988,8 +16988,8 @@ client.query.list_batches_out_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -17124,11 +17124,11 @@ Retrieves a list of chargebacks and returned transactions for a paypoint. Use fi
 
 ```ruby
 client.query.list_chargebacks(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -17306,8 +17306,8 @@ client.query.list_chargebacks_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -17484,11 +17484,11 @@ Retrieves a list of customers for a paypoint. Use filters to limit results. Incl
 
 ```ruby
 client.query.list_customers(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -17660,8 +17660,8 @@ client.query.list_customers_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -17830,11 +17830,11 @@ Returns a list of all reports generated in the last 60 days for a single entrypo
 
 ```ruby
 client.query.list_notification_reports(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -17971,8 +17971,8 @@ client.query.list_notification_reports_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -18104,11 +18104,11 @@ Returns a list of notifications for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.query.list_notifications(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -18247,8 +18247,8 @@ client.query.list_notifications_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -18387,8 +18387,8 @@ client.query.list_organizations(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -18544,11 +18544,11 @@ Retrieves a list of money out transactions (payouts) for a paypoint. Use filters
 
 ```ruby
 client.query.list_payout(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -18734,8 +18734,8 @@ client.query.list_payout_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -18920,8 +18920,8 @@ client.query.list_paypoints(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -19082,11 +19082,11 @@ Retrieve a list of settled transactions for a paypoint. Use filters to limit res
 
 ```ruby
 client.query.list_settlements(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -19269,8 +19269,8 @@ client.query.list_settlements_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -19450,11 +19450,11 @@ Returns a list of subscriptions for a single paypoint. Use filters to limit resu
 
 ```ruby
 client.query.list_subscriptions(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -19637,8 +19637,8 @@ client.query.list_subscriptions_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -19825,11 +19825,11 @@ For example, this request parameters filter for transactions between April 01, 2
 
 ```ruby
 client.query.list_transactions(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -20034,8 +20034,8 @@ client.query.list_transactions_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -20222,9 +20222,9 @@ Retrieve a list of transfer details records for a paypoint. Use filters to limit
 
 ```ruby
 client.query.list_transfer_details(
-  entry: '47862acd',
+  entry: "47862acd",
   transfer_id: 123456
-);
+)
 ```
 </dd>
 </dl>
@@ -20374,10 +20374,10 @@ Retrieve a list of transfers for a paypoint. Use filters to limit results. Inclu
 
 ```ruby
 client.query.list_transfers(
-  entry: '47862acd',
+  entry: "47862acd",
   from_record: 0,
   limit_record: 20
-);
+)
 ```
 </dd>
 </dl>
@@ -20519,7 +20519,7 @@ client.query.list_transfers_org(
   org_id: 123,
   from_record: 0,
   limit_record: 20
-);
+)
 ```
 </dd>
 </dl>
@@ -20658,7 +20658,7 @@ client.query.list_transfers_out_org(
   org_id: 77,
   from_record: 0,
   limit_record: 20
-);
+)
 ```
 </dd>
 </dl>
@@ -20782,10 +20782,10 @@ Retrieve a list of outbound transfers for a paypoint. Use filters to limit resul
 
 ```ruby
 client.query.list_transfers_out_paypoint(
-  entry: '47cade237',
+  entry: "47cade237",
   from_record: 0,
   limit_record: 20
-);
+)
 ```
 </dd>
 </dl>
@@ -20909,11 +20909,11 @@ Retrieve details for a specific outbound transfer. Use filters to limit results.
 
 ```ruby
 client.query.list_transfer_details_out(
-  entry: '47ace2b25',
+  entry: "47ace2b25",
   transfer_id: 4521,
   from_record: 0,
   limit_record: 20
-);
+)
 ```
 </dd>
 </dl>
@@ -21047,8 +21047,8 @@ client.query.list_users_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -21186,11 +21186,11 @@ Get list of users for a paypoint. Use filters to limit results.
 
 ```ruby
 client.query.list_users_paypoint(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -21328,11 +21328,11 @@ Retrieve a list of vendors for an entrypoint. Use filters to limit results. Incl
 
 ```ruby
 client.query.list_vendors(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -21493,8 +21493,8 @@ client.query.list_vendors_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -21652,11 +21652,11 @@ Retrieve a list of vcards (virtual credit cards) issued for an entrypoint. Use f
 
 ```ruby
 client.query.list_vcards(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -21809,8 +21809,8 @@ client.query.list_vcards_org(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -21962,12 +21962,12 @@ Retrieves the basic statistics for an organization or a paypoint, for a given ti
 ```ruby
 client.statistic.basic_stats(
   entry_id: 1000000,
-  freq: 'm',
+  freq: "m",
   level: 1,
-  mode: 'ytd',
-  end_date: '2025-11-01',
-  start_date: '2025-11-30'
-);
+  mode: "ytd",
+  end_date: "2025-11-01",
+  start_date: "2025-11-30"
+)
 ```
 </dd>
 </dl>
@@ -22122,9 +22122,9 @@ Retrieves the basic statistics for a customer for a specific time period, groupe
 ```ruby
 client.statistic.customer_basic_stats(
   customer_id: 998,
-  freq: 'm',
-  mode: 'ytd'
-);
+  freq: "m",
+  mode: "ytd"
+)
 ```
 </dd>
 </dl>
@@ -22235,9 +22235,9 @@ Retrieves the subscription statistics for a given interval for a paypoint or org
 ```ruby
 client.statistic.sub_stats(
   entry_id: 1000000,
-  interval: '30',
+  interval: "30",
   level: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -22336,10 +22336,10 @@ Retrieve the basic statistics about a vendor for a given time period, grouped by
 
 ```ruby
 client.statistic.vendor_basic_stats(
-  freq: 'm',
+  freq: "m",
   id_vendor: 1,
-  mode: 'ytd'
-);
+  mode: "ytd"
+)
 ```
 </dd>
 </dl>
@@ -22449,7 +22449,7 @@ Retrieves a single subscription's details.
 <dd>
 
 ```ruby
-client.subscription.get_subscription(sub_id: 263);
+client.subscription.get_subscription(sub_id: 263)
 ```
 </dd>
 </dl>
@@ -22515,27 +22515,27 @@ client.subscription.new_subscription(
   customer_data: {
     customer_id: 4440
   },
-  entry_point: 'f743aed24a',
+  entry_point: "f743aed24a",
   payment_details: {
     service_fee: 0,
     total_amount: 100
   },
   payment_method: {
-    cardcvv: '123',
-    cardexp: '02/25',
-    card_holder: 'John Cassian',
-    cardnumber: '4111111111111111',
-    cardzip: '37615',
-    initiator: 'payor',
-    method_: 'card'
+    cardcvv: "123",
+    cardexp: "02/25",
+    card_holder: "John Cassian",
+    cardnumber: "4111111111111111",
+    cardzip: "37615",
+    initiator: "payor",
+    method_: "card"
   },
   schedule_details: {
-    end_date: '03-20-2025',
-    frequency: 'weekly',
+    end_date: "03-20-2025",
+    frequency: "weekly",
     plan_id: 1,
-    start_date: '09-20-2024'
+    start_date: "09-20-2024"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -22613,7 +22613,7 @@ Deletes a subscription, autopay, or recurring payment and prevents future charge
 <dd>
 
 ```ruby
-client.subscription.remove_subscription(sub_id: 396);
+client.subscription.remove_subscription(sub_id: 396)
 ```
 </dd>
 </dl>
@@ -22678,7 +22678,7 @@ Updates a subscription's details.
 client.subscription.update_subscription(
   sub_id: 231,
   set_pause: true
-);
+)
 ```
 </dd>
 </dl>
@@ -22765,7 +22765,7 @@ Deletes a template by ID.
 <dd>
 
 ```ruby
-client.templates.delete_template(template_id: 80);
+client.templates.delete_template(template_id: 80)
 ```
 </dd>
 </dl>
@@ -22830,7 +22830,7 @@ Generates a boarding link from a boarding template.
 client.templates.getlink_template(
   ignore_empty: true,
   template_id: 80
-);
+)
 ```
 </dd>
 </dl>
@@ -22900,7 +22900,7 @@ Retrieves a boarding template's details by ID.
 <dd>
 
 ```ruby
-client.templates.get_template(template_id: 80);
+client.templates.get_template(template_id: 80)
 ```
 </dd>
 </dl>
@@ -22966,8 +22966,8 @@ client.templates.list_templates(
   org_id: 123,
   from_record: 251,
   limit_record: 0,
-  sort_by: 'desc(field_name)'
-);
+  sort_by: "desc(field_name)"
+)
 ```
 </dd>
 </dl>
@@ -23111,17 +23111,17 @@ client.token_storage.add_method(
   customer_data: {
     customer_id: 4440
   },
-  entry_point: 'f743aed24a',
+  entry_point: "f743aed24a",
   fallback_auth: true,
   payment_method: {
-    cardcvv: '123',
-    cardexp: '02/25',
-    card_holder: 'John Doe',
-    cardnumber: '4111111111111111',
-    cardzip: '12345',
-    method_: 'card'
+    cardcvv: "123",
+    cardexp: "02/25",
+    card_holder: "John Doe",
+    cardnumber: "4111111111111111",
+    cardzip: "12345",
+    method_: "card"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -23224,10 +23224,10 @@ Retrieves details for a saved payment method.
 
 ```ruby
 client.token_storage.get_method(
-  method_id: '32-8877drt00045632-678',
+  method_id: "32-8877drt00045632-678",
   card_expiration_format: 1,
   include_temporary: false
-);
+)
 ```
 </dd>
 </dl>
@@ -23315,7 +23315,7 @@ Deletes a saved payment method.
 <dd>
 
 ```ruby
-client.token_storage.remove_method(method_id: '32-8877drt00045632-678');
+client.token_storage.remove_method(method_id: "32-8877drt00045632-678")
 ```
 </dd>
 </dl>
@@ -23378,21 +23378,21 @@ Updates a saved payment method.
 
 ```ruby
 client.token_storage.update_method(
-  method_id: '32-8877drt00045632-678',
+  method_id: "32-8877drt00045632-678",
   customer_data: {
     customer_id: 4440
   },
-  entry_point: 'f743aed24a',
+  entry_point: "f743aed24a",
   fallback_auth: true,
   payment_method: {
-    cardcvv: '123',
-    cardexp: '02/25',
-    card_holder: 'John Doe',
-    cardnumber: '4111111111111111',
-    cardzip: '12345',
-    method_: 'card'
+    cardcvv: "123",
+    cardexp: "02/25",
+    card_holder: "John Doe",
+    cardnumber: "4111111111111111",
+    cardzip: "12345",
+    method_: "card"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -23471,7 +23471,7 @@ Use this endpoint to add a new user to an organization.
 <dd>
 
 ```ruby
-client.user.add_user();
+client.user.add_user
 ```
 </dd>
 </dl>
@@ -23533,7 +23533,7 @@ Use this endpoint to refresh the authentication token for a user within an organ
 <dd>
 
 ```ruby
-client.user.auth_refresh_user();
+client.user.auth_refresh_user
 ```
 </dd>
 </dl>
@@ -23587,7 +23587,7 @@ Use this endpoint to initiate a password reset for a user within an organization
 <dd>
 
 ```ruby
-client.user.auth_reset_user();
+client.user.auth_reset_user
 ```
 </dd>
 </dl>
@@ -23665,7 +23665,7 @@ This endpoint requires an application API token.
 <dd>
 
 ```ruby
-client.user.auth_user(provider: 'provider');
+client.user.auth_user(provider: "provider")
 ```
 </dd>
 </dl>
@@ -23775,7 +23775,7 @@ Use this endpoint to change the password for a user within an organization.
 <dd>
 
 ```ruby
-client.user.change_psw_user();
+client.user.change_psw_user
 ```
 </dd>
 </dl>
@@ -23837,7 +23837,7 @@ Use this endpoint to delete a specific user within an organization.
 <dd>
 
 ```ruby
-client.user.delete_user(user_id: 1000000);
+client.user.delete_user(user_id: 1000000)
 ```
 </dd>
 </dl>
@@ -23899,7 +23899,7 @@ Use this endpoint to enable or disable multi-factor authentication (MFA) for a u
 <dd>
 
 ```ruby
-client.user.edit_mfa_user(user_id: 1000000);
+client.user.edit_mfa_user(user_id: 1000000)
 ```
 </dd>
 </dl>
@@ -23969,7 +23969,7 @@ Use this endpoint to modify the details of a specific user within an organizatio
 <dd>
 
 ```ruby
-client.user.edit_user(user_id: 1000000);
+client.user.edit_user(user_id: 1000000)
 ```
 </dd>
 </dl>
@@ -24041,8 +24041,8 @@ Use this endpoint to retrieve information about a specific user within an organi
 ```ruby
 client.user.get_user(
   user_id: 1000000,
-  entry: '478ae1234'
-);
+  entry: "478ae1234"
+)
 ```
 </dd>
 </dl>
@@ -24120,7 +24120,7 @@ Use this endpoint to log a user out from the system.
 <dd>
 
 ```ruby
-client.user.logout_user();
+client.user.logout_user
 ```
 </dd>
 </dl>
@@ -24175,10 +24175,10 @@ Resends the MFA code to the user via the selected MFA mode (email or SMS).
 
 ```ruby
 client.user.resend_mfa_code(
-  entry: 'Entry',
+  entry: "Entry",
   entry_type: 1,
-  usrname: 'usrname'
-);
+  usrname: "usrname"
+)
 ```
 </dd>
 </dl>
@@ -24256,7 +24256,7 @@ Use this endpoint to validate the multi-factor authentication (MFA) code for a u
 <dd>
 
 ```ruby
-client.user.validate_mfa_user();
+client.user.validate_mfa_user
 ```
 </dd>
 </dl>
@@ -24328,50 +24328,50 @@ Creates a vendor in an entrypoint.
 
 ```ruby
 client.vendor.add_vendor(
-  entry: '8cfec329267',
-  vendor_number: '1234',
-  address_1: '123 Ocean Drive',
-  address_2: 'Suite 400',
+  entry: "8cfec329267",
+  vendor_number: "1234",
+  address_1: "123 Ocean Drive",
+  address_2: "Suite 400",
   billing_data: {
     id: 123,
-    bank_name: 'Country Bank',
-    routing_account: '123123123',
-    account_number: '123123123',
-    type_account: 'Checking',
-    bank_account_holder_name: 'Gruzya Adventure Outfitters LLC',
-    bank_account_holder_type: 'Business',
+    bank_name: "Country Bank",
+    routing_account: "123123123",
+    account_number: "123123123",
+    type_account: "Checking",
+    bank_account_holder_name: "Gruzya Adventure Outfitters LLC",
+    bank_account_holder_type: "Business",
     bank_account_function: 0
   },
-  city: 'Miami',
+  city: "Miami",
   contacts: [{
-    contact_name: 'Herman Martinez',
-    contact_email: 'example@email.com',
-    contact_title: 'Owner',
-    contact_phone: '3055550000'
+    contact_name: "Herman Martinez",
+    contact_email: "example@email.com",
+    contact_title: "Owner",
+    contact_phone: "3055550000"
   }],
-  country: 'US',
-  customer_vendor_account: 'A-37622',
-  ein: '12-3456789',
-  email: 'example@email.com',
+  country: "US",
+  customer_vendor_account: "A-37622",
+  ein: "12-3456789",
+  email: "example@email.com",
   internal_reference_id: 123,
-  location_code: 'MIA123',
-  mcc: '7777',
+  location_code: "MIA123",
+  mcc: "7777",
   name_1: "Herman's Coatings and Masonry",
-  name_2: '<string>',
-  payee_name_1: '<string>',
-  payee_name_2: '<string>',
-  payment_method: 'managed',
-  phone: '5555555555',
-  remit_address_1: '123 Walnut Street',
-  remit_address_2: 'Suite 900',
-  remit_city: 'Miami',
-  remit_country: 'US',
-  remit_state: 'FL',
-  remit_zip: '31113',
-  state: 'FL',
+  name_2: "<string>",
+  payee_name_1: "<string>",
+  payee_name_2: "<string>",
+  payment_method: "managed",
+  phone: "5555555555",
+  remit_address_1: "123 Walnut Street",
+  remit_address_2: "Suite 900",
+  remit_city: "Miami",
+  remit_country: "US",
+  remit_state: "FL",
+  remit_zip: "31113",
+  state: "FL",
   vendor_status: 1,
-  zip: '33139'
-);
+  zip: "33139"
+)
 ```
 </dd>
 </dl>
@@ -24441,7 +24441,7 @@ Delete a vendor.
 <dd>
 
 ```ruby
-client.vendor.delete_vendor(id_vendor: 1);
+client.vendor.delete_vendor(id_vendor: 1)
 ```
 </dd>
 </dl>
@@ -24506,7 +24506,7 @@ Updates a vendor's information. Send only the fields you need to update.
 client.vendor.edit_vendor(
   id_vendor: 1,
   name_1: "Theodore's Janitorial"
-);
+)
 ```
 </dd>
 </dl>
@@ -24576,7 +24576,7 @@ Retrieves a vendor's details.
 <dd>
 
 ```ruby
-client.vendor.get_vendor(id_vendor: 1);
+client.vendor.get_vendor(id_vendor: 1)
 ```
 </dd>
 </dl>
@@ -24643,7 +24643,7 @@ client.wallet.configure_apple_pay_organization(
   cascade: true,
   is_enabled: true,
   org_id: 901
-);
+)
 ```
 </dd>
 </dl>
@@ -24722,9 +24722,9 @@ Configure and activate Apple Pay for a Payabli paypoint
 
 ```ruby
 client.wallet.configure_apple_pay_paypoint(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   is_enabled: true
-);
+)
 ```
 </dd>
 </dl>
@@ -24798,7 +24798,7 @@ client.wallet.configure_google_pay_organization(
   cascade: true,
   is_enabled: true,
   org_id: 901
-);
+)
 ```
 </dd>
 </dl>
@@ -24877,9 +24877,9 @@ Configure and activate Google Pay for a Payabli paypoint
 
 ```ruby
 client.wallet.configure_google_pay_paypoint(
-  entry: '8cfec329267',
+  entry: "8cfec329267",
   is_enabled: true
-);
+)
 ```
 </dd>
 </dl>

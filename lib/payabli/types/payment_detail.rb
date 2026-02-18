@@ -10,6 +10,7 @@ module Payabli
       field :currency, -> { String }, optional: true, nullable: false
       field :service_fee, -> { Integer }, optional: true, nullable: false, api_name: "serviceFee"
       field :split_funding, -> { Internal::Types::Array[Payabli::Types::SplitFundingContent] }, optional: true, nullable: false, api_name: "splitFunding"
+      field :check_unique_id, -> { String }, optional: true, nullable: false, api_name: "checkUniqueId"
       field :total_amount, -> { Integer }, optional: false, nullable: false, api_name: "totalAmount"
     end
   end

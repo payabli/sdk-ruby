@@ -10,7 +10,7 @@ module Payabli
       @raw_client = Payabli::Internal::Http::RawClient.new(
         base_url: base_url || Payabli::Environment::SANDBOX,
         headers: {
-          "User-Agent" => "payabli/2.2.15",
+          "User-Agent" => "payabli/2.2.16",
           "X-Fern-Language" => "Ruby",
           requestToken: api_key.to_s
         }

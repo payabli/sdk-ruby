@@ -59,28 +59,28 @@ Instantiate and use the client with the following:
 ```ruby
 require "payabli"
 
-client = Payabli::Client.new(api_key: '<value>');
+client = Payabli::Client.new(api_key: "<value>")
 
 client.money_in.getpaid(
   customer_data: {
     customer_id: 4440
   },
-  entry_point: 'f743aed24a',
-  ipaddress: '255.255.255.255',
+  entry_point: "f743aed24a",
+  ipaddress: "255.255.255.255",
   payment_details: {
     service_fee: 0,
     total_amount: 100
   },
   payment_method: {
-    cardcvv: '999',
-    cardexp: '02/27',
-    card_holder: 'John Cassian',
-    cardnumber: '4111111111111111',
-    cardzip: '12345',
-    initiator: 'payor',
-    method_: 'card'
+    cardcvv: "999",
+    cardexp: "02/27",
+    card_holder: "John Cassian",
+    cardnumber: "4111111111111111",
+    cardzip: "12345",
+    initiator: "payor",
+    method_: "card"
   }
-);
+)
 ```
 
 ## Environments
