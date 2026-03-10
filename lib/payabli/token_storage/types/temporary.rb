@@ -4,7 +4,7 @@ module Payabli
   module TokenStorage
     module Types
       module Temporary
-        # Temporary is an alias for Object
+        # Temporary is an alias for Boolean
 
         # @option str [String]
         #

@@ -63,7 +63,7 @@ module Payabli
       field :whendelivered, -> { Payabli::Types::Whendelivered }, optional: true, nullable: false
       field :when_provided, -> { Payabli::Types::Whenprovided }, optional: true, nullable: false, api_name: "whenProvided"
       field :whenrefund, -> { Payabli::Types::Whenrefunded }, optional: true, nullable: false
-      field :additional_data, -> { String }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "additionalData"
     end
   end
 end

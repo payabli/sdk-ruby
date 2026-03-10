@@ -9,7 +9,7 @@ module Payabli
       field :avgmonthly, -> { Integer }, optional: true, nullable: false
       field :baddress, -> { String }, optional: true, nullable: false
       field :baddress_1, -> { String }, optional: true, nullable: false, api_name: "baddress1"
-      field :bank_data, -> { Payabli::Types::Bank }, optional: true, nullable: false, api_name: "bankData"
+      field :bank_data, -> { Internal::Types::Array[Payabli::Types::Bank] }, optional: true, nullable: false, api_name: "bankData"
       field :bcity, -> { String }, optional: true, nullable: false
       field :bcountry, -> { String }, optional: true, nullable: false
       field :binperson, -> { Integer }, optional: true, nullable: false

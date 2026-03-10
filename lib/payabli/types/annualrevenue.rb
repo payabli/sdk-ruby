@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Annualrevenue
-      # Annualrevenue is an alias for Object
+      # Annualrevenue is an alias for Float
 
       # @option str [String]
       #

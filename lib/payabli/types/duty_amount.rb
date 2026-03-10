@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module DutyAmount
-      # DutyAmount is an alias for Object
+      # DutyAmount is an alias for Float
 
       # @option str [String]
       #

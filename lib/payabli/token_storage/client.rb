@@ -22,9 +22,9 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Boolean, nil] :ach_validation
-      # @option params [Payabli::TokenStorage::Types::CreateAnonymous] :create_anonymous
+      # @option params [Boolean, nil] :create_anonymous
       # @option params [Boolean, nil] :force_customer_creation
-      # @option params [Payabli::TokenStorage::Types::Temporary] :temporary
+      # @option params [Boolean, nil] :temporary
       # @option params [String, nil] :idempotency_key
       #
       # @return [Payabli::TokenStorage::Types::AddMethodResponse]

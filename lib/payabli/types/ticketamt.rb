@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Ticketamt
-      # Ticketamt is an alias for Object
+      # Ticketamt is an alias for Float
 
       # @option str [String]
       #

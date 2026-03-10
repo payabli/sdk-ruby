@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module AcceptRegister
-      # AcceptRegister is an alias for Object
+      # AcceptRegister is an alias for Boolean
 
       # @option str [String]
       #

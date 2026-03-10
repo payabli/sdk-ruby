@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module EnrollmentStatus
-      # EnrollmentStatus is an alias for Object
+      # EnrollmentStatus is an alias for String
 
       # @option str [String]
       #

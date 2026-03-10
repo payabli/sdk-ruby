@@ -1093,7 +1093,27 @@ client.boarding.add_application(
   avgmonthly: 1000,
   baddress: "123 Walnut Street",
   baddress_1: "Suite 103",
-  bank_data: {},
+  bank_data: [{
+    account_number: "123123123",
+    bank_account_function: 1,
+    bank_account_holder_name: "Gruzya Adventure Outfitters LLC",
+    bank_account_holder_type: "Business",
+    bank_name: "Test Bank",
+    nickname: "Withdrawal Account",
+    routing_account: "123123123",
+    type_account: "Checking",
+    account_id: "123-456"
+  }, {
+    account_number: "123123123",
+    bank_account_function: 0,
+    bank_account_holder_name: "Gruzya Adventure Outfitters LLC",
+    bank_account_holder_type: "Business",
+    bank_name: "Test Bank",
+    nickname: "Deposit Account",
+    routing_account: "123123123",
+    type_account: "Checking",
+    account_id: "123-456"
+  }],
   bcity: "New Vegas",
   bcountry: "US",
   binperson: 60,
@@ -1163,7 +1183,11 @@ client.boarding.add_application(
     signed_document_reference: "https://example.com/signed-document.pdf",
     attestation_date: "04/20/2025",
     sign_date: "04/20/2025",
-    additional_data: '{"deviceId":"499585-389fj484-3jcj8hj3","session":"fifji4-fiu443-fn4843","timeWithCompany":"6 Years"}'
+    additional_data: {
+      deviceId: "499585-389fj484-3jcj8hj3",
+      session: "fifji4-fiu443-fn4843",
+      timeWithCompany: "6 Years"
+    }
   },
   startdate: "01/01/1990",
   tax_fill_name: "Sunshine LLC",
@@ -10216,7 +10240,7 @@ client.money_in.capture_auth(
 <dl>
 <dd>
 
-Make a temporary microdeposit in a customer account to verify the customer's ownership and access to the target account. Reverse the microdeposit with `reverseCredit`.
+Make a temporary microdeposit in a customer account to verify the customer's ownership and access to the target account. Reverse the microdeposit with `reverseCredit`. Payabli doesn't automatically make microdeposits when you add a bank account, you must manually make the requests.
 
 This feature must be enabled by Payabli on a per-merchant basis. Contact support for help. 
 </dd>
@@ -12483,7 +12507,7 @@ client.notification.add_notification(
   },
   frequency: "untilcancelled",
   method_: "web",
-  owner_id: "236",
+  owner_id: 236,
   owner_type: 0,
   status: 1,
   target: "https://webhook.site/2871b8f8-edc7-441a-b376-98d8c8e33275"
@@ -12680,7 +12704,7 @@ client.notification.update_notification(
   },
   frequency: "untilcancelled",
   method_: "email",
-  owner_id: "136",
+  owner_id: 136,
   owner_type: 0,
   status: 1,
   target: "newemail@email.com"
@@ -14223,7 +14247,7 @@ client.payment_link.add_pay_link_from_invoice(
 <dl>
 <dd>
 
-Generates a payment link for a bill from the bill ID. 
+Generates a payment link for a bill from the bill ID. The vendor receives a secure page where they can select their preferred payment method (ACH, virtual card, or check) and complete the payment.
 </dd>
 </dl>
 </dd>
@@ -14278,34 +14302,17 @@ client.payment_link.add_pay_link_from_bill(
   },
   payment_methods: {
     all_methods_checked: true,
+    allow_multiple_methods: true,
+    default_method: "vcard",
     enabled: true,
     header: "Payment Methods",
     methods: {
-      amex: true,
-      apple_pay: true,
-      discover: true,
-      e_check: true,
-      mastercard: true,
-      visa: true
+      ach: true,
+      check: true,
+      vcard: true
     },
-    order: 0
-  },
-  payor: {
-    enabled: true,
-    fields: [{
-      display: true,
-      fixed: true,
-      identifier: true,
-      label: "Full Name",
-      name: "fullName",
-      order: 0,
-      required: true,
-      validation: "alpha",
-      value: "",
-      width: 0
-    }],
-    header: "Payor Information",
-    order: 0
+    order: 0,
+    show_preview_virtual_card: true
   },
   review: {
     enabled: true,
@@ -14363,7 +14370,7 @@ client.payment_link.add_pay_link_from_bill(
 <dl>
 <dd>
 
-**request:** `Payabli::PaymentLink::Types::PaymentPageRequestBody` 
+**request:** `Payabli::PaymentLink::Types::PaymentPageRequestBodyOut` 
     
 </dd>
 </dl>
@@ -14410,7 +14417,7 @@ Deletes a payment link by ID.
 <dd>
 
 ```ruby
-client.payment_link.delete_pay_link_from_id(pay_link_id: "payLinkId")
+client.payment_link.delete_pay_link_from_id(pay_link_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234")
 ```
 </dd>
 </dl>
@@ -14946,34 +14953,17 @@ client.payment_link.add_pay_link_from_bill_lot_number(
   },
   payment_methods: {
     all_methods_checked: true,
+    allow_multiple_methods: true,
+    default_method: "vcard",
     enabled: true,
     header: "Payment Methods",
     methods: {
-      amex: true,
-      apple_pay: true,
-      discover: true,
-      e_check: true,
-      mastercard: true,
-      visa: true
+      ach: true,
+      check: true,
+      vcard: true
     },
-    order: 0
-  },
-  payor: {
-    enabled: true,
-    fields: [{
-      display: true,
-      fixed: true,
-      identifier: true,
-      label: "Full Name",
-      name: "fullName",
-      order: 0,
-      required: true,
-      validation: "alpha",
-      value: "",
-      width: 0
-    }],
-    header: "Payor Information",
-    order: 0
+    order: 0,
+    show_preview_virtual_card: true
   },
   review: {
     enabled: true,
@@ -15039,7 +15029,211 @@ client.payment_link.add_pay_link_from_bill_lot_number(
 <dl>
 <dd>
 
-**request:** `Payabli::PaymentLink::Types::PaymentPageRequestBody` 
+**request:** `Payabli::PaymentLink::Types::PaymentPageRequestBodyOut` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payabli::PaymentLink::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">patch_out_payment_link</a>(paylink_id, request) -> Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Partially updates a Pay Out payment link's content, expiration date, and/or status. Use this to modify the payment page configuration, extend or change the expiration, or cancel a link. Updating the expiration date of an expired link reactivates it to Active status.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.payment_link.patch_out_payment_link(
+  paylink_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+  expiration_date: "2026-06-01T00:00:00Z",
+  status: "Active"
+)
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**paylink_id:** `String` — ID for the payment link.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Payabli::PaymentLink::Types::PatchOutPaymentLinkRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payabli::PaymentLink::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">update_pay_link_out_from_id</a>(paylink_id, request) -> Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates the payment page content for a Pay Out payment link. Use this to change the branding, messaging, payment methods offered, or other page configuration.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.payment_link.update_pay_link_out_from_id(
+  paylink_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+  contact_us: {
+    email_label: "Email",
+    enabled: true,
+    header: "Contact Us",
+    order: 0,
+    payment_icons: true,
+    phone_label: "Phone"
+  },
+  logo: {
+    enabled: true,
+    order: 0
+  },
+  message_before_paying: {
+    enabled: true,
+    label: "Please review your payment details",
+    order: 0
+  },
+  notes: {
+    enabled: true,
+    header: "Additional Notes",
+    order: 0,
+    placeholder: "Enter any additional notes here",
+    value: ""
+  },
+  page: {
+    description: "Get paid securely",
+    enabled: true,
+    header: "Payment Page",
+    order: 0
+  },
+  payment_button: {
+    enabled: true,
+    label: "Pay Now",
+    order: 0
+  },
+  payment_methods: {
+    all_methods_checked: true,
+    allow_multiple_methods: true,
+    default_method: "vcard",
+    enabled: true,
+    header: "Payment Methods",
+    methods: {
+      ach: true,
+      check: true,
+      vcard: true
+    },
+    order: 0,
+    show_preview_virtual_card: true
+  },
+  review: {
+    enabled: true,
+    header: "Review Payment",
+    order: 0
+  },
+  settings: {
+    color: "#000000",
+    language: "en"
+  }
+)
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**paylink_id:** `String` — ID for the payment link.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Payabli::PaymentLink::Types::PaymentPageRequestBodyOut` 
     
 </dd>
 </dl>
@@ -23113,6 +23307,8 @@ client.token_storage.add_method(
   },
   entry_point: "f743aed24a",
   fallback_auth: true,
+  fallback_auth_amount: 100,
+  method_description: "Primary Visa card",
   payment_method: {
     cardcvv: "123",
     cardexp: "02/25",
@@ -23120,7 +23316,8 @@ client.token_storage.add_method(
     cardnumber: "4111111111111111",
     cardzip: "12345",
     method_: "card"
-  }
+  },
+  source: "api"
 )
 ```
 </dd>

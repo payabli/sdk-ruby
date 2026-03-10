@@ -4,7 +4,7 @@ module Payabli
   module TokenStorage
     module Types
       module CreateAnonymous
-        # CreateAnonymous is an alias for Object
+        # CreateAnonymous is an alias for Boolean
 
         # @option str [String]
         #

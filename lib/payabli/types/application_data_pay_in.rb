@@ -11,7 +11,7 @@ module Payabli
       field :avgmonthly, -> { Integer }, optional: true, nullable: false
       field :baddress, -> { String }, optional: true, nullable: false
       field :baddress_1, -> { String }, optional: true, nullable: false, api_name: "baddress1"
-      field :bank_data, -> { Payabli::Types::ApplicationDataPayInBankData }, optional: false, nullable: false, api_name: "bankData"
+      field :bank_data, -> { Internal::Types::Array[Payabli::Types::Bank] }, optional: false, nullable: false, api_name: "bankData"
       field :bcity, -> { String }, optional: true, nullable: false
       field :bcountry, -> { String }, optional: true, nullable: false
       field :binperson, -> { Integer }, optional: true, nullable: false
@@ -56,7 +56,7 @@ module Payabli
       field :when_delivered, -> { Payabli::Types::Whendelivered }, optional: false, nullable: false, api_name: "whenDelivered"
       field :when_provided, -> { Payabli::Types::Whenprovided }, optional: false, nullable: false, api_name: "whenProvided"
       field :when_refunded, -> { Payabli::Types::Whenrefunded }, optional: false, nullable: false, api_name: "whenRefunded"
-      field :additional_data, -> { String }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "additionalData"
       field :rep_code, -> { String }, optional: true, nullable: false, api_name: "RepCode"
       field :rep_name, -> { String }, optional: true, nullable: false, api_name: "RepName"
       field :rep_office, -> { String }, optional: true, nullable: false, api_name: "RepOffice"

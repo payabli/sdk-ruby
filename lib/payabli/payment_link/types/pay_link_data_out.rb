@@ -9,7 +9,7 @@ module Payabli
         field :vendor_number, -> { String }, optional: false, nullable: false, api_name: "vendorNumber"
         field :mail_2, -> { String }, optional: true, nullable: false, api_name: "mail2"
         field :amount_fixed, -> { String }, optional: true, nullable: false, api_name: "amountFixed"
-        field :body, -> { Payabli::PaymentLink::Types::PaymentPageRequestBody }, optional: false, nullable: false
+        field :body, -> { Payabli::PaymentLink::Types::PaymentPageRequestBodyOut }, optional: false, nullable: false
       end
     end
   end

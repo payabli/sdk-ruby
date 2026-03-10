@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module SaveIfSuccess
-      # SaveIfSuccess is an alias for Object
+      # SaveIfSuccess is an alias for Boolean
 
       # @option str [String]
       #

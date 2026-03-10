@@ -21,7 +21,7 @@ module Payabli
       field :pci_attestation, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "pciAttestation"
       field :attestation_date, -> { String }, optional: true, nullable: false, api_name: "attestationDate"
       field :sign_date, -> { String }, optional: true, nullable: false, api_name: "signDate"
-      field :additional_data, -> { String }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "additionalData"
     end
   end
 end

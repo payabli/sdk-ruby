@@ -62,10 +62,11 @@ module Payabli
         end
       end
 
-      # Generates a payment link for a bill from the bill ID.
+      # Generates a payment link for a bill from the bill ID. The vendor receives a secure page where they can select
+      # their preferred payment method (ACH, virtual card, or check) and complete the payment.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBody]
+      # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBodyOut]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -97,7 +98,7 @@ module Payabli
           path: "PaymentLink/bill/#{params[:bill_id]}",
           headers: headers,
           query: query_params,
-          body: Payabli::PaymentLink::Types::PaymentPageRequestBody.new(body_params).to_h,
+          body: Payabli::PaymentLink::Types::PaymentPageRequestBodyOut.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -344,7 +345,7 @@ module Payabli
       # lot number for a vendor with a single payment link.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBody]
+      # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBodyOut]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -375,7 +376,80 @@ module Payabli
           method: "POST",
           path: "PaymentLink/bill/lotNumber/#{params[:lot_number]}",
           query: query_params,
-          body: Payabli::PaymentLink::Types::PaymentPageRequestBody.new(body_params).to_h,
+          body: Payabli::PaymentLink::Types::PaymentPageRequestBodyOut.new(body_params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Partially updates a Pay Out payment link's content, expiration date, and/or status. Use this to modify the
+      # payment page configuration, extend or change the expiration, or cancel a link. Updating the expiration date of
+      # an expired link reactivates it to Active status.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::PaymentLink::Types::PatchOutPaymentLinkRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :paylink_id
+      #
+      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      def patch_out_payment_link(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "PATCH",
+          path: "PaymentLink/out/#{params[:paylink_id]}",
+          body: Payabli::PaymentLink::Types::PatchOutPaymentLinkRequest.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Updates the payment page content for a Pay Out payment link. Use this to change the branding, messaging, payment
+      # methods offered, or other page configuration.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBodyOut]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :paylink_id
+      #
+      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      def update_pay_link_out_from_id(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "PATCH",
+          path: "PaymentLink/updateOut/#{params[:paylink_id]}",
+          body: Payabli::PaymentLink::Types::PaymentPageRequestBodyOut.new(params).to_h,
           request_options: request_options
         )
         begin

@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module BillApprovals
-      # BillApprovals is an alias for Object
+      # BillApprovals is an alias for Array
 
       # @option str [String]
       #

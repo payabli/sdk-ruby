@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module ContactsField
-      # ContactsField is an alias for Object
+      # ContactsField is an alias for Array
 
       # @option str [String]
       #

@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module PciAttestation
-      # PciAttestation is an alias for Object
+      # PciAttestation is an alias for Boolean
 
       # @option str [String]
       #

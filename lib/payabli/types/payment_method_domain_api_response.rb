@@ -15,7 +15,7 @@ module Payabli
       field :id, -> { String }, optional: false, nullable: false
       field :owner_entity_id, -> { Integer }, optional: false, nullable: false, api_name: "ownerEntityId"
       field :owner_entity_type, -> { String }, optional: false, nullable: false, api_name: "ownerEntityType"
-      field :updated_at, -> { String }, optional: false, nullable: false, api_name: "updatedAt"
+      field :updated_at, -> { String }, optional: true, nullable: false, api_name: "updatedAt"
     end
   end
 end

@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module RiskActionCode
-      # RiskActionCode is an alias for Object
+      # RiskActionCode is an alias for Integer
 
       # @option str [String]
       #

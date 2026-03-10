@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module AcceptOauth
-      # AcceptOauth is an alias for Object
+      # AcceptOauth is an alias for Boolean
 
       # @option str [String]
       #

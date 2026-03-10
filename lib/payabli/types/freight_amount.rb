@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module FreightAmount
-      # FreightAmount is an alias for Object
+      # FreightAmount is an alias for Float
 
       # @option str [String]
       #

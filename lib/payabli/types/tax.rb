@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Tax
-      # Tax is an alias for Object
+      # Tax is an alias for Float
 
       # @option str [String]
       #

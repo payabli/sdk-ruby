@@ -182,34 +182,17 @@ class PaymentLinkWireTest < WireMockTestCase
       },
       payment_methods: {
         all_methods_checked: true,
+        allow_multiple_methods: true,
+        default_method: "vcard",
         enabled: true,
         header: "Payment Methods",
         methods: {
-          amex: true,
-          apple_pay: true,
-          discover: true,
-          e_check: true,
-          mastercard: true,
-          visa: true
+          ach: true,
+          check: true,
+          vcard: true
         },
-        order: 0
-      },
-      payor: {
-        enabled: true,
-        fields: [{
-          display: true,
-          fixed: true,
-          identifier: true,
-          label: "Full Name",
-          name: "fullName",
-          order: 0,
-          required: true,
-          validation: "alpha",
-          value: "",
-          width: 0
-        }],
-        header: "Payor Information",
-        order: 0
+        order: 0,
+        show_preview_virtual_card: true
       },
       review: {
         enabled: true,
@@ -240,7 +223,7 @@ class PaymentLinkWireTest < WireMockTestCase
     test_id = "payment_link.delete_pay_link_from_id.0"
 
     @client.payment_link.delete_pay_link_from_id(
-      pay_link_id: "payLinkId",
+      pay_link_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "payment_link.delete_pay_link_from_id.0"
@@ -251,7 +234,7 @@ class PaymentLinkWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "DELETE",
-      url_path: "/PaymentLink/payLinkId",
+      url_path: "/PaymentLink/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
     )
@@ -421,34 +404,17 @@ class PaymentLinkWireTest < WireMockTestCase
       },
       payment_methods: {
         all_methods_checked: true,
+        allow_multiple_methods: true,
+        default_method: "vcard",
         enabled: true,
         header: "Payment Methods",
         methods: {
-          amex: true,
-          apple_pay: true,
-          discover: true,
-          e_check: true,
-          mastercard: true,
-          visa: true
+          ach: true,
+          check: true,
+          vcard: true
         },
-        order: 0
-      },
-      payor: {
-        enabled: true,
-        fields: [{
-          display: true,
-          fixed: true,
-          identifier: true,
-          label: "Full Name",
-          name: "fullName",
-          order: 0,
-          required: true,
-          validation: "alpha",
-          value: "",
-          width: 0
-        }],
-        header: "Payor Information",
-        order: 0
+        order: 0,
+        show_preview_virtual_card: true
       },
       review: {
         enabled: true,
@@ -471,6 +437,108 @@ class PaymentLinkWireTest < WireMockTestCase
       method: "POST",
       url_path: "/PaymentLink/bill/lotNumber/LOT-2024-001",
       query_params: { "entryPoint" => "billing", "vendorNumber" => "VENDOR-123" },
+      expected: 1
+    )
+  end
+
+  def test_payment_link_patch_out_payment_link_with_wiremock
+    test_id = "payment_link.patch_out_payment_link.0"
+
+    @client.payment_link.patch_out_payment_link(
+      paylink_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      expiration_date: "2026-06-01T00:00:00Z",
+      status: "Active",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "payment_link.patch_out_payment_link.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "PATCH",
+      url_path: "/PaymentLink/out/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_payment_link_update_pay_link_out_from_id_with_wiremock
+    test_id = "payment_link.update_pay_link_out_from_id.0"
+
+    @client.payment_link.update_pay_link_out_from_id(
+      paylink_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      contact_us: {
+        email_label: "Email",
+        enabled: true,
+        header: "Contact Us",
+        order: 0,
+        payment_icons: true,
+        phone_label: "Phone"
+      },
+      logo: {
+        enabled: true,
+        order: 0
+      },
+      message_before_paying: {
+        enabled: true,
+        label: "Please review your payment details",
+        order: 0
+      },
+      notes: {
+        enabled: true,
+        header: "Additional Notes",
+        order: 0,
+        placeholder: "Enter any additional notes here",
+        value: ""
+      },
+      page: {
+        description: "Get paid securely",
+        enabled: true,
+        header: "Payment Page",
+        order: 0
+      },
+      payment_button: {
+        enabled: true,
+        label: "Pay Now",
+        order: 0
+      },
+      payment_methods: {
+        all_methods_checked: true,
+        allow_multiple_methods: true,
+        default_method: "vcard",
+        enabled: true,
+        header: "Payment Methods",
+        methods: {
+          ach: true,
+          check: true,
+          vcard: true
+        },
+        order: 0,
+        show_preview_virtual_card: true
+      },
+      review: {
+        enabled: true,
+        header: "Review Payment",
+        order: 0
+      },
+      settings: {
+        color: "#000000",
+        language: "en"
+      },
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "payment_link.update_pay_link_out_from_id.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "PATCH",
+      url_path: "/PaymentLink/updateOut/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      query_params: nil,
       expected: 1
     )
   end

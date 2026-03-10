@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module ApplePayType
-      # ApplePayType is an alias for Object
+      # ApplePayType is an alias for String
 
       # @option str [String]
       #

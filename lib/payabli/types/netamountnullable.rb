@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Netamountnullable
-      # Netamountnullable is an alias for Object
+      # Netamountnullable is an alias for Float
 
       # @option str [String]
       #

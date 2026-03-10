@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module ExpectedProcessingDateTime
-      # ExpectedProcessingDateTime is an alias for Object
+      # ExpectedProcessingDateTime is an alias for String
 
       # @option str [String]
       #

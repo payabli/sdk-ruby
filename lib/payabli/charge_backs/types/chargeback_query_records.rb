@@ -19,7 +19,7 @@ module Payabli
         field :payment_trans_id, -> { String }, optional: false, nullable: false, api_name: "PaymentTransId"
         field :schedule_reference, -> { Integer }, optional: true, nullable: false, api_name: "ScheduleReference"
         field :order_id, -> { String }, optional: false, nullable: false, api_name: "OrderId"
-        field :net_amount, -> { Integer }, optional: false, nullable: false, api_name: "NetAmount"
+        field :net_amount, -> { Integer }, optional: true, nullable: false, api_name: "NetAmount"
         field :transaction_time, -> { String }, optional: false, nullable: false, api_name: "TransactionTime"
         field :customer, -> { Payabli::Types::QueryTransactionPayorData }, optional: false, nullable: false, api_name: "Customer"
         field :payment_data, -> { Payabli::Types::QueryPaymentData }, optional: false, nullable: false, api_name: "PaymentData"

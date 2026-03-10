@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module IsRoot
-      # IsRoot is an alias for Object
+      # IsRoot is an alias for Boolean
 
       # @option str [String]
       #

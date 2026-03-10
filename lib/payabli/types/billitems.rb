@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Billitems
-      # Billitems is an alias for Object
+      # Billitems is an alias for Array
 
       # @option str [String]
       #

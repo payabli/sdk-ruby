@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Ownership
-      # Ownership is an alias for Object
+      # Ownership is an alias for Array
 
       # @option str [String]
       #

@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module ForceCustomerCreation
-      # ForceCustomerCreation is an alias for Object
+      # ForceCustomerCreation is an alias for Boolean
 
       # @option str [String]
       #

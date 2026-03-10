@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module BillEvents
-      # BillEvents is an alias for Object
+      # BillEvents is an alias for Array
 
       # @option str [String]
       #

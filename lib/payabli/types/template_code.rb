@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module TemplateCode
-      # TemplateCode is an alias for Object
+      # TemplateCode is an alias for String
 
       # @option str [String]
       #

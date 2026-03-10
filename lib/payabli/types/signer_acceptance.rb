@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module SignerAcceptance
-      # SignerAcceptance is an alias for Object
+      # SignerAcceptance is an alias for Boolean
 
       # @option str [String]
       #

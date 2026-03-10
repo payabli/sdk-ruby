@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module BankData
-      # BankData is an alias for Object
+      # BankData is an alias for Array
 
       # @option str [String]
       #

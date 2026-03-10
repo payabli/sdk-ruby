@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Ownerid
-      # Ownerid is an alias for String
+      # Ownerid is an alias for Integer
 
       # @option str [String]
       #

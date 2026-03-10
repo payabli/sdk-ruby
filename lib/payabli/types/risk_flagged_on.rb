@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module RiskFlaggedOn
-      # RiskFlaggedOn is an alias for Object
+      # RiskFlaggedOn is an alias for String
 
       # @option str [String]
       #

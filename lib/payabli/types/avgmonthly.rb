@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Avgmonthly
-      # Avgmonthly is an alias for Object
+      # Avgmonthly is an alias for Float
 
       # @option str [String]
       #

@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module VendorPhone
-      # VendorPhone is an alias for Object
+      # VendorPhone is an alias for String
 
       # @option str [String]
       #

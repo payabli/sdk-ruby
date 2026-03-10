@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module SplitFunding
-      # SplitFunding is an alias for Object
+      # SplitFunding is an alias for Array
 
       # @option str [String]
       #

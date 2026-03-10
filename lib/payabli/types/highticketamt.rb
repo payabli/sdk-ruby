@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Highticketamt
-      # Highticketamt is an alias for Object
+      # Highticketamt is an alias for Float
 
       # @option str [String]
       #

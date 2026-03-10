@@ -21,6 +21,8 @@ class TokenStorageWireTest < WireMockTestCase
       },
       entry_point: "f743aed24a",
       fallback_auth: true,
+      fallback_auth_amount: 100,
+      method_description: "Primary Visa card",
       payment_method: {
         cardcvv: "123",
         cardexp: "02/25",
@@ -29,6 +31,7 @@ class TokenStorageWireTest < WireMockTestCase
         cardzip: "12345",
         method_: "card"
       },
+      source: "api",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "token_storage.add_method.0"

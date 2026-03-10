@@ -39,7 +39,7 @@ module Payabli
       field :split_funding_instructions, -> { Internal::Types::Array[Payabli::Types::SplitFundingContent] }, optional: true, nullable: false, api_name: "splitFundingInstructions"
       field :total_amount, -> { Integer }, optional: true, nullable: false, api_name: "TotalAmount"
       field :transaction_events, -> { Internal::Types::Array[Payabli::Types::QueryTransactionEvents] }, optional: true, nullable: false, api_name: "TransactionEvents"
-      field :transaction_time, -> { String }, optional: true, nullable: false, api_name: "TransactionTime"
+      field :transaction_time, -> { String }, optional: false, nullable: true, api_name: "TransactionTime"
       field :trans_additional_data, -> { Object }, optional: true, nullable: false, api_name: "TransAdditionalData"
       field :trans_status, -> { Integer }, optional: true, nullable: false, api_name: "TransStatus"
     end

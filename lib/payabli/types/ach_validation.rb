@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module AchValidation
-      # AchValidation is an alias for Object
+      # AchValidation is an alias for Boolean
 
       # @option str [String]
       #

@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module ReadOnly
-      # ReadOnly is an alias for Object
+      # ReadOnly is an alias for Boolean
 
       # @option str [String]
       #

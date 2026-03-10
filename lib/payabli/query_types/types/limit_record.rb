@@ -4,7 +4,7 @@ module Payabli
   module QueryTypes
     module Types
       module LimitRecord
-        # LimitRecord is an alias for Object
+        # LimitRecord is an alias for Integer
 
         # @option str [String]
         #

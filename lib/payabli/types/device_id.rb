@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module DeviceId
-      # DeviceId is an alias for Object
+      # DeviceId is an alias for Device
 
       # @option str [String]
       #

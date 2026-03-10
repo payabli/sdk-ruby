@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Discount
-      # Discount is an alias for Object
+      # Discount is an alias for Float
 
       # @option str [String]
       #

@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module HasVcardTransactions
-      # HasVcardTransactions is an alias for Object
+      # HasVcardTransactions is an alias for Boolean
 
       # @option str [String]
       #

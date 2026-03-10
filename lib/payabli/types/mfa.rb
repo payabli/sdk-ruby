@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Mfa
-      # Mfa is an alias for Object
+      # Mfa is an alias for Boolean
 
       # @option str [String]
       #

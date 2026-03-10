@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module IsSameDayAch
-      # IsSameDayAch is an alias for Object
+      # IsSameDayAch is an alias for Boolean
 
       # @option str [String]
       #

@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module Attachments
-      # Attachments is an alias for Object
+      # Attachments is an alias for Array
 
       # @option str [String]
       #

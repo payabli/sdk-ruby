@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module PendingFeeAmount
-      # PendingFeeAmount is an alias for Object
+      # PendingFeeAmount is an alias for Float
 
       # @option str [String]
       #

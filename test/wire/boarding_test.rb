@@ -31,7 +31,27 @@ class BoardingWireTest < WireMockTestCase
       avgmonthly: 1000,
       baddress: "123 Walnut Street",
       baddress_1: "Suite 103",
-      bank_data: {},
+      bank_data: [{
+        account_number: "123123123",
+        bank_account_function: 1,
+        bank_account_holder_name: "Gruzya Adventure Outfitters LLC",
+        bank_account_holder_type: "Business",
+        bank_name: "Test Bank",
+        nickname: "Withdrawal Account",
+        routing_account: "123123123",
+        type_account: "Checking",
+        account_id: "123-456"
+      }, {
+        account_number: "123123123",
+        bank_account_function: 0,
+        bank_account_holder_name: "Gruzya Adventure Outfitters LLC",
+        bank_account_holder_type: "Business",
+        bank_name: "Test Bank",
+        nickname: "Deposit Account",
+        routing_account: "123123123",
+        type_account: "Checking",
+        account_id: "123-456"
+      }],
       bcity: "New Vegas",
       bcountry: "US",
       binperson: 60,
@@ -101,7 +121,11 @@ class BoardingWireTest < WireMockTestCase
         signed_document_reference: "https://example.com/signed-document.pdf",
         attestation_date: "04/20/2025",
         sign_date: "04/20/2025",
-        additional_data: '{"deviceId":"499585-389fj484-3jcj8hj3","session":"fifji4-fiu443-fn4843","timeWithCompany":"6 Years"}'
+        additional_data: {
+          deviceId: "499585-389fj484-3jcj8hj3",
+          session: "fifji4-fiu443-fn4843",
+          timeWithCompany: "6 Years"
+        }
       },
       startdate: "01/01/1990",
       tax_fill_name: "Sunshine LLC",

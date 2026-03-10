@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module LastModified
-      # LastModified is an alias for Object
+      # LastModified is an alias for String
 
       # @option str [String]
       #
