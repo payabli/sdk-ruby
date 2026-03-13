@@ -36,7 +36,7 @@ module Payabli
         field :summary_commodity_code, -> { String }, optional: false, nullable: true, api_name: "summaryCommodityCode"
         field :items, -> { Internal::Types::Array[Payabli::Types::BillItem] }, optional: false, nullable: true
         field :attachments, -> { Internal::Types::Array[Payabli::Types::FileContent] }, optional: false, nullable: true
-        field :additional_data, -> { String }, optional: false, nullable: true, api_name: "additionalData"
+        field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: false, nullable: true, api_name: "additionalData"
       end
     end
   end

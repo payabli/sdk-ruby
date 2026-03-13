@@ -26,7 +26,7 @@ module Payabli
         field :shipping_country, -> { String }, optional: false, nullable: false, api_name: "shippingCountry"
         field :customer_id, -> { Integer }, optional: false, nullable: false, api_name: "customerId"
         field :customer_status, -> { Integer }, optional: false, nullable: false, api_name: "customerStatus"
-        field :additional_data, -> { String }, optional: false, nullable: true, api_name: "additionalData"
+        field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: false, nullable: true, api_name: "additionalData"
       end
     end
   end
