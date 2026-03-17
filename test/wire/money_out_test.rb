@@ -257,4 +257,33 @@ class MoneyOutWireTest < WireMockTestCase
       expected: 1
     )
   end
+
+  def test_money_out_reissue_out_with_wiremock
+    test_id = "money_out.reissue_out.0"
+
+    @client.money_out.reissue_out(
+      trans_id: "129-219",
+      payment_method: {
+        method_: "ach",
+        ach_account: "9876543210",
+        ach_account_type: "savings",
+        ach_routing: "021000021",
+        ach_holder: "Acme Corp",
+        ach_holder_type: "business"
+      },
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.reissue_out.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyOut/reissue",
+      query_params: { "transId" => "129-219" },
+      expected: 1
+    )
+  end
 end

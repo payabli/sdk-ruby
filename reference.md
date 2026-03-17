@@ -12473,6 +12473,98 @@ client.money_out.update_check_payment_status(
 </dl>
 </details>
 
+<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">reissue_out</a>(request) -> Payabli::MoneyOutTypes::Types::ReissuePayoutResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Reissues a payout transaction with a new payment method. This creates a new transaction linked to the original and marks the original transaction as reissued.
+
+The original transaction must be in **Processing** or **Processed** status. The payment method in the request body is used directly. The endpoint doesn't fall back to vendor-managed payment methods.
+
+The new transaction goes through the standard authorize-and-capture flow automatically. Both the original and new transactions are linked through their event histories for audit purposes.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.money_out.reissue_out(
+  trans_id: "129-219",
+  payment_method: {
+    method_: "ach",
+    ach_account: "9876543210",
+    ach_account_type: "savings",
+    ach_routing: "021000021",
+    ach_holder: "Acme Corp",
+    ach_holder_type: "business"
+  }
+)
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**trans_id:** `String` — The transaction ID of the payout to reissue.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**idempotency_key:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Payabli::MoneyOutTypes::Types::ReissuePayoutBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payabli::MoneyOut::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Notification
 <details><summary><code>client.notification.<a href="/lib/payabli/notification/client.rb">add_notification</a>(request) -> Payabli::Types::PayabliApiResponseNotifications</code></summary>
 <dl>
@@ -25118,3 +25210,4 @@ client.wallet.configure_google_pay_paypoint(
 </dd>
 </dl>
 </details>
+

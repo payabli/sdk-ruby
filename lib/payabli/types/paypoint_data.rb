@@ -25,6 +25,7 @@ module Payabli
       field :time_zone, -> { Integer }, optional: true, nullable: false, api_name: "timeZone"
       field :website_address, -> { String }, optional: true, nullable: false, api_name: "websiteAddress"
       field :zip, -> { String }, optional: true, nullable: false
+      field :statement_email, -> { Payabli::Types::StatementEmailConfig }, optional: true, nullable: false, api_name: "statementEmail"
     end
   end
 end

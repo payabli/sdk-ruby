@@ -13,6 +13,9 @@ module Payabli
       field :mode, -> { Integer }, optional: true, nullable: false
       field :reference_id, -> { Integer }, optional: true, nullable: false, api_name: "referenceId"
       field :service, -> { String }, optional: true, nullable: false
+      field :greater_value_allowed, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "greaterValueAllowed"
+      field :absorb_difference, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "absorbDifference"
+      field :allow_override, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "allowOverride"
     end
   end
 end

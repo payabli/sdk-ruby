@@ -21,7 +21,7 @@ module Payabli
           self
         end
 
-        def member?(type)
+        def type_member?(type)
           members.any? { |_key, type_fn| type == type_fn.call }
         end
 

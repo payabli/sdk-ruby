@@ -427,6 +427,59 @@ module Payabli
           raise error_class.new(response.body, code: code)
         end
       end
+
+      # Reissues a payout transaction with a new payment method. This creates a new transaction linked to the original
+      # and marks the original transaction as reissued.
+      #
+      # The original transaction must be in **Processing** or **Processed** status. The payment method in the request
+      # body is used directly. The endpoint doesn't fall back to vendor-managed payment methods.
+      #
+      # The new transaction goes through the standard authorize-and-capture flow automatically. Both the original and
+      # new transactions are linked through their event histories for audit purposes.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::MoneyOutTypes::Types::ReissuePayoutBody]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :trans_id
+      # @option params [String, nil] :idempotency_key
+      #
+      # @return [Payabli::MoneyOutTypes::Types::ReissuePayoutResponse]
+      def reissue_out(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[trans_id]
+        query_params = {}
+        query_params["transId"] = params[:trans_id] if params.key?(:trans_id)
+        params = params.except(*query_param_names)
+
+        headers = {}
+        headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "POST",
+          path: "MoneyOut/reissue",
+          headers: headers,
+          query: query_params,
+          body: Payabli::MoneyOutTypes::Types::ReissuePayoutBody.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::MoneyOutTypes::Types::ReissuePayoutResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
     end
   end
 end

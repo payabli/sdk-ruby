@@ -4,7 +4,7 @@ module Payabli
   module Types
     class BillingDataResponse < Internal::Types::Model
       field :id, -> { Integer }, optional: false, nullable: false
-      field :account_id, -> { Object }, optional: true, nullable: false, api_name: "accountId"
+      field :account_id, -> { String }, optional: true, nullable: false, api_name: "accountId"
       field :nickname, -> { String }, optional: false, nullable: false
       field :bank_name, -> { String }, optional: false, nullable: false, api_name: "bankName"
       field :routing_account, -> { String }, optional: false, nullable: false, api_name: "routingAccount"

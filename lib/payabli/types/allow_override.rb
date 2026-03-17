@@ -2,8 +2,8 @@
 
 module Payabli
   module Types
-    module Accountid
-      # Accountid is an alias for String
+    module AllowOverride
+      # AllowOverride is an alias for Boolean
 
       # @option str [String]
       #
