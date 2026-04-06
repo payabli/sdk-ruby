@@ -27,7 +27,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Templates/#{params[:template_id]}",
+          path: "Templates/#{URI.encode_uri_component(params[:template_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -62,7 +62,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Templates/getlink/#{params[:template_id]}/#{params[:ignore_empty]}",
+          path: "Templates/getlink/#{URI.encode_uri_component(params[:template_id].to_s)}/#{URI.encode_uri_component(params[:ignore_empty].to_s)}",
           request_options: request_options
         )
         begin
@@ -96,7 +96,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Templates/get/#{params[:template_id]}",
+          path: "Templates/get/#{URI.encode_uri_component(params[:template_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -144,7 +144,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/templates/#{params[:org_id]}",
+          path: "Query/templates/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )

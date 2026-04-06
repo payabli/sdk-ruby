@@ -61,7 +61,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Notification/#{params[:n_id]}",
+          path: "Notification/#{URI.encode_uri_component(params[:n_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -95,7 +95,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Notification/#{params[:n_id]}",
+          path: "Notification/#{URI.encode_uri_component(params[:n_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -129,7 +129,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Notification/#{params[:n_id]}",
+          path: "Notification/#{URI.encode_uri_component(params[:n_id].to_s)}",
           body: Payabli::Notification::Types::UpdateNotificationRequest.new(params).to_h,
           request_options: request_options
         )
@@ -164,7 +164,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/notificationReport/#{params[:id]}",
+          path: "Export/notificationReport/#{URI.encode_uri_component(params[:id].to_s)}",
           request_options: request_options
         )
         begin

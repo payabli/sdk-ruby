@@ -10,7 +10,7 @@ module Payabli
       @raw_client = Payabli::Internal::Http::RawClient.new(
         base_url: base_url || Payabli::Environment::SANDBOX,
         headers: {
-          "User-Agent" => "payabli/2.2.20",
+          "User-Agent" => "payabli/2.2.21",
           "X-Fern-Language" => "Ruby",
           requestToken: api_key.to_s
         }
@@ -50,6 +50,11 @@ module Payabli
     # @return [Payabli::Export::Client]
     def export
       @export ||= Payabli::Export::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::GhostCard::Client]
+    def ghost_card
+      @ghost_card ||= Payabli::GhostCard::Client.new(client: @raw_client)
     end
 
     # @return [Payabli::HostedPaymentPages::Client]
@@ -110,6 +115,11 @@ module Payabli
     # @return [Payabli::PaymentMethodDomain::Client]
     def payment_method_domain
       @payment_method_domain ||= Payabli::PaymentMethodDomain::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::PayoutSubscription::Client]
+    def payout_subscription
+      @payout_subscription ||= Payabli::PayoutSubscription::Client.new(client: @raw_client)
     end
 
     # @return [Payabli::Paypoint::Client]

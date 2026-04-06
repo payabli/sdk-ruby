@@ -89,7 +89,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "TokenStorage/#{params[:method_id]}",
+          path: "TokenStorage/#{URI.encode_uri_component(params[:method_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -124,7 +124,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "TokenStorage/#{params[:method_id]}",
+          path: "TokenStorage/#{URI.encode_uri_component(params[:method_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -167,7 +167,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "TokenStorage/#{params[:method_id]}",
+          path: "TokenStorage/#{URI.encode_uri_component(params[:method_id].to_s)}",
           query: query_params,
           body: Payabli::TokenStorage::Types::RequestTokenStorage.new(body_params).to_h,
           request_options: request_options

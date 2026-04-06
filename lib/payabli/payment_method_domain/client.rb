@@ -62,7 +62,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "PaymentMethodDomain/#{params[:domain_id]}/cascade",
+          path: "PaymentMethodDomain/#{URI.encode_uri_component(params[:domain_id].to_s)}/cascade",
           request_options: request_options
         )
         begin
@@ -97,7 +97,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "PaymentMethodDomain/#{params[:domain_id]}",
+          path: "PaymentMethodDomain/#{URI.encode_uri_component(params[:domain_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -131,7 +131,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "PaymentMethodDomain/#{params[:domain_id]}",
+          path: "PaymentMethodDomain/#{URI.encode_uri_component(params[:domain_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -215,7 +215,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PATCH",
-          path: "PaymentMethodDomain/#{params[:domain_id]}",
+          path: "PaymentMethodDomain/#{URI.encode_uri_component(params[:domain_id].to_s)}",
           body: body,
           request_options: request_options
         )
@@ -251,7 +251,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "PaymentMethodDomain/#{params[:domain_id]}/verify",
+          path: "PaymentMethodDomain/#{URI.encode_uri_component(params[:domain_id].to_s)}/verify",
           request_options: request_options
         )
         begin

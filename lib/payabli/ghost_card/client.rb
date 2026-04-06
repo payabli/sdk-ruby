@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Payabli
-  module Ocr
+  module GhostCard
     class Client
       # @param client [Payabli::Internal::Http::RawClient]
       #
@@ -10,28 +10,36 @@ module Payabli
         @client = client
       end
 
-      # Use this endpoint to upload an image file for OCR processing. The accepted file formats include PDF, JPG, JPEG,
-      # PNG, and GIF. Specify the desired type of result (either 'bill' or 'invoice') in the path parameter
-      # `typeResult`. The response will contain the OCR processing results, including extracted data such as bill
-      # number, vendor information, bill items, and more.
+      # Creates a ghost card, a multi-use virtual debit card issued to a vendor for recurring or discretionary spend.
+      #
+      # Unlike single-use virtual cards issued as part of a payout transaction, ghost cards aren't tied to a specific
+      # payout. They're issued directly to a vendor and can be reused up to a configurable number of times within the
+      # card's spending limits.
+      #
+      # Only one ghost card can exist per vendor per paypoint. To issue a new card to the same vendor, cancel the
+      # existing card first.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::Ocr::Types::FileContentImageOnly]
+      # @param params [Payabli::GhostCard::Types::CreateGhostCardRequestBody]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Ocr::Types::TypeResult] :type_result
+      # @option params [Payabli::Types::Entry] :entry
       #
-      # @return [Payabli::Ocr::Types::PayabliApiResponseOcr]
-      def ocr_document_form(request_options: {}, **params)
+      # @return [Payabli::GhostCard::Types::CreateGhostCardResponse]
+      def create_ghost_card(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request_data = Payabli::GhostCard::Types::CreateGhostCardRequestBody.new(params).to_h
+        non_body_param_names = ["entry"]
+        body = request_data.except(*non_body_param_names)
+
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "/Import/ocrDocumentForm/#{URI.encode_uri_component(params[:type_result].to_s)}",
-          body: Payabli::Ocr::Types::FileContentImageOnly.new(params).to_h,
+          path: "MoneyOutCard/GhostCard/#{URI.encode_uri_component(params[:entry].to_s)}",
+          body: body,
           request_options: request_options
         )
         begin
@@ -41,35 +49,36 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Ocr::Types::PayabliApiResponseOcr.load(response.body)
+          Payabli::GhostCard::Types::CreateGhostCardResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
         end
       end
 
-      # Use this endpoint to submit a Base64-encoded image file for OCR processing. The accepted file formats include
-      # PDF, JPG, JPEG, PNG, and GIF. Specify the desired type of result (either 'bill' or 'invoice') in the path
-      # parameter `typeResult`. The response will contain the OCR processing results, including extracted data such as
-      # bill number, vendor information, bill items, and more.
+      # Updates the status of a virtual card (including ghost cards) under a paypoint.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::Ocr::Types::FileContentImageOnly]
+      # @param params [Payabli::GhostCard::Types::UpdateCardRequestBody]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Ocr::Types::TypeResult] :type_result
+      # @option params [Payabli::Types::Entry] :entry
       #
-      # @return [Payabli::Ocr::Types::PayabliApiResponseOcr]
-      def ocr_document_json(request_options: {}, **params)
+      # @return [Payabli::Types::PayabliApiResponse]
+      def update_card(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request_data = Payabli::GhostCard::Types::UpdateCardRequestBody.new(params).to_h
+        non_body_param_names = ["entry"]
+        body = request_data.except(*non_body_param_names)
+
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
-          method: "POST",
-          path: "/Import/ocrDocumentJson/#{URI.encode_uri_component(params[:type_result].to_s)}",
-          body: Payabli::Ocr::Types::FileContentImageOnly.new(params).to_h,
+          method: "PATCH",
+          path: "MoneyOutCard/card/#{URI.encode_uri_component(params[:entry].to_s)}",
+          body: body,
           request_options: request_options
         )
         begin
@@ -79,7 +88,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Ocr::Types::PayabliApiResponseOcr.load(response.body)
+          Payabli::Types::PayabliApiResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

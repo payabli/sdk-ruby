@@ -61,7 +61,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Boarding/app/#{params[:app_id]}",
+          path: "Boarding/app/#{URI.encode_uri_component(params[:app_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -95,7 +95,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Boarding/read/#{params[:app_id]}",
+          path: "Boarding/read/#{URI.encode_uri_component(params[:app_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -133,7 +133,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Boarding/read/#{params[:x_id]}",
+          path: "Boarding/read/#{URI.encode_uri_component(params[:x_id].to_s)}",
           body: body,
           request_options: request_options
         )
@@ -168,7 +168,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Boarding/linkbyId/#{params[:boarding_link_id]}",
+          path: "Boarding/linkbyId/#{URI.encode_uri_component(params[:boarding_link_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -202,7 +202,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Boarding/linkbyTemplate/#{params[:template_id]}",
+          path: "Boarding/linkbyTemplate/#{URI.encode_uri_component(params[:template_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -245,7 +245,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Boarding/applink/#{params[:app_id]}/#{params[:mail_2]}",
+          path: "Boarding/applink/#{URI.encode_uri_component(params[:app_id].to_s)}/#{URI.encode_uri_component(params[:mail_2].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -280,7 +280,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Boarding/link/#{params[:boarding_link_reference]}",
+          path: "Boarding/link/#{URI.encode_uri_component(params[:boarding_link_reference].to_s)}",
           request_options: request_options
         )
         begin
@@ -329,7 +329,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/boarding/#{params[:org_id]}",
+          path: "Query/boarding/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -376,7 +376,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/boardinglinks/#{params[:org_id]}",
+          path: "Query/boardinglinks/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -411,7 +411,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Boarding/app/#{params[:app_id]}",
+          path: "Boarding/app/#{URI.encode_uri_component(params[:app_id].to_s)}",
           body: Payabli::Types::ApplicationData.new(params).to_h,
           request_options: request_options
         )

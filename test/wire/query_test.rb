@@ -540,6 +540,54 @@ class QueryWireTest < WireMockTestCase
     )
   end
 
+  def test_query_list_payout_subscriptions_with_wiremock
+    test_id = "query.list_payout_subscriptions.0"
+
+    @client.query.list_payout_subscriptions(
+      entry: "8cfec329267",
+      from_record: 0,
+      limit_record: 20,
+      sort_by: "desc(field_name)",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_payout_subscriptions.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/payoutsubscriptions/8cfec329267",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_query_list_payout_subscriptions_org_with_wiremock
+    test_id = "query.list_payout_subscriptions_org.0"
+
+    @client.query.list_payout_subscriptions_org(
+      org_id: 123,
+      from_record: 0,
+      limit_record: 20,
+      sort_by: "desc(field_name)",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_payout_subscriptions_org.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/payoutsubscriptions/org/123",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
   def test_query_list_transactions_with_wiremock
     test_id = "query.list_transactions.0"
 

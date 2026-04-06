@@ -40,7 +40,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/boarding/#{params[:format]}/#{params[:org_id]}",
+          path: "Export/boarding/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -88,7 +88,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/batchDetails/#{params[:format]}/#{params[:entry]}",
+          path: "Export/batchDetails/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -136,7 +136,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/batchDetails/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/batchDetails/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -184,7 +184,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/batches/#{params[:format]}/#{params[:entry]}",
+          path: "Export/batches/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -232,7 +232,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/batches/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/batches/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -280,7 +280,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/batchesOut/#{params[:format]}/#{params[:entry]}",
+          path: "Export/batchesOut/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -328,7 +328,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/batchesOut/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/batchesOut/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -376,7 +376,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/bills/#{params[:format]}/#{params[:entry]}",
+          path: "Export/bills/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -424,7 +424,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/bills/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/bills/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -472,7 +472,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/chargebacks/#{params[:format]}/#{params[:entry]}",
+          path: "Export/chargebacks/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -520,7 +520,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/chargebacks/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/chargebacks/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -568,7 +568,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/customers/#{params[:format]}/#{params[:entry]}",
+          path: "Export/customers/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -616,7 +616,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/customers/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/customers/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -664,7 +664,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/invoices/#{params[:format]}/#{params[:entry]}",
+          path: "Export/invoices/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -712,7 +712,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/invoices/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/invoices/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -760,7 +760,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/organizations/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/organizations/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -808,7 +808,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/payouts/#{params[:format]}/#{params[:entry]}",
+          path: "Export/payouts/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -856,7 +856,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/payouts/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/payouts/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -904,7 +904,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/paypoints/#{params[:format]}/#{params[:org_id]}",
+          path: "Export/paypoints/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -952,7 +952,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/settlements/#{params[:format]}/#{params[:entry]}",
+          path: "Export/settlements/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1000,7 +1000,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/settlements/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/settlements/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1048,7 +1048,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/subscriptions/#{params[:format]}/#{params[:entry]}",
+          path: "Export/subscriptions/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1096,7 +1096,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/subscriptions/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/subscriptions/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1145,7 +1145,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/transactions/#{params[:format]}/#{params[:entry]}",
+          path: "Export/transactions/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1194,7 +1194,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/transactions/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/transactions/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1245,7 +1245,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/transferDetails/#{params[:format]}/#{params[:entry]}/#{params[:transfer_id]}",
+          path: "Export/transferDetails/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:transfer_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1294,7 +1294,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/transfers/#{params[:entry]}",
+          path: "Export/transfers/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1342,7 +1342,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/vendors/#{params[:format]}/#{params[:entry]}",
+          path: "Export/vendors/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1390,7 +1390,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/vendors/#{params[:format]}/org/#{params[:org_id]}",
+          path: "Export/vendors/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )

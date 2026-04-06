@@ -73,7 +73,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "/v2/notificationlogs/#{params[:uuid]}",
+          path: "/v2/notificationlogs/#{URI.encode_uri_component(params[:uuid].to_s)}",
           request_options: request_options
         )
         begin
@@ -109,7 +109,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "/v2/notificationlogs/#{params[:uuid]}/retry",
+          path: "/v2/notificationlogs/#{URI.encode_uri_component(params[:uuid].to_s)}/retry",
           request_options: request_options
         )
         begin

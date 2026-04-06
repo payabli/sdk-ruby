@@ -29,7 +29,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Paypoint/load/#{params[:entry]}/#{params[:subdomain]}",
+          path: "Paypoint/load/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:subdomain].to_s)}",
           request_options: request_options
         )
         begin
@@ -73,7 +73,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Paypoint/#{params[:entry]}",
+          path: "Paypoint/#{URI.encode_uri_component(params[:entry].to_s)}",
           headers: headers,
           body: Payabli::Types::PayabliPages.new(body_params).to_h,
           request_options: request_options
@@ -110,7 +110,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Paypoint/#{params[:entry]}/#{params[:subdomain]}",
+          path: "Paypoint/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:subdomain].to_s)}",
           body: Payabli::Types::PayabliPages.new(params).to_h,
           request_options: request_options
         )

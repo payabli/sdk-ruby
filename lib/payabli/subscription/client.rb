@@ -27,7 +27,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Subscription/#{params[:sub_id]}",
+          path: "Subscription/#{URI.encode_uri_component(params[:sub_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -107,7 +107,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Subscription/#{params[:sub_id]}",
+          path: "Subscription/#{URI.encode_uri_component(params[:sub_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -145,7 +145,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Subscription/#{params[:sub_id]}",
+          path: "Subscription/#{URI.encode_uri_component(params[:sub_id].to_s)}",
           body: body,
           request_options: request_options
         )

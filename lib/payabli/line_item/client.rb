@@ -35,7 +35,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "LineItem/#{params[:entry]}",
+          path: "LineItem/#{URI.encode_uri_component(params[:entry].to_s)}",
           headers: headers,
           body: Payabli::Types::LineItem.new(body_params).to_h,
           request_options: request_options
@@ -71,7 +71,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "LineItem/#{params[:line_item_id]}",
+          path: "LineItem/#{URI.encode_uri_component(params[:line_item_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -105,7 +105,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "LineItem/#{params[:line_item_id]}",
+          path: "LineItem/#{URI.encode_uri_component(params[:line_item_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -152,7 +152,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/lineitems/#{params[:entry]}",
+          path: "Query/lineitems/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -187,7 +187,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "LineItem/#{params[:line_item_id]}",
+          path: "LineItem/#{URI.encode_uri_component(params[:line_item_id].to_s)}",
           body: Payabli::Types::LineItem.new(params).to_h,
           request_options: request_options
         )

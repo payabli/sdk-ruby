@@ -40,7 +40,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Invoice/#{params[:entry]}",
+          path: "Invoice/#{URI.encode_uri_component(params[:entry].to_s)}",
           headers: headers,
           query: query_params,
           body: Payabli::Invoice::Types::InvoiceDataRequest.new(body_params).to_h,
@@ -78,7 +78,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Invoice/attachedFileFromInvoice/#{params[:id_invoice]}/#{params[:filename]}",
+          path: "Invoice/attachedFileFromInvoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}/#{URI.encode_uri_component(params[:filename].to_s)}",
           request_options: request_options
         )
         begin
@@ -112,7 +112,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Invoice/#{params[:id_invoice]}",
+          path: "Invoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
           request_options: request_options
         )
         begin
@@ -155,7 +155,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Invoice/#{params[:id_invoice]}",
+          path: "Invoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
           query: query_params,
           body: Payabli::Invoice::Types::InvoiceDataRequest.new(body_params).to_h,
           request_options: request_options
@@ -198,7 +198,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Invoice/attachedFileFromInvoice/#{params[:id_invoice]}/#{params[:filename]}",
+          path: "Invoice/attachedFileFromInvoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}/#{URI.encode_uri_component(params[:filename].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -233,7 +233,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Invoice/#{params[:id_invoice]}",
+          path: "Invoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
           request_options: request_options
         )
         begin
@@ -267,7 +267,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Invoice/getNumber/#{params[:entry]}",
+          path: "Invoice/getNumber/#{URI.encode_uri_component(params[:entry].to_s)}",
           request_options: request_options
         )
         begin
@@ -316,7 +316,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/invoices/#{params[:entry]}",
+          path: "Query/invoices/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -366,7 +366,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/invoices/org/#{params[:org_id]}",
+          path: "Query/invoices/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -409,7 +409,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Invoice/send/#{params[:id_invoice]}",
+          path: "Invoice/send/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -444,7 +444,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Export/invoicePdf/#{params[:id_invoice]}",
+          path: "Export/invoicePdf/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
           request_options: request_options
         )
         begin

@@ -112,7 +112,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyOut/cancel/#{params[:reference_id]}",
+          path: "MoneyOut/cancel/#{URI.encode_uri_component(params[:reference_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -146,7 +146,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "MoneyOut/cancel/#{params[:reference_id]}",
+          path: "MoneyOut/cancel/#{URI.encode_uri_component(params[:reference_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -224,7 +224,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyOut/capture/#{params[:reference_id]}",
+          path: "MoneyOut/capture/#{URI.encode_uri_component(params[:reference_id].to_s)}",
           headers: headers,
           request_options: request_options
         )
@@ -259,7 +259,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyOut/details/#{params[:trans_id]}",
+          path: "MoneyOut/details/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -293,7 +293,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyOut/vcard/#{params[:card_token]}",
+          path: "MoneyOut/vcard/#{URI.encode_uri_component(params[:card_token].to_s)}",
           request_options: request_options
         )
         begin
@@ -363,7 +363,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyOut/checkimage/#{params[:asset_name]}",
+          path: "MoneyOut/checkimage/#{URI.encode_uri_component(params[:asset_name].to_s)}",
           request_options: request_options
         )
         begin
@@ -411,7 +411,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PATCH",
-          path: "MoneyOut/status/#{params[:trans_id]}/#{params[:check_payment_status]}",
+          path: "MoneyOut/status/#{URI.encode_uri_component(params[:trans_id].to_s)}/#{URI.encode_uri_component(params[:check_payment_status].to_s)}",
           request_options: request_options
         )
         begin

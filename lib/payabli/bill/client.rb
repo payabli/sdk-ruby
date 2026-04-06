@@ -34,7 +34,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Bill/single/#{params[:entry]}",
+          path: "Bill/single/#{URI.encode_uri_component(params[:entry].to_s)}",
           headers: headers,
           body: Payabli::Bill::Types::BillOutData.new(body_params).to_h,
           request_options: request_options
@@ -77,7 +77,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Bill/attachedFileFromBill/#{params[:id_bill]}/#{params[:filename]}",
+          path: "Bill/attachedFileFromBill/#{URI.encode_uri_component(params[:id_bill].to_s)}/#{URI.encode_uri_component(params[:filename].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -112,7 +112,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Bill/#{params[:id_bill]}",
+          path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
           request_options: request_options
         )
         begin
@@ -146,7 +146,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Bill/#{params[:id_bill]}",
+          path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
           body: Payabli::Bill::Types::BillOutData.new(params).to_h,
           request_options: request_options
         )
@@ -188,7 +188,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Bill/attachedFileFromBill/#{params[:id_bill]}/#{params[:filename]}",
+          path: "Bill/attachedFileFromBill/#{URI.encode_uri_component(params[:id_bill].to_s)}/#{URI.encode_uri_component(params[:filename].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -223,7 +223,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Bill/#{params[:id_bill]}",
+          path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
           request_options: request_options
         )
         begin
@@ -272,7 +272,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/bills/#{params[:entry]}",
+          path: "Query/bills/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -322,7 +322,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/bills/org/#{params[:org_id]}",
+          path: "Query/bills/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -357,7 +357,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Bill/approval/#{params[:id_bill]}",
+          path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}",
           body: params,
           request_options: request_options
         )
@@ -405,7 +405,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Bill/approval/#{params[:id_bill]}",
+          path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}",
           headers: headers,
           query: query_params,
           body: body_params,
@@ -449,7 +449,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Bill/approval/#{params[:id_bill]}/#{params[:approved]}",
+          path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}/#{URI.encode_uri_component(params[:approved].to_s)}",
           query: query_params,
           request_options: request_options
         )

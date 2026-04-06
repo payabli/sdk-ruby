@@ -88,7 +88,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/capture/#{params[:trans_id]}/#{params[:amount]}",
+          path: "MoneyIn/capture/#{URI.encode_uri_component(params[:trans_id].to_s)}/#{URI.encode_uri_component(params[:amount].to_s)}",
           request_options: request_options
         )
         begin
@@ -133,7 +133,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "MoneyIn/capture/#{params[:trans_id]}",
+          path: "MoneyIn/capture/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           body: Payabli::MoneyIn::Types::CaptureRequest.new(params).to_h,
           request_options: request_options
         )
@@ -222,7 +222,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/details/#{params[:trans_id]}",
+          path: "MoneyIn/details/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -317,7 +317,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/reverse/#{params[:trans_id]}/#{params[:amount]}",
+          path: "MoneyIn/reverse/#{URI.encode_uri_component(params[:trans_id].to_s)}/#{URI.encode_uri_component(params[:amount].to_s)}",
           request_options: request_options
         )
         begin
@@ -358,7 +358,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/refund/#{params[:trans_id]}/#{params[:amount]}",
+          path: "MoneyIn/refund/#{URI.encode_uri_component(params[:trans_id].to_s)}/#{URI.encode_uri_component(params[:amount].to_s)}",
           request_options: request_options
         )
         begin
@@ -400,7 +400,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "MoneyIn/refund/#{params[:trans_id]}",
+          path: "MoneyIn/refund/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           headers: headers,
           body: body,
           request_options: request_options
@@ -437,7 +437,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/reverseCredit/#{params[:trans_id]}",
+          path: "MoneyIn/reverseCredit/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -477,7 +477,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/sendreceipt/#{params[:trans_id]}",
+          path: "MoneyIn/sendreceipt/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -561,7 +561,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "MoneyIn/void/#{params[:trans_id]}",
+          path: "MoneyIn/void/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -701,7 +701,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "v2/MoneyIn/capture/#{params[:trans_id]}",
+          path: "v2/MoneyIn/capture/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           body: Payabli::MoneyIn::Types::CaptureRequest.new(params).to_h,
           request_options: request_options
         )
@@ -741,7 +741,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "v2/MoneyIn/refund/#{params[:trans_id]}",
+          path: "v2/MoneyIn/refund/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -780,7 +780,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "v2/MoneyIn/refund/#{params[:trans_id]}/#{params[:amount]}",
+          path: "v2/MoneyIn/refund/#{URI.encode_uri_component(params[:trans_id].to_s)}/#{URI.encode_uri_component(params[:amount].to_s)}",
           request_options: request_options
         )
         begin
@@ -817,7 +817,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "v2/MoneyIn/void/#{params[:trans_id]}",
+          path: "v2/MoneyIn/void/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           request_options: request_options
         )
         begin

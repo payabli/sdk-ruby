@@ -42,7 +42,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "PaymentLink/#{params[:id_invoice]}",
+          path: "PaymentLink/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
           headers: headers,
           query: query_params,
           body: Payabli::PaymentLink::Types::PaymentPageRequestBody.new(body_params).to_h,
@@ -95,7 +95,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "PaymentLink/bill/#{params[:bill_id]}",
+          path: "PaymentLink/bill/#{URI.encode_uri_component(params[:bill_id].to_s)}",
           headers: headers,
           query: query_params,
           body: Payabli::PaymentLink::Types::PaymentPageRequestBodyOut.new(body_params).to_h,
@@ -132,7 +132,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "PaymentLink/#{params[:pay_link_id]}",
+          path: "PaymentLink/#{URI.encode_uri_component(params[:pay_link_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -166,7 +166,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "PaymentLink/load/#{params[:paylink_id]}",
+          path: "PaymentLink/load/#{URI.encode_uri_component(params[:paylink_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -200,7 +200,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "PaymentLink/push/#{params[:pay_link_id]}",
+          path: "PaymentLink/push/#{URI.encode_uri_component(params[:pay_link_id].to_s)}",
           body: Payabli::Types::PushPayLinkRequest.new(params).to_h,
           request_options: request_options
         )
@@ -241,7 +241,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "PaymentLink/refresh/#{params[:pay_link_id]}",
+          path: "PaymentLink/refresh/#{URI.encode_uri_component(params[:pay_link_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -284,7 +284,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "PaymentLink/send/#{params[:pay_link_id]}",
+          path: "PaymentLink/send/#{URI.encode_uri_component(params[:pay_link_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -323,7 +323,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "PaymentLink/update/#{params[:pay_link_id]}",
+          path: "PaymentLink/update/#{URI.encode_uri_component(params[:pay_link_id].to_s)}",
           body: body,
           request_options: request_options
         )
@@ -374,7 +374,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "PaymentLink/bill/lotNumber/#{params[:lot_number]}",
+          path: "PaymentLink/bill/lotNumber/#{URI.encode_uri_component(params[:lot_number].to_s)}",
           query: query_params,
           body: Payabli::PaymentLink::Types::PaymentPageRequestBodyOut.new(body_params).to_h,
           request_options: request_options
@@ -412,7 +412,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PATCH",
-          path: "PaymentLink/out/#{params[:paylink_id]}",
+          path: "PaymentLink/out/#{URI.encode_uri_component(params[:paylink_id].to_s)}",
           body: Payabli::PaymentLink::Types::PatchOutPaymentLinkRequest.new(params).to_h,
           request_options: request_options
         )
@@ -448,7 +448,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PATCH",
-          path: "PaymentLink/updateOut/#{params[:paylink_id]}",
+          path: "PaymentLink/updateOut/#{URI.encode_uri_component(params[:paylink_id].to_s)}",
           body: Payabli::PaymentLink::Types::PaymentPageRequestBodyOut.new(params).to_h,
           request_options: request_options
         )

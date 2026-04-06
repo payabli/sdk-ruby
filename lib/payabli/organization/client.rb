@@ -70,7 +70,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Organization/#{params[:org_id]}",
+          path: "Organization/#{URI.encode_uri_component(params[:org_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -108,7 +108,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Organization/#{params[:org_id]}",
+          path: "Organization/#{URI.encode_uri_component(params[:org_id].to_s)}",
           body: body,
           request_options: request_options
         )
@@ -143,7 +143,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Organization/basic/#{params[:entry]}",
+          path: "Organization/basic/#{URI.encode_uri_component(params[:entry].to_s)}",
           request_options: request_options
         )
         begin
@@ -177,7 +177,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Organization/basicById/#{params[:org_id]}",
+          path: "Organization/basicById/#{URI.encode_uri_component(params[:org_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -211,7 +211,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Organization/read/#{params[:org_id]}",
+          path: "Organization/read/#{URI.encode_uri_component(params[:org_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -245,7 +245,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Organization/settings/#{params[:org_id]}",
+          path: "Organization/settings/#{URI.encode_uri_component(params[:org_id].to_s)}",
           request_options: request_options
         )
         begin

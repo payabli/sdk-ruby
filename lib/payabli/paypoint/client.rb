@@ -27,7 +27,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Paypoint/basic/#{params[:entry]}",
+          path: "Paypoint/basic/#{URI.encode_uri_component(params[:entry].to_s)}",
           request_options: request_options
         )
         begin
@@ -61,7 +61,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Paypoint/basicById/#{params[:id_paypoint]}",
+          path: "Paypoint/basicById/#{URI.encode_uri_component(params[:id_paypoint].to_s)}",
           request_options: request_options
         )
         begin
@@ -101,7 +101,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Paypoint/#{params[:entry]}",
+          path: "Paypoint/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -137,7 +137,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Paypoint/#{params[:entry]}/#{params[:subdomain]}",
+          path: "Paypoint/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:subdomain].to_s)}",
           request_options: request_options
         )
         begin
@@ -172,7 +172,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Paypoint/#{params[:entry]}/#{params[:subdomain]}",
+          path: "Paypoint/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:subdomain].to_s)}",
           request_options: request_options
         )
         begin
@@ -206,7 +206,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Paypoint/logo/#{params[:entry]}",
+          path: "Paypoint/logo/#{URI.encode_uri_component(params[:entry].to_s)}",
           body: Payabli::Types::FileContent.new(params).to_h,
           request_options: request_options
         )
@@ -241,7 +241,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Paypoint/settings/#{params[:entry]}",
+          path: "Paypoint/settings/#{URI.encode_uri_component(params[:entry].to_s)}",
           request_options: request_options
         )
         begin

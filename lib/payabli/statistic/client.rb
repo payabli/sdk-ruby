@@ -41,7 +41,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Statistic/basic/#{params[:mode]}/#{params[:freq]}/#{params[:level]}/#{params[:entry_id]}",
+          path: "Statistic/basic/#{URI.encode_uri_component(params[:mode].to_s)}/#{URI.encode_uri_component(params[:freq].to_s)}/#{URI.encode_uri_component(params[:level].to_s)}/#{URI.encode_uri_component(params[:entry_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -82,7 +82,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Statistic/customerbasic/#{params[:mode]}/#{params[:freq]}/#{params[:customer_id]}",
+          path: "Statistic/customerbasic/#{URI.encode_uri_component(params[:mode].to_s)}/#{URI.encode_uri_component(params[:freq].to_s)}/#{URI.encode_uri_component(params[:customer_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -123,7 +123,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Statistic/subscriptions/#{params[:interval]}/#{params[:level]}/#{params[:entry_id]}",
+          path: "Statistic/subscriptions/#{URI.encode_uri_component(params[:interval].to_s)}/#{URI.encode_uri_component(params[:level].to_s)}/#{URI.encode_uri_component(params[:entry_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -164,7 +164,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Statistic/vendorbasic/#{params[:mode]}/#{params[:freq]}/#{params[:id_vendor]}",
+          path: "Statistic/vendorbasic/#{URI.encode_uri_component(params[:mode].to_s)}/#{URI.encode_uri_component(params[:freq].to_s)}/#{URI.encode_uri_component(params[:id_vendor].to_s)}",
           query: query_params,
           request_options: request_options
         )

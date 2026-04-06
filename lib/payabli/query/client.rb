@@ -43,7 +43,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/batchDetails/#{params[:entry]}",
+          path: "Query/batchDetails/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -94,7 +94,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/batchDetails/org/#{params[:org_id]}",
+          path: "Query/batchDetails/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -144,7 +144,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/batches/#{params[:entry]}",
+          path: "Query/batches/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -194,7 +194,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/batches/org/#{params[:org_id]}",
+          path: "Query/batches/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -244,7 +244,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/batchesOut/#{params[:entry]}",
+          path: "Query/batchesOut/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -294,7 +294,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/batchesOut/org/#{params[:org_id]}",
+          path: "Query/batchesOut/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -344,7 +344,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/chargebacks/#{params[:entry]}",
+          path: "Query/chargebacks/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -394,7 +394,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/chargebacks/org/#{params[:org_id]}",
+          path: "Query/chargebacks/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -444,7 +444,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/customers/#{params[:entry]}",
+          path: "Query/customers/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -494,7 +494,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/customers/org/#{params[:org_id]}",
+          path: "Query/customers/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -542,7 +542,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/notificationReports/#{params[:entry]}",
+          path: "Query/notificationReports/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -589,7 +589,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/notificationReports/org/#{params[:org_id]}",
+          path: "Query/notificationReports/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -636,7 +636,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/notifications/#{params[:entry]}",
+          path: "Query/notifications/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -683,7 +683,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/notifications/org/#{params[:org_id]}",
+          path: "Query/notifications/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -734,7 +734,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/organizations/#{params[:org_id]}",
+          path: "Query/organizations/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -784,7 +784,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/payouts/#{params[:entry]}",
+          path: "Query/payouts/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -834,7 +834,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/payouts/org/#{params[:org_id]}",
+          path: "Query/payouts/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -884,7 +884,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/paypoints/#{params[:org_id]}",
+          path: "Query/paypoints/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -934,7 +934,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/settlements/#{params[:entry]}",
+          path: "Query/settlements/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -984,7 +984,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/settlements/org/#{params[:org_id]}",
+          path: "Query/settlements/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1034,7 +1034,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/subscriptions/#{params[:entry]}",
+          path: "Query/subscriptions/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1084,7 +1084,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/subscriptions/org/#{params[:org_id]}",
+          path: "Query/subscriptions/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1102,15 +1102,116 @@ module Payabli
         end
       end
 
+      # Returns a list of payout subscriptions for a single paypoint. Use filters to limit results. Include the
+      # `exportFormat` query parameter to return the results as a file instead of a JSON response. See [Manage payout
+      # subscriptions](/guides/pay-out-developer-payout-subscriptions-manage) for more information.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Payabli::Types::Entry] :entry
+      # @option params [Payabli::Types::ExportFormat, nil] :export_format
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :sort_by
+      #
+      # @return [Payabli::PayoutSubscription::Types::QueryPayoutSubscriptionResponse]
+      def list_payout_subscriptions(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
+        query_params = {}
+        query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "GET",
+          path: "Query/payoutsubscriptions/#{URI.encode_uri_component(params[:entry].to_s)}",
+          query: query_params,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::PayoutSubscription::Types::QueryPayoutSubscriptionResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Returns a list of payout subscriptions for a single org. Use filters to limit results. Include the
+      # `exportFormat` query parameter to return the results as a file instead of a JSON response. See [Manage payout
+      # subscriptions](/guides/pay-out-developer-payout-subscriptions-manage) for more information.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :org_id
+      # @option params [Payabli::Types::ExportFormat, nil] :export_format
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :sort_by
+      #
+      # @return [Payabli::PayoutSubscription::Types::QueryPayoutSubscriptionResponse]
+      def list_payout_subscriptions_org(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
+        query_params = {}
+        query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "GET",
+          path: "Query/payoutsubscriptions/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          query: query_params,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::PayoutSubscription::Types::QueryPayoutSubscriptionResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
       # Retrieve a list of transactions for a paypoint. Use filters to limit results. Include the `exportFormat` query
       # parameter to return the results as a file instead of a JSON response.
       # By default, this endpoint returns only transactions from the last 60 days. To query transactions outside of this
       # period, include `transactionDate` filters.
       # For example, this request parameters filter for transactions between April 01, 2024 and April 09, 2024.
-      # ``` curl --request GET \
-      # --url
+      # ``` curl -X GET
       # https://sandbox.payabli.com/api/Query/transactions/org/1?limitRecord=20&fromRecord=0&transactionDate(ge)=2024-04-01T00:00:00&transactionDate(le)=2024-04-09T23:59:59\
-      #   --header 'requestToken: <api-key>'
+      #   -H 'requestToken: <API TOKEN>'
       #
       #   ```
       #
@@ -1143,7 +1244,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/transactions/#{params[:entry]}",
+          path: "Query/transactions/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1173,10 +1274,9 @@ module Payabli
       # For example, this request parameters filter for transactions between April 01, 2024 and April 09, 2024.
       #
       # ```
-      # curl --request GET \
-      # --url
-      # https://sandbox.payabli.com/api/Query/transactions/org/1?limitRecord=20&fromRecord=0&transactionDate(ge)=2024-04-01T00:00:00&transactionDate(le)=2024-04-09T23:59:59\
-      #   --header 'requestToken: <api-key>'
+      # curl -X GET
+      # "https://sandbox.payabli.com/api/Query/transactions/org/1?limitRecord=20&fromRecord=0&transactionDate(ge)=2024-04-01T00:00:00&transactionDate(le)=2024-04-09T23:59:59"\
+      #   -H 'requestToken: <API TOKEN>'
       #
       #   ```
       #
@@ -1209,7 +1309,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/transactions/org/#{params[:org_id]}",
+          path: "Query/transactions/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1260,7 +1360,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/transferDetails/#{params[:entry]}/#{params[:transfer_id]}",
+          path: "Query/transferDetails/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:transfer_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1310,7 +1410,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/transfers/#{params[:entry]}",
+          path: "Query/transfers/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1360,7 +1460,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/transfers/org/#{params[:org_id]}",
+          path: "Query/transfers/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1407,7 +1507,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/transfersOut/org/#{params[:org_id]}",
+          path: "Query/transfersOut/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1454,7 +1554,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/transfersOut/#{params[:entry]}",
+          path: "Query/transfersOut/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1502,7 +1602,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/transferDetailsOut/#{params[:entry]}/#{params[:transfer_id]}",
+          path: "Query/transferDetailsOut/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:transfer_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1549,7 +1649,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/users/org/#{params[:org_id]}",
+          path: "Query/users/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1596,7 +1696,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/users/point/#{params[:entry]}",
+          path: "Query/users/point/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1646,7 +1746,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/vendors/#{params[:entry]}",
+          path: "Query/vendors/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1696,7 +1796,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/vendors/org/#{params[:org_id]}",
+          path: "Query/vendors/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1746,7 +1846,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/vcards/#{params[:entry]}",
+          path: "Query/vcards/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -1796,7 +1896,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Query/vcards/org/#{params[:org_id]}",
+          path: "Query/vcards/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
           query: query_params,
           request_options: request_options
         )

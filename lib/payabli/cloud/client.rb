@@ -36,7 +36,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Cloud/register/#{params[:entry]}",
+          path: "Cloud/register/#{URI.encode_uri_component(params[:entry].to_s)}",
           headers: headers,
           body: body,
           request_options: request_options
@@ -73,7 +73,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Cloud/history/#{params[:entry]}/#{params[:device_id]}",
+          path: "Cloud/history/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:device_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -113,7 +113,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Cloud/list/#{params[:entry]}",
+          path: "Cloud/list/#{URI.encode_uri_component(params[:entry].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -149,7 +149,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Cloud/register/#{params[:entry]}/#{params[:device_id]}",
+          path: "Cloud/register/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:device_id].to_s)}",
           request_options: request_options
         )
         begin

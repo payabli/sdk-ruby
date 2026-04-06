@@ -132,7 +132,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "User/auth/#{params[:provider]}",
+          path: "User/auth/#{URI.encode_uri_component(params[:provider].to_s)}",
           body: body,
           request_options: request_options
         )
@@ -201,7 +201,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "User/#{params[:user_id]}",
+          path: "User/#{URI.encode_uri_component(params[:user_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -235,7 +235,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "User/mfa/#{params[:user_id]}",
+          path: "User/mfa/#{URI.encode_uri_component(params[:user_id].to_s)}",
           body: Payabli::Types::MfaData.new(params).to_h,
           request_options: request_options
         )
@@ -270,7 +270,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "User/#{params[:user_id]}",
+          path: "User/#{URI.encode_uri_component(params[:user_id].to_s)}",
           body: Payabli::Types::UserData.new(params).to_h,
           request_options: request_options
         )
@@ -313,7 +313,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "User/#{params[:user_id]}",
+          path: "User/#{URI.encode_uri_component(params[:user_id].to_s)}",
           query: query_params,
           request_options: request_options
         )
@@ -383,7 +383,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "User/resendmfa/#{params[:usrname]}/#{params[:entry]}/#{params[:entry_type]}",
+          path: "User/resendmfa/#{URI.encode_uri_component(params[:usrname].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:entry_type].to_s)}",
           request_options: request_options
         )
         begin

@@ -44,7 +44,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Customer/single/#{params[:entry]}",
+          path: "Customer/single/#{URI.encode_uri_component(params[:entry].to_s)}",
           headers: headers,
           query: query_params,
           body: Payabli::Types::CustomerData.new(body_params).to_h,
@@ -81,7 +81,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
-          path: "Customer/#{params[:customer_id]}",
+          path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -115,7 +115,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Customer/#{params[:customer_id]}",
+          path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -150,7 +150,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "Customer/link/#{params[:customer_id]}/#{params[:trans_id]}",
+          path: "Customer/link/#{URI.encode_uri_component(params[:customer_id].to_s)}/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -184,7 +184,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Customer/#{params[:customer_id]}/consent",
+          path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}/consent",
           request_options: request_options
         )
         begin
@@ -218,7 +218,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Customer/#{params[:customer_id]}",
+          path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
           body: Payabli::Types::CustomerData.new(params).to_h,
           request_options: request_options
         )

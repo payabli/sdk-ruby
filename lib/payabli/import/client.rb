@@ -32,7 +32,7 @@ module Payabli
         request = Payabli::Internal::Multipart::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Import/billsForm/#{params[:entry]}",
+          path: "Import/billsForm/#{URI.encode_uri_component(params[:entry].to_s)}",
           body: body,
           request_options: request_options
         )
@@ -73,7 +73,7 @@ module Payabli
         request = Payabli::Internal::Multipart::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Import/customersForm/#{params[:entry]}",
+          path: "Import/customersForm/#{URI.encode_uri_component(params[:entry].to_s)}",
           body: body,
           request_options: request_options
         )
@@ -113,7 +113,7 @@ module Payabli
         request = Payabli::Internal::Multipart::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "Import/vendorsForm/#{params[:entry]}",
+          path: "Import/vendorsForm/#{URI.encode_uri_component(params[:entry].to_s)}",
           body: body,
           request_options: request_options
         )

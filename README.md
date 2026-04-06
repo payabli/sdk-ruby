@@ -8,6 +8,7 @@ The Payabli Ruby library provides convenient access to the Payabli APIs from Rub
 
 - [Documentation](#documentation)
 - [Reference](#reference)
+- [Changelog](#changelog)
 - [Passing Query Parameters](#passing-query-parameters)
 - [Usage](#usage)
 - [Environments](#environments)
@@ -26,6 +27,11 @@ API reference documentation is available [here](https://docs.payabli.com).
 ## Reference
 
 A full reference for this library is available [here](https://github.com/payabli/sdk-ruby/blob/HEAD/./reference.md).
+
+## Changelog
+
+The changelog for the official Payabli Ruby SDK is available on the Payabli Docs site. See [Ruby SDK Changelog](https://docs.payabli.com/changelog/ruby-sdk) for more information.
+
 
 ## Passing Query Parameters
 

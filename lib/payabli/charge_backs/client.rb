@@ -35,7 +35,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "ChargeBacks/response/#{params[:id]}",
+          path: "ChargeBacks/response/#{URI.encode_uri_component(params[:id].to_s)}",
           headers: headers,
           body: body,
           request_options: request_options
@@ -71,7 +71,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "ChargeBacks/read/#{params[:id]}",
+          path: "ChargeBacks/read/#{URI.encode_uri_component(params[:id].to_s)}",
           request_options: request_options
         )
         begin
@@ -106,7 +106,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
-          path: "ChargeBacks/getChargebackAttachments/#{params[:id]}/#{params[:file_name]}",
+          path: "ChargeBacks/getChargebackAttachments/#{URI.encode_uri_component(params[:id].to_s)}/#{URI.encode_uri_component(params[:file_name].to_s)}",
           request_options: request_options
         )
         begin
