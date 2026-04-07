@@ -2,3 +2,4 @@
 test/unit/custom_test.rb
 .github/workflows/ci.yml
 LICENSE.md
+CONTRIBUTING.md
