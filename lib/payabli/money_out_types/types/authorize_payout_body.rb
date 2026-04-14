@@ -15,6 +15,7 @@ module Payabli
         field :account_id, -> { String }, optional: true, nullable: false, api_name: "accountId"
         field :subdomain, -> { String }, optional: true, nullable: false
         field :subscription_id, -> { Integer }, optional: true, nullable: false, api_name: "subscriptionId"
+        field :auto_capture, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "autoCapture"
       end
     end
   end

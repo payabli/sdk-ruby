@@ -47,6 +47,13 @@ module Payabli
       field :vendor_number, -> { String }, optional: true, nullable: false, api_name: "VendorNumber"
       field :vendor_status, -> { Integer }, optional: true, nullable: false, api_name: "VendorStatus"
       field :zip, -> { String }, optional: true, nullable: false, api_name: "Zip"
+      field :payment_portal_url, -> { String }, optional: true, nullable: false, api_name: "PaymentPortalUrl"
+      field :card_accepted, -> { String }, optional: true, nullable: false, api_name: "CardAccepted"
+      field :ach_accepted, -> { String }, optional: true, nullable: false, api_name: "AchAccepted"
+      field :enrichment_status, -> { String }, optional: true, nullable: false, api_name: "EnrichmentStatus"
+      field :enriched_by, -> { String }, optional: true, nullable: false, api_name: "EnrichedBy"
+      field :enriched_at, -> { String }, optional: true, nullable: false, api_name: "EnrichedAt"
+      field :enrichment_id, -> { String }, optional: true, nullable: false, api_name: "EnrichmentId"
     end
   end
 end

@@ -31,6 +31,7 @@ class MoneyOutWireTest < WireMockTestCase
       invoice_data: [{
         bill_id: 54_323
       }],
+      auto_capture: true,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "money_out.authorize_out.0"

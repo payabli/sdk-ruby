@@ -35,6 +35,8 @@ module Payabli
       field :state, -> { String }, optional: true, nullable: false
       field :vendor_status, -> { Integer }, optional: true, nullable: false, api_name: "vendorStatus"
       field :zip, -> { String }, optional: true, nullable: false
+      field :default_method_id, -> { String }, optional: true, nullable: false, api_name: "defaultMethodId"
+      field :attachment, -> { Payabli::Types::FileContent }, optional: true, nullable: false
     end
   end
 end

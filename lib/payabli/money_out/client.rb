@@ -10,8 +10,9 @@ module Payabli
         @client = client
       end
 
-      # Authorizes transaction for payout. Authorized transactions aren't flagged for settlement until captured. Use
-      # `referenceId` returned in the response to capture the transaction.
+      # Authorizes transaction for payout.  If you don't pass the `autoCapture` field with a value of `true`, authorized
+      # transactions aren't flagged for settlement until captured.  Use `referenceId` returned in the response to
+      # capture the transaction.
       #
       # @param request_options [Hash]
       # @param params [Payabli::MoneyOutTypes::Types::AuthorizePayoutBody]
@@ -203,7 +204,8 @@ module Payabli
         end
       end
 
-      # Captures a single authorized payout transaction by ID.
+      # Captures a single authorized payout transaction by ID. If the transaction was authorized with `autoCapture` set
+      # to `true`,  you don't need to call this endpoint to capture the transaction for processing.
       #
       # @param request_options [Hash]
       # @param params [Hash]

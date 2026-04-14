@@ -138,4 +138,34 @@ class VendorWireTest < WireMockTestCase
       expected: 1
     )
   end
+
+  def test_vendor_enrich_vendor_with_wiremock
+    test_id = "vendor.enrich_vendor.0"
+
+    @client.vendor.enrich_vendor(
+      entry: "8cfec329267",
+      vendor_id: 3890,
+      scope: ["invoice_scan"],
+      apply_enrichment_data: false,
+      invoice_file: {
+        ftype: "pdf",
+        filename: "invoice-2026-001.pdf",
+        f_content: "<base64-encoded-pdf>"
+      },
+      fallback_method: "check",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "vendor.enrich_vendor.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Vendor/enrich/8cfec329267",
+      query_params: nil,
+      expected: 1
+    )
+  end
 end

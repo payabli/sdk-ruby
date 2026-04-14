@@ -114,7 +114,7 @@ module Payabli
         end
       end
 
-      # Retrieves a vendor's details.
+      # Retrieves a vendor's details, including enrichment status and payment acceptance info when available.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -142,6 +142,44 @@ module Payabli
         code = response.code.to_i
         if code.between?(200, 299)
           Payabli::Types::VendorQueryRecord.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Triggers AI-powered vendor enrichment for an existing vendor. Runs one or more enrichment stages (invoice scan,
+      # web search) based on the `scope` parameter. Can automatically apply extracted payment acceptance info and vendor
+      # contact information to the vendor record, or return raw results for manual review. Contact Payabli to enable
+      # this feature.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Vendor::Types::VendorEnrichRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      #
+      # @return [Payabli::Vendor::Types::VendorEnrichResponse]
+      def enrich_vendor(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "POST",
+          path: "Vendor/enrich/#{URI.encode_uri_component(params[:entry].to_s)}",
+          body: Payabli::Vendor::Types::VendorEnrichRequest.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Vendor::Types::VendorEnrichResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
