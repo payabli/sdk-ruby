@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    payabli (2.2.23)
+    payabli (2.2.24)
 
 GEM
   remote: https://rubygems.org/
