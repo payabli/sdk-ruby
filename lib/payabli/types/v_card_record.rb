@@ -4,6 +4,7 @@ module Payabli
   module Types
     class VCardRecord < Internal::Types::Model
       field :vcard_sent, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "vcardSent"
+      field :card_type, -> { Integer }, optional: true, nullable: false, api_name: "cardType"
       field :card_token, -> { String }, optional: true, nullable: false, api_name: "cardToken"
       field :card_number, -> { String }, optional: true, nullable: false, api_name: "cardNumber"
       field :cvc, -> { String }, optional: true, nullable: false

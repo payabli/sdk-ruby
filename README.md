@@ -73,7 +73,7 @@ require "payabli"
 
 client = Payabli::Client.new(api_key: "<value>")
 
-client.money_in.getpaid(
+client.money_in.getpaidv_2(
   customer_data: {
     customer_id: 4440
   },
@@ -128,7 +128,7 @@ client = Payabli::Client.new(
 )
 
 begin
-    result = client.money_in.getpaid
+    result = client.money_in.getpaidv_2
 rescue Payabli::Errors::TimeoutError
     puts "API didn't respond before our timeout elapsed"
 rescue Payabli::Errors::ServiceUnavailableError
@@ -173,7 +173,7 @@ The SDK defaults to a 60 second timeout. Use the `timeout` option to configure t
 ```ruby
 require "payabli"
 
-response = client.money_in.getpaid(
+response = client.money_in.getpaidv_2(
     ...,
     timeout: 30  # 30 second timeout
 )
@@ -186,7 +186,7 @@ If you would like to send additional headers as part of the request, use the `ad
 ```ruby
 require "payabli"
 
-response = client.money_in.getpaid(
+response = client.money_in.getpaidv_2(
     ...,
     request_options: {
         additional_headers: {
@@ -203,7 +203,7 @@ If you would like to send additional query parameters as part of the request, us
 ```ruby
 require "payabli"
 
-response = client.money_in.getpaid(
+response = client.money_in.getpaidv_2(
     ...,
     request_options: {
         additional_query_parameters: {

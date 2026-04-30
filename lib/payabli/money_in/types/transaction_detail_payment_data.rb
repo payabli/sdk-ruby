@@ -13,7 +13,7 @@ module Payabli
         field :initiator, -> { String }, optional: false, nullable: true
         field :stored_method_usage_type, -> { String }, optional: false, nullable: true, api_name: "storedMethodUsageType"
         field :sequence, -> { String }, optional: false, nullable: true
-        field :order_description, -> { String }, optional: false, nullable: false, api_name: "orderDescription"
+        field :order_description, -> { String }, optional: false, nullable: true, api_name: "orderDescription"
         field :account_id, -> { String }, optional: false, nullable: true, api_name: "accountId"
         field :signature_data, -> { String }, optional: false, nullable: true, api_name: "signatureData"
         field :bin_data, -> { Payabli::Types::BinData }, optional: false, nullable: true, api_name: "binData"

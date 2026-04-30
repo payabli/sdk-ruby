@@ -10,7 +10,7 @@ module Payabli
       @raw_client = Payabli::Internal::Http::RawClient.new(
         base_url: base_url || Payabli::Environment::SANDBOX,
         headers: {
-          "User-Agent" => "payabli/2.2.24",
+          "User-Agent" => "payabli/2.2.25",
           "X-Fern-Language" => "Ruby",
           requestToken: api_key.to_s
         }
@@ -75,6 +75,11 @@ module Payabli
     # @return [Payabli::LineItem::Client]
     def line_item
       @line_item ||= Payabli::LineItem::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::Management::Client]
+    def management
+      @management ||= Payabli::Management::Client.new(client: @raw_client)
     end
 
     # @return [Payabli::MoneyIn::Client]

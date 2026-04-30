@@ -252,6 +252,54 @@ class QueryWireTest < WireMockTestCase
     )
   end
 
+  def test_query_list_devices_with_wiremock
+    test_id = "query.list_devices.0"
+
+    @client.query.list_devices(
+      entry: "8cfec329267",
+      from_record: 0,
+      limit_record: 20,
+      sort_by: "desc(createdAt)",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_devices.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/devices/8cfec329267",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_query_list_devices_org_with_wiremock
+    test_id = "query.list_devices_org.0"
+
+    @client.query.list_devices_org(
+      org_id: 100,
+      from_record: 0,
+      limit_record: 20,
+      sort_by: "desc(createdAt)",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_devices_org.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/devices/org/100",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
   def test_query_list_notification_reports_with_wiremock
     test_id = "query.list_notification_reports.0"
 

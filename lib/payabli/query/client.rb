@@ -512,6 +512,106 @@ module Payabli
         end
       end
 
+      # Returns a list of cloud devices for a single paypoint. Use filters to limit results. Include the `exportFormat`
+      # query parameter to return the results as a file instead of a JSON response.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Payabli::Types::Entry] :entry
+      # @option params [Payabli::Types::ExportFormat, nil] :export_format
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :sort_by
+      #
+      # @return [Payabli::QueryTypes::Types::QueryDeviceResponse]
+      def list_devices(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
+        query_params = {}
+        query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "GET",
+          path: "Query/devices/#{URI.encode_uri_component(params[:entry].to_s)}",
+          query: query_params,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::QueryTypes::Types::QueryDeviceResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Returns a list of cloud devices for a single organization. Use filters to limit results. Include the
+      # `exportFormat` query parameter to return the results as a file instead of a JSON response.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :org_id
+      # @option params [Payabli::Types::ExportFormat, nil] :export_format
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      # @option params [Hash[String, String, nil], nil] :parameters
+      # @option params [String, nil] :sort_by
+      #
+      # @return [Payabli::QueryTypes::Types::QueryDeviceResponse]
+      def list_devices_org(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
+        query_params = {}
+        query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
+        query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "GET",
+          path: "Query/devices/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          query: query_params,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::QueryTypes::Types::QueryDeviceResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
       # Returns a list of all reports generated in the last 60 days for a single entrypoint. Use filters to limit
       # results.
       #

@@ -18,6 +18,11 @@ module Payabli
       field :when_delivered, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "whenDelivered"
       field :when_provided, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "whenProvided"
       field :when_refunded, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "whenRefunded"
+      field :combined_batches, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "CombinedBatches"
+      field :payout_average_monthly_volume, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "payoutAverageMonthlyVolume"
+      field :payout_high_ticket_amount, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "payoutHighTicketAmount"
+      field :payout_average_ticket_amount, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "payoutAverageTicketAmount"
+      field :payout_credit_limit, -> { Payabli::Types::TemplateElement }, optional: true, nullable: false, api_name: "payoutCreditLimit"
     end
   end
 end

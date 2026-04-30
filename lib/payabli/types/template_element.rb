@@ -8,6 +8,7 @@ module Payabli
       field :read_only, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "readOnly"
       field :value, -> { String }, optional: true, nullable: false
       field :visible, -> { Internal::Types::Boolean }, optional: true, nullable: false
+      field :required, -> { Internal::Types::Boolean }, optional: true, nullable: false
     end
   end
 end
