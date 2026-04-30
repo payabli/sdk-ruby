@@ -38,7 +38,7 @@ module Payabli
         field :trans_additional_data, -> { Object }, optional: false, nullable: true, api_name: "transAdditionalData"
         field :invoice_data, -> { Payabli::MoneyIn::Types::TransactionDetailInvoiceData }, optional: false, nullable: false, api_name: "invoiceData"
         field :entrypage_id, -> { Integer }, optional: false, nullable: false, api_name: "entrypageId"
-        field :external_paypoint_id, -> { String }, optional: false, nullable: false, api_name: "externalPaypointID"
+        field :external_paypoint_id, -> { String }, optional: false, nullable: true, api_name: "externalPaypointID"
         field :is_validated_ach, -> { Internal::Types::Boolean }, optional: false, nullable: false, api_name: "isValidatedACH"
         field :transaction_time, -> { String }, optional: false, nullable: false, api_name: "transactionTime"
         field :customer, -> { Payabli::MoneyIn::Types::TransactionDetailCustomer }, optional: false, nullable: false
