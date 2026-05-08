@@ -370,4 +370,50 @@ class BoardingWireTest < WireMockTestCase
       expected: 1
     )
   end
+
+  def test_boarding_add_service_to_paypoint_from_app_with_wiremock
+    test_id = "boarding.add_service_to_paypoint_from_app.0"
+
+    @client.boarding.add_service_to_paypoint_from_app(
+      paypoint_id: 123,
+      template_id: 456,
+      recipient_email: "merchant@example.com",
+      return_boarding_access_info_in_line: true,
+      on_create: ["submitApplication"],
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "boarding.add_service_to_paypoint_from_app.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Boarding/applications",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_boarding_get_applications_by_paypoint_id_with_wiremock
+    test_id = "boarding.get_applications_by_paypoint_id.0"
+
+    @client.boarding.get_applications_by_paypoint_id(
+      paypoint_id: 12_345,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "boarding.get_applications_by_paypoint_id.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Boarding/applications/12345",
+      query_params: nil,
+      expected: 1
+    )
+  end
 end

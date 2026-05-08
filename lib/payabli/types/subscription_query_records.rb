@@ -11,7 +11,7 @@ module Payabli
       field :fee_amount, -> { Integer }, optional: true, nullable: false, api_name: "FeeAmount"
       field :frequency, -> { String }, optional: true, nullable: false, api_name: "Frequency"
       field :id_sub, -> { Integer }, optional: true, nullable: false, api_name: "IdSub"
-      field :invoice_data, -> { Payabli::Types::BillData }, optional: true, nullable: false, api_name: "InvoiceData"
+      field :invoice_data, -> { Payabli::Types::BillData }, optional: true, nullable: false, api_name: "invoiceData"
       field :last_run, -> { String }, optional: false, nullable: true, api_name: "LastRun"
       field :last_updated, -> { String }, optional: true, nullable: false, api_name: "LastUpdated"
       field :left_cycles, -> { Integer }, optional: true, nullable: false, api_name: "LeftCycles"

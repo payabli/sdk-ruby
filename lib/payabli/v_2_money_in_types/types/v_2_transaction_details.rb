@@ -54,7 +54,7 @@ module Payabli
         field :risk_action_code, -> { Integer }, optional: true, nullable: false, api_name: "riskActionCode"
         field :device_id, -> { String }, optional: false, nullable: false, api_name: "deviceId"
         field :ach_sec_code, -> { String }, optional: false, nullable: false, api_name: "achSecCode"
-        field :ach_holder_type, -> { Payabli::Types::AchHolderType }, optional: false, nullable: false, api_name: "achHolderType"
+        field :ach_holder_type, -> { Payabli::Types::AchHolderType }, optional: false, nullable: true, api_name: "achHolderType"
         field :ip_address, -> { String }, optional: false, nullable: false, api_name: "ipAddress"
         field :is_same_day_ach, -> { Internal::Types::Boolean }, optional: false, nullable: false, api_name: "isSameDayACH"
         field :wallet_type, -> { String }, optional: false, nullable: true, api_name: "walletType"

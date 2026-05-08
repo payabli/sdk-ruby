@@ -2050,6 +2050,136 @@ client.boarding.update_application(app_id: 352)
 </dl>
 </details>
 
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">add_service_to_paypoint_from_app</a>(request) -> Payabli::Boarding::Types::CreateApplicationFromPaypointResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new boarding application linked to an existing paypoint as part of the multi-product boarding flow. Use this endpoint to add new services to a paypoint without creating a duplicate record. The system copies eligible business, contact, banking, and address data from the paypoint to the new application based on 1:1 field matching. The merchant only needs to provide fields that are specific to the new service. See the [Multi-product boarding](/guides/pay-ops-developer-boarding-multi-product) guide for the full flow.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.boarding.add_service_to_paypoint_from_app(
+  paypoint_id: 123,
+  template_id: 456,
+  recipient_email: "merchant@example.com",
+  return_boarding_access_info_in_line: true,
+  on_create: ["submitApplication"]
+)
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Payabli::Boarding::Types::CreateApplicationFromPaypointRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payabli::Boarding::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_applications_by_paypoint_id</a>(paypoint_id) -> Payabli::Types::QueryBoardingAppsListResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns all boarding applications associated with a specific paypoint, including those created through the multi-product boarding flow. Use this endpoint to track underwriting progress across multiple service additions or to build reporting views. See the [Multi-product boarding](/guides/pay-ops-developer-boarding-multi-product) guide for the full flow.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.boarding.get_applications_by_paypoint_id(paypoint_id: 12345)
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**paypoint_id:** `Integer` — ID of the paypoint to retrieve applications for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payabli::Boarding::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## ChargeBacks
 <details><summary><code>client.charge_backs.<a href="/lib/payabli/charge_backs/client.rb">add_response</a>(id, request) -> Payabli::ChargeBacks::Types::AddResponseResponse</code></summary>
 <dl>
@@ -12123,7 +12253,11 @@ client.money_in.voidv_2(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
 <dl>
 <dd>
 
-Authorizes transaction for payout.  If you don't pass the `autoCapture` field with a value of `true`, authorized transactions aren't flagged for settlement until captured.  Use `referenceId` returned in the response to capture the transaction. 
+Authorizes a transaction for payout.
+
+If you don't pass `autoCapture` with a value of `true`, authorized transactions aren't flagged for settlement until captured. Use the `referenceId` returned in the response to capture the transaction.
+
+When `autoCapture` is `true`, Payabli captures the transaction asynchronously after authorization. The response confirms only that the transaction was authorized; it doesn't confirm that capture succeeded. To confirm capture, listen for the [`payout_transaction_approvedcaptured`](/developers/webhooks/payout-transaction-approved-captured) webhook event.
 </dd>
 </dl>
 </dd>

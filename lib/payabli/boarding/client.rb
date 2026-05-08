@@ -428,6 +428,81 @@ module Payabli
           raise error_class.new(response.body, code: code)
         end
       end
+
+      # Creates a new boarding application linked to an existing paypoint as part of the multi-product boarding flow.
+      # Use this endpoint to add new services to a paypoint without creating a duplicate record. The system copies
+      # eligible business, contact, banking, and address data from the paypoint to the new application based on 1:1
+      # field matching. The merchant only needs to provide fields that are specific to the new service. See the
+      # [Multi-product boarding](/guides/pay-ops-developer-boarding-multi-product) guide for the full flow.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Boarding::Types::CreateApplicationFromPaypointRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      #
+      # @return [Payabli::Boarding::Types::CreateApplicationFromPaypointResponse]
+      def add_service_to_paypoint_from_app(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "POST",
+          path: "Boarding/applications",
+          body: Payabli::Boarding::Types::CreateApplicationFromPaypointRequest.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Boarding::Types::CreateApplicationFromPaypointResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Returns all boarding applications associated with a specific paypoint, including those created through the
+      # multi-product boarding flow. Use this endpoint to track underwriting progress across multiple service additions
+      # or to build reporting views. See the [Multi-product boarding](/guides/pay-ops-developer-boarding-multi-product)
+      # guide for the full flow.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :paypoint_id
+      #
+      # @return [Payabli::Types::QueryBoardingAppsListResponse]
+      def get_applications_by_paypoint_id(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "GET",
+          path: "Boarding/applications/#{URI.encode_uri_component(params[:paypoint_id].to_s)}",
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::QueryBoardingAppsListResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
     end
   end
 end
