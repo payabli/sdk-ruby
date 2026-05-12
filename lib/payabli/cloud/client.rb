@@ -108,10 +108,8 @@ module Payabli
       # @return [Payabli::Types::CloudQueryApiResponse]
       def list_device(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[force_refresh]
         query_params = {}
         query_params["forceRefresh"] = params[:force_refresh] if params.key?(:force_refresh)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],

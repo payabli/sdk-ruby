@@ -233,10 +233,8 @@ module Payabli
       # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
       def refresh_pay_link_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[amount_fixed]
         query_params = {}
         query_params["amountFixed"] = params[:amount_fixed] if params.key?(:amount_fixed)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -275,11 +273,9 @@ module Payabli
       # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
       def send_pay_link_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[attachfile mail_2]
         query_params = {}
         query_params["attachfile"] = params[:attachfile] if params.key?(:attachfile)
         query_params["mail2"] = params[:mail_2] if params.key?(:mail_2)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -317,7 +313,7 @@ module Payabli
       def update_pay_link_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::PaymentLink::Types::PayLinkUpdateData.new(params).to_h
-        non_body_param_names = ["payLinkId"]
+        non_body_param_names = %w[payLinkId]
         body = request_data.except(*non_body_param_names)
 
         request = Payabli::Internal::JSON::Request.new(

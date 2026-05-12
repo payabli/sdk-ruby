@@ -8,10 +8,15 @@ module Payabli
       # starting with 'D'. The `data` field contains transaction details.
       class V2DeclinedTransactionResponseWrapper < Internal::Types::Model
         field :code, -> { String }, optional: false, nullable: false
+
         field :reason, -> { String }, optional: false, nullable: false
+
         field :explanation, -> { String }, optional: false, nullable: false
+
         field :action, -> { String }, optional: false, nullable: false
+
         field :data, -> { Payabli::V2MoneyInTypes::Types::V2TransactionDetails }, optional: false, nullable: false
+
         field :token, -> { String }, optional: false, nullable: true
       end
     end

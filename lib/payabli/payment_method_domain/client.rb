@@ -165,13 +165,11 @@ module Payabli
       # @return [Payabli::PaymentMethodDomain::Types::ListPaymentMethodDomainsResponse]
       def list_payment_method_domains(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[entity_id entity_type from_record limit_record]
         query_params = {}
         query_params["entityId"] = params[:entity_id] if params.key?(:entity_id)
         query_params["entityType"] = params[:entity_type] if params.key?(:entity_type)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-        params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -209,7 +207,7 @@ module Payabli
       def update_payment_method_domain(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::PaymentMethodDomain::Types::UpdatePaymentMethodDomainRequest.new(params).to_h
-        non_body_param_names = ["domainId"]
+        non_body_param_names = %w[domainId]
         body = request_data.except(*non_body_param_names)
 
         request = Payabli::Internal::JSON::Request.new(

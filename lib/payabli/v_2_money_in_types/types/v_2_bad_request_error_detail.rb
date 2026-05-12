@@ -6,6 +6,7 @@ module Payabli
       # Individual field error detail for bad request responses.
       class V2BadRequestErrorDetail < Internal::Types::Model
         field :message, -> { String }, optional: false, nullable: false
+
         field :suggestion, -> { String }, optional: false, nullable: false
       end
     end

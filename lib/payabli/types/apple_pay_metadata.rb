@@ -6,9 +6,13 @@ module Payabli
     # failed.
     class ApplePayMetadata < Internal::Types::Model
       field :is_file_available, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "isFileAvailable"
+
       field :is_file_content_valid, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "isFileContentValid"
+
       field :redirect_domain_name, -> { String }, optional: true, nullable: false, api_name: "redirectDomainName"
+
       field :redirect_url, -> { String }, optional: true, nullable: false, api_name: "redirectUrl"
+
       field :status_code, -> { Integer }, optional: true, nullable: false, api_name: "statusCode"
     end
   end

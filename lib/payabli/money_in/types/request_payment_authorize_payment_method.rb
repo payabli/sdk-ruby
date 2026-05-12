@@ -8,7 +8,9 @@ module Payabli
         extend Payabli::Internal::Types::Union
 
         member -> { Payabli::Types::PayMethodCredit }
+
         member -> { Payabli::Types::PayMethodStoredMethod }
+
         member -> { Payabli::Types::PayMethodCloud }
       end
     end

@@ -689,7 +689,7 @@ class QueryWireTest < WireMockTestCase
 
     @client.query.list_transfer_details(
       entry: "47862acd",
-      transfer_id: 123_456,
+      transfer_id: 123456,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "query.list_transfer_details.0"
@@ -937,6 +937,54 @@ class QueryWireTest < WireMockTestCase
       test_id: test_id,
       method: "GET",
       url_path: "/Query/vcards/8cfec329267",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_query_list_vcards_transactions_with_wiremock
+    test_id = "query.list_vcards_transactions.0"
+
+    @client.query.list_vcards_transactions(
+      entry: "8cfec329267",
+      from_record: 0,
+      limit_record: 20,
+      sort_by: "desc(CreatedOn)",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_vcards_transactions.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/vcardsTransactions/8cfec329267",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_query_list_vcards_transactions_org_with_wiremock
+    test_id = "query.list_vcards_transactions_org.0"
+
+    @client.query.list_vcards_transactions_org(
+      org_id: 123,
+      from_record: 0,
+      limit_record: 20,
+      sort_by: "desc(CreatedOn)",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "query.list_vcards_transactions_org.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/vcardsTransactions/org/123",
       query_params: nil,
       expected: 1
     )

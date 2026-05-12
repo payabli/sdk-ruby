@@ -400,7 +400,7 @@ class BoardingWireTest < WireMockTestCase
     test_id = "boarding.get_applications_by_paypoint_id.0"
 
     @client.boarding.get_applications_by_paypoint_id(
-      paypoint_id: 12_345,
+      paypoint_id: 12345,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "boarding.get_applications_by_paypoint_id.0"

@@ -5,6 +5,7 @@ module Payabli
     module Types
       class GetEntryConfigRequest < Internal::Types::Model
         field :entry, -> { String }, optional: false, nullable: false
+
         field :entrypages, -> { String }, optional: true, nullable: false
       end
     end

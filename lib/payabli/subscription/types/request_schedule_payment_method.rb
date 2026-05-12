@@ -9,7 +9,9 @@ module Payabli
         extend Payabli::Internal::Types::Union
 
         member -> { Payabli::Types::PayMethodCredit }
+
         member -> { Payabli::Types::PayMethodAch }
+
         member -> { Payabli::Subscription::Types::RequestSchedulePaymentMethodInitiator }
       end
     end

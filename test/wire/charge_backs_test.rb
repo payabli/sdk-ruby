@@ -16,7 +16,7 @@ class ChargeBacksWireTest < WireMockTestCase
     test_id = "charge_backs.add_response.0"
 
     @client.charge_backs.add_response(
-      id: 1_000_000,
+      id: 1000000,
       idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
       request_options: {
         additional_headers: {
@@ -38,7 +38,7 @@ class ChargeBacksWireTest < WireMockTestCase
     test_id = "charge_backs.get_chargeback.0"
 
     @client.charge_backs.get_chargeback(
-      id: 1_000_000,
+      id: 1000000,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "charge_backs.get_chargeback.0"
@@ -59,7 +59,7 @@ class ChargeBacksWireTest < WireMockTestCase
     test_id = "charge_backs.get_chargeback_attachment.0"
 
     @client.charge_backs.get_chargeback_attachment(
-      id: 1_000_000,
+      id: 1000000,
       file_name: "fileName",
       request_options: {
         additional_headers: {

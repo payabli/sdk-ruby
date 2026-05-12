@@ -174,10 +174,8 @@ module Payabli
         non_body_param_names = %w[forceCustomerCreation idempotencyKey]
         body = request_data.except(*non_body_param_names)
 
-        query_param_names = %i[force_customer_creation]
         query_params = {}
         query_params["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
-        params = params.except(*query_param_names)
 
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
@@ -471,10 +469,8 @@ module Payabli
       # @return [Payabli::MoneyIn::Types::ReceiptResponse]
       def send_receipt_2_trans(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[email]
         query_params = {}
         query_params["email"] = params[:email] if params.key?(:email)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -512,7 +508,7 @@ module Payabli
       def validate(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::MoneyIn::Types::RequestPaymentValidate.new(params).to_h
-        non_body_param_names = ["idempotencyKey"]
+        non_body_param_names = %w[idempotencyKey]
         body = request_data.except(*non_body_param_names)
 
         headers = {}

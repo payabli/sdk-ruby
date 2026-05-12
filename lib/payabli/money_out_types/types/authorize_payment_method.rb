@@ -12,14 +12,23 @@ module Payabli
       # - `{ method: "ach", storedMethodId: "..." }` - ACH payment method using stored method ID
       class AuthorizePaymentMethod < Internal::Types::Model
         field :method_, -> { String }, optional: false, nullable: false, api_name: "method"
+
         field :ach_holder, -> { String }, optional: true, nullable: false, api_name: "achHolder"
+
         field :ach_routing, -> { String }, optional: true, nullable: false, api_name: "achRouting"
+
         field :ach_account, -> { String }, optional: true, nullable: false, api_name: "achAccount"
+
         field :ach_account_type, -> { String }, optional: true, nullable: false, api_name: "achAccountType"
+
         field :ach_code, -> { String }, optional: true, nullable: false, api_name: "achCode"
+
         field :ach_holder_type, -> { Payabli::Types::AchHolderType }, optional: true, nullable: false, api_name: "achHolderType"
+
         field :stored_method_id, -> { String }, optional: true, nullable: false, api_name: "storedMethodId"
+
         field :initiator, -> { String }, optional: true, nullable: false
+
         field :stored_method_usage_type, -> { String }, optional: true, nullable: false, api_name: "storedMethodUsageType"
       end
     end

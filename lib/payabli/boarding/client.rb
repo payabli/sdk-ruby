@@ -127,7 +127,7 @@ module Payabli
       def get_application_by_auth(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::Boarding::Types::RequestAppByAuth.new(params).to_h
-        non_body_param_names = ["xId"]
+        non_body_param_names = %w[xId]
         body = request_data.except(*non_body_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
@@ -237,10 +237,8 @@ module Payabli
       # @return [Payabli::Types::PayabliApiResponse00]
       def get_external_application(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[send_email]
         query_params = {}
         query_params["sendEmail"] = params[:send_email] if params.key?(:send_email)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -317,14 +315,12 @@ module Payabli
       # @return [Payabli::Types::QueryBoardingAppsListResponse]
       def list_applications(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -365,13 +361,11 @@ module Payabli
       # @return [Payabli::Types::QueryBoardingLinksResponse]
       def list_boarding_links(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
