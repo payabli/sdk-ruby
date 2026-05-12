@@ -16,7 +16,7 @@ class StatisticWireTest < WireMockTestCase
     test_id = "statistic.basic_stats.0"
 
     @client.statistic.basic_stats(
-      entry_id: 1000000,
+      entry_id: 1_000_000,
       freq: "m",
       level: 1,
       mode: "ytd",
@@ -65,7 +65,7 @@ class StatisticWireTest < WireMockTestCase
     test_id = "statistic.sub_stats.0"
 
     @client.statistic.sub_stats(
-      entry_id: 1000000,
+      entry_id: 1_000_000,
       interval: "30",
       level: 1,
       request_options: {

@@ -93,8 +93,10 @@ module Payabli
       # @return [Payabli::Paypoint::Types::GetEntryConfigResponse]
       def get_entry_config(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[entrypages]
         query_params = {}
         query_params["entrypages"] = params[:entrypages] if params.key?(:entrypages)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],

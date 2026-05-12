@@ -139,7 +139,7 @@ module Payabli
       def update_subscription(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::Subscription::Types::RequestUpdateSchedule.new(params).to_h
-        non_body_param_names = %w[subId]
+        non_body_param_names = ["subId"]
         body = request_data.except(*non_body_param_names)
 
         request = Payabli::Internal::JSON::Request.new(

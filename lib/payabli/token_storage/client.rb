@@ -80,9 +80,11 @@ module Payabli
       # @return [Payabli::TokenStorage::Types::GetMethodResponse]
       def get_method(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[card_expiration_format include_temporary]
         query_params = {}
         query_params["cardExpirationFormat"] = params[:card_expiration_format] if params.key?(:card_expiration_format)
         query_params["includeTemporary"] = params[:include_temporary] if params.key?(:include_temporary)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],

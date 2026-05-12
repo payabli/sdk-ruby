@@ -117,7 +117,7 @@ class NotificationWireTest < WireMockTestCase
     test_id = "notification.get_report_file.0"
 
     @client.notification.get_report_file(
-      id: 1000000,
+      id: 1_000_000,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "notification.get_report_file.0"

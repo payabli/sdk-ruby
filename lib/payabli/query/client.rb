@@ -31,12 +31,14 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::QueryBatchesDetailResponse]
       def list_batch_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -80,12 +82,14 @@ module Payabli
       # @return [Payabli::Types::QueryResponseSettlements]
       def list_batch_details_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -128,12 +132,14 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::QueryBatchesResponse]
       def list_batches(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -176,12 +182,14 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::QueryBatchesResponse]
       def list_batches_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -224,12 +232,14 @@ module Payabli
       # @return [Payabli::Types::QueryBatchesOutResponse]
       def list_batches_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -272,12 +282,14 @@ module Payabli
       # @return [Payabli::Types::QueryBatchesOutResponse]
       def list_batches_out_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -320,12 +332,14 @@ module Payabli
       # @return [Payabli::Types::QueryChargebacksResponse]
       def list_chargebacks(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -368,12 +382,14 @@ module Payabli
       # @return [Payabli::Types::QueryChargebacksResponse]
       def list_chargebacks_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -416,12 +432,14 @@ module Payabli
       # @return [Payabli::Types::QueryCustomerResponse]
       def list_customers(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -464,12 +482,14 @@ module Payabli
       # @return [Payabli::Types::QueryCustomerResponse]
       def list_customers_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -512,12 +532,14 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::QueryDeviceResponse]
       def list_devices(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -560,12 +582,14 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::QueryDeviceResponse]
       def list_devices_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -607,11 +631,13 @@ module Payabli
       # @return [Payabli::Types::QueryResponseNotificationReports]
       def list_notification_reports(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -652,11 +678,13 @@ module Payabli
       # @return [Payabli::Types::QueryResponseNotificationReports]
       def list_notification_reports_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -697,11 +725,13 @@ module Payabli
       # @return [Payabli::Types::QueryResponseNotifications]
       def list_notifications(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -742,11 +772,13 @@ module Payabli
       # @return [Payabli::Types::QueryResponseNotifications]
       def list_notifications_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -790,12 +822,14 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::ListOrganizationsResponse]
       def list_organizations(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -838,12 +872,14 @@ module Payabli
       # @return [Payabli::Types::QueryPayoutTransaction]
       def list_payout(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -886,12 +922,14 @@ module Payabli
       # @return [Payabli::Types::QueryPayoutTransaction]
       def list_payout_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -934,12 +972,14 @@ module Payabli
       # @return [Payabli::Types::QueryEntrypointResponse]
       def list_paypoints(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -982,12 +1022,14 @@ module Payabli
       # @return [Payabli::Types::QueryResponseSettlements]
       def list_settlements(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1030,12 +1072,14 @@ module Payabli
       # @return [Payabli::Types::QueryResponseSettlements]
       def list_settlements_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1078,12 +1122,14 @@ module Payabli
       # @return [Payabli::Types::QuerySubscriptionResponse]
       def list_subscriptions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1126,12 +1172,14 @@ module Payabli
       # @return [Payabli::Types::QuerySubscriptionResponse]
       def list_subscriptions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1175,12 +1223,14 @@ module Payabli
       # @return [Payabli::PayoutSubscription::Types::QueryPayoutSubscriptionResponse]
       def list_payout_subscriptions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1224,12 +1274,14 @@ module Payabli
       # @return [Payabli::PayoutSubscription::Types::QueryPayoutSubscriptionResponse]
       def list_payout_subscriptions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1280,12 +1332,14 @@ module Payabli
       # @return [Payabli::Types::QueryResponseTransactions]
       def list_transactions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1343,12 +1397,14 @@ module Payabli
       # @return [Payabli::Types::QueryResponseTransactions]
       def list_transactions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1392,12 +1448,14 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::QueryTransferDetailResponse]
       def list_transfer_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1440,12 +1498,14 @@ module Payabli
       # @return [Payabli::Types::TransferQueryResponse]
       def list_transfers(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1488,12 +1548,14 @@ module Payabli
       # @return [Payabli::Types::TransferQueryResponse]
       def list_transfers_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1534,11 +1596,13 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::TransferOutQueryResponse]
       def list_transfers_out_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1579,11 +1643,13 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::TransferOutQueryResponse]
       def list_transfers_out_paypoint(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1625,11 +1691,13 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::TransferOutDetailQueryResponse]
       def list_transfer_details_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1670,11 +1738,13 @@ module Payabli
       # @return [Payabli::Types::QueryUserResponse]
       def list_users_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1715,11 +1785,13 @@ module Payabli
       # @return [Payabli::Types::QueryUserResponse]
       def list_users_paypoint(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1762,12 +1834,14 @@ module Payabli
       # @return [Payabli::Types::QueryResponseVendors]
       def list_vendors(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1810,12 +1884,14 @@ module Payabli
       # @return [Payabli::Types::QueryResponseVendors]
       def list_vendors_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1858,12 +1934,14 @@ module Payabli
       # @return [Payabli::Types::VCardQueryResponse]
       def list_vcards(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1904,11 +1982,13 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::VCardTransactionQueryResponse]
       def list_vcards_transactions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1949,11 +2029,13 @@ module Payabli
       # @return [Payabli::QueryTypes::Types::VCardTransactionQueryResponse]
       def list_vcards_transactions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -1996,12 +2078,14 @@ module Payabli
       # @return [Payabli::Types::VCardQueryResponse]
       def list_vcards_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],

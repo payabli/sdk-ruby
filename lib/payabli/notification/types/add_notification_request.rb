@@ -7,7 +7,6 @@ module Payabli
         extend Payabli::Internal::Types::Union
 
         member -> { Payabli::Types::NotificationStandardRequest }
-
         member -> { Payabli::Types::NotificationReportRequest }
       end
     end

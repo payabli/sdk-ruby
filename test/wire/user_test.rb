@@ -16,10 +16,10 @@ class UserWireTest < WireMockTestCase
     test_id = "user.add_user.0"
 
     @client.user.add_user(request_options: {
-      additional_headers: {
-        "X-Test-Id" => "user.add_user.0"
-      }
-    })
+                            additional_headers: {
+                              "X-Test-Id" => "user.add_user.0"
+                            }
+                          })
 
     verify_request_count(
       test_id: test_id,
@@ -34,10 +34,10 @@ class UserWireTest < WireMockTestCase
     test_id = "user.auth_refresh_user.0"
 
     @client.user.auth_refresh_user(request_options: {
-      additional_headers: {
-        "X-Test-Id" => "user.auth_refresh_user.0"
-      }
-    })
+                                     additional_headers: {
+                                       "X-Test-Id" => "user.auth_refresh_user.0"
+                                     }
+                                   })
 
     verify_request_count(
       test_id: test_id,
@@ -52,10 +52,10 @@ class UserWireTest < WireMockTestCase
     test_id = "user.auth_reset_user.0"
 
     @client.user.auth_reset_user(request_options: {
-      additional_headers: {
-        "X-Test-Id" => "user.auth_reset_user.0"
-      }
-    })
+                                   additional_headers: {
+                                     "X-Test-Id" => "user.auth_reset_user.0"
+                                   }
+                                 })
 
     verify_request_count(
       test_id: test_id,
@@ -91,10 +91,10 @@ class UserWireTest < WireMockTestCase
     test_id = "user.change_psw_user.0"
 
     @client.user.change_psw_user(request_options: {
-      additional_headers: {
-        "X-Test-Id" => "user.change_psw_user.0"
-      }
-    })
+                                   additional_headers: {
+                                     "X-Test-Id" => "user.change_psw_user.0"
+                                   }
+                                 })
 
     verify_request_count(
       test_id: test_id,
@@ -109,7 +109,7 @@ class UserWireTest < WireMockTestCase
     test_id = "user.delete_user.0"
 
     @client.user.delete_user(
-      user_id: 1000000,
+      user_id: 1_000_000,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "user.delete_user.0"
@@ -130,7 +130,7 @@ class UserWireTest < WireMockTestCase
     test_id = "user.edit_mfa_user.0"
 
     @client.user.edit_mfa_user(
-      user_id: 1000000,
+      user_id: 1_000_000,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "user.edit_mfa_user.0"
@@ -151,7 +151,7 @@ class UserWireTest < WireMockTestCase
     test_id = "user.edit_user.0"
 
     @client.user.edit_user(
-      user_id: 1000000,
+      user_id: 1_000_000,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "user.edit_user.0"
@@ -172,7 +172,7 @@ class UserWireTest < WireMockTestCase
     test_id = "user.get_user.0"
 
     @client.user.get_user(
-      user_id: 1000000,
+      user_id: 1_000_000,
       entry: "478ae1234",
       request_options: {
         additional_headers: {
@@ -194,10 +194,10 @@ class UserWireTest < WireMockTestCase
     test_id = "user.logout_user.0"
 
     @client.user.logout_user(request_options: {
-      additional_headers: {
-        "X-Test-Id" => "user.logout_user.0"
-      }
-    })
+                               additional_headers: {
+                                 "X-Test-Id" => "user.logout_user.0"
+                               }
+                             })
 
     verify_request_count(
       test_id: test_id,
@@ -235,10 +235,10 @@ class UserWireTest < WireMockTestCase
     test_id = "user.validate_mfa_user.0"
 
     @client.user.validate_mfa_user(request_options: {
-      additional_headers: {
-        "X-Test-Id" => "user.validate_mfa_user.0"
-      }
-    })
+                                     additional_headers: {
+                                       "X-Test-Id" => "user.validate_mfa_user.0"
+                                     }
+                                   })
 
     verify_request_count(
       test_id: test_id,

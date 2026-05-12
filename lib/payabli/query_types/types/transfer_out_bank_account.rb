@@ -6,9 +6,7 @@ module Payabli
       # Bank account information for an outbound transfer.
       class TransferOutBankAccount < Internal::Types::Model
         field :account_number, -> { String }, optional: false, nullable: true, api_name: "accountNumber"
-
         field :routing_number, -> { String }, optional: false, nullable: true, api_name: "routingNumber"
-
         field :bank_name, -> { String }, optional: false, nullable: true, api_name: "bankName"
       end
     end

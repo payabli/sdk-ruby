@@ -33,7 +33,7 @@ module Payabli
       def verify_account_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::Management::Types::VerifyAccountDetailsRequest.new(params).to_h
-        non_body_param_names = %w[entry]
+        non_body_param_names = ["entry"]
         body = request_data.except(*non_body_param_names)
 
         request = Payabli::Internal::JSON::Request.new(

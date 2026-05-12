@@ -25,7 +25,7 @@ module Payabli
       def add_organization(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::Organization::Types::AddOrganizationRequest.new(params).to_h
-        non_body_param_names = %w[idempotencyKey]
+        non_body_param_names = ["idempotencyKey"]
         body = request_data.except(*non_body_param_names)
 
         headers = {}
@@ -102,7 +102,7 @@ module Payabli
       def edit_organization(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::Organization::Types::OrganizationData.new(params).to_h
-        non_body_param_names = %w[orgId]
+        non_body_param_names = ["orgId"]
         body = request_data.except(*non_body_param_names)
 
         request = Payabli::Internal::JSON::Request.new(

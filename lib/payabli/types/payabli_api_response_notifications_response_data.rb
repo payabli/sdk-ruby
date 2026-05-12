@@ -8,7 +8,6 @@ module Payabli
       extend Payabli::Internal::Types::Union
 
       member -> { Integer }
-
       member -> { String }
     end
   end

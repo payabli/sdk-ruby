@@ -8,9 +8,7 @@ module Payabli
         extend Payabli::Internal::Types::Union
 
         member -> { Payabli::TokenStorage::Types::TokenizeCard }
-
         member -> { Payabli::TokenStorage::Types::TokenizeAch }
-
         member -> { Payabli::TokenStorage::Types::ConvertToken }
       end
     end

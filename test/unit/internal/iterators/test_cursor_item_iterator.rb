@@ -6,7 +6,7 @@ require "json"
 require "test_helper"
 
 NUMBERS = (1..65).to_a
-PageResponse = Struct.new(:cards, :next_cursor, keyword_init: true)
+PageResponse = Struct.new(:cards, :next_cursor)
 
 class CursorItemIteratorTest < Minitest::Test
   def make_iterator(initial_cursor:)
@@ -90,7 +90,6 @@ class CursorItemIteratorTest < Minitest::Test
 
       assert_equal expected_times_called, @times_called
       assert_equal item != NUMBERS.last, iterator.next?, "#{item} #{iterator}"
-
       items.push(item)
     end
 
@@ -140,7 +139,6 @@ class CursorItemIteratorTest < Minitest::Test
     iterator = make_iterator(initial_cursor: 0).pages
 
     assert_equal 0, @times_called
-
     iterator.first
 
     assert_equal 1, @times_called
@@ -172,7 +170,6 @@ class CursorItemIteratorTest < Minitest::Test
       expected_times_called += 1
 
       assert_equal expected_times_called, @times_called
-
       lengths.push(page.cards.length)
     end
 

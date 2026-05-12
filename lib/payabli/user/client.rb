@@ -47,7 +47,7 @@ module Payabli
       # Use this endpoint to refresh the authentication token for a user within an organization.
       #
       # @param request_options [Hash]
-      # @param _params [Hash]
+      # @param params [Hash]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -55,7 +55,8 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [Payabli::Types::PayabliApiResponseUserMfa]
-      def auth_refresh_user(request_options: {}, **_params)
+      def auth_refresh_user(request_options: {}, **params)
+        Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -125,7 +126,7 @@ module Payabli
       def auth_user(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::User::Types::UserAuthRequest.new(params).to_h
-        non_body_param_names = %w[provider]
+        non_body_param_names = ["provider"]
         body = request_data.except(*non_body_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
@@ -303,9 +304,11 @@ module Payabli
       # @return [Payabli::Types::UserQueryRecord]
       def get_user(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[entry level]
         query_params = {}
         query_params["entry"] = params[:entry] if params.key?(:entry)
         query_params["level"] = params[:level] if params.key?(:level)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -331,7 +334,7 @@ module Payabli
       # Use this endpoint to log a user out from the system.
       #
       # @param request_options [Hash]
-      # @param _params [Hash]
+      # @param params [Hash]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -339,7 +342,8 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       #
       # @return [Payabli::User::Types::LogoutUserResponse]
-      def logout_user(request_options: {}, **_params)
+      def logout_user(request_options: {}, **params)
+        Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",

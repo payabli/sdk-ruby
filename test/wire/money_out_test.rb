@@ -29,7 +29,7 @@ class MoneyOutWireTest < WireMockTestCase
         vendor_number: "7895433"
       },
       invoice_data: [{
-        bill_id: 54323
+        bill_id: 54_323
       }],
       auto_capture: true,
       request_options: {

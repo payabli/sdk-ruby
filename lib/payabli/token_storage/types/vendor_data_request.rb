@@ -7,7 +7,6 @@ module Payabli
       # vendor (for Pay Out transactions).
       class VendorDataRequest < Internal::Types::Model
         field :vendor_id, -> { Integer }, optional: true, nullable: false, api_name: "vendorId"
-
         field :vendor_number, -> { String }, optional: true, nullable: false, api_name: "vendorNumber"
       end
     end

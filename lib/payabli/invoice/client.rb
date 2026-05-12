@@ -190,8 +190,10 @@ module Payabli
       # @return [Payabli::Types::FileContent]
       def get_attached_file_from_invoice(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[return_object]
         query_params = {}
         query_params["returnObject"] = params[:return_object] if params.key?(:return_object)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -302,12 +304,14 @@ module Payabli
       # @return [Payabli::Invoice::Types::QueryInvoiceResponse]
       def list_invoices(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -350,12 +354,14 @@ module Payabli
       # @return [Payabli::Invoice::Types::QueryInvoiceResponse]
       def list_invoices_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -394,9 +400,11 @@ module Payabli
       # @return [Payabli::Invoice::Types::SendInvoiceResponse]
       def send_invoice(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[attachfile mail_2]
         query_params = {}
         query_params["attachfile"] = params[:attachfile] if params.key?(:attachfile)
         query_params["mail2"] = params[:mail_2] if params.key?(:mail_2)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],

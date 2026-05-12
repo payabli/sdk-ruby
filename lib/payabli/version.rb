@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Payabli
-  VERSION = "2.2.28"
+  VERSION = "2.2.29"
 end

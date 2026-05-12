@@ -19,7 +19,7 @@ class CheckCaptureWireTest < WireMockTestCase
       entry_point: "47abcfea12",
       front_image: "/9j/4AAQSkZJRgABAQEASABIAAD...",
       rear_image: "/9j/4AAQSkZJRgABAQEASABIAAD...",
-      check_amount: 12550,
+      check_amount: 12_550,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "check_capture.check_processing.0"

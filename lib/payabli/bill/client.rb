@@ -69,8 +69,10 @@ module Payabli
       # @return [Payabli::Bill::Types::BillResponse]
       def delete_attached_from_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[return_object]
         query_params = {}
         query_params["returnObject"] = params[:return_object] if params.key?(:return_object)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -178,8 +180,10 @@ module Payabli
       # @return [Payabli::Types::FileContent]
       def get_attached_from_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[return_object]
         query_params = {}
         query_params["returnObject"] = params[:return_object] if params.key?(:return_object)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -256,12 +260,14 @@ module Payabli
       # @return [Payabli::Types::BillQueryResponse]
       def list_bills(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -304,12 +310,14 @@ module Payabli
       # @return [Payabli::Types::BillQueryResponse]
       def list_bills_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[export_format from_record limit_record parameters sort_by]
         query_params = {}
         query_params["exportFormat"] = params[:export_format] if params.key?(:export_format)
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -433,8 +441,10 @@ module Payabli
       # @return [Payabli::Bill::Types::SetApprovedBillResponse]
       def set_approved_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[email]
         query_params = {}
         query_params["email"] = params[:email] if params.key?(:email)
+        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],

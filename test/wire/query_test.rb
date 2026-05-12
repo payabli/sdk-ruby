@@ -689,7 +689,7 @@ class QueryWireTest < WireMockTestCase
 
     @client.query.list_transfer_details(
       entry: "47862acd",
-      transfer_id: 123456,
+      transfer_id: 123_456,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "query.list_transfer_details.0"
