@@ -6,7 +6,9 @@ module Payabli
     # failed.
     class GooglePayMetadata < Internal::Types::Model
       field :status_code, -> { Integer }, optional: true, nullable: false, api_name: "statusCode"
+
       field :redirect_url, -> { String }, optional: true, nullable: false, api_name: "redirectUrl"
+
       field :redirect_domain_name, -> { String }, optional: true, nullable: false, api_name: "redirectDomainName"
     end
   end

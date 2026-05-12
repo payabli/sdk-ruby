@@ -9,6 +9,7 @@ module Payabli
       discriminant :channel
 
       member -> { Payabli::Types::PushPayLinkRequestEmail }, key: "EMAIL"
+
       member -> { Payabli::Types::PushPayLinkRequestSms }, key: "SMS"
     end
   end

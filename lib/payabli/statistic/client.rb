@@ -31,12 +31,10 @@ module Payabli
       # @return [Array[Payabli::Statistic::Types::StatBasicExtendedQueryRecord]]
       def basic_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[end_date parameters start_date]
         query_params = {}
         query_params["endDate"] = params[:end_date] if params.key?(:end_date)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["startDate"] = params[:start_date] if params.key?(:start_date)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -74,10 +72,8 @@ module Payabli
       # @return [Array[Payabli::Statistic::Types::SubscriptionStatsQueryRecord]]
       def customer_basic_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[parameters]
         query_params = {}
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -115,10 +111,8 @@ module Payabli
       # @return [Array[Payabli::Statistic::Types::StatBasicQueryRecord]]
       def sub_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[parameters]
         query_params = {}
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
@@ -156,10 +150,8 @@ module Payabli
       # @return [Array[Payabli::Statistic::Types::StatisticsVendorQueryRecord]]
       def vendor_basic_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[parameters]
         query_params = {}
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],

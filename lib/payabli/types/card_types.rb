@@ -4,8 +4,11 @@ module Payabli
   module Types
     class CardTypes < Internal::Types::Model
       field :amex, -> { Payabli::Types::BasicTemplateElement }, optional: true, nullable: false
+
       field :discover, -> { Payabli::Types::BasicTemplateElement }, optional: true, nullable: false
+
       field :master_card, -> { Payabli::Types::BasicTemplateElement }, optional: true, nullable: false, api_name: "masterCard"
+
       field :visa, -> { Payabli::Types::BasicTemplateElement }, optional: true, nullable: false
     end
   end

@@ -16,7 +16,7 @@ class PaymentLinkWireTest < WireMockTestCase
     test_id = "payment_link.add_pay_link_from_invoice.0"
 
     @client.payment_link.add_pay_link_from_invoice(
-      id_invoice: 23_548_884,
+      id_invoice: 23548884,
       mail_2: "jo@example.com; ceo@example.com",
       contact_us: {
         email_label: "Email",
@@ -143,7 +143,7 @@ class PaymentLinkWireTest < WireMockTestCase
     test_id = "payment_link.add_pay_link_from_bill.0"
 
     @client.payment_link.add_pay_link_from_bill(
-      bill_id: 23_548_884,
+      bill_id: 23548884,
       mail_2: "jo@example.com; ceo@example.com",
       contact_us: {
         email_label: "Email",

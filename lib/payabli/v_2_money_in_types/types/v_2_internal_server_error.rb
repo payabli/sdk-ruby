@@ -7,8 +7,11 @@ module Payabli
       # Details format.
       class V2InternalServerError < Internal::Types::Model
         field :title, -> { String }, optional: false, nullable: false
+
         field :status, -> { Integer }, optional: false, nullable: false
+
         field :detail, -> { String }, optional: false, nullable: false
+
         field :instance, -> { String }, optional: false, nullable: false
       end
     end

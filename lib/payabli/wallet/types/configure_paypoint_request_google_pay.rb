@@ -5,6 +5,7 @@ module Payabli
     module Types
       class ConfigurePaypointRequestGooglePay < Internal::Types::Model
         field :entry, -> { String }, optional: true, nullable: false
+
         field :is_enabled, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "isEnabled"
       end
     end

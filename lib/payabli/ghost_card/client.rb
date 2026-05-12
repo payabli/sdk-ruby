@@ -32,7 +32,7 @@ module Payabli
       def create_ghost_card(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::GhostCard::Types::CreateGhostCardRequestBody.new(params).to_h
-        non_body_param_names = ["entry"]
+        non_body_param_names = %w[entry]
         body = request_data.except(*non_body_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
@@ -71,7 +71,7 @@ module Payabli
       def update_card(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::GhostCard::Types::UpdateCardRequestBody.new(params).to_h
-        non_body_param_names = ["entry"]
+        non_body_param_names = %w[entry]
         body = request_data.except(*non_body_param_names)
 
         request = Payabli::Internal::JSON::Request.new(

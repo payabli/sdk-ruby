@@ -7,6 +7,7 @@ module Payabli
       extend Payabli::Internal::Types::Union
 
       member -> { Internal::Types::Hash[String, Object] }
+
       member -> { String }
     end
   end

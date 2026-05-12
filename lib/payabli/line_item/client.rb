@@ -141,13 +141,11 @@ module Payabli
       # @return [Payabli::Types::QueryResponseItems]
       def list_line_items(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[from_record limit_record parameters sort_by]
         query_params = {}
         query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
-        params = params.except(*query_param_names)
 
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],

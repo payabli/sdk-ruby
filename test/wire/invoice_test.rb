@@ -66,7 +66,7 @@ class InvoiceWireTest < WireMockTestCase
 
     @client.invoice.delete_attached_from_invoice(
       filename: "0_Bill.pdf",
-      id_invoice: 23_548_884,
+      id_invoice: 23548884,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "invoice.delete_attached_from_invoice.0"
@@ -87,7 +87,7 @@ class InvoiceWireTest < WireMockTestCase
     test_id = "invoice.delete_invoice.0"
 
     @client.invoice.delete_invoice(
-      id_invoice: 23_548_884,
+      id_invoice: 23548884,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "invoice.delete_invoice.0"
@@ -162,7 +162,7 @@ class InvoiceWireTest < WireMockTestCase
     test_id = "invoice.get_invoice.0"
 
     @client.invoice.get_invoice(
-      id_invoice: 23_548_884,
+      id_invoice: 23548884,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "invoice.get_invoice.0"
@@ -252,7 +252,7 @@ class InvoiceWireTest < WireMockTestCase
     test_id = "invoice.send_invoice.0"
 
     @client.invoice.send_invoice(
-      id_invoice: 23_548_884,
+      id_invoice: 23548884,
       attachfile: true,
       mail_2: "tamara@example.com",
       request_options: {
@@ -275,7 +275,7 @@ class InvoiceWireTest < WireMockTestCase
     test_id = "invoice.get_invoice_pdf.0"
 
     @client.invoice.get_invoice_pdf(
-      id_invoice: 23_548_884,
+      id_invoice: 23548884,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "invoice.get_invoice_pdf.0"

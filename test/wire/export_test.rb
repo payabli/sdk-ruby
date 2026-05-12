@@ -643,7 +643,7 @@ class ExportWireTest < WireMockTestCase
     @client.export.export_transfer_details(
       entry: "8cfec329267",
       format: "csv",
-      transfer_id: 1_000_000,
+      transfer_id: 1000000,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
