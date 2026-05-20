@@ -7,7 +7,7 @@ module Payabli
 
       field :event_time, -> { String }, optional: true, nullable: false, api_name: "eventTime"
 
-      field :extra_data, -> { Internal::Types::Hash[String, Object] }, optional: true, nullable: false, api_name: "extraData"
+      field :extra_data, -> { String }, optional: true, nullable: false, api_name: "extraData"
 
       field :ref_data, -> { String }, optional: true, nullable: false, api_name: "refData"
 
