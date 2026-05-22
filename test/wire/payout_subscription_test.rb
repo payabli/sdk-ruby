@@ -39,7 +39,7 @@ class PayoutSubscriptionWireTest < WireMockTestCase
         due_date: "2025-08-15"
       }],
       schedule_details: {
-        start_date: "09/01/2025",
+        start_date: "09/01/2027",
         end_date: "09/01/2026",
         frequency: "monthly"
       },

@@ -229,7 +229,7 @@ class BillWireTest < WireMockTestCase
 
     @client.bill.modify_approval_bill(
       id_bill: 285,
-      request: ["string"],
+      request: %w[approver1@example.com approver2@example.com],
       request_options: {
         additional_headers: {
           "X-Test-Id" => "bill.modify_approval_bill.0"

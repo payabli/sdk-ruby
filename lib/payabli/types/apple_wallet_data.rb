@@ -12,7 +12,7 @@ module Payabli
 
       field :paypoint_name, -> { String }, optional: true, nullable: false, api_name: "paypointName"
 
-      field :paypoint_url, -> { String }, optional: true, nullable: false, api_name: "paypointUrl"
+      field :paypoint_url, -> { String }, optional: false, nullable: true, api_name: "paypointUrl"
 
       field :marked_for_deletion_at, -> { String }, optional: true, nullable: false, api_name: "markedForDeletionAt"
 

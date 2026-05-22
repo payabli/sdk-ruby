@@ -13,7 +13,7 @@ module Payabli
 
       field :response_text, -> { String }, optional: false, nullable: false, api_name: "responseText"
 
-      field :room_id, -> { Integer }, optional: true, nullable: false, api_name: "roomId"
+      field :room_id, -> { Integer }, optional: false, nullable: true, api_name: "roomId"
     end
   end
 end

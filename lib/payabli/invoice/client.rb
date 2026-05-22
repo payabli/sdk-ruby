@@ -60,7 +60,7 @@ module Payabli
         end
       end
 
-      # Deletes an invoice that's attached to a file.
+      # Deletes a file attached to an invoice.
       #
       # @param request_options [Hash]
       # @param params [Hash]

@@ -18,10 +18,10 @@ class StatisticWireTest < WireMockTestCase
     @client.statistic.basic_stats(
       entry_id: 1000000,
       freq: "m",
-      level: 1,
-      mode: "ytd",
-      end_date: "2025-11-01",
-      start_date: "2025-11-30",
+      level: 2,
+      mode: "custom",
+      start_date: "2025-11-01",
+      end_date: "2025-11-30",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "statistic.basic_stats.0"
@@ -32,7 +32,7 @@ class StatisticWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Statistic/basic/ytd/m/1/1000000",
+      url_path: "/Statistic/basic/custom/m/2/1000000",
       query_params: nil,
       expected: 1
     )
@@ -67,7 +67,7 @@ class StatisticWireTest < WireMockTestCase
     @client.statistic.sub_stats(
       entry_id: 1000000,
       interval: "30",
-      level: 1,
+      level: 2,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "statistic.sub_stats.0"
@@ -78,7 +78,7 @@ class StatisticWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Statistic/subscriptions/30/1/1000000",
+      url_path: "/Statistic/subscriptions/30/2/1000000",
       query_params: nil,
       expected: 1
     )

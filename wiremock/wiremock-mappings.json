@@ -257,7 +257,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"Summary\": {\n    \"pageidentifier\": null,\n    \"pageSize\": 20,\n    \"total2approval\": 1,\n    \"totalactive\": 1,\n    \"totalAmount\": 1.1,\n    \"totalamount2approval\": 1.1,\n    \"totalamountactive\": 1.1,\n    \"totalamountapproved\": 1.1,\n    \"totalamountcancel\": 1.1,\n    \"totalamountdisapproved\": 1.1,\n    \"totalamountintransit\": 1.1,\n    \"totalamountoverdue\": 1.1,\n    \"totalamountpaid\": 1.1,\n    \"totalamountsent2approval\": 1.1,\n    \"totalapproved\": 1,\n    \"totalcancel\": 1,\n    \"totaldisapproved\": 1,\n    \"totalintransit\": 1,\n    \"totaloverdue\": 1,\n    \"totalPages\": 1,\n    \"totalpaid\": 1,\n    \"totalRecords\": 2,\n    \"totalsent2approval\": 1\n  },\n  \"Records\": [\n    {\n      \"AdditionalData\": null,\n      \"billApprovals\": [\n        {\n          \"approved\": 0,\n          \"approvedTime\": \"2024-03-13T15:54:27Z\",\n          \"email\": \"lisandra@example.com\",\n          \"Id\": 34\n        },\n        {\n          \"approved\": 0,\n          \"approvedTime\": \"2024-03-13T15:54:27Z\",\n          \"email\": \"jccastillo@example.com\",\n          \"Id\": 293\n        }\n      ],\n      \"BillDate\": \"2025-03-10\",\n      \"billEvents\": [\n        {\n          \"description\": \"Created Bill\",\n          \"eventTime\": \"2024-03-13T15:54:26Z\",\n          \"refData\": \"00-45e1c2d8b53b72fafc4082f374e68753-ffea4ba4c2ce63ce-00\"\n        },\n        {\n          \"description\": \"Sent to Approval\",\n          \"eventTime\": \"2024-03-13T15:54:28Z\",\n          \"refData\": \"00-086a951822211bc2eb1803ed64db9d4f-0f07e0e8c394e481-00\"\n        }\n      ],\n      \"BillItems\": [\n        {\n          \"itemCommodityCode\": \"Commod-MI-2024031926\",\n          \"itemCost\": 200,\n          \"itemDescription\": \"Consultation price\",\n          \"itemMode\": 0,\n          \"itemProductCode\": \"Prod-MI-2024031926\",\n          \"itemProductName\": \"Consultation\",\n          \"itemQty\": 1,\n          \"itemTaxAmount\": 0,\n          \"itemTaxRate\": 0,\n          \"itemTotalAmount\": 200,\n          \"itemUnitOfMeasure\": \"per each\"\n        }\n      ],\n      \"BillNumber\": \"MI-bill-2024031926\",\n      \"Comments\": \"PAYBILL\",\n      \"CreatedAt\": \"2024-03-13T15:54:26Z\",\n      \"Discount\": 0,\n      \"DocumentsRef\": null,\n      \"DueDate\": \"2025-03-10\",\n      \"EndDate\": null,\n      \"EntityID\": null,\n      \"externalPaypointID\": \"micasa-10\",\n      \"Frequency\": \"onetime\",\n      \"IdBill\": 6104,\n      \"LastUpdated\": \"2024-03-13T10:54:26Z\",\n      \"LotNumber\": \"LOT123\",\n      \"Mode\": 0,\n      \"NetAmount\": 200,\n      \"ParentOrgId\": 1001,\n      \"ParentOrgName\": \"Fitness Hub\",\n      \"PaymentId\": null,\n      \"PaymentMethod\": null,\n      \"paylinkId\": null,\n      \"PaypointDbaname\": \"MiCasa Sports\",\n      \"PaypointEntryname\": \"micasa\",\n      \"PaypointLegalname\": \"MiCasa Sports LLC\",\n      \"Source\": \"web\",\n      \"Status\": 2,\n      \"Terms\": \"Net30\",\n      \"TotalAmount\": 200,\n      \"Transaction\": null,\n      \"Vendor\": {\n        \"Address1\": \"1234 Liberdad St.\",\n        \"Address2\": \"Suite 100\",\n        \"BillingData\": {\n          \"accountNumber\": \"12345XXXX\",\n          \"bankAccountFunction\": 0,\n          \"bankAccountHolderName\": \"Elena Gomez\",\n          \"bankAccountHolderType\": \"Business\",\n          \"bankName\": \"Michigan Savings Bank\",\n          \"id\": 0,\n          \"routingAccount\": \"072000326\",\n          \"typeAccount\": \"Checking\"\n        },\n        \"City\": \"Detroit\",\n        \"Country\": \"US\",\n        \"EIN\": \"XXXXX6789\",\n        \"Email\": \"elenag@industriesexample.com\",\n        \"InternalReferenceId\": 1215,\n        \"Mcc\": \"700\",\n        \"Name1\": \"Gomez-Radulescu Industries\",\n        \"Name2\": \"Elena\",\n        \"Phone\": \"517-555-0123\",\n        \"State\": \"MI\",\n        \"VendorId\": 8723,\n        \"VendorNumber\": \"MI-vendor-2024031926\",\n        \"VendorStatus\": 1,\n        \"Zip\": \"48201\"\n      }\n    }\n  ]\n}",
+        "body": "{\n  \"Summary\": {\n    \"pageidentifier\": null,\n    \"pageSize\": 20,\n    \"total2approval\": 1,\n    \"totalactive\": 1,\n    \"totalAmount\": 1.1,\n    \"totalamount2approval\": 1.1,\n    \"totalamountactive\": 1.1,\n    \"totalamountapproved\": 1.1,\n    \"totalamountcancel\": 1.1,\n    \"totalamountdisapproved\": 1.1,\n    \"totalamountintransit\": 1.1,\n    \"totalamountoverdue\": 1.1,\n    \"totalamountpaid\": 1.1,\n    \"totalamountsent2approval\": 1.1,\n    \"totalapproved\": 1,\n    \"totalcancel\": 1,\n    \"totaldisapproved\": 1,\n    \"totalintransit\": 1,\n    \"totaloverdue\": 1,\n    \"totalPages\": 1,\n    \"totalpaid\": 1,\n    \"totalRecords\": 2,\n    \"totalsent2approval\": 1\n  },\n  \"Records\": [\n    {\n      \"AdditionalData\": null,\n      \"billApprovals\": [\n        {\n          \"approved\": 0,\n          \"approvedTime\": \"2024-03-13T15:54:27Z\",\n          \"email\": \"lisandra@example.com\",\n          \"Id\": 34\n        },\n        {\n          \"approved\": 0,\n          \"approvedTime\": \"2024-03-13T15:54:27Z\",\n          \"email\": \"jccastillo@example.com\",\n          \"Id\": 293\n        }\n      ],\n      \"BillDate\": \"2025-03-10\",\n      \"billEvents\": [\n        {\n          \"description\": \"Created Bill\",\n          \"eventTime\": \"2024-03-13T15:54:26Z\",\n          \"refData\": \"00-45e1c2d8b53b72fafc4082f374e68753-ffea4ba4c2ce63ce-00\"\n        },\n        {\n          \"description\": \"Sent to Approval\",\n          \"eventTime\": \"2024-03-13T15:54:28Z\",\n          \"refData\": \"00-086a951822211bc2eb1803ed64db9d4f-0f07e0e8c394e481-00\"\n        }\n      ],\n      \"BillItems\": [\n        {\n          \"itemCommodityCode\": \"Commod-MI-2024031926\",\n          \"itemCost\": 200,\n          \"itemDescription\": \"Consultation price\",\n          \"itemMode\": 0,\n          \"itemProductCode\": \"Prod-MI-2024031926\",\n          \"itemProductName\": \"Consultation\",\n          \"itemQty\": 1,\n          \"itemTaxAmount\": 0,\n          \"itemTaxRate\": 0,\n          \"itemTotalAmount\": 200,\n          \"itemUnitOfMeasure\": \"per each\"\n        }\n      ],\n      \"BillNumber\": \"MI-bill-2024031926\",\n      \"Comments\": \"PAYBILL\",\n      \"CreatedAt\": \"2024-03-13T15:54:26Z\",\n      \"Discount\": 0,\n      \"DocumentsRef\": null,\n      \"DueDate\": \"2025-03-10\",\n      \"EndDate\": null,\n      \"EntityID\": null,\n      \"externalPaypointID\": \"micasa-10\",\n      \"Frequency\": \"onetime\",\n      \"IdBill\": 6104,\n      \"LastUpdated\": \"2024-03-13T10:54:26Z\",\n      \"LotNumber\": \"LOT123\",\n      \"Mode\": 0,\n      \"NetAmount\": 200,\n      \"ParentOrgId\": 1001,\n      \"ParentOrgName\": \"Fitness Hub\",\n      \"PaymentId\": null,\n      \"PaymentMethod\": null,\n      \"paylinkId\": null,\n      \"PaypointDbaname\": \"MiCasa Sports\",\n      \"PaypointEntryname\": \"micasa\",\n      \"PaypointLegalname\": \"MiCasa Sports LLC\",\n      \"Source\": \"web\",\n      \"Status\": 2,\n      \"Terms\": \"NET30\",\n      \"TotalAmount\": 200,\n      \"Transaction\": null,\n      \"Vendor\": {\n        \"Address1\": \"1234 Liberdad St.\",\n        \"Address2\": \"Suite 100\",\n        \"BillingData\": {\n          \"accountNumber\": \"12345XXXX\",\n          \"bankAccountFunction\": 0,\n          \"bankAccountHolderName\": \"Elena Gomez\",\n          \"bankAccountHolderType\": \"Business\",\n          \"bankName\": \"Michigan Savings Bank\",\n          \"id\": 0,\n          \"routingAccount\": \"072000326\",\n          \"typeAccount\": \"Checking\"\n        },\n        \"City\": \"Detroit\",\n        \"Country\": \"US\",\n        \"EIN\": \"XXXXX6789\",\n        \"Email\": \"elenag@industriesexample.com\",\n        \"InternalReferenceId\": 1215,\n        \"Mcc\": \"700\",\n        \"Name1\": \"Gomez-Radulescu Industries\",\n        \"Name2\": \"Elena\",\n        \"Phone\": \"517-555-0123\",\n        \"State\": \"MI\",\n        \"VendorId\": 8723,\n        \"VendorNumber\": \"MI-vendor-2024031926\",\n        \"VendorStatus\": 1,\n        \"Zip\": \"48201\"\n      }\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -304,7 +304,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"Summary\": {\n    \"pageidentifier\": null,\n    \"pageSize\": 20,\n    \"total2approval\": 1,\n    \"totalactive\": 1,\n    \"totalAmount\": 1.1,\n    \"totalamount2approval\": 1.1,\n    \"totalamountactive\": 1.1,\n    \"totalamountapproved\": 1.1,\n    \"totalamountcancel\": 1.1,\n    \"totalamountdisapproved\": 1.1,\n    \"totalamountintransit\": 1.1,\n    \"totalamountoverdue\": 1.1,\n    \"totalamountpaid\": 1.1,\n    \"totalamountsent2approval\": 1.1,\n    \"totalapproved\": 1,\n    \"totalcancel\": 1,\n    \"totaldisapproved\": 1,\n    \"totalintransit\": 1,\n    \"totaloverdue\": 1,\n    \"totalPages\": 1,\n    \"totalpaid\": 1,\n    \"totalRecords\": 2,\n    \"totalsent2approval\": 1\n  },\n  \"Records\": [\n    {\n      \"AdditionalData\": null,\n      \"billApprovals\": [\n        {\n          \"approved\": 0,\n          \"approvedTime\": \"2024-03-13T15:54:27Z\",\n          \"email\": \"lisandra@example.com\",\n          \"Id\": 34\n        },\n        {\n          \"approved\": 0,\n          \"approvedTime\": \"2024-03-13T15:54:27Z\",\n          \"email\": \"jccastillo@example.com\",\n          \"Id\": 293\n        }\n      ],\n      \"BillDate\": \"2025-03-10\",\n      \"billEvents\": [\n        {\n          \"description\": \"Created Bill\",\n          \"eventTime\": \"2024-03-13T15:54:26Z\",\n          \"refData\": \"00-45e1c2d8b53b72fafc4082f374e68753-ffea4ba4c2ce63ce-00\"\n        },\n        {\n          \"description\": \"Sent to Approval\",\n          \"eventTime\": \"2024-03-13T15:54:28Z\",\n          \"refData\": \"00-086a951822211bc2eb1803ed64db9d4f-0f07e0e8c394e481-00\"\n        }\n      ],\n      \"BillItems\": [\n        {\n          \"itemCommodityCode\": \"Commod-MI-2024031926\",\n          \"itemCost\": 200,\n          \"itemDescription\": \"Consultation price\",\n          \"itemMode\": 0,\n          \"itemProductCode\": \"Prod-MI-2024031926\",\n          \"itemProductName\": \"Consultation\",\n          \"itemQty\": 1,\n          \"itemTaxAmount\": 0,\n          \"itemTaxRate\": 0,\n          \"itemTotalAmount\": 200,\n          \"itemUnitOfMeasure\": \"per each\"\n        }\n      ],\n      \"BillNumber\": \"MI-bill-2024031926\",\n      \"Comments\": \"PAYBILL\",\n      \"CreatedAt\": \"2024-03-13T15:54:26Z\",\n      \"Discount\": 0,\n      \"DocumentsRef\": null,\n      \"DueDate\": \"2025-03-10\",\n      \"EndDate\": null,\n      \"EntityID\": null,\n      \"externalPaypointID\": \"micasa-10\",\n      \"Frequency\": \"onetime\",\n      \"IdBill\": 6104,\n      \"LastUpdated\": \"2024-03-13T10:54:26Z\",\n      \"LotNumber\": \"LOT123\",\n      \"Mode\": 0,\n      \"NetAmount\": 200,\n      \"ParentOrgId\": 1001,\n      \"ParentOrgName\": \"Fitness Hub\",\n      \"PaymentId\": null,\n      \"PaymentMethod\": null,\n      \"paylinkId\": null,\n      \"PaypointDbaname\": \"MiCasa Sports\",\n      \"PaypointEntryname\": \"micasa\",\n      \"PaypointLegalname\": \"MiCasa Sports LLC\",\n      \"Source\": \"web\",\n      \"Status\": 2,\n      \"Terms\": \"Net30\",\n      \"TotalAmount\": 200,\n      \"Transaction\": null,\n      \"Vendor\": {\n        \"Address1\": \"1234 Liberdad St.\",\n        \"Address2\": \"Suite 100\",\n        \"BillingData\": {\n          \"accountNumber\": \"12345XXXX\",\n          \"bankAccountFunction\": 0,\n          \"bankAccountHolderName\": \"Elena Gomez\",\n          \"bankAccountHolderType\": \"Business\",\n          \"bankName\": \"Michigan Savings Bank\",\n          \"id\": 0,\n          \"routingAccount\": \"072000326\",\n          \"typeAccount\": \"Checking\"\n        },\n        \"City\": \"Detroit\",\n        \"Country\": \"US\",\n        \"EIN\": \"XXXXX6789\",\n        \"Email\": \"elenag@industriesexample.com\",\n        \"InternalReferenceId\": 1215,\n        \"Mcc\": \"700\",\n        \"Name1\": \"Gomez-Radulescu Industries\",\n        \"Name2\": \"Elena\",\n        \"Phone\": \"517-555-0123\",\n        \"State\": \"MI\",\n        \"VendorId\": 8723,\n        \"VendorNumber\": \"MI-vendor-2024031926\",\n        \"VendorStatus\": 1,\n        \"Zip\": \"48201\"\n      }\n    }\n  ]\n}",
+        "body": "{\n  \"Summary\": {\n    \"pageidentifier\": null,\n    \"pageSize\": 20,\n    \"total2approval\": 1,\n    \"totalactive\": 1,\n    \"totalAmount\": 1.1,\n    \"totalamount2approval\": 1.1,\n    \"totalamountactive\": 1.1,\n    \"totalamountapproved\": 1.1,\n    \"totalamountcancel\": 1.1,\n    \"totalamountdisapproved\": 1.1,\n    \"totalamountintransit\": 1.1,\n    \"totalamountoverdue\": 1.1,\n    \"totalamountpaid\": 1.1,\n    \"totalamountsent2approval\": 1.1,\n    \"totalapproved\": 1,\n    \"totalcancel\": 1,\n    \"totaldisapproved\": 1,\n    \"totalintransit\": 1,\n    \"totaloverdue\": 1,\n    \"totalPages\": 1,\n    \"totalpaid\": 1,\n    \"totalRecords\": 2,\n    \"totalsent2approval\": 1\n  },\n  \"Records\": [\n    {\n      \"AdditionalData\": null,\n      \"billApprovals\": [\n        {\n          \"approved\": 0,\n          \"approvedTime\": \"2024-03-13T15:54:27Z\",\n          \"email\": \"lisandra@example.com\",\n          \"Id\": 34\n        },\n        {\n          \"approved\": 0,\n          \"approvedTime\": \"2024-03-13T15:54:27Z\",\n          \"email\": \"jccastillo@example.com\",\n          \"Id\": 293\n        }\n      ],\n      \"BillDate\": \"2025-03-10\",\n      \"billEvents\": [\n        {\n          \"description\": \"Created Bill\",\n          \"eventTime\": \"2024-03-13T15:54:26Z\",\n          \"refData\": \"00-45e1c2d8b53b72fafc4082f374e68753-ffea4ba4c2ce63ce-00\"\n        },\n        {\n          \"description\": \"Sent to Approval\",\n          \"eventTime\": \"2024-03-13T15:54:28Z\",\n          \"refData\": \"00-086a951822211bc2eb1803ed64db9d4f-0f07e0e8c394e481-00\"\n        }\n      ],\n      \"BillItems\": [\n        {\n          \"itemCommodityCode\": \"Commod-MI-2024031926\",\n          \"itemCost\": 200,\n          \"itemDescription\": \"Consultation price\",\n          \"itemMode\": 0,\n          \"itemProductCode\": \"Prod-MI-2024031926\",\n          \"itemProductName\": \"Consultation\",\n          \"itemQty\": 1,\n          \"itemTaxAmount\": 0,\n          \"itemTaxRate\": 0,\n          \"itemTotalAmount\": 200,\n          \"itemUnitOfMeasure\": \"per each\"\n        }\n      ],\n      \"BillNumber\": \"MI-bill-2024031926\",\n      \"Comments\": \"PAYBILL\",\n      \"CreatedAt\": \"2024-03-13T15:54:26Z\",\n      \"Discount\": 0,\n      \"DocumentsRef\": null,\n      \"DueDate\": \"2025-03-10\",\n      \"EndDate\": null,\n      \"EntityID\": null,\n      \"externalPaypointID\": \"micasa-10\",\n      \"Frequency\": \"onetime\",\n      \"IdBill\": 6104,\n      \"LastUpdated\": \"2024-03-13T10:54:26Z\",\n      \"LotNumber\": \"LOT123\",\n      \"Mode\": 0,\n      \"NetAmount\": 200,\n      \"ParentOrgId\": 1001,\n      \"ParentOrgName\": \"Fitness Hub\",\n      \"PaymentId\": null,\n      \"PaymentMethod\": null,\n      \"paylinkId\": null,\n      \"PaypointDbaname\": \"MiCasa Sports\",\n      \"PaypointEntryname\": \"micasa\",\n      \"PaypointLegalname\": \"MiCasa Sports LLC\",\n      \"Source\": \"web\",\n      \"Status\": 2,\n      \"Terms\": \"NET30\",\n      \"TotalAmount\": 200,\n      \"Transaction\": null,\n      \"Vendor\": {\n        \"Address1\": \"1234 Liberdad St.\",\n        \"Address2\": \"Suite 100\",\n        \"BillingData\": {\n          \"accountNumber\": \"12345XXXX\",\n          \"bankAccountFunction\": 0,\n          \"bankAccountHolderName\": \"Elena Gomez\",\n          \"bankAccountHolderType\": \"Business\",\n          \"bankName\": \"Michigan Savings Bank\",\n          \"id\": 0,\n          \"routingAccount\": \"072000326\",\n          \"typeAccount\": \"Checking\"\n        },\n        \"City\": \"Detroit\",\n        \"Country\": \"US\",\n        \"EIN\": \"XXXXX6789\",\n        \"Email\": \"elenag@industriesexample.com\",\n        \"InternalReferenceId\": 1215,\n        \"Mcc\": \"700\",\n        \"Name1\": \"Gomez-Radulescu Industries\",\n        \"Name2\": \"Elena\",\n        \"Phone\": \"517-555-0123\",\n        \"State\": \"MI\",\n        \"VendorId\": 8723,\n        \"VendorNumber\": \"MI-vendor-2024031926\",\n        \"VendorStatus\": 1,\n        \"Zip\": \"48201\"\n      }\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -322,8 +322,8 @@
       }
     },
     {
-      "id": "8ad4bbe3-1f88-452a-bf7b-f34c8dc91b49",
-      "name": "Change bill approvers - default",
+      "id": "07639b50-478b-47e7-9b6a-e60420cd1c73",
+      "name": "Change bill approvers - ChangeApprovers",
       "request": {
         "urlPathTemplate": "/Bill/approval/{idBill}",
         "method": "PUT",
@@ -345,7 +345,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "8ad4bbe3-1f88-452a-bf7b-f34c8dc91b49",
+      "uuid": "07639b50-478b-47e7-9b6a-e60420cd1c73",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -394,8 +394,8 @@
       }
     },
     {
-      "id": "94ac460f-cfed-4677-a218-ac2d909d5d82",
-      "name": "Approve or disapprove a bill - default",
+      "id": "e1753eb3-3086-4308-ba88-2f3d003f8420",
+      "name": "Approve or disapprove a bill - ApproveBill",
       "request": {
         "urlPathTemplate": "/Bill/approval/{idBill}/{approved}",
         "method": "GET",
@@ -420,7 +420,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "94ac460f-cfed-4677-a218-ac2d909d5d82",
+      "uuid": "e1753eb3-3086-4308-ba88-2f3d003f8420",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -970,7 +970,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"Id\": 201,\n  \"ChargebackDate\": \"2022-06-25T00:00:00Z\",\n  \"CaseNumber\": \"TZ45678\",\n  \"ReasonCode\": \"reasonCode\",\n  \"Reason\": \"Buyer dispute\",\n  \"ReferenceNumber\": \"referenceNumber\",\n  \"LastFour\": \"6789\",\n  \"AccountType\": \"visa\",\n  \"Status\": 1,\n  \"Method\": \"card\",\n  \"CreatedAt\": \"2022-07-01T15:00:01Z\",\n  \"ReplyBy\": \"2022-07-15T23:59:59Z\",\n  \"PaymentTransId\": \"226-fe55ec0348e34702bd91b4be198ce7ec\",\n  \"ScheduleReference\": 0,\n  \"OrderId\": \"O-5140\",\n  \"NetAmount\": 3762.87,\n  \"TransactionTime\": \"2024-01-15T09:30:00Z\",\n  \"Customer\": {\n    \"AdditionalData\": null,\n    \"BillingAddress1\": \"1111 West 1st Street\",\n    \"BillingAddress2\": \"Suite 200\",\n    \"BillingCity\": \"Miami\",\n    \"BillingCountry\": \"US\",\n    \"BillingEmail\": \"example@email.com\",\n    \"BillingPhone\": \"5555555555\",\n    \"BillingState\": \"FL\",\n    \"BillingZip\": \"45567\",\n    \"CompanyName\": \"Sunshine LLC\",\n    \"customerId\": 4440,\n    \"CustomerNumber\": \"3456-7645A\",\n    \"customerStatus\": 1,\n    \"FirstName\": \"John\",\n    \"Identifiers\": [\n      \"firstname\",\n      \"lastname\",\n      \"email\",\n      \"customId\"\n    ],\n    \"LastName\": \"Doe\",\n    \"ShippingAddress1\": \"123 Walnut St\",\n    \"ShippingAddress2\": \"STE 900\",\n    \"ShippingCity\": \"Johnson City\",\n    \"ShippingCountry\": \"US\",\n    \"ShippingState\": \"TN\",\n    \"ShippingZip\": \"37619\"\n  },\n  \"PaymentData\": {\n    \"AccountExp\": \"11/29\",\n    \"accountId\": \"accountId\",\n    \"AccountType\": \"visa\",\n    \"AccountZip\": \"90210\",\n    \"binData\": {\n      \"binMatchedLength\": \"6\",\n      \"binCardBrand\": \"Visa\",\n      \"binCardType\": \"Credit\",\n      \"binCardCategory\": \"PLATINUM\",\n      \"binCardIssuer\": \"Bank of Example\",\n      \"binCardIssuerCountry\": \"United States\",\n      \"binCardIssuerCountryCodeA2\": \"US\",\n      \"binCardIssuerCountryNumber\": \"840\",\n      \"binCardIsRegulated\": \"false\",\n      \"binCardUseCategory\": \"Consumer\",\n      \"binCardIssuerCountryCodeA3\": \"USA\"\n    },\n    \"HolderName\": \"Chad Mercia\",\n    \"Initiator\": \"payor\",\n    \"MaskedAccount\": \"4XXXXXXXX1111\",\n    \"orderDescription\": \"Depost for materials for 123 Walnut St\",\n    \"paymentDetails\": {\n      \"categories\": [\n        {\n          \"amount\": 1000,\n          \"label\": \"Deposit\"\n        }\n      ],\n      \"checkImage\": {\n        \"key\": \"value\"\n      },\n      \"checkNumber\": \"107\",\n      \"currency\": \"USD\",\n      \"serviceFee\": 0,\n      \"splitFunding\": [\n        {}\n      ],\n      \"totalAmount\": 100\n    },\n    \"Sequence\": \"subsequent\",\n    \"SignatureData\": \"SignatureData\",\n    \"StoredId\": \"1ec55af9-7b5a-4ff0-81ed-c12d2f95e135-4440\",\n    \"StoredMethodUsageType\": \"subscription\"\n  },\n  \"PaypointLegalname\": \"Sunshine Services, LLC\",\n  \"PaypointDbaname\": \"Sunshine Gutters\",\n  \"ParentOrgName\": \"PropertyManager Pro\",\n  \"ParentOrgId\": 123,\n  \"PaypointEntryname\": \"d193cf9a46\",\n  \"Responses\": [\n    {\n      \"contactEmail\": \"example@email.com\",\n      \"contactName\": \"John Doe\",\n      \"createdAt\": \"2022-07-01T15:00:01Z\",\n      \"id\": 672,\n      \"notes\": \"any note here\"\n    }\n  ],\n  \"Transaction\": {\n    \"AchHolderType\": \"personal\",\n    \"AchSecCode\": \"AchSecCode\",\n    \"BatchAmount\": 30.22,\n    \"BatchNumber\": \"batch_226_ach_12-30-2023\",\n    \"CfeeTransactions\": [\n      {\n        \"transactionTime\": \"2024-01-15T09:30:00Z\"\n      }\n    ],\n    \"ConnectorName\": \"gp\",\n    \"Customer\": {\n      \"AdditionalData\": null,\n      \"BillingAddress1\": \"1111 West 1st Street\",\n      \"BillingAddress2\": \"Suite 200\",\n      \"BillingCity\": \"Miami\",\n      \"BillingCountry\": \"US\",\n      \"BillingEmail\": \"example@email.com\",\n      \"BillingPhone\": \"5555555555\",\n      \"BillingState\": \"FL\",\n      \"BillingZip\": \"45567\",\n      \"CompanyName\": \"Sunshine LLC\",\n      \"customerId\": 4440,\n      \"CustomerNumber\": \"3456-7645A\",\n      \"customerStatus\": 1,\n      \"FirstName\": \"John\",\n      \"Identifiers\": [\n        \"firstname\",\n        \"lastname\",\n        \"email\",\n        \"customId\"\n      ],\n      \"LastName\": \"Doe\",\n      \"ShippingAddress1\": \"123 Walnut St\",\n      \"ShippingAddress2\": \"STE 900\",\n      \"ShippingCity\": \"Johnson City\",\n      \"ShippingCountry\": \"US\",\n      \"ShippingState\": \"TN\",\n      \"ShippingZip\": \"37619\"\n    },\n    \"DeviceId\": \"6c361c7d-674c-44cc-b790-382b75d1xxx\",\n    \"EntrypageId\": 0,\n    \"ExternalProcessorInformation\": \"[MER_xxxxxxxxxxxxxx]/[NNNNNNNNN]\",\n    \"FeeAmount\": 1,\n    \"GatewayTransId\": \"TRN_xwCAjQorWAYX1nAhAoHZVfN8iYHbI0\",\n    \"invoiceData\": {\n      \"AdditionalData\": null,\n      \"attachments\": [\n        {}\n      ],\n      \"company\": \"ACME, INC\",\n      \"discount\": 10,\n      \"dutyAmount\": 0,\n      \"firstName\": \"Chad\",\n      \"freightAmount\": 10,\n      \"frequency\": \"onetime\",\n      \"invoiceAmount\": 105,\n      \"invoiceDate\": \"2025-07-01\",\n      \"invoiceDueDate\": \"2025-07-01\",\n      \"invoiceEndDate\": \"2025-07-01\",\n      \"invoiceNumber\": \"INV-2345\",\n      \"invoiceStatus\": 1,\n      \"invoiceType\": 0,\n      \"items\": [\n        {\n          \"itemCost\": 5,\n          \"itemProductName\": \"Materials deposit\",\n          \"itemQty\": 1\n        }\n      ],\n      \"lastName\": \"Mercia\",\n      \"notes\": \"Example notes.\",\n      \"paymentTerms\": \"PIA\",\n      \"purchaseOrder\": \"PO-345\",\n      \"shippingAddress1\": \"123 Walnut St\",\n      \"shippingAddress2\": \"STE 900\",\n      \"shippingCity\": \"Johnson City\",\n      \"shippingCountry\": \"US\",\n      \"shippingEmail\": \"example@email.com\",\n      \"shippingFromZip\": \"30040\",\n      \"shippingPhone\": \"5555555555\",\n      \"shippingState\": \"TN\",\n      \"shippingZip\": \"37619\",\n      \"summaryCommodityCode\": \"501718\",\n      \"tax\": 2.05,\n      \"termsConditions\": \"Must be paid before work scheduled.\"\n    },\n    \"Method\": \"ach\",\n    \"NetAmount\": 3762.87,\n    \"Operation\": \"Sale\",\n    \"OrderId\": \"O-5140\",\n    \"OrgId\": 123,\n    \"ParentOrgName\": \"PropertyManager Pro\",\n    \"PaymentData\": {\n      \"AccountExp\": \"11/29\",\n      \"accountId\": \"accountId\",\n      \"AccountType\": \"visa\",\n      \"AccountZip\": \"90210\",\n      \"binData\": {\n        \"binMatchedLength\": \"6\",\n        \"binCardBrand\": \"Visa\",\n        \"binCardType\": \"Credit\",\n        \"binCardCategory\": \"PLATINUM\",\n        \"binCardIssuer\": \"Bank of Example\",\n        \"binCardIssuerCountry\": \"United States\",\n        \"binCardIssuerCountryCodeA2\": \"US\",\n        \"binCardIssuerCountryNumber\": \"840\",\n        \"binCardIsRegulated\": \"false\",\n        \"binCardUseCategory\": \"Consumer\",\n        \"binCardIssuerCountryCodeA3\": \"USA\"\n      },\n      \"HolderName\": \"Chad Mercia\",\n      \"Initiator\": \"payor\",\n      \"MaskedAccount\": \"4XXXXXXXX1111\",\n      \"orderDescription\": \"Depost for materials for 123 Walnut St\",\n      \"paymentDetails\": {\n        \"totalAmount\": 100\n      },\n      \"Sequence\": \"subsequent\",\n      \"SignatureData\": \"SignatureData\",\n      \"StoredId\": \"1ec55af9-7b5a-4ff0-81ed-c12d2f95e135-4440\",\n      \"StoredMethodUsageType\": \"subscription\"\n    },\n    \"PaymentTransId\": \"226-fe55ec0348e34702bd91b4be198ce7ec\",\n    \"PayorId\": 1551,\n    \"PaypointDbaname\": \"Sunshine Gutters\",\n    \"PaypointEntryname\": \"d193cf9a46\",\n    \"PaypointId\": 226,\n    \"PaypointLegalname\": \"Sunshine Services, LLC\",\n    \"PendingFeeAmount\": 2,\n    \"RefundId\": 0,\n    \"ResponseData\": {\n      \"authcode\": \"authcode\",\n      \"avsresponse\": \"avsresponse\",\n      \"avsresponse_text\": \"avsresponse_text\",\n      \"cvvresponse\": \"cvvresponse\",\n      \"cvvresponse_text\": \"cvvresponse_text\",\n      \"emv_auth_response_data\": \"emv_auth_response_data\",\n      \"orderid\": \"O-5140\",\n      \"response\": \"response\",\n      \"response_code\": \"XXX\",\n      \"response_code_text\": \"Transaction was approved.\",\n      \"responsetext\": \"CAPTURED\",\n      \"transactionid\": \"TRN_XXXXXGOa87juzW\",\n      \"type\": \"type\"\n    },\n    \"ReturnedId\": 0,\n    \"ScheduleReference\": 0,\n    \"SettlementStatus\": 2,\n    \"Source\": \"api\",\n    \"splitFundingInstructions\": [\n      {}\n    ],\n    \"splitCount\": 0,\n    \"TotalAmount\": 30.22,\n    \"TransactionEvents\": [\n      {}\n    ],\n    \"TransactionTime\": \"2025-10-19T00:00:00Z\",\n    \"TransAdditionalData\": {\n      \"key\": \"value\"\n    },\n    \"TransStatus\": 1\n  },\n  \"externalPaypointID\": null,\n  \"pageidentifier\": null,\n  \"messages\": [\n    {\n      \"Id\": 1,\n      \"RoomId\": 100,\n      \"UserId\": 555,\n      \"UserName\": \"John Admin\",\n      \"Content\": \"Chargeback initiated by customer\",\n      \"CreatedAt\": \"2022-06-25T10:30:00Z\",\n      \"MessageType\": 1,\n      \"MessageProperties\": {\n        \"status\": \"initial\"\n      }\n    }\n  ],\n  \"ServiceGroup\": \" \",\n  \"DisputeType\": \"chargeback\",\n  \"ProcessorName\": \"Global Payments\"\n}",
+        "body": "{\n  \"Id\": 201,\n  \"ChargebackDate\": \"2022-06-25T00:00:00Z\",\n  \"CaseNumber\": \"TZ45678\",\n  \"ReasonCode\": \"reasonCode\",\n  \"Reason\": \"Buyer dispute\",\n  \"ReferenceNumber\": \"referenceNumber\",\n  \"LastFour\": \"6789\",\n  \"AccountType\": \"visa\",\n  \"Status\": 1,\n  \"Method\": \"card\",\n  \"CreatedAt\": \"2022-07-01T15:00:01Z\",\n  \"ReplyBy\": \"2022-07-15T23:59:59Z\",\n  \"PaymentTransId\": \"226-fe55ec0348e34702bd91b4be198ce7ec\",\n  \"ScheduleReference\": 0,\n  \"OrderId\": \"O-5140\",\n  \"NetAmount\": 3762.87,\n  \"TransactionTime\": \"2024-01-15T09:30:00Z\",\n  \"Customer\": {\n    \"AdditionalData\": null,\n    \"BillingAddress1\": \"1111 West 1st Street\",\n    \"BillingAddress2\": \"Suite 200\",\n    \"BillingCity\": \"Miami\",\n    \"BillingCountry\": \"US\",\n    \"BillingEmail\": \"example@email.com\",\n    \"BillingPhone\": \"5555555555\",\n    \"BillingState\": \"FL\",\n    \"BillingZip\": \"45567\",\n    \"CompanyName\": \"Sunshine LLC\",\n    \"customerId\": 4440,\n    \"CustomerNumber\": \"3456-7645A\",\n    \"customerStatus\": 1,\n    \"FirstName\": \"John\",\n    \"Identifiers\": [\n      \"firstname\",\n      \"lastname\",\n      \"email\",\n      \"customId\"\n    ],\n    \"LastName\": \"Doe\",\n    \"ShippingAddress1\": \"123 Walnut St\",\n    \"ShippingAddress2\": \"STE 900\",\n    \"ShippingCity\": \"Johnson City\",\n    \"ShippingCountry\": \"US\",\n    \"ShippingState\": \"TN\",\n    \"ShippingZip\": \"37619\"\n  },\n  \"PaymentData\": {\n    \"AccountExp\": \"11/29\",\n    \"accountId\": \"accountId\",\n    \"AccountType\": \"visa\",\n    \"AccountZip\": \"90210\",\n    \"binData\": {\n      \"binMatchedLength\": \"6\",\n      \"binCardBrand\": \"Visa\",\n      \"binCardType\": \"Credit\",\n      \"binCardCategory\": \"PLATINUM\",\n      \"binCardIssuer\": \"Bank of Example\",\n      \"binCardIssuerCountry\": \"United States\",\n      \"binCardIssuerCountryCodeA2\": \"US\",\n      \"binCardIssuerCountryNumber\": \"840\",\n      \"binCardIsRegulated\": \"false\",\n      \"binCardUseCategory\": \"Consumer\",\n      \"binCardIssuerCountryCodeA3\": \"USA\"\n    },\n    \"HolderName\": \"Chad Mercia\",\n    \"Initiator\": \"payor\",\n    \"MaskedAccount\": \"4XXXXXXXX1111\",\n    \"orderDescription\": \"Deposit for materials for 123 Walnut St\",\n    \"paymentDetails\": {\n      \"categories\": [\n        {\n          \"amount\": 1000,\n          \"label\": \"Deposit\"\n        }\n      ],\n      \"checkImage\": {\n        \"key\": \"value\"\n      },\n      \"checkNumber\": \"107\",\n      \"currency\": \"USD\",\n      \"serviceFee\": 0,\n      \"splitFunding\": [\n        {}\n      ],\n      \"totalAmount\": 100\n    },\n    \"Sequence\": \"subsequent\",\n    \"SignatureData\": \"SignatureData\",\n    \"StoredId\": \"1ec55af9-7b5a-4ff0-81ed-c12d2f95e135-4440\",\n    \"StoredMethodUsageType\": \"subscription\"\n  },\n  \"PaypointLegalname\": \"Sunshine Services, LLC\",\n  \"PaypointDbaname\": \"Sunshine Gutters\",\n  \"ParentOrgName\": \"PropertyManager Pro\",\n  \"ParentOrgId\": 123,\n  \"PaypointEntryname\": \"d193cf9a46\",\n  \"Responses\": [\n    {\n      \"contactEmail\": \"example@email.com\",\n      \"contactName\": \"John Doe\",\n      \"createdAt\": \"2022-07-01T15:00:01Z\",\n      \"id\": 672,\n      \"notes\": \"any note here\"\n    }\n  ],\n  \"Transaction\": {\n    \"AchHolderType\": \"personal\",\n    \"AchSecCode\": \"AchSecCode\",\n    \"BatchAmount\": 30.22,\n    \"BatchNumber\": \"batch_226_ach_12-30-2023\",\n    \"CfeeTransactions\": [\n      {\n        \"transactionTime\": \"2024-01-15T09:30:00Z\"\n      }\n    ],\n    \"ConnectorName\": \"gp\",\n    \"Customer\": {\n      \"AdditionalData\": null,\n      \"BillingAddress1\": \"1111 West 1st Street\",\n      \"BillingAddress2\": \"Suite 200\",\n      \"BillingCity\": \"Miami\",\n      \"BillingCountry\": \"US\",\n      \"BillingEmail\": \"example@email.com\",\n      \"BillingPhone\": \"5555555555\",\n      \"BillingState\": \"FL\",\n      \"BillingZip\": \"45567\",\n      \"CompanyName\": \"Sunshine LLC\",\n      \"customerId\": 4440,\n      \"CustomerNumber\": \"3456-7645A\",\n      \"customerStatus\": 1,\n      \"FirstName\": \"John\",\n      \"Identifiers\": [\n        \"firstname\",\n        \"lastname\",\n        \"email\",\n        \"customId\"\n      ],\n      \"LastName\": \"Doe\",\n      \"ShippingAddress1\": \"123 Walnut St\",\n      \"ShippingAddress2\": \"STE 900\",\n      \"ShippingCity\": \"Johnson City\",\n      \"ShippingCountry\": \"US\",\n      \"ShippingState\": \"TN\",\n      \"ShippingZip\": \"37619\"\n    },\n    \"DeviceId\": \"6c361c7d-674c-44cc-b790-382b75d1xxx\",\n    \"EntrypageId\": 0,\n    \"ExternalProcessorInformation\": \"[MER_xxxxxxxxxxxxxx]/[NNNNNNNNN]\",\n    \"FeeAmount\": 1,\n    \"GatewayTransId\": \"TRN_xwCAjQorWAYX1nAhAoHZVfN8iYHbI0\",\n    \"invoiceData\": {\n      \"AdditionalData\": null,\n      \"attachments\": [\n        {}\n      ],\n      \"company\": \"ACME, INC\",\n      \"discount\": 10,\n      \"dutyAmount\": 0,\n      \"firstName\": \"Chad\",\n      \"freightAmount\": 10,\n      \"frequency\": \"onetime\",\n      \"invoiceAmount\": 105,\n      \"invoiceDate\": \"2025-07-01\",\n      \"invoiceDueDate\": \"2025-07-01\",\n      \"invoiceEndDate\": \"2025-07-01\",\n      \"invoiceNumber\": \"INV-2345\",\n      \"invoiceStatus\": 1,\n      \"invoiceType\": 0,\n      \"items\": [\n        {\n          \"itemCost\": 5,\n          \"itemProductName\": \"Materials deposit\",\n          \"itemQty\": 1\n        }\n      ],\n      \"lastName\": \"Mercia\",\n      \"notes\": \"Example notes.\",\n      \"paymentTerms\": \"PIA\",\n      \"purchaseOrder\": \"PO-345\",\n      \"shippingAddress1\": \"123 Walnut St\",\n      \"shippingAddress2\": \"STE 900\",\n      \"shippingCity\": \"Johnson City\",\n      \"shippingCountry\": \"US\",\n      \"shippingEmail\": \"example@email.com\",\n      \"shippingFromZip\": \"30040\",\n      \"shippingPhone\": \"5555555555\",\n      \"shippingState\": \"TN\",\n      \"shippingZip\": \"37619\",\n      \"summaryCommodityCode\": \"501718\",\n      \"tax\": 2.05,\n      \"termsConditions\": \"Must be paid before work scheduled.\"\n    },\n    \"Method\": \"ach\",\n    \"NetAmount\": 3762.87,\n    \"Operation\": \"Sale\",\n    \"OrderId\": \"O-5140\",\n    \"OrgId\": 123,\n    \"ParentOrgName\": \"PropertyManager Pro\",\n    \"PaymentData\": {\n      \"AccountExp\": \"11/29\",\n      \"accountId\": \"accountId\",\n      \"AccountType\": \"visa\",\n      \"AccountZip\": \"90210\",\n      \"binData\": {\n        \"binMatchedLength\": \"6\",\n        \"binCardBrand\": \"Visa\",\n        \"binCardType\": \"Credit\",\n        \"binCardCategory\": \"PLATINUM\",\n        \"binCardIssuer\": \"Bank of Example\",\n        \"binCardIssuerCountry\": \"United States\",\n        \"binCardIssuerCountryCodeA2\": \"US\",\n        \"binCardIssuerCountryNumber\": \"840\",\n        \"binCardIsRegulated\": \"false\",\n        \"binCardUseCategory\": \"Consumer\",\n        \"binCardIssuerCountryCodeA3\": \"USA\"\n      },\n      \"HolderName\": \"Chad Mercia\",\n      \"Initiator\": \"payor\",\n      \"MaskedAccount\": \"4XXXXXXXX1111\",\n      \"orderDescription\": \"Deposit for materials for 123 Walnut St\",\n      \"paymentDetails\": {\n        \"totalAmount\": 100\n      },\n      \"Sequence\": \"subsequent\",\n      \"SignatureData\": \"SignatureData\",\n      \"StoredId\": \"1ec55af9-7b5a-4ff0-81ed-c12d2f95e135-4440\",\n      \"StoredMethodUsageType\": \"subscription\"\n    },\n    \"PaymentTransId\": \"226-fe55ec0348e34702bd91b4be198ce7ec\",\n    \"PayorId\": 1551,\n    \"PaypointDbaname\": \"Sunshine Gutters\",\n    \"PaypointEntryname\": \"d193cf9a46\",\n    \"PaypointId\": 226,\n    \"PaypointLegalname\": \"Sunshine Services, LLC\",\n    \"PendingFeeAmount\": 2,\n    \"RefundId\": 0,\n    \"ResponseData\": {\n      \"authcode\": \"authcode\",\n      \"avsresponse\": \"avsresponse\",\n      \"avsresponse_text\": \"avsresponse_text\",\n      \"cvvresponse\": \"cvvresponse\",\n      \"cvvresponse_text\": \"cvvresponse_text\",\n      \"emv_auth_response_data\": \"emv_auth_response_data\",\n      \"orderid\": \"O-5140\",\n      \"response\": \"response\",\n      \"response_code\": \"XXX\",\n      \"response_code_text\": \"Transaction was approved.\",\n      \"responsetext\": \"CAPTURED\",\n      \"transactionid\": \"TRN_XXXXXGOa87juzW\",\n      \"type\": \"type\"\n    },\n    \"ReturnedId\": 0,\n    \"ScheduleReference\": 0,\n    \"SettlementStatus\": 2,\n    \"Source\": \"api\",\n    \"splitFundingInstructions\": [\n      {}\n    ],\n    \"splitCount\": 0,\n    \"TotalAmount\": 30.22,\n    \"TransactionEvents\": [\n      {}\n    ],\n    \"TransactionTime\": \"2025-10-19T00:00:00Z\",\n    \"TransAdditionalData\": {\n      \"key\": \"value\"\n    },\n    \"TransStatus\": 1\n  },\n  \"externalPaypointID\": null,\n  \"pageidentifier\": null,\n  \"messages\": [\n    {\n      \"Id\": 1,\n      \"RoomId\": 100,\n      \"UserId\": 555,\n      \"UserName\": \"John Admin\",\n      \"Content\": \"Chargeback initiated by customer\",\n      \"CreatedAt\": \"2022-06-25T10:30:00Z\",\n      \"MessageType\": 1,\n      \"MessageProperties\": {\n        \"status\": \"initial\"\n      }\n    }\n  ],\n  \"ServiceGroup\": \" \",\n  \"DisputeType\": \"chargeback\",\n  \"ProcessorName\": \"Global Payments\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -1280,8 +1280,8 @@
       }
     },
     {
-      "id": "1fc1f249-2b21-441e-9bbc-11071a503461",
-      "name": "Get customer record. - GetCustomer",
+      "id": "1256ccb4-6a50-4ad1-96de-fbdd131841d0",
+      "name": "Get customer record - GetCustomer",
       "request": {
         "urlPathTemplate": "/Customer/{customerId}",
         "method": "GET",
@@ -1303,7 +1303,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "1fc1f249-2b21-441e-9bbc-11071a503461",
+      "uuid": "1256ccb4-6a50-4ad1-96de-fbdd131841d0",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2937,7 +2937,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"isSuccess\": true,\n  \"responseText\": \"Success\",\n  \"responseData\": null\n}",
+        "body": "{\n  \"isSuccess\": true,\n  \"responseText\": \"Success\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2955,8 +2955,8 @@
       }
     },
     {
-      "id": "05f572b3-57eb-45eb-bb19-43398c95d7a0",
-      "name": "Get all payment page details - default",
+      "id": "9d0833f7-159b-4998-bc26-2b841ef6924c",
+      "name": "Get all payment page details - LoadPage",
       "request": {
         "urlPathTemplate": "/Paypoint/load/{entry}/{subdomain}",
         "method": "GET",
@@ -2981,7 +2981,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "05f572b3-57eb-45eb-bb19-43398c95d7a0",
+      "uuid": "9d0833f7-159b-4998-bc26-2b841ef6924c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -2994,8 +2994,8 @@
       }
     },
     {
-      "id": "6a4d3248-7ad4-4429-ac90-465f5ddc5dde",
-      "name": "Create payment page - default",
+      "id": "13de0fb2-ffa5-4677-a3a1-7f5dbf1d8f95",
+      "name": "Create payment page - NewPage",
       "request": {
         "urlPathTemplate": "/Paypoint/{entry}",
         "method": "POST",
@@ -3017,7 +3017,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "6a4d3248-7ad4-4429-ac90-465f5ddc5dde",
+      "uuid": "13de0fb2-ffa5-4677-a3a1-7f5dbf1d8f95",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -3464,7 +3464,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"Records\": [\n    {\n      \"invoiceId\": 3674,\n      \"customerId\": 1323,\n      \"paypointId\": 10,\n      \"invoiceNumber\": \"QA-1709680125\",\n      \"invoiceDate\": \"2025-03-05\",\n      \"invoiceDueDate\": \"2025-03-05\",\n      \"invoiceSentDate\": \"2025-03-05\",\n      \"invoiceEndDate\": \"2025-03-05\",\n      \"lastPaymentDate\": null,\n      \"createdAt\": \"2024-03-05T18:08:45Z\",\n      \"invoiceStatus\": 1,\n      \"invoiceType\": 0,\n      \"frequency\": \"onetime\",\n      \"paymentTerms\": \"N30\",\n      \"termsConditions\": null,\n      \"notes\": null,\n      \"tax\": 0,\n      \"discount\": 0,\n      \"invoiceAmount\": 50,\n      \"invoicePaidAmount\": 0,\n      \"freightAmount\": 0,\n      \"dutyAmount\": 0,\n      \"purchaseOrder\": null,\n      \"firstName\": \"Amirah\",\n      \"lastName\": \"Tan\",\n      \"company\": null,\n      \"shippingAddress1\": \"1234 Rainier Ave\",\n      \"shippingAddress2\": \"Apt 567\",\n      \"shippingCity\": \"Seattle\",\n      \"shippingState\": \"WA\",\n      \"shippingZip\": \"98101\",\n      \"shippingFromZip\": \"\",\n      \"shippingCountry\": \"US\",\n      \"shippingEmail\": \"amirah.tan@example.com\",\n      \"shippingPhone\": \"\",\n      \"summaryCommodityCode\": null,\n      \"items\": [\n        {\n          \"itemCost\": 50,\n          \"itemDescription\": \"service\",\n          \"itemProductName\": \"Internet\",\n          \"itemQty\": 1\n        }\n      ],\n      \"Customer\": {\n        \"AdditionalData\": {\n          \"key1\": \"value\",\n          \"key2\": \"value\",\n          \"key3\": \"value\"\n        },\n        \"BillingPhone\": \"1234567890\",\n        \"customerId\": 1323\n      },\n      \"paylinkId\": \"3674-cf15b881-f276-4b69-bdc8-841b2d123XXXXXX\",\n      \"billEvents\": [\n        {\n          \"description\": \"Invoice created\",\n          \"eventTime\": \"2024-03-05T23:08:45Z\",\n          \"refData\": \"00-802fa578504a7af6f3dd890a3802f7ef-61b4bedXXXX1234\"\n        }\n      ],\n      \"scheduledOptions\": null,\n      \"PaypointLegalname\": \"Emerald City LLC\",\n      \"PaypointDbaname\": \"Emerald City Trading\",\n      \"PaypointEntryname\": \"47a30009s\",\n      \"ParentOrgId\": 123,\n      \"ParentOrgName\": \"Emerald Enterprises\",\n      \"AdditionalData\": null,\n      \"DocumentsRef\": null,\n      \"externalPaypointID\": \"seattletrade01-10\",\n      \"pageIdentifier\": null\n    }\n  ],\n  \"Summary\": {\n    \"pageIdentifier\": \"null\",\n    \"pageSize\": 20,\n    \"totalAmount\": 77.22,\n    \"totalNetAmount\": 77.22,\n    \"totalPages\": 2,\n    \"totalRecords\": 2\n  }\n}",
+        "body": "{\n  \"Records\": [\n    {\n      \"invoiceId\": 3674,\n      \"customerId\": 1323,\n      \"paypointId\": 10,\n      \"invoiceNumber\": \"QA-1709680125\",\n      \"invoiceDate\": \"2025-03-05\",\n      \"invoiceDueDate\": \"2025-03-05\",\n      \"invoiceSentDate\": \"2025-03-05\",\n      \"invoiceEndDate\": \"2025-03-05\",\n      \"lastPaymentDate\": null,\n      \"createdAt\": \"2024-03-05T18:08:45Z\",\n      \"invoiceStatus\": 1,\n      \"invoiceType\": 0,\n      \"frequency\": \"onetime\",\n      \"paymentTerms\": \"NET30\",\n      \"termsConditions\": null,\n      \"notes\": null,\n      \"tax\": 0,\n      \"discount\": 0,\n      \"invoiceAmount\": 50,\n      \"invoicePaidAmount\": 0,\n      \"freightAmount\": 0,\n      \"dutyAmount\": 0,\n      \"purchaseOrder\": null,\n      \"firstName\": \"Amirah\",\n      \"lastName\": \"Tan\",\n      \"company\": null,\n      \"shippingAddress1\": \"1234 Rainier Ave\",\n      \"shippingAddress2\": \"Apt 567\",\n      \"shippingCity\": \"Seattle\",\n      \"shippingState\": \"WA\",\n      \"shippingZip\": \"98101\",\n      \"shippingFromZip\": \"\",\n      \"shippingCountry\": \"US\",\n      \"shippingEmail\": \"amirah.tan@example.com\",\n      \"shippingPhone\": \"\",\n      \"summaryCommodityCode\": null,\n      \"items\": [\n        {\n          \"itemCost\": 50,\n          \"itemDescription\": \"service\",\n          \"itemProductName\": \"Internet\",\n          \"itemQty\": 1\n        }\n      ],\n      \"Customer\": {\n        \"AdditionalData\": {\n          \"key1\": \"value\",\n          \"key2\": \"value\",\n          \"key3\": \"value\"\n        },\n        \"BillingPhone\": \"1234567890\",\n        \"customerId\": 1323\n      },\n      \"paylinkId\": \"3674-cf15b881-f276-4b69-bdc8-841b2d123XXXXXX\",\n      \"billEvents\": [\n        {\n          \"description\": \"Invoice created\",\n          \"eventTime\": \"2024-03-05T23:08:45Z\",\n          \"refData\": \"00-802fa578504a7af6f3dd890a3802f7ef-61b4bedXXXX1234\"\n        }\n      ],\n      \"scheduledOptions\": null,\n      \"PaypointLegalname\": \"Emerald City LLC\",\n      \"PaypointDbaname\": \"Emerald City Trading\",\n      \"PaypointEntryname\": \"47a30009s\",\n      \"ParentOrgId\": 123,\n      \"ParentOrgName\": \"Emerald Enterprises\",\n      \"AdditionalData\": null,\n      \"DocumentsRef\": null,\n      \"externalPaypointID\": \"seattletrade01-10\",\n      \"pageIdentifier\": null\n    }\n  ],\n  \"Summary\": {\n    \"pageIdentifier\": \"null\",\n    \"pageSize\": 20,\n    \"totalAmount\": 77.22,\n    \"totalNetAmount\": 77.22,\n    \"totalPages\": 2,\n    \"totalRecords\": 2\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -3511,7 +3511,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"Records\": [\n    {\n      \"billEvents\": [\n        {\n          \"description\": \"Invoice created\",\n          \"eventTime\": \"2024-03-05T23:08:45Z\",\n          \"refData\": \"00-802fa578504a7af6f3dd890a3802f7ef-61b4bedXXXX1234\"\n        }\n      ],\n      \"createdAt\": \"2024-03-05T18:08:45Z\",\n      \"Customer\": {\n        \"AdditionalData\": {\n          \"key1\": \"value\",\n          \"key2\": \"value\",\n          \"key3\": \"value\"\n        },\n        \"BillingPhone\": \"1234567890\",\n        \"customerId\": 1323\n      },\n      \"customerId\": 1323,\n      \"discount\": 0,\n      \"dutyAmount\": 0,\n      \"externalPaypointID\": \"seattletrade01-10\",\n      \"firstName\": \"Amirah\",\n      \"freightAmount\": 0,\n      \"frequency\": \"onetime\",\n      \"termsConditions\": null,\n      \"notes\": null,\n      \"invoiceAmount\": 50,\n      \"invoiceDate\": \"2025-03-05\",\n      \"invoiceDueDate\": \"2025-03-05\",\n      \"invoiceSentDate\": \"2025-03-05\",\n      \"invoiceEndDate\": \"2025-03-05\",\n      \"invoiceId\": 3674,\n      \"invoiceNumber\": \"QA-1709680125\",\n      \"invoicePaidAmount\": 0,\n      \"invoiceStatus\": 1,\n      \"invoiceType\": 0,\n      \"items\": [\n        {\n          \"itemCost\": 50,\n          \"itemDescription\": \"service\",\n          \"itemProductName\": \"Internet\",\n          \"itemQty\": 1\n        }\n      ],\n      \"lastName\": \"Tan\",\n      \"ParentOrgName\": \"Emerald Enterprises\",\n      \"ParentOrgId\": 123,\n      \"paylinkId\": \"3674-cf15b881-f276-4b69-bdc8-841b2d123XXXXXX\",\n      \"paymentTerms\": \"N30\",\n      \"PaypointDbaname\": \"Emerald City Trading\",\n      \"PaypointEntryname\": \"47a30009s\",\n      \"paypointId\": 10,\n      \"PaypointLegalname\": \"Emerald City LLC\",\n      \"shippingAddress1\": \"1234 Rainier Ave\",\n      \"shippingAddress2\": \"Apt 567\",\n      \"shippingCity\": \"Seattle\",\n      \"shippingCountry\": \"US\",\n      \"shippingEmail\": \"amirah.tan@example.com\",\n      \"shippingFromZip\": \"\",\n      \"shippingPhone\": \"\",\n      \"shippingState\": \"WA\",\n      \"shippingZip\": \"98101\",\n      \"tax\": 0\n    }\n  ],\n  \"Summary\": {\n    \"pageIdentifier\": \"null\",\n    \"pageSize\": 20,\n    \"totalAmount\": 77.22,\n    \"totalNetAmount\": 77.22,\n    \"totalPages\": 2,\n    \"totalRecords\": 2\n  }\n}",
+        "body": "{\n  \"Records\": [\n    {\n      \"billEvents\": [\n        {\n          \"description\": \"Invoice created\",\n          \"eventTime\": \"2024-03-05T23:08:45Z\",\n          \"refData\": \"00-802fa578504a7af6f3dd890a3802f7ef-61b4bedXXXX1234\"\n        }\n      ],\n      \"createdAt\": \"2024-03-05T18:08:45Z\",\n      \"Customer\": {\n        \"AdditionalData\": {\n          \"key1\": \"value\",\n          \"key2\": \"value\",\n          \"key3\": \"value\"\n        },\n        \"BillingPhone\": \"1234567890\",\n        \"customerId\": 1323\n      },\n      \"customerId\": 1323,\n      \"discount\": 0,\n      \"dutyAmount\": 0,\n      \"externalPaypointID\": \"seattletrade01-10\",\n      \"firstName\": \"Amirah\",\n      \"freightAmount\": 0,\n      \"frequency\": \"onetime\",\n      \"termsConditions\": null,\n      \"notes\": null,\n      \"invoiceAmount\": 50,\n      \"invoiceDate\": \"2025-03-05\",\n      \"invoiceDueDate\": \"2025-03-05\",\n      \"invoiceSentDate\": \"2025-03-05\",\n      \"invoiceEndDate\": \"2025-03-05\",\n      \"invoiceId\": 3674,\n      \"invoiceNumber\": \"QA-1709680125\",\n      \"invoicePaidAmount\": 0,\n      \"invoiceStatus\": 1,\n      \"invoiceType\": 0,\n      \"items\": [\n        {\n          \"itemCost\": 50,\n          \"itemDescription\": \"service\",\n          \"itemProductName\": \"Internet\",\n          \"itemQty\": 1\n        }\n      ],\n      \"lastName\": \"Tan\",\n      \"ParentOrgName\": \"Emerald Enterprises\",\n      \"ParentOrgId\": 123,\n      \"paylinkId\": \"3674-cf15b881-f276-4b69-bdc8-841b2d123XXXXXX\",\n      \"paymentTerms\": \"NET30\",\n      \"PaypointDbaname\": \"Emerald City Trading\",\n      \"PaypointEntryname\": \"47a30009s\",\n      \"paypointId\": 10,\n      \"PaypointLegalname\": \"Emerald City LLC\",\n      \"shippingAddress1\": \"1234 Rainier Ave\",\n      \"shippingAddress2\": \"Apt 567\",\n      \"shippingCity\": \"Seattle\",\n      \"shippingCountry\": \"US\",\n      \"shippingEmail\": \"amirah.tan@example.com\",\n      \"shippingFromZip\": \"\",\n      \"shippingPhone\": \"\",\n      \"shippingState\": \"WA\",\n      \"shippingZip\": \"98101\",\n      \"tax\": 0\n    }\n  ],\n  \"Summary\": {\n    \"pageIdentifier\": \"null\",\n    \"pageSize\": 20,\n    \"totalAmount\": 77.22,\n    \"totalNetAmount\": 77.22,\n    \"totalPages\": 2,\n    \"totalRecords\": 2\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -3699,7 +3699,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"createdAt\": \"2022-07-01T15:00:01Z\",\n  \"id\": 45,\n  \"itemCategories\": [\n    \"itemCategories\"\n  ],\n  \"itemCommodityCode\": \"010\",\n  \"itemCost\": 5,\n  \"itemDescription\": \"Deposit for materials.\",\n  \"itemMode\": 0,\n  \"itemProductCode\": \"M-DEPOSIT\",\n  \"itemProductName\": \"Materials deposit\",\n  \"itemQty\": 1,\n  \"itemUnitOfMeasure\": \"SqFt\",\n  \"lastUpdated\": \"2022-07-01T15:00:01Z\",\n  \"pageidentifier\": \"null\",\n  \"ParentOrgName\": \"PropertyManager Pro\",\n  \"PaypointDbaname\": \"Sunshine Gutters\",\n  \"PaypointEntryname\": \"d193cf9a46\",\n  \"PaypointLegalname\": \"Sunshine Services, LLC\"\n}",
+        "body": "{\n  \"createdAt\": \"2022-07-01T15:00:01Z\",\n  \"id\": 700,\n  \"itemCategories\": [\n    \"itemCategories\"\n  ],\n  \"itemCommodityCode\": \"010\",\n  \"itemCost\": 5,\n  \"itemDescription\": \"Deposit for materials.\",\n  \"itemMode\": 0,\n  \"itemProductCode\": \"M-DEPOSIT\",\n  \"itemProductName\": \"Materials deposit\",\n  \"itemQty\": 1,\n  \"itemUnitOfMeasure\": \"SqFt\",\n  \"lastUpdated\": \"2022-07-01T15:00:01Z\",\n  \"pageidentifier\": \"null\",\n  \"ParentOrgName\": \"PropertyManager Pro\",\n  \"PaypointDbaname\": \"Sunshine Gutters\",\n  \"PaypointEntryname\": \"d193cf9a46\",\n  \"PaypointLegalname\": \"Sunshine Services, LLC\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4551,7 +4551,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"isSuccess\": true,\n  \"pageIdentifier\": \"null\",\n  \"responseCode\": 1,\n  \"responseData\": [\n    {\n      \"CustomerId\": 1000000,\n      \"ReferenceId\": \"129-230\",\n      \"ResultCode\": 1,\n      \"ResultText\": \"Cancelled\"\n    },\n    {\n      \"CustomerId\": 1000000,\n      \"ReferenceId\": \"129-219\",\n      \"ResultCode\": 1,\n      \"ResultText\": \"Cancelled\"\n    }\n  ],\n  \"responseText\": \"Success\"\n}",
+        "body": "{\n  \"isSuccess\": true,\n  \"pageIdentifier\": null,\n  \"responseCode\": 1,\n  \"responseData\": [\n    {\n      \"CustomerId\": 1000000,\n      \"ReferenceId\": \"129-230\",\n      \"ResultCode\": 1,\n      \"ResultText\": \"Cancelled\"\n    },\n    {\n      \"CustomerId\": 1000000,\n      \"ReferenceId\": \"129-219\",\n      \"ResultCode\": 1,\n      \"ResultText\": \"Cancelled\"\n    }\n  ],\n  \"responseText\": \"Success\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4654,7 +4654,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"isSuccess\": true,\n  \"pageIdentifier\": \"null\",\n  \"responseCode\": 1,\n  \"responseData\": [\n    {\n      \"CustomerId\": 1000000,\n      \"ReferenceId\": \"129-230\",\n      \"ResultCode\": 1,\n      \"ResultText\": \"Captured\"\n    },\n    {\n      \"CustomerId\": 1000000,\n      \"ReferenceId\": \"129-219\",\n      \"ResultCode\": 1,\n      \"ResultText\": \"Captured\"\n    }\n  ],\n  \"responseText\": \"Success\"\n}",
+        "body": "{\n  \"isSuccess\": true,\n  \"pageIdentifier\": null,\n  \"responseCode\": 1,\n  \"responseData\": [\n    {\n      \"CustomerId\": 1000000,\n      \"ReferenceId\": \"129-230\",\n      \"ResultCode\": 1,\n      \"ResultText\": \"Captured\"\n    },\n    {\n      \"CustomerId\": 1000000,\n      \"ReferenceId\": \"129-219\",\n      \"ResultCode\": 1,\n      \"ResultText\": \"Captured\"\n    }\n  ],\n  \"responseText\": \"Success\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4829,7 +4829,7 @@
       },
       "response": {
         "status": 200,
-        "body": "\"%PDF-1.7\\n%����\\n123 0 obj\\n<</Linearized 1/L 123456/O 125/E 78901/N 1/T 123450/H [ 800 200]>>\\nendobj\\n\\n124 0 obj\\n<</DecodeParms<</Columns 4/Predictor 12>>/Filter/FlateDecode/ID[<AB123C4567EF890123456789ABCDEF01><12345678ABCDEF9876543210FEDCBA98>]/Index[123 100]/Info 122 0 R/Length 128/Prev 123450/Root 125 0 R/Size 223/Type/XRef/W[1 3 1]>>stream\\nh�bbd```b``�\\n\\\"x�a7�r�H~�����A�D���2����m�f��L`v6�H����D���J[@����H8�I��)0��q� XD��`��a���P�`�`��\\\"�A$������r���p�$�Ip������a� �\"",
+        "body": "\"JVBERi0xLjcKJeLjz9MKMTIzIDAgb2JqCjwvTGluZWFyaXplZCAxL0wgMTIzNDU2L08gMTI1L0UgNzg5MDEvTiAxL1QgMTIzNDUwL0ggWyA4MDAgMjAwXT4+CmVuZG9iagouLi4=\"",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -5061,8 +5061,8 @@
       }
     },
     {
-      "id": "9e278441-2a49-4567-97c2-5e546f8a9bc2",
-      "name": "Export Generated Report by ID - default",
+      "id": "774d9ccd-9966-4d6f-a2bc-c2ab4f3e4fc9",
+      "name": "Export generated report by ID - default",
       "request": {
         "urlPathTemplate": "/Export/notificationReport/{Id}",
         "method": "GET",
@@ -5084,7 +5084,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "9e278441-2a49-4567-97c2-5e546f8a9bc2",
+      "uuid": "774d9ccd-9966-4d6f-a2bc-c2ab4f3e4fc9",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -5097,8 +5097,8 @@
       }
     },
     {
-      "id": "4cfbb2a6-35c1-40d9-90be-87a6b526a87b",
-      "name": "searchNotificationLogs - default",
+      "id": "9b039aa6-2f47-47a6-be42-540e814507db",
+      "name": "searchNotificationLogs - SearchNotificationLogsExample",
       "request": {
         "urlPathTemplate": "/v2/notificationlogs",
         "method": "POST",
@@ -5120,7 +5120,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "4cfbb2a6-35c1-40d9-90be-87a6b526a87b",
+      "uuid": "9b039aa6-2f47-47a6-be42-540e814507db",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -5133,8 +5133,8 @@
       }
     },
     {
-      "id": "51e77c39-8d67-48b8-8242-a6ece74893cd",
-      "name": "getNotificationLog - default",
+      "id": "9b80bd44-31fb-42c7-9a92-05b42c10eafc",
+      "name": "getNotificationLog - GetNotificationLogExample",
       "request": {
         "urlPathTemplate": "/v2/notificationlogs/{uuid}",
         "method": "GET",
@@ -5156,7 +5156,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "51e77c39-8d67-48b8-8242-a6ece74893cd",
+      "uuid": "9b80bd44-31fb-42c7-9a92-05b42c10eafc",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -5169,8 +5169,8 @@
       }
     },
     {
-      "id": "68587340-536f-47e3-ae52-6f9742bc8bce",
-      "name": "retryNotificationLog - default",
+      "id": "b4d107ea-2b78-464f-acc4-d25809fa451c",
+      "name": "retryNotificationLog - RetryNotificationLogExample",
       "request": {
         "urlPathTemplate": "/v2/notificationlogs/{uuid}/retry",
         "method": "GET",
@@ -5192,7 +5192,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "68587340-536f-47e3-ae52-6f9742bc8bce",
+      "uuid": "b4d107ea-2b78-464f-acc4-d25809fa451c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -5205,8 +5205,8 @@
       }
     },
     {
-      "id": "950bc47f-eb3f-4269-98d8-58e0164ff967",
-      "name": "bulkRetryNotificationLogs - default",
+      "id": "58f12b85-65d2-45a2-af58-c0bd4669f45a",
+      "name": "bulkRetryNotificationLogs - BulkRetryNotificationLogsExample",
       "request": {
         "urlPathTemplate": "/v2/notificationlogs/retry",
         "method": "POST",
@@ -5223,7 +5223,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "950bc47f-eb3f-4269-98d8-58e0164ff967",
+      "uuid": "58f12b85-65d2-45a2-af58-c0bd4669f45a",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -6478,8 +6478,8 @@
       }
     },
     {
-      "id": "0d35c54e-4b4b-439c-9eb6-166d4c837a66",
-      "name": "Get payment page details - default",
+      "id": "ca0603f3-ee96-499d-a303-c80d195b491c",
+      "name": "Get payment page details - GetPage",
       "request": {
         "urlPathTemplate": "/Paypoint/{entry}/{subdomain}",
         "method": "GET",
@@ -6504,7 +6504,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "0d35c54e-4b4b-439c-9eb6-166d4c837a66",
+      "uuid": "ca0603f3-ee96-499d-a303-c80d195b491c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -6517,8 +6517,8 @@
       }
     },
     {
-      "id": "f78a2929-68a7-42e8-bbb3-e680153883a3",
-      "name": "Delete a payment page - default",
+      "id": "5c039598-e782-4de0-8f37-8ee4827f299e",
+      "name": "Delete a payment page - RemovePage",
       "request": {
         "urlPathTemplate": "/Paypoint/{entry}/{subdomain}",
         "method": "DELETE",
@@ -6543,7 +6543,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "f78a2929-68a7-42e8-bbb3-e680153883a3",
+      "uuid": "5c039598-e782-4de0-8f37-8ee4827f299e",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -6556,8 +6556,8 @@
       }
     },
     {
-      "id": "63eef161-554f-4ec0-aa67-9c7050ebeb0f",
-      "name": "Update paypoint logo - default",
+      "id": "9932ce4e-0be4-40d9-826d-0b66afb41c87",
+      "name": "Update paypoint logo - SaveLogo",
       "request": {
         "urlPathTemplate": "/Paypoint/logo/{entry}",
         "method": "PUT",
@@ -6579,7 +6579,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "63eef161-554f-4ec0-aa67-9c7050ebeb0f",
+      "uuid": "9932ce4e-0be4-40d9-826d-0b66afb41c87",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -6847,8 +6847,8 @@
       }
     },
     {
-      "id": "4e0041ed-05b7-48a2-8c8b-f55a37e6bac0",
-      "name": "Get list of MoneyOut batches for a paypoint - default",
+      "id": "70e86fd0-0664-4735-88c8-7ac1d97f5dfd",
+      "name": "Get list of MoneyOut batches for a paypoint - ListBatchesOutExample",
       "request": {
         "urlPathTemplate": "/Query/batchesOut/{entry}",
         "method": "GET",
@@ -6881,7 +6881,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "4e0041ed-05b7-48a2-8c8b-f55a37e6bac0",
+      "uuid": "70e86fd0-0664-4735-88c8-7ac1d97f5dfd",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -6894,8 +6894,8 @@
       }
     },
     {
-      "id": "08874cc2-5906-4d5a-839d-cbfc5e1e0ebd",
-      "name": "Get list of MoneyOut batches for an org - default",
+      "id": "1425b962-825b-42ac-ba6d-a60da01069fd",
+      "name": "Get list of MoneyOut batches for an org - ListBatchesOutOrgExample",
       "request": {
         "urlPathTemplate": "/Query/batchesOut/org/{orgId}",
         "method": "GET",
@@ -6928,7 +6928,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "08874cc2-5906-4d5a-839d-cbfc5e1e0ebd",
+      "uuid": "1425b962-825b-42ac-ba6d-a60da01069fd",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -6988,8 +6988,8 @@
       }
     },
     {
-      "id": "f12c8b81-ce93-44a5-9b03-c9f5409ca180",
-      "name": "Get list of chargebacks and returned transactions for an org - default",
+      "id": "bebac268-c543-4b5b-8a9b-6d2e9267164c",
+      "name": "Get list of chargebacks and returned transactions for an org - ListChargebacksOrgExample",
       "request": {
         "urlPathTemplate": "/Query/chargebacks/org/{orgId}",
         "method": "GET",
@@ -7022,7 +7022,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "f12c8b81-ce93-44a5-9b03-c9f5409ca180",
+      "uuid": "bebac268-c543-4b5b-8a9b-6d2e9267164c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -7411,8 +7411,8 @@
       }
     },
     {
-      "id": "71dfc12b-d344-42e1-b00a-70289cdeff4e",
-      "name": "Get list of organizations for a parent - default",
+      "id": "21895e17-46d6-4e99-a615-bc89ec8e3d37",
+      "name": "Get list of organizations for a parent - ListOrganizationsExample",
       "request": {
         "urlPathTemplate": "/Query/organizations/{orgId}",
         "method": "GET",
@@ -7445,7 +7445,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "71dfc12b-d344-42e1-b00a-70289cdeff4e",
+      "uuid": "21895e17-46d6-4e99-a615-bc89ec8e3d37",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -7458,8 +7458,8 @@
       }
     },
     {
-      "id": "d197a878-3593-4ed8-9ef2-f16f320894cd",
-      "name": "Get list of money out transactions for paypoint - default",
+      "id": "e1f2e2ad-ea4a-4210-bdb7-08a857643567",
+      "name": "Get list of money out transactions for paypoint - ListPayoutExample",
       "request": {
         "urlPathTemplate": "/Query/payouts/{entry}",
         "method": "GET",
@@ -7492,7 +7492,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "d197a878-3593-4ed8-9ef2-f16f320894cd",
+      "uuid": "e1f2e2ad-ea4a-4210-bdb7-08a857643567",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -7552,8 +7552,8 @@
       }
     },
     {
-      "id": "56294fc1-3f22-460d-850a-c20deb2bf1e0",
-      "name": "Get list of paypoints for an organization - default",
+      "id": "798d0ef8-c03f-499a-8513-78ccf1c9b0fa",
+      "name": "Get list of paypoints for an organization - ListPaypointsExample",
       "request": {
         "urlPathTemplate": "/Query/paypoints/{orgId}",
         "method": "GET",
@@ -7586,7 +7586,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "56294fc1-3f22-460d-850a-c20deb2bf1e0",
+      "uuid": "798d0ef8-c03f-499a-8513-78ccf1c9b0fa",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -8212,8 +8212,8 @@
       }
     },
     {
-      "id": "1734854f-da86-4aae-aaff-52143e0063d5",
-      "name": "Get list of users for an org - default",
+      "id": "b1d7e137-b968-4e1a-97d7-bc0829026d9b",
+      "name": "Get list of users for an org - ListUsersOrgExample",
       "request": {
         "urlPathTemplate": "/Query/users/org/{orgId}",
         "method": "GET",
@@ -8246,7 +8246,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "1734854f-da86-4aae-aaff-52143e0063d5",
+      "uuid": "b1d7e137-b968-4e1a-97d7-bc0829026d9b",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -8259,8 +8259,8 @@
       }
     },
     {
-      "id": "3cc315cb-e80e-4dda-8588-453a93f02cf2",
-      "name": "Get list of users for paypoint - default",
+      "id": "e6081602-6127-420a-bbc5-c58cbb5ba869",
+      "name": "Get list of users for paypoint - ListUsersPaypointExample",
       "request": {
         "urlPathTemplate": "/Query/users/point/{entry}",
         "method": "GET",
@@ -8293,7 +8293,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "3cc315cb-e80e-4dda-8588-453a93f02cf2",
+      "uuid": "e6081602-6127-420a-bbc5-c58cbb5ba869",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -8606,17 +8606,17 @@
             "equalTo": "m"
           },
           "level": {
-            "equalTo": "1"
+            "equalTo": "2"
           },
           "mode": {
-            "equalTo": "ytd"
+            "equalTo": "custom"
           }
         },
         "queryParameters": {
-          "endDate": {
+          "startDate": {
             "equalTo": "2025-11-01"
           },
-          "startDate": {
+          "endDate": {
             "equalTo": "2025-11-30"
           }
         }
@@ -8701,7 +8701,7 @@
             "equalTo": "30"
           },
           "level": {
-            "equalTo": "1"
+            "equalTo": "2"
           }
         }
       },
@@ -9095,8 +9095,8 @@
       }
     },
     {
-      "id": "0aa5bc30-2a04-4b97-81c5-20d29cfa8d83",
-      "name": "Get payment method - Example tokenstorage GET with card payment method",
+      "id": "d843218e-1847-43e8-9b06-5d6ce1666dc7",
+      "name": "Get payment method - GetCardMethod",
       "request": {
         "urlPathTemplate": "/TokenStorage/{methodId}",
         "method": "GET",
@@ -9126,7 +9126,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "0aa5bc30-2a04-4b97-81c5-20d29cfa8d83",
+      "uuid": "d843218e-1847-43e8-9b06-5d6ce1666dc7",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -9407,8 +9407,8 @@
       }
     },
     {
-      "id": "d4f70dd1-4d6a-4af4-afac-19a8ae3d776c",
-      "name": "Enable/ disable MFA for User in an Organization - default",
+      "id": "47be99fa-1c61-4ff7-a4cd-e43225bccde2",
+      "name": "Enable/disable MFA for user in an organization - default",
       "request": {
         "urlPathTemplate": "/User/mfa/{userId}",
         "method": "PUT",
@@ -9430,7 +9430,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "d4f70dd1-4d6a-4af4-afac-19a8ae3d776c",
+      "uuid": "47be99fa-1c61-4ff7-a4cd-e43225bccde2",
       "persistent": true,
       "priority": 3,
       "metadata": {

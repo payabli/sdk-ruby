@@ -160,7 +160,7 @@ module Payabli
         end
       end
 
-      # Gets an organizations basic details by org ID.
+      # Gets an organization's basic details by org ID.
       #
       # @param request_options [Hash]
       # @param params [Hash]

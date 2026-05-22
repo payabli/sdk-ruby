@@ -117,7 +117,7 @@ module Payabli
         end
       end
 
-      # Gets the details for single payment page for a paypoint.
+      # Gets the details for a single payment page for a paypoint.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -222,7 +222,7 @@ module Payabli
         end
       end
 
-      # Retrieves an paypoint's basic settings like custom fields, identifiers, and invoicing settings.
+      # Retrieves a paypoint's basic settings like custom fields, identifiers, and invoicing settings.
       #
       # @param request_options [Hash]
       # @param params [Hash]

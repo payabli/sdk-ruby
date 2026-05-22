@@ -77,7 +77,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::Types::QueryResponseSettlements]
+      # @return [Payabli::QueryTypes::Types::QueryBatchesDetailResponse]
       def list_batch_details_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -101,7 +101,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::QueryResponseSettlements.load(response.body)
+          Payabli::QueryTypes::Types::QueryBatchesDetailResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

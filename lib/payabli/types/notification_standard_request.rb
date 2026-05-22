@@ -2,7 +2,7 @@
 
 module Payabli
   module Types
-    # Information about the standard notification configuration (email, sms, web).
+    # Information about the standard notification configuration (email, SMS, web).
     class NotificationStandardRequest < Internal::Types::Model
       field :content, -> { Payabli::Types::NotificationStandardRequestContent }, optional: true, nullable: false
 
