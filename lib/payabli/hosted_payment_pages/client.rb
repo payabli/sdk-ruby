@@ -46,7 +46,6 @@ module Payabli
         end
       end
 
-      #
       # Creates a new payment page for a paypoint.
       # Note: this operation doesn't create a new paypoint, just a payment page for an existing paypoint. Paypoints are
       # created by the Payabli team when a boarding application is approved.

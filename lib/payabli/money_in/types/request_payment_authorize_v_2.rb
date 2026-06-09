@@ -8,7 +8,7 @@ module Payabli
 
         field :idempotency_key, -> { String }, optional: true, nullable: false, api_name: "idempotencyKey"
 
-        field :body, -> { Payabli::MoneyIn::Types::TransRequestBody }, optional: false, nullable: false
+        field :body, -> { Payabli::Types::TransRequestBody }, optional: false, nullable: false
       end
     end
   end

@@ -13,7 +13,7 @@ module Payabli
       # Generates a payment link for an invoice from the invoice ID.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBody]
+      # @param params [Payabli::PaymentLink::Types::PayLinkDataInvoice]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -24,17 +24,16 @@ module Payabli
       # @option params [String, nil] :mail_2
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def add_pay_link_from_invoice(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        path_param_names = %i[id_invoice]
-        body_params = params.except(*path_param_names)
+        request_data = Payabli::PaymentLink::Types::PayLinkDataInvoice.new(params).to_h
+        non_body_param_names = %w[idInvoice amountFixed mail2 idempotencyKey]
+        body = request_data.except(*non_body_param_names)
 
-        query_param_names = %i[amount_fixed mail_2]
         query_params = {}
         query_params["amountFixed"] = params[:amount_fixed] if params.key?(:amount_fixed)
         query_params["mail2"] = params[:mail_2] if params.key?(:mail_2)
-        params = params.except(*query_param_names)
 
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
@@ -45,7 +44,7 @@ module Payabli
           path: "PaymentLink/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
           headers: headers,
           query: query_params,
-          body: Payabli::PaymentLink::Types::PaymentPageRequestBody.new(body_params).to_h,
+          body: body,
           request_options: request_options
         )
         begin
@@ -55,7 +54,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+          Payabli::Types::PayabliApiResponsePaymentLinks.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -66,7 +65,7 @@ module Payabli
       # their preferred payment method (ACH, virtual card, or check) and complete the payment.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBodyOut]
+      # @param params [Payabli::Types::PaymentPageRequestBodyOut]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -77,7 +76,7 @@ module Payabli
       # @option params [String, nil] :mail_2
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def add_pay_link_from_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         path_param_names = %i[bill_id]
@@ -98,7 +97,7 @@ module Payabli
           path: "PaymentLink/bill/#{URI.encode_uri_component(params[:bill_id].to_s)}",
           headers: headers,
           query: query_params,
-          body: Payabli::PaymentLink::Types::PaymentPageRequestBodyOut.new(body_params).to_h,
+          body: Payabli::Types::PaymentPageRequestBodyOut.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -108,7 +107,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+          Payabli::Types::PayabliApiResponsePaymentLinks.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -126,7 +125,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :pay_link_id
       #
-      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def delete_pay_link_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -142,7 +141,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+          Payabli::Types::PayabliApiResponsePaymentLinks.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -160,7 +159,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :paylink_id
       #
-      # @return [Payabli::PaymentLink::Types::GetPayLinkFromIdResponse]
+      # @return [Payabli::Types::GetPayLinkFromIdResponse]
       def get_pay_link_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -176,7 +175,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::GetPayLinkFromIdResponse.load(response.body)
+          Payabli::Types::GetPayLinkFromIdResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -194,7 +193,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :pay_link_id
       #
-      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def push_pay_link_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -211,7 +210,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+          Payabli::Types::PayabliApiResponsePaymentLinks.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -230,7 +229,7 @@ module Payabli
       # @option params [String] :pay_link_id
       # @option params [Boolean, nil] :amount_fixed
       #
-      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def refresh_pay_link_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -250,7 +249,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+          Payabli::Types::PayabliApiResponsePaymentLinks.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -270,7 +269,7 @@ module Payabli
       # @option params [Boolean, nil] :attachfile
       # @option params [String, nil] :mail_2
       #
-      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def send_pay_link_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -291,7 +290,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+          Payabli::Types::PayabliApiResponsePaymentLinks.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -309,7 +308,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :pay_link_id
       #
-      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def update_pay_link_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::PaymentLink::Types::PayLinkUpdateData.new(params).to_h
@@ -330,7 +329,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+          Payabli::Types::PayabliApiResponsePaymentLinks.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -341,7 +340,7 @@ module Payabli
       # lot number for a vendor with a single payment link.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBodyOut]
+      # @param params [Payabli::Types::PaymentPageRequestBodyOut]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -353,7 +352,7 @@ module Payabli
       # @option params [String, nil] :mail_2
       # @option params [String, nil] :amount_fixed
       #
-      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def add_pay_link_from_bill_lot_number(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         path_param_names = %i[lot_number]
@@ -372,7 +371,7 @@ module Payabli
           method: "POST",
           path: "PaymentLink/bill/lotNumber/#{URI.encode_uri_component(params[:lot_number].to_s)}",
           query: query_params,
-          body: Payabli::PaymentLink::Types::PaymentPageRequestBodyOut.new(body_params).to_h,
+          body: Payabli::Types::PaymentPageRequestBodyOut.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -382,7 +381,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+          Payabli::Types::PayabliApiResponsePaymentLinks.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -402,14 +401,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :paylink_id
       #
-      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def patch_out_payment_link(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request_data = Payabli::PaymentLink::Types::PatchOutPaymentLinkRequest.new(params).to_h
+        non_body_param_names = %w[paylinkId]
+        body = request_data.except(*non_body_param_names)
+
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PATCH",
           path: "PaymentLink/out/#{URI.encode_uri_component(params[:paylink_id].to_s)}",
-          body: Payabli::PaymentLink::Types::PatchOutPaymentLinkRequest.new(params).to_h,
+          body: body,
           request_options: request_options
         )
         begin
@@ -419,7 +422,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+          Payabli::Types::PayabliApiResponsePaymentLinks.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -430,7 +433,7 @@ module Payabli
       # methods offered, or other page configuration.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::PaymentLink::Types::PaymentPageRequestBodyOut]
+      # @param params [Payabli::Types::PaymentPageRequestBodyOut]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -438,14 +441,14 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :paylink_id
       #
-      # @return [Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks]
+      # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def update_pay_link_out_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PATCH",
           path: "PaymentLink/updateOut/#{URI.encode_uri_component(params[:paylink_id].to_s)}",
-          body: Payabli::PaymentLink::Types::PaymentPageRequestBodyOut.new(params).to_h,
+          body: Payabli::Types::PaymentPageRequestBodyOut.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -455,7 +458,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentLink::Types::PayabliApiResponsePaymentLinks.load(response.body)
+          Payabli::Types::PayabliApiResponsePaymentLinks.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

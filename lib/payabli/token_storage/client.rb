@@ -15,7 +15,7 @@ module Payabli
       # transactions.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::TokenStorage::Types::RequestTokenStorage]
+      # @param params [Payabli::Types::RequestTokenStorage]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -27,7 +27,7 @@ module Payabli
       # @option params [Boolean, nil] :temporary
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::TokenStorage::Types::AddMethodResponse]
+      # @return [Payabli::Types::AddMethodResponse]
       def add_method(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_param_names = %i[ach_validation create_anonymous force_customer_creation temporary]
@@ -47,7 +47,7 @@ module Payabli
           path: "TokenStorage/add",
           headers: headers,
           query: query_params,
-          body: Payabli::TokenStorage::Types::RequestTokenStorage.new(params).to_h,
+          body: Payabli::Types::RequestTokenStorage.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -57,7 +57,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::TokenStorage::Types::AddMethodResponse.load(response.body)
+          Payabli::Types::AddMethodResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -77,7 +77,7 @@ module Payabli
       # @option params [Integer, nil] :card_expiration_format
       # @option params [Boolean, nil] :include_temporary
       #
-      # @return [Payabli::TokenStorage::Types::GetMethodResponse]
+      # @return [Payabli::Types::GetMethodResponse]
       def get_method(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -98,41 +98,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::TokenStorage::Types::GetMethodResponse.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Deletes a saved payment method.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :method_id
-      #
-      # @return [Payabli::Types::PayabliApiResponsePaymethodDelete]
-      def remove_method(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "DELETE",
-          path: "TokenStorage/#{URI.encode_uri_component(params[:method_id].to_s)}",
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponsePaymethodDelete.load(response.body)
+          Payabli::Types::GetMethodResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -142,7 +108,7 @@ module Payabli
       # Updates a saved payment method.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::TokenStorage::Types::RequestTokenStorage]
+      # @param params [Payabli::Types::RequestTokenStorage]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -167,7 +133,41 @@ module Payabli
           method: "PUT",
           path: "TokenStorage/#{URI.encode_uri_component(params[:method_id].to_s)}",
           query: query_params,
-          body: Payabli::TokenStorage::Types::RequestTokenStorage.new(body_params).to_h,
+          body: Payabli::Types::RequestTokenStorage.new(body_params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::PayabliApiResponsePaymethodDelete.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Deletes a saved payment method.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :method_id
+      #
+      # @return [Payabli::Types::PayabliApiResponsePaymethodDelete]
+      def remove_method(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "DELETE",
+          path: "TokenStorage/#{URI.encode_uri_component(params[:method_id].to_s)}",
           request_options: request_options
         )
         begin

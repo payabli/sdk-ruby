@@ -42,7 +42,7 @@ class StatisticWireTest < WireMockTestCase
     test_id = "statistic.customer_basic_stats.0"
 
     @client.statistic.customer_basic_stats(
-      customer_id: 998,
+      customer_id: 4440,
       freq: "m",
       mode: "ytd",
       request_options: {
@@ -55,7 +55,7 @@ class StatisticWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Statistic/customerbasic/ytd/m/998",
+      url_path: "/Statistic/customerbasic/ytd/m/4440",
       query_params: nil,
       expected: 1
     )

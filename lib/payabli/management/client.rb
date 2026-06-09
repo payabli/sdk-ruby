@@ -29,7 +29,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
-      # @return [Payabli::Management::Types::VerifyAccountDetailsResponse]
+      # @return [Payabli::Types::VerifyAccountDetailsResponse]
       def verify_account_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::Management::Types::VerifyAccountDetailsRequest.new(params).to_h
@@ -50,7 +50,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Management::Types::VerifyAccountDetailsResponse.load(response.body)
+          Payabli::Types::VerifyAccountDetailsResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

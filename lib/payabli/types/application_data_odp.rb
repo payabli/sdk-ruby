@@ -29,7 +29,7 @@ module Payabli
 
       field :bzip, -> { String }, optional: true, nullable: false
 
-      field :contacts, -> { Internal::Types::Array[Payabli::Types::ApplicationDataOdpContactsItem] }, optional: true, nullable: false
+      field :contacts, -> { Internal::Types::Array[Payabli::Types::Contacts] }, optional: true, nullable: false
 
       field :dbaname, -> { String }, optional: true, nullable: false
 
@@ -61,7 +61,7 @@ module Payabli
 
       field :org_id, -> { Integer }, optional: true, nullable: false, api_name: "orgId"
 
-      field :ownership, -> { Internal::Types::Array[Payabli::Types::ApplicationDataOdpOwnershipItem] }, optional: true, nullable: false
+      field :ownership, -> { Internal::Types::Array[Payabli::Types::Owners] }, optional: true, nullable: false
 
       field :payout_average_monthly_volume, -> { Integer }, optional: false, nullable: false, api_name: "payoutAverageMonthlyVolume"
 

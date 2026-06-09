@@ -19,7 +19,7 @@ class MoneyInWireTest < WireMockTestCase
       customer_data: {
         customer_id: 4440
       },
-      entry_point: "f743aed24a",
+      entry_point: "8cfec329267",
       ipaddress: "255.255.255.255",
       payment_details: {
         service_fee: 0,
@@ -104,9 +104,9 @@ class MoneyInWireTest < WireMockTestCase
       idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
       customer_data: {
         billing_address_1: "5127 Linkwood ave",
-        customer_number: "100"
+        customer_number: "C-90010"
       },
-      entrypoint: "my-entrypoint",
+      entrypoint: "8cfec329267",
       payment_details: {
         service_fee: 0,
         total_amount: 1
@@ -162,7 +162,7 @@ class MoneyInWireTest < WireMockTestCase
       customer_data: {
         customer_id: 4440
       },
-      entry_point: "f743aed24a",
+      entry_point: "8cfec329267",
       ipaddress: "255.255.255.255",
       payment_details: {
         service_fee: 0,
@@ -323,7 +323,7 @@ class MoneyInWireTest < WireMockTestCase
 
     @client.money_in.validate(
       idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
-      entry_point: "entry132",
+      entry_point: "8cfec329267",
       payment_method: {
         method_: "card",
         cardnumber: "4360000001000005",
@@ -375,7 +375,7 @@ class MoneyInWireTest < WireMockTestCase
       customer_data: {
         customer_id: 4440
       },
-      entry_point: "f743aed24a",
+      entry_point: "8cfec329267",
       ipaddress: "255.255.255.255",
       payment_details: {
         service_fee: 0,
@@ -413,7 +413,7 @@ class MoneyInWireTest < WireMockTestCase
       customer_data: {
         customer_id: 4440
       },
-      entry_point: "f743aed24a",
+      entry_point: "8cfec329267",
       ipaddress: "255.255.255.255",
       payment_details: {
         service_fee: 0,

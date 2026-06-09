@@ -77,7 +77,7 @@ client.money_in.getpaidv_2(
   customer_data: {
     customer_id: 4440
   },
-  entry_point: "f743aed24a",
+  entry_point: "8cfec329267",
   ipaddress: "255.255.255.255",
   payment_details: {
     service_fee: 0,

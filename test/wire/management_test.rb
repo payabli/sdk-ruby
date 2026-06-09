@@ -16,7 +16,7 @@ class ManagementWireTest < WireMockTestCase
     test_id = "management.verify_account_details.0"
 
     @client.management.verify_account_details(
-      entry: "entry752",
+      entry: "8cfec329267",
       routing_number: "122105278",
       account_number: "0000000016",
       account_type: "Checking",
@@ -33,7 +33,7 @@ class ManagementWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "POST",
-      url_path: "/Management/verifyAccountDetails/entry752",
+      url_path: "/Management/verifyAccountDetails/8cfec329267",
       query_params: nil,
       expected: 1
     )

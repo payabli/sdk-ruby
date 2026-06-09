@@ -8,7 +8,7 @@ module Payabli
 
         field :ach_validation, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "achValidation"
 
-        field :body, -> { Payabli::TokenStorage::Types::RequestTokenStorage }, optional: false, nullable: false
+        field :body, -> { Payabli::Types::RequestTokenStorage }, optional: false, nullable: false
       end
     end
   end

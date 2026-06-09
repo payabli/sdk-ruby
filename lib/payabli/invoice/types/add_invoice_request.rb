@@ -10,7 +10,7 @@ module Payabli
 
         field :idempotency_key, -> { String }, optional: true, nullable: false, api_name: "idempotencyKey"
 
-        field :body, -> { Payabli::Invoice::Types::InvoiceDataRequest }, optional: false, nullable: false
+        field :body, -> { Payabli::Types::InvoiceDataRequest }, optional: false, nullable: false
       end
     end
   end

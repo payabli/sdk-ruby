@@ -4,6 +4,10 @@ module Payabli
   module Types
     # Object that contains bank account details.
     class Bank < Internal::Types::Model
+      field :default, -> { Internal::Types::Boolean }, optional: true, nullable: false
+
+      field :country, -> { String }, optional: true, nullable: false
+
       field :id, -> { Integer }, optional: true, nullable: false
 
       field :account_id, -> { String }, optional: true, nullable: false, api_name: "accountId"

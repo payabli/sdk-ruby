@@ -4,7 +4,7 @@ module Payabli
   module Export
     module Types
       class ExportBatchesOutOrgRequest < Internal::Types::Model
-        field :format, -> { Payabli::Export::Types::ExportFormat1 }, optional: false, nullable: false
+        field :format, -> { Payabli::Types::ExportFormat1 }, optional: false, nullable: false
 
         field :org_id, -> { Integer }, optional: false, nullable: false, api_name: "orgId"
 

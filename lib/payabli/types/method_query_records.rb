@@ -3,23 +3,39 @@
 module Payabli
   module Types
     class MethodQueryRecords < Internal::Types::Model
-      field :bin, -> { String }, optional: true, nullable: false
+      field :id_pmethod, -> { String }, optional: true, nullable: false, api_name: "IdPmethod"
+
+      field :method_, -> { String }, optional: true, nullable: false, api_name: "Method"
+
+      field :descriptor, -> { String }, optional: true, nullable: false, api_name: "Descriptor"
+
+      field :masked_account, -> { String }, optional: true, nullable: false, api_name: "MaskedAccount"
+
+      field :exp_date, -> { String }, optional: true, nullable: false, api_name: "ExpDate"
+
+      field :holder_name, -> { String }, optional: true, nullable: false, api_name: "HolderName"
+
+      field :ach_sec_code, -> { String }, optional: true, nullable: false, api_name: "AchSecCode"
+
+      field :ach_holder_type, -> { String }, optional: true, nullable: false, api_name: "AchHolderType"
+
+      field :is_validated_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "IsValidatedACH"
+
+      field :bin, -> { String }, optional: true, nullable: false, api_name: "BIN"
 
       field :bin_data, -> { Payabli::Types::BinData }, optional: true, nullable: false, api_name: "binData"
 
-      field :descriptor, -> { String }, optional: true, nullable: false
+      field :aba, -> { String }, optional: true, nullable: false, api_name: "ABA"
 
-      field :exp_date, -> { String }, optional: true, nullable: false, api_name: "expDate"
+      field :postal_code, -> { String }, optional: true, nullable: false, api_name: "PostalCode"
 
-      field :holder_name, -> { String }, optional: true, nullable: false, api_name: "holderName"
+      field :method_type, -> { String }, optional: true, nullable: false, api_name: "MethodType"
 
-      field :id_pmethod, -> { String }, optional: true, nullable: false, api_name: "idPmethod"
+      field :wallet_type, -> { String }, optional: true, nullable: false, api_name: "WalletType"
 
-      field :last_updated, -> { String }, optional: true, nullable: false, api_name: "lastUpdated"
+      field :last_updated, -> { String }, optional: true, nullable: false, api_name: "LastUpdated"
 
-      field :masked_account, -> { String }, optional: true, nullable: false, api_name: "maskedAccount"
-
-      field :method_, -> { String }, optional: true, nullable: false, api_name: "method"
+      field :card_updated_on, -> { String }, optional: true, nullable: false, api_name: "CardUpdatedOn"
     end
   end
 end

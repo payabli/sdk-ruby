@@ -17,7 +17,7 @@ class VendorWireTest < WireMockTestCase
 
     @client.vendor.add_vendor(
       entry: "8cfec329267",
-      vendor_number: "1234",
+      vendor_number: "VEN-123",
       address_1: "123 Ocean Drive",
       address_2: "Suite 400",
       billing_data: {
@@ -75,21 +75,21 @@ class VendorWireTest < WireMockTestCase
     )
   end
 
-  def test_vendor_delete_vendor_with_wiremock
-    test_id = "vendor.delete_vendor.0"
+  def test_vendor_get_vendor_with_wiremock
+    test_id = "vendor.get_vendor.0"
 
-    @client.vendor.delete_vendor(
+    @client.vendor.get_vendor(
       id_vendor: 1,
       request_options: {
         additional_headers: {
-          "X-Test-Id" => "vendor.delete_vendor.0"
+          "X-Test-Id" => "vendor.get_vendor.0"
         }
       }
     )
 
     verify_request_count(
       test_id: test_id,
-      method: "DELETE",
+      method: "GET",
       url_path: "/Vendor/1",
       query_params: nil,
       expected: 1
@@ -118,21 +118,21 @@ class VendorWireTest < WireMockTestCase
     )
   end
 
-  def test_vendor_get_vendor_with_wiremock
-    test_id = "vendor.get_vendor.0"
+  def test_vendor_delete_vendor_with_wiremock
+    test_id = "vendor.delete_vendor.0"
 
-    @client.vendor.get_vendor(
+    @client.vendor.delete_vendor(
       id_vendor: 1,
       request_options: {
         additional_headers: {
-          "X-Test-Id" => "vendor.get_vendor.0"
+          "X-Test-Id" => "vendor.delete_vendor.0"
         }
       }
     )
 
     verify_request_count(
       test_id: test_id,
-      method: "GET",
+      method: "DELETE",
       url_path: "/Vendor/1",
       query_params: nil,
       expected: 1
@@ -144,15 +144,15 @@ class VendorWireTest < WireMockTestCase
 
     @client.vendor.enrich_vendor(
       entry: "8cfec329267",
-      vendor_id: 3890,
+      vendor_id: 456,
       scope: ["invoice_scan"],
       apply_enrichment_data: false,
+      fallback_method: "check",
       invoice_file: {
         ftype: "pdf",
         filename: "invoice-2026-001.pdf",
         f_content: "<base64-encoded-pdf>"
       },
-      fallback_method: "check",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "vendor.enrich_vendor.0"

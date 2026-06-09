@@ -22,7 +22,7 @@ module Payabli
       # event.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::MoneyOutTypes::Types::AuthorizePayoutBody]
+      # @param params [Payabli::MoneyOut::Types::RequestOutAuthorize]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -33,15 +33,17 @@ module Payabli
       # @option params [Boolean, nil] :force_vendor_creation
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::MoneyOutTypes::Types::AuthCapturePayoutResponse]
+      # @return [Payabli::Types::AuthCapturePayoutResponse]
       def authorize_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[allow_duplicated_bills do_not_create_bills force_vendor_creation]
+        request_data = Payabli::MoneyOut::Types::RequestOutAuthorize.new(params).to_h
+        non_body_param_names = %w[allowDuplicatedBills doNotCreateBills forceVendorCreation idempotencyKey]
+        body = request_data.except(*non_body_param_names)
+
         query_params = {}
         query_params["allowDuplicatedBills"] = params[:allow_duplicated_bills] if params.key?(:allow_duplicated_bills)
         query_params["doNotCreateBills"] = params[:do_not_create_bills] if params.key?(:do_not_create_bills)
         query_params["forceVendorCreation"] = params[:force_vendor_creation] if params.key?(:force_vendor_creation)
-        params = params.except(*query_param_names)
 
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
@@ -52,7 +54,7 @@ module Payabli
           path: "MoneyOut/authorize",
           headers: headers,
           query: query_params,
-          body: Payabli::MoneyOutTypes::Types::AuthorizePayoutBody.new(params).to_h,
+          body: body,
           request_options: request_options
         )
         begin
@@ -62,7 +64,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyOutTypes::Types::AuthCapturePayoutResponse.load(response.body)
+          Payabli::Types::AuthCapturePayoutResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -79,7 +81,7 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
-      # @return [Payabli::MoneyOutTypes::Types::CaptureAllOutResponse]
+      # @return [Payabli::Types::CaptureAllOutResponse]
       def cancel_all_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -96,7 +98,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyOutTypes::Types::CaptureAllOutResponse.load(response.body)
+          Payabli::Types::CaptureAllOutResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -183,7 +185,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::MoneyOutTypes::Types::CaptureAllOutResponse]
+      # @return [Payabli::Types::CaptureAllOutResponse]
       def capture_all_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         headers = {}
@@ -204,7 +206,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyOutTypes::Types::CaptureAllOutResponse.load(response.body)
+          Payabli::Types::CaptureAllOutResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -224,7 +226,7 @@ module Payabli
       # @option params [String] :reference_id
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::MoneyOutTypes::Types::AuthCapturePayoutResponse]
+      # @return [Payabli::Types::AuthCapturePayoutResponse]
       def capture_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         headers = {}
@@ -244,7 +246,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyOutTypes::Types::AuthCapturePayoutResponse.load(response.body)
+          Payabli::Types::AuthCapturePayoutResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -296,7 +298,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :card_token
       #
-      # @return [Payabli::MoneyOutTypes::Types::VCardGetResponse]
+      # @return [Payabli::Types::VCardGetResponse]
       def v_card_get(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -312,7 +314,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyOutTypes::Types::VCardGetResponse.load(response.body)
+          Payabli::Types::VCardGetResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -329,7 +331,7 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
-      # @return [Payabli::MoneyOutTypes::Types::OperationResult]
+      # @return [Payabli::Types::OperationResult]
       def send_v_card_link(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -346,7 +348,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyOutTypes::Types::OperationResult.load(response.body)
+          Payabli::Types::OperationResult.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -412,7 +414,7 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
-      # @option params [Payabli::MoneyOutTypes::Types::AllowedCheckPaymentStatus] :check_payment_status
+      # @option params [Payabli::Types::AllowedCheckPaymentStatus] :check_payment_status
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def update_check_payment_status(request_options: {}, **params)
@@ -447,7 +449,7 @@ module Payabli
       # new transactions are linked through their event histories for audit purposes.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::MoneyOutTypes::Types::ReissuePayoutBody]
+      # @param params [Payabli::MoneyOut::Types::ReissueOutRequest]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -456,13 +458,15 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::MoneyOutTypes::Types::ReissuePayoutResponse]
+      # @return [Payabli::Types::ReissuePayoutResponse]
       def reissue_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_param_names = %i[trans_id]
+        request_data = Payabli::MoneyOut::Types::ReissueOutRequest.new(params).to_h
+        non_body_param_names = %w[transId idempotencyKey]
+        body = request_data.except(*non_body_param_names)
+
         query_params = {}
         query_params["transId"] = params[:trans_id] if params.key?(:trans_id)
-        params = params.except(*query_param_names)
 
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
@@ -473,7 +477,7 @@ module Payabli
           path: "MoneyOut/reissue",
           headers: headers,
           query: query_params,
-          body: Payabli::MoneyOutTypes::Types::ReissuePayoutBody.new(params).to_h,
+          body: body,
           request_options: request_options
         )
         begin
@@ -483,7 +487,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyOutTypes::Types::ReissuePayoutResponse.load(response.body)
+          Payabli::Types::ReissuePayoutResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

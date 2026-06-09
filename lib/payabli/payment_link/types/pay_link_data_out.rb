@@ -14,7 +14,7 @@ module Payabli
 
         field :amount_fixed, -> { String }, optional: true, nullable: false, api_name: "amountFixed"
 
-        field :body, -> { Payabli::PaymentLink::Types::PaymentPageRequestBodyOut }, optional: false, nullable: false
+        field :body, -> { Payabli::Types::PaymentPageRequestBodyOut }, optional: false, nullable: false
       end
     end
   end

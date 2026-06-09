@@ -25,7 +25,7 @@ module Payabli
 
       field :accept_same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "acceptSameDayACH"
 
-      field :currency, -> { String }, optional: true, nullable: false, api_name: "Currency"
+      field :currency, -> { Internal::Types::Array[String] }, optional: true, nullable: false, api_name: "Currency"
 
       field :greater_value_allowed, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "GreaterValueAllowed"
 

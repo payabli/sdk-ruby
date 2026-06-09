@@ -14,7 +14,7 @@ module Payabli
       # payout subscriptions](/guides/pay-out-developer-payout-subscriptions-manage) for a step-by-step guide.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::PayoutSubscription::Types::PayoutSubscriptionRequestBody]
+      # @param params [Payabli::PayoutSubscription::Types::RequestPayoutSchedule]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -22,9 +22,13 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::PayoutSubscription::Types::AddPayoutSubscriptionResponse]
+      # @return [Payabli::Types::AddPayoutSubscriptionResponse]
       def create_payout_subscription(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request_data = Payabli::PayoutSubscription::Types::RequestPayoutSchedule.new(params).to_h
+        non_body_param_names = %w[idempotencyKey]
+        body = request_data.except(*non_body_param_names)
+
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
@@ -33,7 +37,7 @@ module Payabli
           method: "POST",
           path: "PayoutSubscription",
           headers: headers,
-          body: Payabli::PayoutSubscription::Types::PayoutSubscriptionRequestBody.new(params).to_h,
+          body: body,
           request_options: request_options
         )
         begin
@@ -43,7 +47,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PayoutSubscription::Types::AddPayoutSubscriptionResponse.load(response.body)
+          Payabli::Types::AddPayoutSubscriptionResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -62,7 +66,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id
       #
-      # @return [Payabli::PayoutSubscription::Types::GetPayoutSubscriptionResponse]
+      # @return [Payabli::Types::GetPayoutSubscriptionResponse]
       def get_payout_subscription(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -78,7 +82,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PayoutSubscription::Types::GetPayoutSubscriptionResponse.load(response.body)
+          Payabli::Types::GetPayoutSubscriptionResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -97,14 +101,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id
       #
-      # @return [Payabli::PayoutSubscription::Types::UpdatePayoutSubscriptionResponse]
+      # @return [Payabli::Types::UpdatePayoutSubscriptionResponse]
       def update_payout_subscription(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request_data = Payabli::PayoutSubscription::Types::UpdatePayoutSubscriptionBody.new(params).to_h
+        non_body_param_names = %w[id]
+        body = request_data.except(*non_body_param_names)
+
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "PayoutSubscription/#{URI.encode_uri_component(params[:id].to_s)}",
-          body: Payabli::PayoutSubscription::Types::UpdatePayoutSubscriptionBody.new(params).to_h,
+          body: body,
           request_options: request_options
         )
         begin
@@ -114,7 +122,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PayoutSubscription::Types::UpdatePayoutSubscriptionResponse.load(response.body)
+          Payabli::Types::UpdatePayoutSubscriptionResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -133,7 +141,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id
       #
-      # @return [Payabli::PayoutSubscription::Types::DeletePayoutSubscriptionResponse]
+      # @return [Payabli::Types::DeletePayoutSubscriptionResponse]
       def delete_payout_subscription(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -149,7 +157,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PayoutSubscription::Types::DeletePayoutSubscriptionResponse.load(response.body)
+          Payabli::Types::DeletePayoutSubscriptionResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

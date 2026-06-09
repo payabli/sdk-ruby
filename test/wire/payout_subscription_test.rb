@@ -16,7 +16,7 @@ class PayoutSubscriptionWireTest < WireMockTestCase
     test_id = "payout_subscription.create_payout_subscription.0"
 
     @client.payout_subscription.create_payout_subscription(
-      entry_point: "d193cf9a46",
+      entry_point: "8cfec329267",
       payment_method: {
         method_: "ach",
         ach_holder: "Herman Coatings",
@@ -30,10 +30,10 @@ class PayoutSubscriptionWireTest < WireMockTestCase
         currency: "USD"
       },
       vendor_data: {
-        vendor_id: 1501
+        vendor_id: 456
       },
       bill_data: [{
-        invoice_number: "INV-5001",
+        invoice_number: "INV-2345",
         net_amount: "500",
         invoice_date: "2025-08-01",
         due_date: "2025-08-15"

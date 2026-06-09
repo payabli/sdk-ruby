@@ -3,8 +3,6 @@
 module Payabli
   module Boarding
     module Types
-      # Request to create a boarding application linked to an existing paypoint. Used for adding new services to a
-      # paypoint without creating a duplicate record.
       class CreateApplicationFromPaypointRequest < Internal::Types::Model
         field :paypoint_id, -> { Integer }, optional: false, nullable: false, api_name: "paypointId"
 

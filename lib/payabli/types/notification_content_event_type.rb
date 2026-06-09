@@ -30,6 +30,7 @@ module Payabli
       TRANSFER_ERROR = "TransferError"
       SEND_RECEIPT = "SendReceipt"
       RECOVERED_TRANSACTION = "RecoveredTransaction"
+      CARD_UPDATER_COMPLETE = "CardUpdaterComplete"
       CREATED_APPLICATION = "CreatedApplication"
       APPROVED_APPLICATION = "ApprovedApplication"
       FAILED_BOARDING_APPLICATION = "FailedBoardingApplication"

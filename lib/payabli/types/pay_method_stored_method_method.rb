@@ -7,6 +7,7 @@ module Payabli
 
       CARD = "card"
       ACH = "ach"
+      WALLET = "wallet"
     end
   end
 end

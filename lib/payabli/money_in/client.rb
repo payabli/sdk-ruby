@@ -20,7 +20,7 @@ module Payabli
       # </Tip>
       #
       # @param request_options [Hash]
-      # @param params [Payabli::MoneyIn::Types::TransRequestBody]
+      # @param params [Payabli::Types::TransRequestBody]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -29,7 +29,7 @@ module Payabli
       # @option params [Boolean, nil] :force_customer_creation
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::MoneyIn::Types::AuthResponse]
+      # @return [Payabli::Types::AuthResponse]
       def authorize(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_param_names = %i[force_customer_creation]
@@ -46,7 +46,7 @@ module Payabli
           path: "MoneyIn/authorize",
           headers: headers,
           query: query_params,
-          body: Payabli::MoneyIn::Types::TransRequestBody.new(params).to_h,
+          body: Payabli::Types::TransRequestBody.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -56,7 +56,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::AuthResponse.load(response.body)
+          Payabli::Types::AuthResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -82,7 +82,7 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [Integer] :amount
       #
-      # @return [Payabli::MoneyIn::Types::CaptureResponse]
+      # @return [Payabli::Types::CaptureResponse]
       def capture(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -98,7 +98,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::CaptureResponse.load(response.body)
+          Payabli::Types::CaptureResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -119,7 +119,7 @@ module Payabli
       # </Tip>
       #
       # @param request_options [Hash]
-      # @param params [Payabli::MoneyIn::Types::CaptureRequest]
+      # @param params [Payabli::Types::CaptureRequest]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -127,14 +127,14 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
-      # @return [Payabli::MoneyIn::Types::CaptureResponse]
+      # @return [Payabli::Types::CaptureResponse]
       def capture_auth(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "MoneyIn/capture/#{URI.encode_uri_component(params[:trans_id].to_s)}",
-          body: Payabli::MoneyIn::Types::CaptureRequest.new(params).to_h,
+          body: Payabli::Types::CaptureRequest.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -144,7 +144,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::CaptureResponse.load(response.body)
+          Payabli::Types::CaptureResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -246,7 +246,7 @@ module Payabli
       #   </Tip>
       #
       # @param request_options [Hash]
-      # @param params [Payabli::MoneyIn::Types::TransRequestBody]
+      # @param params [Payabli::Types::TransRequestBody]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -258,7 +258,7 @@ module Payabli
       # @option params [String, nil] :idempotency_key
       # @option params [String, nil] :validation_code
       #
-      # @return [Payabli::MoneyIn::Types::PayabliApiResponseGetPaid]
+      # @return [Payabli::Types::PayabliApiResponseGetPaid]
       def getpaid(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_param_names = %i[ach_validation force_customer_creation include_details]
@@ -278,7 +278,7 @@ module Payabli
           path: "MoneyIn/getpaid",
           headers: headers,
           query: query_params,
-          body: Payabli::MoneyIn::Types::TransRequestBody.new(params).to_h,
+          body: Payabli::Types::TransRequestBody.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -288,7 +288,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::PayabliApiResponseGetPaid.load(response.body)
+          Payabli::Types::PayabliApiResponseGetPaid.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -311,7 +311,7 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [Integer] :amount
       #
-      # @return [Payabli::MoneyIn::Types::ReverseResponse]
+      # @return [Payabli::Types::ReverseResponse]
       def reverse(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -327,7 +327,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::ReverseResponse.load(response.body)
+          Payabli::Types::ReverseResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -352,7 +352,7 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [Integer] :amount
       #
-      # @return [Payabli::MoneyIn::Types::RefundResponse]
+      # @return [Payabli::Types::RefundResponse]
       def refund(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -368,7 +368,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::RefundResponse.load(response.body)
+          Payabli::Types::RefundResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -387,7 +387,7 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::MoneyIn::Types::RefundWithInstructionsResponse]
+      # @return [Payabli::Types::RefundWithInstructionsResponse]
       def refund_with_instructions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::MoneyIn::Types::RequestRefund.new(params).to_h
@@ -412,7 +412,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::RefundWithInstructionsResponse.load(response.body)
+          Payabli::Types::RefundWithInstructionsResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -466,7 +466,7 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [String, nil] :email
       #
-      # @return [Payabli::MoneyIn::Types::ReceiptResponse]
+      # @return [Payabli::Types::ReceiptResponse]
       def send_receipt_2_trans(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -486,7 +486,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::ReceiptResponse.load(response.body)
+          Payabli::Types::ReceiptResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -504,7 +504,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::MoneyIn::Types::ValidateResponse]
+      # @return [Payabli::Types::ValidateResponse]
       def validate(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::MoneyIn::Types::RequestPaymentValidate.new(params).to_h
@@ -529,7 +529,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::ValidateResponse.load(response.body)
+          Payabli::Types::ValidateResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -553,7 +553,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
-      # @return [Payabli::MoneyIn::Types::VoidResponse]
+      # @return [Payabli::Types::VoidResponse]
       def void(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -569,7 +569,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::MoneyIn::Types::VoidResponse.load(response.body)
+          Payabli::Types::VoidResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -581,7 +581,7 @@ module Payabli
       # reference](/guides/pay-in-unified-response-codes-reference) for more information.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::MoneyIn::Types::TransRequestBody]
+      # @param params [Payabli::Types::TransRequestBody]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -592,7 +592,7 @@ module Payabli
       # @option params [String, nil] :idempotency_key
       # @option params [String, nil] :validation_code
       #
-      # @return [Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper]
+      # @return [Payabli::Types::V2TransactionResponseWrapper]
       def getpaidv_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_param_names = %i[ach_validation force_customer_creation]
@@ -611,7 +611,7 @@ module Payabli
           path: "v2/MoneyIn/getpaid",
           headers: headers,
           query: query_params,
-          body: Payabli::MoneyIn::Types::TransRequestBody.new(params).to_h,
+          body: Payabli::Types::TransRequestBody.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -621,7 +621,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper.load(response.body)
+          Payabli::Types::V2TransactionResponseWrapper.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -636,7 +636,7 @@ module Payabli
       # **Note**: Only card transactions can be authorized. This endpoint can't be used for ACH transactions.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::MoneyIn::Types::TransRequestBody]
+      # @param params [Payabli::Types::TransRequestBody]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -645,7 +645,7 @@ module Payabli
       # @option params [Boolean, nil] :force_customer_creation
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper]
+      # @return [Payabli::Types::V2TransactionResponseWrapper]
       def authorizev_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_param_names = %i[force_customer_creation]
@@ -662,7 +662,7 @@ module Payabli
           path: "v2/MoneyIn/authorize",
           headers: headers,
           query: query_params,
-          body: Payabli::MoneyIn::Types::TransRequestBody.new(params).to_h,
+          body: Payabli::Types::TransRequestBody.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -672,7 +672,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper.load(response.body)
+          Payabli::Types::V2TransactionResponseWrapper.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -685,7 +685,7 @@ module Payabli
       # for more information.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::MoneyIn::Types::CaptureRequest]
+      # @param params [Payabli::Types::CaptureRequest]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -693,14 +693,14 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
-      # @return [Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper]
+      # @return [Payabli::Types::V2TransactionResponseWrapper]
       def capturev_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/MoneyIn/capture/#{URI.encode_uri_component(params[:trans_id].to_s)}",
-          body: Payabli::MoneyIn::Types::CaptureRequest.new(params).to_h,
+          body: Payabli::Types::CaptureRequest.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -710,7 +710,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper.load(response.body)
+          Payabli::Types::V2TransactionResponseWrapper.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -733,7 +733,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
-      # @return [Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper]
+      # @return [Payabli::Types::V2TransactionResponseWrapper]
       def refundv_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -749,7 +749,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper.load(response.body)
+          Payabli::Types::V2TransactionResponseWrapper.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -772,7 +772,7 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [Integer] :amount
       #
-      # @return [Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper]
+      # @return [Payabli::Types::V2TransactionResponseWrapper]
       def refundv_2_amount(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -788,7 +788,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper.load(response.body)
+          Payabli::Types::V2TransactionResponseWrapper.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -809,7 +809,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
-      # @return [Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper]
+      # @return [Payabli::Types::V2TransactionResponseWrapper]
       def voidv_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -825,7 +825,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::V2MoneyInTypes::Types::V2TransactionResponseWrapper.load(response.body)
+          Payabli::Types::V2TransactionResponseWrapper.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

@@ -16,7 +16,7 @@ class CheckCaptureWireTest < WireMockTestCase
     test_id = "check_capture.check_processing.0"
 
     @client.check_capture.check_processing(
-      entry_point: "47abcfea12",
+      entry_point: "8cfec329267",
       front_image: "/9j/4AAQSkZJRgABAQEASABIAAD...",
       rear_image: "/9j/4AAQSkZJRgABAQEASABIAAD...",
       check_amount: 12550,

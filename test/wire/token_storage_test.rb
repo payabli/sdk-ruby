@@ -19,7 +19,7 @@ class TokenStorageWireTest < WireMockTestCase
       customer_data: {
         customer_id: 4440
       },
-      entry_point: "f743aed24a",
+      entry_point: "8cfec329267",
       fallback_auth: true,
       fallback_auth_amount: 100,
       method_description: "Primary Visa card",
@@ -71,27 +71,6 @@ class TokenStorageWireTest < WireMockTestCase
     )
   end
 
-  def test_token_storage_remove_method_with_wiremock
-    test_id = "token_storage.remove_method.0"
-
-    @client.token_storage.remove_method(
-      method_id: "32-8877drt00045632-678",
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "token_storage.remove_method.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "DELETE",
-      url_path: "/TokenStorage/32-8877drt00045632-678",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
   def test_token_storage_update_method_with_wiremock
     test_id = "token_storage.update_method.0"
 
@@ -100,7 +79,7 @@ class TokenStorageWireTest < WireMockTestCase
       customer_data: {
         customer_id: 4440
       },
-      entry_point: "f743aed24a",
+      entry_point: "8cfec329267",
       fallback_auth: true,
       payment_method: {
         cardcvv: "123",
@@ -120,6 +99,27 @@ class TokenStorageWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "PUT",
+      url_path: "/TokenStorage/32-8877drt00045632-678",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_token_storage_remove_method_with_wiremock
+    test_id = "token_storage.remove_method.0"
+
+    @client.token_storage.remove_method(
+      method_id: "32-8877drt00045632-678",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "token_storage.remove_method.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "DELETE",
       url_path: "/TokenStorage/32-8877drt00045632-678",
       query_params: nil,
       expected: 1

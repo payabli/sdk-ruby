@@ -45,10 +45,10 @@ class BillWireTest < WireMockTestCase
       frequency: "monthly",
       mode: 0,
       net_amount: 3762.87,
-      status: -99,
+      status: 1,
       terms: "NET30",
       vendor: {
-        vendor_number: "1234-A"
+        vendor_number: "VEN-123"
       },
       request_options: {
         additional_headers: {
@@ -66,43 +66,21 @@ class BillWireTest < WireMockTestCase
     )
   end
 
-  def test_bill_delete_attached_from_bill_with_wiremock
-    test_id = "bill.delete_attached_from_bill.0"
+  def test_bill_get_bill_with_wiremock
+    test_id = "bill.get_bill.0"
 
-    @client.bill.delete_attached_from_bill(
-      filename: "0_Bill.pdf",
+    @client.bill.get_bill(
       id_bill: 285,
       request_options: {
         additional_headers: {
-          "X-Test-Id" => "bill.delete_attached_from_bill.0"
+          "X-Test-Id" => "bill.get_bill.0"
         }
       }
     )
 
     verify_request_count(
       test_id: test_id,
-      method: "DELETE",
-      url_path: "/Bill/attachedFileFromBill/285/0_Bill.pdf",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
-  def test_bill_delete_bill_with_wiremock
-    test_id = "bill.delete_bill.0"
-
-    @client.bill.delete_bill(
-      id_bill: 285,
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "bill.delete_bill.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "DELETE",
+      method: "GET",
       url_path: "/Bill/285",
       query_params: nil,
       expected: 1
@@ -132,6 +110,27 @@ class BillWireTest < WireMockTestCase
     )
   end
 
+  def test_bill_delete_bill_with_wiremock
+    test_id = "bill.delete_bill.0"
+
+    @client.bill.delete_bill(
+      id_bill: 285,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "bill.delete_bill.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/Bill/285",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
   def test_bill_get_attached_from_bill_with_wiremock
     test_id = "bill.get_attached_from_bill.0"
 
@@ -155,14 +154,82 @@ class BillWireTest < WireMockTestCase
     )
   end
 
-  def test_bill_get_bill_with_wiremock
-    test_id = "bill.get_bill.0"
+  def test_bill_delete_attached_from_bill_with_wiremock
+    test_id = "bill.delete_attached_from_bill.0"
 
-    @client.bill.get_bill(
+    @client.bill.delete_attached_from_bill(
+      filename: "0_Bill.pdf",
       id_bill: 285,
       request_options: {
         additional_headers: {
-          "X-Test-Id" => "bill.get_bill.0"
+          "X-Test-Id" => "bill.delete_attached_from_bill.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/Bill/attachedFileFromBill/285/0_Bill.pdf",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_bill_send_to_approval_bill_with_wiremock
+    test_id = "bill.send_to_approval_bill.0"
+
+    @client.bill.send_to_approval_bill(
+      id_bill: 285,
+      idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
+      body: ["approver@example.com"],
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "bill.send_to_approval_bill.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Bill/approval/285",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_bill_modify_approval_bill_with_wiremock
+    test_id = "bill.modify_approval_bill.0"
+
+    @client.bill.modify_approval_bill(
+      id_bill: 285,
+      request: %w[approver1@example.com approver2@example.com],
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "bill.modify_approval_bill.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/Bill/approval/285",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_bill_set_approved_bill_with_wiremock
+    test_id = "bill.set_approved_bill.0"
+
+    @client.bill.set_approved_bill(
+      approved: "true",
+      id_bill: 285,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "bill.set_approved_bill.0"
         }
       }
     )
@@ -170,7 +237,7 @@ class BillWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Bill/285",
+      url_path: "/Bill/approval/285/true",
       query_params: nil,
       expected: 1
     )
@@ -219,73 +286,6 @@ class BillWireTest < WireMockTestCase
       test_id: test_id,
       method: "GET",
       url_path: "/Query/bills/org/123",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
-  def test_bill_modify_approval_bill_with_wiremock
-    test_id = "bill.modify_approval_bill.0"
-
-    @client.bill.modify_approval_bill(
-      id_bill: 285,
-      request: %w[approver1@example.com approver2@example.com],
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "bill.modify_approval_bill.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "PUT",
-      url_path: "/Bill/approval/285",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
-  def test_bill_send_to_approval_bill_with_wiremock
-    test_id = "bill.send_to_approval_bill.0"
-
-    @client.bill.send_to_approval_bill(
-      id_bill: 285,
-      idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
-      body: ["string"],
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "bill.send_to_approval_bill.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "POST",
-      url_path: "/Bill/approval/285",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
-  def test_bill_set_approved_bill_with_wiremock
-    test_id = "bill.set_approved_bill.0"
-
-    @client.bill.set_approved_bill(
-      approved: "true",
-      id_bill: 285,
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "bill.set_approved_bill.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "GET",
-      url_path: "/Bill/approval/285/true",
       query_params: nil,
       expected: 1
     )

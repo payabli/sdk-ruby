@@ -32,25 +32,25 @@ class BoardingWireTest < WireMockTestCase
       baddress: "123 Walnut Street",
       baddress_1: "Suite 103",
       bank_data: [{
-        account_number: "123123123",
+        account_number: "123123100",
         bank_account_function: 1,
         bank_account_holder_name: "Gruzya Adventure Outfitters LLC",
         bank_account_holder_type: "Business",
-        bank_name: "Test Bank",
+        bank_name: "Test Bank 1",
         nickname: "Withdrawal Account",
         routing_account: "123123123",
         type_account: "Checking",
         account_id: "123-456"
       }, {
-        account_number: "123123123",
+        account_number: "123123200",
         bank_account_function: 0,
         bank_account_holder_name: "Gruzya Adventure Outfitters LLC",
         bank_account_holder_type: "Business",
-        bank_name: "Test Bank",
+        bank_name: "Test Bank 2",
         nickname: "Deposit Account",
-        routing_account: "123123123",
+        routing_account: "321321321",
         type_account: "Checking",
-        account_id: "123-456"
+        account_id: "123-789"
       }],
       bcity: "New Vegas",
       bcountry: "US",
@@ -152,6 +152,27 @@ class BoardingWireTest < WireMockTestCase
     )
   end
 
+  def test_boarding_update_application_with_wiremock
+    test_id = "boarding.update_application.0"
+
+    @client.boarding.update_application(
+      app_id: 352,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "boarding.update_application.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/Boarding/app/352",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
   def test_boarding_delete_application_with_wiremock
     test_id = "boarding.delete_application.0"
 
@@ -200,7 +221,7 @@ class BoardingWireTest < WireMockTestCase
     @client.boarding.get_application_by_auth(
       x_id: "17E",
       email: "admin@email.com",
-      reference_id: "n6UCd1f1ygG7",
+      reference_id: "129-219",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "boarding.get_application_by_auth.0"
@@ -350,32 +371,11 @@ class BoardingWireTest < WireMockTestCase
     )
   end
 
-  def test_boarding_update_application_with_wiremock
-    test_id = "boarding.update_application.0"
-
-    @client.boarding.update_application(
-      app_id: 352,
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "boarding.update_application.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "PUT",
-      url_path: "/Boarding/app/352",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
   def test_boarding_add_service_to_paypoint_from_app_with_wiremock
     test_id = "boarding.add_service_to_paypoint_from_app.0"
 
     @client.boarding.add_service_to_paypoint_from_app(
-      paypoint_id: 123,
+      paypoint_id: 3040,
       template_id: 456,
       recipient_email: "merchant@example.com",
       return_boarding_access_info_in_line: true,
@@ -400,7 +400,7 @@ class BoardingWireTest < WireMockTestCase
     test_id = "boarding.get_applications_by_paypoint_id.0"
 
     @client.boarding.get_applications_by_paypoint_id(
-      paypoint_id: 12345,
+      paypoint_id: 3040,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "boarding.get_applications_by_paypoint_id.0"
@@ -411,7 +411,7 @@ class BoardingWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Boarding/applications/12345",
+      url_path: "/Boarding/applications/3040",
       query_params: nil,
       expected: 1
     )

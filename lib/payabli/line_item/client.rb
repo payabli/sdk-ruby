@@ -54,40 +54,6 @@ module Payabli
         end
       end
 
-      # Deletes an item.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :line_item_id
-      #
-      # @return [Payabli::LineItem::Types::DeleteItemResponse]
-      def delete_item(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "DELETE",
-          path: "LineItem/#{URI.encode_uri_component(params[:line_item_id].to_s)}",
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::LineItem::Types::DeleteItemResponse.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
       # Gets an item by ID.
       #
       # @param request_options [Hash]
@@ -116,6 +82,75 @@ module Payabli
         code = response.code.to_i
         if code.between?(200, 299)
           Payabli::Types::LineItemQueryRecord.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Updates an item.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Types::LineItem]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :line_item_id
+      #
+      # @return [Payabli::Types::PayabliApiResponse6]
+      def update_item(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "PUT",
+          path: "LineItem/#{URI.encode_uri_component(params[:line_item_id].to_s)}",
+          body: Payabli::Types::LineItem.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::PayabliApiResponse6.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Deletes an item.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :line_item_id
+      #
+      # @return [Payabli::Types::DeleteItemResponse]
+      def delete_item(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "DELETE",
+          path: "LineItem/#{URI.encode_uri_component(params[:line_item_id].to_s)}",
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::DeleteItemResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -162,41 +197,6 @@ module Payabli
         code = response.code.to_i
         if code.between?(200, 299)
           Payabli::Types::QueryResponseItems.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Updates an item.
-      #
-      # @param request_options [Hash]
-      # @param params [Payabli::Types::LineItem]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :line_item_id
-      #
-      # @return [Payabli::Types::PayabliApiResponse6]
-      def update_item(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "PUT",
-          path: "LineItem/#{URI.encode_uri_component(params[:line_item_id].to_s)}",
-          body: Payabli::Types::LineItem.new(params).to_h,
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse6.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

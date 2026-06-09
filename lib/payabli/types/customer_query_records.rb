@@ -88,6 +88,8 @@ module Payabli
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
 
       field :customer_consent, -> { Payabli::Types::CustomerQueryRecordsCustomerConsent }, optional: true, nullable: false, api_name: "customerConsent"
+
+      field :customer_portal, -> { String }, optional: true, nullable: false, api_name: "customerPortal"
     end
   end
 end

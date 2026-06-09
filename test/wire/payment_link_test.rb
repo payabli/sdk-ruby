@@ -143,7 +143,7 @@ class PaymentLinkWireTest < WireMockTestCase
     test_id = "payment_link.add_pay_link_from_bill.0"
 
     @client.payment_link.add_pay_link_from_bill(
-      bill_id: 23548884,
+      bill_id: 54323,
       mail_2: "jo@example.com; ceo@example.com",
       contact_us: {
         email_label: "Email",
@@ -213,7 +213,7 @@ class PaymentLinkWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "POST",
-      url_path: "/PaymentLink/bill/23548884",
+      url_path: "/PaymentLink/bill/54323",
       query_params: nil,
       expected: 1
     )
@@ -244,7 +244,7 @@ class PaymentLinkWireTest < WireMockTestCase
     test_id = "payment_link.get_pay_link_from_id.0"
 
     @client.payment_link.get_pay_link_from_id(
-      paylink_id: "paylinkId",
+      paylink_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "payment_link.get_pay_link_from_id.0"
@@ -255,7 +255,7 @@ class PaymentLinkWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/PaymentLink/load/paylinkId",
+      url_path: "/PaymentLink/load/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
     )
@@ -265,7 +265,7 @@ class PaymentLinkWireTest < WireMockTestCase
     test_id = "payment_link.push_pay_link_from_id.0"
 
     @client.payment_link.push_pay_link_from_id(
-      pay_link_id: "payLinkId",
+      pay_link_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "payment_link.push_pay_link_from_id.0"
@@ -276,7 +276,7 @@ class PaymentLinkWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "POST",
-      url_path: "/PaymentLink/push/payLinkId",
+      url_path: "/PaymentLink/push/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
     )
@@ -286,7 +286,7 @@ class PaymentLinkWireTest < WireMockTestCase
     test_id = "payment_link.refresh_pay_link_from_id.0"
 
     @client.payment_link.refresh_pay_link_from_id(
-      pay_link_id: "payLinkId",
+      pay_link_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "payment_link.refresh_pay_link_from_id.0"
@@ -297,7 +297,7 @@ class PaymentLinkWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/PaymentLink/refresh/payLinkId",
+      url_path: "/PaymentLink/refresh/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
     )
@@ -307,7 +307,7 @@ class PaymentLinkWireTest < WireMockTestCase
     test_id = "payment_link.send_pay_link_from_id.0"
 
     @client.payment_link.send_pay_link_from_id(
-      pay_link_id: "payLinkId",
+      pay_link_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       mail_2: "jo@example.com; ceo@example.com",
       request_options: {
         additional_headers: {
@@ -319,7 +319,7 @@ class PaymentLinkWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/PaymentLink/send/payLinkId",
+      url_path: "/PaymentLink/send/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
     )
@@ -329,7 +329,7 @@ class PaymentLinkWireTest < WireMockTestCase
     test_id = "payment_link.update_pay_link_from_id.0"
 
     @client.payment_link.update_pay_link_from_id(
-      pay_link_id: "332-c277b704-1301",
+      pay_link_id: "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       notes: {
         enabled: true,
         header: "Additional Notes",
@@ -352,7 +352,7 @@ class PaymentLinkWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "PUT",
-      url_path: "/PaymentLink/update/332-c277b704-1301",
+      url_path: "/PaymentLink/update/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
     )
@@ -363,8 +363,8 @@ class PaymentLinkWireTest < WireMockTestCase
 
     @client.payment_link.add_pay_link_from_bill_lot_number(
       lot_number: "LOT-2024-001",
-      entry_point: "billing",
-      vendor_number: "VENDOR-123",
+      entry_point: "8cfec329267",
+      vendor_number: "VEN-123",
       mail_2: "customer@example.com; billing@example.com",
       amount_fixed: "true",
       contact_us: {
@@ -436,7 +436,7 @@ class PaymentLinkWireTest < WireMockTestCase
       test_id: test_id,
       method: "POST",
       url_path: "/PaymentLink/bill/lotNumber/LOT-2024-001",
-      query_params: { "entryPoint" => "billing", "vendorNumber" => "VENDOR-123" },
+      query_params: { "entryPoint" => "8cfec329267", "vendorNumber" => "VEN-123" },
       expected: 1
     )
   end

@@ -22,7 +22,7 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
-      # @return [Payabli::CheckCapture::Types::CheckCaptureResponse]
+      # @return [Payabli::Types::CheckCaptureResponse]
       def check_processing(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -39,7 +39,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::CheckCapture::Types::CheckCaptureResponse.load(response.body)
+          Payabli::Types::CheckCaptureResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

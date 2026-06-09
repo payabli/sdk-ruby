@@ -4,7 +4,7 @@ module Payabli
   module Export
     module Types
       class ExportInvoicesRequest < Internal::Types::Model
-        field :format, -> { Payabli::Export::Types::ExportFormat1 }, optional: false, nullable: false
+        field :format, -> { Payabli::Types::ExportFormat1 }, optional: false, nullable: false
 
         field :entry, -> { String }, optional: false, nullable: false
 

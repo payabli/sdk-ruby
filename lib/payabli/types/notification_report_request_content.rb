@@ -3,7 +3,7 @@
 module Payabli
   module Types
     class NotificationReportRequestContent < Internal::Types::Model
-      field :event_type, -> { String }, optional: true, nullable: false, api_name: "eventType"
+      field :event_type, -> { Payabli::Types::NotificationReportRequestContentEventType }, optional: true, nullable: false, api_name: "eventType"
 
       field :file_format, -> { Payabli::Types::NotificationReportRequestContentFileFormat }, optional: true, nullable: false, api_name: "fileFormat"
 

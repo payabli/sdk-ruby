@@ -28,7 +28,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :start_date
       #
-      # @return [Array[Payabli::Statistic::Types::StatBasicExtendedQueryRecord]]
+      # @return [Array[Payabli::Types::StatBasicExtendedQueryRecord]]
       def basic_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -69,7 +69,7 @@ module Payabli
       # @option params [Integer] :customer_id
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Array[Payabli::Statistic::Types::SubscriptionStatsQueryRecord]]
+      # @return [Array[Payabli::Types::SubscriptionStatsQueryRecord]]
       def customer_basic_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -108,7 +108,7 @@ module Payabli
       # @option params [Integer] :entry_id
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Array[Payabli::Statistic::Types::StatBasicQueryRecord]]
+      # @return [Array[Payabli::Types::StatBasicQueryRecord]]
       def sub_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -147,7 +147,7 @@ module Payabli
       # @option params [Integer] :id_vendor
       # @option params [Hash[String, String, nil], nil] :parameters
       #
-      # @return [Array[Payabli::Statistic::Types::StatisticsVendorQueryRecord]]
+      # @return [Array[Payabli::Types::StatisticsVendorQueryRecord]]
       def vendor_basic_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}

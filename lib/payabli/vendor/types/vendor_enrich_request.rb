@@ -3,8 +3,9 @@
 module Payabli
   module Vendor
     module Types
-      # Request body for the vendor enrichment endpoint.
       class VendorEnrichRequest < Internal::Types::Model
+        field :entry, -> { String }, optional: false, nullable: false
+
         field :vendor_id, -> { Integer }, optional: false, nullable: false, api_name: "vendorId"
 
         field :scope, -> { Internal::Types::Array[String] }, optional: true, nullable: false

@@ -21,7 +21,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
-      # @return [Payabli::Paypoint::Types::GetBasicEntryResponse]
+      # @return [Payabli::Types::GetBasicEntryResponse]
       def get_basic_entry(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -37,7 +37,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Paypoint::Types::GetBasicEntryResponse.load(response.body)
+          Payabli::Types::GetBasicEntryResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -55,7 +55,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :id_paypoint
       #
-      # @return [Payabli::Paypoint::Types::GetBasicEntryByIdResponse]
+      # @return [Payabli::Types::GetBasicEntryByIdResponse]
       def get_basic_entry_by_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -71,7 +71,110 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Paypoint::Types::GetBasicEntryByIdResponse.load(response.body)
+          Payabli::Types::GetBasicEntryByIdResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Updates a paypoint logo.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Types::FileContent]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      #
+      # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
+      def save_logo(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "PUT",
+          path: "Paypoint/logo/#{URI.encode_uri_component(params[:entry].to_s)}",
+          body: Payabli::Types::FileContent.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Migrates a paypoint to a new parent organization.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Paypoint::Types::PaypointMoveRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      #
+      # @return [Payabli::Types::MigratePaypointResponse]
+      def migrate(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "POST",
+          path: "Paypoint/migrate",
+          body: Payabli::Paypoint::Types::PaypointMoveRequest.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::MigratePaypointResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Retrieves a paypoint's basic settings like custom fields, identifiers, and invoicing settings.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      #
+      # @return [Payabli::Types::SettingsQueryRecord]
+      def settings_page(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "GET",
+          path: "Paypoint/settings/#{URI.encode_uri_component(params[:entry].to_s)}",
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::SettingsQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -90,7 +193,7 @@ module Payabli
       # @option params [String] :entry
       # @option params [String, nil] :entrypages
       #
-      # @return [Payabli::Paypoint::Types::GetEntryConfigResponse]
+      # @return [Payabli::Types::GetEntryConfigResponse]
       def get_entry_config(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -110,7 +213,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Paypoint::Types::GetEntryConfigResponse.load(response.body)
+          Payabli::Types::GetEntryConfigResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -181,109 +284,6 @@ module Payabli
         code = response.code.to_i
         if code.between?(200, 299)
           Payabli::Types::PayabliApiResponseGeneric2Part.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Updates a paypoint logo.
-      #
-      # @param request_options [Hash]
-      # @param params [Payabli::Types::FileContent]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :entry
-      #
-      # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
-      def save_logo(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "PUT",
-          path: "Paypoint/logo/#{URI.encode_uri_component(params[:entry].to_s)}",
-          body: Payabli::Types::FileContent.new(params).to_h,
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Retrieves a paypoint's basic settings like custom fields, identifiers, and invoicing settings.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :entry
-      #
-      # @return [Payabli::Types::SettingsQueryRecord]
-      def settings_page(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "GET",
-          path: "Paypoint/settings/#{URI.encode_uri_component(params[:entry].to_s)}",
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Types::SettingsQueryRecord.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Migrates a paypoint to a new parent organization.
-      #
-      # @param request_options [Hash]
-      # @param params [Payabli::Paypoint::Types::PaypointMoveRequest]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      #
-      # @return [Payabli::Paypoint::Types::MigratePaypointResponse]
-      def migrate(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "POST",
-          path: "Paypoint/migrate",
-          body: Payabli::Paypoint::Types::PaypointMoveRequest.new(params).to_h,
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Paypoint::Types::MigratePaypointResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

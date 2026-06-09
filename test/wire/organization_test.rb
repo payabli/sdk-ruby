@@ -69,27 +69,6 @@ class OrganizationWireTest < WireMockTestCase
     )
   end
 
-  def test_organization_delete_organization_with_wiremock
-    test_id = "organization.delete_organization.0"
-
-    @client.organization.delete_organization(
-      org_id: 123,
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "organization.delete_organization.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "DELETE",
-      url_path: "/Organization/123",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
   def test_organization_edit_organization_with_wiremock
     test_id = "organization.edit_organization.0"
 
@@ -122,6 +101,27 @@ class OrganizationWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "PUT",
+      url_path: "/Organization/123",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_organization_delete_organization_with_wiremock
+    test_id = "organization.delete_organization.0"
+
+    @client.organization.delete_organization(
+      org_id: 123,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "organization.delete_organization.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "DELETE",
       url_path: "/Organization/123",
       query_params: nil,
       expected: 1

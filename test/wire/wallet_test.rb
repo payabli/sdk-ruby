@@ -18,7 +18,7 @@ class WalletWireTest < WireMockTestCase
     @client.wallet.configure_apple_pay_organization(
       cascade: true,
       is_enabled: true,
-      org_id: 901,
+      org_id: 123,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "wallet.configure_apple_pay_organization.0"
@@ -63,7 +63,7 @@ class WalletWireTest < WireMockTestCase
     @client.wallet.configure_google_pay_organization(
       cascade: true,
       is_enabled: true,
-      org_id: 901,
+      org_id: 123,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "wallet.configure_google_pay_organization.0"

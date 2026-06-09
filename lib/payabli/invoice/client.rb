@@ -13,7 +13,7 @@ module Payabli
       # Creates an invoice in an entrypoint.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::Invoice::Types::InvoiceDataRequest]
+      # @param params [Payabli::Types::InvoiceDataRequest]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -23,7 +23,7 @@ module Payabli
       # @option params [Boolean, nil] :force_customer_creation
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::Invoice::Types::InvoiceResponseWithoutData]
+      # @return [Payabli::Types::InvoiceResponseWithoutData]
       def add_invoice(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         path_param_names = %i[entry]
@@ -43,7 +43,7 @@ module Payabli
           path: "Invoice/#{URI.encode_uri_component(params[:entry].to_s)}",
           headers: headers,
           query: query_params,
-          body: Payabli::Invoice::Types::InvoiceDataRequest.new(body_params).to_h,
+          body: Payabli::Types::InvoiceDataRequest.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -53,121 +53,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Invoice::Types::InvoiceResponseWithoutData.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Deletes a file attached to an invoice.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id_invoice
-      # @option params [String] :filename
-      #
-      # @return [Payabli::Invoice::Types::InvoiceResponseWithoutData]
-      def delete_attached_from_invoice(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "DELETE",
-          path: "Invoice/attachedFileFromInvoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}/#{URI.encode_uri_component(params[:filename].to_s)}",
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Invoice::Types::InvoiceResponseWithoutData.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Deletes a single invoice from an entrypoint.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id_invoice
-      #
-      # @return [Payabli::Invoice::Types::InvoiceResponseWithoutData]
-      def delete_invoice(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "DELETE",
-          path: "Invoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Invoice::Types::InvoiceResponseWithoutData.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Updates details for a single invoice in an entrypoint.
-      #
-      # @param request_options [Hash]
-      # @param params [Payabli::Invoice::Types::InvoiceDataRequest]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id_invoice
-      # @option params [Boolean, nil] :force_customer_creation
-      #
-      # @return [Payabli::Invoice::Types::InvoiceResponseWithoutData]
-      def edit_invoice(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        path_param_names = %i[id_invoice]
-        body_params = params.except(*path_param_names)
-
-        query_param_names = %i[force_customer_creation]
-        query_params = {}
-        query_params["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
-        params = params.except(*query_param_names)
-
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "PUT",
-          path: "Invoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
-          query: query_params,
-          body: Payabli::Invoice::Types::InvoiceDataRequest.new(body_params).to_h,
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Invoice::Types::InvoiceResponseWithoutData.load(response.body)
+          Payabli::Types::InvoiceResponseWithoutData.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -214,6 +100,41 @@ module Payabli
         end
       end
 
+      # Deletes a file attached to an invoice.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_invoice
+      # @option params [String] :filename
+      #
+      # @return [Payabli::Types::InvoiceResponseWithoutData]
+      def delete_attached_from_invoice(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "DELETE",
+          path: "Invoice/attachedFileFromInvoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}/#{URI.encode_uri_component(params[:filename].to_s)}",
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::InvoiceResponseWithoutData.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
       # Retrieves a single invoice by ID.
       #
       # @param request_options [Hash]
@@ -225,7 +146,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_invoice
       #
-      # @return [Payabli::Invoice::Types::GetInvoiceRecord]
+      # @return [Payabli::Types::GetInvoiceRecord]
       def get_invoice(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -241,7 +162,86 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Invoice::Types::GetInvoiceRecord.load(response.body)
+          Payabli::Types::GetInvoiceRecord.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Updates details for a single invoice in an entrypoint.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Types::InvoiceDataRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_invoice
+      # @option params [Boolean, nil] :force_customer_creation
+      #
+      # @return [Payabli::Types::InvoiceResponseWithoutData]
+      def edit_invoice(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[id_invoice]
+        body_params = params.except(*path_param_names)
+
+        query_param_names = %i[force_customer_creation]
+        query_params = {}
+        query_params["forceCustomerCreation"] = params[:force_customer_creation] if params.key?(:force_customer_creation)
+        params = params.except(*query_param_names)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "PUT",
+          path: "Invoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
+          query: query_params,
+          body: Payabli::Types::InvoiceDataRequest.new(body_params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::InvoiceResponseWithoutData.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Deletes a single invoice from an entrypoint.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_invoice
+      #
+      # @return [Payabli::Types::InvoiceResponseWithoutData]
+      def delete_invoice(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "DELETE",
+          path: "Invoice/#{URI.encode_uri_component(params[:id_invoice].to_s)}",
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::InvoiceResponseWithoutData.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -259,7 +259,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
-      # @return [Payabli::Invoice::Types::InvoiceNumberResponse]
+      # @return [Payabli::Types::InvoiceNumberResponse]
       def get_invoice_number(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -275,7 +275,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Invoice::Types::InvoiceNumberResponse.load(response.body)
+          Payabli::Types::InvoiceNumberResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -299,7 +299,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::Invoice::Types::QueryInvoiceResponse]
+      # @return [Payabli::Types::QueryInvoiceResponse]
       def list_invoices(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -323,7 +323,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Invoice::Types::QueryInvoiceResponse.load(response.body)
+          Payabli::Types::QueryInvoiceResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -347,7 +347,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::Invoice::Types::QueryInvoiceResponse]
+      # @return [Payabli::Types::QueryInvoiceResponse]
       def list_invoices_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -371,7 +371,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Invoice::Types::QueryInvoiceResponse.load(response.body)
+          Payabli::Types::QueryInvoiceResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -391,7 +391,7 @@ module Payabli
       # @option params [Boolean, nil] :attachfile
       # @option params [String, nil] :mail_2
       #
-      # @return [Payabli::Invoice::Types::SendInvoiceResponse]
+      # @return [Payabli::Types::SendInvoiceResponse]
       def send_invoice(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -412,7 +412,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Invoice::Types::SendInvoiceResponse.load(response.body)
+          Payabli::Types::SendInvoiceResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

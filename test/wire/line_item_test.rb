@@ -16,7 +16,7 @@ class LineItemWireTest < WireMockTestCase
     test_id = "line_item.add_item.0"
 
     @client.line_item.add_item(
-      entry: "47cae3d74",
+      entry: "8cfec329267",
       item_commodity_code: "010",
       item_cost: 12.45,
       item_description: "Deposit for materials",
@@ -35,28 +35,7 @@ class LineItemWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "POST",
-      url_path: "/LineItem/47cae3d74",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
-  def test_line_item_delete_item_with_wiremock
-    test_id = "line_item.delete_item.0"
-
-    @client.line_item.delete_item(
-      line_item_id: 700,
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "line_item.delete_item.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "DELETE",
-      url_path: "/LineItem/700",
+      url_path: "/LineItem/8cfec329267",
       query_params: nil,
       expected: 1
     )
@@ -83,6 +62,50 @@ class LineItemWireTest < WireMockTestCase
     )
   end
 
+  def test_line_item_update_item_with_wiremock
+    test_id = "line_item.update_item.0"
+
+    @client.line_item.update_item(
+      line_item_id: 700,
+      item_cost: 12.45,
+      item_qty: 1,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "line_item.update_item.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/LineItem/700",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_line_item_delete_item_with_wiremock
+    test_id = "line_item.delete_item.0"
+
+    @client.line_item.delete_item(
+      line_item_id: 700,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "line_item.delete_item.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/LineItem/700",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
   def test_line_item_list_line_items_with_wiremock
     test_id = "line_item.list_line_items.0"
 
@@ -102,29 +125,6 @@ class LineItemWireTest < WireMockTestCase
       test_id: test_id,
       method: "GET",
       url_path: "/Query/lineitems/8cfec329267",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
-  def test_line_item_update_item_with_wiremock
-    test_id = "line_item.update_item.0"
-
-    @client.line_item.update_item(
-      line_item_id: 700,
-      item_cost: 12.45,
-      item_qty: 1,
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "line_item.update_item.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "PUT",
-      url_path: "/LineItem/700",
       query_params: nil,
       expected: 1
     )

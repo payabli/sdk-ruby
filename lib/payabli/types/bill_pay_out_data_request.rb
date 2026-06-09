@@ -17,7 +17,7 @@ module Payabli
 
       field :discount, -> { String }, optional: true, nullable: false
 
-      field :terms, -> { String }, optional: true, nullable: false
+      field :terms, -> { Payabli::Types::Terms }, optional: true, nullable: false
 
       field :accounting_field_1, -> { String }, optional: true, nullable: false, api_name: "accountingField1"
 

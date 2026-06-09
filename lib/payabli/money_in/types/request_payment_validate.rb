@@ -14,7 +14,7 @@ module Payabli
 
         field :order_id, -> { String }, optional: true, nullable: false, api_name: "orderId"
 
-        field :payment_method, -> { Payabli::MoneyIn::Types::RequestPaymentValidatePaymentMethod }, optional: false, nullable: false, api_name: "paymentMethod"
+        field :payment_method, -> { Payabli::Types::RequestPaymentValidatePaymentMethod }, optional: false, nullable: false, api_name: "paymentMethod"
       end
     end
   end

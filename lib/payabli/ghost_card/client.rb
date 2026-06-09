@@ -28,7 +28,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Payabli::Types::Entry] :entry
       #
-      # @return [Payabli::GhostCard::Types::CreateGhostCardResponse]
+      # @return [Payabli::Types::CreateGhostCardResponse]
       def create_ghost_card(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::GhostCard::Types::CreateGhostCardRequestBody.new(params).to_h
@@ -49,7 +49,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::GhostCard::Types::CreateGhostCardResponse.load(response.body)
+          Payabli::Types::CreateGhostCardResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

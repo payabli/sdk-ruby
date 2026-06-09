@@ -19,9 +19,9 @@ class NotificationlogsWireTest < WireMockTestCase
       page_size: 20,
       start_date: "2024-01-01T00:00:00Z",
       end_date: "2024-01-31T23:59:59Z",
+      org_id: 123,
       notification_event: "ActivatedMerchant",
       succeeded: true,
-      org_id: 12345,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "notificationlogs.search_notification_logs.0"

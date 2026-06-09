@@ -16,8 +16,8 @@ class GhostCardWireTest < WireMockTestCase
     test_id = "ghost_card.create_ghost_card.0"
 
     @client.ghost_card.create_ghost_card(
-      entry: "8cfec2e0fa",
-      vendor_id: 42,
+      entry: "8cfec329267",
+      vendor_id: 456,
       expense_limit: 500,
       amount: 500,
       max_number_of_uses: 3,
@@ -42,7 +42,7 @@ class GhostCardWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "POST",
-      url_path: "/MoneyOutCard/GhostCard/8cfec2e0fa",
+      url_path: "/MoneyOutCard/GhostCard/8cfec329267",
       query_params: nil,
       expected: 1
     )
@@ -52,7 +52,7 @@ class GhostCardWireTest < WireMockTestCase
     test_id = "ghost_card.update_card.0"
 
     @client.ghost_card.update_card(
-      entry: "8cfec2e0fa",
+      entry: "8cfec329267",
       card_token: "gc_abc123def456",
       status: "Cancelled",
       request_options: {
@@ -65,7 +65,7 @@ class GhostCardWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "PATCH",
-      url_path: "/MoneyOutCard/card/8cfec2e0fa",
+      url_path: "/MoneyOutCard/card/8cfec329267",
       query_params: nil,
       expected: 1
     )

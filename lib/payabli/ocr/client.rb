@@ -16,22 +16,22 @@ module Payabli
       # number, vendor information, bill items, and more.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::Ocr::Types::FileContentImageOnly]
+      # @param params [Payabli::Types::FileContentImageOnly]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Ocr::Types::TypeResult] :type_result
+      # @option params [Payabli::Types::TypeResult] :type_result
       #
-      # @return [Payabli::Ocr::Types::PayabliApiResponseOcr]
+      # @return [Payabli::Types::PayabliApiResponseOcr]
       def ocr_document_form(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "/Import/ocrDocumentForm/#{URI.encode_uri_component(params[:type_result].to_s)}",
-          body: Payabli::Ocr::Types::FileContentImageOnly.new(params).to_h,
+          path: "Import/ocrDocumentForm/#{URI.encode_uri_component(params[:type_result].to_s)}",
+          body: Payabli::Types::FileContentImageOnly.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -41,7 +41,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Ocr::Types::PayabliApiResponseOcr.load(response.body)
+          Payabli::Types::PayabliApiResponseOcr.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -54,22 +54,22 @@ module Payabli
       # bill number, vendor information, bill items, and more.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::Ocr::Types::FileContentImageOnly]
+      # @param params [Payabli::Types::FileContentImageOnly]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Payabli::Ocr::Types::TypeResult] :type_result
+      # @option params [Payabli::Types::TypeResult] :type_result
       #
-      # @return [Payabli::Ocr::Types::PayabliApiResponseOcr]
+      # @return [Payabli::Types::PayabliApiResponseOcr]
       def ocr_document_json(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "/Import/ocrDocumentJson/#{URI.encode_uri_component(params[:type_result].to_s)}",
-          body: Payabli::Ocr::Types::FileContentImageOnly.new(params).to_h,
+          path: "Import/ocrDocumentJson/#{URI.encode_uri_component(params[:type_result].to_s)}",
+          body: Payabli::Types::FileContentImageOnly.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -79,7 +79,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Ocr::Types::PayabliApiResponseOcr.load(response.body)
+          Payabli::Types::PayabliApiResponseOcr.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

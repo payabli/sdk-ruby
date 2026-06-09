@@ -280,7 +280,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_devices_org.0"
 
     @client.query.list_devices_org(
-      org_id: 100,
+      org_id: 123,
       from_record: 0,
       limit_record: 20,
       sort_by: "desc(createdAt)",
@@ -294,7 +294,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/devices/org/100",
+      url_path: "/Query/devices/org/123",
       query_params: nil,
       expected: 1
     )
@@ -688,8 +688,8 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_transfer_details.0"
 
     @client.query.list_transfer_details(
-      entry: "47862acd",
-      transfer_id: 123456,
+      entry: "8cfec329267",
+      transfer_id: 4521,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "query.list_transfer_details.0"
@@ -700,7 +700,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transferDetails/47862acd/123456",
+      url_path: "/Query/transferDetails/8cfec329267/4521",
       query_params: nil,
       expected: 1
     )
@@ -710,7 +710,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_transfers.0"
 
     @client.query.list_transfers(
-      entry: "47862acd",
+      entry: "8cfec329267",
       from_record: 0,
       limit_record: 20,
       request_options: {
@@ -723,7 +723,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transfers/47862acd",
+      url_path: "/Query/transfers/8cfec329267",
       query_params: nil,
       expected: 1
     )
@@ -756,7 +756,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_transfers_out_org.0"
 
     @client.query.list_transfers_out_org(
-      org_id: 77,
+      org_id: 123,
       from_record: 0,
       limit_record: 20,
       request_options: {
@@ -769,7 +769,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transfersOut/org/77",
+      url_path: "/Query/transfersOut/org/123",
       query_params: nil,
       expected: 1
     )
@@ -779,7 +779,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_transfers_out_paypoint.0"
 
     @client.query.list_transfers_out_paypoint(
-      entry: "47cade237",
+      entry: "8cfec329267",
       from_record: 0,
       limit_record: 20,
       request_options: {
@@ -792,7 +792,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transfersOut/47cade237",
+      url_path: "/Query/transfersOut/8cfec329267",
       query_params: nil,
       expected: 1
     )
@@ -802,7 +802,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_transfer_details_out.0"
 
     @client.query.list_transfer_details_out(
-      entry: "47ace2b25",
+      entry: "8cfec329267",
       transfer_id: 4521,
       from_record: 0,
       limit_record: 20,
@@ -816,7 +816,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transferDetailsOut/47ace2b25/4521",
+      url_path: "/Query/transferDetailsOut/8cfec329267/4521",
       query_params: nil,
       expected: 1
     )

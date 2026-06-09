@@ -27,7 +27,7 @@ module Payabli
 
       field :bzip, -> { String }, optional: true, nullable: false
 
-      field :contacts, -> { Internal::Types::Array[Payabli::Types::ApplicationDataManagedContactsItem] }, optional: true, nullable: false
+      field :contacts, -> { Internal::Types::Array[Payabli::Types::Contacts] }, optional: true, nullable: false
 
       field :dbaname, -> { String }, optional: true, nullable: false
 
@@ -57,7 +57,7 @@ module Payabli
 
       field :org_id, -> { Integer }, optional: true, nullable: false, api_name: "orgId"
 
-      field :ownership, -> { Internal::Types::Array[Payabli::Types::ApplicationDataManagedOwnershipItem] }, optional: true, nullable: false
+      field :ownership, -> { Internal::Types::Array[Payabli::Types::Owners] }, optional: true, nullable: false
 
       field :phonenumber, -> { String }, optional: true, nullable: false
 

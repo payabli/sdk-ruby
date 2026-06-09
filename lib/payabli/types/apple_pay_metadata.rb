@@ -2,8 +2,8 @@
 
 module Payabli
   module Types
-    # This metadata appears only when the domain verification check fails. It gives more information about why the check
-    # failed.
+    # This metadata appears only when the domain verification check fails. It
+    # gives more information about why the check failed.
     class ApplePayMetadata < Internal::Types::Model
       field :is_file_available, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "isFileAvailable"
 

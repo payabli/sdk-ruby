@@ -14,7 +14,7 @@ module Payabli
 
         field :validation_code, -> { String }, optional: true, nullable: false, api_name: "validationCode"
 
-        field :body, -> { Payabli::MoneyIn::Types::TransRequestBody }, optional: false, nullable: false
+        field :body, -> { Payabli::Types::TransRequestBody }, optional: false, nullable: false
       end
     end
   end

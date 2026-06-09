@@ -45,7 +45,7 @@ module Payabli
         end
       end
 
-      # Delete a vendor.
+      # Retrieves a vendor's details, including enrichment status and payment acceptance info when available.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -56,12 +56,12 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_vendor
       #
-      # @return [Payabli::Types::PayabliApiResponseVendors]
-      def delete_vendor(request_options: {}, **params)
+      # @return [Payabli::Types::VendorQueryRecord]
+      def get_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
-          method: "DELETE",
+          method: "GET",
           path: "Vendor/#{URI.encode_uri_component(params[:id_vendor].to_s)}",
           request_options: request_options
         )
@@ -72,7 +72,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponseVendors.load(response.body)
+          Payabli::Types::VendorQueryRecord.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -114,7 +114,7 @@ module Payabli
         end
       end
 
-      # Retrieves a vendor's details, including enrichment status and payment acceptance info when available.
+      # Delete a vendor.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -125,12 +125,12 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_vendor
       #
-      # @return [Payabli::Types::VendorQueryRecord]
-      def get_vendor(request_options: {}, **params)
+      # @return [Payabli::Types::PayabliApiResponseVendors]
+      def delete_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
-          method: "GET",
+          method: "DELETE",
           path: "Vendor/#{URI.encode_uri_component(params[:id_vendor].to_s)}",
           request_options: request_options
         )
@@ -141,7 +141,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::VendorQueryRecord.load(response.body)
+          Payabli::Types::PayabliApiResponseVendors.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -162,14 +162,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
-      # @return [Payabli::Vendor::Types::VendorEnrichResponse]
+      # @return [Payabli::Types::VendorEnrichResponse]
       def enrich_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request_data = Payabli::Vendor::Types::VendorEnrichRequest.new(params).to_h
+        non_body_param_names = %w[entry]
+        body = request_data.except(*non_body_param_names)
+
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Vendor/enrich/#{URI.encode_uri_component(params[:entry].to_s)}",
-          body: Payabli::Vendor::Types::VendorEnrichRequest.new(params).to_h,
+          body: body,
           request_options: request_options
         )
         begin
@@ -179,7 +183,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Vendor::Types::VendorEnrichResponse.load(response.body)
+          Payabli::Types::VendorEnrichResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

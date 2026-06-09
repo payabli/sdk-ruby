@@ -12,6 +12,9 @@ module Payabli
       MONTHLY = "monthly"
       EVERY_3_MONTHS = "every3months"
       ANNUALLY = "annually"
+      FIRST_OF_MONTH = "firstofmonth"
+      FIFTEENTH_OF_MONTH = "fifteenthofmonth"
+      END_OF_MONTH = "endofmonth"
     end
   end
 end

@@ -41,27 +41,6 @@ class NotificationWireTest < WireMockTestCase
     )
   end
 
-  def test_notification_delete_notification_with_wiremock
-    test_id = "notification.delete_notification.0"
-
-    @client.notification.delete_notification(
-      n_id: "1717",
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "notification.delete_notification.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "DELETE",
-      url_path: "/Notification/1717",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
   def test_notification_get_notification_with_wiremock
     test_id = "notification.get_notification.0"
 
@@ -107,6 +86,27 @@ class NotificationWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "PUT",
+      url_path: "/Notification/1717",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_notification_delete_notification_with_wiremock
+    test_id = "notification.delete_notification.0"
+
+    @client.notification.delete_notification(
+      n_id: "1717",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "notification.delete_notification.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "DELETE",
       url_path: "/Notification/1717",
       query_params: nil,
       expected: 1

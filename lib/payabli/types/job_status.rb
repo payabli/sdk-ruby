@@ -3,21 +3,11 @@
 module Payabli
   module Types
     module JobStatus
-      # JobStatus is an alias for String
+      extend Payabli::Internal::Types::Enum
 
-      # @option str [String]
-      #
-      # @return [untyped]
-      def self.load(str)
-        ::JSON.parse(str)
-      end
-
-      # @option value [untyped]
-      #
-      # @return [String]
-      def self.dump(value)
-        ::JSON.generate(value)
-      end
+      IN_PROGRESS = "in_progress"
+      COMPLETED = "completed"
+      FAILED = "failed"
     end
   end
 end

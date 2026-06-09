@@ -8,7 +8,7 @@ module Payabli
 
         field :new_parent_organization_id, -> { Integer }, optional: false, nullable: false, api_name: "newParentOrganizationId"
 
-        field :notification_request, -> { Payabli::Paypoint::Types::NotificationRequest }, optional: true, nullable: false, api_name: "notificationRequest"
+        field :notification_request, -> { Payabli::Types::NotificationRequest }, optional: true, nullable: false, api_name: "notificationRequest"
       end
     end
   end

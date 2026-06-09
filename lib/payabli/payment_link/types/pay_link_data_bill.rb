@@ -12,7 +12,7 @@ module Payabli
 
         field :idempotency_key, -> { String }, optional: true, nullable: false, api_name: "idempotencyKey"
 
-        field :body, -> { Payabli::PaymentLink::Types::PaymentPageRequestBodyOut }, optional: false, nullable: false
+        field :body, -> { Payabli::Types::PaymentPageRequestBodyOut }, optional: false, nullable: false
       end
     end
   end

@@ -35,11 +35,33 @@ class CloudWireTest < WireMockTestCase
     )
   end
 
+  def test_cloud_remove_device_with_wiremock
+    test_id = "cloud.remove_device.0"
+
+    @client.cloud.remove_device(
+      device_id: "499585-389fj484-3jcj8hj3",
+      entry: "8cfec329267",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "cloud.remove_device.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/Cloud/register/8cfec329267/499585-389fj484-3jcj8hj3",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
   def test_cloud_history_device_with_wiremock
     test_id = "cloud.history_device.0"
 
     @client.cloud.history_device(
-      device_id: "WXGDWB",
+      device_id: "499585-389fj484-3jcj8hj3",
       entry: "8cfec329267",
       request_options: {
         additional_headers: {
@@ -51,7 +73,7 @@ class CloudWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Cloud/history/8cfec329267/WXGDWB",
+      url_path: "/Cloud/history/8cfec329267/499585-389fj484-3jcj8hj3",
       query_params: nil,
       expected: 1
     )
@@ -73,28 +95,6 @@ class CloudWireTest < WireMockTestCase
       test_id: test_id,
       method: "GET",
       url_path: "/Cloud/list/8cfec329267",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
-  def test_cloud_remove_device_with_wiremock
-    test_id = "cloud.remove_device.0"
-
-    @client.cloud.remove_device(
-      device_id: "6c361c7d-674c-44cc-b790-382b75d1xxx",
-      entry: "8cfec329267",
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "cloud.remove_device.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "DELETE",
-      url_path: "/Cloud/register/8cfec329267/6c361c7d-674c-44cc-b790-382b75d1xxx",
       query_params: nil,
       expected: 1
     )

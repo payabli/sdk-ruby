@@ -7,7 +7,7 @@ module Payabli
 
       field :item_commodity_code, -> { String }, optional: true, nullable: false, api_name: "itemCommodityCode"
 
-      field :item_cost, -> { Integer }, optional: false, nullable: false, api_name: "itemCost"
+      field :item_cost, -> { Integer }, optional: true, nullable: false, api_name: "itemCost"
 
       field :item_description, -> { String }, optional: true, nullable: false, api_name: "itemDescription"
 

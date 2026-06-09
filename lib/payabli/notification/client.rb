@@ -13,7 +13,7 @@ module Payabli
       # Create a new notification or auto-generated report.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::Notification::Types::AddNotificationRequest]
+      # @param params [Payabli::Types::AddNotificationRequest]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -27,41 +27,7 @@ module Payabli
           base_url: request_options[:base_url],
           method: "POST",
           path: "Notification",
-          body: Payabli::Notification::Types::AddNotificationRequest.new(params).to_h,
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponseNotifications.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Deletes a single notification or auto-generated report.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :n_id
-      #
-      # @return [Payabli::Types::PayabliApiResponseNotifications]
-      def delete_notification(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "DELETE",
-          path: "Notification/#{URI.encode_uri_component(params[:n_id].to_s)}",
+          body: Payabli::Types::AddNotificationRequest.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -115,7 +81,7 @@ module Payabli
       # Update a notification or auto-generated report.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::Notification::Types::UpdateNotificationRequest]
+      # @param params [Payabli::Types::UpdateNotificationRequest]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -130,7 +96,41 @@ module Payabli
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Notification/#{URI.encode_uri_component(params[:n_id].to_s)}",
-          body: Payabli::Notification::Types::UpdateNotificationRequest.new(params).to_h,
+          body: Payabli::Types::UpdateNotificationRequest.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::PayabliApiResponseNotifications.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Deletes a single notification or auto-generated report.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :n_id
+      #
+      # @return [Payabli::Types::PayabliApiResponseNotifications]
+      def delete_notification(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "DELETE",
+          path: "Notification/#{URI.encode_uri_component(params[:n_id].to_s)}",
           request_options: request_options
         )
         begin

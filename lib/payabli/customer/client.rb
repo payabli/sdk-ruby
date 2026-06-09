@@ -64,40 +64,6 @@ module Payabli
         end
       end
 
-      # Delete a customer record.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :customer_id
-      #
-      # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
-      def delete_customer(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "DELETE",
-          path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
       # Retrieves a customer's record and details.
       #
       # @param request_options [Hash]
@@ -132,7 +98,42 @@ module Payabli
         end
       end
 
-      # Links a customer to a transaction by ID.
+      # Update a customer record. Include only the fields you want to change.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Types::CustomerData]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :customer_id
+      #
+      # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
+      def update_customer(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "PUT",
+          path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
+          body: Payabli::Types::CustomerData.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Delete a customer record.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -142,15 +143,14 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :customer_id
-      # @option params [String] :trans_id
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
-      def link_customer_transaction(request_options: {}, **params)
+      def delete_customer(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
-          method: "GET",
-          path: "Customer/link/#{URI.encode_uri_component(params[:customer_id].to_s)}/#{URI.encode_uri_component(params[:trans_id].to_s)}",
+          method: "DELETE",
+          path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -201,25 +201,25 @@ module Payabli
         end
       end
 
-      # Update a customer record. Include only the fields you want to change.
+      # Links a customer to a transaction by ID.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::Types::CustomerData]
+      # @param params [Hash]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :customer_id
+      # @option params [String] :trans_id
       #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
-      def update_customer(request_options: {}, **params)
+      def link_customer_transaction(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
-          method: "PUT",
-          path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
-          body: Payabli::Types::CustomerData.new(params).to_h,
+          method: "GET",
+          path: "Customer/link/#{URI.encode_uri_component(params[:customer_id].to_s)}/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           request_options: request_options
         )
         begin

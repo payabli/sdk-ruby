@@ -32,6 +32,8 @@ module Payabli
 
       field :method_type, -> { String }, optional: false, nullable: true, api_name: "MethodType"
 
+      field :wallet_type, -> { String }, optional: false, nullable: true, api_name: "WalletType"
+
       field :last_updated, -> { String }, optional: false, nullable: true, api_name: "LastUpdated"
 
       field :card_updated_on, -> { String }, optional: false, nullable: true, api_name: "CardUpdatedOn"

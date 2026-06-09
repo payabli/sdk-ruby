@@ -16,22 +16,22 @@ class MoneyOutWireTest < WireMockTestCase
     test_id = "money_out.authorize_out.0"
 
     @client.money_out.authorize_out(
-      entry_point: "48acde49",
+      entry_point: "8cfec329267",
+      auto_capture: true,
+      invoice_data: [{
+        bill_id: 54323
+      }],
       order_description: "Window Painting",
-      payment_method: {
-        method_: "managed"
-      },
       payment_details: {
         total_amount: 47,
         unbundled: false
       },
-      vendor_data: {
-        vendor_number: "7895433"
+      payment_method: {
+        method_: "managed"
       },
-      invoice_data: [{
-        bill_id: 54323
-      }],
-      auto_capture: true,
+      vendor_data: {
+        vendor_number: "VEN-123"
+      },
       request_options: {
         additional_headers: {
           "X-Test-Id" => "money_out.authorize_out.0"

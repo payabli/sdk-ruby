@@ -8,7 +8,7 @@ module Payabli
 
         field :force_customer_creation, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "forceCustomerCreation"
 
-        field :body, -> { Payabli::Invoice::Types::InvoiceDataRequest }, optional: false, nullable: false
+        field :body, -> { Payabli::Types::InvoiceDataRequest }, optional: false, nullable: false
       end
     end
   end

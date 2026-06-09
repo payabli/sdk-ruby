@@ -79,41 +79,6 @@ module Payabli
         end
       end
 
-      # Delete a payment method domain. You can't delete an inherited domain, you must delete a domain at the
-      # organization level.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [String] :domain_id
-      #
-      # @return [Payabli::PaymentMethodDomain::Types::DeletePaymentMethodDomainResponse]
-      def delete_payment_method_domain(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "DELETE",
-          path: "PaymentMethodDomain/#{URI.encode_uri_component(params[:domain_id].to_s)}",
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::PaymentMethodDomain::Types::DeletePaymentMethodDomainResponse.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
       # Get the details for a payment method domain.
       #
       # @param request_options [Hash]
@@ -148,7 +113,8 @@ module Payabli
         end
       end
 
-      # Get a list of payment method domains that belong to a PSP, organization, or paypoint.
+      # Delete a payment method domain. You can't delete an inherited domain, you must delete a domain at the
+      # organization level.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -157,25 +123,15 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_query_parameters
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer, nil] :entity_id
-      # @option params [String, nil] :entity_type
-      # @option params [Integer, nil] :from_record
-      # @option params [Integer, nil] :limit_record
+      # @option params [String] :domain_id
       #
-      # @return [Payabli::PaymentMethodDomain::Types::ListPaymentMethodDomainsResponse]
-      def list_payment_method_domains(request_options: {}, **params)
+      # @return [Payabli::Types::DeletePaymentMethodDomainResponse]
+      def delete_payment_method_domain(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_params = {}
-        query_params["entityId"] = params[:entity_id] if params.key?(:entity_id)
-        query_params["entityType"] = params[:entity_type] if params.key?(:entity_type)
-        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
-        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
-
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
-          method: "GET",
-          path: "PaymentMethodDomain/list",
-          query: query_params,
+          method: "DELETE",
+          path: "PaymentMethodDomain/#{URI.encode_uri_component(params[:domain_id].to_s)}",
           request_options: request_options
         )
         begin
@@ -185,7 +141,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PaymentMethodDomain::Types::ListPaymentMethodDomainsResponse.load(response.body)
+          Payabli::Types::DeletePaymentMethodDomainResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -225,6 +181,50 @@ module Payabli
         code = response.code.to_i
         if code.between?(200, 299)
           Payabli::Types::PaymentMethodDomainGeneralResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Get a list of payment method domains that belong to a PSP, organization, or paypoint.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer, nil] :entity_id
+      # @option params [String, nil] :entity_type
+      # @option params [Integer, nil] :from_record
+      # @option params [Integer, nil] :limit_record
+      #
+      # @return [Payabli::Types::ListPaymentMethodDomainsResponse]
+      def list_payment_method_domains(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_params = {}
+        query_params["entityId"] = params[:entity_id] if params.key?(:entity_id)
+        query_params["entityType"] = params[:entity_type] if params.key?(:entity_type)
+        query_params["fromRecord"] = params[:from_record] if params.key?(:from_record)
+        query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "GET",
+          path: "PaymentMethodDomain/list",
+          query: query_params,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::ListPaymentMethodDomainsResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

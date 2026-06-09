@@ -20,7 +20,7 @@ module Payabli
 
         field :payment_details, -> { Payabli::Types::PaymentDetailCredit }, optional: false, nullable: false, api_name: "paymentDetails"
 
-        field :payment_method, -> { Payabli::MoneyIn::Types::RequestCreditPaymentMethod }, optional: false, nullable: false, api_name: "paymentMethod"
+        field :payment_method, -> { Payabli::Types::RequestCreditPaymentMethod }, optional: false, nullable: false, api_name: "paymentMethod"
 
         field :source, -> { String }, optional: true, nullable: false
 

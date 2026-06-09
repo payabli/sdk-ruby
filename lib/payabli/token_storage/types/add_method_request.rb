@@ -14,7 +14,7 @@ module Payabli
 
         field :idempotency_key, -> { String }, optional: true, nullable: false, api_name: "idempotencyKey"
 
-        field :body, -> { Payabli::TokenStorage::Types::RequestTokenStorage }, optional: false, nullable: false
+        field :body, -> { Payabli::Types::RequestTokenStorage }, optional: false, nullable: false
       end
     end
   end

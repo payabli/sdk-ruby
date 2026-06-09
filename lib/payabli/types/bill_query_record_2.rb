@@ -69,7 +69,7 @@ module Payabli
 
       field :status, -> { Integer }, optional: false, nullable: true, api_name: "Status"
 
-      field :terms, -> { String }, optional: false, nullable: true, api_name: "Terms"
+      field :terms, -> { Payabli::Types::Terms }, optional: false, nullable: true, api_name: "Terms"
 
       field :total_amount, -> { Integer }, optional: false, nullable: true, api_name: "TotalAmount"
 

@@ -57,6 +57,8 @@ module Payabli
 
       field :sub_status, -> { Integer }, optional: true, nullable: false, api_name: "SubStatus"
 
+      field :subscription_type, -> { Payabli::Types::SubscriptionType }, optional: true, nullable: false, api_name: "SubscriptionType"
+
       field :total_amount, -> { Integer }, optional: true, nullable: false, api_name: "TotalAmount"
 
       field :total_cycles, -> { Integer }, optional: true, nullable: false, api_name: "TotalCycles"

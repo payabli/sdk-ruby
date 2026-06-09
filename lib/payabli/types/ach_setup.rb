@@ -2,6 +2,7 @@
 
 module Payabli
   module Types
+    # Configuration for which ACH SEC codes the user is allowed to use.
     class AchSetup < Internal::Types::Model
       field :accept_ccd, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "acceptCCD"
 

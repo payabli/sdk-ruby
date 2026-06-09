@@ -643,7 +643,7 @@ class ExportWireTest < WireMockTestCase
     @client.export.export_transfer_details(
       entry: "8cfec329267",
       format: "csv",
-      transfer_id: 1000000,
+      transfer_id: 4521,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -658,7 +658,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/transferDetails/csv/8cfec329267/1000000",
+      url_path: "/Export/transferDetails/csv/8cfec329267/4521",
       query_params: nil,
       expected: 1
     )

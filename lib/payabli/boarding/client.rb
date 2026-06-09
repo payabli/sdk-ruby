@@ -13,7 +13,7 @@ module Payabli
       # Creates a boarding application in an organization. This endpoint requires an application API token.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::Boarding::Types::AddApplicationRequest]
+      # @param params [Payabli::Types::AddApplicationRequest]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -27,7 +27,42 @@ module Payabli
           base_url: request_options[:base_url],
           method: "POST",
           path: "Boarding/app",
-          body: Payabli::Boarding::Types::AddApplicationRequest.new(params).to_h,
+          body: Payabli::Types::AddApplicationRequest.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Updates a boarding application by ID. This endpoint requires an application API token.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Types::ApplicationData]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :app_id
+      #
+      # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
+      def update_application(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "PUT",
+          path: "Boarding/app/#{URI.encode_uri_component(params[:app_id].to_s)}",
+          body: Payabli::Types::ApplicationData.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -388,41 +423,6 @@ module Payabli
         end
       end
 
-      # Updates a boarding application by ID. This endpoint requires an application API token.
-      #
-      # @param request_options [Hash]
-      # @param params [Payabli::Types::ApplicationData]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :app_id
-      #
-      # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
-      def update_application(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "PUT",
-          path: "Boarding/app/#{URI.encode_uri_component(params[:app_id].to_s)}",
-          body: Payabli::Types::ApplicationData.new(params).to_h,
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Types::PayabliApiResponse00Responsedatanonobject.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
       # Creates a new boarding application linked to an existing paypoint as part of the multi-product boarding flow.
       # Use this endpoint to add new services to a paypoint without creating a duplicate record. The system copies
       # eligible business, contact, banking, and address data from the paypoint to the new application based on 1:1
@@ -437,7 +437,7 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
-      # @return [Payabli::Boarding::Types::CreateApplicationFromPaypointResponse]
+      # @return [Payabli::Types::CreateApplicationFromPaypointResponse]
       def add_service_to_paypoint_from_app(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -454,7 +454,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Boarding::Types::CreateApplicationFromPaypointResponse.load(response.body)
+          Payabli::Types::CreateApplicationFromPaypointResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

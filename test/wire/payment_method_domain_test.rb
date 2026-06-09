@@ -62,27 +62,6 @@ class PaymentMethodDomainWireTest < WireMockTestCase
     )
   end
 
-  def test_payment_method_domain_delete_payment_method_domain_with_wiremock
-    test_id = "payment_method_domain.delete_payment_method_domain.0"
-
-    @client.payment_method_domain.delete_payment_method_domain(
-      domain_id: "pmd_b8237fa45c964d8a9ef27160cd42b8c5",
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "payment_method_domain.delete_payment_method_domain.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "DELETE",
-      url_path: "/PaymentMethodDomain/pmd_b8237fa45c964d8a9ef27160cd42b8c5",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
   def test_payment_method_domain_get_payment_method_domain_with_wiremock
     test_id = "payment_method_domain.get_payment_method_domain.0"
 
@@ -104,23 +83,22 @@ class PaymentMethodDomainWireTest < WireMockTestCase
     )
   end
 
-  def test_payment_method_domain_list_payment_method_domains_with_wiremock
-    test_id = "payment_method_domain.list_payment_method_domains.0"
+  def test_payment_method_domain_delete_payment_method_domain_with_wiremock
+    test_id = "payment_method_domain.delete_payment_method_domain.0"
 
-    @client.payment_method_domain.list_payment_method_domains(
-      entity_id: 1147,
-      entity_type: "paypoint",
+    @client.payment_method_domain.delete_payment_method_domain(
+      domain_id: "pmd_b8237fa45c964d8a9ef27160cd42b8c5",
       request_options: {
         additional_headers: {
-          "X-Test-Id" => "payment_method_domain.list_payment_method_domains.0"
+          "X-Test-Id" => "payment_method_domain.delete_payment_method_domain.0"
         }
       }
     )
 
     verify_request_count(
       test_id: test_id,
-      method: "GET",
-      url_path: "/PaymentMethodDomain/list",
+      method: "DELETE",
+      url_path: "/PaymentMethodDomain/pmd_b8237fa45c964d8a9ef27160cd42b8c5",
       query_params: nil,
       expected: 1
     )
@@ -148,6 +126,28 @@ class PaymentMethodDomainWireTest < WireMockTestCase
       test_id: test_id,
       method: "PATCH",
       url_path: "/PaymentMethodDomain/pmd_b8237fa45c964d8a9ef27160cd42b8c5",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_payment_method_domain_list_payment_method_domains_with_wiremock
+    test_id = "payment_method_domain.list_payment_method_domains.0"
+
+    @client.payment_method_domain.list_payment_method_domains(
+      entity_id: 1147,
+      entity_type: "paypoint",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "payment_method_domain.list_payment_method_domains.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/PaymentMethodDomain/list",
       query_params: nil,
       expected: 1
     )

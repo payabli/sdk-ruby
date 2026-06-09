@@ -8,7 +8,7 @@ module Payabli
 
         field :idempotency_key, -> { String }, optional: true, nullable: false, api_name: "idempotencyKey"
 
-        field :body, -> { Payabli::MoneyOutTypes::Types::ReissuePayoutBody }, optional: false, nullable: false
+        field :payment_method, -> { Payabli::Types::ReissuePaymentMethod }, optional: false, nullable: false, api_name: "paymentMethod"
       end
     end
   end

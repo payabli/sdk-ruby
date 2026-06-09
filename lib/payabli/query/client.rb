@@ -28,7 +28,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::QueryBatchesDetailResponse]
+      # @return [Payabli::Types::QueryBatchesDetailResponse]
       def list_batch_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -52,7 +52,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::QueryBatchesDetailResponse.load(response.body)
+          Payabli::Types::QueryBatchesDetailResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -77,7 +77,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::QueryBatchesDetailResponse]
+      # @return [Payabli::Types::QueryBatchesDetailResponse]
       def list_batch_details_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -101,7 +101,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::QueryBatchesDetailResponse.load(response.body)
+          Payabli::Types::QueryBatchesDetailResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -125,7 +125,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::QueryBatchesResponse]
+      # @return [Payabli::Types::QueryBatchesResponse]
       def list_batches(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -149,7 +149,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::QueryBatchesResponse.load(response.body)
+          Payabli::Types::QueryBatchesResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -173,7 +173,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::QueryBatchesResponse]
+      # @return [Payabli::Types::QueryBatchesResponse]
       def list_batches_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -197,7 +197,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::QueryBatchesResponse.load(response.body)
+          Payabli::Types::QueryBatchesResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -509,7 +509,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::QueryDeviceResponse]
+      # @return [Payabli::Types::QueryDeviceResponse]
       def list_devices(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -533,7 +533,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::QueryDeviceResponse.load(response.body)
+          Payabli::Types::QueryDeviceResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -557,7 +557,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::QueryDeviceResponse]
+      # @return [Payabli::Types::QueryDeviceResponse]
       def list_devices_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -581,7 +581,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::QueryDeviceResponse.load(response.body)
+          Payabli::Types::QueryDeviceResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -787,7 +787,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::ListOrganizationsResponse]
+      # @return [Payabli::Types::ListOrganizationsResponse]
       def list_organizations(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -811,7 +811,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::ListOrganizationsResponse.load(response.body)
+          Payabli::Types::ListOrganizationsResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -1172,7 +1172,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::PayoutSubscription::Types::QueryPayoutSubscriptionResponse]
+      # @return [Payabli::Types::QueryPayoutSubscriptionResponse]
       def list_payout_subscriptions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -1196,7 +1196,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PayoutSubscription::Types::QueryPayoutSubscriptionResponse.load(response.body)
+          Payabli::Types::QueryPayoutSubscriptionResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -1221,7 +1221,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::PayoutSubscription::Types::QueryPayoutSubscriptionResponse]
+      # @return [Payabli::Types::QueryPayoutSubscriptionResponse]
       def list_payout_subscriptions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -1245,7 +1245,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::PayoutSubscription::Types::QueryPayoutSubscriptionResponse.load(response.body)
+          Payabli::Types::QueryPayoutSubscriptionResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -1254,14 +1254,18 @@ module Payabli
 
       # Retrieve a list of transactions for a paypoint. Use filters to limit results. Include the `exportFormat` query
       # parameter to return the results as a file instead of a JSON response.
+      #
       # By default, this endpoint returns only transactions from the last 60 days. To query transactions outside of this
       # period, include `transactionDate` filters.
-      # For example, this request parameters filter for transactions between April 01, 2024 and April 09, 2024.
-      # ``` curl -X GET
-      # https://sandbox.payabli.com/api/Query/transactions/org/1?limitRecord=20&fromRecord=0&transactionDate(ge)=2024-04-01T00:00:00&transactionDate(le)=2024-04-09T23:59:59\
-      #   -H 'requestToken: <API TOKEN>'
       #
-      #   ```
+      # These request parameters filter for transactions between April 1, 2024 and April 9, 2024.
+      #
+      # ```bash
+      # curl -X GET
+      # https://api-sandbox.payabli.com/api/Query/transactions/8cfec329267?limitRecord=20&fromRecord=0&transactionDate(ge)=2024-04-01T00:00:00&transactionDate(le)=2024-04-09T23:59:59
+      # \
+      #   -H 'requestToken: <API TOKEN>'
+      # ```
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -1308,23 +1312,20 @@ module Payabli
         end
       end
 
-      #
-      # Retrieve a list of transactions for an organization. Use filters to
-      # limit results. Include the `exportFormat` query parameter to return the results as a file instead of a JSON
-      # response.
-      #
+      # Retrieve a list of transactions for an organization. Use filters to limit results. Include the `exportFormat`
+      # query parameter to return the results as a file instead of a JSON response.
       #
       # By default, this endpoint returns only transactions from the last 60 days. To query transactions outside of this
       # period, include `transactionDate` filters.
       #
-      # For example, this request parameters filter for transactions between April 01, 2024 and April 09, 2024.
+      # These request parameters filter for transactions between April 1, 2024 and April 9, 2024.
       #
-      # ```
+      # ```bash
       # curl -X GET
-      # "https://sandbox.payabli.com/api/Query/transactions/org/1?limitRecord=20&fromRecord=0&transactionDate(ge)=2024-04-01T00:00:00&transactionDate(le)=2024-04-09T23:59:59"\
+      # "https://api-sandbox.payabli.com/api/Query/transactions/org/1?limitRecord=20&fromRecord=0&transactionDate(ge)=2024-04-01T00:00:00&transactionDate(le)=2024-04-09T23:59:59"
+      # \
       #   -H 'requestToken: <API TOKEN>'
-      #
-      #   ```
+      # ```
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -1389,7 +1390,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::QueryTransferDetailResponse]
+      # @return [Payabli::Types::QueryTransferDetailResponse]
       def list_transfer_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -1413,7 +1414,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::QueryTransferDetailResponse.load(response.body)
+          Payabli::Types::QueryTransferDetailResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -1531,7 +1532,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::TransferOutQueryResponse]
+      # @return [Payabli::Types::TransferOutQueryResponse]
       def list_transfers_out_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -1554,7 +1555,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::TransferOutQueryResponse.load(response.body)
+          Payabli::Types::TransferOutQueryResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -1576,7 +1577,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::TransferOutQueryResponse]
+      # @return [Payabli::Types::TransferOutQueryResponse]
       def list_transfers_out_paypoint(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -1599,7 +1600,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::TransferOutQueryResponse.load(response.body)
+          Payabli::Types::TransferOutQueryResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -1622,7 +1623,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::TransferOutDetailQueryResponse]
+      # @return [Payabli::Types::TransferOutDetailQueryResponse]
       def list_transfer_details_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -1645,7 +1646,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::TransferOutDetailQueryResponse.load(response.body)
+          Payabli::Types::TransferOutDetailQueryResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -1901,7 +1902,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::VCardTransactionQueryResponse]
+      # @return [Payabli::Types::VCardTransactionQueryResponse]
       def list_vcards_transactions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -1924,7 +1925,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::VCardTransactionQueryResponse.load(response.body)
+          Payabli::Types::VCardTransactionQueryResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -1946,7 +1947,7 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
-      # @return [Payabli::QueryTypes::Types::VCardTransactionQueryResponse]
+      # @return [Payabli::Types::VCardTransactionQueryResponse]
       def list_vcards_transactions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
@@ -1969,7 +1970,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::QueryTypes::Types::VCardTransactionQueryResponse.load(response.body)
+          Payabli::Types::VCardTransactionQueryResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

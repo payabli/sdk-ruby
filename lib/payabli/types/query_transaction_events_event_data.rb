@@ -2,7 +2,8 @@
 
 module Payabli
   module Types
-    # Any data associated to the event received from processor. Contents vary by event type.
+    # Any data associated to the event received from processor. Contents vary
+    # by event type.
     class QueryTransactionEventsEventData < Internal::Types::Model
       extend Payabli::Internal::Types::Union
 

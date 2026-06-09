@@ -13,7 +13,7 @@ module Payabli
       # Creates a bill in an entrypoint.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::Bill::Types::BillOutData]
+      # @param params [Payabli::Types::BillOutData]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -22,7 +22,7 @@ module Payabli
       # @option params [String] :entry
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::Bill::Types::BillResponse]
+      # @return [Payabli::Types::BillResponse]
       def add_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         path_param_names = %i[entry]
@@ -36,7 +36,7 @@ module Payabli
           method: "POST",
           path: "Bill/single/#{URI.encode_uri_component(params[:entry].to_s)}",
           headers: headers,
-          body: Payabli::Bill::Types::BillOutData.new(body_params).to_h,
+          body: Payabli::Types::BillOutData.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -46,14 +46,14 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::BillResponse.load(response.body)
+          Payabli::Types::BillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
         end
       end
 
-      # Delete a file attached to a bill.
+      # Retrieves a bill by ID from an entrypoint.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -63,20 +63,14 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_bill
-      # @option params [String] :filename
-      # @option params [Boolean, nil] :return_object
       #
-      # @return [Payabli::Bill::Types::BillResponse]
-      def delete_attached_from_bill(request_options: {}, **params)
+      # @return [Payabli::Types::GetBillResponse]
+      def get_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_params = {}
-        query_params["returnObject"] = params[:return_object] if params.key?(:return_object)
-
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
-          method: "DELETE",
-          path: "Bill/attachedFileFromBill/#{URI.encode_uri_component(params[:id_bill].to_s)}/#{URI.encode_uri_component(params[:filename].to_s)}",
-          query: query_params,
+          method: "GET",
+          path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
           request_options: request_options
         )
         begin
@@ -86,7 +80,42 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::BillResponse.load(response.body)
+          Payabli::Types::GetBillResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Updates a bill by ID.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Types::BillOutData]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
+      #
+      # @return [Payabli::Types::EditBillResponse]
+      def edit_bill(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "PUT",
+          path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
+          body: Payabli::Types::BillOutData.new(params).to_h,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::EditBillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -104,7 +133,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_bill
       #
-      # @return [Payabli::Bill::Types::BillResponse]
+      # @return [Payabli::Types::BillResponse]
       def delete_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -120,42 +149,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::BillResponse.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Updates a bill by ID.
-      #
-      # @param request_options [Hash]
-      # @param params [Payabli::Bill::Types::BillOutData]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id_bill
-      #
-      # @return [Payabli::Bill::Types::EditBillResponse]
-      def edit_bill(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "PUT",
-          path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
-          body: Payabli::Bill::Types::BillOutData.new(params).to_h,
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Bill::Types::EditBillResponse.load(response.body)
+          Payabli::Types::BillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -202,7 +196,97 @@ module Payabli
         end
       end
 
-      # Retrieves a bill by ID from an entrypoint.
+      # Delete a file attached to a bill.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
+      # @option params [String] :filename
+      # @option params [Boolean, nil] :return_object
+      #
+      # @return [Payabli::Types::BillResponse]
+      def delete_attached_from_bill(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_params = {}
+        query_params["returnObject"] = params[:return_object] if params.key?(:return_object)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "DELETE",
+          path: "Bill/attachedFileFromBill/#{URI.encode_uri_component(params[:id_bill].to_s)}/#{URI.encode_uri_component(params[:filename].to_s)}",
+          query: query_params,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::BillResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Send a bill to a user or list of users to approve.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
+      # @option params [Boolean, nil] :autocreate_user
+      # @option params [String, nil] :idempotency_key
+      #
+      # @return [Payabli::Types::BillResponse]
+      def send_to_approval_bill(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[id_bill]
+        body_params = params.except(*path_param_names)
+
+        query_param_names = %i[autocreate_user]
+        query_params = {}
+        query_params["autocreateUser"] = params[:autocreate_user] if params.key?(:autocreate_user)
+        params = params.except(*query_param_names)
+
+        headers = {}
+        headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "POST",
+          path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}",
+          headers: headers,
+          query: query_params,
+          body: body_params,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::BillResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Modify the list of users the bill is sent to for approval.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -213,13 +297,14 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_bill
       #
-      # @return [Payabli::Bill::Types::GetBillResponse]
-      def get_bill(request_options: {}, **params)
+      # @return [Payabli::Types::ModifyApprovalBillResponse]
+      def modify_approval_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
-          method: "GET",
-          path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
+          method: "PUT",
+          path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}",
+          body: params,
           request_options: request_options
         )
         begin
@@ -229,7 +314,47 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Bill::Types::GetBillResponse.load(response.body)
+          Payabli::Types::ModifyApprovalBillResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Approve or disapprove a bill by ID.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_bill
+      # @option params [String] :approved
+      # @option params [String, nil] :email
+      #
+      # @return [Payabli::Types::SetApprovedBillResponse]
+      def set_approved_bill(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_params = {}
+        query_params["email"] = params[:email] if params.key?(:email)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "GET",
+          path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}/#{URI.encode_uri_component(params[:approved].to_s)}",
+          query: query_params,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::SetApprovedBillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -326,131 +451,6 @@ module Payabli
         code = response.code.to_i
         if code.between?(200, 299)
           Payabli::Types::BillQueryResponse.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Modify the list of users the bill is sent to for approval.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id_bill
-      #
-      # @return [Payabli::Bill::Types::ModifyApprovalBillResponse]
-      def modify_approval_bill(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "PUT",
-          path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}",
-          body: params,
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Bill::Types::ModifyApprovalBillResponse.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Send a bill to a user or list of users to approve.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id_bill
-      # @option params [Boolean, nil] :autocreate_user
-      # @option params [String, nil] :idempotency_key
-      #
-      # @return [Payabli::Bill::Types::BillResponse]
-      def send_to_approval_bill(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        path_param_names = %i[id_bill]
-        body_params = params.except(*path_param_names)
-
-        query_param_names = %i[autocreate_user]
-        query_params = {}
-        query_params["autocreateUser"] = params[:autocreate_user] if params.key?(:autocreate_user)
-        params = params.except(*query_param_names)
-
-        headers = {}
-        headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
-
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "POST",
-          path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}",
-          headers: headers,
-          query: query_params,
-          body: body_params,
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Bill::Types::BillResponse.load(response.body)
-        else
-          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
-          raise error_class.new(response.body, code: code)
-        end
-      end
-
-      # Approve or disapprove a bill by ID.
-      #
-      # @param request_options [Hash]
-      # @param params [Hash]
-      # @option request_options [String] :base_url
-      # @option request_options [Hash{String => Object}] :additional_headers
-      # @option request_options [Hash{String => Object}] :additional_query_parameters
-      # @option request_options [Hash{String => Object}] :additional_body_parameters
-      # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :id_bill
-      # @option params [String] :approved
-      # @option params [String, nil] :email
-      #
-      # @return [Payabli::Bill::Types::SetApprovedBillResponse]
-      def set_approved_bill(request_options: {}, **params)
-        params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_params = {}
-        query_params["email"] = params[:email] if params.key?(:email)
-
-        request = Payabli::Internal::JSON::Request.new(
-          base_url: request_options[:base_url],
-          method: "GET",
-          path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}/#{URI.encode_uri_component(params[:approved].to_s)}",
-          query: query_params,
-          request_options: request_options
-        )
-        begin
-          response = @client.send(request)
-        rescue Net::HTTPRequestTimeout
-          raise Payabli::Errors::TimeoutError
-        end
-        code = response.code.to_i
-        if code.between?(200, 299)
-          Payabli::Bill::Types::SetApprovedBillResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

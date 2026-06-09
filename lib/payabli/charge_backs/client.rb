@@ -22,7 +22,7 @@ module Payabli
       # @option params [Integer] :id
       # @option params [String, nil] :idempotency_key
       #
-      # @return [Payabli::ChargeBacks::Types::AddResponseResponse]
+      # @return [Payabli::Types::AddResponseResponse]
       def add_response(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::ChargeBacks::Types::ResponseChargeBack.new(params).to_h
@@ -47,7 +47,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::ChargeBacks::Types::AddResponseResponse.load(response.body)
+          Payabli::Types::AddResponseResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -65,7 +65,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id
       #
-      # @return [Payabli::ChargeBacks::Types::ChargebackQueryRecords]
+      # @return [Payabli::Types::ChargebackQueryRecords]
       def get_chargeback(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request = Payabli::Internal::JSON::Request.new(
@@ -81,7 +81,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::ChargeBacks::Types::ChargebackQueryRecords.load(response.body)
+          Payabli::Types::ChargebackQueryRecords.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

@@ -20,30 +20,31 @@ class InvoiceWireTest < WireMockTestCase
       customer_data: {
         first_name: "Tamara",
         last_name: "Bagratoni",
-        customer_number: "3"
+        customer_number: "C-90010"
       },
       invoice_data: {
         items: [{
           item_product_name: "Adventure Consult",
           item_description: "Consultation for Georgian tours",
           item_cost: 100,
-          item_qty: 1,
-          item_mode: 1,
-          item_total_amount: 1
+          item_qty: 2,
+          item_mode: 2,
+          item_total_amount: 200
         }, {
           item_product_name: "Deposit ",
           item_description: "Deposit for trip planning",
           item_cost: 882.37,
           item_qty: 1,
-          item_total_amount: 1
+          item_mode: 2,
+          item_total_amount: 882.37
         }],
         invoice_date: "2025-10-19",
         invoice_type: 0,
         invoice_status: 1,
         frequency: "onetime",
-        invoice_amount: 982.37,
+        invoice_amount: 1082.37,
         discount: 10,
-        invoice_number: "INV-3"
+        invoice_number: "INV-2345"
       },
       request_options: {
         additional_headers: {
@@ -56,81 +57,6 @@ class InvoiceWireTest < WireMockTestCase
       test_id: test_id,
       method: "POST",
       url_path: "/Invoice/8cfec329267",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
-  def test_invoice_delete_attached_from_invoice_with_wiremock
-    test_id = "invoice.delete_attached_from_invoice.0"
-
-    @client.invoice.delete_attached_from_invoice(
-      filename: "0_Bill.pdf",
-      id_invoice: 23548884,
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "invoice.delete_attached_from_invoice.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "DELETE",
-      url_path: "/Invoice/attachedFileFromInvoice/23548884/0_Bill.pdf",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
-  def test_invoice_delete_invoice_with_wiremock
-    test_id = "invoice.delete_invoice.0"
-
-    @client.invoice.delete_invoice(
-      id_invoice: 23548884,
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "invoice.delete_invoice.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "DELETE",
-      url_path: "/Invoice/23548884",
-      query_params: nil,
-      expected: 1
-    )
-  end
-
-  def test_invoice_edit_invoice_with_wiremock
-    test_id = "invoice.edit_invoice.0"
-
-    @client.invoice.edit_invoice(
-      id_invoice: 332,
-      invoice_data: {
-        items: [{
-          item_product_name: "Deposit",
-          item_description: "Deposit for trip planning",
-          item_cost: 882.37,
-          item_qty: 1
-        }],
-        invoice_date: "2025-10-19",
-        invoice_amount: 982.37,
-        invoice_number: "INV-6"
-      },
-      request_options: {
-        additional_headers: {
-          "X-Test-Id" => "invoice.edit_invoice.0"
-        }
-      }
-    )
-
-    verify_request_count(
-      test_id: test_id,
-      method: "PUT",
-      url_path: "/Invoice/332",
       query_params: nil,
       expected: 1
     )
@@ -158,6 +84,28 @@ class InvoiceWireTest < WireMockTestCase
     )
   end
 
+  def test_invoice_delete_attached_from_invoice_with_wiremock
+    test_id = "invoice.delete_attached_from_invoice.0"
+
+    @client.invoice.delete_attached_from_invoice(
+      filename: "0_Bill.pdf",
+      id_invoice: 23548884,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "invoice.delete_attached_from_invoice.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/Invoice/attachedFileFromInvoice/23548884/0_Bill.pdf",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
   def test_invoice_get_invoice_with_wiremock
     test_id = "invoice.get_invoice.0"
 
@@ -173,6 +121,59 @@ class InvoiceWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
+      url_path: "/Invoice/23548884",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_invoice_edit_invoice_with_wiremock
+    test_id = "invoice.edit_invoice.0"
+
+    @client.invoice.edit_invoice(
+      id_invoice: 23548884,
+      invoice_data: {
+        items: [{
+          item_product_name: "Deposit",
+          item_description: "Deposit for trip planning",
+          item_cost: 882.37,
+          item_qty: 1
+        }],
+        invoice_date: "2025-10-19",
+        invoice_amount: 982.37,
+        invoice_number: "INV-2345"
+      },
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "invoice.edit_invoice.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/Invoice/23548884",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_invoice_delete_invoice_with_wiremock
+    test_id = "invoice.delete_invoice.0"
+
+    @client.invoice.delete_invoice(
+      id_invoice: 23548884,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "invoice.delete_invoice.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "DELETE",
       url_path: "/Invoice/23548884",
       query_params: nil,
       expected: 1

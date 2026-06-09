@@ -9,7 +9,7 @@ module Payabli
 
       field :job_id, -> { String }, optional: true, nullable: false, api_name: "jobId"
 
-      field :job_status, -> { String }, optional: true, nullable: false, api_name: "jobStatus"
+      field :job_status, -> { Payabli::Types::JobStatus }, optional: true, nullable: false, api_name: "jobStatus"
 
       field :organization_id, -> { Integer }, optional: true, nullable: false, api_name: "organizationId"
 
