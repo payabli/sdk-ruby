@@ -59,7 +59,7 @@ module Payabli
 
       field :entry_name, -> { String }, optional: true, nullable: false, api_name: "EntryName"
 
-      field :batch_id, -> { String }, optional: true, nullable: false, api_name: "BatchId"
+      field :batch_id, -> { Integer }, optional: true, nullable: false, api_name: "BatchId"
 
       field :has_vcard_transactions, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "HasVcardTransactions"
 
@@ -67,7 +67,9 @@ module Payabli
 
       field :schedule_id, -> { Integer }, optional: true, nullable: false, api_name: "ScheduleId"
 
-      field :settlement_status, -> { Integer }, optional: true, nullable: false, api_name: "SettlementStatus"
+      field :settlement_status, -> { String }, optional: true, nullable: false, api_name: "SettlementStatus"
+
+      field :settlement_status_name, -> { String }, optional: true, nullable: false, api_name: "SettlementStatusName"
 
       field :risk_flagged, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "RiskFlagged"
 
@@ -80,6 +82,8 @@ module Payabli
       field :risk_action, -> { String }, optional: true, nullable: false, api_name: "RiskAction"
 
       field :risk_action_code, -> { Integer }, optional: true, nullable: false, api_name: "RiskActionCode"
+
+      field :entity_id, -> { String }, optional: true, nullable: false, api_name: "EntityId"
     end
   end
 end

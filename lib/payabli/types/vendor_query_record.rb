@@ -13,7 +13,7 @@ module Payabli
 
       field :city, -> { String }, optional: true, nullable: false, api_name: "City"
 
-      field :contacts, -> { Payabli::Types::ContactsResponse }, optional: true, nullable: false, api_name: "Contacts"
+      field :contacts, -> { Internal::Types::Array[Payabli::Types::ContactsResponse] }, optional: true, nullable: false, api_name: "Contacts"
 
       field :country, -> { String }, optional: true, nullable: false, api_name: "Country"
 
