@@ -16,6 +16,12 @@ module Payabli
       field :mastercard, -> { Internal::Types::Boolean }, optional: true, nullable: false
 
       field :visa, -> { Internal::Types::Boolean }, optional: true, nullable: false
+
+      field :diners, -> { Internal::Types::Boolean }, optional: true, nullable: false
+
+      field :jcb, -> { Internal::Types::Boolean }, optional: true, nullable: false
+
+      field :rdc, -> { Internal::Types::Boolean }, optional: true, nullable: false
     end
   end
 end

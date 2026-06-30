@@ -61,6 +61,8 @@ module Payabli
 
       field :source, -> { String }, optional: true, nullable: false, api_name: "Source"
 
+      field :split_funding_instructions, -> { Internal::Types::Array[Payabli::Types::SettlementSplitFundingDetail] }, optional: true, nullable: false, api_name: "splitFundingInstructions"
+
       field :status, -> { Integer }, optional: true, nullable: false, api_name: "Status"
 
       field :transaction_events, -> { Internal::Types::Array[Payabli::Types::QueryTransactionEvents] }, optional: true, nullable: false, api_name: "TransactionEvents"

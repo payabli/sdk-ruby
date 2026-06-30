@@ -13,7 +13,11 @@ module Payabli
 
       field :order, -> { Integer }, optional: true, nullable: false
 
+      field :payment_description, -> { String }, optional: true, nullable: false, api_name: "paymentDescription"
+
       field :settings, -> { Payabli::Types::MethodElementSettings }, optional: true, nullable: false
+
+      field :show_save_method, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "showSaveMethod"
     end
   end
 end

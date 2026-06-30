@@ -21,6 +21,10 @@ module Payabli
       # [`payout_transaction_approvedcaptured`](/developers/webhooks/payout-transaction-approved-captured) webhook
       # event.
       #
+      # If a velocity fraud alert is triggered, the endpoint returns a `202` response with `responseCode` `9051`, and
+      # the authorization is held for risk review rather than rejected. If a risk policy blocks the transaction, the
+      # endpoint returns a `422` response with `responseCode` `9005`, a terminal rejection.
+      #
       # @param request_options [Hash]
       # @param params [Payabli::MoneyOut::Types::RequestOutAuthorize]
       # @option request_options [String] :base_url
@@ -214,7 +218,11 @@ module Payabli
       end
 
       # Captures a single authorized payout transaction by ID. If the transaction was authorized with `autoCapture` set
-      # to `true`,  you don't need to call this endpoint to capture the transaction for processing.
+      # to `true`, you don't need to call this endpoint to capture the transaction for processing.
+      #
+      # If a velocity fraud alert is triggered, the endpoint returns a `202` response with `responseCode` `9051`, and
+      # the capture is held for risk review rather than rejected. If a risk policy blocks the transaction, the endpoint
+      # returns a `422` response with `responseCode` `9005`, a terminal rejection.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -315,6 +323,53 @@ module Payabli
         code = response.code.to_i
         if code.between?(200, 299)
           Payabli::Types::VCardGetResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Renews an expired or expiring virtual card by extending its expiration date to a future month.
+      #
+      # The card must be a virtual card that hasn't been fully used. The new expiration date must be in `MM-YYYY` or
+      # `MM/YYYY` format and no more than 2 years and 363 days in the future. The card expires on the last day of the
+      # month you specify.
+      #
+      # On success, `referenceId` holds the renewed card's token (the card processor may issue a new token). The
+      # response reuses the standard payout result object, so the payment-transaction fields it carries don't apply to
+      # renewal and always return `null`.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::MoneyOut::Types::RenewVCardRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :card_token
+      #
+      # @return [Payabli::Types::RenewVCardResponse]
+      def renew_v_card(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request_data = Payabli::MoneyOut::Types::RenewVCardRequest.new(params).to_h
+        non_body_param_names = %w[cardToken]
+        body = request_data.except(*non_body_param_names)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "PUT",
+          path: "MoneyOutCard/vcard/#{URI.encode_uri_component(params[:card_token].to_s)}/renew",
+          body: body,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::RenewVCardResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

@@ -14,7 +14,7 @@ module Payabli
 
         field :contact_us, -> { Payabli::Types::ContactElement }, optional: true, nullable: false, api_name: "contactUs"
 
-        field :invoices, -> { Payabli::Types::InvoiceElement }, optional: true, nullable: false
+        field :invoices, -> { Payabli::Types::InvoiceElement }, optional: false, nullable: false
 
         field :logo, -> { Payabli::Types::Element }, optional: true, nullable: false
 

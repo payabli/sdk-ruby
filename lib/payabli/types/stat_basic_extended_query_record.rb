@@ -23,6 +23,14 @@ module Payabli
 
       field :out_pending_method_transactions, -> { Integer }, optional: false, nullable: false, api_name: "outPendingMethodTransactions"
 
+      field :out_rtp_transactions, -> { Integer }, optional: false, nullable: false, api_name: "outRTPTransactions"
+
+      field :out_rtp_volume, -> { Integer }, optional: false, nullable: false, api_name: "outRTPVolume"
+
+      field :out_wire_transactions, -> { Integer }, optional: false, nullable: false, api_name: "outWireTransactions"
+
+      field :out_wire_volume, -> { Integer }, optional: false, nullable: false, api_name: "outWireVolume"
+
       field :out_transactions_volume, -> { Integer }, optional: false, nullable: false, api_name: "outTransactionsVolume"
 
       field :out_subscriptions_paid_volume, -> { Integer }, optional: false, nullable: false, api_name: "outSubscriptionsPaidVolume"

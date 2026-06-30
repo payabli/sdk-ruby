@@ -189,6 +189,85 @@ module Payabli
           raise error_class.new(response.body, code: code)
         end
       end
+
+      # Schedules an AI outreach call to a vendor to collect their preferred payment method and contact email. This is
+      # the third enrichment stage. Calls are scheduled for the next business day at around 9 AM in the vendor's
+      # timezone, with retries on no-answer and a fallback payment method applied when retries are exhausted. This
+      # feature is opt-in at the org level. Contact your Payabli representative to enable it, provision a phone number,
+      # and discuss pricing.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Vendor::Types::ScheduleEnrichmentCallRequest]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :entry
+      #
+      # @return [Payabli::Types::VendorScheduleCallResponse]
+      def schedule_enrichment_call(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request_data = Payabli::Vendor::Types::ScheduleEnrichmentCallRequest.new(params).to_h
+        non_body_param_names = %w[entry]
+        body = request_data.except(*non_body_param_names)
+
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "POST",
+          path: "Vendor/enrich/schedule_call/#{URI.encode_uri_component(params[:entry].to_s)}",
+          body: body,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::VendorScheduleCallResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Returns the latest AI outreach call activity for a vendor. The response is a composite object with a `state`
+      # discriminator (`none`, `scheduled`, `successful`, or `failed`); the block that matches the current state is
+      # populated. When the vendor has no call activity, `state` is `none` and the response returns HTTP 200.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :id_vendor
+      #
+      # @return [Payabli::Types::VendorCallStatusResponse]
+      def get_enrichment_call_status(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "GET",
+          path: "Vendor/#{URI.encode_uri_component(params[:id_vendor].to_s)}/enrichment/call-status",
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::VendorCallStatusResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
     end
   end
 end

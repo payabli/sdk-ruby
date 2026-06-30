@@ -71,6 +71,10 @@ module Payabli
       field :events_data, -> { Internal::Types::Array[Payabli::Types::TransferOutEventData] }, optional: false, nullable: true, api_name: "eventsData"
 
       field :messages, -> { Internal::Types::Array[Payabli::Types::TransferOutMessage] }, optional: false, nullable: true
+
+      field :type, -> { String }, optional: false, nullable: true
+
+      field :method_, -> { String }, optional: false, nullable: true, api_name: "method"
     end
   end
 end

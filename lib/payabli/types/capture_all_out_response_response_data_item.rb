@@ -5,6 +5,8 @@ module Payabli
     class CaptureAllOutResponseResponseDataItem < Internal::Types::Model
       field :customer_id, -> { Integer }, optional: true, nullable: false, api_name: "CustomerId"
 
+      field :vendor_id, -> { Integer }, optional: true, nullable: false, api_name: "VendorId"
+
       field :reference_id, -> { String }, optional: true, nullable: false, api_name: "ReferenceId"
 
       field :result_code, -> { Integer }, optional: true, nullable: false, api_name: "ResultCode"

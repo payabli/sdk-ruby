@@ -168,4 +168,53 @@ class VendorWireTest < WireMockTestCase
       expected: 1
     )
   end
+
+  def test_vendor_schedule_enrichment_call_with_wiremock
+    test_id = "vendor.schedule_enrichment_call.0"
+
+    @client.vendor.schedule_enrichment_call(
+      entry: "8cfec329267",
+      vendor_id: 456,
+      phone: "5555550200",
+      enrichment_id: "enrich-3890-a1b2c3d4",
+      bill_id: 54323,
+      fallback_method: "check",
+      max_retries: 3,
+      timezone: "America/New_York",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "vendor.schedule_enrichment_call.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Vendor/enrich/schedule_call/8cfec329267",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
+  def test_vendor_get_enrichment_call_status_with_wiremock
+    test_id = "vendor.get_enrichment_call_status.0"
+
+    @client.vendor.get_enrichment_call_status(
+      id_vendor: 456,
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "vendor.get_enrichment_call_status.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Vendor/456/enrichment/call-status",
+      query_params: nil,
+      expected: 1
+    )
+  end
 end

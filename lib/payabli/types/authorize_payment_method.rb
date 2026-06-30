@@ -9,6 +9,10 @@ module Payabli
     # - `{ method: "ach", achHolder: "...", achRouting: "...", achAccount: "...", achAccountType: "..." }` - ACH payment
     # method with bank details
     # - `{ method: "ach", storedMethodId: "..." }` - ACH payment method using stored method ID
+    # - `{ method: "wire", achHolder: "...", achRouting: "...", achAccount: "...", achAccountType: "..." }` - Wire
+    # transfer payment method (US only, irrevocable)
+    # - `{ method: "rtp", achHolder: "...", achRouting: "...", achAccount: "...", achAccountType: "..." }` - Real-Time
+    # Payments method (US only, irrevocable)
     class AuthorizePaymentMethod < Internal::Types::Model
       field :method_, -> { String }, optional: false, nullable: false, api_name: "method"
 

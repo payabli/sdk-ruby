@@ -2,7 +2,7 @@
 
 module Payabli
   module Types
-    class AuthCapturePayoutResponseData < Internal::Types::Model
+    class RenewVCardResponseData < Internal::Types::Model
       field :auth_code, -> { String }, optional: false, nullable: true, api_name: "authCode"
 
       field :reference_id, -> { String }, optional: false, nullable: false, api_name: "referenceId"
@@ -15,9 +15,9 @@ module Payabli
 
       field :cvv_response_text, -> { String }, optional: false, nullable: true, api_name: "cvvResponseText"
 
-      field :customer_id, -> { Integer }, optional: false, nullable: false, api_name: "customerId"
+      field :customer_id, -> { Integer }, optional: false, nullable: true, api_name: "customerId"
 
-      field :vendor_id, -> { Integer }, optional: false, nullable: false, api_name: "vendorId"
+      field :vendor_id, -> { Integer }, optional: false, nullable: true, api_name: "vendorId"
 
       field :method_reference_id, -> { String }, optional: false, nullable: true, api_name: "methodReferenceId"
     end

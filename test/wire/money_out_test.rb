@@ -195,6 +195,28 @@ class MoneyOutWireTest < WireMockTestCase
     )
   end
 
+  def test_money_out_renew_v_card_with_wiremock
+    test_id = "money_out.renew_v_card.0"
+
+    @client.money_out.renew_v_card(
+      card_token: "20231206142225226104",
+      expiration_date: "12-2027",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.renew_v_card.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/MoneyOutCard/vcard/20231206142225226104/renew",
+      query_params: nil,
+      expected: 1
+    )
+  end
+
   def test_money_out_send_v_card_link_with_wiremock
     test_id = "money_out.send_v_card_link.0"
 
