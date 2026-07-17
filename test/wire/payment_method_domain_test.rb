@@ -7,6 +7,8 @@ class PaymentMethodDomainWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -16,15 +18,15 @@ class PaymentMethodDomainWireTest < WireMockTestCase
     test_id = "payment_method_domain.add_payment_method_domain.0"
 
     @client.payment_method_domain.add_payment_method_domain(
-      domain_name: "checkout.example.com",
-      entity_id: 109,
-      entity_type: "paypoint",
       apple_pay: {
         is_enabled: true
       },
       google_pay: {
         is_enabled: true
       },
+      domain_name: "checkout.example.com",
+      entity_id: 109,
+      entity_type: "paypoint",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "payment_method_domain.add_payment_method_domain.0"

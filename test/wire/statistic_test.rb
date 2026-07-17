@@ -7,6 +7,8 @@ class StatisticWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -16,12 +18,12 @@ class StatisticWireTest < WireMockTestCase
     test_id = "statistic.basic_stats.0"
 
     @client.statistic.basic_stats(
-      entry_id: 1000000,
+      mode: "custom",
       freq: "m",
       level: 2,
-      mode: "custom",
-      start_date: "2025-11-01",
+      entry_id: 1000000,
       end_date: "2025-11-30",
+      start_date: "2025-11-01",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "statistic.basic_stats.0"
@@ -42,9 +44,9 @@ class StatisticWireTest < WireMockTestCase
     test_id = "statistic.customer_basic_stats.0"
 
     @client.statistic.customer_basic_stats(
-      customer_id: 4440,
-      freq: "m",
       mode: "ytd",
+      freq: "m",
+      customer_id: 4440,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "statistic.customer_basic_stats.0"
@@ -65,9 +67,9 @@ class StatisticWireTest < WireMockTestCase
     test_id = "statistic.sub_stats.0"
 
     @client.statistic.sub_stats(
-      entry_id: 1000000,
       interval: "30",
       level: 2,
+      entry_id: 1000000,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "statistic.sub_stats.0"
@@ -88,9 +90,9 @@ class StatisticWireTest < WireMockTestCase
     test_id = "statistic.vendor_basic_stats.0"
 
     @client.statistic.vendor_basic_stats(
+      mode: "ytd",
       freq: "m",
       id_vendor: 1,
-      mode: "ytd",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "statistic.vendor_basic_stats.0"

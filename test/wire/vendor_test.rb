@@ -7,6 +7,8 @@ class VendorWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -147,12 +149,12 @@ class VendorWireTest < WireMockTestCase
       vendor_id: 456,
       scope: ["invoice_scan"],
       apply_enrichment_data: false,
-      fallback_method: "check",
       invoice_file: {
         ftype: "pdf",
         filename: "invoice-2026-001.pdf",
         f_content: "<base64-encoded-pdf>"
       },
+      fallback_method: "check",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "vendor.enrich_vendor.0"

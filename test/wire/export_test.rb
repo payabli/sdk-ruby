@@ -7,6 +7,8 @@ class ExportWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -41,8 +43,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_batch_details.0"
 
     @client.export.export_batch_details(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -91,8 +93,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_batches.0"
 
     @client.export.export_batches(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -141,8 +143,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_batches_out.0"
 
     @client.export.export_batches_out(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -191,8 +193,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_bills.0"
 
     @client.export.export_bills(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -241,8 +243,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_chargebacks.0"
 
     @client.export.export_chargebacks(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -291,8 +293,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_customers.0"
 
     @client.export.export_customers(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -341,8 +343,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_invoices.0"
 
     @client.export.export_invoices(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -416,8 +418,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_payout.0"
 
     @client.export.export_payout(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -491,8 +493,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_settlements.0"
 
     @client.export.export_settlements(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -541,8 +543,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_subscriptions.0"
 
     @client.export.export_subscriptions(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -591,8 +593,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_transactions.0"
 
     @client.export.export_transactions(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -641,8 +643,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_transfer_details.0"
 
     @client.export.export_transfer_details(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       transfer_id: 4521,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
@@ -693,8 +695,8 @@ class ExportWireTest < WireMockTestCase
     test_id = "export.export_vendors.0"
 
     @client.export.export_vendors(
-      entry: "8cfec329267",
       format: "csv",
+      entry: "8cfec329267",
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,

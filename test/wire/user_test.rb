@@ -7,6 +7,8 @@ class UserWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -230,9 +232,9 @@ class UserWireTest < WireMockTestCase
     test_id = "user.resend_mfa_code.0"
 
     @client.user.resend_mfa_code(
+      usrname: "usrname",
       entry: "8cfec329267",
       entry_type: 1,
-      usrname: "usrname",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "user.resend_mfa_code.0"

@@ -3,83 +3,103 @@
 module Payabli
   module Types
     class QueryPayoutTransactionRecordsItem < Internal::Types::Model
-      field :batch_number, -> { String }, optional: true, nullable: false, api_name: "BatchNumber"
-
-      field :batch_id, -> { Integer }, optional: true, nullable: false, api_name: "BatchId"
-
-      field :bills, -> { Internal::Types::Array[Payabli::Types::BillPayOutData] }, optional: true, nullable: false, api_name: "Bills"
-
-      field :card_token, -> { String }, optional: true, nullable: false, api_name: "CardToken"
-
-      field :check_data, -> { Payabli::Types::FileContent }, optional: true, nullable: false, api_name: "CheckData"
-
-      field :check_number, -> { String }, optional: true, nullable: false, api_name: "CheckNumber"
-
-      field :comments, -> { String }, optional: true, nullable: false, api_name: "Comments"
+      field :id_out, -> { Integer }, optional: true, nullable: false, api_name: "IdOut"
 
       field :created_at, -> { String }, optional: true, nullable: false, api_name: "CreatedAt"
 
-      field :entry_name, -> { String }, optional: true, nullable: false, api_name: "EntryName"
+      field :comments, -> { String }, optional: true, nullable: false, api_name: "Comments"
 
-      field :events, -> { Internal::Types::Array[Payabli::Types::QueryTransactionEvents] }, optional: true, nullable: false, api_name: "Events"
-
-      field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
-
-      field :fee_amount, -> { Integer }, optional: true, nullable: false, api_name: "FeeAmount"
-
-      field :gateway, -> { String }, optional: true, nullable: false, api_name: "Gateway"
-
-      field :has_vcard_transactions, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "HasVcardTransactions"
-
-      field :id_out, -> { Integer }, optional: true, nullable: false, api_name: "IdOut"
-
-      field :is_same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "IsSameDayACH"
-
-      field :last_updated, -> { String }, optional: true, nullable: false, api_name: "LastUpdated"
-
-      field :net_amount, -> { Integer }, optional: true, nullable: false, api_name: "NetAmount"
-
-      field :parent_org_name, -> { String }, optional: true, nullable: false, api_name: "ParentOrgName"
-
-      field :parent_org_id, -> { Integer }, optional: true, nullable: false, api_name: "ParentOrgId"
-
-      field :payment_data, -> { Payabli::Types::QueryPayoutTransactionRecordsItemPaymentData }, optional: true, nullable: false, api_name: "PaymentData"
-
-      field :payment_id, -> { String }, optional: true, nullable: false, api_name: "PaymentId"
-
-      field :payment_method, -> { String }, optional: true, nullable: false, api_name: "PaymentMethod"
-
-      field :payment_status, -> { String }, optional: true, nullable: false, api_name: "PaymentStatus"
-
-      field :payout_program, -> { String }, optional: true, nullable: false, api_name: "PayoutProgram"
+      field :vendor, -> { Payabli::Types::VendorQueryRecord }, optional: true, nullable: false, api_name: "Vendor"
 
       field :paypoint_dbaname, -> { String }, optional: true, nullable: false, api_name: "PaypointDbaname"
 
       field :paypoint_legalname, -> { String }, optional: true, nullable: false, api_name: "PaypointLegalname"
 
-      field :risk_action, -> { String }, optional: true, nullable: false, api_name: "RiskAction"
+      field :paypoint_id, -> { Integer }, optional: true, nullable: false, api_name: "PaypointId"
 
-      field :risk_action_code, -> { Integer }, optional: true, nullable: false, api_name: "RiskActionCode"
+      field :status, -> { Integer }, optional: true, nullable: false, api_name: "Status"
 
-      field :risk_flagged, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "RiskFlagged"
+      field :payment_id, -> { String }, optional: true, nullable: false, api_name: "PaymentId"
 
-      field :risk_flagged_on, -> { String }, optional: true, nullable: false, api_name: "RiskFlaggedOn"
+      field :trans_id, -> { String }, optional: true, nullable: false, api_name: "TransId"
 
-      field :risk_reason, -> { String }, optional: true, nullable: false, api_name: "RiskReason"
+      field :trans_status, -> { Integer }, optional: true, nullable: false, api_name: "TransStatus"
 
-      field :risk_status, -> { String }, optional: true, nullable: false, api_name: "RiskStatus"
+      field :trans_status_detail, -> { String }, optional: true, nullable: false, api_name: "TransStatusDetail"
+
+      field :trans_status_name, -> { String }, optional: true, nullable: false, api_name: "TransStatusName"
+
+      field :trans_status_category, -> { String }, optional: true, nullable: false, api_name: "TransStatusCategory"
+
+      field :last_updated, -> { String }, optional: true, nullable: false, api_name: "LastUpdated"
+
+      field :total_amount, -> { Integer }, optional: true, nullable: false, api_name: "TotalAmount"
+
+      field :net_amount, -> { Integer }, optional: true, nullable: false, api_name: "NetAmount"
+
+      field :fee_amount, -> { Integer }, optional: true, nullable: false, api_name: "FeeAmount"
+
+      field :source, -> { String }, optional: true, nullable: false, api_name: "Source"
+
+      field :parent_org_name, -> { String }, optional: true, nullable: false, api_name: "ParentOrgName"
+
+      field :parent_org_id, -> { Integer }, optional: true, nullable: false, api_name: "ParentOrgId"
+
+      field :batch_number, -> { String }, optional: true, nullable: false, api_name: "BatchNumber"
+
+      field :payment_status, -> { String }, optional: true, nullable: false, api_name: "PaymentStatus"
+
+      field :payment_method, -> { String }, optional: true, nullable: false, api_name: "PaymentMethod"
+
+      field :card_token, -> { String }, optional: true, nullable: false, api_name: "CardToken"
+
+      field :check_number, -> { String }, optional: true, nullable: false, api_name: "CheckNumber"
+
+      field :check_data, -> { Payabli::Types::FileContent }, optional: true, nullable: false, api_name: "CheckData"
+
+      field :payment_data, -> { Payabli::Types::QueryPayoutTransactionRecordsItemPaymentData }, optional: true, nullable: false, api_name: "PaymentData"
+
+      field :bills, -> { Internal::Types::Array[Payabli::Types::BillPayOutData] }, optional: true, nullable: false, api_name: "Bills"
+
+      field :events, -> { Internal::Types::Array[Payabli::Types::QueryTransactionEvents] }, optional: true, nullable: false, api_name: "Events"
+
+      field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
+
+      field :entry_name, -> { String }, optional: true, nullable: false, api_name: "EntryName"
+
+      field :gateway, -> { String }, optional: true, nullable: false, api_name: "Gateway"
+
+      field :batch_id, -> { Integer }, optional: true, nullable: false, api_name: "BatchId"
+
+      field :has_vcard_transactions, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "HasVcardTransactions"
+
+      field :is_same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "IsSameDayACH"
 
       field :schedule_id, -> { Integer }, optional: true, nullable: false, api_name: "ScheduleId"
 
       field :settlement_status, -> { String }, optional: true, nullable: false, api_name: "SettlementStatus"
 
-      field :source, -> { String }, optional: true, nullable: false, api_name: "Source"
+      field :settlement_status_name, -> { String }, optional: true, nullable: false, api_name: "SettlementStatusName"
 
-      field :status, -> { Integer }, optional: true, nullable: false, api_name: "Status"
+      field :settlement_date, -> { String }, optional: true, nullable: false, api_name: "SettlementDate"
 
-      field :total_amount, -> { Integer }, optional: true, nullable: false, api_name: "TotalAmount"
+      field :risk_flagged, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "RiskFlagged"
 
-      field :vendor, -> { Payabli::Types::VendorQueryRecord }, optional: true, nullable: false, api_name: "Vendor"
+      field :risk_flagged_on, -> { String }, optional: true, nullable: false, api_name: "RiskFlaggedOn"
+
+      field :risk_status, -> { String }, optional: true, nullable: false, api_name: "RiskStatus"
+
+      field :risk_reason, -> { String }, optional: true, nullable: false, api_name: "RiskReason"
+
+      field :risk_action, -> { String }, optional: true, nullable: false, api_name: "RiskAction"
+
+      field :risk_action_code, -> { Integer }, optional: true, nullable: false, api_name: "RiskActionCode"
+
+      field :payout_program, -> { String }, optional: true, nullable: false, api_name: "PayoutProgram"
+
+      field :ach_trace_number, -> { String }, optional: true, nullable: false, api_name: "AchTraceNumber"
+
+      field :entity_id, -> { String }, optional: true, nullable: false, api_name: "EntityId"
     end
   end
 end

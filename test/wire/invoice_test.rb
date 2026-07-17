@@ -7,6 +7,8 @@ class InvoiceWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -88,8 +90,8 @@ class InvoiceWireTest < WireMockTestCase
     test_id = "invoice.delete_attached_from_invoice.0"
 
     @client.invoice.delete_attached_from_invoice(
-      filename: "0_Bill.pdf",
       id_invoice: 23548884,
+      filename: "0_Bill.pdf",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "invoice.delete_attached_from_invoice.0"

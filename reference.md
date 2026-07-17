@@ -339,8 +339,8 @@ Retrieves a file attached to a bill, either as a binary file or as a Base64-enco
 
 ```ruby
 client.bill.get_attached_from_bill(
-  filename: "0_Bill.pdf",
   id_bill: 285,
+  filename: "0_Bill.pdf",
   return_object: true
 )
 ```
@@ -425,8 +425,8 @@ Delete a file attached to a bill.
 
 ```ruby
 client.bill.delete_attached_from_bill(
-  filename: "0_Bill.pdf",
-  id_bill: 285
+  id_bill: 285,
+  filename: "0_Bill.pdf"
 )
 ```
 </dd>
@@ -673,8 +673,8 @@ Approve or disapprove a bill by ID.
 
 ```ruby
 client.bill.set_approved_bill(
-  approved: "true",
-  id_bill: 285
+  id_bill: 285,
+  approved: "true"
 )
 ```
 </dd>
@@ -1041,7 +1041,7 @@ Example: totalAmount(gt)=20 return all records with totalAmount greater than 20.
 <dl>
 <dd>
 
-Creates a customer in an entrypoint. An identifier is required to create customer records. Change your identifier settings in Settings > Custom Fields in PartnerHub.
+Creates a customer in an entrypoint. An identifier is required to create customer records. Change your identifier settings in Settings > Custom Fields in the Payabli Portal.
 If you don't include an identifier, the record is rejected.
 </dd>
 </dl>
@@ -1179,7 +1179,7 @@ client.customer.get_customer(customer_id: 4440)
 <dl>
 <dd>
 
-**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in PartnerHub.
+**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in the Payabli Portal.
     
 </dd>
 </dl>
@@ -1250,7 +1250,7 @@ client.customer.update_customer(
 <dl>
 <dd>
 
-**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in PartnerHub.
+**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in the Payabli Portal.
     
 </dd>
 </dl>
@@ -1320,7 +1320,7 @@ client.customer.delete_customer(customer_id: 4440)
 <dl>
 <dd>
 
-**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in PartnerHub.
+**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in the Payabli Portal.
     
 </dd>
 </dl>
@@ -1382,7 +1382,7 @@ client.customer.request_consent(customer_id: 4440)
 <dl>
 <dd>
 
-**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in PartnerHub.
+**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in the Payabli Portal.
     
 </dd>
 </dl>
@@ -1447,7 +1447,7 @@ client.customer.link_customer_transaction(
 <dl>
 <dd>
 
-**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in PartnerHub.
+**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in the Payabli Portal.
     
 </dd>
 </dl>
@@ -2213,8 +2213,8 @@ A reversal either refunds or voids a transaction independent of the transaction'
 
 ```ruby
 client.money_in.reverse(
-  amount: 0,
-  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
+  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+  amount: 0
 )
 ```
 </dd>
@@ -2296,8 +2296,8 @@ Refund a transaction that has settled and send money back to the account holder.
 
 ```ruby
 client.money_in.refund(
-  amount: 0,
-  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
+  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+  amount: 0
 )
 ```
 </dd>
@@ -2381,9 +2381,8 @@ Refunds a settled transaction with split instructions.
 client.money_in.refund_with_instructions(
   trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
   idempotency_key: "8A29FC40-CA47-1067-B31D-00DD010662DB",
-  source: "api",
-  order_description: "Materials deposit",
   amount: 100,
+  order_description: "Materials deposit",
   refund_details: {
     split_refunding: [{
       origination_entry_point: "7f1a381696",
@@ -2396,7 +2395,8 @@ client.money_in.refund_with_instructions(
       description: "Refunding deposit for undelivered materials",
       amount: 40
     }]
-  }
+  },
+  source: "api"
 )
 ```
 </dd>
@@ -3324,6 +3324,96 @@ client.money_in.voidv_2(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
 </dl>
 </details>
 
+## Token
+<details><summary><code>client.token.<a href="/lib/payabli/token/client.rb">create_server_side_token</a>(request) -> Payabli::Types::PayabliAccessTokenResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Exchanges a client ID and client secret for a short-lived Bearer access token using the OAuth2 client-credentials flow. Designed for server-to-server use: the credentials and the returned token stay on your backend. Send the returned `access_token` in the `Authorization` header as `Bearer <access_token>` on subsequent API calls. See the [OAuth authentication guide](/developers/oauth-authentication) for the full flow.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.token.create_server_side_token(
+  client_id: "YOUR_CLIENT_ID",
+  client_secret: "YOUR_CLIENT_SECRET"
+)
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**client_id:** `String` — The client ID issued for your integration when credentials are provisioned in the Payabli Portal.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**client_secret:** `String` — The client secret issued alongside the client ID. Keep it on your backend and never expose it in client-side code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**state:** `String` — An optional opaque value echoed back in the response. Use it to correlate the request with its response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**permissions:** `Internal::Types::Array[String]` — An optional array of permission IDs that scopes the token to a subset of the credential's granted permissions. When omitted, the token carries all permissions granted to the credential.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payabli::Token::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Subscription
 <details><summary><code>client.subscription.<a href="/lib/payabli/subscription/client.rb">get_subscription</a>(sub_id) -> Payabli::Types::SubscriptionQueryRecords</code></summary>
 <dl>
@@ -3576,7 +3666,7 @@ client.subscription.new_subscription(
   },
   payment_method: {
     cardcvv: "123",
-    cardexp: "02/25",
+    cardexp: "12/29",
     card_holder: "John Cassian",
     cardnumber: "4111111111111111",
     cardzip: "37615",
@@ -3943,8 +4033,8 @@ Deletes a file attached to an invoice.
 
 ```ruby
 client.invoice.delete_attached_from_invoice(
-  filename: "0_Bill.pdf",
-  id_invoice: 23548884
+  id_invoice: 23548884,
+  filename: "0_Bill.pdf"
 )
 ```
 </dd>
@@ -6112,7 +6202,7 @@ client.token_storage.add_method(
   method_description: "Primary Visa card",
   payment_method: {
     cardcvv: "123",
-    cardexp: "02/25",
+    cardexp: "12/29",
     card_holder: "John Doe",
     cardnumber: "4111111111111111",
     cardzip: "12345",
@@ -6322,7 +6412,7 @@ client.token_storage.update_method(
   fallback_auth: true,
   payment_method: {
     cardcvv: "123",
-    cardexp: "02/25",
+    cardexp: "12/29",
     card_holder: "John Doe",
     cardnumber: "4111111111111111",
     cardzip: "12345",
@@ -7268,15 +7358,15 @@ Add a payment method domain to an organization or paypoint.
 
 ```ruby
 client.payment_method_domain.add_payment_method_domain(
-  domain_name: "checkout.example.com",
-  entity_id: 109,
-  entity_type: "paypoint",
   apple_pay: {
     is_enabled: true
   },
   google_pay: {
     is_enabled: true
-  }
+  },
+  domain_name: "checkout.example.com",
+  entity_id: 109,
+  entity_type: "paypoint"
 )
 ```
 </dd>
@@ -12497,6 +12587,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 - `payaccountLastfour` (nct, ct)
 - `payaccountType` (ne, eq, in, nin)
 - `payaccountCurrency` (ne, eq, in, nin)
+- `binCardType` (eq, ne, in, nin). Filters by card type for card transactions. Accepts `CREDIT`, `DEBIT`, or `PREPAID`. Case-insensitive.
 - `customerFirstname` (ct, nct, eq, ne)
 - `customerLastname` (ct, nct, eq, ne)
 - `customerName` (ct, nct)
@@ -12697,6 +12788,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 - `payaccountLastfour` (nct, ct)
 - `payaccountType` (ne, eq, in, nin)
 - `payaccountCurrency` (ne, eq, in, nin)
+- `binCardType` (eq, ne, in, nin). Filters by card type for card transactions. Accepts `CREDIT`, `DEBIT`, or `PREPAID`. Case-insensitive.
 - `customerFirstname` (ct, nct, eq, ne)
 - `customerLastname` (ct, nct, eq, ne)
 - `customerName` (ct, nct)
@@ -14991,9 +15083,9 @@ client.notificationlogs.search_notification_logs(
   page_size: 20,
   start_date: "2024-01-01T00:00:00Z",
   end_date: "2024-01-31T23:59:59Z",
-  org_id: 123,
   notification_event: "ActivatedMerchant",
-  succeeded: true
+  succeeded: true,
+  org_id: 123
 )
 ```
 </dd>
@@ -15307,8 +15399,8 @@ Register a cloud device to an entrypoint. See [Devices Quickstart](/developers/d
 ```ruby
 client.cloud.add_device(
   entry: "8cfec329267",
-  registration_code: "YS7DS5",
-  description: "Front Desk POS"
+  description: "Front Desk POS",
+  registration_code: "YS7DS5"
 )
 ```
 </dd>
@@ -15402,8 +15494,8 @@ Remove a cloud device from an entrypoint.
 
 ```ruby
 client.cloud.remove_device(
-  device_id: "499585-389fj484-3jcj8hj3",
-  entry: "8cfec329267"
+  entry: "8cfec329267",
+  device_id: "499585-389fj484-3jcj8hj3"
 )
 ```
 </dd>
@@ -15475,8 +15567,8 @@ Retrieve the registration history for a device.
 
 ```ruby
 client.cloud.history_device(
-  device_id: "499585-389fj484-3jcj8hj3",
-  entry: "8cfec329267"
+  entry: "8cfec329267",
+  device_id: "499585-389fj484-3jcj8hj3"
 )
 ```
 </dd>
@@ -16597,7 +16689,7 @@ client.boarding.get_by_template_id_link_application(template_id: 80)
 <dl>
 <dd>
 
-**template_id:** `Integer` — The boarding template ID. You can find this at the end of the boarding template URL in PartnerHub. Example: `https://partner-sandbox.payabli.com/myorganization/boarding/edittemplate/80`. Here, the template ID is `80`.
+**template_id:** `Integer` — The boarding template ID. You can find this at the end of the boarding template URL in the Payabli Portal. Example: `https://partner-sandbox.payabli.com/myorganization/boarding/edittemplate/80`. Here, the template ID is `80`.
     
 </dd>
 </dl>
@@ -17239,7 +17331,7 @@ client.templates.delete_template(template_id: 80)
 <dl>
 <dd>
 
-**template_id:** `Integer` — The boarding template ID. You can find this at the end of the boarding template URL in PartnerHub. Example: `https://partner-sandbox.payabli.com/myorganization/boarding/edittemplate/80`. Here, the template ID is `80`.
+**template_id:** `Integer` — The boarding template ID. You can find this at the end of the boarding template URL in the Payabli Portal. Example: `https://partner-sandbox.payabli.com/myorganization/boarding/edittemplate/80`. Here, the template ID is `80`.
     
 </dd>
 </dl>
@@ -17287,8 +17379,8 @@ Generates a boarding link from a boarding template.
 
 ```ruby
 client.templates.getlink_template(
-  ignore_empty: true,
-  template_id: 80
+  template_id: 80,
+  ignore_empty: true
 )
 ```
 </dd>
@@ -17304,7 +17396,7 @@ client.templates.getlink_template(
 <dl>
 <dd>
 
-**template_id:** `Integer` — The boarding template ID. You can find this at the end of the boarding template URL in PartnerHub. Example: `https://partner-sandbox.payabli.com/myorganization/boarding/edittemplate/80`. Here, the template ID is `80`.
+**template_id:** `Integer` — The boarding template ID. You can find this at the end of the boarding template URL in the Payabli Portal. Example: `https://partner-sandbox.payabli.com/myorganization/boarding/edittemplate/80`. Here, the template ID is `80`.
     
 </dd>
 </dl>
@@ -17374,7 +17466,7 @@ client.templates.get_template(template_id: 80)
 <dl>
 <dd>
 
-**template_id:** `Integer` — The boarding template ID. You can find this at the end of the boarding template URL in PartnerHub. Example: `https://partner-sandbox.payabli.com/myorganization/boarding/edittemplate/80`. Here, the template ID is `80`.
+**template_id:** `Integer` — The boarding template ID. You can find this at the end of the boarding template URL in the Payabli Portal. Example: `https://partner-sandbox.payabli.com/myorganization/boarding/edittemplate/80`. Here, the template ID is `80`.
     
 </dd>
 </dl>
@@ -17735,8 +17827,8 @@ Export batch details for a paypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_batch_details(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -18087,8 +18179,8 @@ Export a list of batches for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_batches(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -18417,8 +18509,8 @@ Export a list of money out batches for a paypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_batches_out(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -18709,8 +18801,8 @@ Export a list of bills for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_bills(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -19037,8 +19129,8 @@ Export a list of chargebacks and ACH returns for an entrypoint. Use filters to l
 
 ```ruby
 client.export.export_chargebacks(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -19407,8 +19499,8 @@ Export a list of customers for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_customers(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -19763,8 +19855,8 @@ Export list of invoices for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_invoices(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -20302,8 +20394,8 @@ Export a list of payouts and their statuses for an entrypoint. Use filters to li
 
 ```ruby
 client.export.export_payout(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -20790,8 +20882,8 @@ Export a list of settled transactions for an entrypoint. Use filters to limit re
 
 ```ruby
 client.export.export_settlements(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -21158,8 +21250,8 @@ Export a list of subscriptions for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_subscriptions(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -21530,8 +21622,8 @@ Export a list of transactions for an entrypoint in a file in XLSX or CSV format.
 
 ```ruby
 client.export.export_transactions(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -21910,8 +22002,8 @@ Export a list of transfer details for an entrypoint. Use filters to limit result
 
 ```ruby
 client.export.export_transfer_details(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   transfer_id: 4521,
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
@@ -22237,8 +22329,8 @@ Export a list of vendors for an entrypoint. Use filters to limit results.
 
 ```ruby
 client.export.export_vendors(
-  entry: "8cfec329267",
   format: "csv",
+  entry: "8cfec329267",
   columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
   from_record: 251,
   limit_record: 1000
@@ -23489,12 +23581,12 @@ Retrieves the basic statistics for an organization or a paypoint, for a given ti
 
 ```ruby
 client.statistic.basic_stats(
-  entry_id: 1000000,
+  mode: "custom",
   freq: "m",
   level: 2,
-  mode: "custom",
-  start_date: "2025-11-01",
-  end_date: "2025-11-30"
+  entry_id: 1000000,
+  end_date: "2025-11-30",
+  start_date: "2025-11-01"
 )
 ```
 </dd>
@@ -23648,9 +23740,9 @@ Retrieves the basic statistics for a customer for a specific time period, groupe
 
 ```ruby
 client.statistic.customer_basic_stats(
-  customer_id: 4440,
+  mode: "ytd",
   freq: "m",
-  mode: "ytd"
+  customer_id: 4440
 )
 ```
 </dd>
@@ -23705,7 +23797,7 @@ For example, `w` groups the results by week.
 <dl>
 <dd>
 
-**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in PartnerHub.
+**customer_id:** `Integer` — Payabli-generated customer ID. Maps to "Customer ID" column in the Payabli Portal.
     
 </dd>
 </dl>
@@ -23761,9 +23853,9 @@ Retrieves the subscription statistics for a given interval for a paypoint or org
 
 ```ruby
 client.statistic.sub_stats(
-  entry_id: 1000000,
   interval: "30",
-  level: 2
+  level: 2,
+  entry_id: 1000000
 )
 ```
 </dd>
@@ -23863,9 +23955,9 @@ Retrieve the basic statistics about a vendor for a given time period, grouped by
 
 ```ruby
 client.statistic.vendor_basic_stats(
+  mode: "ytd",
   freq: "m",
-  id_vendor: 1,
-  mode: "ytd"
+  id_vendor: 1
 )
 ```
 </dd>
@@ -25090,9 +25182,9 @@ Resends the MFA code to the user via the selected MFA mode (email or SMS).
 
 ```ruby
 client.user.resend_mfa_code(
+  usrname: "usrname",
   entry: "8cfec329267",
-  entry_type: 1,
-  usrname: "usrname"
+  entry_type: 1
 )
 ```
 </dd>
@@ -25488,12 +25580,12 @@ client.vendor.enrich_vendor(
   vendor_id: 456,
   scope: ["invoice_scan"],
   apply_enrichment_data: false,
-  fallback_method: "check",
   invoice_file: {
     ftype: "pdf",
     filename: "invoice-2026-001.pdf",
     f_content: "<base64-encoded-pdf>"
-  }
+  },
+  fallback_method: "check"
 )
 ```
 </dd>
@@ -26093,9 +26185,11 @@ Authorizes a transaction for payout.
 
 If you don't pass `autoCapture` with a value of `true`, authorized transactions aren't flagged for settlement until captured. Use the `referenceId` returned in the response to capture the transaction.
 
-When `autoCapture` is `true`, Payabli captures the transaction asynchronously after authorization. The response confirms only that the transaction was authorized; it doesn't confirm that capture succeeded. To confirm capture, listen for the [`payout_transaction_approvedcaptured`](/developers/webhooks/payout-transaction-approved-captured) webhook event.
+When `autoCapture` is `true`, Payabli captures the transaction asynchronously after authorization. The response confirms only that the transaction was authorized; it doesn't confirm that capture succeeded. To confirm capture, listen for the [`payout_transaction_approvedcaptured`](/developers/api-reference/webhooks-overview/payout-transaction-approved-captured) webhook event.
 
 If a velocity fraud alert is triggered, the endpoint returns a `202` response with `responseCode` `9051`, and the authorization is held for risk review rather than rejected. If a risk policy blocks the transaction, the endpoint returns a `422` response with `responseCode` `9005`, a terminal rejection.
+
+For check payouts, Payabli validates the remit (mailing) address at authorization. If the address fails deliverability validation, the endpoint returns a `422` response and doesn't charge the paypoint. Correct the address and re-authorize. Other payout rails (ACH, RTP, virtual card, wire, and managed payables) aren't affected.
 </dd>
 </dl>
 </dd>
@@ -26112,21 +26206,21 @@ If a velocity fraud alert is triggered, the endpoint returns a `202` response wi
 ```ruby
 client.money_out.authorize_out(
   entry_point: "8cfec329267",
-  auto_capture: true,
-  invoice_data: [{
-    bill_id: 54323
-  }],
   order_description: "Window Painting",
+  payment_method: {
+    method_: "managed"
+  },
   payment_details: {
     total_amount: 47,
     unbundled: false
   },
-  payment_method: {
-    method_: "managed"
-  },
   vendor_data: {
     vendor_number: "VEN-123"
-  }
+  },
+  invoice_data: [{
+    bill_id: 54323
+  }],
+  auto_capture: true
 )
 ```
 </dd>

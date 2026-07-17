@@ -14,6 +14,8 @@ module Payabli
       field :cardnumber, -> { String }, optional: false, nullable: false
 
       field :cardzip, -> { String }, optional: true, nullable: false
+
+      field :device, -> { String }, optional: true, nullable: false
     end
   end
 end

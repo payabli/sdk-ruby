@@ -7,6 +7,8 @@ class SubscriptionWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -90,7 +92,7 @@ class SubscriptionWireTest < WireMockTestCase
       },
       payment_method: {
         cardcvv: "123",
-        cardexp: "02/25",
+        cardexp: "12/29",
         card_holder: "John Cassian",
         cardnumber: "4111111111111111",
         cardzip: "37615",

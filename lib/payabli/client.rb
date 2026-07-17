@@ -2,18 +2,42 @@
 
 module Payabli
   class Client
-    # @param api_key [String]
     # @param base_url [String, nil]
+    # @param client_id [String, nil]
+    # @param client_secret [String, nil]
+    # @param api_key [String, nil]
+    # @param max_retries [Integer]
     #
     # @return [void]
-    def initialize(api_key:, base_url: nil)
+    def initialize(base_url: nil, client_id: ENV.fetch("OAUTH_CLIENT_ID", nil), client_secret: ENV.fetch("OAUTH_CLIENT_SECRET", nil), api_key: nil, max_retries: 2)
+      if !client_id.to_s.empty? && !client_secret.to_s.empty?
+        # Create an unauthenticated client for the auth endpoint
+        auth_raw_client = Payabli::Internal::Http::RawClient.new(
+          base_url: base_url || Payabli::Environment::SANDBOX,
+          headers: {
+            "X-Fern-Language" => "Ruby"
+          }
+        )
+
+        # Create the auth client for token retrieval
+        auth_client = Payabli::Token::Client.new(client: auth_raw_client)
+
+        # Create the OAuth provider with the auth client and credentials
+        @auth_provider = Payabli::Internal::OAuthProvider.new(
+          auth_client: auth_client,
+          options: { base_url: base_url, client_id: client_id, client_secret: client_secret }
+        )
+      end
+
       @raw_client = Payabli::Internal::Http::RawClient.new(
         base_url: base_url || Payabli::Environment::SANDBOX,
         headers: {
-          "User-Agent" => "payabli/3.0.2",
+          "User-Agent" => "payabli/3.0.3",
           "X-Fern-Language" => "Ruby",
           requestToken: api_key.to_s
-        }
+        },
+        auth_provider: @auth_provider,
+        max_retries: max_retries
       )
     end
 
@@ -35,6 +59,11 @@ module Payabli
     # @return [Payabli::MoneyIn::Client]
     def money_in
       @money_in ||= Payabli::MoneyIn::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::Token::Client]
+    def token
+      @token ||= Payabli::Token::Client.new(client: @raw_client)
     end
 
     # @return [Payabli::Subscription::Client]

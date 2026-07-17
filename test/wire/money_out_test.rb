@@ -7,6 +7,8 @@ class MoneyOutWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -17,21 +19,21 @@ class MoneyOutWireTest < WireMockTestCase
 
     @client.money_out.authorize_out(
       entry_point: "8cfec329267",
-      auto_capture: true,
-      invoice_data: [{
-        bill_id: 54323
-      }],
       order_description: "Window Painting",
+      payment_method: {
+        method_: "managed"
+      },
       payment_details: {
         total_amount: 47,
         unbundled: false
       },
-      payment_method: {
-        method_: "managed"
-      },
       vendor_data: {
         vendor_number: "VEN-123"
       },
+      invoice_data: [{
+        bill_id: 54323
+      }],
+      auto_capture: true,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "money_out.authorize_out.0"

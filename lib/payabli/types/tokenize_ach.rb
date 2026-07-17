@@ -16,8 +16,6 @@ module Payabli
       field :ach_holder_type, -> { Payabli::Types::AchHolderType }, optional: true, nullable: false, api_name: "achHolderType"
 
       field :ach_routing, -> { String }, optional: false, nullable: false, api_name: "achRouting"
-
-      field :device, -> { String }, optional: true, nullable: false
     end
   end
 end

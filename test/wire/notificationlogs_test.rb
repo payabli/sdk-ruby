@@ -7,6 +7,8 @@ class NotificationlogsWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -19,9 +21,9 @@ class NotificationlogsWireTest < WireMockTestCase
       page_size: 20,
       start_date: "2024-01-01T00:00:00Z",
       end_date: "2024-01-31T23:59:59Z",
-      org_id: 123,
       notification_event: "ActivatedMerchant",
       succeeded: true,
+      org_id: 123,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "notificationlogs.search_notification_logs.0"

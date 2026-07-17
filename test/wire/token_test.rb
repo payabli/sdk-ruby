@@ -2,7 +2,7 @@
 
 require_relative "wiremock_test_case"
 
-class CheckCaptureWireTest < WireMockTestCase
+class TokenWireTest < WireMockTestCase
   def setup
     super
 
@@ -14,17 +14,15 @@ class CheckCaptureWireTest < WireMockTestCase
     )
   end
 
-  def test_check_capture_check_processing_with_wiremock
-    test_id = "check_capture.check_processing.0"
+  def test_token_create_server_side_token_with_wiremock
+    test_id = "token.create_server_side_token.0"
 
-    @client.check_capture.check_processing(
-      entry_point: "8cfec329267",
-      front_image: "/9j/4AAQSkZJRgABAQEASABIAAD...",
-      rear_image: "/9j/4AAQSkZJRgABAQEASABIAAD...",
-      check_amount: 12550,
+    @client.token.create_server_side_token(
+      client_id: "YOUR_CLIENT_ID",
+      client_secret: "YOUR_CLIENT_SECRET",
       request_options: {
         additional_headers: {
-          "X-Test-Id" => "check_capture.check_processing.0"
+          "X-Test-Id" => "token.create_server_side_token.0"
         }
       }
     )
@@ -32,7 +30,7 @@ class CheckCaptureWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "POST",
-      url_path: "/CheckCapture/CheckProcessing",
+      url_path: "/v2/Token/serverside",
       query_params: nil,
       expected: 1
     )

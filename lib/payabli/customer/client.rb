@@ -11,7 +11,7 @@ module Payabli
       end
 
       # Creates a customer in an entrypoint. An identifier is required to create customer records. Change your
-      # identifier settings in Settings > Custom Fields in PartnerHub.
+      # identifier settings in Settings > Custom Fields in the Payabli Portal.
       # If you don't include an identifier, the record is rejected.
       #
       # @param request_options [Hash]

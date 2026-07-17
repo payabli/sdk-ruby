@@ -7,6 +7,8 @@ class CloudWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -17,8 +19,8 @@ class CloudWireTest < WireMockTestCase
 
     @client.cloud.add_device(
       entry: "8cfec329267",
-      registration_code: "YS7DS5",
       description: "Front Desk POS",
+      registration_code: "YS7DS5",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "cloud.add_device.0"
@@ -39,8 +41,8 @@ class CloudWireTest < WireMockTestCase
     test_id = "cloud.remove_device.0"
 
     @client.cloud.remove_device(
-      device_id: "499585-389fj484-3jcj8hj3",
       entry: "8cfec329267",
+      device_id: "499585-389fj484-3jcj8hj3",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "cloud.remove_device.0"
@@ -61,8 +63,8 @@ class CloudWireTest < WireMockTestCase
     test_id = "cloud.history_device.0"
 
     @client.cloud.history_device(
-      device_id: "499585-389fj484-3jcj8hj3",
       entry: "8cfec329267",
+      device_id: "499585-389fj484-3jcj8hj3",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "cloud.history_device.0"

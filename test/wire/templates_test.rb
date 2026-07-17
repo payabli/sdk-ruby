@@ -7,6 +7,8 @@ class TemplatesWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -37,8 +39,8 @@ class TemplatesWireTest < WireMockTestCase
     test_id = "templates.getlink_template.0"
 
     @client.templates.getlink_template(
-      ignore_empty: true,
       template_id: 80,
+      ignore_empty: true,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "templates.getlink_template.0"

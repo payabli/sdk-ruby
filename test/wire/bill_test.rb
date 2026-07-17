@@ -7,6 +7,8 @@ class BillWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -135,8 +137,8 @@ class BillWireTest < WireMockTestCase
     test_id = "bill.get_attached_from_bill.0"
 
     @client.bill.get_attached_from_bill(
-      filename: "0_Bill.pdf",
       id_bill: 285,
+      filename: "0_Bill.pdf",
       return_object: true,
       request_options: {
         additional_headers: {
@@ -158,8 +160,8 @@ class BillWireTest < WireMockTestCase
     test_id = "bill.delete_attached_from_bill.0"
 
     @client.bill.delete_attached_from_bill(
-      filename: "0_Bill.pdf",
       id_bill: 285,
+      filename: "0_Bill.pdf",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "bill.delete_attached_from_bill.0"
@@ -225,8 +227,8 @@ class BillWireTest < WireMockTestCase
     test_id = "bill.set_approved_bill.0"
 
     @client.bill.set_approved_bill(
-      approved: "true",
       id_bill: 285,
+      approved: "true",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "bill.set_approved_bill.0"

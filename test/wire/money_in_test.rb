@@ -7,6 +7,8 @@ class MoneyInWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -197,8 +199,8 @@ class MoneyInWireTest < WireMockTestCase
     test_id = "money_in.reverse.0"
 
     @client.money_in.reverse(
-      amount: 0,
       trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      amount: 0,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "money_in.reverse.0"
@@ -219,8 +221,8 @@ class MoneyInWireTest < WireMockTestCase
     test_id = "money_in.refund.0"
 
     @client.money_in.refund(
-      amount: 0,
       trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      amount: 0,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "money_in.refund.0"
@@ -243,9 +245,8 @@ class MoneyInWireTest < WireMockTestCase
     @client.money_in.refund_with_instructions(
       trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
       idempotency_key: "8A29FC40-CA47-1067-B31D-00DD010662DB",
-      source: "api",
-      order_description: "Materials deposit",
       amount: 100,
+      order_description: "Materials deposit",
       refund_details: {
         split_refunding: [{
           origination_entry_point: "7f1a381696",
@@ -259,6 +260,7 @@ class MoneyInWireTest < WireMockTestCase
           amount: 40
         }]
       },
+      source: "api",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "money_in.refund_with_instructions.0"
