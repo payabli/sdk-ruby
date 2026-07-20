@@ -103,7 +103,7 @@ module Payabli
 
       field :enrichment_id, -> { String }, optional: true, nullable: false, api_name: "EnrichmentId"
 
-      field :additional_data, -> { Internal::Types::Hash[String, Internal::Types::Hash[String, Object]] }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "additionalData"
 
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
 
