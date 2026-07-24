@@ -116,7 +116,7 @@ module Payabli
 
       field :rep_office, -> { String }, optional: true, nullable: false, api_name: "RepOffice"
 
-      field :on_create, -> { String }, optional: true, nullable: false, api_name: "onCreate"
+      field :on_create, -> { Internal::Types::Array[String] }, optional: true, nullable: false, api_name: "onCreate"
     end
   end
 end

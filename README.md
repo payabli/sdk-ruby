@@ -71,10 +71,7 @@ Instantiate and use the client with the following:
 ```ruby
 require "payabli"
 
-client = Payabli::Client.new(
-  client_id: "<clientId>",
-  client_secret: "<clientSecret>"
-)
+client = Payabli::Client.new(api_key: "<value>")
 
 client.money_in.getpaidv_2(
   customer_data: {

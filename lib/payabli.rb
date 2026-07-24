@@ -1110,4 +1110,3 @@ require_relative "payabli/payout_subscription/types/update_payout_subscription_b
 require_relative "payabli/charge_backs/client"
 require_relative "payabli/charge_backs/types/response_charge_back"
 require_relative "payabli/environment"
-require_relative "payabli/internal/oauth_provider"

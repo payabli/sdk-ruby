@@ -3,7 +3,7 @@
 module Payabli
   module Types
     module OnCreate
-      # OnCreate is an alias for String
+      # OnCreate is an alias for Array
 
       # @option str [String]
       #

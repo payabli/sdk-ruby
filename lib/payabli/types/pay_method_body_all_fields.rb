@@ -26,7 +26,7 @@ module Payabli
 
       field :device, -> { String }, optional: true, nullable: false
 
-      field :initator, -> { String }, optional: true, nullable: false
+      field :initiator, -> { String }, optional: true, nullable: false
 
       field :method_, -> { Payabli::Types::Methodall }, optional: true, nullable: false, api_name: "method"
 
