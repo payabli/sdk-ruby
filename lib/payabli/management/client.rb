@@ -29,6 +29,17 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
+      # @example
+      #   client.management.verify_account_details(
+      #     entry: "8cfec329267",
+      #     routing_number: "122105278",
+      #     account_number: "0000000016",
+      #     account_type: "Checking",
+      #     country: "US",
+      #     account_holder_type: "personal",
+      #     holder_name: "Jane Doe"
+      #   )
+      #
       # @return [Payabli::Types::VerifyAccountDetailsResponse]
       def verify_account_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -36,10 +47,12 @@ module Payabli
         non_body_param_names = %w[entry]
         body = request_data.except(*non_body_param_names)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Management/verifyAccountDetails/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           body: body,
           request_options: request_options
         )

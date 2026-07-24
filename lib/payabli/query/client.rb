@@ -28,6 +28,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_batch_details(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryBatchesDetailResponse]
       def list_batch_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -38,10 +46,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/batchDetails/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -77,6 +87,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_batch_details_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryBatchesDetailResponse]
       def list_batch_details_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -87,10 +105,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/batchDetails/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -125,6 +145,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_batches(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryBatchesResponse]
       def list_batches(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -135,10 +163,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/batches/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -173,6 +203,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_batches_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryBatchesResponse]
       def list_batches_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -183,10 +221,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/batches/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -221,6 +261,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_batches_out(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryBatchesOutResponse]
       def list_batches_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -231,10 +279,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/batchesOut/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -269,6 +319,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_batches_out_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryBatchesOutResponse]
       def list_batches_out_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -279,10 +337,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/batchesOut/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -317,6 +377,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_chargebacks(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryChargebacksResponse]
       def list_chargebacks(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -327,10 +395,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/chargebacks/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -365,6 +435,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_chargebacks_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryChargebacksResponse]
       def list_chargebacks_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -375,10 +453,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/chargebacks/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -413,6 +493,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_customers(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryCustomerResponse]
       def list_customers(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -423,10 +511,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/customers/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -461,6 +551,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_customers_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryCustomerResponse]
       def list_customers_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -471,10 +569,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/customers/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -509,6 +609,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_devices(
+      #     entry: "8cfec329267",
+      #     from_record: 0,
+      #     limit_record: 20,
+      #     sort_by: "desc(createdAt)"
+      #   )
+      #
       # @return [Payabli::Types::QueryDeviceResponse]
       def list_devices(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -519,10 +627,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/devices/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -557,6 +667,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_devices_org(
+      #     org_id: 123,
+      #     from_record: 0,
+      #     limit_record: 20,
+      #     sort_by: "desc(createdAt)"
+      #   )
+      #
       # @return [Payabli::Types::QueryDeviceResponse]
       def list_devices_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -567,10 +685,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/devices/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -604,6 +724,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_notification_reports(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryResponseNotificationReports]
       def list_notification_reports(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -613,10 +741,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/notificationReports/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -649,6 +779,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_notification_reports_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryResponseNotificationReports]
       def list_notification_reports_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -658,10 +796,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/notificationReports/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -694,6 +834,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_notifications(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryResponseNotifications]
       def list_notifications(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -703,10 +851,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/notifications/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -739,6 +889,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_notifications_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryResponseNotifications]
       def list_notifications_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -748,10 +906,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/notifications/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -787,6 +947,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_organizations(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::ListOrganizationsResponse]
       def list_organizations(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -797,10 +965,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/organizations/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -835,6 +1005,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_payout(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryPayoutTransaction]
       def list_payout(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -845,10 +1023,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/payouts/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -883,6 +1063,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_payout_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryPayoutTransaction]
       def list_payout_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -893,10 +1081,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/payouts/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -931,6 +1121,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_paypoints(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryEntrypointResponse]
       def list_paypoints(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -941,10 +1139,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/paypoints/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -979,6 +1179,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_settlements(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryResponseSettlements]
       def list_settlements(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -989,10 +1197,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/settlements/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1027,6 +1237,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_settlements_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryResponseSettlements]
       def list_settlements_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1037,10 +1255,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/settlements/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1075,6 +1295,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_subscriptions(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QuerySubscriptionResponse]
       def list_subscriptions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1085,10 +1313,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/subscriptions/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1123,6 +1353,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_subscriptions_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QuerySubscriptionResponse]
       def list_subscriptions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1133,10 +1371,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/subscriptions/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1172,6 +1412,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_payout_subscriptions(
+      #     entry: "8cfec329267",
+      #     from_record: 0,
+      #     limit_record: 20,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryPayoutSubscriptionResponse]
       def list_payout_subscriptions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1182,10 +1430,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/payoutsubscriptions/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1221,6 +1471,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_payout_subscriptions_org(
+      #     org_id: 123,
+      #     from_record: 0,
+      #     limit_record: 20,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryPayoutSubscriptionResponse]
       def list_payout_subscriptions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1231,10 +1489,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/payoutsubscriptions/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1281,6 +1541,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_transactions(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryResponseTransactions]
       def list_transactions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1291,10 +1559,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/transactions/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1341,6 +1611,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_transactions_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryResponseTransactions]
       def list_transactions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1351,10 +1629,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/transactions/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1390,6 +1670,12 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_transfer_details(
+      #     entry: "8cfec329267",
+      #     transfer_id: 4521
+      #   )
+      #
       # @return [Payabli::Types::QueryTransferDetailResponse]
       def list_transfer_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1400,10 +1686,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/transferDetails/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:transfer_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1438,6 +1726,13 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_transfers(
+      #     entry: "8cfec329267",
+      #     from_record: 0,
+      #     limit_record: 20
+      #   )
+      #
       # @return [Payabli::Types::TransferQueryResponse]
       def list_transfers(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1448,10 +1743,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/transfers/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1486,6 +1783,13 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_transfers_org(
+      #     org_id: 123,
+      #     from_record: 0,
+      #     limit_record: 20
+      #   )
+      #
       # @return [Payabli::Types::TransferQueryResponse]
       def list_transfers_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1496,10 +1800,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/transfers/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1532,6 +1838,13 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_transfers_out_org(
+      #     org_id: 123,
+      #     from_record: 0,
+      #     limit_record: 20
+      #   )
+      #
       # @return [Payabli::Types::TransferOutQueryResponse]
       def list_transfers_out_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1541,10 +1854,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/transfersOut/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1577,6 +1892,13 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_transfers_out_paypoint(
+      #     entry: "8cfec329267",
+      #     from_record: 0,
+      #     limit_record: 20
+      #   )
+      #
       # @return [Payabli::Types::TransferOutQueryResponse]
       def list_transfers_out_paypoint(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1586,10 +1908,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/transfersOut/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1623,6 +1947,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_transfer_details_out(
+      #     entry: "8cfec329267",
+      #     transfer_id: 4521,
+      #     from_record: 0,
+      #     limit_record: 20
+      #   )
+      #
       # @return [Payabli::Types::TransferOutDetailQueryResponse]
       def list_transfer_details_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1632,10 +1964,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/transferDetailsOut/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:transfer_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1668,6 +2002,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_users_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryUserResponse]
       def list_users_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1677,10 +2019,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/users/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1713,6 +2057,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_users_paypoint(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryUserResponse]
       def list_users_paypoint(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1722,10 +2074,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/users/point/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1760,6 +2114,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_vendors(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryResponseVendors]
       def list_vendors(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1770,10 +2132,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/vendors/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1808,6 +2172,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_vendors_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::QueryResponseVendors]
       def list_vendors_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1818,10 +2190,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/vendors/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1856,6 +2230,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_vcards(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::VCardQueryResponse]
       def list_vcards(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1866,10 +2248,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/vcards/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1902,6 +2286,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_vcards_transactions(
+      #     entry: "8cfec329267",
+      #     from_record: 0,
+      #     limit_record: 20,
+      #     sort_by: "desc(CreatedOn)"
+      #   )
+      #
       # @return [Payabli::Types::VCardTransactionQueryResponse]
       def list_vcards_transactions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1911,10 +2303,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/vcardsTransactions/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1947,6 +2341,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_vcards_transactions_org(
+      #     org_id: 123,
+      #     from_record: 0,
+      #     limit_record: 20,
+      #     sort_by: "desc(CreatedOn)"
+      #   )
+      #
       # @return [Payabli::Types::VCardTransactionQueryResponse]
       def list_vcards_transactions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1956,10 +2358,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/vcardsTransactions/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1994,6 +2398,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.query.list_vcards_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::VCardQueryResponse]
       def list_vcards_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -2004,10 +2416,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/vcards/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )

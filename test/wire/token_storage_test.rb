@@ -7,6 +7,8 @@ class TokenStorageWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -46,6 +48,16 @@ class TokenStorageWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/TokenStorage/add",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_token_storage_get_method_with_wiremock
@@ -68,6 +80,16 @@ class TokenStorageWireTest < WireMockTestCase
       url_path: "/TokenStorage/32-8877drt00045632-678",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/TokenStorage/32-8877drt00045632-678",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -103,6 +125,16 @@ class TokenStorageWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/TokenStorage/32-8877drt00045632-678",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_token_storage_remove_method_with_wiremock
@@ -123,6 +155,16 @@ class TokenStorageWireTest < WireMockTestCase
       url_path: "/TokenStorage/32-8877drt00045632-678",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/TokenStorage/32-8877drt00045632-678",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

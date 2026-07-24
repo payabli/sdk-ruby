@@ -23,13 +23,21 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
+      # @example
+      #   client.token.create_server_side_token(
+      #     client_id: "YOUR_CLIENT_ID",
+      #     client_secret: "YOUR_CLIENT_SECRET"
+      #   )
+      #
       # @return [Payabli::Types::PayabliAccessTokenResponse]
       def create_server_side_token(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: nil)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/Token/serverside",
+          headers: headers,
           body: Payabli::Token::Types::CreateServerSideTokenRequest.new(params).to_h,
           request_options: request_options
         )

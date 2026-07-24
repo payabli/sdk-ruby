@@ -21,13 +21,62 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
+      # @example
+      #   client.vendor.add_vendor(
+      #     entry: "8cfec329267",
+      #     vendor_number: "VEN-123",
+      #     address_1: "123 Ocean Drive",
+      #     address_2: "Suite 400",
+      #     billing_data: {
+      #       id: 123,
+      #       bank_name: "Country Bank",
+      #       routing_account: "123123123",
+      #       account_number: "123123123",
+      #       type_account: "Checking",
+      #       bank_account_holder_name: "Gruzya Adventure Outfitters LLC",
+      #       bank_account_holder_type: "Business",
+      #       bank_account_function: 0
+      #     },
+      #     city: "Miami",
+      #     contacts: [{
+      #       contact_name: "Herman Martinez",
+      #       contact_email: "example@email.com",
+      #       contact_title: "Owner",
+      #       contact_phone: "3055550000"
+      #     }],
+      #     country: "US",
+      #     customer_vendor_account: "A-37622",
+      #     ein: "12-3456789",
+      #     email: "example@email.com",
+      #     internal_reference_id: 123,
+      #     location_code: "MIA123",
+      #     mcc: "7777",
+      #     name_1: "Herman's Coatings and Masonry",
+      #     name_2: "<string>",
+      #     payee_name_1: "<string>",
+      #     payee_name_2: "<string>",
+      #     payment_method: "managed",
+      #     phone: "5555555555",
+      #     remit_address_1: "123 Walnut Street",
+      #     remit_address_2: "Suite 900",
+      #     remit_city: "Miami",
+      #     remit_country: "US",
+      #     remit_state: "FL",
+      #     remit_zip: "31113",
+      #     state: "FL",
+      #     vendor_status: 1,
+      #     zip: "33139"
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponseVendors]
       def add_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Vendor/single/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           body: Payabli::Types::VendorData.new(params).to_h,
           request_options: request_options
         )
@@ -56,13 +105,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_vendor
       #
+      # @example
+      #   client.vendor.get_vendor(id_vendor: 1)
+      #
       # @return [Payabli::Types::VendorQueryRecord]
       def get_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Vendor/#{URI.encode_uri_component(params[:id_vendor].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -90,13 +144,21 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_vendor
       #
+      # @example
+      #   client.vendor.edit_vendor(
+      #     id_vendor: 1,
+      #     name_1: "Theodore's Janitorial"
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponseVendors]
       def edit_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Vendor/#{URI.encode_uri_component(params[:id_vendor].to_s)}",
+          headers: headers,
           body: Payabli::Types::VendorData.new(params).to_h,
           request_options: request_options
         )
@@ -125,13 +187,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_vendor
       #
+      # @example
+      #   client.vendor.delete_vendor(id_vendor: 1)
+      #
       # @return [Payabli::Types::PayabliApiResponseVendors]
       def delete_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
           path: "Vendor/#{URI.encode_uri_component(params[:id_vendor].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -162,6 +229,20 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
+      # @example
+      #   client.vendor.enrich_vendor(
+      #     entry: "8cfec329267",
+      #     vendor_id: 456,
+      #     scope: ["invoice_scan"],
+      #     apply_enrichment_data: false,
+      #     invoice_file: {
+      #       ftype: "pdf",
+      #       filename: "invoice-2026-001.pdf",
+      #       f_content: "<base64-encoded-pdf>"
+      #     },
+      #     fallback_method: "check"
+      #   )
+      #
       # @return [Payabli::Types::VendorEnrichResponse]
       def enrich_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -169,10 +250,12 @@ module Payabli
         non_body_param_names = %w[entry]
         body = request_data.except(*non_body_param_names)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Vendor/enrich/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           body: body,
           request_options: request_options
         )
@@ -205,6 +288,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
+      # @example
+      #   client.vendor.schedule_enrichment_call(
+      #     entry: "8cfec329267",
+      #     vendor_id: 456,
+      #     phone: "5555550200",
+      #     enrichment_id: "enrich-3890-a1b2c3d4",
+      #     bill_id: 54323,
+      #     fallback_method: "check",
+      #     max_retries: 3,
+      #     timezone: "America/New_York"
+      #   )
+      #
       # @return [Payabli::Types::VendorScheduleCallResponse]
       def schedule_enrichment_call(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -212,10 +307,12 @@ module Payabli
         non_body_param_names = %w[entry]
         body = request_data.except(*non_body_param_names)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Vendor/enrich/schedule_call/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           body: body,
           request_options: request_options
         )
@@ -246,13 +343,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_vendor
       #
+      # @example
+      #   client.vendor.get_enrichment_call_status(id_vendor: 456)
+      #
       # @return [Payabli::Types::VendorCallStatusResponse]
       def get_enrichment_call_status(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Vendor/#{URI.encode_uri_component(params[:id_vendor].to_s)}/enrichment/call-status",
+          headers: headers,
           request_options: request_options
         )
         begin

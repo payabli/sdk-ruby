@@ -7,6 +7,8 @@ class BoardingWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -150,6 +152,16 @@ class BoardingWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Boarding/app",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_boarding_update_application_with_wiremock
@@ -170,6 +182,16 @@ class BoardingWireTest < WireMockTestCase
       url_path: "/Boarding/app/352",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/Boarding/app/352",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -192,6 +214,16 @@ class BoardingWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/Boarding/app/352",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_boarding_get_application_with_wiremock
@@ -212,6 +244,16 @@ class BoardingWireTest < WireMockTestCase
       url_path: "/Boarding/read/352",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Boarding/read/352",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -236,6 +278,16 @@ class BoardingWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Boarding/read/17E",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_boarding_get_by_id_link_application_with_wiremock
@@ -257,6 +309,16 @@ class BoardingWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Boarding/linkbyId/91",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_boarding_get_by_template_id_link_application_with_wiremock
@@ -277,6 +339,16 @@ class BoardingWireTest < WireMockTestCase
       url_path: "/Boarding/linkbyTemplate/80",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Boarding/linkbyTemplate/80",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -300,6 +372,16 @@ class BoardingWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/Boarding/applink/352/mail2",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_boarding_get_link_application_with_wiremock
@@ -320,6 +402,16 @@ class BoardingWireTest < WireMockTestCase
       url_path: "/Boarding/link/myorgaccountname-00091",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Boarding/link/myorgaccountname-00091",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -345,6 +437,16 @@ class BoardingWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/boarding/123",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_boarding_list_boarding_links_with_wiremock
@@ -368,6 +470,16 @@ class BoardingWireTest < WireMockTestCase
       url_path: "/Query/boardinglinks/123",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/boardinglinks/123",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -394,6 +506,16 @@ class BoardingWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Boarding/applications",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_boarding_get_applications_by_paypoint_id_with_wiremock
@@ -414,6 +536,16 @@ class BoardingWireTest < WireMockTestCase
       url_path: "/Boarding/applications/3040",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Boarding/applications/3040",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

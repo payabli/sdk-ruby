@@ -7,6 +7,8 @@ class InvoiceWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -60,6 +62,16 @@ class InvoiceWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Invoice/8cfec329267",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_invoice_get_attached_file_from_invoice_with_wiremock
@@ -81,6 +93,16 @@ class InvoiceWireTest < WireMockTestCase
       url_path: "/Invoice/attachedFileFromInvoice/1/filename",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Invoice/attachedFileFromInvoice/1/filename",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -104,6 +126,16 @@ class InvoiceWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/Invoice/attachedFileFromInvoice/23548884/0_Bill.pdf",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_invoice_get_invoice_with_wiremock
@@ -124,6 +156,16 @@ class InvoiceWireTest < WireMockTestCase
       url_path: "/Invoice/23548884",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Invoice/23548884",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -157,6 +199,16 @@ class InvoiceWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/Invoice/23548884",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_invoice_delete_invoice_with_wiremock
@@ -178,6 +230,16 @@ class InvoiceWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/Invoice/23548884",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_invoice_get_invoice_number_with_wiremock
@@ -198,6 +260,16 @@ class InvoiceWireTest < WireMockTestCase
       url_path: "/Invoice/getNumber/8cfec329267",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Invoice/getNumber/8cfec329267",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -223,6 +295,16 @@ class InvoiceWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/invoices/8cfec329267",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_invoice_list_invoices_org_with_wiremock
@@ -247,6 +329,16 @@ class InvoiceWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Query/invoices/org/123",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_invoice_send_invoice_with_wiremock
@@ -270,6 +362,16 @@ class InvoiceWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Invoice/send/23548884",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_invoice_get_invoice_pdf_with_wiremock
@@ -290,6 +392,16 @@ class InvoiceWireTest < WireMockTestCase
       url_path: "/Export/invoicePdf/23548884",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Export/invoicePdf/23548884",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

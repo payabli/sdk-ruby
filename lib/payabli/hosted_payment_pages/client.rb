@@ -23,13 +23,21 @@ module Payabli
       # @option params [String] :entry
       # @option params [String] :subdomain
       #
+      # @example
+      #   client.hosted_payment_pages.load_page(
+      #     entry: "8cfec329267",
+      #     subdomain: "pay-your-fees-1"
+      #   )
+      #
       # @return [Payabli::Types::PayabliPages]
       def load_page(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Paypoint/load/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:subdomain].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -60,6 +68,12 @@ module Payabli
       # @option params [String] :entry
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.hosted_payment_pages.new_page(
+      #     entry: "8cfec329267",
+      #     idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA"
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def new_page(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -69,6 +83,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -103,13 +118,21 @@ module Payabli
       # @option params [String] :entry
       # @option params [String] :subdomain
       #
+      # @example
+      #   client.hosted_payment_pages.save_page(
+      #     entry: "8cfec329267",
+      #     subdomain: "pay-your-fees-1"
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def save_page(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Paypoint/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:subdomain].to_s)}",
+          headers: headers,
           body: Payabli::Types::PayabliPages.new(params).to_h,
           request_options: request_options
         )

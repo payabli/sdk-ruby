@@ -24,13 +24,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Payabli::Types::TypeResult] :type_result
       #
+      # @example
+      #   client.ocr.ocr_document_form(type_result: "typeResult")
+      #
       # @return [Payabli::Types::PayabliApiResponseOcr]
       def ocr_document_form(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Import/ocrDocumentForm/#{URI.encode_uri_component(params[:type_result].to_s)}",
+          headers: headers,
           body: Payabli::Types::FileContentImageOnly.new(params).to_h,
           request_options: request_options
         )
@@ -62,13 +67,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Payabli::Types::TypeResult] :type_result
       #
+      # @example
+      #   client.ocr.ocr_document_json(type_result: "typeResult")
+      #
       # @return [Payabli::Types::PayabliApiResponseOcr]
       def ocr_document_json(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Import/ocrDocumentJson/#{URI.encode_uri_component(params[:type_result].to_s)}",
+          headers: headers,
           body: Payabli::Types::FileContentImageOnly.new(params).to_h,
           request_options: request_options
         )

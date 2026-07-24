@@ -7,6 +7,8 @@ class PaymentLinkWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -137,6 +139,16 @@ class PaymentLinkWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/PaymentLink/23548884",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_payment_link_add_pay_link_from_bill_with_wiremock
@@ -217,6 +229,16 @@ class PaymentLinkWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/PaymentLink/bill/54323",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_payment_link_delete_pay_link_from_id_with_wiremock
@@ -237,6 +259,16 @@ class PaymentLinkWireTest < WireMockTestCase
       url_path: "/PaymentLink/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/PaymentLink/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -259,6 +291,16 @@ class PaymentLinkWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/PaymentLink/load/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_payment_link_push_pay_link_from_id_with_wiremock
@@ -279,6 +321,16 @@ class PaymentLinkWireTest < WireMockTestCase
       url_path: "/PaymentLink/push/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/PaymentLink/push/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -301,6 +353,16 @@ class PaymentLinkWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/PaymentLink/refresh/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_payment_link_send_pay_link_from_id_with_wiremock
@@ -322,6 +384,16 @@ class PaymentLinkWireTest < WireMockTestCase
       url_path: "/PaymentLink/send/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/PaymentLink/send/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -355,6 +427,16 @@ class PaymentLinkWireTest < WireMockTestCase
       url_path: "/PaymentLink/update/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/PaymentLink/update/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -439,6 +521,16 @@ class PaymentLinkWireTest < WireMockTestCase
       query_params: { "entryPoint" => "8cfec329267", "vendorNumber" => "VEN-123" },
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/PaymentLink/bill/lotNumber/LOT-2024-001",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_payment_link_patch_out_payment_link_with_wiremock
@@ -461,6 +553,16 @@ class PaymentLinkWireTest < WireMockTestCase
       url_path: "/PaymentLink/out/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PATCH",
+      url_path: "/PaymentLink/out/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -540,6 +642,16 @@ class PaymentLinkWireTest < WireMockTestCase
       url_path: "/PaymentLink/updateOut/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PATCH",
+      url_path: "/PaymentLink/updateOut/2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

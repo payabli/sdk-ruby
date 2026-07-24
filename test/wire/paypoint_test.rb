@@ -7,6 +7,8 @@ class PaypointWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -31,6 +33,16 @@ class PaypointWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Paypoint/basic/8cfec329267",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_paypoint_get_basic_entry_by_id_with_wiremock
@@ -52,6 +64,16 @@ class PaypointWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Paypoint/basicById/198",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_paypoint_save_logo_with_wiremock
@@ -72,6 +94,16 @@ class PaypointWireTest < WireMockTestCase
       url_path: "/Paypoint/logo/8cfec329267",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/Paypoint/logo/8cfec329267",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -102,6 +134,16 @@ class PaypointWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Paypoint/migrate",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_paypoint_settings_page_with_wiremock
@@ -123,6 +165,16 @@ class PaypointWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Paypoint/settings/8cfec329267",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_paypoint_get_entry_config_with_wiremock
@@ -143,6 +195,16 @@ class PaypointWireTest < WireMockTestCase
       url_path: "/Paypoint/8cfec329267",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Paypoint/8cfec329267",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -166,6 +228,16 @@ class PaypointWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Paypoint/8cfec329267/pay-your-fees-1",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_paypoint_remove_page_with_wiremock
@@ -187,6 +259,16 @@ class PaypointWireTest < WireMockTestCase
       url_path: "/Paypoint/8cfec329267/pay-your-fees-1",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/Paypoint/8cfec329267/pay-your-fees-1",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

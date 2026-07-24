@@ -7,6 +7,8 @@ class MoneyOutWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -46,6 +48,16 @@ class MoneyOutWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyOut/authorize",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_out_cancel_all_out_with_wiremock
@@ -66,6 +78,16 @@ class MoneyOutWireTest < WireMockTestCase
       url_path: "/MoneyOut/cancelAll",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyOut/cancelAll",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -88,6 +110,16 @@ class MoneyOutWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyOut/cancel/129-219",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_out_cancel_out_delete_with_wiremock
@@ -108,6 +140,16 @@ class MoneyOutWireTest < WireMockTestCase
       url_path: "/MoneyOut/cancel/129-219",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/MoneyOut/cancel/129-219",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -130,6 +172,16 @@ class MoneyOutWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyOut/captureAll",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_out_capture_out_with_wiremock
@@ -150,6 +202,16 @@ class MoneyOutWireTest < WireMockTestCase
       url_path: "/MoneyOut/capture/129-219",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyOut/capture/129-219",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -172,6 +234,16 @@ class MoneyOutWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyOut/details/45-as456777hhhhhhhhhh77777777-324",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_out_v_card_get_with_wiremock
@@ -192,6 +264,16 @@ class MoneyOutWireTest < WireMockTestCase
       url_path: "/MoneyOut/vcard/20230403315245421165",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyOut/vcard/20230403315245421165",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -215,6 +297,16 @@ class MoneyOutWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/MoneyOutCard/vcard/20231206142225226104/renew",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_out_send_v_card_link_with_wiremock
@@ -235,6 +327,16 @@ class MoneyOutWireTest < WireMockTestCase
       url_path: "/vcard/send-card-link",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/vcard/send-card-link",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -257,6 +359,16 @@ class MoneyOutWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyOut/checkimage/check133832686289732320_01JKBNZ5P32JPTZY8XXXX000000.pdf",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_out_update_check_payment_status_with_wiremock
@@ -278,6 +390,16 @@ class MoneyOutWireTest < WireMockTestCase
       url_path: "/MoneyOut/status/TRANS123456/5",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PATCH",
+      url_path: "/MoneyOut/status/TRANS123456/5",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -307,6 +429,16 @@ class MoneyOutWireTest < WireMockTestCase
       url_path: "/MoneyOut/reissue",
       query_params: { "transId" => "129-219" },
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyOut/reissue",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

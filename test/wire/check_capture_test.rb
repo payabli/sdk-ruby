@@ -7,6 +7,8 @@ class CheckCaptureWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -33,6 +35,16 @@ class CheckCaptureWireTest < WireMockTestCase
       url_path: "/CheckCapture/CheckProcessing",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/CheckCapture/CheckProcessing",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

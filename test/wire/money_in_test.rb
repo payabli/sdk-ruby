@@ -7,6 +7,8 @@ class MoneyInWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -48,6 +50,16 @@ class MoneyInWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyIn/authorize",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_in_capture_with_wiremock
@@ -69,6 +81,16 @@ class MoneyInWireTest < WireMockTestCase
       url_path: "/MoneyIn/capture/10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13/0",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyIn/capture/10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13/0",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -94,6 +116,16 @@ class MoneyInWireTest < WireMockTestCase
       url_path: "/MoneyIn/capture/10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyIn/capture/10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -132,6 +164,16 @@ class MoneyInWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyIn/makecredit",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_in_details_with_wiremock
@@ -152,6 +194,16 @@ class MoneyInWireTest < WireMockTestCase
       url_path: "/MoneyIn/details/45-as456777hhhhhhhhhh77777777-324",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyIn/details/45-as456777hhhhhhhhhh77777777-324",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -191,6 +243,16 @@ class MoneyInWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyIn/getpaid",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_in_reverse_with_wiremock
@@ -213,6 +275,16 @@ class MoneyInWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyIn/reverse/10-3ffa27df-b171-44e0-b251-e95fbfc7a723/0",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_in_refund_with_wiremock
@@ -234,6 +306,16 @@ class MoneyInWireTest < WireMockTestCase
       url_path: "/MoneyIn/refund/10-3ffa27df-b171-44e0-b251-e95fbfc7a723/0",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyIn/refund/10-3ffa27df-b171-44e0-b251-e95fbfc7a723/0",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -273,6 +355,16 @@ class MoneyInWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyIn/refund/10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_in_reverse_credit_with_wiremock
@@ -293,6 +385,16 @@ class MoneyInWireTest < WireMockTestCase
       url_path: "/MoneyIn/reverseCredit/45-as456777hhhhhhhhhh77777777-324",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyIn/reverseCredit/45-as456777hhhhhhhhhh77777777-324",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -315,6 +417,16 @@ class MoneyInWireTest < WireMockTestCase
       url_path: "/MoneyIn/sendreceipt/45-as456777hhhhhhhhhh77777777-324",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyIn/sendreceipt/45-as456777hhhhhhhhhh77777777-324",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -345,6 +457,16 @@ class MoneyInWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyIn/validate",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_in_void_with_wiremock
@@ -365,6 +487,16 @@ class MoneyInWireTest < WireMockTestCase
       url_path: "/MoneyIn/void/10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyIn/void/10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -404,6 +536,16 @@ class MoneyInWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/getpaid",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_in_authorizev_2_with_wiremock
@@ -442,6 +584,16 @@ class MoneyInWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/authorize",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_in_capturev_2_with_wiremock
@@ -467,6 +619,16 @@ class MoneyInWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/capture/10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_in_refundv_2_with_wiremock
@@ -487,6 +649,16 @@ class MoneyInWireTest < WireMockTestCase
       url_path: "/v2/MoneyIn/refund/10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/refund/10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -510,6 +682,16 @@ class MoneyInWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/refund/10-3ffa27df-b171-44e0-b251-e95fbfc7a723/0",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_money_in_voidv_2_with_wiremock
@@ -530,6 +712,16 @@ class MoneyInWireTest < WireMockTestCase
       url_path: "/v2/MoneyIn/void/10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/MoneyIn/void/10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

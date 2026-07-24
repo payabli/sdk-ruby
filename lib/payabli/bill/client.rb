@@ -22,6 +22,44 @@ module Payabli
       # @option params [String] :entry
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.bill.add_bill(
+      #     entry: "8cfec329267",
+      #     accounting_field_1: "MyInternalId",
+      #     attachments: [{
+      #       ftype: "pdf",
+      #       filename: "my-doc.pdf",
+      #       furl: "https://mysite.com/my-doc.pdf"
+      #     }],
+      #     bill_date: "2024-07-01",
+      #     bill_items: [{
+      #       item_product_code: "M-DEPOSIT",
+      #       item_product_name: "Materials deposit",
+      #       item_description: "Deposit for materials",
+      #       item_commodity_code: "010",
+      #       item_unit_of_measure: "SqFt",
+      #       item_cost: 5,
+      #       item_qty: 1,
+      #       item_mode: 0,
+      #       item_categories: ["deposits"],
+      #       item_total_amount: 123,
+      #       item_tax_amount: 7,
+      #       item_tax_rate: 0.075
+      #     }],
+      #     bill_number: "ABC-123",
+      #     comments: "Deposit for materials",
+      #     due_date: "2024-07-01",
+      #     end_date: "2024-07-01",
+      #     frequency: "monthly",
+      #     mode: 0,
+      #     net_amount: 3762.87,
+      #     status: 1,
+      #     terms: "NET30",
+      #     vendor: {
+      #       vendor_number: "VEN-123"
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::BillResponse]
       def add_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -31,6 +69,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -64,13 +103,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_bill
       #
+      # @example
+      #   client.bill.get_bill(id_bill: 285)
+      #
       # @return [Payabli::Types::GetBillResponse]
       def get_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -98,13 +142,22 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_bill
       #
+      # @example
+      #   client.bill.edit_bill(
+      #     id_bill: 285,
+      #     bill_date: "2025-07-01",
+      #     net_amount: 3762.87
+      #   )
+      #
       # @return [Payabli::Types::EditBillResponse]
       def edit_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
+          headers: headers,
           body: Payabli::Types::BillOutData.new(params).to_h,
           request_options: request_options
         )
@@ -133,13 +186,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_bill
       #
+      # @example
+      #   client.bill.delete_bill(id_bill: 285)
+      #
       # @return [Payabli::Types::BillResponse]
       def delete_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
           path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -169,16 +227,25 @@ module Payabli
       # @option params [String] :filename
       # @option params [Boolean, nil] :return_object
       #
+      # @example
+      #   client.bill.get_attached_from_bill(
+      #     id_bill: 285,
+      #     filename: "0_Bill.pdf",
+      #     return_object: true
+      #   )
+      #
       # @return [Payabli::Types::FileContent]
       def get_attached_from_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
         query_params["returnObject"] = params[:return_object] if params.key?(:return_object)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Bill/attachedFileFromBill/#{URI.encode_uri_component(params[:id_bill].to_s)}/#{URI.encode_uri_component(params[:filename].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -209,16 +276,24 @@ module Payabli
       # @option params [String] :filename
       # @option params [Boolean, nil] :return_object
       #
+      # @example
+      #   client.bill.delete_attached_from_bill(
+      #     id_bill: 285,
+      #     filename: "0_Bill.pdf"
+      #   )
+      #
       # @return [Payabli::Types::BillResponse]
       def delete_attached_from_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
         query_params["returnObject"] = params[:return_object] if params.key?(:return_object)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
           path: "Bill/attachedFileFromBill/#{URI.encode_uri_component(params[:id_bill].to_s)}/#{URI.encode_uri_component(params[:filename].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -249,6 +324,13 @@ module Payabli
       # @option params [Boolean, nil] :autocreate_user
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.bill.send_to_approval_bill(
+      #     id_bill: 285,
+      #     idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
+      #     body: ["approver@example.com"]
+      #   )
+      #
       # @return [Payabli::Types::BillResponse]
       def send_to_approval_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -263,6 +345,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -297,13 +380,21 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id_bill
       #
+      # @example
+      #   client.bill.modify_approval_bill(
+      #     id_bill: 285,
+      #     request: %w[approver1@example.com approver2@example.com]
+      #   )
+      #
       # @return [Payabli::Types::ModifyApprovalBillResponse]
       def modify_approval_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}",
+          headers: headers,
           body: params,
           request_options: request_options
         )
@@ -334,16 +425,24 @@ module Payabli
       # @option params [String] :approved
       # @option params [String, nil] :email
       #
+      # @example
+      #   client.bill.set_approved_bill(
+      #     id_bill: 285,
+      #     approved: "true"
+      #   )
+      #
       # @return [Payabli::Types::SetApprovedBillResponse]
       def set_approved_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
         query_params["email"] = params[:email] if params.key?(:email)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}/#{URI.encode_uri_component(params[:approved].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -378,6 +477,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.bill.list_bills(
+      #     entry: "8cfec329267",
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::BillQueryResponse]
       def list_bills(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -388,10 +495,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/bills/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -426,6 +535,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.bill.list_bills_org(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::BillQueryResponse]
       def list_bills_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -436,10 +553,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/bills/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )

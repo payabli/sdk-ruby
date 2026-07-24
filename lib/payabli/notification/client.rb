@@ -20,13 +20,28 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
+      # @example
+      #   client.notification.add_notification(
+      #     content: {
+      #       event_type: "CreatedApplication"
+      #     },
+      #     frequency: "untilcancelled",
+      #     method_: "web",
+      #     owner_id: 236,
+      #     owner_type: 0,
+      #     status: 1,
+      #     target: "https://webhook.site/2871b8f8-edc7-441a-b376-98d8c8e33275"
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponseNotifications]
       def add_notification(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Notification",
+          headers: headers,
           body: Payabli::Types::AddNotificationRequest.new(params).to_h,
           request_options: request_options
         )
@@ -55,13 +70,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :n_id
       #
+      # @example
+      #   client.notification.get_notification(n_id: "1717")
+      #
       # @return [Payabli::Types::NotificationQueryRecord]
       def get_notification(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Notification/#{URI.encode_uri_component(params[:n_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -89,13 +109,29 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :n_id
       #
+      # @example
+      #   client.notification.update_notification(
+      #     n_id: "1717",
+      #     content: {
+      #       event_type: "ApprovedPayment"
+      #     },
+      #     frequency: "untilcancelled",
+      #     method_: "email",
+      #     owner_id: 136,
+      #     owner_type: 0,
+      #     status: 1,
+      #     target: "newemail@email.com"
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponseNotifications]
       def update_notification(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Notification/#{URI.encode_uri_component(params[:n_id].to_s)}",
+          headers: headers,
           body: Payabli::Types::UpdateNotificationRequest.new(params).to_h,
           request_options: request_options
         )
@@ -124,13 +160,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :n_id
       #
+      # @example
+      #   client.notification.delete_notification(n_id: "1717")
+      #
       # @return [Payabli::Types::PayabliApiResponseNotifications]
       def delete_notification(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
           path: "Notification/#{URI.encode_uri_component(params[:n_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -158,13 +199,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id
       #
+      # @example
+      #   client.notification.get_report_file(id: 1000000)
+      #
       # @return [Hash[String, Object]]
       def get_report_file(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/notificationReport/#{URI.encode_uri_component(params[:id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin

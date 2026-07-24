@@ -22,13 +22,23 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
+      # @example
+      #   client.check_capture.check_processing(
+      #     entry_point: "8cfec329267",
+      #     front_image: "/9j/4AAQSkZJRgABAQEASABIAAD...",
+      #     rear_image: "/9j/4AAQSkZJRgABAQEASABIAAD...",
+      #     check_amount: 12550
+      #   )
+      #
       # @return [Payabli::Types::CheckCaptureResponse]
       def check_processing(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "CheckCapture/CheckProcessing",
+          headers: headers,
           body: Payabli::CheckCapture::Types::CheckCaptureRequestBody.new(params).to_h,
           request_options: request_options
         )

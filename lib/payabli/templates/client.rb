@@ -21,13 +21,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :template_id
       #
+      # @example
+      #   client.templates.delete_template(template_id: 80)
+      #
       # @return [Payabli::Types::PayabliApiResponseTemplateId]
       def delete_template(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
           path: "Templates/#{URI.encode_uri_component(params[:template_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -56,13 +61,21 @@ module Payabli
       # @option params [Integer] :template_id
       # @option params [Boolean] :ignore_empty
       #
+      # @example
+      #   client.templates.getlink_template(
+      #     template_id: 80,
+      #     ignore_empty: true
+      #   )
+      #
       # @return [Payabli::Types::BoardingLinkApiResponse]
       def getlink_template(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Templates/getlink/#{URI.encode_uri_component(params[:template_id].to_s)}/#{URI.encode_uri_component(params[:ignore_empty].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -90,13 +103,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :template_id
       #
+      # @example
+      #   client.templates.get_template(template_id: 80)
+      #
       # @return [Payabli::Types::TemplateQueryRecord]
       def get_template(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Templates/get/#{URI.encode_uri_component(params[:template_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -130,6 +148,14 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.templates.list_templates(
+      #     org_id: 123,
+      #     from_record: 251,
+      #     limit_record: 0,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Payabli::Types::TemplateQueryResponse]
       def list_templates(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -139,10 +165,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Query/templates/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )

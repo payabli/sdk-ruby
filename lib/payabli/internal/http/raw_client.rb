@@ -177,6 +177,18 @@ module Payabli
           @auth_provider.auth_headers
         end
 
+        # Resolves the auth headers for a single endpoint given its declared security
+        # requirements. Under endpoint-security each endpoint applies only the schemes it
+        # declares, so it delegates to the routing auth provider with its own `security`.
+        # Returns an empty hash when no auth provider is configured.
+        # @param security [Array, nil] The endpoint's security requirements.
+        # @return [Hash] The auth headers to send for this endpoint.
+        def auth_headers_for_endpoint(security:)
+          return {} if @auth_provider.nil?
+
+          @auth_provider.auth_headers_for_endpoint(security: security)
+        end
+
         # @param url [URI::Generic] The url to the resource.
         # @param method [String] The HTTP method to use.
         # @param headers [Hash] The headers for the request.
@@ -197,7 +209,21 @@ module Payabli
           request_headers.each { |name, value| request[name] = value }
           request.body = body if body
 
+          # Net::HTTP disables its transparent gzip/deflate decoding as soon as an
+          # Accept-Encoding header is set explicitly on the request. Re-enable it so
+          # that compressed response bodies are still inflated.
+          request.extend(DecodeContent) if request_headers.keys.any? { |name| name.to_s.casecmp("accept-encoding").zero? }
+
           request
+        end
+
+        # Keeps Net::HTTP's transparent gzip/deflate response decoding enabled
+        # even when an Accept-Encoding header is set explicitly on the request.
+        # @api private
+        module DecodeContent
+          def decode_content # rubocop:disable Naming/PredicateMethod
+            true
+          end
         end
 
         # @param query [Hash] The query for the request.

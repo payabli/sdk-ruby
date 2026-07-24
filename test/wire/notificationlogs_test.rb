@@ -7,6 +7,8 @@ class NotificationlogsWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -36,6 +38,16 @@ class NotificationlogsWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/notificationlogs",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_notificationlogs_get_notification_log_with_wiremock
@@ -56,6 +68,16 @@ class NotificationlogsWireTest < WireMockTestCase
       url_path: "/v2/notificationlogs/550e8400-e29b-41d4-a716-446655440000",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/v2/notificationlogs/550e8400-e29b-41d4-a716-446655440000",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -78,6 +100,16 @@ class NotificationlogsWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/v2/notificationlogs/550e8400-e29b-41d4-a716-446655440000/retry",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_notificationlogs_bulk_retry_notification_logs_with_wiremock
@@ -98,6 +130,16 @@ class NotificationlogsWireTest < WireMockTestCase
       url_path: "/v2/notificationlogs/retry",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/v2/notificationlogs/retry",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

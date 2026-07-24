@@ -7,6 +7,8 @@ class StatisticWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -36,6 +38,16 @@ class StatisticWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Statistic/basic/custom/m/2/1000000",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_statistic_customer_basic_stats_with_wiremock
@@ -58,6 +70,16 @@ class StatisticWireTest < WireMockTestCase
       url_path: "/Statistic/customerbasic/ytd/m/4440",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Statistic/customerbasic/ytd/m/4440",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -82,6 +104,16 @@ class StatisticWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Statistic/subscriptions/30/2/1000000",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_statistic_vendor_basic_stats_with_wiremock
@@ -104,6 +136,16 @@ class StatisticWireTest < WireMockTestCase
       url_path: "/Statistic/vendorbasic/ytd/m/1",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Statistic/vendorbasic/ytd/m/1",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

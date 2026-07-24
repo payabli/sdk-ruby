@@ -21,13 +21,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :sub_id
       #
+      # @example
+      #   client.subscription.get_subscription(sub_id: 231)
+      #
       # @return [Payabli::Types::SubscriptionQueryRecords]
       def get_subscription(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Subscription/#{URI.encode_uri_component(params[:sub_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -55,6 +60,12 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :sub_id
       #
+      # @example
+      #   client.subscription.update_subscription(
+      #     sub_id: 231,
+      #     set_pause: true
+      #   )
+      #
       # @return [Payabli::Types::UpdateSubscriptionResponse]
       def update_subscription(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -62,10 +73,12 @@ module Payabli
         non_body_param_names = %w[subId]
         body = request_data.except(*non_body_param_names)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Subscription/#{URI.encode_uri_component(params[:sub_id].to_s)}",
+          headers: headers,
           body: body,
           request_options: request_options
         )
@@ -94,13 +107,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :sub_id
       #
+      # @example
+      #   client.subscription.remove_subscription(sub_id: 231)
+      #
       # @return [Payabli::Types::RemoveSubscriptionResponse]
       def remove_subscription(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
           path: "Subscription/#{URI.encode_uri_component(params[:sub_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -130,6 +148,33 @@ module Payabli
       # @option params [Boolean, nil] :force_customer_creation
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.subscription.new_subscription(
+      #     customer_data: {
+      #       customer_id: 4440
+      #     },
+      #     entry_point: "8cfec329267",
+      #     payment_details: {
+      #       service_fee: 0,
+      #       total_amount: 100
+      #     },
+      #     payment_method: {
+      #       cardcvv: "123",
+      #       cardexp: "12/29",
+      #       card_holder: "John Cassian",
+      #       cardnumber: "4111111111111111",
+      #       cardzip: "37615",
+      #       initiator: "payor",
+      #       method_: "card"
+      #     },
+      #     schedule_details: {
+      #       end_date: "2025-03-20",
+      #       frequency: "weekly",
+      #       plan_id: 1,
+      #       start_date: "2024-09-20"
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::AddSubscriptionResponse]
       def new_subscription(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -143,6 +188,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",

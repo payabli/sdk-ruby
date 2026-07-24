@@ -27,6 +27,26 @@ module Payabli
       # @option params [Boolean, nil] :temporary
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.token_storage.add_method(
+      #     customer_data: {
+      #       customer_id: 4440
+      #     },
+      #     entry_point: "8cfec329267",
+      #     fallback_auth: true,
+      #     fallback_auth_amount: 100,
+      #     method_description: "Primary Visa card",
+      #     payment_method: {
+      #       cardcvv: "123",
+      #       cardexp: "12/29",
+      #       card_holder: "John Doe",
+      #       cardnumber: "4111111111111111",
+      #       cardzip: "12345",
+      #       method_: "card"
+      #     },
+      #     source: "api"
+      #   )
+      #
       # @return [Payabli::Types::AddMethodResponse]
       def add_method(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -41,6 +61,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -77,6 +98,13 @@ module Payabli
       # @option params [Integer, nil] :card_expiration_format
       # @option params [Boolean, nil] :include_temporary
       #
+      # @example
+      #   client.token_storage.get_method(
+      #     method_id: "32-8877drt00045632-678",
+      #     card_expiration_format: 1,
+      #     include_temporary: false
+      #   )
+      #
       # @return [Payabli::Types::GetMethodResponse]
       def get_method(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -84,10 +112,12 @@ module Payabli
         query_params["cardExpirationFormat"] = params[:card_expiration_format] if params.key?(:card_expiration_format)
         query_params["includeTemporary"] = params[:include_temporary] if params.key?(:include_temporary)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "TokenStorage/#{URI.encode_uri_component(params[:method_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -117,6 +147,24 @@ module Payabli
       # @option params [String] :method_id
       # @option params [Boolean, nil] :ach_validation
       #
+      # @example
+      #   client.token_storage.update_method(
+      #     method_id: "32-8877drt00045632-678",
+      #     customer_data: {
+      #       customer_id: 4440
+      #     },
+      #     entry_point: "8cfec329267",
+      #     fallback_auth: true,
+      #     payment_method: {
+      #       cardcvv: "123",
+      #       cardexp: "12/29",
+      #       card_holder: "John Doe",
+      #       cardnumber: "4111111111111111",
+      #       cardzip: "12345",
+      #       method_: "card"
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponsePaymethodDelete]
       def update_method(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -128,10 +176,12 @@ module Payabli
         query_params["achValidation"] = params[:ach_validation] if params.key?(:ach_validation)
         params = params.except(*query_param_names)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "TokenStorage/#{URI.encode_uri_component(params[:method_id].to_s)}",
+          headers: headers,
           query: query_params,
           body: Payabli::Types::RequestTokenStorage.new(body_params).to_h,
           request_options: request_options
@@ -161,13 +211,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :method_id
       #
+      # @example
+      #   client.token_storage.remove_method(method_id: "32-8877drt00045632-678")
+      #
       # @return [Payabli::Types::PayabliApiResponsePaymethodDelete]
       def remove_method(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
           path: "TokenStorage/#{URI.encode_uri_component(params[:method_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin

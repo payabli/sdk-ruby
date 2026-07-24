@@ -7,6 +7,8 @@ class CloudWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -33,6 +35,16 @@ class CloudWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Cloud/register/8cfec329267",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_cloud_remove_device_with_wiremock
@@ -54,6 +66,16 @@ class CloudWireTest < WireMockTestCase
       url_path: "/Cloud/register/8cfec329267/499585-389fj484-3jcj8hj3",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/Cloud/register/8cfec329267/499585-389fj484-3jcj8hj3",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -77,6 +99,16 @@ class CloudWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Cloud/history/8cfec329267/499585-389fj484-3jcj8hj3",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_cloud_list_device_with_wiremock
@@ -97,6 +129,16 @@ class CloudWireTest < WireMockTestCase
       url_path: "/Cloud/list/8cfec329267",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Cloud/list/8cfec329267",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

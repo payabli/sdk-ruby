@@ -7,6 +7,8 @@ class WalletWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -33,6 +35,16 @@ class WalletWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Wallet/applepay/configure-organization",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_wallet_configure_apple_pay_paypoint_with_wiremock
@@ -54,6 +66,16 @@ class WalletWireTest < WireMockTestCase
       url_path: "/Wallet/applepay/configure-paypoint",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Wallet/applepay/configure-paypoint",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 
@@ -78,6 +100,16 @@ class WalletWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Wallet/googlepay/configure-organization",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_wallet_configure_google_pay_paypoint_with_wiremock
@@ -99,6 +131,16 @@ class WalletWireTest < WireMockTestCase
       url_path: "/Wallet/googlepay/configure-paypoint",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Wallet/googlepay/configure-paypoint",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end

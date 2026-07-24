@@ -26,6 +26,22 @@ module Payabli
       # @option params [Integer, nil] :replace_existing
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.customer.add_customer(
+      #     entry: "8cfec329267",
+      #     customer_number: "C-90010",
+      #     firstname: "Irene",
+      #     lastname: "Canizales",
+      #     email: "irene@canizalesconcrete.com",
+      #     address_1: "123 Bishop's Trail",
+      #     city: "Mountain City",
+      #     state: "TN",
+      #     zip: "37612",
+      #     country: "US",
+      #     time_zone: -5,
+      #     identifier_fields: ["email"]
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponseCustomerQuery]
       def add_customer(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -41,6 +57,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -75,13 +92,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :customer_id
       #
+      # @example
+      #   client.customer.get_customer(customer_id: 4440)
+      #
       # @return [Payabli::Types::CustomerQueryRecords]
       def get_customer(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -109,13 +131,27 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :customer_id
       #
+      # @example
+      #   client.customer.update_customer(
+      #     customer_id: 4440,
+      #     firstname: "Irene",
+      #     lastname: "Canizales",
+      #     address_1: "145 Bishop's Trail",
+      #     city: "Mountain City",
+      #     state: "TN",
+      #     zip: "37612",
+      #     country: "US"
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def update_customer(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
+          headers: headers,
           body: Payabli::Types::CustomerData.new(params).to_h,
           request_options: request_options
         )
@@ -144,13 +180,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :customer_id
       #
+      # @example
+      #   client.customer.delete_customer(customer_id: 4440)
+      #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def delete_customer(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
           path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -178,13 +219,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :customer_id
       #
+      # @example
+      #   client.customer.request_consent(customer_id: 4440)
+      #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def request_consent(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}/consent",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -213,13 +259,21 @@ module Payabli
       # @option params [Integer] :customer_id
       # @option params [String] :trans_id
       #
+      # @example
+      #   client.customer.link_customer_transaction(
+      #     customer_id: 4440,
+      #     trans_id: "45-as456777hhhhhhhhhh77777777-324"
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def link_customer_transaction(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Customer/link/#{URI.encode_uri_component(params[:customer_id].to_s)}/#{URI.encode_uri_component(params[:trans_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin

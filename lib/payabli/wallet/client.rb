@@ -20,13 +20,22 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
+      # @example
+      #   client.wallet.configure_apple_pay_organization(
+      #     cascade: true,
+      #     is_enabled: true,
+      #     org_id: 123
+      #   )
+      #
       # @return [Payabli::Types::ConfigureApplePayOrganizationApiResponse]
       def configure_apple_pay_organization(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Wallet/applepay/configure-organization",
+          headers: headers,
           body: Payabli::Wallet::Types::ConfigureOrganizationRequestApplePay.new(params).to_h,
           request_options: request_options
         )
@@ -54,13 +63,21 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
+      # @example
+      #   client.wallet.configure_apple_pay_paypoint(
+      #     entry: "8cfec329267",
+      #     is_enabled: true
+      #   )
+      #
       # @return [Payabli::Types::ConfigureApplePaypointApiResponse]
       def configure_apple_pay_paypoint(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Wallet/applepay/configure-paypoint",
+          headers: headers,
           body: Payabli::Wallet::Types::ConfigurePaypointRequestApplePay.new(params).to_h,
           request_options: request_options
         )
@@ -88,13 +105,22 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
+      # @example
+      #   client.wallet.configure_google_pay_organization(
+      #     cascade: true,
+      #     is_enabled: true,
+      #     org_id: 123
+      #   )
+      #
       # @return [Payabli::Types::ConfigureApplePayOrganizationApiResponse]
       def configure_google_pay_organization(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Wallet/googlepay/configure-organization",
+          headers: headers,
           body: Payabli::Wallet::Types::ConfigureOrganizationRequestGooglePay.new(params).to_h,
           request_options: request_options
         )
@@ -122,13 +148,21 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
+      # @example
+      #   client.wallet.configure_google_pay_paypoint(
+      #     entry: "8cfec329267",
+      #     is_enabled: true
+      #   )
+      #
       # @return [Payabli::Types::ConfigureGooglePaypointApiResponse]
       def configure_google_pay_paypoint(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Wallet/googlepay/configure-paypoint",
+          headers: headers,
           body: Payabli::Wallet::Types::ConfigurePaypointRequestGooglePay.new(params).to_h,
           request_options: request_options
         )

@@ -34,6 +34,28 @@ module Payabli
       # @option params [Boolean, nil] :force_customer_creation
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.money_in.authorize(
+      #     customer_data: {
+      #       customer_id: 4440
+      #     },
+      #     entry_point: "8cfec329267",
+      #     ipaddress: "255.255.255.255",
+      #     payment_details: {
+      #       service_fee: 0,
+      #       total_amount: 100
+      #     },
+      #     payment_method: {
+      #       cardcvv: "999",
+      #       cardexp: "02/27",
+      #       card_holder: "John Cassian",
+      #       cardnumber: "4111111111111111",
+      #       cardzip: "12345",
+      #       initiator: "payor",
+      #       method_: "card"
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::AuthResponse]
       def authorize(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -45,6 +67,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -88,13 +111,21 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [Integer] :amount
       #
+      # @example
+      #   client.money_in.capture(
+      #     trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
+      #     amount: 0
+      #   )
+      #
       # @return [Payabli::Types::CaptureResponse]
       def capture(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "MoneyIn/capture/#{URI.encode_uri_component(params[:trans_id].to_s)}/#{URI.encode_uri_component(params[:amount].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -135,13 +166,24 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
+      # @example
+      #   client.money_in.capture_auth(
+      #     trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
+      #     payment_details: {
+      #       total_amount: 105,
+      #       service_fee: 5
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::CaptureResponse]
       def capture_auth(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "MoneyIn/capture/#{URI.encode_uri_component(params[:trans_id].to_s)}",
+          headers: headers,
           body: Payabli::Types::CaptureRequest.new(params).to_h,
           request_options: request_options
         )
@@ -175,6 +217,27 @@ module Payabli
       # @option params [Boolean, nil] :force_customer_creation
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.money_in.credit(
+      #     idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
+      #     customer_data: {
+      #       billing_address_1: "5127 Linkwood ave",
+      #       customer_number: "C-90010"
+      #     },
+      #     entrypoint: "8cfec329267",
+      #     payment_details: {
+      #       service_fee: 0,
+      #       total_amount: 1
+      #     },
+      #     payment_method: {
+      #       ach_account: "88354454",
+      #       ach_account_type: "Checking",
+      #       ach_holder: "John Smith",
+      #       ach_routing: "021000021",
+      #       method_: "ach"
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponse0]
       def credit(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -188,6 +251,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -222,13 +286,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
+      # @example
+      #   client.money_in.details(trans_id: "45-as456777hhhhhhhhhh77777777-324")
+      #
       # @return [Payabli::Types::TransactionQueryRecordsCustomer]
       def details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "MoneyIn/details/#{URI.encode_uri_component(params[:trans_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -267,6 +336,28 @@ module Payabli
       # @option params [String, nil] :idempotency_key
       # @option params [String, nil] :validation_code
       #
+      # @example
+      #   client.money_in.getpaid(
+      #     customer_data: {
+      #       customer_id: 4440
+      #     },
+      #     entry_point: "8cfec329267",
+      #     ipaddress: "255.255.255.255",
+      #     payment_details: {
+      #       service_fee: 0,
+      #       total_amount: 100
+      #     },
+      #     payment_method: {
+      #       cardcvv: "999",
+      #       cardexp: "02/27",
+      #       card_holder: "John Cassian",
+      #       cardnumber: "4111111111111111",
+      #       cardzip: "12345",
+      #       initiator: "payor",
+      #       method_: "card"
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponseGetPaid]
       def getpaid(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -281,6 +372,7 @@ module Payabli
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
         headers["validationCode"] = params[:validation_code] if params[:validation_code]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -329,13 +421,21 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [Integer] :amount
       #
+      # @example
+      #   client.money_in.reverse(
+      #     trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      #     amount: 0
+      #   )
+      #
       # @return [Payabli::Types::ReverseResponse]
       def reverse(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "MoneyIn/reverse/#{URI.encode_uri_component(params[:trans_id].to_s)}/#{URI.encode_uri_component(params[:amount].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -373,13 +473,21 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [Integer] :amount
       #
+      # @example
+      #   client.money_in.refund(
+      #     trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      #     amount: 0
+      #   )
+      #
       # @return [Payabli::Types::RefundResponse]
       def refund(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "MoneyIn/refund/#{URI.encode_uri_component(params[:trans_id].to_s)}/#{URI.encode_uri_component(params[:amount].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -417,6 +525,28 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.money_in.refund_with_instructions(
+      #     trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      #     idempotency_key: "8A29FC40-CA47-1067-B31D-00DD010662DB",
+      #     amount: 100,
+      #     order_description: "Materials deposit",
+      #     refund_details: {
+      #       split_refunding: [{
+      #         origination_entry_point: "7f1a381696",
+      #         account_id: "187-342",
+      #         description: "Refunding undelivered materials",
+      #         amount: 60
+      #       }, {
+      #         origination_entry_point: "7f1a381696",
+      #         account_id: "187-343",
+      #         description: "Refunding deposit for undelivered materials",
+      #         amount: 40
+      #       }]
+      #     },
+      #     source: "api"
+      #   )
+      #
       # @return [Payabli::Types::RefundWithInstructionsResponse]
       def refund_with_instructions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -427,6 +557,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -461,13 +592,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
+      # @example
+      #   client.money_in.reverse_credit(trans_id: "45-as456777hhhhhhhhhh77777777-324")
+      #
       # @return [Payabli::Types::PayabliApiResponse]
       def reverse_credit(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "MoneyIn/reverseCredit/#{URI.encode_uri_component(params[:trans_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -496,16 +632,24 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [String, nil] :email
       #
+      # @example
+      #   client.money_in.send_receipt_2_trans(
+      #     trans_id: "45-as456777hhhhhhhhhh77777777-324",
+      #     email: "example@email.com"
+      #   )
+      #
       # @return [Payabli::Types::ReceiptResponse]
       def send_receipt_2_trans(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
         query_params["email"] = params[:email] if params.key?(:email)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "MoneyIn/sendreceipt/#{URI.encode_uri_component(params[:trans_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -534,6 +678,19 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.money_in.validate(
+      #     idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA",
+      #     entry_point: "8cfec329267",
+      #     payment_method: {
+      #       method_: "card",
+      #       cardnumber: "4360000001000005",
+      #       cardexp: "12/29",
+      #       cardzip: "14602-8328",
+      #       card_holder: "Dianne Becker-Smith"
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::ValidateResponse]
       def validate(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -544,6 +701,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -585,13 +743,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
+      # @example
+      #   client.money_in.void(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
+      #
       # @return [Payabli::Types::VoidResponse]
       def void(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "MoneyIn/void/#{URI.encode_uri_component(params[:trans_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -624,6 +787,28 @@ module Payabli
       # @option params [String, nil] :idempotency_key
       # @option params [String, nil] :validation_code
       #
+      # @example
+      #   client.money_in.getpaidv_2(
+      #     customer_data: {
+      #       customer_id: 4440
+      #     },
+      #     entry_point: "8cfec329267",
+      #     ipaddress: "255.255.255.255",
+      #     payment_details: {
+      #       service_fee: 0,
+      #       total_amount: 100
+      #     },
+      #     payment_method: {
+      #       cardcvv: "999",
+      #       cardexp: "02/27",
+      #       card_holder: "John Cassian",
+      #       cardnumber: "4111111111111111",
+      #       cardzip: "12345",
+      #       initiator: "payor",
+      #       method_: "card"
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::V2TransactionResponseWrapper]
       def getpaidv_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -637,6 +822,7 @@ module Payabli
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
         headers["validationCode"] = params[:validation_code] if params[:validation_code]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -677,6 +863,28 @@ module Payabli
       # @option params [Boolean, nil] :force_customer_creation
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.money_in.authorizev_2(
+      #     customer_data: {
+      #       customer_id: 4440
+      #     },
+      #     entry_point: "8cfec329267",
+      #     ipaddress: "255.255.255.255",
+      #     payment_details: {
+      #       service_fee: 0,
+      #       total_amount: 100
+      #     },
+      #     payment_method: {
+      #       cardcvv: "999",
+      #       cardexp: "02/27",
+      #       card_holder: "John Cassian",
+      #       cardnumber: "4111111111111111",
+      #       cardzip: "12345",
+      #       initiator: "payor",
+      #       method_: "card"
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::V2TransactionResponseWrapper]
       def authorizev_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -688,6 +896,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -725,13 +934,24 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
+      # @example
+      #   client.money_in.capturev_2(
+      #     trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
+      #     payment_details: {
+      #       total_amount: 105,
+      #       service_fee: 5
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::V2TransactionResponseWrapper]
       def capturev_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/MoneyIn/capture/#{URI.encode_uri_component(params[:trans_id].to_s)}",
+          headers: headers,
           body: Payabli::Types::CaptureRequest.new(params).to_h,
           request_options: request_options
         )
@@ -770,13 +990,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
+      # @example
+      #   client.money_in.refundv_2(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
+      #
       # @return [Payabli::Types::V2TransactionResponseWrapper]
       def refundv_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/MoneyIn/refund/#{URI.encode_uri_component(params[:trans_id].to_s)}",
+          headers: headers,
           body: Payabli::Types::RefundV2Request.new(params).to_h,
           request_options: request_options
         )
@@ -815,13 +1040,21 @@ module Payabli
       # @option params [String] :trans_id
       # @option params [Integer] :amount
       #
+      # @example
+      #   client.money_in.refundv_2_amount(
+      #     trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      #     amount: 0
+      #   )
+      #
       # @return [Payabli::Types::V2TransactionResponseWrapper]
       def refundv_2_amount(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/MoneyIn/refund/#{URI.encode_uri_component(params[:trans_id].to_s)}/#{URI.encode_uri_component(params[:amount].to_s)}",
+          headers: headers,
           body: Payabli::Types::RefundV2Request.new(params).to_h,
           request_options: request_options
         )
@@ -853,13 +1086,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :trans_id
       #
+      # @example
+      #   client.money_in.voidv_2(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
+      #
       # @return [Payabli::Types::V2TransactionResponseWrapper]
       def voidv_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/MoneyIn/void/#{URI.encode_uri_component(params[:trans_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin

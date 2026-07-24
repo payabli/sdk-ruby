@@ -6,11 +6,6 @@
       "request": {
         "urlPathTemplate": "/Bill/single/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -42,11 +37,6 @@
       "request": {
         "urlPathTemplate": "/Bill/{idBill}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idBill": {
             "equalTo": "285"
@@ -78,11 +68,6 @@
       "request": {
         "urlPathTemplate": "/Bill/{idBill}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idBill": {
             "equalTo": "285"
@@ -114,11 +99,6 @@
       "request": {
         "urlPathTemplate": "/Bill/{idBill}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idBill": {
             "equalTo": "285"
@@ -150,11 +130,6 @@
       "request": {
         "urlPathTemplate": "/Bill/attachedFileFromBill/{idBill}/{filename}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idBill": {
             "equalTo": "285"
@@ -194,11 +169,6 @@
       "request": {
         "urlPathTemplate": "/Bill/attachedFileFromBill/{idBill}/{filename}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idBill": {
             "equalTo": "285"
@@ -233,11 +203,6 @@
       "request": {
         "urlPathTemplate": "/Bill/approval/{idBill}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idBill": {
             "equalTo": "285"
@@ -269,11 +234,6 @@
       "request": {
         "urlPathTemplate": "/Bill/approval/{idBill}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idBill": {
             "equalTo": "285"
@@ -305,11 +265,6 @@
       "request": {
         "urlPathTemplate": "/Bill/approval/{idBill}/{approved}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idBill": {
             "equalTo": "285"
@@ -344,11 +299,6 @@
       "request": {
         "urlPathTemplate": "/Query/bills/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -391,11 +341,6 @@
       "request": {
         "urlPathTemplate": "/Query/bills/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -438,11 +383,6 @@
       "request": {
         "urlPathTemplate": "/Customer/single/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -474,11 +414,6 @@
       "request": {
         "urlPathTemplate": "/Customer/{customerId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "customerId": {
             "equalTo": "4440"
@@ -510,11 +445,6 @@
       "request": {
         "urlPathTemplate": "/Customer/{customerId}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "customerId": {
             "equalTo": "4440"
@@ -546,11 +476,6 @@
       "request": {
         "urlPathTemplate": "/Customer/{customerId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "customerId": {
             "equalTo": "4440"
@@ -582,11 +507,6 @@
       "request": {
         "urlPathTemplate": "/Customer/{customerId}/consent",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "customerId": {
             "equalTo": "4440"
@@ -618,11 +538,6 @@
       "request": {
         "urlPathTemplate": "/Customer/link/{customerId}/{transId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "customerId": {
             "equalTo": "4440"
@@ -656,12 +571,7 @@
       "name": "Process Check Capture - Capture",
       "request": {
         "urlPathTemplate": "/CheckCapture/CheckProcessing",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -687,12 +597,7 @@
       "name": "Authorize card transaction - AuthorizeTransaction",
       "request": {
         "urlPathTemplate": "/MoneyIn/authorize",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -719,11 +624,6 @@
       "request": {
         "urlPathTemplate": "/MoneyIn/capture/{transId}/{amount}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13"
@@ -758,11 +658,6 @@
       "request": {
         "urlPathTemplate": "/MoneyIn/capture/{transId}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13"
@@ -793,12 +688,7 @@
       "name": "Make an ACH credit transaction - MinimumFields",
       "request": {
         "urlPathTemplate": "/MoneyIn/makecredit",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -825,11 +715,6 @@
       "request": {
         "urlPathTemplate": "/MoneyIn/details/{transId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "45-as456777hhhhhhhhhh77777777-324"
@@ -860,12 +745,7 @@
       "name": "Make a transaction - Card",
       "request": {
         "urlPathTemplate": "/MoneyIn/getpaid",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -892,11 +772,6 @@
       "request": {
         "urlPathTemplate": "/MoneyIn/reverse/{transId}/{amount}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
@@ -931,11 +806,6 @@
       "request": {
         "urlPathTemplate": "/MoneyIn/refund/{transId}/{amount}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
@@ -970,11 +840,6 @@
       "request": {
         "urlPathTemplate": "/MoneyIn/refund/{transId}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
@@ -1006,11 +871,6 @@
       "request": {
         "urlPathTemplate": "/MoneyIn/reverseCredit/{transId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "45-as456777hhhhhhhhhh77777777-324"
@@ -1042,11 +902,6 @@
       "request": {
         "urlPathTemplate": "/MoneyIn/sendreceipt/{transId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "45-as456777hhhhhhhhhh77777777-324"
@@ -1082,12 +937,7 @@
       "name": "Validate card - ValidateCard",
       "request": {
         "urlPathTemplate": "/MoneyIn/validate",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -1114,11 +964,6 @@
       "request": {
         "urlPathTemplate": "/MoneyIn/void/{transId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
@@ -1149,12 +994,7 @@
       "name": "Make a transaction (v2) - CardApproval",
       "request": {
         "urlPathTemplate": "/v2/MoneyIn/getpaid",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 201,
@@ -1180,12 +1020,7 @@
       "name": "Authorize card transaction (v2) - CardAuthorization",
       "request": {
         "urlPathTemplate": "/v2/MoneyIn/authorize",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 201,
@@ -1212,11 +1047,6 @@
       "request": {
         "urlPathTemplate": "/v2/MoneyIn/capture/{transId}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13"
@@ -1248,11 +1078,6 @@
       "request": {
         "urlPathTemplate": "/v2/MoneyIn/refund/{transId}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
@@ -1284,11 +1109,6 @@
       "request": {
         "urlPathTemplate": "/v2/MoneyIn/refund/{transId}/{amount}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
@@ -1323,11 +1143,6 @@
       "request": {
         "urlPathTemplate": "/v2/MoneyIn/void/{transId}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "10-3ffa27df-b171-44e0-b251-e95fbfc7a723"
@@ -1385,11 +1200,6 @@
       "request": {
         "urlPathTemplate": "/Subscription/{subId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "subId": {
             "equalTo": "231"
@@ -1421,11 +1231,6 @@
       "request": {
         "urlPathTemplate": "/Subscription/{subId}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "subId": {
             "equalTo": "231"
@@ -1457,11 +1262,6 @@
       "request": {
         "urlPathTemplate": "/Subscription/{subId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "subId": {
             "equalTo": "231"
@@ -1492,12 +1292,7 @@
       "name": "Create Subscription - CardSubscription",
       "request": {
         "urlPathTemplate": "/Subscription/add",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -1524,11 +1319,6 @@
       "request": {
         "urlPathTemplate": "/Invoice/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -1560,11 +1350,6 @@
       "request": {
         "urlPathTemplate": "/Invoice/attachedFileFromInvoice/{idInvoice}/{filename}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idInvoice": {
             "equalTo": "1"
@@ -1599,11 +1384,6 @@
       "request": {
         "urlPathTemplate": "/Invoice/attachedFileFromInvoice/{idInvoice}/{filename}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idInvoice": {
             "equalTo": "23548884"
@@ -1638,11 +1418,6 @@
       "request": {
         "urlPathTemplate": "/Invoice/{idInvoice}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idInvoice": {
             "equalTo": "23548884"
@@ -1674,11 +1449,6 @@
       "request": {
         "urlPathTemplate": "/Invoice/{idInvoice}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idInvoice": {
             "equalTo": "23548884"
@@ -1710,11 +1480,6 @@
       "request": {
         "urlPathTemplate": "/Invoice/{idInvoice}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idInvoice": {
             "equalTo": "23548884"
@@ -1746,11 +1511,6 @@
       "request": {
         "urlPathTemplate": "/Invoice/getNumber/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -1782,11 +1542,6 @@
       "request": {
         "urlPathTemplate": "/Query/invoices/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -1829,11 +1584,6 @@
       "request": {
         "urlPathTemplate": "/Query/invoices/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -1876,11 +1626,6 @@
       "request": {
         "urlPathTemplate": "/Invoice/send/{idInvoice}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idInvoice": {
             "equalTo": "23548884"
@@ -1920,11 +1665,6 @@
       "request": {
         "urlPathTemplate": "/Export/invoicePdf/{idInvoice}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idInvoice": {
             "equalTo": "23548884"
@@ -1956,11 +1696,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/{idInvoice}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idInvoice": {
             "equalTo": "23548884"
@@ -1997,11 +1732,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/bill/{billId}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "billId": {
             "equalTo": "54323"
@@ -2038,11 +1768,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/{payLinkId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "payLinkId": {
             "equalTo": "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234"
@@ -2074,11 +1799,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/load/{paylinkId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "paylinkId": {
             "equalTo": "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234"
@@ -2110,11 +1830,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/push/{payLinkId}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "payLinkId": {
             "equalTo": "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234"
@@ -2146,11 +1861,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/refresh/{payLinkId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "payLinkId": {
             "equalTo": "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234"
@@ -2182,11 +1892,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/send/{payLinkId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "payLinkId": {
             "equalTo": "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234"
@@ -2223,11 +1928,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/update/{payLinkId}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "payLinkId": {
             "equalTo": "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234"
@@ -2259,11 +1959,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/bill/lotNumber/{lotNumber}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "lotNumber": {
             "equalTo": "LOT-2024-001"
@@ -2309,11 +2004,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/out/{paylinkId}",
         "method": "PATCH",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "paylinkId": {
             "equalTo": "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234"
@@ -2345,11 +2035,6 @@
       "request": {
         "urlPathTemplate": "/PaymentLink/updateOut/{paylinkId}",
         "method": "PATCH",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "paylinkId": {
             "equalTo": "2325-XXXXXXX-90b1-4598-b6c7-44cdcbf495d7-1234"
@@ -2380,12 +2065,7 @@
       "name": "Save a payment method (tokenize) - TokenizeCard",
       "request": {
         "urlPathTemplate": "/TokenStorage/add",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -2412,11 +2092,6 @@
       "request": {
         "urlPathTemplate": "/TokenStorage/{methodId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "methodId": {
             "equalTo": "32-8877drt00045632-678"
@@ -2456,11 +2131,6 @@
       "request": {
         "urlPathTemplate": "/TokenStorage/{methodId}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "methodId": {
             "equalTo": "32-8877drt00045632-678"
@@ -2492,11 +2162,6 @@
       "request": {
         "urlPathTemplate": "/TokenStorage/{methodId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "methodId": {
             "equalTo": "32-8877drt00045632-678"
@@ -2528,11 +2193,6 @@
       "request": {
         "urlPathTemplate": "/Paypoint/basic/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -2564,11 +2224,6 @@
       "request": {
         "urlPathTemplate": "/Paypoint/basicById/{IdPaypoint}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "IdPaypoint": {
             "equalTo": "198"
@@ -2600,11 +2255,6 @@
       "request": {
         "urlPathTemplate": "/Paypoint/logo/{entry}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -2635,12 +2285,7 @@
       "name": "Migrate paypoint - MigrateWithNotification",
       "request": {
         "urlPathTemplate": "/Paypoint/migrate",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -2667,11 +2312,6 @@
       "request": {
         "urlPathTemplate": "/Paypoint/settings/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -2703,11 +2343,6 @@
       "request": {
         "urlPathTemplate": "/Paypoint/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -2739,11 +2374,6 @@
       "request": {
         "urlPathTemplate": "/Paypoint/{entry}/{subdomain}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -2778,11 +2408,6 @@
       "request": {
         "urlPathTemplate": "/Paypoint/{entry}/{subdomain}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -2817,11 +2442,6 @@
       "request": {
         "urlPathTemplate": "/Paypoint/load/{entry}/{subdomain}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -2856,11 +2476,6 @@
       "request": {
         "urlPathTemplate": "/Paypoint/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -2892,11 +2507,6 @@
       "request": {
         "urlPathTemplate": "/Paypoint/{entry}/{subdomain}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -2930,12 +2540,7 @@
       "name": "Add a payment method domain - Paypoint",
       "request": {
         "urlPathTemplate": "/PaymentMethodDomain",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -2962,11 +2567,6 @@
       "request": {
         "urlPathTemplate": "/PaymentMethodDomain/{domainId}/cascade",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "domainId": {
             "equalTo": "pmd_b8237fa45c964d8a9ef27160cd42b8c5"
@@ -2998,11 +2598,6 @@
       "request": {
         "urlPathTemplate": "/PaymentMethodDomain/{domainId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "domainId": {
             "equalTo": "pmd_b8237fa45c964d8a9ef27160cd42b8c5"
@@ -3034,11 +2629,6 @@
       "request": {
         "urlPathTemplate": "/PaymentMethodDomain/{domainId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "domainId": {
             "equalTo": "pmd_b8237fa45c964d8a9ef27160cd42b8c5"
@@ -3070,11 +2660,6 @@
       "request": {
         "urlPathTemplate": "/PaymentMethodDomain/{domainId}",
         "method": "PATCH",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "domainId": {
             "equalTo": "pmd_b8237fa45c964d8a9ef27160cd42b8c5"
@@ -3106,11 +2691,6 @@
       "request": {
         "urlPathTemplate": "/PaymentMethodDomain/list",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "queryParameters": {
           "entityId": {
             "equalTo": "1147"
@@ -3146,11 +2726,6 @@
       "request": {
         "urlPathTemplate": "/PaymentMethodDomain/{domainId}/verify",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "domainId": {
             "equalTo": "pmd_b8237fa45c964d8a9ef27160cd42b8c5"
@@ -3182,11 +2757,6 @@
       "request": {
         "urlPathTemplate": "/Import/billsForm/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3218,11 +2788,6 @@
       "request": {
         "urlPathTemplate": "/Import/customersForm/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3254,11 +2819,6 @@
       "request": {
         "urlPathTemplate": "/Import/vendorsForm/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3290,11 +2850,6 @@
       "request": {
         "urlPathTemplate": "/Query/batchDetails/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3337,11 +2892,6 @@
       "request": {
         "urlPathTemplate": "/Query/batchDetails/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -3384,11 +2934,6 @@
       "request": {
         "urlPathTemplate": "/Query/batches/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3431,11 +2976,6 @@
       "request": {
         "urlPathTemplate": "/Query/batches/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -3478,11 +3018,6 @@
       "request": {
         "urlPathTemplate": "/Query/batchesOut/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3525,11 +3060,6 @@
       "request": {
         "urlPathTemplate": "/Query/batchesOut/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -3572,11 +3102,6 @@
       "request": {
         "urlPathTemplate": "/Query/chargebacks/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3619,11 +3144,6 @@
       "request": {
         "urlPathTemplate": "/Query/chargebacks/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -3666,11 +3186,6 @@
       "request": {
         "urlPathTemplate": "/Query/customers/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3713,11 +3228,6 @@
       "request": {
         "urlPathTemplate": "/Query/customers/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -3760,11 +3270,6 @@
       "request": {
         "urlPathTemplate": "/Query/devices/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3807,11 +3312,6 @@
       "request": {
         "urlPathTemplate": "/Query/devices/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -3854,11 +3354,6 @@
       "request": {
         "urlPathTemplate": "/Query/notificationReports/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3901,11 +3396,6 @@
       "request": {
         "urlPathTemplate": "/Query/notificationReports/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -3948,11 +3438,6 @@
       "request": {
         "urlPathTemplate": "/Query/notifications/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -3995,11 +3480,6 @@
       "request": {
         "urlPathTemplate": "/Query/notifications/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4042,11 +3522,6 @@
       "request": {
         "urlPathTemplate": "/Query/organizations/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4089,11 +3564,6 @@
       "request": {
         "urlPathTemplate": "/Query/payouts/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -4136,11 +3606,6 @@
       "request": {
         "urlPathTemplate": "/Query/payouts/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4183,11 +3648,6 @@
       "request": {
         "urlPathTemplate": "/Query/paypoints/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4230,11 +3690,6 @@
       "request": {
         "urlPathTemplate": "/Query/settlements/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -4277,11 +3732,6 @@
       "request": {
         "urlPathTemplate": "/Query/settlements/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4324,11 +3774,6 @@
       "request": {
         "urlPathTemplate": "/Query/subscriptions/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -4371,11 +3816,6 @@
       "request": {
         "urlPathTemplate": "/Query/subscriptions/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4418,11 +3858,6 @@
       "request": {
         "urlPathTemplate": "/Query/payoutsubscriptions/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -4465,11 +3900,6 @@
       "request": {
         "urlPathTemplate": "/Query/payoutsubscriptions/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4512,11 +3942,6 @@
       "request": {
         "urlPathTemplate": "/Query/transactions/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -4559,11 +3984,6 @@
       "request": {
         "urlPathTemplate": "/Query/transactions/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4606,11 +4026,6 @@
       "request": {
         "urlPathTemplate": "/Query/transferDetails/{entry}/{transferId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -4645,11 +4060,6 @@
       "request": {
         "urlPathTemplate": "/Query/transfers/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -4689,11 +4099,6 @@
       "request": {
         "urlPathTemplate": "/Query/transfers/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4733,11 +4138,6 @@
       "request": {
         "urlPathTemplate": "/Query/transfersOut/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4777,11 +4177,6 @@
       "request": {
         "urlPathTemplate": "/Query/transfersOut/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -4821,11 +4216,6 @@
       "request": {
         "urlPathTemplate": "/Query/transferDetailsOut/{entry}/{transferId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -4868,11 +4258,6 @@
       "request": {
         "urlPathTemplate": "/Query/users/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -4915,11 +4300,6 @@
       "request": {
         "urlPathTemplate": "/Query/users/point/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -4962,11 +4342,6 @@
       "request": {
         "urlPathTemplate": "/Query/vendors/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -5009,11 +4384,6 @@
       "request": {
         "urlPathTemplate": "/Query/vendors/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -5056,11 +4426,6 @@
       "request": {
         "urlPathTemplate": "/Query/vcards/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -5103,11 +4468,6 @@
       "request": {
         "urlPathTemplate": "/Query/vcardsTransactions/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -5150,11 +4510,6 @@
       "request": {
         "urlPathTemplate": "/Query/vcardsTransactions/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -5197,11 +4552,6 @@
       "request": {
         "urlPathTemplate": "/Query/vcards/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -5244,11 +4594,6 @@
       "request": {
         "urlPathTemplate": "/Import/ocrDocumentForm/{typeResult}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "typeResult": {
             "equalTo": "typeResult"
@@ -5280,11 +4625,6 @@
       "request": {
         "urlPathTemplate": "/Import/ocrDocumentJson/{typeResult}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "typeResult": {
             "equalTo": "typeResult"
@@ -5316,11 +4656,6 @@
       "request": {
         "urlPathTemplate": "/v2/notificationlogs",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "queryParameters": {
           "PageSize": {
             "equalTo": "20"
@@ -5352,11 +4687,6 @@
       "request": {
         "urlPathTemplate": "/v2/notificationlogs/{uuid}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "uuid": {
             "equalTo": "550e8400-e29b-41d4-a716-446655440000"
@@ -5388,11 +4718,6 @@
       "request": {
         "urlPathTemplate": "/v2/notificationlogs/{uuid}/retry",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "uuid": {
             "equalTo": "550e8400-e29b-41d4-a716-446655440000"
@@ -5423,12 +4748,7 @@
       "name": "bulkRetryNotificationLogs - BulkRetryNotificationLogsExample",
       "request": {
         "urlPathTemplate": "/v2/notificationlogs/retry",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -5455,11 +4775,6 @@
       "request": {
         "urlPathTemplate": "/Cloud/register/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -5491,11 +4806,6 @@
       "request": {
         "urlPathTemplate": "/Cloud/register/{entry}/{deviceId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "deviceId": {
             "equalTo": "499585-389fj484-3jcj8hj3"
@@ -5530,11 +4840,6 @@
       "request": {
         "urlPathTemplate": "/Cloud/history/{entry}/{deviceId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "deviceId": {
             "equalTo": "499585-389fj484-3jcj8hj3"
@@ -5569,11 +4874,6 @@
       "request": {
         "urlPathTemplate": "/Cloud/list/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -5605,11 +4905,6 @@
       "request": {
         "urlPathTemplate": "/LineItem/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -5641,11 +4936,6 @@
       "request": {
         "urlPathTemplate": "/LineItem/{lineItemId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "lineItemId": {
             "equalTo": "700"
@@ -5677,11 +4967,6 @@
       "request": {
         "urlPathTemplate": "/LineItem/{lineItemId}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "lineItemId": {
             "equalTo": "700"
@@ -5713,11 +4998,6 @@
       "request": {
         "urlPathTemplate": "/LineItem/{lineItemId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "lineItemId": {
             "equalTo": "700"
@@ -5749,11 +5029,6 @@
       "request": {
         "urlPathTemplate": "/Query/lineitems/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -5795,12 +5070,7 @@
       "name": "Create boarding application - PayIn",
       "request": {
         "urlPathTemplate": "/Boarding/app",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -5827,11 +5097,6 @@
       "request": {
         "urlPathTemplate": "/Boarding/app/{appId}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "appId": {
             "equalTo": "352"
@@ -5863,11 +5128,6 @@
       "request": {
         "urlPathTemplate": "/Boarding/app/{appId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "appId": {
             "equalTo": "352"
@@ -5899,11 +5159,6 @@
       "request": {
         "urlPathTemplate": "/Boarding/read/{appId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "appId": {
             "equalTo": "352"
@@ -5935,11 +5190,6 @@
       "request": {
         "urlPathTemplate": "/Boarding/read/{xId}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "xId": {
             "equalTo": "17E"
@@ -5971,11 +5221,6 @@
       "request": {
         "urlPathTemplate": "/Boarding/linkbyId/{boardingLinkId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "boardingLinkId": {
             "equalTo": "91"
@@ -6007,11 +5252,6 @@
       "request": {
         "urlPathTemplate": "/Boarding/linkbyTemplate/{templateId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "templateId": {
             "equalTo": "80"
@@ -6043,11 +5283,6 @@
       "request": {
         "urlPathTemplate": "/Boarding/applink/{appId}/{mail2}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "appId": {
             "equalTo": "352"
@@ -6082,11 +5317,6 @@
       "request": {
         "urlPathTemplate": "/Boarding/link/{boardingLinkReference}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "boardingLinkReference": {
             "equalTo": "myorgaccountname-00091"
@@ -6118,11 +5348,6 @@
       "request": {
         "urlPathTemplate": "/Query/boarding/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -6165,11 +5390,6 @@
       "request": {
         "urlPathTemplate": "/Query/boardinglinks/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -6211,12 +5431,7 @@
       "name": "Create multi-product boarding application - Create application from paypoint",
       "request": {
         "urlPathTemplate": "/Boarding/applications",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -6243,11 +5458,6 @@
       "request": {
         "urlPathTemplate": "/Boarding/applications/{paypointId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "paypointId": {
             "equalTo": "3040"
@@ -6279,11 +5489,6 @@
       "request": {
         "urlPathTemplate": "/Templates/{templateId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "templateId": {
             "equalTo": "80"
@@ -6315,11 +5520,6 @@
       "request": {
         "urlPathTemplate": "/Templates/getlink/{templateId}/{ignoreEmpty}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "templateId": {
             "equalTo": "80"
@@ -6354,11 +5554,6 @@
       "request": {
         "urlPathTemplate": "/Templates/get/{templateId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "templateId": {
             "equalTo": "80"
@@ -6390,11 +5585,6 @@
       "request": {
         "urlPathTemplate": "/Query/templates/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -6437,11 +5627,6 @@
       "request": {
         "urlPathTemplate": "/Export/boarding/{format}/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6487,11 +5672,6 @@
       "request": {
         "urlPathTemplate": "/Export/batchDetails/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6537,11 +5717,6 @@
       "request": {
         "urlPathTemplate": "/Export/batchDetails/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6587,11 +5762,6 @@
       "request": {
         "urlPathTemplate": "/Export/batches/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6637,11 +5807,6 @@
       "request": {
         "urlPathTemplate": "/Export/batches/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6687,11 +5852,6 @@
       "request": {
         "urlPathTemplate": "/Export/batchesOut/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6737,11 +5897,6 @@
       "request": {
         "urlPathTemplate": "/Export/batchesOut/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6787,11 +5942,6 @@
       "request": {
         "urlPathTemplate": "/Export/bills/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6837,11 +5987,6 @@
       "request": {
         "urlPathTemplate": "/Export/bills/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6887,11 +6032,6 @@
       "request": {
         "urlPathTemplate": "/Export/chargebacks/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6937,11 +6077,6 @@
       "request": {
         "urlPathTemplate": "/Export/chargebacks/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -6987,11 +6122,6 @@
       "request": {
         "urlPathTemplate": "/Export/customers/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7037,11 +6167,6 @@
       "request": {
         "urlPathTemplate": "/Export/customers/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7087,11 +6212,6 @@
       "request": {
         "urlPathTemplate": "/Export/invoices/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7137,11 +6257,6 @@
       "request": {
         "urlPathTemplate": "/Export/invoices/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7187,11 +6302,6 @@
       "request": {
         "urlPathTemplate": "/Export/organizations/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7237,11 +6347,6 @@
       "request": {
         "urlPathTemplate": "/Export/payouts/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7287,11 +6392,6 @@
       "request": {
         "urlPathTemplate": "/Export/payouts/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7337,11 +6437,6 @@
       "request": {
         "urlPathTemplate": "/Export/paypoints/{format}/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7387,11 +6482,6 @@
       "request": {
         "urlPathTemplate": "/Export/settlements/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7437,11 +6527,6 @@
       "request": {
         "urlPathTemplate": "/Export/settlements/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7487,11 +6572,6 @@
       "request": {
         "urlPathTemplate": "/Export/subscriptions/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7537,11 +6617,6 @@
       "request": {
         "urlPathTemplate": "/Export/subscriptions/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7587,11 +6662,6 @@
       "request": {
         "urlPathTemplate": "/Export/transactions/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7637,11 +6707,6 @@
       "request": {
         "urlPathTemplate": "/Export/transactions/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7687,11 +6752,6 @@
       "request": {
         "urlPathTemplate": "/Export/transferDetails/{format}/{entry}/{transferId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7743,11 +6803,6 @@
       "request": {
         "urlPathTemplate": "/Export/transfers/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -7793,11 +6848,6 @@
       "request": {
         "urlPathTemplate": "/Export/vendors/{format}/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7843,11 +6893,6 @@
       "request": {
         "urlPathTemplate": "/Export/vendors/{format}/org/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "format": {
             "equalTo": "csv"
@@ -7892,12 +6937,7 @@
       "name": "Add organization - General success response for certain organization operations",
       "request": {
         "urlPathTemplate": "/Organization",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -7924,11 +6964,6 @@
       "request": {
         "urlPathTemplate": "/Organization/{orgId}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -7960,11 +6995,6 @@
       "request": {
         "urlPathTemplate": "/Organization/{orgId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -7996,11 +7026,6 @@
       "request": {
         "urlPathTemplate": "/Organization/basic/{entry}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -8032,11 +7057,6 @@
       "request": {
         "urlPathTemplate": "/Organization/basicById/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -8068,11 +7088,6 @@
       "request": {
         "urlPathTemplate": "/Organization/read/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -8104,11 +7119,6 @@
       "request": {
         "urlPathTemplate": "/Organization/settings/{orgId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "orgId": {
             "equalTo": "123"
@@ -8140,11 +7150,6 @@
       "request": {
         "urlPathTemplate": "/Management/verifyAccountDetails/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -8176,11 +7181,6 @@
       "request": {
         "urlPathTemplate": "/Statistic/basic/{mode}/{freq}/{level}/{entryId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "mode": {
             "equalTo": "custom"
@@ -8229,11 +7229,6 @@
       "request": {
         "urlPathTemplate": "/Statistic/customerbasic/{mode}/{freq}/{customerId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "mode": {
             "equalTo": "ytd"
@@ -8271,11 +7266,6 @@
       "request": {
         "urlPathTemplate": "/Statistic/subscriptions/{interval}/{level}/{entryId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "interval": {
             "equalTo": "30"
@@ -8313,11 +7303,6 @@
       "request": {
         "urlPathTemplate": "/Statistic/vendorbasic/{mode}/{freq}/{idVendor}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "mode": {
             "equalTo": "ytd"
@@ -8354,12 +7339,7 @@
       "name": "Add notification - Webhook",
       "request": {
         "urlPathTemplate": "/Notification",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -8386,11 +7366,6 @@
       "request": {
         "urlPathTemplate": "/Notification/{nId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "nId": {
             "equalTo": "1717"
@@ -8422,11 +7397,6 @@
       "request": {
         "urlPathTemplate": "/Notification/{nId}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "nId": {
             "equalTo": "1717"
@@ -8458,11 +7428,6 @@
       "request": {
         "urlPathTemplate": "/Notification/{nId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "nId": {
             "equalTo": "1717"
@@ -8494,11 +7459,6 @@
       "request": {
         "urlPathTemplate": "/Export/notificationReport/{Id}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "Id": {
             "equalTo": "1000000"
@@ -8529,12 +7489,7 @@
       "name": "Add User to an Organization - AddUser",
       "request": {
         "urlPathTemplate": "/User",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -8561,11 +7516,6 @@
       "request": {
         "urlPathTemplate": "/User/{userId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "userId": {
             "equalTo": "1000000"
@@ -8602,11 +7552,6 @@
       "request": {
         "urlPathTemplate": "/User/{userId}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "userId": {
             "equalTo": "1000000"
@@ -8638,11 +7583,6 @@
       "request": {
         "urlPathTemplate": "/User/{userId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "userId": {
             "equalTo": "1000000"
@@ -8674,11 +7614,6 @@
       "request": {
         "urlPathTemplate": "/User/auth/{provider}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "provider": {
             "equalTo": "provider"
@@ -8709,12 +7644,7 @@
       "name": "Refresh token for User - AuthRefreshUser",
       "request": {
         "urlPathTemplate": "/User/authrefresh",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -8740,12 +7670,7 @@
       "name": "Reset password for User - AuthResetUser",
       "request": {
         "urlPathTemplate": "/User/authreset",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -8771,12 +7696,7 @@
       "name": "Update password for User - ChangePswUser",
       "request": {
         "urlPathTemplate": "/User/authpsw",
-        "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "PUT"
       },
       "response": {
         "status": 200,
@@ -8802,12 +7722,7 @@
       "name": "Logout User - LogoutUser",
       "request": {
         "urlPathTemplate": "/User/authlogout",
-        "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "GET"
       },
       "response": {
         "status": 200,
@@ -8834,12 +7749,7 @@
       "name": "Validate MFA for User in an Organization - ValidateMfaUser",
       "request": {
         "urlPathTemplate": "/User/mfa",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -8866,11 +7776,6 @@
       "request": {
         "urlPathTemplate": "/User/mfa/{userId}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "userId": {
             "equalTo": "1000000"
@@ -8902,11 +7807,6 @@
       "request": {
         "urlPathTemplate": "/User/resendmfa/{usrname}/{Entry}/{EntryType}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "usrname": {
             "equalTo": "usrname"
@@ -8944,11 +7844,6 @@
       "request": {
         "urlPathTemplate": "/Vendor/single/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -8980,11 +7875,6 @@
       "request": {
         "urlPathTemplate": "/Vendor/{idVendor}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idVendor": {
             "equalTo": "1"
@@ -9016,11 +7906,6 @@
       "request": {
         "urlPathTemplate": "/Vendor/{idVendor}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idVendor": {
             "equalTo": "1"
@@ -9052,11 +7937,6 @@
       "request": {
         "urlPathTemplate": "/Vendor/{idVendor}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idVendor": {
             "equalTo": "1"
@@ -9088,11 +7968,6 @@
       "request": {
         "urlPathTemplate": "/Vendor/enrich/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -9124,11 +7999,6 @@
       "request": {
         "urlPathTemplate": "/Vendor/enrich/schedule_call/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -9160,11 +8030,6 @@
       "request": {
         "urlPathTemplate": "/Vendor/{idVendor}/enrichment/call-status",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "idVendor": {
             "equalTo": "456"
@@ -9196,11 +8061,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOutCard/GhostCard/{entry}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -9232,11 +8092,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOutCard/card/{entry}",
         "method": "PATCH",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "entry": {
             "equalTo": "8cfec329267"
@@ -9267,12 +8122,7 @@
       "name": "Authorize a payout - AuthorizePayout",
       "request": {
         "urlPathTemplate": "/MoneyOut/authorize",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -9298,12 +8148,7 @@
       "name": "Cancel list of payout transactions - CancelAll",
       "request": {
         "urlPathTemplate": "/MoneyOut/cancelAll",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -9330,11 +8175,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOut/cancel/{referenceId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "referenceId": {
             "equalTo": "129-219"
@@ -9366,11 +8206,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOut/cancel/{referenceId}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "referenceId": {
             "equalTo": "129-219"
@@ -9401,12 +8236,7 @@
       "name": "Capture a list of authorized payout transactions - CaptureAll",
       "request": {
         "urlPathTemplate": "/MoneyOut/captureAll",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -9433,11 +8263,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOut/capture/{referenceId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "referenceId": {
             "equalTo": "129-219"
@@ -9469,11 +8294,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOut/details/{transId}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "45-as456777hhhhhhhhhh77777777-324"
@@ -9505,11 +8325,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOut/vcard/{cardToken}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "cardToken": {
             "equalTo": "20230403315245421165"
@@ -9541,11 +8356,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOutCard/vcard/{cardToken}/renew",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "cardToken": {
             "equalTo": "20231206142225226104"
@@ -9576,12 +8386,7 @@
       "name": "Send virtual card link - SendVCardLink",
       "request": {
         "urlPathTemplate": "/vcard/send-card-link",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -9608,11 +8413,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOut/checkimage/{assetName}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "assetName": {
             "equalTo": "check133832686289732320_01JKBNZ5P32JPTZY8XXXX000000.pdf"
@@ -9644,11 +8444,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOut/status/{transId}/{checkPaymentStatus}",
         "method": "PATCH",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "transId": {
             "equalTo": "TRANS123456"
@@ -9683,11 +8478,6 @@
       "request": {
         "urlPathTemplate": "/MoneyOut/reissue",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "queryParameters": {
           "transId": {
             "equalTo": "129-219"
@@ -9718,12 +8508,7 @@
       "name": "Deposit funds - DepositFunds",
       "request": {
         "urlPathTemplate": "/Funding/depositFunds",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -9749,12 +8534,7 @@
       "name": "Configure Apple Pay for an organization - ConfigureApplePayOrganization",
       "request": {
         "urlPathTemplate": "/Wallet/applepay/configure-organization",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -9780,12 +8560,7 @@
       "name": "Configure Apple Pay for a paypoint - Paypoint",
       "request": {
         "urlPathTemplate": "/Wallet/applepay/configure-paypoint",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -9811,12 +8586,7 @@
       "name": "Configure Google Pay for an organization - ConfigureOrganization",
       "request": {
         "urlPathTemplate": "/Wallet/googlepay/configure-organization",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -9842,12 +8612,7 @@
       "name": "Configure Google Pay for a paypoint - ConfigurePaypoint",
       "request": {
         "urlPathTemplate": "/Wallet/googlepay/configure-paypoint",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -9873,12 +8638,7 @@
       "name": "Create payout subscription - ACHPayoutSubscription",
       "request": {
         "urlPathTemplate": "/PayoutSubscription",
-        "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        }
+        "method": "POST"
       },
       "response": {
         "status": 200,
@@ -9905,11 +8665,6 @@
       "request": {
         "urlPathTemplate": "/PayoutSubscription/{id}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "id": {
             "equalTo": "42"
@@ -9941,11 +8696,6 @@
       "request": {
         "urlPathTemplate": "/PayoutSubscription/{id}",
         "method": "PUT",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "id": {
             "equalTo": "42"
@@ -9977,11 +8727,6 @@
       "request": {
         "urlPathTemplate": "/PayoutSubscription/{id}",
         "method": "DELETE",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "id": {
             "equalTo": "42"
@@ -10013,11 +8758,6 @@
       "request": {
         "urlPathTemplate": "/ChargeBacks/response/{Id}",
         "method": "POST",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "Id": {
             "equalTo": "1000000"
@@ -10049,11 +8789,6 @@
       "request": {
         "urlPathTemplate": "/ChargeBacks/read/{Id}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "Id": {
             "equalTo": "1000000"
@@ -10085,11 +8820,6 @@
       "request": {
         "urlPathTemplate": "/ChargeBacks/getChargebackAttachments/{Id}/{fileName}",
         "method": "GET",
-        "headers": {
-          "requestToken": {
-            "matches": ".+"
-          }
-        },
         "pathParameters": {
           "Id": {
             "equalTo": "1000000"

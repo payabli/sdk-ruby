@@ -22,6 +22,9 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
+      # @example
+      #   client.import.import_bills(entry: "8cfec329267")
+      #
       # @return [Payabli::Types::PayabliApiResponseImport]
       def import_bills(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -29,10 +32,12 @@ module Payabli
 
         body.add_part(params[:file].to_form_data_part(name: "file")) if params[:file]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::Multipart::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Import/billsForm/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           body: body,
           request_options: request_options
         )
@@ -63,6 +68,9 @@ module Payabli
       # @option params [Payabli::Types::Entrypointfield] :entry
       # @option params [Integer, nil] :replace_existing
       #
+      # @example
+      #   client.import.import_customer(entry: "8cfec329267")
+      #
       # @return [Payabli::Types::PayabliApiResponseImport]
       def import_customer(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -70,10 +78,12 @@ module Payabli
 
         body.add_part(params[:file].to_form_data_part(name: "file")) if params[:file]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::Multipart::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Import/customersForm/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           body: body,
           request_options: request_options
         )
@@ -103,6 +113,9 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Payabli::Types::Entrypointfield] :entry
       #
+      # @example
+      #   client.import.import_vendor(entry: "8cfec329267")
+      #
       # @return [Payabli::Types::PayabliApiResponseImport]
       def import_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -110,10 +123,12 @@ module Payabli
 
         body.add_part(params[:file].to_form_data_part(name: "file")) if params[:file]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::Multipart::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Import/vendorsForm/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           body: body,
           request_options: request_options
         )

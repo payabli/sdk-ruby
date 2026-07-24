@@ -32,6 +32,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_applications(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_applications(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -41,10 +50,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/boarding/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -84,6 +95,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_batch_details(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_batch_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -93,10 +113,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batchDetails/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -136,6 +158,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_batch_details_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_batch_details_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -145,10 +176,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batchDetails/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -188,6 +221,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_batches(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_batches(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -197,10 +239,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batches/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -240,6 +284,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_batches_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_batches_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -249,10 +302,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batches/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -292,6 +347,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_batches_out(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_batches_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -301,10 +365,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batchesOut/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -344,6 +410,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_batches_out_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_batches_out_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -353,10 +428,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/batchesOut/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -396,6 +473,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_bills(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_bills(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -405,10 +491,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/bills/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -448,6 +536,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_bills_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_bills_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -457,10 +554,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/bills/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -500,6 +599,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_chargebacks(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_chargebacks(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -509,10 +617,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/chargebacks/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -552,6 +662,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_chargebacks_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_chargebacks_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -561,10 +680,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/chargebacks/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -604,6 +725,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_customers(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_customers(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -613,10 +743,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/customers/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -656,6 +788,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_customers_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_customers_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -665,10 +806,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/customers/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -708,6 +851,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_invoices(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_invoices(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -717,10 +869,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/invoices/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -760,6 +914,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_invoices_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_invoices_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -769,10 +932,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/invoices/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -812,6 +977,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_organizations(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_organizations(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -821,10 +995,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/organizations/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -864,6 +1040,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_payout(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_payout(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -873,10 +1058,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/payouts/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -916,6 +1103,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_payout_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_payout_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -925,10 +1121,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/payouts/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -968,6 +1166,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_paypoints(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_paypoints(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -977,10 +1184,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/paypoints/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1020,6 +1229,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_settlements(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_settlements(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1029,10 +1247,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/settlements/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1072,6 +1292,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_settlements_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_settlements_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1081,10 +1310,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/settlements/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1124,6 +1355,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_subscriptions(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_subscriptions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1133,10 +1373,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/subscriptions/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1176,6 +1418,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_subscriptions_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_subscriptions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1185,10 +1436,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/subscriptions/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1229,6 +1482,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_transactions(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_transactions(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1238,10 +1500,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/transactions/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1282,6 +1546,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_transactions_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_transactions_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1291,10 +1564,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/transactions/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1336,6 +1611,17 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.export.export_transfer_details(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     transfer_id: 4521,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_transfer_details(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1346,10 +1632,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/transferDetails/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:transfer_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1389,6 +1677,15 @@ module Payabli
       # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :sort_by
       #
+      # @example
+      #   client.export.export_transfers(
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000,
+      #     sort_by: "desc(field_name)"
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_transfers(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1399,10 +1696,12 @@ module Payabli
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["sortBy"] = params[:sort_by] if params.key?(:sort_by)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/transfers/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1442,6 +1741,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_vendors(
+      #     format: "csv",
+      #     entry: "8cfec329267",
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_vendors(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1451,10 +1759,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/vendors/#{URI.encode_uri_component(params[:format].to_s)}/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -1494,6 +1804,15 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       # @option params [Hash[String, String, nil], nil] :parameters
       #
+      # @example
+      #   client.export.export_vendors_org(
+      #     format: "csv",
+      #     org_id: 123,
+      #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
+      #     from_record: 251,
+      #     limit_record: 1000
+      #   )
+      #
       # @return [Hash[String, Object]]
       def export_vendors_org(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -1503,10 +1822,12 @@ module Payabli
         query_params["limitRecord"] = params[:limit_record] if params.key?(:limit_record)
         query_params["parameters"] = params[:parameters] if params.key?(:parameters)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Export/vendors/#{URI.encode_uri_component(params[:format].to_s)}/org/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )

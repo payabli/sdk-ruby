@@ -21,13 +21,22 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
+      # @example
+      #   client.funding.deposit_funds(
+      #     amount: 10,
+      #     entrypoint: "48acde49",
+      #     account_id: "333"
+      #   )
+      #
       # @return [Payabli::Types::DepositFundsResponse]
       def deposit_funds(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Funding/depositFunds",
+          headers: headers,
           body: Payabli::Funding::Types::DepositFundsRequest.new(params).to_h,
           request_options: request_options
         )

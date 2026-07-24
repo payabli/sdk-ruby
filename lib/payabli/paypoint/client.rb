@@ -21,13 +21,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
+      # @example
+      #   client.paypoint.get_basic_entry(entry: "8cfec329267")
+      #
       # @return [Payabli::Types::GetBasicEntryResponse]
       def get_basic_entry(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Paypoint/basic/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -55,13 +60,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :id_paypoint
       #
+      # @example
+      #   client.paypoint.get_basic_entry_by_id(id_paypoint: "198")
+      #
       # @return [Payabli::Types::GetBasicEntryByIdResponse]
       def get_basic_entry_by_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Paypoint/basicById/#{URI.encode_uri_component(params[:id_paypoint].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -89,13 +99,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
+      # @example
+      #   client.paypoint.save_logo(entry: "8cfec329267")
+      #
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def save_logo(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Paypoint/logo/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           body: Payabli::Types::FileContent.new(params).to_h,
           request_options: request_options
         )
@@ -123,13 +138,28 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
+      # @example
+      #   client.paypoint.migrate(
+      #     entry_point: "8cfec329267",
+      #     new_parent_organization_id: 123,
+      #     notification_request: {
+      #       notification_url: "https://webhook-test.yoursie.com",
+      #       web_header_parameters: [{
+      #         key: "testheader",
+      #         value: "1234567890"
+      #       }]
+      #     }
+      #   )
+      #
       # @return [Payabli::Types::MigratePaypointResponse]
       def migrate(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Paypoint/migrate",
+          headers: headers,
           body: Payabli::Paypoint::Types::PaypointMoveRequest.new(params).to_h,
           request_options: request_options
         )
@@ -158,13 +188,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :entry
       #
+      # @example
+      #   client.paypoint.settings_page(entry: "8cfec329267")
+      #
       # @return [Payabli::Types::SettingsQueryRecord]
       def settings_page(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Paypoint/settings/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -193,16 +228,21 @@ module Payabli
       # @option params [String] :entry
       # @option params [String, nil] :entrypages
       #
+      # @example
+      #   client.paypoint.get_entry_config(entry: "8cfec329267")
+      #
       # @return [Payabli::Types::GetEntryConfigResponse]
       def get_entry_config(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
         query_params["entrypages"] = params[:entrypages] if params.key?(:entrypages)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Paypoint/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )
@@ -232,13 +272,21 @@ module Payabli
       # @option params [String] :entry
       # @option params [String] :subdomain
       #
+      # @example
+      #   client.paypoint.get_page(
+      #     entry: "8cfec329267",
+      #     subdomain: "pay-your-fees-1"
+      #   )
+      #
       # @return [Payabli::Types::PayabliPages]
       def get_page(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Paypoint/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:subdomain].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -267,13 +315,21 @@ module Payabli
       # @option params [String] :entry
       # @option params [String] :subdomain
       #
+      # @example
+      #   client.paypoint.remove_page(
+      #     entry: "8cfec329267",
+      #     subdomain: "pay-your-fees-1"
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponseGeneric2Part]
       def remove_page(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
           path: "Paypoint/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:subdomain].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin

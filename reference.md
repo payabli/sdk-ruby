@@ -1,6 +1,6 @@
 # Reference
 ## Bill
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">add_bill</a>(entry, request) -> Payabli::Types::BillResponse</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">add_bill</a>(entry:, request) -> Payabli::Types::BillResponse</code></summary>
 <dl>
 <dd>
 
@@ -113,7 +113,7 @@ client.bill.add_bill(
 </dl>
 </details>
 
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">get_bill</a>(id_bill) -> Payabli::Types::GetBillResponse</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">get_bill</a>(id_bill:) -> Payabli::Types::GetBillResponse</code></summary>
 <dl>
 <dd>
 
@@ -175,7 +175,7 @@ client.bill.get_bill(id_bill: 285)
 </dl>
 </details>
 
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">edit_bill</a>(id_bill, request) -> Payabli::Types::EditBillResponse</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">edit_bill</a>(id_bill:, request) -> Payabli::Types::EditBillResponse</code></summary>
 <dl>
 <dd>
 
@@ -249,7 +249,7 @@ client.bill.edit_bill(
 </dl>
 </details>
 
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">delete_bill</a>(id_bill) -> Payabli::Types::BillResponse</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">delete_bill</a>(id_bill:) -> Payabli::Types::BillResponse</code></summary>
 <dl>
 <dd>
 
@@ -311,7 +311,7 @@ client.bill.delete_bill(id_bill: 285)
 </dl>
 </details>
 
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">get_attached_from_bill</a>(id_bill, filename) -> Payabli::Types::FileContent</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">get_attached_from_bill</a>(id_bill:, filename:) -> Payabli::Types::FileContent</code></summary>
 <dl>
 <dd>
 
@@ -397,7 +397,7 @@ in the `DocumentsRef.filelist` array returned by
 </dl>
 </details>
 
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">delete_attached_from_bill</a>(id_bill, filename) -> Payabli::Types::BillResponse</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">delete_attached_from_bill</a>(id_bill:, filename:) -> Payabli::Types::BillResponse</code></summary>
 <dl>
 <dd>
 
@@ -482,7 +482,7 @@ in the `DocumentsRef.filelist` array returned by
 </dl>
 </details>
 
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">send_to_approval_bill</a>(id_bill, request) -> Payabli::Types::BillResponse</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">send_to_approval_bill</a>(id_bill:, request) -> Payabli::Types::BillResponse</code></summary>
 <dl>
 <dd>
 
@@ -572,7 +572,7 @@ client.bill.send_to_approval_bill(
 </dl>
 </details>
 
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">modify_approval_bill</a>(id_bill, request) -> Payabli::Types::ModifyApprovalBillResponse</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">modify_approval_bill</a>(id_bill:, request) -> Payabli::Types::ModifyApprovalBillResponse</code></summary>
 <dl>
 <dd>
 
@@ -645,7 +645,7 @@ client.bill.modify_approval_bill(
 </dl>
 </details>
 
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">set_approved_bill</a>(id_bill, approved) -> Payabli::Types::SetApprovedBillResponse</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">set_approved_bill</a>(id_bill:, approved:) -> Payabli::Types::SetApprovedBillResponse</code></summary>
 <dl>
 <dd>
 
@@ -726,7 +726,7 @@ client.bill.set_approved_bill(
 </dl>
 </details>
 
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">list_bills</a>(entry) -> Payabli::Types::BillQueryResponse</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">list_bills</a>(entry:) -> Payabli::Types::BillQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -877,7 +877,7 @@ Example: `totalAmount(gt)=20` returns all records with a `totalAmount` that's gr
 </dl>
 </details>
 
-<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">list_bills_org</a>(org_id) -> Payabli::Types::BillQueryResponse</code></summary>
+<details><summary><code>client.bill.<a href="/lib/payabli/bill/client.rb">list_bills_org</a>(org_id:) -> Payabli::Types::BillQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -1029,7 +1029,7 @@ Example: totalAmount(gt)=20 return all records with totalAmount greater than 20.
 </details>
 
 ## Customer
-<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">add_customer</a>(entry, request) -> Payabli::Types::PayabliApiResponseCustomerQuery</code></summary>
+<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">add_customer</a>(entry:, request) -> Payabli::Types::PayabliApiResponseCustomerQuery</code></summary>
 <dl>
 <dd>
 
@@ -1137,7 +1137,7 @@ client.customer.add_customer(
 </dl>
 </details>
 
-<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">get_customer</a>(customer_id) -> Payabli::Types::CustomerQueryRecords</code></summary>
+<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">get_customer</a>(customer_id:) -> Payabli::Types::CustomerQueryRecords</code></summary>
 <dl>
 <dd>
 
@@ -1199,7 +1199,7 @@ client.customer.get_customer(customer_id: 4440)
 </dl>
 </details>
 
-<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">update_customer</a>(customer_id, request) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
+<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">update_customer</a>(customer_id:, request) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
 <dl>
 <dd>
 
@@ -1278,7 +1278,7 @@ client.customer.update_customer(
 </dl>
 </details>
 
-<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">delete_customer</a>(customer_id) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
+<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">delete_customer</a>(customer_id:) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
 <dl>
 <dd>
 
@@ -1340,7 +1340,7 @@ client.customer.delete_customer(customer_id: 4440)
 </dl>
 </details>
 
-<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">request_consent</a>(customer_id) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
+<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">request_consent</a>(customer_id:) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
 <dl>
 <dd>
 
@@ -1402,7 +1402,7 @@ client.customer.request_consent(customer_id: 4440)
 </dl>
 </details>
 
-<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">link_customer_transaction</a>(customer_id, trans_id) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
+<details><summary><code>client.customer.<a href="/lib/payabli/customer/client.rb">link_customer_transaction</a>(customer_id:, trans_id:) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
 <dl>
 <dd>
 
@@ -1672,7 +1672,7 @@ client.money_in.authorize(
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">capture</a>(trans_id, amount) -> Payabli::Types::CaptureResponse</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">capture</a>(trans_id:, amount:) -> Payabli::Types::CaptureResponse</code></summary>
 <dl>
 <dd>
 
@@ -1750,7 +1750,7 @@ client.money_in.capture(
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">capture_auth</a>(trans_id, request) -> Payabli::Types::CaptureResponse</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">capture_auth</a>(trans_id:, request) -> Payabli::Types::CaptureResponse</code></summary>
 <dl>
 <dd>
 
@@ -1994,7 +1994,7 @@ client.money_in.credit(
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">details</a>(trans_id) -> Payabli::Types::TransactionQueryRecordsCustomer</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">details</a>(trans_id:) -> Payabli::Types::TransactionQueryRecordsCustomer</code></summary>
 <dl>
 <dd>
 
@@ -2181,7 +2181,7 @@ client.money_in.getpaid(
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">reverse</a>(trans_id, amount) -> Payabli::Types::ReverseResponse</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">reverse</a>(trans_id:, amount:) -> Payabli::Types::ReverseResponse</code></summary>
 <dl>
 <dd>
 
@@ -2264,7 +2264,7 @@ An amount equal to zero will refunds the total amount authorized minus any servi
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">refund</a>(trans_id, amount) -> Payabli::Types::RefundResponse</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">refund</a>(trans_id:, amount:) -> Payabli::Types::RefundResponse</code></summary>
 <dl>
 <dd>
 
@@ -2347,7 +2347,7 @@ An amount equal to zero will refund the total amount authorized minus any servic
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">refund_with_instructions</a>(trans_id, request) -> Payabli::Types::RefundWithInstructionsResponse</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">refund_with_instructions</a>(trans_id:, request) -> Payabli::Types::RefundWithInstructionsResponse</code></summary>
 <dl>
 <dd>
 
@@ -2494,7 +2494,7 @@ An amount equal to zero will refund the total amount authorized minus any servic
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">reverse_credit</a>(trans_id) -> Payabli::Types::PayabliApiResponse</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">reverse_credit</a>(trans_id:) -> Payabli::Types::PayabliApiResponse</code></summary>
 <dl>
 <dd>
 
@@ -2556,7 +2556,7 @@ client.money_in.reverse_credit(trans_id: "45-as456777hhhhhhhhhh77777777-324")
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">send_receipt_2_trans</a>(trans_id) -> Payabli::Types::ReceiptResponse</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">send_receipt_2_trans</a>(trans_id:) -> Payabli::Types::ReceiptResponse</code></summary>
 <dl>
 <dd>
 
@@ -2745,7 +2745,7 @@ client.money_in.validate(
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">void</a>(trans_id) -> Payabli::Types::VoidResponse</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">void</a>(trans_id:) -> Payabli::Types::VoidResponse</code></summary>
 <dl>
 <dd>
 
@@ -3023,7 +3023,7 @@ client.money_in.authorizev_2(
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">capturev_2</a>(trans_id, request) -> Payabli::Types::V2TransactionResponseWrapper</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">capturev_2</a>(trans_id:, request) -> Payabli::Types::V2TransactionResponseWrapper</code></summary>
 <dl>
 <dd>
 
@@ -3099,7 +3099,7 @@ client.money_in.capturev_2(
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">refundv_2</a>(trans_id, request) -> Payabli::Types::V2TransactionResponseWrapper</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">refundv_2</a>(trans_id:, request) -> Payabli::Types::V2TransactionResponseWrapper</code></summary>
 <dl>
 <dd>
 
@@ -3175,7 +3175,7 @@ client.money_in.refundv_2(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">refundv_2_amount</a>(trans_id, amount, request) -> Payabli::Types::V2TransactionResponseWrapper</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">refundv_2_amount</a>(trans_id:, amount:, request) -> Payabli::Types::V2TransactionResponseWrapper</code></summary>
 <dl>
 <dd>
 
@@ -3262,7 +3262,7 @@ client.money_in.refundv_2_amount(
 </dl>
 </details>
 
-<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">voidv_2</a>(trans_id) -> Payabli::Types::V2TransactionResponseWrapper</code></summary>
+<details><summary><code>client.money_in.<a href="/lib/payabli/money_in/client.rb">voidv_2</a>(trans_id:) -> Payabli::Types::V2TransactionResponseWrapper</code></summary>
 <dl>
 <dd>
 
@@ -3415,7 +3415,7 @@ client.token.create_server_side_token(
 </details>
 
 ## Subscription
-<details><summary><code>client.subscription.<a href="/lib/payabli/subscription/client.rb">get_subscription</a>(sub_id) -> Payabli::Types::SubscriptionQueryRecords</code></summary>
+<details><summary><code>client.subscription.<a href="/lib/payabli/subscription/client.rb">get_subscription</a>(sub_id:) -> Payabli::Types::SubscriptionQueryRecords</code></summary>
 <dl>
 <dd>
 
@@ -3477,7 +3477,7 @@ client.subscription.get_subscription(sub_id: 231)
 </dl>
 </details>
 
-<details><summary><code>client.subscription.<a href="/lib/payabli/subscription/client.rb">update_subscription</a>(sub_id, request) -> Payabli::Types::UpdateSubscriptionResponse</code></summary>
+<details><summary><code>client.subscription.<a href="/lib/payabli/subscription/client.rb">update_subscription</a>(sub_id:, request) -> Payabli::Types::UpdateSubscriptionResponse</code></summary>
 <dl>
 <dd>
 
@@ -3566,7 +3566,7 @@ client.subscription.update_subscription(
 </dl>
 </details>
 
-<details><summary><code>client.subscription.<a href="/lib/payabli/subscription/client.rb">remove_subscription</a>(sub_id) -> Payabli::Types::RemoveSubscriptionResponse</code></summary>
+<details><summary><code>client.subscription.<a href="/lib/payabli/subscription/client.rb">remove_subscription</a>(sub_id:) -> Payabli::Types::RemoveSubscriptionResponse</code></summary>
 <dl>
 <dd>
 
@@ -3803,7 +3803,7 @@ client.subscription.new_subscription(
 </details>
 
 ## Invoice
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">add_invoice</a>(entry, request) -> Payabli::Types::InvoiceResponseWithoutData</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">add_invoice</a>(entry:, request) -> Payabli::Types::InvoiceResponseWithoutData</code></summary>
 <dl>
 <dd>
 
@@ -3920,7 +3920,7 @@ client.invoice.add_invoice(
 </dl>
 </details>
 
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">get_attached_file_from_invoice</a>(id_invoice, filename) -> Payabli::Types::FileContent</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">get_attached_file_from_invoice</a>(id_invoice:, filename:) -> Payabli::Types::FileContent</code></summary>
 <dl>
 <dd>
 
@@ -4005,7 +4005,7 @@ in the `DocumentsRef.filelist` array returned by
 </dl>
 </details>
 
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">delete_attached_from_invoice</a>(id_invoice, filename) -> Payabli::Types::InvoiceResponseWithoutData</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">delete_attached_from_invoice</a>(id_invoice:, filename:) -> Payabli::Types::InvoiceResponseWithoutData</code></summary>
 <dl>
 <dd>
 
@@ -4082,7 +4082,7 @@ in the `DocumentsRef.filelist` array returned by
 </dl>
 </details>
 
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">get_invoice</a>(id_invoice) -> Payabli::Types::GetInvoiceRecord</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">get_invoice</a>(id_invoice:) -> Payabli::Types::GetInvoiceRecord</code></summary>
 <dl>
 <dd>
 
@@ -4144,7 +4144,7 @@ client.invoice.get_invoice(id_invoice: 23548884)
 </dl>
 </details>
 
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">edit_invoice</a>(id_invoice, request) -> Payabli::Types::InvoiceResponseWithoutData</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">edit_invoice</a>(id_invoice:, request) -> Payabli::Types::InvoiceResponseWithoutData</code></summary>
 <dl>
 <dd>
 
@@ -4235,7 +4235,7 @@ client.invoice.edit_invoice(
 </dl>
 </details>
 
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">delete_invoice</a>(id_invoice) -> Payabli::Types::InvoiceResponseWithoutData</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">delete_invoice</a>(id_invoice:) -> Payabli::Types::InvoiceResponseWithoutData</code></summary>
 <dl>
 <dd>
 
@@ -4297,7 +4297,7 @@ client.invoice.delete_invoice(id_invoice: 23548884)
 </dl>
 </details>
 
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">get_invoice_number</a>(entry) -> Payabli::Types::InvoiceNumberResponse</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">get_invoice_number</a>(entry:) -> Payabli::Types::InvoiceNumberResponse</code></summary>
 <dl>
 <dd>
 
@@ -4359,7 +4359,7 @@ client.invoice.get_invoice_number(entry: "8cfec329267")
 </dl>
 </details>
 
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">list_invoices</a>(entry) -> Payabli::Types::QueryInvoiceResponse</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">list_invoices</a>(entry:) -> Payabli::Types::QueryInvoiceResponse</code></summary>
 <dl>
 <dd>
 
@@ -4530,7 +4530,7 @@ Example: totalAmount(gt)=20 return all records with totalAmount greater than 20.
 </dl>
 </details>
 
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">list_invoices_org</a>(org_id) -> Payabli::Types::QueryInvoiceResponse</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">list_invoices_org</a>(org_id:) -> Payabli::Types::QueryInvoiceResponse</code></summary>
 <dl>
 <dd>
 
@@ -4701,7 +4701,7 @@ Example: totalAmount(gt)=20 return all records with totalAmount greater than 20.
 </dl>
 </details>
 
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">send_invoice</a>(id_invoice) -> Payabli::Types::SendInvoiceResponse</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">send_invoice</a>(id_invoice:) -> Payabli::Types::SendInvoiceResponse</code></summary>
 <dl>
 <dd>
 
@@ -4783,7 +4783,7 @@ client.invoice.send_invoice(
 </dl>
 </details>
 
-<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">get_invoice_pdf</a>(id_invoice) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.invoice.<a href="/lib/payabli/invoice/client.rb">get_invoice_pdf</a>(id_invoice:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -4846,7 +4846,7 @@ client.invoice.get_invoice_pdf(id_invoice: 23548884)
 </details>
 
 ## PaymentLink
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">add_pay_link_from_invoice</a>(id_invoice, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">add_pay_link_from_invoice</a>(id_invoice:, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
 <dl>
 <dd>
 
@@ -5130,7 +5130,7 @@ client.payment_link.add_pay_link_from_invoice(
 </dl>
 </details>
 
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">add_pay_link_from_bill</a>(bill_id, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">add_pay_link_from_bill</a>(bill_id:, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
 <dl>
 <dd>
 
@@ -5285,7 +5285,7 @@ client.payment_link.add_pay_link_from_bill(
 </dl>
 </details>
 
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">delete_pay_link_from_id</a>(pay_link_id) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">delete_pay_link_from_id</a>(pay_link_id:) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
 <dl>
 <dd>
 
@@ -5347,7 +5347,7 @@ client.payment_link.delete_pay_link_from_id(pay_link_id: "2325-XXXXXXX-90b1-4598
 </dl>
 </details>
 
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">get_pay_link_from_id</a>(paylink_id) -> Payabli::Types::GetPayLinkFromIdResponse</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">get_pay_link_from_id</a>(paylink_id:) -> Payabli::Types::GetPayLinkFromIdResponse</code></summary>
 <dl>
 <dd>
 
@@ -5409,7 +5409,7 @@ client.payment_link.get_pay_link_from_id(paylink_id: "2325-XXXXXXX-90b1-4598-b6c
 </dl>
 </details>
 
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">push_pay_link_from_id</a>(pay_link_id, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">push_pay_link_from_id</a>(pay_link_id:, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
 <dl>
 <dd>
 
@@ -5479,7 +5479,7 @@ client.payment_link.push_pay_link_from_id(pay_link_id: "2325-XXXXXXX-90b1-4598-b
 </dl>
 </details>
 
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">refresh_pay_link_from_id</a>(pay_link_id) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">refresh_pay_link_from_id</a>(pay_link_id:) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
 <dl>
 <dd>
 
@@ -5549,7 +5549,7 @@ client.payment_link.refresh_pay_link_from_id(pay_link_id: "2325-XXXXXXX-90b1-459
 </dl>
 </details>
 
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">send_pay_link_from_id</a>(pay_link_id) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">send_pay_link_from_id</a>(pay_link_id:) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
 <dl>
 <dd>
 
@@ -5630,7 +5630,7 @@ client.payment_link.send_pay_link_from_id(
 </dl>
 </details>
 
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">update_pay_link_from_id</a>(pay_link_id, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">update_pay_link_from_id</a>(pay_link_id:, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
 <dl>
 <dd>
 
@@ -5778,7 +5778,7 @@ client.payment_link.update_pay_link_from_id(
 </dl>
 </details>
 
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">add_pay_link_from_bill_lot_number</a>(lot_number, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">add_pay_link_from_bill_lot_number</a>(lot_number:, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
 <dl>
 <dd>
 
@@ -5944,7 +5944,7 @@ client.payment_link.add_pay_link_from_bill_lot_number(
 </dl>
 </details>
 
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">patch_out_payment_link</a>(paylink_id, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">patch_out_payment_link</a>(paylink_id:, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
 <dl>
 <dd>
 
@@ -6034,7 +6034,7 @@ client.payment_link.patch_out_payment_link(
 </dl>
 </details>
 
-<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">update_pay_link_out_from_id</a>(paylink_id, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
+<details><summary><code>client.payment_link.<a href="/lib/payabli/payment_link/client.rb">update_pay_link_out_from_id</a>(paylink_id:, request) -> Payabli::Types::PayabliApiResponsePaymentLinks</code></summary>
 <dl>
 <dd>
 
@@ -6284,7 +6284,7 @@ client.token_storage.add_method(
 </dl>
 </details>
 
-<details><summary><code>client.token_storage.<a href="/lib/payabli/token_storage/client.rb">get_method</a>(method_id) -> Payabli::Types::GetMethodResponse</code></summary>
+<details><summary><code>client.token_storage.<a href="/lib/payabli/token_storage/client.rb">get_method</a>(method_id:) -> Payabli::Types::GetMethodResponse</code></summary>
 <dl>
 <dd>
 
@@ -6376,7 +6376,7 @@ Accepted values:
 </dl>
 </details>
 
-<details><summary><code>client.token_storage.<a href="/lib/payabli/token_storage/client.rb">update_method</a>(method_id, request) -> Payabli::Types::PayabliApiResponsePaymethodDelete</code></summary>
+<details><summary><code>client.token_storage.<a href="/lib/payabli/token_storage/client.rb">update_method</a>(method_id:, request) -> Payabli::Types::PayabliApiResponsePaymethodDelete</code></summary>
 <dl>
 <dd>
 
@@ -6469,7 +6469,7 @@ client.token_storage.update_method(
 </dl>
 </details>
 
-<details><summary><code>client.token_storage.<a href="/lib/payabli/token_storage/client.rb">remove_method</a>(method_id) -> Payabli::Types::PayabliApiResponsePaymethodDelete</code></summary>
+<details><summary><code>client.token_storage.<a href="/lib/payabli/token_storage/client.rb">remove_method</a>(method_id:) -> Payabli::Types::PayabliApiResponsePaymethodDelete</code></summary>
 <dl>
 <dd>
 
@@ -6532,7 +6532,7 @@ client.token_storage.remove_method(method_id: "32-8877drt00045632-678")
 </details>
 
 ## Paypoint
-<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">get_basic_entry</a>(entry) -> Payabli::Types::GetBasicEntryResponse</code></summary>
+<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">get_basic_entry</a>(entry:) -> Payabli::Types::GetBasicEntryResponse</code></summary>
 <dl>
 <dd>
 
@@ -6594,7 +6594,7 @@ client.paypoint.get_basic_entry(entry: "8cfec329267")
 </dl>
 </details>
 
-<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">get_basic_entry_by_id</a>(id_paypoint) -> Payabli::Types::GetBasicEntryByIdResponse</code></summary>
+<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">get_basic_entry_by_id</a>(id_paypoint:) -> Payabli::Types::GetBasicEntryByIdResponse</code></summary>
 <dl>
 <dd>
 
@@ -6656,7 +6656,7 @@ client.paypoint.get_basic_entry_by_id(id_paypoint: "198")
 </dl>
 </details>
 
-<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">save_logo</a>(entry, request) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
+<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">save_logo</a>(entry:, request) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
 <dl>
 <dd>
 
@@ -6814,7 +6814,7 @@ client.paypoint.migrate(
 </dl>
 </details>
 
-<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">settings_page</a>(entry) -> Payabli::Types::SettingsQueryRecord</code></summary>
+<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">settings_page</a>(entry:) -> Payabli::Types::SettingsQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -6876,7 +6876,7 @@ client.paypoint.settings_page(entry: "8cfec329267")
 </dl>
 </details>
 
-<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">get_entry_config</a>(entry) -> Payabli::Types::GetEntryConfigResponse</code></summary>
+<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">get_entry_config</a>(entry:) -> Payabli::Types::GetEntryConfigResponse</code></summary>
 <dl>
 <dd>
 
@@ -6946,7 +6946,7 @@ client.paypoint.get_entry_config(entry: "8cfec329267")
 </dl>
 </details>
 
-<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">get_page</a>(entry, subdomain) -> Payabli::Types::PayabliPages</code></summary>
+<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">get_page</a>(entry:, subdomain:) -> Payabli::Types::PayabliPages</code></summary>
 <dl>
 <dd>
 
@@ -7019,7 +7019,7 @@ client.paypoint.get_page(
 </dl>
 </details>
 
-<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">remove_page</a>(entry, subdomain) -> Payabli::Types::PayabliApiResponseGeneric2Part</code></summary>
+<details><summary><code>client.paypoint.<a href="/lib/payabli/paypoint/client.rb">remove_page</a>(entry:, subdomain:) -> Payabli::Types::PayabliApiResponseGeneric2Part</code></summary>
 <dl>
 <dd>
 
@@ -7093,7 +7093,7 @@ client.paypoint.remove_page(
 </details>
 
 ## HostedPaymentPages
-<details><summary><code>client.hosted_payment_pages.<a href="/lib/payabli/hosted_payment_pages/client.rb">load_page</a>(entry, subdomain) -> Payabli::Types::PayabliPages</code></summary>
+<details><summary><code>client.hosted_payment_pages.<a href="/lib/payabli/hosted_payment_pages/client.rb">load_page</a>(entry:, subdomain:) -> Payabli::Types::PayabliPages</code></summary>
 <dl>
 <dd>
 
@@ -7166,7 +7166,7 @@ client.hosted_payment_pages.load_page(
 </dl>
 </details>
 
-<details><summary><code>client.hosted_payment_pages.<a href="/lib/payabli/hosted_payment_pages/client.rb">new_page</a>(entry, request) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
+<details><summary><code>client.hosted_payment_pages.<a href="/lib/payabli/hosted_payment_pages/client.rb">new_page</a>(entry:, request) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
 <dl>
 <dd>
 
@@ -7248,7 +7248,7 @@ client.hosted_payment_pages.new_page(
 </dl>
 </details>
 
-<details><summary><code>client.hosted_payment_pages.<a href="/lib/payabli/hosted_payment_pages/client.rb">save_page</a>(entry, subdomain, request) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
+<details><summary><code>client.hosted_payment_pages.<a href="/lib/payabli/hosted_payment_pages/client.rb">save_page</a>(entry:, subdomain:, request) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
 <dl>
 <dd>
 
@@ -7434,7 +7434,7 @@ client.payment_method_domain.add_payment_method_domain(
 </dl>
 </details>
 
-<details><summary><code>client.payment_method_domain.<a href="/lib/payabli/payment_method_domain/client.rb">cascade_payment_method_domain</a>(domain_id) -> Payabli::Types::PaymentMethodDomainGeneralResponse</code></summary>
+<details><summary><code>client.payment_method_domain.<a href="/lib/payabli/payment_method_domain/client.rb">cascade_payment_method_domain</a>(domain_id:) -> Payabli::Types::PaymentMethodDomainGeneralResponse</code></summary>
 <dl>
 <dd>
 
@@ -7496,7 +7496,7 @@ client.payment_method_domain.cascade_payment_method_domain(domain_id: "pmd_b8237
 </dl>
 </details>
 
-<details><summary><code>client.payment_method_domain.<a href="/lib/payabli/payment_method_domain/client.rb">get_payment_method_domain</a>(domain_id) -> Payabli::Types::PaymentMethodDomainApiResponse</code></summary>
+<details><summary><code>client.payment_method_domain.<a href="/lib/payabli/payment_method_domain/client.rb">get_payment_method_domain</a>(domain_id:) -> Payabli::Types::PaymentMethodDomainApiResponse</code></summary>
 <dl>
 <dd>
 
@@ -7558,7 +7558,7 @@ client.payment_method_domain.get_payment_method_domain(domain_id: "pmd_b8237fa45
 </dl>
 </details>
 
-<details><summary><code>client.payment_method_domain.<a href="/lib/payabli/payment_method_domain/client.rb">delete_payment_method_domain</a>(domain_id) -> Payabli::Types::DeletePaymentMethodDomainResponse</code></summary>
+<details><summary><code>client.payment_method_domain.<a href="/lib/payabli/payment_method_domain/client.rb">delete_payment_method_domain</a>(domain_id:) -> Payabli::Types::DeletePaymentMethodDomainResponse</code></summary>
 <dl>
 <dd>
 
@@ -7620,7 +7620,7 @@ client.payment_method_domain.delete_payment_method_domain(domain_id: "pmd_b8237f
 </dl>
 </details>
 
-<details><summary><code>client.payment_method_domain.<a href="/lib/payabli/payment_method_domain/client.rb">update_payment_method_domain</a>(domain_id, request) -> Payabli::Types::PaymentMethodDomainGeneralResponse</code></summary>
+<details><summary><code>client.payment_method_domain.<a href="/lib/payabli/payment_method_domain/client.rb">update_payment_method_domain</a>(domain_id:, request) -> Payabli::Types::PaymentMethodDomainGeneralResponse</code></summary>
 <dl>
 <dd>
 
@@ -7803,7 +7803,7 @@ The type of entity. Valid values:
 </dl>
 </details>
 
-<details><summary><code>client.payment_method_domain.<a href="/lib/payabli/payment_method_domain/client.rb">verify_payment_method_domain</a>(domain_id) -> Payabli::Types::PaymentMethodDomainGeneralResponse</code></summary>
+<details><summary><code>client.payment_method_domain.<a href="/lib/payabli/payment_method_domain/client.rb">verify_payment_method_domain</a>(domain_id:) -> Payabli::Types::PaymentMethodDomainGeneralResponse</code></summary>
 <dl>
 <dd>
 
@@ -7866,7 +7866,7 @@ client.payment_method_domain.verify_payment_method_domain(domain_id: "pmd_b8237f
 </details>
 
 ## Import
-<details><summary><code>client.import.<a href="/lib/payabli/import/client.rb">import_bills</a>(entry, request) -> Payabli::Types::PayabliApiResponseImport</code></summary>
+<details><summary><code>client.import.<a href="/lib/payabli/import/client.rb">import_bills</a>(entry:, request) -> Payabli::Types::PayabliApiResponseImport</code></summary>
 <dl>
 <dd>
 
@@ -7928,7 +7928,7 @@ client.import.import_bills(entry: "8cfec329267")
 </dl>
 </details>
 
-<details><summary><code>client.import.<a href="/lib/payabli/import/client.rb">import_customer</a>(entry, request) -> Payabli::Types::PayabliApiResponseImport</code></summary>
+<details><summary><code>client.import.<a href="/lib/payabli/import/client.rb">import_customer</a>(entry:, request) -> Payabli::Types::PayabliApiResponseImport</code></summary>
 <dl>
 <dd>
 
@@ -7998,7 +7998,7 @@ client.import.import_customer(entry: "8cfec329267")
 </dl>
 </details>
 
-<details><summary><code>client.import.<a href="/lib/payabli/import/client.rb">import_vendor</a>(entry, request) -> Payabli::Types::PayabliApiResponseImport</code></summary>
+<details><summary><code>client.import.<a href="/lib/payabli/import/client.rb">import_vendor</a>(entry:, request) -> Payabli::Types::PayabliApiResponseImport</code></summary>
 <dl>
 <dd>
 
@@ -8061,7 +8061,7 @@ client.import.import_vendor(entry: "8cfec329267")
 </details>
 
 ## Query
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batch_details</a>(entry) -> Payabli::Types::QueryBatchesDetailResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batch_details</a>(entry:) -> Payabli::Types::QueryBatchesDetailResponse</code></summary>
 <dl>
 <dd>
 
@@ -8245,7 +8245,7 @@ Example: `settledAmount(gt)=20` returns all records with a `settledAmount` great
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batch_details_org</a>(org_id) -> Payabli::Types::QueryBatchesDetailResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batch_details_org</a>(org_id:) -> Payabli::Types::QueryBatchesDetailResponse</code></summary>
 <dl>
 <dd>
 
@@ -8427,7 +8427,7 @@ Example: `settledAmount(gt)=20` returns all records with a `settledAmount` great
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batches</a>(entry) -> Payabli::Types::QueryBatchesResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batches</a>(entry:) -> Payabli::Types::QueryBatchesResponse</code></summary>
 <dl>
 <dd>
 
@@ -8589,7 +8589,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batches_org</a>(org_id) -> Payabli::Types::QueryBatchesResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batches_org</a>(org_id:) -> Payabli::Types::QueryBatchesResponse</code></summary>
 <dl>
 <dd>
 
@@ -8751,7 +8751,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batches_out</a>(entry) -> Payabli::Types::QueryBatchesOutResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batches_out</a>(entry:) -> Payabli::Types::QueryBatchesOutResponse</code></summary>
 <dl>
 <dd>
 
@@ -8874,7 +8874,7 @@ Collection of field names, conditions, and values used to filter the query. See 
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batches_out_org</a>(org_id) -> Payabli::Types::QueryBatchesOutResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_batches_out_org</a>(org_id:) -> Payabli::Types::QueryBatchesOutResponse</code></summary>
 <dl>
 <dd>
 
@@ -9012,7 +9012,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_chargebacks</a>(entry) -> Payabli::Types::QueryChargebacksResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_chargebacks</a>(entry:) -> Payabli::Types::QueryChargebacksResponse</code></summary>
 <dl>
 <dd>
 
@@ -9191,7 +9191,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_chargebacks_org</a>(org_id) -> Payabli::Types::QueryChargebacksResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_chargebacks_org</a>(org_id:) -> Payabli::Types::QueryChargebacksResponse</code></summary>
 <dl>
 <dd>
 
@@ -9372,7 +9372,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_customers</a>(entry) -> Payabli::Types::QueryCustomerResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_customers</a>(entry:) -> Payabli::Types::QueryCustomerResponse</code></summary>
 <dl>
 <dd>
 
@@ -9545,7 +9545,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_customers_org</a>(org_id) -> Payabli::Types::QueryCustomerResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_customers_org</a>(org_id:) -> Payabli::Types::QueryCustomerResponse</code></summary>
 <dl>
 <dd>
 
@@ -9718,7 +9718,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_devices</a>(entry) -> Payabli::Types::QueryDeviceResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_devices</a>(entry:) -> Payabli::Types::QueryDeviceResponse</code></summary>
 <dl>
 <dd>
 
@@ -9918,7 +9918,7 @@ for more information.
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_devices_org</a>(org_id) -> Payabli::Types::QueryDeviceResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_devices_org</a>(org_id:) -> Payabli::Types::QueryDeviceResponse</code></summary>
 <dl>
 <dd>
 
@@ -10118,7 +10118,7 @@ for more information.
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_notification_reports</a>(entry) -> Payabli::Types::QueryResponseNotificationReports</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_notification_reports</a>(entry:) -> Payabli::Types::QueryResponseNotificationReports</code></summary>
 <dl>
 <dd>
 
@@ -10256,7 +10256,7 @@ Example: reportName(ct)=tr  return all records containing the string "tr"
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_notification_reports_org</a>(org_id) -> Payabli::Types::QueryResponseNotificationReports</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_notification_reports_org</a>(org_id:) -> Payabli::Types::QueryResponseNotificationReports</code></summary>
 <dl>
 <dd>
 
@@ -10392,7 +10392,7 @@ Example: reportName(ct)=tr  return all records containing the string "tr"
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_notifications</a>(entry) -> Payabli::Types::QueryResponseNotifications</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_notifications</a>(entry:) -> Payabli::Types::QueryResponseNotifications</code></summary>
 <dl>
 <dd>
 
@@ -10532,7 +10532,7 @@ Example: totalAmount(gt)=20  return all records with totalAmount greater than 20
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_notifications_org</a>(org_id) -> Payabli::Types::QueryResponseNotifications</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_notifications_org</a>(org_id:) -> Payabli::Types::QueryResponseNotifications</code></summary>
 <dl>
 <dd>
 
@@ -10672,7 +10672,7 @@ Example: totalAmount(gt)=20  return all records with totalAmount greater than 20
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_organizations</a>(org_id) -> Payabli::Types::ListOrganizationsResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_organizations</a>(org_id:) -> Payabli::Types::ListOrganizationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -10832,7 +10832,7 @@ Example: `dbaname(ct)=hoa` returns all records with a `dbaname` containing "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_payout</a>(entry) -> Payabli::Types::QueryPayoutTransaction</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_payout</a>(entry:) -> Payabli::Types::QueryPayoutTransaction</code></summary>
 <dl>
 <dd>
 
@@ -11019,7 +11019,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_payout_org</a>(org_id) -> Payabli::Types::QueryPayoutTransaction</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_payout_org</a>(org_id:) -> Payabli::Types::QueryPayoutTransaction</code></summary>
 <dl>
 <dd>
 
@@ -11205,7 +11205,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_paypoints</a>(org_id) -> Payabli::Types::QueryEntrypointResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_paypoints</a>(org_id:) -> Payabli::Types::QueryEntrypointResponse</code></summary>
 <dl>
 <dd>
 
@@ -11370,7 +11370,7 @@ Example: `dbaname(ct)=hoa` returns all records with a `dbaname` containing "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_settlements</a>(entry) -> Payabli::Types::QueryResponseSettlements</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_settlements</a>(entry:) -> Payabli::Types::QueryResponseSettlements</code></summary>
 <dl>
 <dd>
 
@@ -11553,7 +11553,7 @@ Example: `settledAmount(gt)=20` returns all records with a `settledAmount` great
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_settlements_org</a>(org_id) -> Payabli::Types::QueryResponseSettlements</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_settlements_org</a>(org_id:) -> Payabli::Types::QueryResponseSettlements</code></summary>
 <dl>
 <dd>
 
@@ -11736,7 +11736,7 @@ Example: `settledAmount(gt)=20` returns all records with a `settledAmount` great
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_subscriptions</a>(entry) -> Payabli::Types::QuerySubscriptionResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_subscriptions</a>(entry:) -> Payabli::Types::QuerySubscriptionResponse</code></summary>
 <dl>
 <dd>
 
@@ -11921,7 +11921,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_subscriptions_org</a>(org_id) -> Payabli::Types::QuerySubscriptionResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_subscriptions_org</a>(org_id:) -> Payabli::Types::QuerySubscriptionResponse</code></summary>
 <dl>
 <dd>
 
@@ -12106,7 +12106,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_payout_subscriptions</a>(entry) -> Payabli::Types::QueryPayoutSubscriptionResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_payout_subscriptions</a>(entry:) -> Payabli::Types::QueryPayoutSubscriptionResponse</code></summary>
 <dl>
 <dd>
 
@@ -12277,7 +12277,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_payout_subscriptions_org</a>(org_id) -> Payabli::Types::QueryPayoutSubscriptionResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_payout_subscriptions_org</a>(org_id:) -> Payabli::Types::QueryPayoutSubscriptionResponse</code></summary>
 <dl>
 <dd>
 
@@ -12448,7 +12448,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transactions</a>(entry) -> Payabli::Types::QueryResponseTransactions</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transactions</a>(entry:) -> Payabli::Types::QueryResponseTransactions</code></summary>
 <dl>
 <dd>
 
@@ -12650,7 +12650,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transactions_org</a>(org_id) -> Payabli::Types::QueryResponseTransactions</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transactions_org</a>(org_id:) -> Payabli::Types::QueryResponseTransactions</code></summary>
 <dl>
 <dd>
 
@@ -12851,7 +12851,7 @@ See [Filters and Conditions Reference](/developers/developer-guides/pay-ops-repo
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfer_details</a>(entry, transfer_id) -> Payabli::Types::QueryTransferDetailResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfer_details</a>(entry:, transfer_id:) -> Payabli::Types::QueryTransferDetailResponse</code></summary>
 <dl>
 <dd>
 
@@ -13002,7 +13002,7 @@ for more information.
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfers</a>(entry) -> Payabli::Types::TransferQueryResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfers</a>(entry:) -> Payabli::Types::TransferQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -13144,7 +13144,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfers_org</a>(org_id) -> Payabli::Types::TransferQueryResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfers_org</a>(org_id:) -> Payabli::Types::TransferQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -13283,7 +13283,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfers_out_org</a>(org_id) -> Payabli::Types::TransferOutQueryResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfers_out_org</a>(org_id:) -> Payabli::Types::TransferOutQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -13412,7 +13412,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfers_out_paypoint</a>(entry) -> Payabli::Types::TransferOutQueryResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfers_out_paypoint</a>(entry:) -> Payabli::Types::TransferOutQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -13541,7 +13541,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfer_details_out</a>(entry, transfer_id) -> Payabli::Types::TransferOutDetailQueryResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_transfer_details_out</a>(entry:, transfer_id:) -> Payabli::Types::TransferOutDetailQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -13676,7 +13676,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_users_org</a>(org_id) -> Payabli::Types::QueryUserResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_users_org</a>(org_id:) -> Payabli::Types::QueryUserResponse</code></summary>
 <dl>
 <dd>
 
@@ -13818,7 +13818,7 @@ Example: `name(ct)=john`  return all records with name containing 'john'.
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_users_paypoint</a>(entry) -> Payabli::Types::QueryUserResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_users_paypoint</a>(entry:) -> Payabli::Types::QueryUserResponse</code></summary>
 <dl>
 <dd>
 
@@ -13960,7 +13960,7 @@ Example: `name(ct)=john`  return all records with name containing 'john'
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vendors</a>(entry) -> Payabli::Types::QueryResponseVendors</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vendors</a>(entry:) -> Payabli::Types::QueryResponseVendors</code></summary>
 <dl>
 <dd>
 
@@ -14123,7 +14123,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vendors_org</a>(org_id) -> Payabli::Types::QueryResponseVendors</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vendors_org</a>(org_id:) -> Payabli::Types::QueryResponseVendors</code></summary>
 <dl>
 <dd>
 
@@ -14286,7 +14286,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vcards</a>(entry) -> Payabli::Types::VCardQueryResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vcards</a>(entry:) -> Payabli::Types::VCardQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -14443,7 +14443,7 @@ List of comparison accepted - enclosed between parentheses:
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vcards_transactions</a>(entry) -> Payabli::Types::VCardTransactionQueryResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vcards_transactions</a>(entry:) -> Payabli::Types::VCardTransactionQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -14596,7 +14596,7 @@ List of comparison accepted - enclosed between parentheses:
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vcards_transactions_org</a>(org_id) -> Payabli::Types::VCardTransactionQueryResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vcards_transactions_org</a>(org_id:) -> Payabli::Types::VCardTransactionQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -14749,7 +14749,7 @@ List of comparison accepted - enclosed between parentheses:
 </dl>
 </details>
 
-<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vcards_org</a>(org_id) -> Payabli::Types::VCardQueryResponse</code></summary>
+<details><summary><code>client.query.<a href="/lib/payabli/query/client.rb">list_vcards_org</a>(org_id:) -> Payabli::Types::VCardQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -14907,7 +14907,7 @@ List of comparison accepted - enclosed between parentheses:
 </details>
 
 ## Ocr
-<details><summary><code>client.ocr.<a href="/lib/payabli/ocr/client.rb">ocr_document_form</a>(type_result, request) -> Payabli::Types::PayabliApiResponseOcr</code></summary>
+<details><summary><code>client.ocr.<a href="/lib/payabli/ocr/client.rb">ocr_document_form</a>(type_result:, request) -> Payabli::Types::PayabliApiResponseOcr</code></summary>
 <dl>
 <dd>
 
@@ -14977,7 +14977,7 @@ client.ocr.ocr_document_form(type_result: "typeResult")
 </dl>
 </details>
 
-<details><summary><code>client.ocr.<a href="/lib/payabli/ocr/client.rb">ocr_document_json</a>(type_result, request) -> Payabli::Types::PayabliApiResponseOcr</code></summary>
+<details><summary><code>client.ocr.<a href="/lib/payabli/ocr/client.rb">ocr_document_json</a>(type_result:, request) -> Payabli::Types::PayabliApiResponseOcr</code></summary>
 <dl>
 <dd>
 
@@ -15177,7 +15177,7 @@ client.notificationlogs.search_notification_logs(
 </dl>
 </details>
 
-<details><summary><code>client.notificationlogs.<a href="/lib/payabli/notificationlogs/client.rb">get_notification_log</a>(uuid) -> Payabli::Types::NotificationLogDetail</code></summary>
+<details><summary><code>client.notificationlogs.<a href="/lib/payabli/notificationlogs/client.rb">get_notification_log</a>(uuid:) -> Payabli::Types::NotificationLogDetail</code></summary>
 <dl>
 <dd>
 
@@ -15240,7 +15240,7 @@ client.notificationlogs.get_notification_log(uuid: "550e8400-e29b-41d4-a716-4466
 </dl>
 </details>
 
-<details><summary><code>client.notificationlogs.<a href="/lib/payabli/notificationlogs/client.rb">retry_notification_log</a>(uuid) -> Payabli::Types::NotificationLogDetail</code></summary>
+<details><summary><code>client.notificationlogs.<a href="/lib/payabli/notificationlogs/client.rb">retry_notification_log</a>(uuid:) -> Payabli::Types::NotificationLogDetail</code></summary>
 <dl>
 <dd>
 
@@ -15370,7 +15370,7 @@ client.notificationlogs.bulk_retry_notification_logs(request: %w[550e8400-e29b-4
 </details>
 
 ## Cloud
-<details><summary><code>client.cloud.<a href="/lib/payabli/cloud/client.rb">add_device</a>(entry, request) -> Payabli::Types::AddDeviceResponse</code></summary>
+<details><summary><code>client.cloud.<a href="/lib/payabli/cloud/client.rb">add_device</a>(entry:, request) -> Payabli::Types::AddDeviceResponse</code></summary>
 <dl>
 <dd>
 
@@ -15466,7 +15466,7 @@ The device registration code or serial number, depending on the model.
 </dl>
 </details>
 
-<details><summary><code>client.cloud.<a href="/lib/payabli/cloud/client.rb">remove_device</a>(entry, device_id) -> Payabli::Types::RemoveDeviceResponse</code></summary>
+<details><summary><code>client.cloud.<a href="/lib/payabli/cloud/client.rb">remove_device</a>(entry:, device_id:) -> Payabli::Types::RemoveDeviceResponse</code></summary>
 <dl>
 <dd>
 
@@ -15539,7 +15539,7 @@ client.cloud.remove_device(
 </dl>
 </details>
 
-<details><summary><code>client.cloud.<a href="/lib/payabli/cloud/client.rb">history_device</a>(entry, device_id) -> Payabli::Types::CloudQueryApiResponse</code></summary>
+<details><summary><code>client.cloud.<a href="/lib/payabli/cloud/client.rb">history_device</a>(entry:, device_id:) -> Payabli::Types::CloudQueryApiResponse</code></summary>
 <dl>
 <dd>
 
@@ -15612,7 +15612,7 @@ client.cloud.history_device(
 </dl>
 </details>
 
-<details><summary><code>client.cloud.<a href="/lib/payabli/cloud/client.rb">list_device</a>(entry) -> Payabli::Types::CloudQueryApiResponse</code></summary>
+<details><summary><code>client.cloud.<a href="/lib/payabli/cloud/client.rb">list_device</a>(entry:) -> Payabli::Types::CloudQueryApiResponse</code></summary>
 <dl>
 <dd>
 
@@ -15685,7 +15685,7 @@ client.cloud.list_device(entry: "8cfec329267")
 </details>
 
 ## LineItem
-<details><summary><code>client.line_item.<a href="/lib/payabli/line_item/client.rb">add_item</a>(entry, request) -> Payabli::Types::PayabliApiResponse6</code></summary>
+<details><summary><code>client.line_item.<a href="/lib/payabli/line_item/client.rb">add_item</a>(entry:, request) -> Payabli::Types::PayabliApiResponse6</code></summary>
 <dl>
 <dd>
 
@@ -15773,7 +15773,7 @@ client.line_item.add_item(
 </dl>
 </details>
 
-<details><summary><code>client.line_item.<a href="/lib/payabli/line_item/client.rb">get_item</a>(line_item_id) -> Payabli::Types::LineItemQueryRecord</code></summary>
+<details><summary><code>client.line_item.<a href="/lib/payabli/line_item/client.rb">get_item</a>(line_item_id:) -> Payabli::Types::LineItemQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -15835,7 +15835,7 @@ client.line_item.get_item(line_item_id: 700)
 </dl>
 </details>
 
-<details><summary><code>client.line_item.<a href="/lib/payabli/line_item/client.rb">update_item</a>(line_item_id, request) -> Payabli::Types::PayabliApiResponse6</code></summary>
+<details><summary><code>client.line_item.<a href="/lib/payabli/line_item/client.rb">update_item</a>(line_item_id:, request) -> Payabli::Types::PayabliApiResponse6</code></summary>
 <dl>
 <dd>
 
@@ -15909,7 +15909,7 @@ client.line_item.update_item(
 </dl>
 </details>
 
-<details><summary><code>client.line_item.<a href="/lib/payabli/line_item/client.rb">delete_item</a>(line_item_id) -> Payabli::Types::DeleteItemResponse</code></summary>
+<details><summary><code>client.line_item.<a href="/lib/payabli/line_item/client.rb">delete_item</a>(line_item_id:) -> Payabli::Types::DeleteItemResponse</code></summary>
 <dl>
 <dd>
 
@@ -15971,7 +15971,7 @@ client.line_item.delete_item(line_item_id: 700)
 </dl>
 </details>
 
-<details><summary><code>client.line_item.<a href="/lib/payabli/line_item/client.rb">list_line_items</a>(entry) -> Payabli::Types::QueryResponseItems</code></summary>
+<details><summary><code>client.line_item.<a href="/lib/payabli/line_item/client.rb">list_line_items</a>(entry:) -> Payabli::Types::QueryResponseItems</code></summary>
 <dl>
 <dd>
 
@@ -16309,7 +16309,7 @@ client.boarding.add_application(
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">update_application</a>(app_id, request) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">update_application</a>(app_id:, request) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
 <dl>
 <dd>
 
@@ -16379,7 +16379,7 @@ client.boarding.update_application(app_id: 352)
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">delete_application</a>(app_id) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">delete_application</a>(app_id:) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
 <dl>
 <dd>
 
@@ -16441,7 +16441,7 @@ client.boarding.delete_application(app_id: 352)
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_application</a>(app_id) -> Payabli::Types::ApplicationDetailsRecord</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_application</a>(app_id:) -> Payabli::Types::ApplicationDetailsRecord</code></summary>
 <dl>
 <dd>
 
@@ -16503,7 +16503,7 @@ client.boarding.get_application(app_id: 352)
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_application_by_auth</a>(x_id, request) -> Payabli::Types::ApplicationQueryRecord</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_application_by_auth</a>(x_id:, request) -> Payabli::Types::ApplicationQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -16585,7 +16585,7 @@ client.boarding.get_application_by_auth(
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_by_id_link_application</a>(boarding_link_id) -> Payabli::Types::BoardingLinkQueryRecord</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_by_id_link_application</a>(boarding_link_id:) -> Payabli::Types::BoardingLinkQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -16647,7 +16647,7 @@ client.boarding.get_by_id_link_application(boarding_link_id: 91)
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_by_template_id_link_application</a>(template_id) -> Payabli::Types::BoardingLinkQueryRecord</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_by_template_id_link_application</a>(template_id:) -> Payabli::Types::BoardingLinkQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -16709,7 +16709,7 @@ client.boarding.get_by_template_id_link_application(template_id: 80)
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_external_application</a>(app_id, mail_2) -> Payabli::Types::PayabliApiResponse00</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_external_application</a>(app_id:, mail_2:) -> Payabli::Types::PayabliApiResponse00</code></summary>
 <dl>
 <dd>
 
@@ -16790,7 +16790,7 @@ client.boarding.get_external_application(
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_link_application</a>(boarding_link_reference) -> Payabli::Types::BoardingLinkQueryRecord</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_link_application</a>(boarding_link_reference:) -> Payabli::Types::BoardingLinkQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -16852,7 +16852,7 @@ client.boarding.get_link_application(boarding_link_reference: "myorgaccountname-
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">list_applications</a>(org_id) -> Payabli::Types::QueryBoardingAppsListResponse</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">list_applications</a>(org_id:) -> Payabli::Types::QueryBoardingAppsListResponse</code></summary>
 <dl>
 <dd>
 
@@ -16995,7 +16995,7 @@ List of comparison accepted - enclosed between parentheses:
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">list_boarding_links</a>(org_id) -> Payabli::Types::QueryBoardingLinksResponse</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">list_boarding_links</a>(org_id:) -> Payabli::Types::QueryBoardingLinksResponse</code></summary>
 <dl>
 <dd>
 
@@ -17226,7 +17226,7 @@ client.boarding.add_service_to_paypoint_from_app(
 </dl>
 </details>
 
-<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_applications_by_paypoint_id</a>(paypoint_id) -> Payabli::Types::QueryBoardingAppsListResponse</code></summary>
+<details><summary><code>client.boarding.<a href="/lib/payabli/boarding/client.rb">get_applications_by_paypoint_id</a>(paypoint_id:) -> Payabli::Types::QueryBoardingAppsListResponse</code></summary>
 <dl>
 <dd>
 
@@ -17289,7 +17289,7 @@ client.boarding.get_applications_by_paypoint_id(paypoint_id: 3040)
 </details>
 
 ## Templates
-<details><summary><code>client.templates.<a href="/lib/payabli/templates/client.rb">delete_template</a>(template_id) -> Payabli::Types::PayabliApiResponseTemplateId</code></summary>
+<details><summary><code>client.templates.<a href="/lib/payabli/templates/client.rb">delete_template</a>(template_id:) -> Payabli::Types::PayabliApiResponseTemplateId</code></summary>
 <dl>
 <dd>
 
@@ -17351,7 +17351,7 @@ client.templates.delete_template(template_id: 80)
 </dl>
 </details>
 
-<details><summary><code>client.templates.<a href="/lib/payabli/templates/client.rb">getlink_template</a>(template_id, ignore_empty) -> Payabli::Types::BoardingLinkApiResponse</code></summary>
+<details><summary><code>client.templates.<a href="/lib/payabli/templates/client.rb">getlink_template</a>(template_id:, ignore_empty:) -> Payabli::Types::BoardingLinkApiResponse</code></summary>
 <dl>
 <dd>
 
@@ -17424,7 +17424,7 @@ client.templates.getlink_template(
 </dl>
 </details>
 
-<details><summary><code>client.templates.<a href="/lib/payabli/templates/client.rb">get_template</a>(template_id) -> Payabli::Types::TemplateQueryRecord</code></summary>
+<details><summary><code>client.templates.<a href="/lib/payabli/templates/client.rb">get_template</a>(template_id:) -> Payabli::Types::TemplateQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -17486,7 +17486,7 @@ client.templates.get_template(template_id: 80)
 </dl>
 </details>
 
-<details><summary><code>client.templates.<a href="/lib/payabli/templates/client.rb">list_templates</a>(org_id) -> Payabli::Types::TemplateQueryResponse</code></summary>
+<details><summary><code>client.templates.<a href="/lib/payabli/templates/client.rb">list_templates</a>(org_id:) -> Payabli::Types::TemplateQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -17630,7 +17630,7 @@ Example: title(ct)=hoa return all records with title containing "hoa"
 </details>
 
 ## Export
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_applications</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_applications</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -17795,7 +17795,7 @@ Example: `dbaname(ct)=hoa` returns all records with a `dbaname` containing "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batch_details</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batch_details</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -17971,7 +17971,7 @@ Example: `amount(gt)=20` return all records with amount greater than 20.00
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batch_details_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batch_details_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -18147,7 +18147,7 @@ Example: `amount(gt)=20` return all records with amount greater than 20.00
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batches</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batches</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -18313,7 +18313,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batches_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batches_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -18477,7 +18477,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batches_out</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batches_out</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -18623,7 +18623,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batches_out_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_batches_out_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -18769,7 +18769,7 @@ Example: `batchAmount(gt)=20` returns all records with a `batchAmount` greater t
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_bills</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_bills</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -18933,7 +18933,7 @@ Example: totalAmount(gt)=20  return all records with totalAmount greater than 20
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_bills_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_bills_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -19097,7 +19097,7 @@ Example: totalAmount(gt)=20  return all records with totalAmount greater than 20
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_chargebacks</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_chargebacks</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -19282,7 +19282,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_chargebacks_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_chargebacks_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -19467,7 +19467,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_customers</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_customers</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -19645,7 +19645,7 @@ balance(gt)=20 return all records with balance greater than 20.00
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_customers_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_customers_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -19823,7 +19823,7 @@ balance(gt)=20 return all records with balance greater than 20.00
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_invoices</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_invoices</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -20011,7 +20011,7 @@ Example: `totalAmount(gt)=20` returns all records with `totalAmount` greater tha
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_invoices_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_invoices_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -20199,7 +20199,7 @@ Example: totalAmount(gt)=20  return all records with totalAmount greater than 20
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_organizations</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_organizations</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -20362,7 +20362,7 @@ Example: name(ct)=hoa  return all records where name contains "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_payout</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_payout</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -20524,7 +20524,7 @@ Example: totalAmount(gt)=20 return all records with totalAmount greater than 20.
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_payout_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_payout_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -20686,7 +20686,7 @@ Example: totalAmount(gt)=20 return all records with totalAmount greater than 20.
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_paypoints</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_paypoints</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -20850,7 +20850,7 @@ Example: `dbaname(ct)=hoa` returns all records with `dbaname` containing "hoa"
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_settlements</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_settlements</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -21034,7 +21034,7 @@ Example: `settledAmount(gt)=20` returns all records with a `settledAmount` great
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_settlements_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_settlements_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -21218,7 +21218,7 @@ Example: `settledAmount(gt)=20` returns all records with a `settledAmount` great
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_subscriptions</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_subscriptions</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -21404,7 +21404,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_subscriptions_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_subscriptions_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -21590,7 +21590,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_transactions</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_transactions</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -21780,7 +21780,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_transactions_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_transactions_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -21970,7 +21970,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_transfer_details</a>(format, entry, transfer_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_transfer_details</a>(format:, entry:, transfer_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -22142,7 +22142,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_transfers</a>(entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_transfers</a>(entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -22297,7 +22297,7 @@ List of field names accepted:
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_vendors</a>(format, entry) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_vendors</a>(format:, entry:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -22465,7 +22465,7 @@ Example: `netAmount(gt)=20` returns all records with a `netAmount` greater than 
 </dl>
 </details>
 
-<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_vendors_org</a>(format, org_id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.export.<a href="/lib/payabli/export/client.rb">export_vendors_org</a>(format:, org_id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -22886,7 +22886,7 @@ client.organization.add_organization(
 </dl>
 </details>
 
-<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">edit_organization</a>(org_id, request) -> Payabli::Types::EditOrganizationResponse</code></summary>
+<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">edit_organization</a>(org_id:, request) -> Payabli::Types::EditOrganizationResponse</code></summary>
 <dl>
 <dd>
 
@@ -23119,7 +23119,7 @@ client.organization.edit_organization(
 </dl>
 </details>
 
-<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">delete_organization</a>(org_id) -> Payabli::Types::DeleteOrganizationResponse</code></summary>
+<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">delete_organization</a>(org_id:) -> Payabli::Types::DeleteOrganizationResponse</code></summary>
 <dl>
 <dd>
 
@@ -23181,7 +23181,7 @@ client.organization.delete_organization(org_id: 123)
 </dl>
 </details>
 
-<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">get_basic_organization</a>(entry) -> Payabli::Types::OrganizationQueryRecord</code></summary>
+<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">get_basic_organization</a>(entry:) -> Payabli::Types::OrganizationQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -23243,7 +23243,7 @@ client.organization.get_basic_organization(entry: "8cfec329267")
 </dl>
 </details>
 
-<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">get_basic_organization_by_id</a>(org_id) -> Payabli::Types::OrganizationQueryRecord</code></summary>
+<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">get_basic_organization_by_id</a>(org_id:) -> Payabli::Types::OrganizationQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -23305,7 +23305,7 @@ client.organization.get_basic_organization_by_id(org_id: 123)
 </dl>
 </details>
 
-<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">get_organization</a>(org_id) -> Payabli::Types::OrganizationQueryRecord</code></summary>
+<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">get_organization</a>(org_id:) -> Payabli::Types::OrganizationQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -23367,7 +23367,7 @@ client.organization.get_organization(org_id: 123)
 </dl>
 </details>
 
-<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">get_settings_organization</a>(org_id) -> Payabli::Types::SettingsQueryRecord</code></summary>
+<details><summary><code>client.organization.<a href="/lib/payabli/organization/client.rb">get_settings_organization</a>(org_id:) -> Payabli::Types::SettingsQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -23430,7 +23430,7 @@ client.organization.get_settings_organization(org_id: 123)
 </details>
 
 ## Management
-<details><summary><code>client.management.<a href="/lib/payabli/management/client.rb">verify_account_details</a>(entry, request) -> Payabli::Types::VerifyAccountDetailsResponse</code></summary>
+<details><summary><code>client.management.<a href="/lib/payabli/management/client.rb">verify_account_details</a>(entry:, request) -> Payabli::Types::VerifyAccountDetailsResponse</code></summary>
 <dl>
 <dd>
 
@@ -23553,7 +23553,7 @@ client.management.verify_account_details(
 </details>
 
 ## Statistic
-<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">basic_stats</a>(mode, freq, level, entry_id) -> Internal::Types::Array[Payabli::Types::StatBasicExtendedQueryRecord]</code></summary>
+<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">basic_stats</a>(mode:, freq:, level:, entry_id:) -> Internal::Types::Array[Payabli::Types::StatBasicExtendedQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -23712,7 +23712,7 @@ Valid formats:
 </dl>
 </details>
 
-<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">customer_basic_stats</a>(mode, freq, customer_id) -> Internal::Types::Array[Payabli::Types::SubscriptionStatsQueryRecord]</code></summary>
+<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">customer_basic_stats</a>(mode:, freq:, customer_id:) -> Internal::Types::Array[Payabli::Types::SubscriptionStatsQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -23825,7 +23825,7 @@ For example, `w` groups the results by week.
 </dl>
 </details>
 
-<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">sub_stats</a>(interval, level, entry_id) -> Internal::Types::Array[Payabli::Types::StatBasicQueryRecord]</code></summary>
+<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">sub_stats</a>(interval:, level:, entry_id:) -> Internal::Types::Array[Payabli::Types::StatBasicQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -23927,7 +23927,7 @@ The entry level for the request:
 </dl>
 </details>
 
-<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">vendor_basic_stats</a>(mode, freq, id_vendor) -> Internal::Types::Array[Payabli::Types::StatisticsVendorQueryRecord]</code></summary>
+<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">vendor_basic_stats</a>(mode:, freq:, id_vendor:) -> Internal::Types::Array[Payabli::Types::StatisticsVendorQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -24113,7 +24113,7 @@ client.notification.add_notification(
 </dl>
 </details>
 
-<details><summary><code>client.notification.<a href="/lib/payabli/notification/client.rb">get_notification</a>(n_id) -> Payabli::Types::NotificationQueryRecord</code></summary>
+<details><summary><code>client.notification.<a href="/lib/payabli/notification/client.rb">get_notification</a>(n_id:) -> Payabli::Types::NotificationQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -24175,7 +24175,7 @@ client.notification.get_notification(n_id: "1717")
 </dl>
 </details>
 
-<details><summary><code>client.notification.<a href="/lib/payabli/notification/client.rb">update_notification</a>(n_id, request) -> Payabli::Types::PayabliApiResponseNotifications</code></summary>
+<details><summary><code>client.notification.<a href="/lib/payabli/notification/client.rb">update_notification</a>(n_id:, request) -> Payabli::Types::PayabliApiResponseNotifications</code></summary>
 <dl>
 <dd>
 
@@ -24256,7 +24256,7 @@ client.notification.update_notification(
 </dl>
 </details>
 
-<details><summary><code>client.notification.<a href="/lib/payabli/notification/client.rb">delete_notification</a>(n_id) -> Payabli::Types::PayabliApiResponseNotifications</code></summary>
+<details><summary><code>client.notification.<a href="/lib/payabli/notification/client.rb">delete_notification</a>(n_id:) -> Payabli::Types::PayabliApiResponseNotifications</code></summary>
 <dl>
 <dd>
 
@@ -24318,7 +24318,7 @@ client.notification.delete_notification(n_id: "1717")
 </dl>
 </details>
 
-<details><summary><code>client.notification.<a href="/lib/payabli/notification/client.rb">get_report_file</a>(id) -> Internal::Types::Hash[String, Object]</code></summary>
+<details><summary><code>client.notification.<a href="/lib/payabli/notification/client.rb">get_report_file</a>(id:) -> Internal::Types::Hash[String, Object]</code></summary>
 <dl>
 <dd>
 
@@ -24443,7 +24443,7 @@ client.user.add_user
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">get_user</a>(user_id) -> Payabli::Types::UserQueryRecord</code></summary>
+<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">get_user</a>(user_id:) -> Payabli::Types::UserQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -24524,7 +24524,7 @@ client.user.get_user(
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">edit_user</a>(user_id, request) -> Payabli::Types::PayabliApiResponse</code></summary>
+<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">edit_user</a>(user_id:, request) -> Payabli::Types::PayabliApiResponse</code></summary>
 <dl>
 <dd>
 
@@ -24594,7 +24594,7 @@ client.user.edit_user(user_id: 1000000)
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">delete_user</a>(user_id) -> Payabli::Types::DeleteUserResponse</code></summary>
+<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">delete_user</a>(user_id:) -> Payabli::Types::DeleteUserResponse</code></summary>
 <dl>
 <dd>
 
@@ -24656,7 +24656,7 @@ client.user.delete_user(user_id: 1000000)
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">auth_user</a>(provider, request) -> Payabli::Types::PayabliApiResponseMfaBasic</code></summary>
+<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">auth_user</a>(provider:, request) -> Payabli::Types::PayabliApiResponseMfaBasic</code></summary>
 <dl>
 <dd>
 
@@ -25084,7 +25084,7 @@ client.user.validate_mfa_user
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">edit_mfa_user</a>(user_id, request) -> Payabli::Types::EditMfaUserResponse</code></summary>
+<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">edit_mfa_user</a>(user_id:, request) -> Payabli::Types::EditMfaUserResponse</code></summary>
 <dl>
 <dd>
 
@@ -25154,7 +25154,7 @@ client.user.edit_mfa_user(user_id: 1000000)
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">resend_mfa_code</a>(usrname, entry, entry_type) -> Payabli::Types::PayabliApiResponseMfaBasic</code></summary>
+<details><summary><code>client.user.<a href="/lib/payabli/user/client.rb">resend_mfa_code</a>(usrname:, entry:, entry_type:) -> Payabli::Types::PayabliApiResponseMfaBasic</code></summary>
 <dl>
 <dd>
 
@@ -25237,7 +25237,7 @@ client.user.resend_mfa_code(
 </details>
 
 ## Vendor
-<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">add_vendor</a>(entry, request) -> Payabli::Types::PayabliApiResponseVendors</code></summary>
+<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">add_vendor</a>(entry:, request) -> Payabli::Types::PayabliApiResponseVendors</code></summary>
 <dl>
 <dd>
 
@@ -25351,7 +25351,7 @@ client.vendor.add_vendor(
 </dl>
 </details>
 
-<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">get_vendor</a>(id_vendor) -> Payabli::Types::VendorQueryRecord</code></summary>
+<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">get_vendor</a>(id_vendor:) -> Payabli::Types::VendorQueryRecord</code></summary>
 <dl>
 <dd>
 
@@ -25413,7 +25413,7 @@ client.vendor.get_vendor(id_vendor: 1)
 </dl>
 </details>
 
-<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">edit_vendor</a>(id_vendor, request) -> Payabli::Types::PayabliApiResponseVendors</code></summary>
+<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">edit_vendor</a>(id_vendor:, request) -> Payabli::Types::PayabliApiResponseVendors</code></summary>
 <dl>
 <dd>
 
@@ -25486,7 +25486,7 @@ client.vendor.edit_vendor(
 </dl>
 </details>
 
-<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">delete_vendor</a>(id_vendor) -> Payabli::Types::PayabliApiResponseVendors</code></summary>
+<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">delete_vendor</a>(id_vendor:) -> Payabli::Types::PayabliApiResponseVendors</code></summary>
 <dl>
 <dd>
 
@@ -25548,7 +25548,7 @@ client.vendor.delete_vendor(id_vendor: 1)
 </dl>
 </details>
 
-<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">enrich_vendor</a>(entry, request) -> Payabli::Types::VendorEnrichResponse</code></summary>
+<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">enrich_vendor</a>(entry:, request) -> Payabli::Types::VendorEnrichResponse</code></summary>
 <dl>
 <dd>
 
@@ -25677,7 +25677,7 @@ client.vendor.enrich_vendor(
 </dl>
 </details>
 
-<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">schedule_enrichment_call</a>(entry, request) -> Payabli::Types::VendorScheduleCallResponse</code></summary>
+<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">schedule_enrichment_call</a>(entry:, request) -> Payabli::Types::VendorScheduleCallResponse</code></summary>
 <dl>
 <dd>
 
@@ -25812,7 +25812,7 @@ client.vendor.schedule_enrichment_call(
 </dl>
 </details>
 
-<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">get_enrichment_call_status</a>(id_vendor) -> Payabli::Types::VendorCallStatusResponse</code></summary>
+<details><summary><code>client.vendor.<a href="/lib/payabli/vendor/client.rb">get_enrichment_call_status</a>(id_vendor:) -> Payabli::Types::VendorCallStatusResponse</code></summary>
 <dl>
 <dd>
 
@@ -25875,7 +25875,7 @@ client.vendor.get_enrichment_call_status(id_vendor: 456)
 </details>
 
 ## GhostCard
-<details><summary><code>client.ghost_card.<a href="/lib/payabli/ghost_card/client.rb">create_ghost_card</a>(entry, request) -> Payabli::Types::CreateGhostCardResponse</code></summary>
+<details><summary><code>client.ghost_card.<a href="/lib/payabli/ghost_card/client.rb">create_ghost_card</a>(entry:, request) -> Payabli::Types::CreateGhostCardResponse</code></summary>
 <dl>
 <dd>
 
@@ -26086,7 +26086,7 @@ client.ghost_card.create_ghost_card(
 </dl>
 </details>
 
-<details><summary><code>client.ghost_card.<a href="/lib/payabli/ghost_card/client.rb">update_card</a>(entry, request) -> Payabli::Types::PayabliApiResponse</code></summary>
+<details><summary><code>client.ghost_card.<a href="/lib/payabli/ghost_card/client.rb">update_card</a>(entry:, request) -> Payabli::Types::PayabliApiResponse</code></summary>
 <dl>
 <dd>
 
@@ -26438,7 +26438,7 @@ client.money_out.cancel_all_out(request: %w[2-29 2-28 2-27])
 </dl>
 </details>
 
-<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">cancel_out_get</a>(reference_id) -> Payabli::Types::PayabliApiResponse0000</code></summary>
+<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">cancel_out_get</a>(reference_id:) -> Payabli::Types::PayabliApiResponse0000</code></summary>
 <dl>
 <dd>
 
@@ -26500,7 +26500,7 @@ client.money_out.cancel_out_get(reference_id: "129-219")
 </dl>
 </details>
 
-<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">cancel_out_delete</a>(reference_id) -> Payabli::Types::PayabliApiResponse0000</code></summary>
+<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">cancel_out_delete</a>(reference_id:) -> Payabli::Types::PayabliApiResponse0000</code></summary>
 <dl>
 <dd>
 
@@ -26632,7 +26632,7 @@ client.money_out.capture_all_out(body: %w[2-29 2-28 2-27])
 </dl>
 </details>
 
-<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">capture_out</a>(reference_id) -> Payabli::Types::AuthCapturePayoutResponse</code></summary>
+<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">capture_out</a>(reference_id:) -> Payabli::Types::AuthCapturePayoutResponse</code></summary>
 <dl>
 <dd>
 
@@ -26704,7 +26704,7 @@ client.money_out.capture_out(reference_id: "129-219")
 </dl>
 </details>
 
-<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">payout_details</a>(trans_id) -> Payabli::Types::BillDetailResponse</code></summary>
+<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">payout_details</a>(trans_id:) -> Payabli::Types::BillDetailResponse</code></summary>
 <dl>
 <dd>
 
@@ -26766,7 +26766,7 @@ client.money_out.payout_details(trans_id: "45-as456777hhhhhhhhhh77777777-324")
 </dl>
 </details>
 
-<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">v_card_get</a>(card_token) -> Payabli::Types::VCardGetResponse</code></summary>
+<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">v_card_get</a>(card_token:) -> Payabli::Types::VCardGetResponse</code></summary>
 <dl>
 <dd>
 
@@ -26828,7 +26828,7 @@ client.money_out.v_card_get(card_token: "20230403315245421165")
 </dl>
 </details>
 
-<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">renew_v_card</a>(card_token, request) -> Payabli::Types::RenewVCardResponse</code></summary>
+<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">renew_v_card</a>(card_token:, request) -> Payabli::Types::RenewVCardResponse</code></summary>
 <dl>
 <dd>
 
@@ -26967,7 +26967,7 @@ client.money_out.send_v_card_link(trans_id: "01K33Z6YQZ6GD5QVKZ856MJBSC")
 </dl>
 </details>
 
-<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">get_check_image</a>(asset_name) -> String</code></summary>
+<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">get_check_image</a>(asset_name:) -> String</code></summary>
 <dl>
 <dd>
 
@@ -27042,7 +27042,7 @@ in the response when you make a GET request to `/MoneyOut/details/{transId}`.
 </dl>
 </details>
 
-<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">update_check_payment_status</a>(trans_id, check_payment_status) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
+<details><summary><code>client.money_out.<a href="/lib/payabli/money_out/client.rb">update_check_payment_status</a>(trans_id:, check_payment_status:) -> Payabli::Types::PayabliApiResponse00Responsedatanonobject</code></summary>
 <dl>
 <dd>
 
@@ -27799,7 +27799,7 @@ client.payout_subscription.create_payout_subscription(
 </dl>
 </details>
 
-<details><summary><code>client.payout_subscription.<a href="/lib/payabli/payout_subscription/client.rb">get_payout_subscription</a>(id) -> Payabli::Types::GetPayoutSubscriptionResponse</code></summary>
+<details><summary><code>client.payout_subscription.<a href="/lib/payabli/payout_subscription/client.rb">get_payout_subscription</a>(id:) -> Payabli::Types::GetPayoutSubscriptionResponse</code></summary>
 <dl>
 <dd>
 
@@ -27861,7 +27861,7 @@ client.payout_subscription.get_payout_subscription(id: 42)
 </dl>
 </details>
 
-<details><summary><code>client.payout_subscription.<a href="/lib/payabli/payout_subscription/client.rb">update_payout_subscription</a>(id, request) -> Payabli::Types::UpdatePayoutSubscriptionResponse</code></summary>
+<details><summary><code>client.payout_subscription.<a href="/lib/payabli/payout_subscription/client.rb">update_payout_subscription</a>(id:, request) -> Payabli::Types::UpdatePayoutSubscriptionResponse</code></summary>
 <dl>
 <dd>
 
@@ -27958,7 +27958,7 @@ client.payout_subscription.update_payout_subscription(
 </dl>
 </details>
 
-<details><summary><code>client.payout_subscription.<a href="/lib/payabli/payout_subscription/client.rb">delete_payout_subscription</a>(id) -> Payabli::Types::DeletePayoutSubscriptionResponse</code></summary>
+<details><summary><code>client.payout_subscription.<a href="/lib/payabli/payout_subscription/client.rb">delete_payout_subscription</a>(id:) -> Payabli::Types::DeletePayoutSubscriptionResponse</code></summary>
 <dl>
 <dd>
 
@@ -28021,7 +28021,7 @@ client.payout_subscription.delete_payout_subscription(id: 42)
 </details>
 
 ## ChargeBacks
-<details><summary><code>client.charge_backs.<a href="/lib/payabli/charge_backs/client.rb">add_response</a>(id, request) -> Payabli::Types::AddResponseResponse</code></summary>
+<details><summary><code>client.charge_backs.<a href="/lib/payabli/charge_backs/client.rb">add_response</a>(id:, request) -> Payabli::Types::AddResponseResponse</code></summary>
 <dl>
 <dd>
 
@@ -28126,7 +28126,7 @@ client.charge_backs.add_response(
 </dl>
 </details>
 
-<details><summary><code>client.charge_backs.<a href="/lib/payabli/charge_backs/client.rb">get_chargeback</a>(id) -> Payabli::Types::ChargebackQueryRecords</code></summary>
+<details><summary><code>client.charge_backs.<a href="/lib/payabli/charge_backs/client.rb">get_chargeback</a>(id:) -> Payabli::Types::ChargebackQueryRecords</code></summary>
 <dl>
 <dd>
 
@@ -28188,7 +28188,7 @@ client.charge_backs.get_chargeback(id: 1000000)
 </dl>
 </details>
 
-<details><summary><code>client.charge_backs.<a href="/lib/payabli/charge_backs/client.rb">get_chargeback_attachment</a>(id, file_name) -> String</code></summary>
+<details><summary><code>client.charge_backs.<a href="/lib/payabli/charge_backs/client.rb">get_chargeback_attachment</a>(id:, file_name:) -> String</code></summary>
 <dl>
 <dd>
 

@@ -78,4 +78,50 @@ class WireMockTestCase < Minitest::Test
 
     assert_equal expected_value, actual_header, "Expected Authorization header '#{expected_value}', got '#{actual_header}'"
   end
+
+  # Verifies per-endpoint auth routing: for each matcher, asserts the named auth header is
+  # present with an exact value ("exact"), present with any value ("present"), or absent
+  # ("absent"). Proves the SDK sent only the auth scheme(s) the endpoint declares.
+  #
+  # @param test_id [String] The test ID used to filter requests
+  # @param method [String] The HTTP method (GET, POST, etc.)
+  # @param url_path [String] The URL path to match
+  # @param matchers [Array<Hash>] Each: { name:, kind: "exact"|"present"|"absent", value: }
+  def verify_auth_headers(test_id:, method:, url_path:, matchers:)
+    admin_url = ENV["WIREMOCK_URL"] ? "#{ENV["WIREMOCK_URL"]}/__admin" : WIREMOCK_ADMIN_URL
+    uri = URI("#{admin_url}/requests/find")
+    http = Net::HTTP.new(uri.host, uri.port)
+    post_request = Net::HTTP::Post.new(uri.path, { "Content-Type" => "application/json" })
+
+    request_body = { "method" => method, "urlPath" => url_path }
+    request_body["headers"] = { "X-Test-Id" => { "equalTo" => test_id } }
+
+    post_request.body = request_body.to_json
+    response = http.request(post_request)
+    result = JSON.parse(response.body)
+    requests = result["requests"] || []
+
+    refute_empty requests, "No requests found for test_id #{test_id}"
+    headers = requests.first["headers"] || {}
+    matchers.each do |matcher|
+      name = matcher[:name]
+      actual = headers.find { |header_name, _| header_name.to_s.casecmp?(name) }&.last
+      case matcher[:kind]
+      when "exact"
+        message = "Expected #{name} header '#{matcher[:value]}' for test_id #{test_id}, got '#{actual.inspect}'"
+
+        assert_equal matcher[:value], actual, message
+      when "present"
+        message = "Expected #{name} header to be present for test_id #{test_id}, but it was absent"
+
+        refute_nil actual, message
+      when "absent"
+        message = "Expected #{name} header to be absent for test_id #{test_id}, but got '#{actual.inspect}'"
+
+        assert_nil actual, message
+      else
+        raise ArgumentError, "Unknown matcher kind: #{matcher[:kind]}"
+      end
+    end
+  end
 end

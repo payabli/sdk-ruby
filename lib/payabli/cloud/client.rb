@@ -23,6 +23,13 @@ module Payabli
       # @option params [String] :entry
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.cloud.add_device(
+      #     entry: "8cfec329267",
+      #     description: "Front Desk POS",
+      #     registration_code: "YS7DS5"
+      #   )
+      #
       # @return [Payabli::Types::AddDeviceResponse]
       def add_device(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -33,6 +40,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -67,13 +75,21 @@ module Payabli
       # @option params [String] :entry
       # @option params [String] :device_id
       #
+      # @example
+      #   client.cloud.remove_device(
+      #     entry: "8cfec329267",
+      #     device_id: "499585-389fj484-3jcj8hj3"
+      #   )
+      #
       # @return [Payabli::Types::RemoveDeviceResponse]
       def remove_device(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "DELETE",
           path: "Cloud/register/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:device_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -102,13 +118,21 @@ module Payabli
       # @option params [String] :entry
       # @option params [String] :device_id
       #
+      # @example
+      #   client.cloud.history_device(
+      #     entry: "8cfec329267",
+      #     device_id: "499585-389fj484-3jcj8hj3"
+      #   )
+      #
       # @return [Payabli::Types::CloudQueryApiResponse]
       def history_device(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Cloud/history/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:device_id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -140,16 +164,21 @@ module Payabli
       # @option params [String] :entry
       # @option params [Boolean, nil] :force_refresh
       #
+      # @example
+      #   client.cloud.list_device(entry: "8cfec329267")
+      #
       # @return [Payabli::Types::CloudQueryApiResponse]
       def list_device(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
         query_params["forceRefresh"] = params[:force_refresh] if params.key?(:force_refresh)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Cloud/list/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           query: query_params,
           request_options: request_options
         )

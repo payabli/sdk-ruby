@@ -28,6 +28,26 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Payabli::Types::Entry] :entry
       #
+      # @example
+      #   client.ghost_card.create_ghost_card(
+      #     entry: "8cfec329267",
+      #     vendor_id: 456,
+      #     expense_limit: 500,
+      #     amount: 500,
+      #     max_number_of_uses: 3,
+      #     exact_amount: false,
+      #     expense_limit_period: "monthly",
+      #     billing_cycle: "monthly",
+      #     billing_cycle_day: "1",
+      #     daily_transaction_count: 5,
+      #     daily_amount_limit: 200,
+      #     transaction_amount_limit: 100,
+      #     mcc: "5411",
+      #     tcc: "R",
+      #     misc_1: "PO-98765",
+      #     misc_2: "Dept-Finance"
+      #   )
+      #
       # @return [Payabli::Types::CreateGhostCardResponse]
       def create_ghost_card(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -35,10 +55,12 @@ module Payabli
         non_body_param_names = %w[entry]
         body = request_data.except(*non_body_param_names)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "MoneyOutCard/GhostCard/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           body: body,
           request_options: request_options
         )
@@ -67,6 +89,13 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Payabli::Types::Entry] :entry
       #
+      # @example
+      #   client.ghost_card.update_card(
+      #     entry: "8cfec329267",
+      #     card_token: "gc_abc123def456",
+      #     status: "Cancelled"
+      #   )
+      #
       # @return [Payabli::Types::PayabliApiResponse]
       def update_card(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -74,10 +103,12 @@ module Payabli
         non_body_param_names = %w[entry]
         body = request_data.except(*non_body_param_names)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PATCH",
           path: "MoneyOutCard/card/#{URI.encode_uri_component(params[:entry].to_s)}",
+          headers: headers,
           body: body,
           request_options: request_options
         )

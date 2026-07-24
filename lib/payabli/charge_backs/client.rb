@@ -22,6 +22,12 @@ module Payabli
       # @option params [Integer] :id
       # @option params [String, nil] :idempotency_key
       #
+      # @example
+      #   client.charge_backs.add_response(
+      #     id: 1000000,
+      #     idempotency_key: "6B29FC40-CA47-1067-B31D-00DD010662DA"
+      #   )
+      #
       # @return [Payabli::Types::AddResponseResponse]
       def add_response(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -32,6 +38,7 @@ module Payabli
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
@@ -65,13 +72,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Integer] :id
       #
+      # @example
+      #   client.charge_backs.get_chargeback(id: 1000000)
+      #
       # @return [Payabli::Types::ChargebackQueryRecords]
       def get_chargeback(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "ChargeBacks/read/#{URI.encode_uri_component(params[:id].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -100,13 +112,21 @@ module Payabli
       # @option params [Integer] :id
       # @option params [String] :file_name
       #
+      # @example
+      #   client.charge_backs.get_chargeback_attachment(
+      #     id: 1000000,
+      #     file_name: "fileName"
+      #   )
+      #
       # @return [String]
       def get_chargeback_attachment(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "ChargeBacks/getChargebackAttachments/#{URI.encode_uri_component(params[:id].to_s)}/#{URI.encode_uri_component(params[:file_name].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin

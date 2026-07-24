@@ -26,6 +26,16 @@ module Payabli
       # @option params [Integer, nil] :page_size
       # @option params [Integer, nil] :page
       #
+      # @example
+      #   client.notificationlogs.search_notification_logs(
+      #     page_size: 20,
+      #     start_date: "2024-01-01T00:00:00Z",
+      #     end_date: "2024-01-31T23:59:59Z",
+      #     notification_event: "ActivatedMerchant",
+      #     succeeded: true,
+      #     org_id: 123
+      #   )
+      #
       # @return [Array[Payabli::Types::NotificationLog]]
       def search_notification_logs(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
@@ -37,10 +47,12 @@ module Payabli
         query_params["PageSize"] = params[:page_size] if params.key?(:page_size)
         query_params["Page"] = params[:page] if params.key?(:page)
 
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/notificationlogs",
+          headers: headers,
           query: query_params,
           body: body,
           request_options: request_options
@@ -69,13 +81,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :uuid
       #
+      # @example
+      #   client.notificationlogs.get_notification_log(uuid: "550e8400-e29b-41d4-a716-446655440000")
+      #
       # @return [Payabli::Types::NotificationLogDetail]
       def get_notification_log(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "v2/notificationlogs/#{URI.encode_uri_component(params[:uuid].to_s)}",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -105,13 +122,18 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :uuid
       #
+      # @example
+      #   client.notificationlogs.retry_notification_log(uuid: "550e8400-e29b-41d4-a716-446655440000")
+      #
       # @return [Payabli::Types::NotificationLogDetail]
       def retry_notification_log(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "v2/notificationlogs/#{URI.encode_uri_component(params[:uuid].to_s)}/retry",
+          headers: headers,
           request_options: request_options
         )
         begin
@@ -141,13 +163,18 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       #
+      # @example
+      #   client.notificationlogs.bulk_retry_notification_logs(request: %w[550e8400-e29b-41d4-a716-446655440000 550e8400-e29b-41d4-a716-446655440001 550e8400-e29b-41d4-a716-446655440002])
+      #
       # @return [untyped]
       def bulk_retry_notification_logs(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/notificationlogs/retry",
+          headers: headers,
           body: params,
           request_options: request_options
         )

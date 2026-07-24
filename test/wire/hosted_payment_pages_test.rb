@@ -7,6 +7,8 @@ class HostedPaymentPagesWireTest < WireMockTestCase
     super
 
     @client = Payabli::Client.new(
+      client_id: "test-client-id",
+      client_secret: "test-client-secret",
       api_key: "test-api-key",
       base_url: WIREMOCK_BASE_URL
     )
@@ -32,6 +34,16 @@ class HostedPaymentPagesWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/Paypoint/load/8cfec329267/pay-your-fees-1",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_hosted_payment_pages_new_page_with_wiremock
@@ -54,6 +66,16 @@ class HostedPaymentPagesWireTest < WireMockTestCase
       query_params: nil,
       expected: 1
     )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/Paypoint/8cfec329267",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
   end
 
   def test_hosted_payment_pages_save_page_with_wiremock
@@ -75,6 +97,16 @@ class HostedPaymentPagesWireTest < WireMockTestCase
       url_path: "/Paypoint/8cfec329267/pay-your-fees-1",
       query_params: nil,
       expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "PUT",
+      url_path: "/Paypoint/8cfec329267/pay-your-fees-1",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
     )
   end
 end
