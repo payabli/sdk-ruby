@@ -10,6 +10,8 @@ module Payabli
 
         field :force_vendor_creation, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "forceVendorCreation"
 
+        field :same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "sameDayACH"
+
         field :idempotency_key, -> { String }, optional: true, nullable: false, api_name: "idempotencyKey"
 
         field :entry_point, -> { String }, optional: false, nullable: false, api_name: "entryPoint"

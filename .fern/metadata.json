@@ -6,10 +6,10 @@
     "enableWireTests": true,
     "rubocopVariableNumberStyle": "snake_case"
   },
-  "originGitCommit": "bba6b6215757725a8aada77eabcb84166221f24e",
+  "originGitCommit": "85dc6dd780991f47e9c2d71ad221647a62bccf93",
   "originGitCommitIsDirty": true,
   "invokedBy": "ci",
-  "requestedVersion": "3.0.6",
+  "requestedVersion": "3.0.7",
   "ciProvider": "github",
-  "sdkVersion": "3.0.6"
+  "sdkVersion": "3.0.7"
 }

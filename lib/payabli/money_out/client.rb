@@ -18,8 +18,8 @@ module Payabli
       # When `autoCapture` is `true`, Payabli captures the transaction asynchronously after authorization. The response
       # confirms only that the transaction was authorized; it doesn't confirm that capture succeeded. To confirm
       # capture, listen for the
-      # [`payout_transaction_approvedcaptured`](/developers/api-reference/webhooks-overview/payout-transaction-approved-captured)
-      # webhook event.
+      # [`payout_transaction_approvedcaptured`](/developers/webhooks/payout-transaction-approved-captured) webhook
+      # event.
       #
       # If a velocity fraud alert is triggered, the endpoint returns a `202` response with `responseCode` `9051`, and
       # the authorization is held for risk review rather than rejected. If a risk policy blocks the transaction, the
@@ -40,6 +40,7 @@ module Payabli
       # @option params [Boolean, nil] :allow_duplicated_bills
       # @option params [Boolean, nil] :do_not_create_bills
       # @option params [Boolean, nil] :force_vendor_creation
+      # @option params [Boolean, nil] :same_day_ach
       # @option params [String, nil] :idempotency_key
       #
       # @example
@@ -66,13 +67,14 @@ module Payabli
       def authorize_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::MoneyOut::Types::RequestOutAuthorize.new(params).to_h
-        non_body_param_names = %w[allowDuplicatedBills doNotCreateBills forceVendorCreation idempotencyKey]
+        non_body_param_names = %w[allowDuplicatedBills doNotCreateBills forceVendorCreation sameDayACH idempotencyKey]
         body = request_data.except(*non_body_param_names)
 
         query_params = {}
         query_params["allowDuplicatedBills"] = params[:allow_duplicated_bills] if params.key?(:allow_duplicated_bills)
         query_params["doNotCreateBills"] = params[:do_not_create_bills] if params.key?(:do_not_create_bills)
         query_params["forceVendorCreation"] = params[:force_vendor_creation] if params.key?(:force_vendor_creation)
+        query_params["sameDayACH"] = params[:same_day_ach] if params.key?(:same_day_ach)
 
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
@@ -228,6 +230,7 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_query_parameters
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Boolean, nil] :auto_convert_same_day_ach
       # @option params [String, nil] :idempotency_key
       #
       # @example
@@ -236,6 +239,11 @@ module Payabli
       # @return [Payabli::Types::CaptureAllOutResponse]
       def capture_all_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[auto_convert_same_day_ach]
+        query_params = {}
+        query_params["autoConvertSameDayAch"] = params[:auto_convert_same_day_ach] if params.key?(:auto_convert_same_day_ach)
+        params = params.except(*query_param_names)
+
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
@@ -245,6 +253,7 @@ module Payabli
           method: "POST",
           path: "MoneyOut/captureAll",
           headers: headers,
+          query: query_params,
           body: params,
           request_options: request_options
         )
@@ -277,6 +286,7 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [String] :reference_id
+      # @option params [Boolean, nil] :auto_convert_same_day_ach
       # @option params [String, nil] :idempotency_key
       #
       # @example
@@ -285,6 +295,9 @@ module Payabli
       # @return [Payabli::Types::AuthCapturePayoutResponse]
       def capture_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_params = {}
+        query_params["autoConvertSameDayAch"] = params[:auto_convert_same_day_ach] if params.key?(:auto_convert_same_day_ach)
+
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
 
@@ -294,6 +307,7 @@ module Payabli
           method: "GET",
           path: "MoneyOut/capture/#{URI.encode_uri_component(params[:reference_id].to_s)}",
           headers: headers,
+          query: query_params,
           request_options: request_options
         )
         begin

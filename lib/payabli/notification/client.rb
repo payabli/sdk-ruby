@@ -23,7 +23,7 @@ module Payabli
       # @example
       #   client.notification.add_notification(
       #     content: {
-      #       event_type: "CreatedApplication"
+      #       event_type: "createdapplication"
       #     },
       #     frequency: "untilcancelled",
       #     method_: "web",
@@ -113,7 +113,7 @@ module Payabli
       #   client.notification.update_notification(
       #     n_id: "1717",
       #     content: {
-      #       event_type: "ApprovedPayment"
+      #       event_type: "approvedpayment"
       #     },
       #     frequency: "untilcancelled",
       #     method_: "email",

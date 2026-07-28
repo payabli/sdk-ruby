@@ -8847,9 +8847,426 @@
           }
         }
       }
+    },
+    {
+      "id": "fb60e9c2-ec67-4b06-9e51-489c19d26d36",
+      "name": "Validate bank account change - ValidateBankAccountChange",
+      "request": {
+        "urlPathTemplate": "/v2/cases/bank-account/{paypointId}/validate",
+        "method": "POST",
+        "pathParameters": {
+          "paypointId": {
+            "equalTo": "3040"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"isValid\": true,\n  \"blockingConditions\": [],\n  \"warnings\": [\n    \"This paypoint has active batches. Consider scheduling the bank account change after the current batch is closed.\"\n  ],\n  \"validationErrors\": []\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fb60e9c2-ec67-4b06-9e51-489c19d26d36",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "fb71e7b2-2d77-4319-9bbf-3b405450e118",
+      "name": "Create bank account change - CreateBankAccountChange",
+      "request": {
+        "urlPathTemplate": "/v2/cases/bank-account/{paypointId}",
+        "method": "POST",
+        "pathParameters": {
+          "paypointId": {
+            "equalTo": "3040"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"uuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n  \"state\": \"Submitted\",\n  \"caseType\": \"BankAccountChange\",\n  \"parameters\": {\n    \"type\": \"BankAccountChange\",\n    \"nickname\": \"Main Settlement Account\",\n    \"bankName\": \"First National Bank\",\n    \"bankToken\": \"bnk_2b1c9e40f5a34c9a8f219e7c6b1a2d34\",\n    \"accountType\": \"Checking\",\n    \"bankAccountHolderName\": \"Gruzya Adventure Outfitters LLC\",\n    \"bankAccountHolderType\": \"business\",\n    \"bankAccountFunction\": \"Deposits\",\n    \"services\": {\n      \"moneyIn\": [\n        \"Ach\"\n      ],\n      \"moneyOut\": [\n        \"Ach\"\n      ]\n    },\n    \"default\": true\n  },\n  \"orgId\": 123,\n  \"paypointId\": 3040,\n  \"scheduleFor\": null,\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-01-15T10:30:00Z\",\n  \"createdBy\": 0,\n  \"assigneeId\": null,\n  \"lastReviewedById\": null,\n  \"stateHistory\": [],\n  \"attachments\": [],\n  \"roomId\": null,\n  \"metadata\": null,\n  \"org\": {\n    \"id\": 123,\n    \"name\": \"Example Partner Org\"\n  },\n  \"paypoint\": {\n    \"id\": 3040,\n    \"name\": \"Gruzya Adventure Outfitters\"\n  },\n  \"createdByUser\": null,\n  \"assignee\": null,\n  \"lastReviewedBy\": null\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fb71e7b2-2d77-4319-9bbf-3b405450e118",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9050d1d3-83b9-4413-a09c-0bf6def0e020",
+      "name": "Get case - GetCase",
+      "request": {
+        "urlPathTemplate": "/v2/cases/{uuid}",
+        "method": "GET",
+        "pathParameters": {
+          "uuid": {
+            "equalTo": "9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"uuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n  \"state\": \"PendingCompletion\",\n  \"caseType\": \"BankAccountChange\",\n  \"parameters\": {\n    \"type\": \"BankAccountChange\",\n    \"nickname\": \"Main Settlement Account\",\n    \"bankName\": \"First National Bank\",\n    \"bankToken\": \"bnk_2b1c9e40f5a34c9a8f219e7c6b1a2d34\",\n    \"accountType\": \"Checking\",\n    \"bankAccountHolderName\": \"Gruzya Adventure Outfitters LLC\",\n    \"bankAccountHolderType\": \"business\",\n    \"bankAccountFunction\": \"Deposits\",\n    \"services\": {\n      \"moneyIn\": [\n        \"Ach\"\n      ],\n      \"moneyOut\": [\n        \"Ach\"\n      ]\n    },\n    \"default\": true\n  },\n  \"orgId\": 123,\n  \"paypointId\": 3040,\n  \"scheduleFor\": null,\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-01-15T10:30:43Z\",\n  \"createdBy\": 0,\n  \"assigneeId\": null,\n  \"lastReviewedById\": null,\n  \"stateHistory\": [\n    {\n      \"uuid\": \"019f806f-453f-701c-b77d-cb585b743bef\",\n      \"caseUuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n      \"fromState\": \"Submitted\",\n      \"toState\": \"Verifying\",\n      \"ipAddress\": null,\n      \"triggeredBy\": null,\n      \"reason\": \"Background verification started\",\n      \"createdAt\": \"2026-01-15T10:30:03Z\",\n      \"triggeredByUser\": null\n    },\n    {\n      \"uuid\": \"019f806f-e00e-73d2-b6a4-9dd5b540e11e\",\n      \"caseUuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n      \"fromState\": \"Verifying\",\n      \"toState\": \"AutoApproved\",\n      \"ipAddress\": null,\n      \"triggeredBy\": null,\n      \"reason\": \"Polling outcome: approved\",\n      \"createdAt\": \"2026-01-15T10:30:43Z\",\n      \"triggeredByUser\": null\n    },\n    {\n      \"uuid\": \"019f806f-e015-730b-be18-ec695f42f133\",\n      \"caseUuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n      \"fromState\": \"AutoApproved\",\n      \"toState\": \"PendingCompletion\",\n      \"ipAddress\": null,\n      \"triggeredBy\": null,\n      \"reason\": \"funding hold acquired\",\n      \"createdAt\": \"2026-01-15T10:30:43Z\",\n      \"triggeredByUser\": null\n    }\n  ],\n  \"attachments\": [],\n  \"roomId\": 96369,\n  \"metadata\": {\n    \"verification\": {\n      \"verificationResult\": {\n        \"code\": 6,\n        \"name\": \"Pass\",\n        \"description\": \"The suggested action is to accept the bank account and/or customer data for this inquiry.\"\n      },\n      \"accountResponseCode\": {\n        \"code\": 12,\n        \"name\": \"_1111\",\n        \"description\": \"Account Verified – The account was found to be an open and valid checking account.\"\n      },\n      \"customerResponseCode\": null\n    },\n    \"reviewDecision\": null\n  },\n  \"org\": {\n    \"id\": 123,\n    \"name\": \"Example Partner Org\"\n  },\n  \"paypoint\": {\n    \"id\": 3040,\n    \"name\": \"Gruzya Adventure Outfitters\"\n  },\n  \"createdByUser\": null,\n  \"assignee\": null,\n  \"lastReviewedBy\": null\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9050d1d3-83b9-4413-a09c-0bf6def0e020",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e7b60b19-d82e-4f1c-bb07-a43e19f06322",
+      "name": "List cases - ListCases",
+      "request": {
+        "urlPathTemplate": "/v2/cases/organization/{organizationId}",
+        "method": "GET",
+        "pathParameters": {
+          "organizationId": {
+            "equalTo": "123"
+          }
+        },
+        "queryParameters": {
+          "fromRecord": {
+            "equalTo": "0"
+          },
+          "limitRecord": {
+            "equalTo": "20"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"summary\": {\n    \"totalRecords\": 1,\n    \"totalAmount\": 0,\n    \"totalNetAmount\": 0,\n    \"totalPages\": 1,\n    \"pageSize\": 20,\n    \"pageidentifier\": null\n  },\n  \"records\": [\n    {\n      \"uuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n      \"state\": \"PendingCompletion\",\n      \"caseType\": \"BankAccountChange\",\n      \"parameters\": {\n        \"type\": \"BankAccountChange\",\n        \"nickname\": \"Main Settlement Account\",\n        \"bankName\": \"First National Bank\",\n        \"bankToken\": \"bnk_2b1c9e40f5a34c9a8f219e7c6b1a2d34\",\n        \"accountType\": \"Checking\",\n        \"bankAccountHolderName\": \"Gruzya Adventure Outfitters LLC\",\n        \"bankAccountHolderType\": \"business\",\n        \"bankAccountFunction\": \"Deposits\",\n        \"services\": {\n          \"moneyIn\": [\n            \"Ach\"\n          ],\n          \"moneyOut\": [\n            \"Ach\"\n          ]\n        },\n        \"default\": true\n      },\n      \"orgId\": 123,\n      \"paypointId\": 3040,\n      \"scheduleFor\": null,\n      \"createdAt\": \"2026-01-15T10:30:00Z\",\n      \"updatedAt\": \"2026-01-15T10:30:43Z\",\n      \"createdBy\": 0,\n      \"assigneeId\": null,\n      \"lastReviewedById\": null,\n      \"stateHistory\": [],\n      \"attachments\": [],\n      \"roomId\": 96369,\n      \"metadata\": null,\n      \"org\": {\n        \"id\": 123,\n        \"name\": \"Example Partner Org\"\n      },\n      \"paypoint\": {\n        \"id\": 3040,\n        \"name\": \"Gruzya Adventure Outfitters\"\n      },\n      \"createdByUser\": null,\n      \"assignee\": null,\n      \"lastReviewedBy\": null\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e7b60b19-d82e-4f1c-bb07-a43e19f06322",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2bc0953d-22c3-4694-8e9b-4de1cb8bdf48",
+      "name": "List case notes - ListMessages",
+      "request": {
+        "urlPathTemplate": "/v2/cases/{caseUuid}/messages",
+        "method": "GET",
+        "pathParameters": {
+          "caseUuid": {
+            "equalTo": "9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"messages\": [],\n  \"nextCursor\": null\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2bc0953d-22c3-4694-8e9b-4de1cb8bdf48",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c41a09e1-37b6-4944-8db0-9fd9e492930b",
+      "name": "Add case note - PostMessage",
+      "request": {
+        "urlPathTemplate": "/v2/cases/{caseUuid}/messages",
+        "method": "POST",
+        "pathParameters": {
+          "caseUuid": {
+            "equalTo": "9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"messageId\": 4821,\n  \"roomId\": 96369,\n  \"createdAt\": \"2026-01-15T11:05:00Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c41a09e1-37b6-4944-8db0-9fd9e492930b",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e0cc4565-b277-4716-9eb2-39d47a9f60ac",
+      "name": "List available case actions - ListTransitions",
+      "request": {
+        "urlPathTemplate": "/v2/cases/{uuid}/transitions",
+        "method": "GET",
+        "pathParameters": {
+          "uuid": {
+            "equalTo": "9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"transitions\": []\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e0cc4565-b277-4716-9eb2-39d47a9f60ac",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f7c79e4b-af9b-49a2-942b-3998a6914a71",
+      "name": "Fire a case action - ApproveCase",
+      "request": {
+        "urlPathTemplate": "/v2/cases/{uuid}/transitions",
+        "method": "POST",
+        "pathParameters": {
+          "uuid": {
+            "equalTo": "9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"uuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n  \"state\": \"Approved\",\n  \"caseType\": \"BankAccountChange\",\n  \"parameters\": {\n    \"type\": \"BankAccountChange\",\n    \"nickname\": \"Main Settlement Account\",\n    \"bankName\": \"First National Bank\",\n    \"bankToken\": \"bnk_2b1c9e40f5a34c9a8f219e7c6b1a2d34\",\n    \"accountType\": \"Checking\",\n    \"bankAccountHolderName\": \"Gruzya Adventure Outfitters LLC\",\n    \"bankAccountHolderType\": \"business\",\n    \"bankAccountFunction\": \"Deposits\",\n    \"services\": {\n      \"moneyIn\": [\n        \"Ach\"\n      ],\n      \"moneyOut\": [\n        \"Ach\"\n      ]\n    },\n    \"default\": true\n  },\n  \"orgId\": 123,\n  \"paypointId\": 3040,\n  \"scheduleFor\": null,\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-01-15T12:15:00Z\",\n  \"createdBy\": 0,\n  \"assigneeId\": 4238,\n  \"lastReviewedById\": 4238,\n  \"stateHistory\": [\n    {\n      \"uuid\": \"019f8100-1a2b-73c4-9d5e-6f7a8b9c0d1e\",\n      \"caseUuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n      \"fromState\": \"Assigned\",\n      \"toState\": \"Approved\",\n      \"ipAddress\": \"203.0.113.10\",\n      \"triggeredBy\": 4238,\n      \"reason\": \"Account ownership confirmed with the merchant by phone.\",\n      \"createdAt\": \"2026-01-15T12:15:00Z\",\n      \"triggeredByUser\": {\n        \"id\": 4238,\n        \"name\": \"Jordan Rivera\"\n      }\n    }\n  ],\n  \"attachments\": [],\n  \"roomId\": 96370,\n  \"metadata\": {\n    \"verification\": {\n      \"verificationResult\": {\n        \"code\": 5,\n        \"name\": \"RiskAlert\",\n        \"description\": \"The suggested action is to further investigate the bank account and/or customer data for this inquiry due to a risk alert .\"\n      },\n      \"accountResponseCode\": {\n        \"code\": 12,\n        \"name\": \"_1111\",\n        \"description\": \"Account Verified – The account was found to be an open and valid checking account.\"\n      },\n      \"customerResponseCode\": {\n        \"code\": 3,\n        \"name\": \"CA21\",\n        \"description\": \"The customer or business name data did not match gAuthenticate data.\"\n      }\n    },\n    \"reviewDecision\": null\n  },\n  \"org\": {\n    \"id\": 123,\n    \"name\": \"Example Partner Org\"\n  },\n  \"paypoint\": {\n    \"id\": 3040,\n    \"name\": \"Gruzya Adventure Outfitters\"\n  },\n  \"createdByUser\": null,\n  \"assignee\": {\n    \"id\": 4238,\n    \"name\": \"Jordan Rivera\"\n  },\n  \"lastReviewedBy\": {\n    \"id\": 4238,\n    \"name\": \"Jordan Rivera\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f7c79e4b-af9b-49a2-942b-3998a6914a71",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9842ff1e-d0aa-4e46-83d3-c7b9f27301a1",
+      "name": "Assign case - AssignCase",
+      "request": {
+        "urlPathTemplate": "/v2/cases/{uuid}/assign",
+        "method": "POST",
+        "pathParameters": {
+          "uuid": {
+            "equalTo": "9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"uuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n  \"state\": \"Assigned\",\n  \"caseType\": \"BankAccountChange\",\n  \"parameters\": {\n    \"type\": \"BankAccountChange\",\n    \"nickname\": \"Main Settlement Account\",\n    \"bankName\": \"First National Bank\",\n    \"bankToken\": \"bnk_2b1c9e40f5a34c9a8f219e7c6b1a2d34\",\n    \"accountType\": \"Checking\",\n    \"bankAccountHolderName\": \"Gruzya Adventure Outfitters LLC\",\n    \"bankAccountHolderType\": \"business\",\n    \"bankAccountFunction\": \"Deposits\",\n    \"services\": {\n      \"moneyIn\": [\n        \"Ach\"\n      ],\n      \"moneyOut\": [\n        \"Ach\"\n      ]\n    },\n    \"default\": true\n  },\n  \"orgId\": 123,\n  \"paypointId\": 3040,\n  \"scheduleFor\": null,\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-01-15T11:40:00Z\",\n  \"createdBy\": 0,\n  \"assigneeId\": 4238,\n  \"lastReviewedById\": null,\n  \"stateHistory\": [\n    {\n      \"uuid\": \"019f80f0-2b3c-74d5-8e6f-7a8b9c0d1e2f\",\n      \"caseUuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n      \"fromState\": \"PendingReview\",\n      \"toState\": \"Assigned\",\n      \"ipAddress\": \"203.0.113.10\",\n      \"triggeredBy\": 4110,\n      \"reason\": \"Routing to the risk team for review.\",\n      \"createdAt\": \"2026-01-15T11:40:00Z\",\n      \"triggeredByUser\": {\n        \"id\": 4110,\n        \"name\": \"Alex Chen\"\n      }\n    }\n  ],\n  \"attachments\": [],\n  \"roomId\": 96370,\n  \"metadata\": {\n    \"verification\": {\n      \"verificationResult\": {\n        \"code\": 5,\n        \"name\": \"RiskAlert\",\n        \"description\": \"The suggested action is to further investigate the bank account and/or customer data for this inquiry due to a risk alert .\"\n      },\n      \"accountResponseCode\": {\n        \"code\": 12,\n        \"name\": \"_1111\",\n        \"description\": \"Account Verified – The account was found to be an open and valid checking account.\"\n      },\n      \"customerResponseCode\": {\n        \"code\": 3,\n        \"name\": \"CA21\",\n        \"description\": \"The customer or business name data did not match gAuthenticate data.\"\n      }\n    },\n    \"reviewDecision\": null\n  },\n  \"org\": {\n    \"id\": 123,\n    \"name\": \"Example Partner Org\"\n  },\n  \"paypoint\": {\n    \"id\": 3040,\n    \"name\": \"Gruzya Adventure Outfitters\"\n  },\n  \"createdByUser\": null,\n  \"assignee\": {\n    \"id\": 4238,\n    \"name\": \"Jordan Rivera\"\n  },\n  \"lastReviewedBy\": null\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9842ff1e-d0aa-4e46-83d3-c7b9f27301a1",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "33e7df7e-9e32-4f7c-9ac3-ec3ad3b3bc19",
+      "name": "List case attachments - ListAttachments",
+      "request": {
+        "urlPathTemplate": "/v2/cases/{caseUuid}/attachments",
+        "method": "GET",
+        "pathParameters": {
+          "caseUuid": {
+            "equalTo": "9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n  {\n    \"uuid\": \"a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d\",\n    \"caseUuid\": \"9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70\",\n    \"fileType\": \"application/pdf\",\n    \"filename\": \"voided-check.pdf\",\n    \"fileUrl\": \"cases/9c2b7e14-3a5f-4d21-b8e0-1f6a4c9d2e70/attachments/a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d\",\n    \"uploadedAt\": \"2026-01-15T10:45:00Z\",\n    \"uploadedBy\": \"4238\",\n    \"uploadedByUser\": null\n  }\n]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "33e7df7e-9e32-4f7c-9ac3-ec3ad3b3bc19",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "fb39b1ae-a3eb-4e74-8c28-0662dbfc2110",
+      "name": "Upload case attachment - default",
+      "request": {
+        "urlPathTemplate": "/v2/cases/{caseUuid}/attachments",
+        "method": "POST",
+        "pathParameters": {
+          "caseUuid": {
+            "equalTo": "caseUuid"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"uuid\": \"uuid\",\n  \"caseUuid\": \"caseUuid\",\n  \"fileType\": \"fileType\",\n  \"filename\": \"filename\",\n  \"fileUrl\": \"fileUrl\",\n  \"uploadedAt\": \"2024-01-15T09:30:00Z\",\n  \"uploadedBy\": \"uploadedBy\",\n  \"uploadedByUser\": {\n    \"id\": 1000000,\n    \"name\": \"name\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fb39b1ae-a3eb-4e74-8c28-0662dbfc2110",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "da86e198-d8de-4527-b03c-87abcc240553",
+      "name": "Download case attachment - default",
+      "request": {
+        "urlPathTemplate": "/v2/cases/{caseUuid}/attachments/{attachmentId}",
+        "method": "GET",
+        "pathParameters": {
+          "caseUuid": {
+            "equalTo": "caseUuid"
+          },
+          "attachmentId": {
+            "equalTo": "attachmentId"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"isSuccess\": true,\n  \"responseText\": \"responseText\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "da86e198-d8de-4527-b03c-87abcc240553",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9bd67f24-b098-4109-881a-ffa1528d6c1b",
+      "name": "Delete case attachment - default",
+      "request": {
+        "urlPathTemplate": "/v2/cases/{caseUuid}/attachments/{attachmentId}",
+        "method": "DELETE",
+        "pathParameters": {
+          "caseUuid": {
+            "equalTo": "caseUuid"
+          },
+          "attachmentId": {
+            "equalTo": "attachmentId"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9bd67f24-b098-4109-881a-ffa1528d6c1b",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
     }
   ],
   "meta": {
-    "total": 255
+    "total": 268
   }
 }
