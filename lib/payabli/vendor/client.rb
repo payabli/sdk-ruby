@@ -71,13 +71,16 @@ module Payabli
       # @return [Payabli::Types::PayabliApiResponseVendors]
       def add_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[entry]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "Vendor/single/#{URI.encode_uri_component(params[:entry].to_s)}",
           headers: headers,
-          body: Payabli::Types::VendorData.new(params).to_h,
+          body: Payabli::Types::VendorData.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -153,13 +156,16 @@ module Payabli
       # @return [Payabli::Types::PayabliApiResponseVendors]
       def edit_vendor(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[id_vendor]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Vendor/#{URI.encode_uri_component(params[:id_vendor].to_s)}",
           headers: headers,
-          body: Payabli::Types::VendorData.new(params).to_h,
+          body: Payabli::Types::VendorData.new(body_params).to_h,
           request_options: request_options
         )
         begin

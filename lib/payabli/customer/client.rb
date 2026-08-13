@@ -146,13 +146,16 @@ module Payabli
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def update_customer(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[customer_id]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Customer/#{URI.encode_uri_component(params[:customer_id].to_s)}",
           headers: headers,
-          body: Payabli::Types::CustomerData.new(params).to_h,
+          body: Payabli::Types::CustomerData.new(body_params).to_h,
           request_options: request_options
         )
         begin

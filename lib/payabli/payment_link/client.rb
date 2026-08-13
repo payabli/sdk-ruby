@@ -393,13 +393,16 @@ module Payabli
       # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def push_pay_link_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[pay_link_id]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "PaymentLink/push/#{URI.encode_uri_component(params[:pay_link_id].to_s)}",
           headers: headers,
-          body: Payabli::Types::PushPayLinkRequest.new(params).to_h,
+          body: Payabli::Types::PushPayLinkRequest.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -816,13 +819,16 @@ module Payabli
       # @return [Payabli::Types::PayabliApiResponsePaymentLinks]
       def update_pay_link_out_from_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[paylink_id]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PATCH",
           path: "PaymentLink/updateOut/#{URI.encode_uri_component(params[:paylink_id].to_s)}",
           headers: headers,
-          body: Payabli::Types::PaymentPageRequestBodyOut.new(params).to_h,
+          body: Payabli::Types::PaymentPageRequestBodyOut.new(body_params).to_h,
           request_options: request_options
         )
         begin

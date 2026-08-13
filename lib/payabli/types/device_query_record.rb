@@ -45,11 +45,19 @@ module Payabli
 
       field :paypoint_entry, -> { String }, optional: false, nullable: true, api_name: "paypointEntry"
 
+      field :paypoint_logo, -> { String }, optional: false, nullable: true, api_name: "paypointLogo"
+
       field :external_paypoint_id, -> { String }, optional: false, nullable: true, api_name: "externalPaypointId"
 
       field :parent_org_id, -> { Integer }, optional: false, nullable: true, api_name: "parentOrgId"
 
       field :parent_org_name, -> { String }, optional: false, nullable: true, api_name: "parentOrgName"
+
+      field :parent_org_logo, -> { String }, optional: false, nullable: true, api_name: "parentOrgLogo"
+
+      field :transaction_count, -> { Integer }, optional: false, nullable: false, api_name: "transactionCount"
+
+      field :volume_processed, -> { Integer }, optional: false, nullable: false, api_name: "volumeProcessed"
     end
   end
 end

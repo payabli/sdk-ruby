@@ -4,7 +4,7 @@ module Payabli
   module Organization
     module Types
       class OrganizationData < Internal::Types::Model
-        field :org_id, -> { Integer }, optional: false, nullable: false, api_name: "orgId"
+        field :org_id_path_param, -> { Integer }, optional: false, nullable: false, api_name: "orgIdPathParam"
 
         field :services, -> { Internal::Types::Array[Payabli::Types::ServiceCost] }, optional: true, nullable: false
 
@@ -24,7 +24,7 @@ module Payabli
 
         field :org_entry_name, -> { String }, optional: true, nullable: false, api_name: "orgEntryName"
 
-        field :organization_data_org_id, -> { String }, optional: true, nullable: false, api_name: "orgId"
+        field :org_id, -> { String }, optional: true, nullable: false, api_name: "orgId"
 
         field :org_logo, -> { Payabli::Types::FileContent }, optional: true, nullable: false, api_name: "orgLogo"
 

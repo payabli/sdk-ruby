@@ -152,13 +152,16 @@ module Payabli
       # @return [Payabli::Types::EditBillResponse]
       def edit_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[id_bill]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Bill/#{URI.encode_uri_component(params[:id_bill].to_s)}",
           headers: headers,
-          body: Payabli::Types::BillOutData.new(params).to_h,
+          body: Payabli::Types::BillOutData.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -389,13 +392,16 @@ module Payabli
       # @return [Payabli::Types::ModifyApprovalBillResponse]
       def modify_approval_bill(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[id_bill]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Bill/approval/#{URI.encode_uri_component(params[:id_bill].to_s)}",
           headers: headers,
-          body: params,
+          body: body_params,
           request_options: request_options
         )
         begin

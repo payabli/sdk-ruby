@@ -178,13 +178,16 @@ module Payabli
       # @return [Payabli::Types::CaptureResponse]
       def capture_auth(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[trans_id]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "MoneyIn/capture/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           headers: headers,
-          body: Payabli::Types::CaptureRequest.new(params).to_h,
+          body: Payabli::Types::CaptureRequest.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -946,13 +949,16 @@ module Payabli
       # @return [Payabli::Types::V2TransactionResponseWrapper]
       def capturev_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[trans_id]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/MoneyIn/capture/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           headers: headers,
-          body: Payabli::Types::CaptureRequest.new(params).to_h,
+          body: Payabli::Types::CaptureRequest.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -991,18 +997,40 @@ module Payabli
       # @option params [String] :trans_id
       #
       # @example
-      #   client.money_in.refundv_2(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
+      #   client.money_in.refundv_2(
+      #     trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
+      #     amount: 100,
+      #     order_description: "Materials deposit",
+      #     refund_details: {
+      #       split_refunding: [{
+      #         origination_entry_point: "495147f647",
+      #         account_id: "187-342",
+      #         description: "Refunding undelivered materials",
+      #         amount: 60
+      #       }, {
+      #         origination_entry_point: "8cfec329267",
+      #         account_id: "187-343",
+      #         description: "Refunding deposit for undelivered materials",
+      #         amount: 40
+      #       }]
+      #     },
+      #     source: "api"
+      #   )
       #
       # @return [Payabli::Types::V2TransactionResponseWrapper]
       def refundv_2(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[trans_id]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/MoneyIn/refund/#{URI.encode_uri_component(params[:trans_id].to_s)}",
           headers: headers,
-          body: Payabli::Types::RefundV2Request.new(params).to_h,
+          body: body_params.empty? ? nil : Payabli::Types::RefundV2Request.new(body_params).to_h,
+          omit_content_type_without_body: true,
           request_options: request_options
         )
         begin
@@ -1026,8 +1054,8 @@ module Payabli
       # response codes reference](/guides/pay-in-unified-response-codes-reference) for more information.
       #
       # <Note>
-      # To refund a split-funded transaction, include split instructions in the request body. Omit the body for a
-      # standard refund.
+      # For a standard refund, whether full (`amount` set to 0) or partial, send no request body. Include a request body
+      # only to refund a split-funded transaction, with split instructions in `refundDetails`.
       # </Note>
       #
       # @param request_options [Hash]
@@ -1043,19 +1071,38 @@ module Payabli
       # @example
       #   client.money_in.refundv_2_amount(
       #     trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
-      #     amount: 0
+      #     amount: 70,
+      #     order_description: "Materials deposit",
+      #     refund_details: {
+      #       split_refunding: [{
+      #         origination_entry_point: "495147f647",
+      #         account_id: "187-342",
+      #         description: "Refunding undelivered materials",
+      #         amount: 40
+      #       }, {
+      #         origination_entry_point: "8cfec329267",
+      #         account_id: "187-343",
+      #         description: "Refunding deposit for undelivered materials",
+      #         amount: 30
+      #       }]
+      #     },
+      #     source: "api"
       #   )
       #
       # @return [Payabli::Types::V2TransactionResponseWrapper]
       def refundv_2_amount(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[trans_id amount]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
           path: "v2/MoneyIn/refund/#{URI.encode_uri_component(params[:trans_id].to_s)}/#{URI.encode_uri_component(params[:amount].to_s)}",
           headers: headers,
-          body: Payabli::Types::RefundV2Request.new(params).to_h,
+          body: body_params.empty? ? nil : Payabli::Types::RefundV2Request.new(body_params).to_h,
+          omit_content_type_without_body: true,
           request_options: request_options
         )
         begin

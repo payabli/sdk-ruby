@@ -128,13 +128,16 @@ module Payabli
       # @return [Payabli::Types::PayabliApiResponse6]
       def update_item(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[line_item_id]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "LineItem/#{URI.encode_uri_component(params[:line_item_id].to_s)}",
           headers: headers,
-          body: Payabli::Types::LineItem.new(params).to_h,
+          body: Payabli::Types::LineItem.new(body_params).to_h,
           request_options: request_options
         )
         begin

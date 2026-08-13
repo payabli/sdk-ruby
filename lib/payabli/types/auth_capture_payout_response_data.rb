@@ -5,7 +5,7 @@ module Payabli
     class AuthCapturePayoutResponseData < Internal::Types::Model
       field :auth_code, -> { String }, optional: false, nullable: true, api_name: "authCode"
 
-      field :reference_id, -> { String }, optional: false, nullable: false, api_name: "referenceId"
+      field :reference_id, -> { String }, optional: false, nullable: true, api_name: "referenceId"
 
       field :result_code, -> { Integer }, optional: false, nullable: false, api_name: "resultCode"
 

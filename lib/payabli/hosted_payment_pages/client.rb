@@ -127,13 +127,16 @@ module Payabli
       # @return [Payabli::Types::PayabliApiResponse00Responsedatanonobject]
       def save_page(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[entry subdomain]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "Paypoint/#{URI.encode_uri_component(params[:entry].to_s)}/#{URI.encode_uri_component(params[:subdomain].to_s)}",
           headers: headers,
-          body: Payabli::Types::PayabliPages.new(params).to_h,
+          body: Payabli::Types::PayabliPages.new(body_params).to_h,
           request_options: request_options
         )
         begin

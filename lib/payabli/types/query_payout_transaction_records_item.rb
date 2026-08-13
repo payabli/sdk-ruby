@@ -100,6 +100,8 @@ module Payabli
       field :ach_trace_number, -> { String }, optional: true, nullable: false, api_name: "AchTraceNumber"
 
       field :entity_id, -> { String }, optional: true, nullable: false, api_name: "EntityId"
+
+      field :allowed_actions, -> { Internal::Types::Array[Payabli::Types::QueryPayoutTransactionRecordsItemAllowedActionsItem] }, optional: false, nullable: false, api_name: "allowedActions"
     end
   end
 end

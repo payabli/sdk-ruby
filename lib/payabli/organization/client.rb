@@ -104,11 +104,11 @@ module Payabli
       # @option request_options [Hash{String => Object}] :additional_query_parameters
       # @option request_options [Hash{String => Object}] :additional_body_parameters
       # @option request_options [Integer] :timeout_in_seconds
-      # @option params [Integer] :org_id
+      # @option params [Integer] :org_id_path_param
       #
       # @example
       #   client.organization.edit_organization(
-      #     org_id: 123,
+      #     org_id_path_param: 123,
       #     contacts: [{
       #       contact_email: "herman@hermanscoatings.com",
       #       contact_name: "Herman Martinez",
@@ -119,7 +119,7 @@ module Payabli
       #     org_city: "Johnson City",
       #     org_country: "US",
       #     org_entry_name: "pilgrim-planner",
-      #     organization_data_org_id: "123",
+      #     org_id: "123",
       #     org_name: "Pilgrim Planner",
       #     org_state: "TN",
       #     org_timezone: -5,
@@ -132,14 +132,14 @@ module Payabli
       def edit_organization(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::Organization::Types::OrganizationData.new(params).to_h
-        non_body_param_names = %w[orgId]
+        non_body_param_names = %w[orgIdPathParam]
         body = request_data.except(*non_body_param_names)
 
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
-          path: "Organization/#{URI.encode_uri_component(params[:org_id].to_s)}",
+          path: "Organization/#{URI.encode_uri_component(params[:org_id_path_param].to_s)}",
           headers: headers,
           body: body,
           request_options: request_options

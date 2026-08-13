@@ -85,7 +85,7 @@ class OrganizationWireTest < WireMockTestCase
     test_id = "organization.edit_organization.0"
 
     @client.organization.edit_organization(
-      org_id: 123,
+      org_id_path_param: 123,
       contacts: [{
         contact_email: "herman@hermanscoatings.com",
         contact_name: "Herman Martinez",
@@ -96,7 +96,7 @@ class OrganizationWireTest < WireMockTestCase
       org_city: "Johnson City",
       org_country: "US",
       org_entry_name: "pilgrim-planner",
-      organization_data_org_id: "123",
+      org_id: "123",
       org_name: "Pilgrim Planner",
       org_state: "TN",
       org_timezone: -5,

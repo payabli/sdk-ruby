@@ -115,13 +115,16 @@ module Payabli
       # @return [Payabli::Types::PayabliApiResponse]
       def edit_user(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[user_id]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "User/#{URI.encode_uri_component(params[:user_id].to_s)}",
           headers: headers,
-          body: Payabli::Types::UserData.new(params).to_h,
+          body: Payabli::Types::UserData.new(body_params).to_h,
           request_options: request_options
         )
         begin
@@ -429,13 +432,16 @@ module Payabli
       # @return [Payabli::Types::EditMfaUserResponse]
       def edit_mfa_user(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        path_param_names = %i[user_id]
+        body_params = params.except(*path_param_names)
+
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "PUT",
           path: "User/mfa/#{URI.encode_uri_component(params[:user_id].to_s)}",
           headers: headers,
-          body: Payabli::Types::MfaData.new(params).to_h,
+          body: Payabli::Types::MfaData.new(body_params).to_h,
           request_options: request_options
         )
         begin
