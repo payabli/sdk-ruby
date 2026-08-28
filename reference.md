@@ -1599,22 +1599,12 @@ Only card transactions can be authorized. This endpoint can't be used for ACH tr
 
 ```ruby
 client.money_in.authorize(
-  customer_data: {
-    customer_id: 4440
-  },
-  entry_point: "8cfec329267",
-  ipaddress: "255.255.255.255",
   payment_details: {
-    service_fee: 0,
-    total_amount: 100
+    total_amount: 1.1
   },
   payment_method: {
-    cardcvv: "999",
-    cardexp: "02/27",
-    card_holder: "John Cassian",
-    cardnumber: "4111111111111111",
-    cardzip: "12345",
-    initiator: "payor",
+    cardexp: "cardexp",
+    cardnumber: "cardnumber",
     method_: "card"
   }
 )
@@ -1701,8 +1691,8 @@ transaction](/developers/api-reference/moneyin/authorize-a-transaction) to compl
 
 ```ruby
 client.money_in.capture(
-  trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
-  amount: 0
+  trans_id: "transId",
+  amount: 1.1
 )
 ```
 </dd>
@@ -1780,10 +1770,9 @@ You can use this endpoint to capture both full and partial amounts of the origin
 
 ```ruby
 client.money_in.capture_auth(
-  trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
+  trans_id: "transId",
   payment_details: {
-    total_amount: 105,
-    service_fee: 5
+    total_amount: 1.1
   }
 )
 ```
@@ -2084,22 +2073,12 @@ Make a single transaction. This method authorizes and captures a payment in one 
 
 ```ruby
 client.money_in.getpaid(
-  customer_data: {
-    customer_id: 4440
-  },
-  entry_point: "8cfec329267",
-  ipaddress: "255.255.255.255",
   payment_details: {
-    service_fee: 0,
-    total_amount: 100
+    total_amount: 1.1
   },
   payment_method: {
-    cardcvv: "999",
-    cardexp: "02/27",
-    card_holder: "John Cassian",
-    cardnumber: "4111111111111111",
-    cardzip: "12345",
-    initiator: "payor",
+    cardexp: "cardexp",
+    cardnumber: "cardnumber",
     method_: "card"
   }
 )
@@ -2209,8 +2188,8 @@ A reversal either refunds or voids a transaction independent of the transaction'
 
 ```ruby
 client.money_in.reverse(
-  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
-  amount: 0
+  trans_id: "transId",
+  amount: 1.1
 )
 ```
 </dd>
@@ -2292,8 +2271,8 @@ Refund a transaction that has settled and send money back to the account holder.
 
 ```ruby
 client.money_in.refund(
-  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
-  amount: 0
+  trans_id: "transId",
+  amount: 1.1
 )
 ```
 </dd>
@@ -2374,26 +2353,7 @@ Refunds a settled transaction with split instructions.
 <dd>
 
 ```ruby
-client.money_in.refund_with_instructions(
-  trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
-  idempotency_key: "8A29FC40-CA47-1067-B31D-00DD010662DB",
-  amount: 100,
-  order_description: "Materials deposit",
-  refund_details: {
-    split_refunding: [{
-      origination_entry_point: "7f1a381696",
-      account_id: "187-342",
-      description: "Refunding undelivered materials",
-      amount: 60
-    }, {
-      origination_entry_point: "7f1a381696",
-      account_id: "187-343",
-      description: "Refunding deposit for undelivered materials",
-      amount: 40
-    }]
-  },
-  source: "api"
-)
+client.money_in.refund_with_instructions(trans_id: "transId")
 ```
 </dd>
 </dl>
@@ -2772,7 +2732,7 @@ Cancel a transaction that hasn't been settled yet. Voiding non-captured authoriz
 <dd>
 
 ```ruby
-client.money_in.void(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
+client.money_in.void(trans_id: "transId")
 ```
 </dd>
 </dl>
@@ -15342,6 +15302,78 @@ client.notificationlogs.bulk_retry_notification_logs(request: %w[550e8400-e29b-4
 </dl>
 </details>
 
+## Device
+<details><summary><code>client.device.<a href="/lib/payabli/device/client.rb">challenge</a>(entry:) -> Payabli::Types::DeviceChallengeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generates a one-time, 6-digit verification code for activating a
+semi-integrated card-present device in a paypoint. After calling this endpoint, an operator enters the returned code
+on the device's terminal, along with a device name, to register the
+device to the paypoint resolved from `{entry}`.
+
+A code expires 5 minutes after it's issued. A paypoint can have several
+codes active at once — for example, when activating a batch of devices —
+and a code binds to whichever device enters it first.
+
+Authenticate with an OAuth2 Bearer token that has the `device_registry` scope.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.device.challenge(entry: "8cfec329267")
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entry:** `String` — The paypoint's entrypoint identifier. [Learn more](/developers/api-reference/api-overview#entrypoint-vs-entry)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payabli::Device::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Cloud
 <details><summary><code>client.cloud.<a href="/lib/payabli/cloud/client.rb">add_device</a>(entry:, request) -> Payabli::Types::AddDeviceResponse</code></summary>
 <dl>
@@ -15597,7 +15629,7 @@ client.cloud.history_device(
 <dl>
 <dd>
 
-Use [List devices by paypoint](/developers/api-reference/cloud/get-list-of-devices-for-a-paypoint) instead, which supports filters, sorting, and pagination.
+Use [List devices by paypoint](/developers/api-reference/get-list-of-devices-for-a-paypoint) instead, which supports filters, sorting, and pagination.
 
 Get a list of cloud devices registered to an entrypoint.
 </dd>
@@ -26163,14 +26195,6 @@ client.money_out.authorize_out(
 <dl>
 <dd>
 
-**force_vendor_creation:** `Internal::Types::Boolean` — When `true`, the request creates a new vendor record, regardless of whether the vendor already exists.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **same_day_ach:** `Internal::Types::Boolean` 
 
 When `true`, Payabli authorizes the payout for same-day ACH processing instead of standard ACH. Same-day ACH must be enabled for the paypoint, otherwise the authorization fails with a `400` response and `responseCode` `3492`. Only ACH payouts honor this flag. Wire and RTP payouts ignore it.
@@ -26247,7 +26271,7 @@ Same-day ACH has a daily cutoff. Capture the transaction before the cutoff, or p
 <dl>
 <dd>
 
-**invoice_data:** `Internal::Types::Array[Payabli::Types::RequestOutAuthorizeInvoiceData]` — Array of bills associated to the transaction
+**invoice_data:** `Internal::Types::Array[Payabli::Types::RequestOutAuthorizeInvoiceData]` — Bills to pay with this payout, each referenced by `billId`.
     
 </dd>
 </dl>
@@ -27194,7 +27218,7 @@ Deposits funds into a paypoint's available payout balance. Deposited funds enter
 
 ```ruby
 client.funding.deposit_funds(
-  amount: 10,
+  amount: 1500,
   entrypoint: "48acde49",
   account_id: "333"
 )

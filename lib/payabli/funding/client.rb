@@ -23,7 +23,7 @@ module Payabli
       #
       # @example
       #   client.funding.deposit_funds(
-      #     amount: 10,
+      #     amount: 1500,
       #     entrypoint: "48acde49",
       #     account_id: "333"
       #   )

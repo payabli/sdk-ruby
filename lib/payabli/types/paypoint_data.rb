@@ -39,6 +39,8 @@ module Payabli
 
       field :state, -> { String }, optional: true, nullable: false, api_name: "State"
 
+      field :business_summary, -> { String }, optional: false, nullable: true, api_name: "Summary"
+
       field :summary, -> { Payabli::Types::PaypointSummary }, optional: true, nullable: false
 
       field :time_zone, -> { Integer }, optional: true, nullable: false, api_name: "TimeZone"

@@ -14,6 +14,8 @@ module Payabli
 
       member -> { Payabli::Types::PayMethodCloud }
 
+      member -> { Payabli::Types::PayMethodDevice }
+
       member -> { Payabli::Types::Check }
 
       member -> { Payabli::Types::Cash }

@@ -36,22 +36,12 @@ module Payabli
       #
       # @example
       #   client.money_in.authorize(
-      #     customer_data: {
-      #       customer_id: 4440
-      #     },
-      #     entry_point: "8cfec329267",
-      #     ipaddress: "255.255.255.255",
       #     payment_details: {
-      #       service_fee: 0,
-      #       total_amount: 100
+      #       total_amount: 1.1
       #     },
       #     payment_method: {
-      #       cardcvv: "999",
-      #       cardexp: "02/27",
-      #       card_holder: "John Cassian",
-      #       cardnumber: "4111111111111111",
-      #       cardzip: "12345",
-      #       initiator: "payor",
+      #       cardexp: "cardexp",
+      #       cardnumber: "cardnumber",
       #       method_: "card"
       #     }
       #   )
@@ -113,8 +103,8 @@ module Payabli
       #
       # @example
       #   client.money_in.capture(
-      #     trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
-      #     amount: 0
+      #     trans_id: "transId",
+      #     amount: 1.1
       #   )
       #
       # @return [Payabli::Types::CaptureResponse]
@@ -168,10 +158,9 @@ module Payabli
       #
       # @example
       #   client.money_in.capture_auth(
-      #     trans_id: "10-7d9cd67d-2d5d-4cd7-a1b7-72b8b201ec13",
+      #     trans_id: "transId",
       #     payment_details: {
-      #       total_amount: 105,
-      #       service_fee: 5
+      #       total_amount: 1.1
       #     }
       #   )
       #
@@ -341,22 +330,12 @@ module Payabli
       #
       # @example
       #   client.money_in.getpaid(
-      #     customer_data: {
-      #       customer_id: 4440
-      #     },
-      #     entry_point: "8cfec329267",
-      #     ipaddress: "255.255.255.255",
       #     payment_details: {
-      #       service_fee: 0,
-      #       total_amount: 100
+      #       total_amount: 1.1
       #     },
       #     payment_method: {
-      #       cardcvv: "999",
-      #       cardexp: "02/27",
-      #       card_holder: "John Cassian",
-      #       cardnumber: "4111111111111111",
-      #       cardzip: "12345",
-      #       initiator: "payor",
+      #       cardexp: "cardexp",
+      #       cardnumber: "cardnumber",
       #       method_: "card"
       #     }
       #   )
@@ -426,8 +405,8 @@ module Payabli
       #
       # @example
       #   client.money_in.reverse(
-      #     trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
-      #     amount: 0
+      #     trans_id: "transId",
+      #     amount: 1.1
       #   )
       #
       # @return [Payabli::Types::ReverseResponse]
@@ -478,8 +457,8 @@ module Payabli
       #
       # @example
       #   client.money_in.refund(
-      #     trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
-      #     amount: 0
+      #     trans_id: "transId",
+      #     amount: 1.1
       #   )
       #
       # @return [Payabli::Types::RefundResponse]
@@ -529,26 +508,7 @@ module Payabli
       # @option params [String, nil] :idempotency_key
       #
       # @example
-      #   client.money_in.refund_with_instructions(
-      #     trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723",
-      #     idempotency_key: "8A29FC40-CA47-1067-B31D-00DD010662DB",
-      #     amount: 100,
-      #     order_description: "Materials deposit",
-      #     refund_details: {
-      #       split_refunding: [{
-      #         origination_entry_point: "7f1a381696",
-      #         account_id: "187-342",
-      #         description: "Refunding undelivered materials",
-      #         amount: 60
-      #       }, {
-      #         origination_entry_point: "7f1a381696",
-      #         account_id: "187-343",
-      #         description: "Refunding deposit for undelivered materials",
-      #         amount: 40
-      #       }]
-      #     },
-      #     source: "api"
-      #   )
+      #   client.money_in.refund_with_instructions(trans_id: "transId")
       #
       # @return [Payabli::Types::RefundWithInstructionsResponse]
       def refund_with_instructions(request_options: {}, **params)
@@ -747,7 +707,7 @@ module Payabli
       # @option params [String] :trans_id
       #
       # @example
-      #   client.money_in.void(trans_id: "10-3ffa27df-b171-44e0-b251-e95fbfc7a723")
+      #   client.money_in.void(trans_id: "transId")
       #
       # @return [Payabli::Types::VoidResponse]
       def void(request_options: {}, **params)

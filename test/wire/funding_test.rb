@@ -18,7 +18,7 @@ class FundingWireTest < WireMockTestCase
     test_id = "funding.deposit_funds.0"
 
     @client.funding.deposit_funds(
-      amount: 10,
+      amount: 1500,
       entrypoint: "48acde49",
       account_id: "333",
       request_options: {

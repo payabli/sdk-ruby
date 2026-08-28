@@ -19,7 +19,7 @@ module Payabli
 
       field :external_processor_information, -> { String }, optional: false, nullable: false, api_name: "externalProcessorInformation"
 
-      field :gateway_trans_id, -> { String }, optional: false, nullable: false, api_name: "gatewayTransId"
+      field :gateway_trans_id, -> { String }, optional: false, nullable: true, api_name: "gatewayTransId"
 
       field :order_id, -> { String }, optional: false, nullable: true, api_name: "orderId"
 

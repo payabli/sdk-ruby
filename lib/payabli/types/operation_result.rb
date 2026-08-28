@@ -3,9 +3,11 @@
 module Payabli
   module Types
     class OperationResult < Internal::Types::Model
-      field :message, -> { String }, optional: true, nullable: false
-
       field :success, -> { Internal::Types::Boolean }, optional: false, nullable: false
+
+      field :message, -> { String }, optional: false, nullable: false
+
+      field :link, -> { String }, optional: false, nullable: false
     end
   end
 end

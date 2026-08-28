@@ -14,7 +14,7 @@ module Payabli
 
       field :authcode, -> { String }, optional: false, nullable: true
 
-      field :transactionid, -> { String }, optional: false, nullable: false
+      field :transactionid, -> { String }, optional: false, nullable: true
 
       field :avsresponse, -> { String }, optional: false, nullable: true
 

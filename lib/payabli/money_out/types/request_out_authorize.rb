@@ -8,8 +8,6 @@ module Payabli
 
         field :do_not_create_bills, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "doNotCreateBills"
 
-        field :force_vendor_creation, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "forceVendorCreation"
-
         field :same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "sameDayACH"
 
         field :idempotency_key, -> { String }, optional: true, nullable: false, api_name: "idempotencyKey"
@@ -28,7 +26,7 @@ module Payabli
 
         field :vendor_data, -> { Payabli::Types::RequestOutAuthorizeVendorData }, optional: false, nullable: false, api_name: "vendorData"
 
-        field :invoice_data, -> { Internal::Types::Array[Payabli::Types::RequestOutAuthorizeInvoiceData] }, optional: false, nullable: false, api_name: "invoiceData"
+        field :invoice_data, -> { Internal::Types::Array[Payabli::Types::RequestOutAuthorizeInvoiceData] }, optional: true, nullable: false, api_name: "invoiceData"
 
         field :account_id, -> { String }, optional: true, nullable: false, api_name: "accountId"
 

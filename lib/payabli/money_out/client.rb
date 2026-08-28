@@ -39,7 +39,6 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       # @option params [Boolean, nil] :allow_duplicated_bills
       # @option params [Boolean, nil] :do_not_create_bills
-      # @option params [Boolean, nil] :force_vendor_creation
       # @option params [Boolean, nil] :same_day_ach
       # @option params [String, nil] :idempotency_key
       #
@@ -67,13 +66,12 @@ module Payabli
       def authorize_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         request_data = Payabli::MoneyOut::Types::RequestOutAuthorize.new(params).to_h
-        non_body_param_names = %w[allowDuplicatedBills doNotCreateBills forceVendorCreation sameDayACH idempotencyKey]
+        non_body_param_names = %w[allowDuplicatedBills doNotCreateBills sameDayACH idempotencyKey]
         body = request_data.except(*non_body_param_names)
 
         query_params = {}
         query_params["allowDuplicatedBills"] = params[:allow_duplicated_bills] if params.key?(:allow_duplicated_bills)
         query_params["doNotCreateBills"] = params[:do_not_create_bills] if params.key?(:do_not_create_bills)
-        query_params["forceVendorCreation"] = params[:force_vendor_creation] if params.key?(:force_vendor_creation)
         query_params["sameDayACH"] = params[:same_day_ach] if params.key?(:same_day_ach)
 
         headers = {}
@@ -477,7 +475,7 @@ module Payabli
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "POST",
-          path: "vcard/send-card-link",
+          path: "MoneyOut/vcard/send-card-link",
           headers: headers,
           body: Payabli::MoneyOut::Types::SendVCardLinkRequest.new(params).to_h,
           request_options: request_options

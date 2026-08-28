@@ -6,8 +6,6 @@ module Payabli
       field :device, -> { String }, optional: true, nullable: false
 
       field :method_, -> { Payabli::Types::PayMethodCloudMethod }, optional: false, nullable: false, api_name: "method"
-
-      field :save_if_success, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "saveIfSuccess"
     end
   end
 end

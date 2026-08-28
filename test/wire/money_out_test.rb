@@ -324,7 +324,7 @@ class MoneyOutWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "POST",
-      url_path: "/vcard/send-card-link",
+      url_path: "/MoneyOut/vcard/send-card-link",
       query_params: nil,
       expected: 1
     )
@@ -332,7 +332,7 @@ class MoneyOutWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "POST",
-      url_path: "/vcard/send-card-link",
+      url_path: "/MoneyOut/vcard/send-card-link",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }

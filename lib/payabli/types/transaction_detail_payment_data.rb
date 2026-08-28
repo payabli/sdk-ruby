@@ -4,9 +4,9 @@ module Payabli
   module Types
     # Payment method and transaction details
     class TransactionDetailPaymentData < Internal::Types::Model
-      field :masked_account, -> { String }, optional: false, nullable: false, api_name: "maskedAccount"
+      field :masked_account, -> { String }, optional: false, nullable: true, api_name: "maskedAccount"
 
-      field :account_type, -> { String }, optional: false, nullable: false, api_name: "accountType"
+      field :account_type, -> { String }, optional: false, nullable: true, api_name: "accountType"
 
       field :account_exp, -> { String }, optional: false, nullable: true, api_name: "accountExp"
 

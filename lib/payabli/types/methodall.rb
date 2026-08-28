@@ -8,6 +8,7 @@ module Payabli
       CARD = "card"
       ACH = "ach"
       CLOUD = "cloud"
+      DEVICE = "device"
       CHECK = "check"
       CASH = "cash"
     end
