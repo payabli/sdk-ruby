@@ -215,6 +215,50 @@ class MoneyOutWireTest < WireMockTestCase
     )
   end
 
+  def test_money_out_payout_with_wiremock
+    test_id = "money_out.payout.0"
+
+    @client.money_out.payout(
+      entry_point: "8cfec329267",
+      order_description: "Window Painting",
+      payment_method: {
+        method_: "managed"
+      },
+      payment_details: {
+        total_amount: 47
+      },
+      vendor_data: {
+        vendor_number: "VEN-123"
+      },
+      invoice_data: [{
+        bill_id: 54323
+      }],
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.payout.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyOut/payout",
+      query_params: nil,
+      expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "POST",
+      url_path: "/MoneyOut/payout",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
+  end
+
   def test_money_out_payout_details_with_wiremock
     test_id = "money_out.payout_details.0"
 

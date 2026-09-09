@@ -31,7 +31,7 @@ module Payabli
       # affected.
       #
       # @param request_options [Hash]
-      # @param params [Payabli::MoneyOut::Types::RequestOutAuthorize]
+      # @param params [Payabli::Types::AuthorizePayoutBody]
       # @option request_options [String] :base_url
       # @option request_options [Hash{String => Object}] :additional_headers
       # @option request_options [Hash{String => Object}] :additional_query_parameters
@@ -65,14 +65,12 @@ module Payabli
       # @return [Payabli::Types::AuthCapturePayoutResponse]
       def authorize_out(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        request_data = Payabli::MoneyOut::Types::RequestOutAuthorize.new(params).to_h
-        non_body_param_names = %w[allowDuplicatedBills doNotCreateBills sameDayACH idempotencyKey]
-        body = request_data.except(*non_body_param_names)
-
+        query_param_names = %i[allow_duplicated_bills do_not_create_bills same_day_ach]
         query_params = {}
         query_params["allowDuplicatedBills"] = params[:allow_duplicated_bills] if params.key?(:allow_duplicated_bills)
         query_params["doNotCreateBills"] = params[:do_not_create_bills] if params.key?(:do_not_create_bills)
         query_params["sameDayACH"] = params[:same_day_ach] if params.key?(:same_day_ach)
+        params = params.except(*query_param_names)
 
         headers = {}
         headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
@@ -84,7 +82,7 @@ module Payabli
           path: "MoneyOut/authorize",
           headers: headers,
           query: query_params,
-          body: body,
+          body: Payabli::Types::AuthorizePayoutBody.new(params).to_h,
           request_options: request_options
         )
         begin
@@ -306,6 +304,90 @@ module Payabli
           path: "MoneyOut/capture/#{URI.encode_uri_component(params[:reference_id].to_s)}",
           headers: headers,
           query: query_params,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::AuthCapturePayoutResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Authorizes a payout and captures it in the same request, returning the capture result. Use this endpoint when
+      # you need the capture outcome synchronously: it does the same work as calling `POST /MoneyOut/authorize` followed
+      # by `GET /MoneyOut/capture/{referenceId}`, in a single call.
+      #
+      # Risk and fraud review runs at both the authorize and capture stages, exactly as it does for the two-call flow.
+      #
+      # Payabli ignores the `autoCapture` field in the request body, since this endpoint always captures inline.
+      #
+      # If the capture fails, the payout stays authorized. Retry the capture with `GET /MoneyOut/capture/{referenceId}`
+      # using the `referenceId` from the error response rather than resubmitting, which would create a second payout.
+      # See the [Manage payouts guide](/guides/pay-out-developer-payouts-manage#authorize-and-capture-in-one-call) for
+      # details.
+      #
+      # @param request_options [Hash]
+      # @param params [Payabli::Types::AuthorizePayoutBody]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Boolean, nil] :same_day_ach
+      # @option params [Boolean, nil] :do_not_create_bills
+      # @option params [Boolean, nil] :allow_duplicated_bills
+      # @option params [Boolean, nil] :update_vendor_payment_method
+      # @option params [Boolean, nil] :auto_convert_same_day_ach
+      # @option params [String, nil] :idempotency_key
+      #
+      # @example
+      #   client.money_out.payout(
+      #     entry_point: "8cfec329267",
+      #     order_description: "Window Painting",
+      #     payment_method: {
+      #       method_: "managed"
+      #     },
+      #     payment_details: {
+      #       total_amount: 47
+      #     },
+      #     vendor_data: {
+      #       vendor_number: "VEN-123"
+      #     },
+      #     invoice_data: [{
+      #       bill_id: 54323
+      #     }]
+      #   )
+      #
+      # @return [Payabli::Types::AuthCapturePayoutResponse]
+      def payout(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        query_param_names = %i[same_day_ach do_not_create_bills allow_duplicated_bills update_vendor_payment_method auto_convert_same_day_ach]
+        query_params = {}
+        query_params["sameDayACH"] = params[:same_day_ach] if params.key?(:same_day_ach)
+        query_params["doNotCreateBills"] = params[:do_not_create_bills] if params.key?(:do_not_create_bills)
+        query_params["allowDuplicatedBills"] = params[:allow_duplicated_bills] if params.key?(:allow_duplicated_bills)
+        query_params["updateVendorPaymentMethod"] = params[:update_vendor_payment_method] if params.key?(:update_vendor_payment_method)
+        query_params["autoConvertSameDayAch"] = params[:auto_convert_same_day_ach] if params.key?(:auto_convert_same_day_ach)
+        params = params.except(*query_param_names)
+
+        headers = {}
+        headers["idempotencyKey"] = params[:idempotency_key] if params[:idempotency_key]
+
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }]).merge(headers)
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "POST",
+          path: "MoneyOut/payout",
+          headers: headers,
+          query: query_params,
+          body: Payabli::Types::AuthorizePayoutBody.new(params).to_h,
           request_options: request_options
         )
         begin

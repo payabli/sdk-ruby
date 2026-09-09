@@ -12,6 +12,10 @@ module Payabli
 
       field :net_amount, -> { String }, optional: true, nullable: false, api_name: "netAmount"
 
+      field :paid_amount, -> { String }, optional: true, nullable: false, api_name: "paidAmount"
+
+      field :outstanding_balance, -> { String }, optional: true, nullable: false, api_name: "outstandingBalance"
+
       field :discount, -> { String }, optional: true, nullable: false
 
       field :due_date, -> { String }, optional: false, nullable: true, api_name: "dueDate"

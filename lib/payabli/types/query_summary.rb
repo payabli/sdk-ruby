@@ -3,7 +3,7 @@
 module Payabli
   module Types
     class QuerySummary < Internal::Types::Model
-      field :page_identifier, -> { String }, optional: true, nullable: false, api_name: "pageIdentifier"
+      field :page_identifier, -> { String }, optional: false, nullable: true, api_name: "pageidentifier"
 
       field :page_size, -> { Integer }, optional: true, nullable: false, api_name: "pageSize"
 

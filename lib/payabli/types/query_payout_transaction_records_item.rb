@@ -21,6 +21,8 @@ module Payabli
 
       field :payment_id, -> { String }, optional: true, nullable: false, api_name: "PaymentId"
 
+      field :order_id, -> { String }, optional: true, nullable: false, api_name: "orderId"
+
       field :trans_id, -> { String }, optional: true, nullable: false, api_name: "TransId"
 
       field :trans_status, -> { Integer }, optional: true, nullable: false, api_name: "TransStatus"

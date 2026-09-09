@@ -73,6 +73,10 @@ module Payabli
 
       field :total_amount, -> { Integer }, optional: false, nullable: true, api_name: "TotalAmount"
 
+      field :paid_amount, -> { Integer }, optional: false, nullable: true, api_name: "PaidAmount"
+
+      field :outstanding_balance, -> { Integer }, optional: false, nullable: true, api_name: "OutstandingBalance"
+
       field :transaction, -> { Payabli::Types::TransactionOutQueryRecord }, optional: false, nullable: true, api_name: "Transaction"
 
       field :vendor, -> { Payabli::Types::VendorOutData }, optional: false, nullable: true, api_name: "Vendor"
