@@ -33,7 +33,7 @@ module Payabli
 
       field :ozip, -> { String }, optional: true, nullable: false
 
-      field :additional_data, -> { String }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "additionalData"
     end
   end
 end
