@@ -64,7 +64,7 @@ class MoneyOutWireTest < WireMockTestCase
     test_id = "money_out.cancel_all_out.0"
 
     @client.money_out.cancel_all_out(
-      request: %w[2-29 2-28 2-27],
+      request: %w[129-230 129-219],
       request_options: {
         additional_headers: {
           "X-Test-Id" => "money_out.cancel_all_out.0"
@@ -157,7 +157,7 @@ class MoneyOutWireTest < WireMockTestCase
     test_id = "money_out.capture_all_out.0"
 
     @client.money_out.capture_all_out(
-      body: %w[2-29 2-28 2-27],
+      body: %w[129-230 129-219],
       request_options: {
         additional_headers: {
           "X-Test-Id" => "money_out.capture_all_out.0"

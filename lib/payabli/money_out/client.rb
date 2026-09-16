@@ -110,7 +110,7 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       #
       # @example
-      #   client.money_out.cancel_all_out(request: %w[2-29 2-28 2-27])
+      #   client.money_out.cancel_all_out(request: %w[129-230 129-219])
       #
       # @return [Payabli::Types::CaptureAllOutResponse]
       def cancel_all_out(request_options: {}, **params)
@@ -230,7 +230,7 @@ module Payabli
       # @option params [String, nil] :idempotency_key
       #
       # @example
-      #   client.money_out.capture_all_out(body: %w[2-29 2-28 2-27])
+      #   client.money_out.capture_all_out(body: %w[129-230 129-219])
       #
       # @return [Payabli::Types::CaptureAllOutResponse]
       def capture_all_out(request_options: {}, **params)

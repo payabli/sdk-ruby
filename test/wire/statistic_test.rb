@@ -54,7 +54,7 @@ class StatisticWireTest < WireMockTestCase
     test_id = "statistic.customer_basic_stats.0"
 
     @client.statistic.customer_basic_stats(
-      mode: "ytd",
+      mode: "m12",
       freq: "m",
       customer_id: 4440,
       request_options: {
@@ -67,7 +67,7 @@ class StatisticWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Statistic/customerbasic/ytd/m/4440",
+      url_path: "/Statistic/customerbasic/m12/m/4440",
       query_params: nil,
       expected: 1
     )
@@ -75,7 +75,7 @@ class StatisticWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Statistic/customerbasic/ytd/m/4440",
+      url_path: "/Statistic/customerbasic/m12/m/4440",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -87,7 +87,7 @@ class StatisticWireTest < WireMockTestCase
     test_id = "statistic.sub_stats.0"
 
     @client.statistic.sub_stats(
-      interval: "30",
+      interval: "all",
       level: 2,
       entry_id: 1000000,
       request_options: {
@@ -100,7 +100,7 @@ class StatisticWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Statistic/subscriptions/30/2/1000000",
+      url_path: "/Statistic/subscriptions/all/2/1000000",
       query_params: nil,
       expected: 1
     )
@@ -108,7 +108,7 @@ class StatisticWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Statistic/subscriptions/30/2/1000000",
+      url_path: "/Statistic/subscriptions/all/2/1000000",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }

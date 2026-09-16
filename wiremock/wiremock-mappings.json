@@ -4801,6 +4801,32 @@
       }
     },
     {
+      "id": "18b69a4d-2e73-4044-a7a5-e3edd36799c3",
+      "name": "Generate Tap to Pay activation code - Generate Tap to Pay activation code",
+      "request": {
+        "urlPathTemplate": "/v2/device/taptopay/activate/challenge",
+        "method": "POST"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"isSuccess\": true,\n  \"responseText\": \"Success\",\n  \"responseData\": {\n    \"code\": \"748801\",\n    \"expiresAt\": \"2026-09-10T20:28:27.5860203Z\",\n    \"alreadyIssued\": false\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "18b69a4d-2e73-4044-a7a5-e3edd36799c3",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
       "id": "ac55e6cb-5c61-43a8-b4bb-b7f15740a3ce",
       "name": "Register cloud device - Register",
       "request": {
@@ -7262,7 +7288,7 @@
         "method": "GET",
         "pathParameters": {
           "mode": {
-            "equalTo": "ytd"
+            "equalTo": "m12"
           },
           "freq": {
             "equalTo": "m"
@@ -7274,7 +7300,7 @@
       },
       "response": {
         "status": 200,
-        "body": "[\n  {\n    \"interval\": \"2023-03\",\n    \"count\": 45,\n    \"volume\": 12500.75\n  }\n]",
+        "body": "[\n  {\n    \"statX\": \"2023-03\",\n    \"inTransactions\": 45,\n    \"inTransactionsVolume\": 12500.75\n  }\n]",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -7299,7 +7325,7 @@
         "method": "GET",
         "pathParameters": {
           "interval": {
-            "equalTo": "30"
+            "equalTo": "all"
           },
           "level": {
             "equalTo": "2"
@@ -7311,7 +7337,7 @@
       },
       "response": {
         "status": 200,
-        "body": "[\n  {\n    \"statX\": \"2023-03\",\n    \"inTransactions\": 150,\n    \"inTransactionsVolume\": 25000.5,\n    \"inWalletTransactions\": 10,\n    \"inWalletVolume\": 1000.5\n  }\n]",
+        "body": "[\n  {\n    \"interval\": \"30\",\n    \"count\": 23,\n    \"volume\": 1609.62\n  },\n  {\n    \"interval\": \"60\",\n    \"count\": 0,\n    \"volume\": 0\n  },\n  {\n    \"interval\": \"90\",\n    \"count\": 0,\n    \"volume\": 0\n  },\n  {\n    \"interval\": \"+90\",\n    \"count\": 0,\n    \"volume\": 0\n  }\n]",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -9400,6 +9426,6 @@
     }
   ],
   "meta": {
-    "total": 272
+    "total": 273
   }
 }

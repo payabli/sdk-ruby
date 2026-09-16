@@ -14,8 +14,6 @@ module Payabli
 
         field :end_date, -> { String }, optional: true, nullable: false, api_name: "endDate"
 
-        field :parameters, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false
-
         field :start_date, -> { String }, optional: true, nullable: false, api_name: "startDate"
       end
     end

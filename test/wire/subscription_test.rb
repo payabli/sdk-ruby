@@ -130,10 +130,10 @@ class SubscriptionWireTest < WireMockTestCase
         method_: "card"
       },
       schedule_details: {
-        end_date: "2025-03-20",
+        end_date: "2027-12-31",
         frequency: "weekly",
         plan_id: 1,
-        start_date: "2024-09-20"
+        start_date: "2027-01-01"
       },
       request_options: {
         additional_headers: {

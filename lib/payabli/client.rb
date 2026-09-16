@@ -32,7 +32,7 @@ module Payabli
       @raw_client = Payabli::Internal::Http::RawClient.new(
         base_url: base_url || Payabli::Environment::SANDBOX,
         headers: {
-          "User-Agent" => "payabli/3.0.12",
+          "User-Agent" => "payabli/3.0.13",
           "X-Fern-Language" => "Ruby"
         },
         auth_provider: Payabli::Internal::RoutingAuthProvider.new(
@@ -126,6 +126,11 @@ module Payabli
     # @return [Payabli::Device::Client]
     def device
       @device ||= Payabli::Device::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::Taptopay::Client]
+    def taptopay
+      @taptopay ||= Payabli::Taptopay::Client.new(client: @raw_client)
     end
 
     # @return [Payabli::Cloud::Client]

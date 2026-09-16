@@ -10,8 +10,9 @@ module Payabli
         @client = client
       end
 
-      # Retrieves the basic statistics for an organization or a paypoint, for a given time period, grouped by a
-      # particular frequency.
+      # Retrieves the basic statistics for an organization or a paypoint over a date range, grouped by a frequency. The
+      # response returns one row per time bucket. Counts and volumes cover approved transactions only and leave out
+      # declines. Volumes are net of fees.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -25,7 +26,6 @@ module Payabli
       # @option params [Integer] :level
       # @option params [Integer] :entry_id
       # @option params [String, nil] :end_date
-      # @option params [Hash[String, String, nil], nil] :parameters
       # @option params [String, nil] :start_date
       #
       # @example
@@ -43,7 +43,6 @@ module Payabli
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         query_params = {}
         query_params["endDate"] = params[:end_date] if params.key?(:end_date)
-        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
         query_params["startDate"] = params[:start_date] if params.key?(:start_date)
 
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
@@ -67,7 +66,9 @@ module Payabli
         raise error_class.new(response.body, code: code)
       end
 
-      # Retrieves the basic statistics for a customer for a specific time period, grouped by a selected frequency.
+      # Retrieves the basic statistics for a customer over a date range, grouped by a frequency. This is a Pay In view:
+      # it counts the customer's approved transactions and returns one row per time bucket. Volume here is the gross
+      # amount, before fees.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -79,28 +80,23 @@ module Payabli
       # @option params [String] :mode
       # @option params [String] :freq
       # @option params [Integer] :customer_id
-      # @option params [Hash[String, String, nil], nil] :parameters
       #
       # @example
       #   client.statistic.customer_basic_stats(
-      #     mode: "ytd",
+      #     mode: "m12",
       #     freq: "m",
       #     customer_id: 4440
       #   )
       #
-      # @return [Array[Payabli::Types::SubscriptionStatsQueryRecord]]
+      # @return [Array[Payabli::Types::StatCustomerBasicQueryRecord]]
       def customer_basic_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_params = {}
-        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
-
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Statistic/customerbasic/#{URI.encode_uri_component(params[:mode].to_s)}/#{URI.encode_uri_component(params[:freq].to_s)}/#{URI.encode_uri_component(params[:customer_id].to_s)}",
           headers: headers,
-          query: query_params,
           request_options: request_options
         )
         begin
@@ -115,7 +111,9 @@ module Payabli
         raise error_class.new(response.body, code: code)
       end
 
-      # Retrieves the subscription statistics for a given interval for a paypoint or organization.
+      # Retrieves subscription statistics for a paypoint or organization, bucketed by how soon active subscriptions are
+      # due to renew. This is a forward-looking forecast of upcoming renewals, not charges already taken. Request a
+      # single window with `interval`, or `all` to return every window in one call.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -127,28 +125,23 @@ module Payabli
       # @option params [String] :interval
       # @option params [Integer] :level
       # @option params [Integer] :entry_id
-      # @option params [Hash[String, String, nil], nil] :parameters
       #
       # @example
       #   client.statistic.sub_stats(
-      #     interval: "30",
+      #     interval: "all",
       #     level: 2,
       #     entry_id: 1000000
       #   )
       #
-      # @return [Array[Payabli::Types::StatBasicQueryRecord]]
+      # @return [Array[Payabli::Types::SubscriptionStatsQueryRecord]]
       def sub_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_params = {}
-        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
-
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Statistic/subscriptions/#{URI.encode_uri_component(params[:interval].to_s)}/#{URI.encode_uri_component(params[:level].to_s)}/#{URI.encode_uri_component(params[:entry_id].to_s)}",
           headers: headers,
-          query: query_params,
           request_options: request_options
         )
         begin
@@ -163,7 +156,9 @@ module Payabli
         raise error_class.new(response.body, code: code)
       end
 
-      # Retrieve the basic statistics about a vendor for a given time period, grouped by frequency.
+      # Retrieve the basic statistics about a vendor over a date range, grouped by frequency. The response returns one
+      # row per time bucket, breaking the vendor's bills down by bill state (active, sent to approval, approved, in
+      # transit, paid, and so on). Volumes are net of fees.
       #
       # @param request_options [Hash]
       # @param params [Hash]
@@ -175,7 +170,6 @@ module Payabli
       # @option params [String] :mode
       # @option params [String] :freq
       # @option params [Integer] :id_vendor
-      # @option params [Hash[String, String, nil], nil] :parameters
       #
       # @example
       #   client.statistic.vendor_basic_stats(
@@ -187,16 +181,12 @@ module Payabli
       # @return [Array[Payabli::Types::StatisticsVendorQueryRecord]]
       def vendor_basic_stats(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
-        query_params = {}
-        query_params["parameters"] = params[:parameters] if params.key?(:parameters)
-
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
         request = Payabli::Internal::JSON::Request.new(
           base_url: request_options[:base_url],
           method: "GET",
           path: "Statistic/vendorbasic/#{URI.encode_uri_component(params[:mode].to_s)}/#{URI.encode_uri_component(params[:freq].to_s)}/#{URI.encode_uri_component(params[:id_vendor].to_s)}",
           headers: headers,
-          query: query_params,
           request_options: request_options
         )
         begin

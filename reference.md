@@ -3663,10 +3663,10 @@ client.subscription.new_subscription(
     method_: "card"
   },
   schedule_details: {
-    end_date: "2025-03-20",
+    end_date: "2027-12-31",
     frequency: "weekly",
     plan_id: 1,
-    start_date: "2024-09-20"
+    start_date: "2027-01-01"
   }
 )
 ```
@@ -15340,15 +15340,17 @@ client.notificationlogs.bulk_retry_notification_logs(request: %w[550e8400-e29b-4
 <dd>
 
 Generates a one-time, 6-digit verification code for activating a
-semi-integrated card-present device in a paypoint. After calling this endpoint, an operator enters the returned code
-on the device's terminal, along with a device name, to register the
-device to the paypoint resolved from `{entry}`.
+semi-integrated card-present device in a paypoint. This endpoint is
+for AXIUM devices only. After calling this endpoint, an operator
+enters the returned code on the device's terminal, along with a
+device name, to register the device to the paypoint resolved from
+`{entry}`.
 
 A code expires 5 minutes after it's issued. A paypoint can have several
 codes active at once — for example, when activating a batch of devices —
 and a code binds to whichever device enters it first.
 
-Authenticate with an OAuth2 Bearer token that has the `device_registry` scope.
+Authenticate with an OAuth2 bearer token that has the `device_registry` scope.
 </dd>
 </dl>
 </dd>
@@ -15387,6 +15389,92 @@ client.device.challenge(entry: "8cfec329267")
 <dd>
 
 **request_options:** `Payabli::Device::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## TapToPay
+<details><summary><code>client.taptopay.<a href="/lib/payabli/taptopay/client.rb">activation_challenge</a>(request) -> Payabli::Types::TapToPayActivationChallengeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Issues a short-lived activation code for a Tap to Pay device in the
+`Pending` state. This endpoint is for Tap to Pay devices only.
+Deliver the code to the device to complete activation.
+
+A code is valid for 30 minutes after it's issued. Calling this
+endpoint again for the same device before the code expires returns
+the same code, with `alreadyIssued` set to `true`, instead of
+generating a new one. A new code is only generated when no valid
+code exists.
+
+Authenticate with an OAuth2 bearer token that has the `pos_create`
+permission. See [Accept Tap to Pay payments](/guides/pay-in-developer-tap-to-pay)
+for the full integration guide.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.taptopay.activation_challenge(
+  entry: "8cfec329267",
+  device_id: "499585-389fj484-3jcj8hj3"
+)
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entry:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device_id:** `String` — The device identifier (`poiId`) returned when the device was registered.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payabli::Taptopay::RequestOptions` 
     
 </dd>
 </dl>
@@ -23532,7 +23620,7 @@ client.management.verify_account_details(
 <dl>
 <dd>
 
-Retrieves the basic statistics for an organization or a paypoint, for a given time period, grouped by a particular frequency.
+Retrieves the basic statistics for an organization or a paypoint over a date range, grouped by a frequency. The response returns one row per time bucket. Counts and volumes cover approved transactions only and leave out declines. Volumes are net of fees.
 </dd>
 </dl>
 </dd>
@@ -23644,14 +23732,6 @@ Valid formats:
 <dl>
 <dd>
 
-**parameters:** `Internal::Types::Hash[String, String]` — List of parameters.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **start_date:** `String` 
 
 Used with `custom` mode. The start date for the range.
@@ -23679,7 +23759,7 @@ Valid formats:
 </dl>
 </details>
 
-<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">customer_basic_stats</a>(mode:, freq:, customer_id:) -> Internal::Types::Array[Payabli::Types::SubscriptionStatsQueryRecord]</code></summary>
+<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">customer_basic_stats</a>(mode:, freq:, customer_id:) -> Internal::Types::Array[Payabli::Types::StatCustomerBasicQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -23691,7 +23771,7 @@ Valid formats:
 <dl>
 <dd>
 
-Retrieves the basic statistics for a customer for a specific time period, grouped by a selected frequency.
+Retrieves the basic statistics for a customer over a date range, grouped by a frequency. This is a Pay In view: it counts the customer's approved transactions and returns one row per time bucket. Volume here is the gross amount, before fees.
 </dd>
 </dl>
 </dd>
@@ -23707,7 +23787,7 @@ Retrieves the basic statistics for a customer for a specific time period, groupe
 
 ```ruby
 client.statistic.customer_basic_stats(
-  mode: "ytd",
+  mode: "m12",
   freq: "m",
   customer_id: 4440
 )
@@ -23772,14 +23852,6 @@ For example, `w` groups the results by week.
 <dl>
 <dd>
 
-**parameters:** `Internal::Types::Hash[String, String]` — List of parameters.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **request_options:** `Payabli::Statistic::RequestOptions` 
     
 </dd>
@@ -23792,7 +23864,7 @@ For example, `w` groups the results by week.
 </dl>
 </details>
 
-<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">sub_stats</a>(interval:, level:, entry_id:) -> Internal::Types::Array[Payabli::Types::StatBasicQueryRecord]</code></summary>
+<details><summary><code>client.statistic.<a href="/lib/payabli/statistic/client.rb">sub_stats</a>(interval:, level:, entry_id:) -> Internal::Types::Array[Payabli::Types::SubscriptionStatsQueryRecord]</code></summary>
 <dl>
 <dd>
 
@@ -23804,7 +23876,7 @@ For example, `w` groups the results by week.
 <dl>
 <dd>
 
-Retrieves the subscription statistics for a given interval for a paypoint or organization.
+Retrieves subscription statistics for a paypoint or organization, bucketed by how soon active subscriptions are due to renew. This is a forward-looking forecast of upcoming renewals, not charges already taken. Request a single window with `interval`, or `all` to return every window in one call.
 </dd>
 </dl>
 </dd>
@@ -23820,7 +23892,7 @@ Retrieves the subscription statistics for a given interval for a paypoint or org
 
 ```ruby
 client.statistic.sub_stats(
-  interval: "30",
+  interval: "all",
   level: 2,
   entry_id: 1000000
 )
@@ -23874,14 +23946,6 @@ The entry level for the request:
 <dl>
 <dd>
 
-**parameters:** `Internal::Types::Hash[String, String]` — List of parameters
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **request_options:** `Payabli::Statistic::RequestOptions` 
     
 </dd>
@@ -23906,7 +23970,7 @@ The entry level for the request:
 <dl>
 <dd>
 
-Retrieve the basic statistics about a vendor for a given time period, grouped by frequency.
+Retrieve the basic statistics about a vendor over a date range, grouped by frequency. The response returns one row per time bucket, breaking the vendor's bills down by bill state (active, sent to approval, approved, in transit, paid, and so on). Volumes are net of fees.
 </dd>
 </dl>
 </dd>
@@ -23980,14 +24044,6 @@ For example, `w` groups the results by week.
 <dd>
 
 **id_vendor:** `Integer` — Vendor ID.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**parameters:** `Internal::Types::Hash[String, String]` — List of parameters
     
 </dd>
 </dl>
@@ -25261,9 +25317,9 @@ client.vendor.add_vendor(
   location_code: "MIA123",
   mcc: "7777",
   name_1: "Herman's Coatings and Masonry",
-  name_2: "<string>",
-  payee_name_1: "<string>",
-  payee_name_2: "<string>",
+  name_2: "HCM Services",
+  payee_name_1: "Herman Martinez",
+  payee_name_2: "Herman Coatings",
   payment_method: "managed",
   phone: "5555555555",
   remit_address_1: "123 Walnut Street",
@@ -26286,7 +26342,7 @@ Cancels an array of payout transactions.
 <dd>
 
 ```ruby
-client.money_out.cancel_all_out(request: %w[2-29 2-28 2-27])
+client.money_out.cancel_all_out(request: %w[129-230 129-219])
 ```
 </dd>
 </dl>
@@ -26472,7 +26528,7 @@ Captures an array of authorized payout transactions for settlement. The maximum 
 <dd>
 
 ```ruby
-client.money_out.capture_all_out(body: %w[2-29 2-28 2-27])
+client.money_out.capture_all_out(body: %w[129-230 129-219])
 ```
 </dd>
 </dl>
@@ -27722,12 +27778,12 @@ client.payout_subscription.create_payout_subscription(
   bill_data: [{
     invoice_number: "INV-2345",
     net_amount: "500",
-    invoice_date: "2025-08-01",
-    due_date: "2025-08-15"
+    invoice_date: "2027-08-01",
+    due_date: "2027-08-15"
   }],
   schedule_details: {
-    start_date: "09/01/2027",
-    end_date: "09/01/2026",
+    start_date: "01/01/2027",
+    end_date: "12/31/2027",
     frequency: "monthly"
   }
 )

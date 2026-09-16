@@ -43,12 +43,12 @@ module Payabli
       #     bill_data: [{
       #       invoice_number: "INV-2345",
       #       net_amount: "500",
-      #       invoice_date: "2025-08-01",
-      #       due_date: "2025-08-15"
+      #       invoice_date: "2027-08-01",
+      #       due_date: "2027-08-15"
       #     }],
       #     schedule_details: {
-      #       start_date: "09/01/2027",
-      #       end_date: "09/01/2026",
+      #       start_date: "01/01/2027",
+      #       end_date: "12/31/2027",
       #       frequency: "monthly"
       #     }
       #   )
