@@ -86,7 +86,7 @@ module Payabli
 
       field :internal_reference_id, -> { Integer }, optional: true, nullable: false, api_name: "InternalReferenceId"
 
-      field :additional_data, -> { String }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: false, nullable: true, api_name: "additionalData"
 
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
 

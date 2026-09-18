@@ -13,7 +13,7 @@ module Payabli
 
       field :terms, -> { Payabli::Types::Terms }, optional: true, nullable: false, api_name: "Terms"
 
-      field :additional_data, -> { String }, optional: true, nullable: false, api_name: "AdditionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: false, nullable: true, api_name: "AdditionalData"
 
       field :attachments, -> { Internal::Types::Array[Payabli::Types::FileContent] }, optional: true, nullable: false
 

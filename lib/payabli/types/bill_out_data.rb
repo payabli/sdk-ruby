@@ -8,7 +8,7 @@ module Payabli
 
       field :accounting_field_2, -> { String }, optional: true, nullable: false, api_name: "accountingField2"
 
-      field :additional_data, -> { String }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "additionalData"
 
       field :attachments, -> { Internal::Types::Array[Payabli::Types::FileContent] }, optional: true, nullable: false
 

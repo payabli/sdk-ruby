@@ -41,7 +41,7 @@ module Payabli
 
       field :source, -> { String }, optional: true, nullable: false, api_name: "Source"
 
-      field :additional_data, -> { String }, optional: true, nullable: false, api_name: "AdditionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: false, nullable: true, api_name: "AdditionalData"
 
       field :vendor, -> { Payabli::Types::VendorDataResponse }, optional: true, nullable: false, api_name: "Vendor"
 

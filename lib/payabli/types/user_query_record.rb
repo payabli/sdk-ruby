@@ -5,7 +5,7 @@ module Payabli
     class UserQueryRecord < Internal::Types::Model
       field :access, -> { Internal::Types::Array[Payabli::Types::UsrAccess] }, optional: true, nullable: false, api_name: "Access"
 
-      field :additional_data, -> { String }, optional: true, nullable: false, api_name: "AdditionalData"
+      field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "AdditionalData"
 
       field :created_at, -> { String }, optional: true, nullable: false, api_name: "createdAt"
 
