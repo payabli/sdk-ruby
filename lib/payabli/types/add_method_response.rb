@@ -7,6 +7,8 @@ module Payabli
 
       field :response_text, -> { String }, optional: false, nullable: false, api_name: "responseText"
 
+      field :page_identifier, -> { String }, optional: true, nullable: false, api_name: "pageIdentifier"
+
       field :response_data, -> { Payabli::Types::AddMethodResponseResponseData }, optional: true, nullable: false, api_name: "responseData"
     end
   end

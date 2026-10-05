@@ -2,7 +2,14 @@
 
 module Payabli
   module Types
+    # A notification log entry returned by the search endpoint.
     class NotificationLog < Internal::Types::Model
+      field :organization_name, -> { String }, optional: false, nullable: false, api_name: "organizationName"
+
+      field :paypoint_name, -> { String }, optional: false, nullable: false, api_name: "paypointName"
+
+      field :request_id, -> { String }, optional: false, nullable: false, api_name: "requestId"
+
       field :id, -> { String }, optional: false, nullable: false
 
       field :org_id, -> { Integer }, optional: false, nullable: true, api_name: "orgId"
@@ -13,7 +20,9 @@ module Payabli
 
       field :target, -> { String }, optional: false, nullable: true
 
-      field :response_status, -> { String }, optional: false, nullable: true, api_name: "responseStatus"
+      field :response_status_code, -> { Integer }, optional: false, nullable: false, api_name: "responseStatusCode"
+
+      field :response_status, -> { String }, optional: false, nullable: false, api_name: "responseStatus"
 
       field :success, -> { Internal::Types::Boolean }, optional: false, nullable: false
 
@@ -26,6 +35,14 @@ module Payabli
       field :last_failed_date, -> { String }, optional: false, nullable: true, api_name: "lastFailedDate"
 
       field :is_in_progress, -> { Internal::Types::Boolean }, optional: false, nullable: false, api_name: "isInProgress"
+
+      field :organization_logo, -> { String }, optional: false, nullable: false, api_name: "organizationLogo"
+
+      field :organization_fav_icon, -> { String }, optional: false, nullable: false, api_name: "organizationFavIcon"
+
+      field :paypoint_logo, -> { String }, optional: false, nullable: false, api_name: "paypointLogo"
+
+      field :notification_type, -> { Integer }, optional: false, nullable: false, api_name: "notificationType"
     end
   end
 end

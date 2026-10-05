@@ -11,6 +11,14 @@ module Payabli
 
       field :customer_id, -> { Integer }, optional: true, nullable: false, api_name: "customerId"
 
+      field :auth_code, -> { String }, optional: true, nullable: false, api_name: "authCode"
+
+      field :avs_response_text, -> { String }, optional: true, nullable: false, api_name: "avsResponseText"
+
+      field :cvv_response_text, -> { String }, optional: true, nullable: false, api_name: "cvvResponseText"
+
+      field :vendor_id, -> { Integer }, optional: true, nullable: false, api_name: "vendorId"
+
       field :method_reference_id, -> { String }, optional: true, nullable: false, api_name: "methodReferenceId"
     end
   end

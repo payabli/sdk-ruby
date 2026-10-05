@@ -2069,7 +2069,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"isSuccess\": true,\n  \"responseData\": {\n    \"customerId\": 4440,\n    \"methodReferenceId\": \"1ec55af9-7b5a-4ff0-81ed-c12d2f95e135-4440\",\n    \"referenceId\": \"129-219\",\n    \"resultCode\": 1,\n    \"resultText\": \"Approved\"\n  },\n  \"responseText\": \"Success\"\n}",
+        "body": "{\n  \"responseText\": \"Success\",\n  \"isSuccess\": true,\n  \"pageIdentifier\": null,\n  \"responseData\": {\n    \"referenceId\": \"1ec55af9-7b5a-4ff0-81ed-c12d2f95e135-4440\",\n    \"resultCode\": 1,\n    \"resultText\": \"Added\",\n    \"customerId\": 4440,\n    \"methodReferenceId\": \"1ec55af9-7b5a-4ff0-81ed-c12d2f95e135-4440\"\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2108,7 +2108,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"isSuccess\": true,\n  \"responseData\": {\n    \"aba\": \"\",\n    \"achHolderType\": \"personal\",\n    \"achSecCode\": \"achSecCode\",\n    \"bin\": \"401288\",\n    \"binData\": {\n      \"binMatchedLength\": \"6\",\n      \"binCardBrand\": \"Visa\",\n      \"binCardType\": \"Credit\",\n      \"binCardCategory\": \"PLATINUM\",\n      \"binCardIssuer\": \"Bank of Example\",\n      \"binCardIssuerCountry\": \"United States\",\n      \"binCardIssuerCountryCodeA2\": \"US\",\n      \"binCardIssuerCountryNumber\": \"840\",\n      \"binCardIsRegulated\": \"false\",\n      \"binCardUseCategory\": \"Consumer\",\n      \"binCardIssuerCountryCodeA3\": \"USA\"\n    },\n    \"customers\": [\n      {\n        \"additionalData\": {\n          \"key1\": {\n            \"key\": \"value\"\n          },\n          \"key2\": {\n            \"key\": \"value\"\n          },\n          \"key3\": {\n            \"key\": \"value\"\n          }\n        },\n        \"balance\": 250,\n        \"billingPhone\": \"1234567890\",\n        \"company\": \"Bluesky Tech Inc\",\n        \"created\": \"2023-06-01T14:30:00Z\",\n        \"customerId\": 4440,\n        \"customerNumber\": \"C-90010\",\n        \"customerStatus\": 1,\n        \"customerUsername\": \"Marcus\",\n        \"identifierFields\": [\n          \"firstname\",\n          \"email\"\n        ],\n        \"lastUpdated\": \"2024-12-15T09:45:32Z\",\n        \"mfa\": true,\n        \"mfaMode\": 1,\n        \"parentOrgId\": 5,\n        \"parentOrgName\": \"TechCorp\",\n        \"paypointDbaname\": \"Bluesky Tech\",\n        \"paypointEntryname\": \"45782932fcc\",\n        \"paypointLegalname\": \"Bluesky Technologies LLC\",\n        \"shippingAddress1\": \"Suite 500\",\n        \"shippingCity\": \"San Francisco\",\n        \"shippingCountry\": \"US\",\n        \"shippingState\": \"CA\",\n        \"shippingZip\": \"94105\",\n        \"timeZone\": -8\n      }\n    ],\n    \"descriptor\": \"visa\",\n    \"expDate\": \"0926\",\n    \"holderName\": \"Marcus Chen\",\n    \"idPmethod\": \"81f7fde1-dd8b-4892-b2e1-cd60dd91f6b4-XXXC\",\n    \"lastUpdated\": \"2025-01-15T16:30:22Z\",\n    \"maskedAccount\": \"4XXXXXXX2345\",\n    \"method\": \"card\",\n    \"methodType\": \"Single Merchant\",\n    \"postalCode\": \"94105\"\n  },\n  \"responseText\": \"Success\"\n}",
+        "body": "{\n  \"isSuccess\": true,\n  \"responseData\": {\n    \"aba\": \"\",\n    \"achHolderType\": \"personal\",\n    \"achSecCode\": \"achSecCode\",\n    \"bin\": \"401288\",\n    \"binData\": {\n      \"binMatchedLength\": \"6\",\n      \"binCardBrand\": \"Visa\",\n      \"binCardType\": \"Credit\",\n      \"binCardCategory\": \"PLATINUM\",\n      \"binCardIssuer\": \"Bank of Example\",\n      \"binCardIssuerCountry\": \"United States\",\n      \"binCardIssuerCountryCodeA2\": \"US\",\n      \"binCardIssuerCountryNumber\": \"840\",\n      \"binCardIsRegulated\": \"false\",\n      \"binCardUseCategory\": \"Consumer\",\n      \"binCardIssuerCountryCodeA3\": \"USA\"\n    },\n    \"customers\": [\n      {\n        \"customerId\": 4440,\n        \"customerNumber\": \"C-90010\",\n        \"customerUsername\": \"Marcus\",\n        \"customerStatus\": 1,\n        \"company\": \"Bluesky Tech Inc\",\n        \"firstname\": \"Marcus\",\n        \"lastname\": \"Chen\",\n        \"phone\": \"1234567890\",\n        \"email\": \"marcus.chen@example.com\",\n        \"address\": null,\n        \"address1\": \"123 Market St\",\n        \"city\": \"San Francisco\",\n        \"state\": \"CA\",\n        \"zip\": \"94105\",\n        \"country\": \"US\",\n        \"shippingAddress\": null,\n        \"shippingAddress1\": \"Suite 500\",\n        \"shippingCity\": \"San Francisco\",\n        \"shippingState\": \"CA\",\n        \"shippingZip\": \"94105\",\n        \"shippingCountry\": \"US\",\n        \"balance\": 250,\n        \"timeZone\": -8,\n        \"mfa\": true,\n        \"mfaMode\": 1,\n        \"snProvider\": null,\n        \"snIdentifier\": null,\n        \"snData\": null,\n        \"lastUpdated\": \"2024-12-15T09:45:32Z\",\n        \"created\": \"2023-06-01T14:30:00Z\",\n        \"additionalFields\": {},\n        \"identifierFields\": [\n          \"firstname\",\n          \"email\"\n        ],\n        \"subscriptions\": null,\n        \"storedMethods\": null,\n        \"customerSummary\": null,\n        \"paypointLegalname\": \"Bluesky Technologies LLC\",\n        \"paypointDbaname\": \"Bluesky Tech\",\n        \"parentOrgName\": \"TechCorp\",\n        \"parentOrgId\": 5,\n        \"paypointEntryname\": \"45782932fcc\",\n        \"customerEvents\": [],\n        \"pageindentifier\": null,\n        \"externalPaypointID\": null,\n        \"customerConsent\": null,\n        \"customerPortal\": null\n      }\n    ],\n    \"descriptor\": \"visa\",\n    \"expDate\": \"0926\",\n    \"holderName\": \"Marcus Chen\",\n    \"idPmethod\": \"81f7fde1-dd8b-4892-b2e1-cd60dd91f6b4-XXXC\",\n    \"lastUpdated\": \"2025-01-15T16:30:22Z\",\n    \"maskedAccount\": \"4XXXXXXX2345\",\n    \"method\": \"card\",\n    \"methodType\": \"Single Merchant\",\n    \"postalCode\": \"94105\",\n    \"walletType\": null\n  },\n  \"responseText\": \"Success\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2139,7 +2139,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"isSuccess\": true,\n  \"responseData\": {\n    \"referenceId\": \"129-219\",\n    \"resultCode\": 1,\n    \"resultText\": \"Updated\"\n  },\n  \"responseText\": \"Success\"\n}",
+        "body": "{\n  \"responseText\": \"Success\",\n  \"isSuccess\": true,\n  \"responseData\": {\n    \"referenceId\": \"32-8877drt00045632-678\",\n    \"resultCode\": 1,\n    \"resultText\": \"Updated\"\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2170,7 +2170,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"isSuccess\": true,\n  \"responseData\": {\n    \"referenceId\": \"129-219\",\n    \"resultCode\": 1,\n    \"resultText\": \"Removed\"\n  },\n  \"responseText\": \"Success\"\n}",
+        "body": "{\n  \"responseText\": \"Success\",\n  \"isSuccess\": true,\n  \"responseData\": {\n    \"referenceId\": \"32-8877drt00045632-678\",\n    \"resultCode\": 1,\n    \"resultText\": \"Removed\"\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -3289,7 +3289,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"Summary\": {\n    \"pageidentifier\": null,\n    \"pageSize\": 20,\n    \"totalAmount\": 0,\n    \"totalNetAmount\": 0,\n    \"totalPages\": 2,\n    \"totalRecords\": 28\n  },\n  \"Records\": [\n    {\n      \"deviceId\": \"499585-389fj484-3jcj8hj3\",\n      \"idCloud\": 142,\n      \"description\": \"Front Counter Terminal\",\n      \"serialNumber\": \"SN-90210-XR\",\n      \"friendlyName\": \"Front Counter\",\n      \"make\": null,\n      \"model\": null,\n      \"deviceType\": 1,\n      \"deviceStatus\": 1,\n      \"deviceOs\": null,\n      \"macAddress\": \"1A2B3C4D5E6F\",\n      \"lastHealthCheck\": \"2026-04-09T14:49:42Z\",\n      \"registrationCode\": \"REG-A1B2C3D4\",\n      \"activationAttempts\": 0,\n      \"activationCodeExpiry\": \"2026-04-09T14:49:42Z\",\n      \"createdAt\": \"2026-04-09T01:14:37Z\",\n      \"updatedAt\": \"2026-04-09T14:49:42Z\",\n      \"paypointId\": 3040,\n      \"paypointDba\": \"Gruzya Adventure Outfitters\",\n      \"paypointLegal\": \"Gruzya Adventure Outfitters, LLC\",\n      \"paypointEntry\": \"8cfec329267\",\n      \"paypointLogo\": \"https://payabli-public-objects.s3.amazonaws.com/pe3040.png\",\n      \"externalPaypointId\": \"GRUZYA-01\",\n      \"parentOrgId\": 100,\n      \"parentOrgName\": \"Mountain View Services\",\n      \"transactionCount\": 342,\n      \"volumeProcessed\": 28650.75\n    }\n  ]\n}",
+        "body": "{\n  \"Summary\": {\n    \"pageidentifier\": null,\n    \"pageSize\": 20,\n    \"totalAmount\": 0,\n    \"totalNetAmount\": 0,\n    \"totalPages\": 2,\n    \"totalRecords\": 28\n  },\n  \"Records\": [\n    {\n      \"deviceId\": \"499585-389fj484-3jcj8hj3\",\n      \"idCloud\": 142,\n      \"description\": \"Front Counter Terminal\",\n      \"serialNumber\": \"SN-90210-XR\",\n      \"friendlyName\": \"Front Counter\",\n      \"make\": \"\",\n      \"model\": \"DX8000\",\n      \"deviceType\": 1,\n      \"deviceStatus\": 1,\n      \"deviceOs\": null,\n      \"macAddress\": \"1A2B3C4D5E6F\",\n      \"lastHealthCheck\": \"2026-04-09T14:49:42Z\",\n      \"registrationCode\": \"REG-A1B2C3D4\",\n      \"activationAttempts\": 0,\n      \"activationCodeExpiry\": \"2026-04-09T14:49:42Z\",\n      \"createdAt\": \"2026-04-09T01:14:37Z\",\n      \"updatedAt\": \"2026-04-09T14:49:42Z\",\n      \"paypointId\": 3040,\n      \"paypointDba\": \"Gruzya Adventure Outfitters\",\n      \"paypointLegal\": \"Gruzya Adventure Outfitters, LLC\",\n      \"paypointEntry\": \"8cfec329267\",\n      \"paypointLogo\": \"https://payabli-public-objects.s3.amazonaws.com/pe3040.png\",\n      \"externalPaypointId\": \"GRUZYA-01\",\n      \"parentOrgId\": 100,\n      \"parentOrgName\": \"Mountain View Services\",\n      \"transactionCount\": 342,\n      \"volumeProcessed\": 28650.75\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -3331,7 +3331,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"Summary\": {\n    \"pageidentifier\": null,\n    \"pageSize\": 20,\n    \"totalAmount\": 0,\n    \"totalNetAmount\": 0,\n    \"totalPages\": 2,\n    \"totalRecords\": 28\n  },\n  \"Records\": [\n    {\n      \"deviceId\": \"499585-389fj484-3jcj8hj3\",\n      \"idCloud\": 142,\n      \"description\": \"Front Counter Terminal\",\n      \"serialNumber\": \"SN-90210-XR\",\n      \"friendlyName\": \"Front Counter\",\n      \"make\": null,\n      \"model\": null,\n      \"deviceType\": 1,\n      \"deviceStatus\": 1,\n      \"deviceOs\": null,\n      \"macAddress\": \"1A2B3C4D5E6F\",\n      \"lastHealthCheck\": \"2026-04-09T14:49:42Z\",\n      \"registrationCode\": \"REG-A1B2C3D4\",\n      \"activationAttempts\": 0,\n      \"activationCodeExpiry\": \"2026-04-09T14:49:42Z\",\n      \"createdAt\": \"2026-04-09T01:14:37Z\",\n      \"updatedAt\": \"2026-04-09T14:49:42Z\",\n      \"paypointId\": 3040,\n      \"paypointDba\": \"Gruzya Adventure Outfitters\",\n      \"paypointLegal\": \"Gruzya Adventure Outfitters, LLC\",\n      \"paypointEntry\": \"8cfec329267\",\n      \"paypointLogo\": \"https://payabli-public-objects.s3.amazonaws.com/pe3040.png\",\n      \"externalPaypointId\": \"GRUZYA-01\",\n      \"parentOrgId\": 100,\n      \"parentOrgName\": \"Mountain View Services\",\n      \"transactionCount\": 342,\n      \"volumeProcessed\": 28650.75\n    }\n  ]\n}",
+        "body": "{\n  \"Summary\": {\n    \"pageidentifier\": null,\n    \"pageSize\": 20,\n    \"totalAmount\": 0,\n    \"totalNetAmount\": 0,\n    \"totalPages\": 2,\n    \"totalRecords\": 28\n  },\n  \"Records\": [\n    {\n      \"deviceId\": \"499585-389fj484-3jcj8hj3\",\n      \"idCloud\": 142,\n      \"description\": \"Front Counter Terminal\",\n      \"serialNumber\": \"SN-90210-XR\",\n      \"friendlyName\": \"Front Counter\",\n      \"make\": \"\",\n      \"model\": \"DX8000\",\n      \"deviceType\": 1,\n      \"deviceStatus\": 1,\n      \"deviceOs\": null,\n      \"macAddress\": \"1A2B3C4D5E6F\",\n      \"lastHealthCheck\": \"2026-04-09T14:49:42Z\",\n      \"registrationCode\": \"REG-A1B2C3D4\",\n      \"activationAttempts\": 0,\n      \"activationCodeExpiry\": \"2026-04-09T14:49:42Z\",\n      \"createdAt\": \"2026-04-09T01:14:37Z\",\n      \"updatedAt\": \"2026-04-09T14:49:42Z\",\n      \"paypointId\": 3040,\n      \"paypointDba\": \"Gruzya Adventure Outfitters\",\n      \"paypointLegal\": \"Gruzya Adventure Outfitters, LLC\",\n      \"paypointEntry\": \"8cfec329267\",\n      \"paypointLogo\": \"https://payabli-public-objects.s3.amazonaws.com/pe3040.png\",\n      \"externalPaypointId\": \"GRUZYA-01\",\n      \"parentOrgId\": 100,\n      \"parentOrgName\": \"Mountain View Services\",\n      \"transactionCount\": 342,\n      \"volumeProcessed\": 28650.75\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4602,7 +4602,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"isSuccess\": true,\n  \"responseText\": \"responseText\",\n  \"responseCode\": 1,\n  \"responseData\": {\n    \"resultData\": {\n      \"billNumber\": \"billNumber\",\n      \"netAmount\": 1.1,\n      \"billDate\": \"2024-01-15T09:30:00Z\",\n      \"dueDate\": \"2024-01-15T09:30:00Z\",\n      \"comments\": \"comments\",\n      \"billItems\": [\n        {}\n      ],\n      \"mode\": 1,\n      \"accountingField1\": \"accountingField1\",\n      \"accountingField2\": \"accountingField2\",\n      \"endDate\": \"2024-01-15T09:30:00Z\",\n      \"frequency\": \"frequency\",\n      \"terms\": \"terms\",\n      \"status\": 1,\n      \"lotNumber\": \"lotNumber\",\n      \"attachments\": [\n        {}\n      ]\n    }\n  }\n}",
+        "body": "{\n  \"isSuccess\": true,\n  \"responseText\": \"responseText\",\n  \"responseCode\": 1,\n  \"responseData\": {\n    \"resultData\": {\n      \"billNumber\": \"billNumber\",\n      \"netAmount\": 1.1,\n      \"discount\": 1.1,\n      \"totalAmount\": 1.1,\n      \"billDate\": \"2024-01-15T09:30:00Z\",\n      \"dueDate\": \"2024-01-15T09:30:00Z\",\n      \"comments\": \"comments\",\n      \"billItems\": [\n        {}\n      ],\n      \"mode\": 1,\n      \"accountingField1\": \"accountingField1\",\n      \"accountingField2\": \"accountingField2\",\n      \"endDate\": \"2024-01-15T09:30:00Z\",\n      \"frequency\": \"frequency\",\n      \"terms\": \"terms\",\n      \"status\": 1,\n      \"lotNumber\": \"lotNumber\",\n      \"attachments\": [\n        {}\n      ]\n    }\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4633,7 +4633,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"isSuccess\": true,\n  \"responseText\": \"responseText\",\n  \"responseCode\": 1,\n  \"responseData\": {\n    \"resultData\": {\n      \"billNumber\": \"billNumber\",\n      \"netAmount\": 1.1,\n      \"billDate\": \"2024-01-15T09:30:00Z\",\n      \"dueDate\": \"2024-01-15T09:30:00Z\",\n      \"comments\": \"comments\",\n      \"billItems\": [\n        {}\n      ],\n      \"mode\": 1,\n      \"accountingField1\": \"accountingField1\",\n      \"accountingField2\": \"accountingField2\",\n      \"endDate\": \"2024-01-15T09:30:00Z\",\n      \"frequency\": \"frequency\",\n      \"terms\": \"terms\",\n      \"status\": 1,\n      \"lotNumber\": \"lotNumber\",\n      \"attachments\": [\n        {}\n      ]\n    }\n  }\n}",
+        "body": "{\n  \"isSuccess\": true,\n  \"responseText\": \"responseText\",\n  \"responseCode\": 1,\n  \"responseData\": {\n    \"resultData\": {\n      \"billNumber\": \"billNumber\",\n      \"netAmount\": 1.1,\n      \"discount\": 1.1,\n      \"totalAmount\": 1.1,\n      \"billDate\": \"2024-01-15T09:30:00Z\",\n      \"dueDate\": \"2024-01-15T09:30:00Z\",\n      \"comments\": \"comments\",\n      \"billItems\": [\n        {}\n      ],\n      \"mode\": 1,\n      \"accountingField1\": \"accountingField1\",\n      \"accountingField2\": \"accountingField2\",\n      \"endDate\": \"2024-01-15T09:30:00Z\",\n      \"frequency\": \"frequency\",\n      \"terms\": \"terms\",\n      \"status\": 1,\n      \"lotNumber\": \"lotNumber\",\n      \"attachments\": [\n        {}\n      ]\n    }\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4664,7 +4664,7 @@
       },
       "response": {
         "status": 200,
-        "body": "[\n  {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"orgId\": 123,\n    \"paypointId\": 3040,\n    \"notificationEvent\": \"ActivatedMerchant\",\n    \"target\": \"https://webhook.example.com/payments\",\n    \"responseStatus\": \"200\",\n    \"success\": true,\n    \"jobData\": \"{\\\"transactionId\\\":\\\"txn_123\\\"}\",\n    \"createdDate\": \"2024-01-15T10:30:00Z\",\n    \"successDate\": \"2024-01-15T10:30:05Z\",\n    \"lastFailedDate\": null,\n    \"isInProgress\": false\n  }\n]",
+        "body": "[\n  {\n    \"organizationName\": \"The Pilgrim Planner\",\n    \"organizationLogo\": \"https://example.com/org-logo.png\",\n    \"organizationFavIcon\": \"https://example.com/org-favicon.png\",\n    \"paypointName\": \"Pilgrim Planner\",\n    \"paypointLogo\": \"https://example.com/paypoint-logo.png\",\n    \"notificationType\": 1,\n    \"requestId\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n    \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"orgId\": 123,\n    \"paypointId\": 3040,\n    \"notificationEvent\": \"approvedpayment\",\n    \"target\": \"https://webhook.example.com/payments\",\n    \"responseStatusCode\": 200,\n    \"responseStatus\": \"OK\",\n    \"success\": true,\n    \"jobData\": \"{\\\"transactionId\\\":\\\"txn_123\\\"}\",\n    \"createdDate\": \"2024-01-15T10:30:00Z\",\n    \"successDate\": \"2024-01-15T10:30:05Z\",\n    \"lastFailedDate\": null,\n    \"isInProgress\": false\n  }\n]",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4695,7 +4695,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"orgId\": 123,\n  \"paypointId\": 3040,\n  \"notificationEvent\": \"ActivatedMerchant\",\n  \"target\": \"https://webhook.example.com/payments\",\n  \"responseStatus\": \"200\",\n  \"success\": true,\n  \"jobData\": \"{\\\"transactionId\\\":\\\"txn_123\\\"}\",\n  \"createdDate\": \"2024-01-15T10:30:00Z\",\n  \"successDate\": \"2024-01-15T10:30:05Z\",\n  \"lastFailedDate\": null,\n  \"isInProgress\": false,\n  \"webHeaders\": [\n    {\n      \"key\": \"Content-Type\",\n      \"value\": \"application/json\"\n    },\n    {\n      \"key\": \"User-Agent\",\n      \"value\": \"PaymentSystem/1.0\"\n    }\n  ],\n  \"responseHeaders\": [\n    {\n      \"key\": \"Content-Type\",\n      \"value\": [\n        \"application/json\"\n      ]\n    },\n    {\n      \"key\": \"X-Request-ID\",\n      \"value\": [\n        \"req_abc123\"\n      ]\n    }\n  ],\n  \"responseContent\": \"{\\\"status\\\":\\\"received\\\",\\\"id\\\":\\\"wh_123\\\"}\"\n}",
+        "body": "{\n  \"webHeaders\": [\n    {\n      \"key\": \"Content-Type\",\n      \"value\": \"application/json\"\n    },\n    {\n      \"key\": \"User-Agent\",\n      \"value\": \"PaymentSystem/1.0\"\n    }\n  ],\n  \"responseHeaders\": [\n    {\n      \"key\": \"Content-Type\",\n      \"value\": [\n        \"application/json\"\n      ]\n    },\n    {\n      \"key\": \"X-Request-ID\",\n      \"value\": [\n        \"req_abc123\"\n      ]\n    }\n  ],\n  \"responseContent\": \"{\\\"status\\\":\\\"received\\\",\\\"id\\\":\\\"wh_123\\\"}\",\n  \"organizationName\": \"The Pilgrim Planner\",\n  \"paypointName\": \"Pilgrim Planner\",\n  \"requestId\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"orgId\": 123,\n  \"paypointId\": 3040,\n  \"notificationEvent\": \"approvedpayment\",\n  \"target\": \"https://webhook.example.com/payments\",\n  \"responseStatusCode\": 200,\n  \"responseStatus\": \"OK\",\n  \"success\": true,\n  \"jobData\": \"{\\\"transactionId\\\":\\\"txn_123\\\"}\",\n  \"createdDate\": \"2024-01-15T10:30:00Z\",\n  \"successDate\": \"2024-01-15T10:30:05Z\",\n  \"lastFailedDate\": null,\n  \"isInProgress\": false\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4726,7 +4726,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"orgId\": 123,\n  \"paypointId\": 3040,\n  \"notificationEvent\": \"ActivatedMerchant\",\n  \"target\": \"https://webhook.example.com/payments\",\n  \"responseStatus\": \"200\",\n  \"success\": true,\n  \"jobData\": \"{\\\"transactionId\\\":\\\"txn_123\\\"}\",\n  \"createdDate\": \"2024-01-15T10:30:00Z\",\n  \"successDate\": \"2024-01-15T10:30:05Z\",\n  \"lastFailedDate\": null,\n  \"isInProgress\": false,\n  \"webHeaders\": [\n    {\n      \"key\": \"Content-Type\",\n      \"value\": \"application/json\"\n    }\n  ],\n  \"responseHeaders\": [\n    {\n      \"key\": \"Content-Type\",\n      \"value\": [\n        \"application/json\"\n      ]\n    }\n  ],\n  \"responseContent\": \"{\\\"status\\\":\\\"received\\\",\\\"id\\\":\\\"wh_123\\\"}\"\n}",
+        "body": "{\n  \"message\": \"Notification retry succeeded.\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4744,20 +4744,20 @@
       }
     },
     {
-      "id": "58f12b85-65d2-45a2-af58-c0bd4669f45a",
-      "name": "bulkRetryNotificationLogs - BulkRetryNotificationLogsExample",
+      "id": "950bc47f-eb3f-4269-98d8-58e0164ff967",
+      "name": "bulkRetryNotificationLogs - default",
       "request": {
         "urlPathTemplate": "/v2/notificationlogs/retry",
         "method": "POST"
       },
       "response": {
-        "status": 200,
-        "body": "\"\"",
+        "status": 201,
+        "body": "\"string\"",
         "headers": {
           "Content-Type": "application/json"
         }
       },
-      "uuid": "58f12b85-65d2-45a2-af58-c0bd4669f45a",
+      "uuid": "950bc47f-eb3f-4269-98d8-58e0164ff967",
       "persistent": true,
       "priority": 3,
       "metadata": {

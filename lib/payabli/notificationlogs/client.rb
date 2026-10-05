@@ -31,7 +31,7 @@ module Payabli
       #     page_size: 20,
       #     start_date: "2024-01-01T00:00:00Z",
       #     end_date: "2024-01-31T23:59:59Z",
-      #     notification_event: "ActivatedMerchant",
+      #     notification_event: "approvedpayment",
       #     succeeded: true,
       #     org_id: 123
       #   )
@@ -125,7 +125,7 @@ module Payabli
       # @example
       #   client.notificationlogs.retry_notification_log(uuid: "550e8400-e29b-41d4-a716-446655440000")
       #
-      # @return [Payabli::Types::NotificationLogDetail]
+      # @return [Payabli::Types::NotificationRetryResponse]
       def retry_notification_log(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
@@ -143,7 +143,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::NotificationLogDetail.load(response.body)
+          Payabli::Types::NotificationRetryResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -164,9 +164,9 @@ module Payabli
       # @option request_options [Integer] :timeout_in_seconds
       #
       # @example
-      #   client.notificationlogs.bulk_retry_notification_logs(request: %w[550e8400-e29b-41d4-a716-446655440000 550e8400-e29b-41d4-a716-446655440001 550e8400-e29b-41d4-a716-446655440002])
+      #   client.notificationlogs.bulk_retry_notification_logs(request: %w[string string])
       #
-      # @return [untyped]
+      # @return [String]
       def bulk_retry_notification_logs(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])

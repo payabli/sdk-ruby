@@ -2,54 +2,33 @@
 
 module Payabli
   module Types
+    # The customer record that owns the stored payment method.
     class GetMethodResponseResponseDataCustomersItem < Internal::Types::Model
-      field :additional_data, -> { Internal::Types::Hash[String, Internal::Types::Hash[String, Object]] }, optional: true, nullable: false, api_name: "additionalData"
+      field :additional_fields, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "additionalFields"
 
-      field :billing_address_1, -> { String }, optional: true, nullable: false, api_name: "billingAddress1"
+      field :address, -> { String }, optional: true, nullable: false
 
-      field :billing_address_2, -> { String }, optional: true, nullable: false, api_name: "billingAddress2"
+      field :address_1, -> { String }, optional: true, nullable: false, api_name: "address1"
 
-      field :billing_city, -> { String }, optional: true, nullable: false, api_name: "billingCity"
+      field :balance, -> { Integer }, optional: true, nullable: false
 
-      field :billing_country, -> { String }, optional: true, nullable: false, api_name: "billingCountry"
-
-      field :billing_email, -> { String }, optional: true, nullable: false, api_name: "billingEmail"
-
-      field :billing_phone, -> { String }, optional: true, nullable: false, api_name: "billingPhone"
-
-      field :billing_state, -> { String }, optional: true, nullable: false, api_name: "billingState"
-
-      field :billing_zip, -> { String }, optional: true, nullable: false, api_name: "billingZip"
+      field :city, -> { String }, optional: true, nullable: false
 
       field :company, -> { String }, optional: true, nullable: false
+
+      field :country, -> { String }, optional: true, nullable: false
+
+      field :created, -> { String }, optional: true, nullable: false
+
+      field :customer_consent, -> { Internal::Types::Hash[String, Object] }, optional: true, nullable: false, api_name: "customerConsent"
+
+      field :customer_events, -> { Internal::Types::Array[Object] }, optional: true, nullable: false, api_name: "customerEvents"
 
       field :customer_id, -> { Integer }, optional: true, nullable: false, api_name: "customerId"
 
       field :customer_number, -> { String }, optional: true, nullable: false, api_name: "customerNumber"
 
-      field :first_name, -> { String }, optional: true, nullable: false, api_name: "firstName"
-
-      field :identifier_fields, -> { Internal::Types::Array[String] }, optional: true, nullable: false, api_name: "identifierFields"
-
-      field :last_name, -> { String }, optional: true, nullable: false, api_name: "lastName"
-
-      field :shipping_address_1, -> { String }, optional: true, nullable: false, api_name: "shippingAddress1"
-
-      field :shipping_address_2, -> { String }, optional: true, nullable: false, api_name: "shippingAddress2"
-
-      field :shipping_city, -> { String }, optional: true, nullable: false, api_name: "shippingCity"
-
-      field :shipping_country, -> { String }, optional: true, nullable: false, api_name: "shippingCountry"
-
-      field :shipping_state, -> { String }, optional: true, nullable: false, api_name: "shippingState"
-
-      field :shipping_zip, -> { String }, optional: true, nullable: false, api_name: "shippingZip"
-
-      field :balance, -> { Integer }, optional: true, nullable: false
-
-      field :created, -> { String }, optional: true, nullable: false
-
-      field :customer_consent, -> { Internal::Types::Hash[String, Object] }, optional: true, nullable: false, api_name: "customerConsent"
+      field :customer_portal, -> { String }, optional: true, nullable: false, api_name: "customerPortal"
 
       field :customer_status, -> { Integer }, optional: true, nullable: false, api_name: "customerStatus"
 
@@ -57,7 +36,15 @@ module Payabli
 
       field :customer_username, -> { String }, optional: true, nullable: false, api_name: "customerUsername"
 
+      field :email, -> { String }, optional: true, nullable: false
+
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
+
+      field :firstname, -> { String }, optional: true, nullable: false
+
+      field :identifier_fields, -> { Internal::Types::Array[String] }, optional: true, nullable: false, api_name: "identifierFields"
+
+      field :lastname, -> { String }, optional: true, nullable: false
 
       field :last_updated, -> { String }, optional: true, nullable: false, api_name: "lastUpdated"
 
@@ -77,17 +64,35 @@ module Payabli
 
       field :paypoint_legalname, -> { String }, optional: true, nullable: false, api_name: "paypointLegalname"
 
+      field :phone, -> { String }, optional: true, nullable: false
+
+      field :shipping_address, -> { String }, optional: true, nullable: false, api_name: "shippingAddress"
+
+      field :shipping_address_1, -> { String }, optional: true, nullable: false, api_name: "shippingAddress1"
+
+      field :shipping_city, -> { String }, optional: true, nullable: false, api_name: "shippingCity"
+
+      field :shipping_country, -> { String }, optional: true, nullable: false, api_name: "shippingCountry"
+
+      field :shipping_state, -> { String }, optional: true, nullable: false, api_name: "shippingState"
+
+      field :shipping_zip, -> { String }, optional: true, nullable: false, api_name: "shippingZip"
+
       field :sn_data, -> { Internal::Types::Hash[String, Object] }, optional: true, nullable: false, api_name: "snData"
 
       field :sn_identifier, -> { String }, optional: true, nullable: false, api_name: "snIdentifier"
 
       field :sn_provider, -> { String }, optional: true, nullable: false, api_name: "snProvider"
 
+      field :state, -> { String }, optional: true, nullable: false
+
       field :stored_methods, -> { Internal::Types::Array[Payabli::Types::MethodQueryRecords] }, optional: true, nullable: false, api_name: "storedMethods"
 
       field :subscriptions, -> { Internal::Types::Array[Payabli::Types::SubscriptionQueryRecords] }, optional: true, nullable: false
 
       field :time_zone, -> { Integer }, optional: true, nullable: false, api_name: "timeZone"
+
+      field :zip, -> { String }, optional: true, nullable: false
     end
   end
 end

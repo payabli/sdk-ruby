@@ -21,7 +21,7 @@ class NotificationlogsWireTest < WireMockTestCase
       page_size: 20,
       start_date: "2024-01-01T00:00:00Z",
       end_date: "2024-01-31T23:59:59Z",
-      notification_event: "ActivatedMerchant",
+      notification_event: "approvedpayment",
       succeeded: true,
       org_id: 123,
       request_options: {
@@ -116,7 +116,7 @@ class NotificationlogsWireTest < WireMockTestCase
     test_id = "notificationlogs.bulk_retry_notification_logs.0"
 
     @client.notificationlogs.bulk_retry_notification_logs(
-      request: %w[550e8400-e29b-41d4-a716-446655440000 550e8400-e29b-41d4-a716-446655440001 550e8400-e29b-41d4-a716-446655440002],
+      request: %w[string string],
       request_options: {
         additional_headers: {
           "X-Test-Id" => "notificationlogs.bulk_retry_notification_logs.0"

@@ -38,6 +38,8 @@ module Payabli
       field :postal_code, -> { String }, optional: true, nullable: false, api_name: "postalCode"
 
       field :vendors, -> { Internal::Types::Array[Payabli::Types::GetMethodResponseResponseDataVendorsItem] }, optional: true, nullable: false
+
+      field :wallet_type, -> { String }, optional: true, nullable: false, api_name: "walletType"
     end
   end
 end

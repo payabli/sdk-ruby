@@ -7,6 +7,10 @@ module Payabli
 
       field :net_amount, -> { Integer }, optional: true, nullable: false, api_name: "netAmount"
 
+      field :discount, -> { Integer }, optional: true, nullable: false
+
+      field :total_amount, -> { Integer }, optional: true, nullable: false, api_name: "totalAmount"
+
       field :bill_date, -> { String }, optional: true, nullable: false, api_name: "billDate"
 
       field :due_date, -> { String }, optional: true, nullable: false, api_name: "dueDate"
