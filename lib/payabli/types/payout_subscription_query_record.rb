@@ -9,11 +9,19 @@ module Payabli
 
       field :events, -> { Internal::Types::Array[Payabli::Types::GeneralEvents] }, optional: true, nullable: false
 
-      field :vendor, -> { Payabli::Types::VendorQueryRecord }, optional: true, nullable: false
+      field :vendor, -> { Payabli::Types::PayoutSubscriptionVendor }, optional: true, nullable: false
 
-      field :bill_data, -> { Internal::Types::Array[Payabli::Types::BillPayOutData] }, optional: true, nullable: false, api_name: "billData"
+      field :bill_data, -> { Internal::Types::Array[Payabli::Types::PayoutSubscriptionBill] }, optional: true, nullable: false, api_name: "billData"
 
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "externalPaypointID"
+
+      field :same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "sameDayAch"
+
+      field :do_not_create_bills, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "doNotCreateBills"
+
+      field :allow_duplicated_bills, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "allowDuplicatedBills"
+
+      field :auto_convert_same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "autoConvertSameDayAch"
 
       field :method_, -> { String }, optional: true, nullable: false, api_name: "method"
 
@@ -25,7 +33,7 @@ module Payabli
 
       field :fee_amount, -> { Integer }, optional: true, nullable: false, api_name: "feeAmount"
 
-      field :payment_data, -> { Payabli::Types::QueryPaymentData }, optional: true, nullable: false, api_name: "paymentData"
+      field :payment_data, -> { Payabli::Types::PayoutSubscriptionPaymentData }, optional: true, nullable: false, api_name: "paymentData"
 
       field :start_date, -> { String }, optional: false, nullable: true, api_name: "startDate"
 
@@ -60,6 +68,8 @@ module Payabli
       field :parent_org_id, -> { Integer }, optional: true, nullable: false, api_name: "parentOrgId"
 
       field :source, -> { String }, optional: true, nullable: false
+
+      field :subscription_type, -> { String }, optional: true, nullable: false, api_name: "subscriptionType"
     end
   end
 end

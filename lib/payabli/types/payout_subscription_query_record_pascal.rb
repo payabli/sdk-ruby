@@ -15,6 +15,14 @@ module Payabli
 
       field :external_paypoint_id, -> { String }, optional: true, nullable: false, api_name: "ExternalPaypointID"
 
+      field :same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "SameDayAch"
+
+      field :do_not_create_bills, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "DoNotCreateBills"
+
+      field :allow_duplicated_bills, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "AllowDuplicatedBills"
+
+      field :auto_convert_same_day_ach, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "AutoConvertSameDayAch"
+
       field :method_, -> { String }, optional: true, nullable: false, api_name: "Method"
 
       field :paypoint_id, -> { Integer }, optional: true, nullable: false, api_name: "PaypointId"
@@ -25,7 +33,7 @@ module Payabli
 
       field :fee_amount, -> { Integer }, optional: true, nullable: false, api_name: "FeeAmount"
 
-      field :payment_data, -> { Payabli::Types::QueryPaymentData }, optional: true, nullable: false, api_name: "PaymentData"
+      field :payment_data, -> { Payabli::Types::PayoutSubscriptionPaymentDataPascal }, optional: true, nullable: false, api_name: "PaymentData"
 
       field :start_date, -> { String }, optional: false, nullable: true, api_name: "StartDate"
 
@@ -60,6 +68,8 @@ module Payabli
       field :parent_org_id, -> { Integer }, optional: true, nullable: false, api_name: "ParentOrgId"
 
       field :source, -> { String }, optional: true, nullable: false, api_name: "Source"
+
+      field :subscription_type, -> { String }, optional: true, nullable: false, api_name: "SubscriptionType"
     end
   end
 end

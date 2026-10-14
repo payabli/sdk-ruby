@@ -30,6 +30,8 @@ module Payabli
       field :services, -> { Internal::Types::Array[Object] }, optional: false, nullable: false
 
       field :default, -> { Internal::Types::Boolean }, optional: false, nullable: false
+
+      field :country, -> { String }, optional: true, nullable: false
     end
   end
 end

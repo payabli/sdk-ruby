@@ -107,7 +107,9 @@ module Payabli
 
       field :external_paypoint_id, -> { String }, optional: false, nullable: true, api_name: "externalPaypointID"
 
-      field :stored_methods, -> { Internal::Types::Array[Payabli::Types::VendorResponseStoredMethod] }, optional: false, nullable: true, api_name: "StoredMethods"
+      field :stored_methods, -> { Internal::Types::Array[Payabli::Types::VendorStoredMethod] }, optional: false, nullable: true, api_name: "StoredMethods"
+
+      field :vendor_portal, -> { Payabli::Types::VendorPortalAccess }, optional: true, nullable: false, api_name: "VendorPortal"
     end
   end
 end
