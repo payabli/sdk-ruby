@@ -57,6 +57,8 @@ module Payabli
 
       field :transaction, -> { Payabli::Types::TransactionOutQueryRecord }, optional: true, nullable: false, api_name: "Transaction"
 
+      field :transactions, -> { Internal::Types::Array[Payabli::Types::BillTransactionReference] }, optional: false, nullable: true
+
       field :bill_events, -> { Internal::Types::Array[Payabli::Types::GeneralEvents] }, optional: true, nullable: false, api_name: "billEvents"
 
       field :bill_approvals, -> { Internal::Types::Array[Payabli::Types::BillQueryRecord2BillApprovalsItem] }, optional: true, nullable: false, api_name: "billApprovals"

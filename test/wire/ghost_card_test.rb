@@ -60,6 +60,37 @@ class GhostCardWireTest < WireMockTestCase
     )
   end
 
+  def test_ghost_card_delete_ghost_card_with_wiremock
+    test_id = "ghost_card.delete_ghost_card.0"
+
+    @client.ghost_card.delete_ghost_card(
+      card_token: "gc_abc123def456",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "ghost_card.delete_ghost_card.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/MoneyOutCard/GhostCard/gc_abc123def456",
+      query_params: nil,
+      expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "DELETE",
+      url_path: "/MoneyOutCard/GhostCard/gc_abc123def456",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
+  end
+
   def test_ghost_card_update_card_with_wiremock
     test_id = "ghost_card.update_card.0"
 

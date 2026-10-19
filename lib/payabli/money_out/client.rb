@@ -673,11 +673,65 @@ module Payabli
         end
       end
 
+      # Returns a suggested check number for the next check payout from a paypoint's funding account. Payabli suggests
+      # the highest check number on the account's check payouts plus one, or `1` if the account has no check history.
+      # Canceled check payouts don't count toward the highest number.
+      #
+      #
+      # Use the suggested value with the `checkNumber` field when you reissue a check, or when you create a new check
+      # payout.
+      #
+      #
+      # Errors return HTTP `400`: `3005` when the paypoint ID is invalid or inactive, and `3758` when the account ID
+      # isn't valid for the paypoint.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [Integer] :paypoint_id
+      # @option params [String] :account_id
+      #
+      # @example
+      #   client.money_out.get_next_check_number(
+      #     paypoint_id: 3040,
+      #     account_id: "123-456"
+      #   )
+      #
+      # @return [Payabli::Types::NextCheckNumberResponse]
+      def get_next_check_number(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "GET",
+          path: "MoneyOut/nextCheckNumber/#{URI.encode_uri_component(params[:paypoint_id].to_s)}/#{URI.encode_uri_component(params[:account_id].to_s)}",
+          headers: headers,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::NextCheckNumberResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
       # Reissues a payout transaction with a new payment method. This creates a new transaction linked to the original
       # and marks the original transaction as reissued.
       #
-      # The original transaction must be in **Processing** or **Processed** status. The payment method in the request
-      # body is used directly. The endpoint doesn't fall back to vendor-managed payment methods.
+      # The original transaction must be in **Processing** or **Processed** status. An ACH payout with a **Returned**
+      # status can also be reissued. The payment method in the request body is used directly. The endpoint doesn't fall
+      # back to vendor-managed payment methods.
       #
       # The new transaction goes through the standard authorize-and-capture flow automatically. Both the original and
       # new transactions are linked through their event histories for audit purposes.

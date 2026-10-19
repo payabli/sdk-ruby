@@ -34,6 +34,8 @@ module Payabli
 
       field :location_code, -> { String }, optional: false, nullable: true, api_name: "locationCode"
 
+      field :issue_1099, -> { Internal::Types::Boolean }, optional: false, nullable: false, api_name: "issue1099"
+
       field :contacts, -> { Internal::Types::Array[Payabli::Types::PayoutSubscriptionVendorContact] }, optional: false, nullable: true
 
       field :billing_data, -> { Payabli::Types::BillingDataResponse }, optional: false, nullable: true, api_name: "billingData"

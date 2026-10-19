@@ -60,6 +60,7 @@ class VendorWireTest < WireMockTestCase
       remit_zip: "31113",
       state: "FL",
       vendor_status: 1,
+      issue_1099: true,
       zip: "33139",
       request_options: {
         additional_headers: {

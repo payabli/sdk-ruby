@@ -16,8 +16,9 @@ module Payabli
       # payout. They're issued directly to a vendor and can be reused up to a configurable number of times within the
       # card's spending limits.
       #
-      # Only one ghost card can exist per vendor per paypoint. To issue a new card to the same vendor, cancel the
-      # existing card first.
+      # Only one active ghost card can exist per vendor per paypoint. If the vendor already has one, the request fails
+      # with error `7067`. To issue a new card to the same vendor, cancel the existing card first. Canceled and expired
+      # cards don't count toward this limit. See [Cancel ghost card](/developers/api-reference/cards/cancel-ghost-card).
       #
       # @param request_options [Hash]
       # @param params [Payabli::GhostCard::Types::CreateGhostCardRequestBody]
@@ -72,6 +73,51 @@ module Payabli
         code = response.code.to_i
         if code.between?(200, 299)
           Payabli::Types::CreateGhostCardResponse.load(response.body)
+        else
+          error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
+      end
+
+      # Cancels a ghost card. This is always a soft delete: Payabli keeps the card record, including its transaction
+      # history.
+      #
+      # Canceling a ghost card frees the vendor's slot, so you can issue a new ghost card to the same vendor. A card
+      # canceled with this endpoint can't be used, reactivated, or canceled again.
+      #
+      # Requires the `vcard_delete` permission.
+      #
+      # @param request_options [Hash]
+      # @param params [Hash]
+      # @option request_options [String] :base_url
+      # @option request_options [Hash{String => Object}] :additional_headers
+      # @option request_options [Hash{String => Object}] :additional_query_parameters
+      # @option request_options [Hash{String => Object}] :additional_body_parameters
+      # @option request_options [Integer] :timeout_in_seconds
+      # @option params [String] :card_token
+      #
+      # @example
+      #   client.ghost_card.delete_ghost_card(card_token: "gc_abc123def456")
+      #
+      # @return [Payabli::Types::DeleteGhostCardResponse]
+      def delete_ghost_card(request_options: {}, **params)
+        params = Payabli::Internal::Types::Utils.normalize_keys(params)
+        headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
+        request = Payabli::Internal::JSON::Request.new(
+          base_url: request_options[:base_url],
+          method: "DELETE",
+          path: "MoneyOutCard/GhostCard/#{URI.encode_uri_component(params[:card_token].to_s)}",
+          headers: headers,
+          request_options: request_options
+        )
+        begin
+          response = @client.send(request)
+        rescue Net::HTTPRequestTimeout
+          raise Payabli::Errors::TimeoutError
+        end
+        code = response.code.to_i
+        if code.between?(200, 299)
+          Payabli::Types::DeleteGhostCardResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

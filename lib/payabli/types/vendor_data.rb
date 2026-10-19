@@ -65,6 +65,8 @@ module Payabli
 
       field :vendor_status, -> { Integer }, optional: true, nullable: false, api_name: "vendorStatus"
 
+      field :issue_1099, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "issue1099"
+
       field :zip, -> { String }, optional: true, nullable: false
 
       field :default_method_id, -> { String }, optional: true, nullable: false, api_name: "defaultMethodId"

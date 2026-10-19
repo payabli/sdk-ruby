@@ -19,6 +19,12 @@ module Payabli
 
       field :device_id, -> { String }, optional: true, nullable: false, api_name: "DeviceId"
 
+      field :device_data, -> { Payabli::Types::QueryDeviceData }, optional: false, nullable: true, api_name: "DeviceData"
+
+      field :device_entry_mode, -> { String }, optional: false, nullable: true, api_name: "DeviceEntryMode"
+
+      field :emv_auth_data, -> { Payabli::Types::EmvAuthData }, optional: false, nullable: true, api_name: "EmvAuthData"
+
       field :entrypage_id, -> { Integer }, optional: true, nullable: false, api_name: "EntrypageId"
 
       field :external_processor_information, -> { String }, optional: true, nullable: false, api_name: "ExternalProcessorInformation"

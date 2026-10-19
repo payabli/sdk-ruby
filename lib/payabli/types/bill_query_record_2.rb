@@ -79,6 +79,8 @@ module Payabli
 
       field :transaction, -> { Payabli::Types::TransactionOutQueryRecord }, optional: false, nullable: true, api_name: "Transaction"
 
+      field :transactions, -> { Internal::Types::Array[Payabli::Types::BillTransactionReference] }, optional: false, nullable: true
+
       field :vendor, -> { Payabli::Types::VendorOutData }, optional: false, nullable: true, api_name: "Vendor"
     end
   end

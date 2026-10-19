@@ -17,9 +17,15 @@ module Payabli
 
       field :model, -> { String }, optional: false, nullable: true
 
+      field :app_version, -> { String }, optional: false, nullable: true, api_name: "appVersion"
+
+      field :os_version, -> { String }, optional: false, nullable: true, api_name: "osVersion"
+
       field :device_type, -> { Integer }, optional: false, nullable: true, api_name: "deviceType"
 
       field :device_status, -> { Integer }, optional: false, nullable: true, api_name: "deviceStatus"
+
+      field :operational_status, -> { Payabli::Types::DeviceQueryRecordOperationalStatus }, optional: false, nullable: false, api_name: "operationalStatus"
 
       field :device_os, -> { Integer }, optional: false, nullable: true, api_name: "deviceOs"
 

@@ -39,6 +39,8 @@ module Payabli
 
       field :location_code, -> { String }, optional: true, nullable: false, api_name: "locationCode"
 
+      field :issue_1099, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "issue1099"
+
       field :mcc, -> { String }, optional: true, nullable: false
 
       field :name_1, -> { String }, optional: true, nullable: false, api_name: "name1"

@@ -447,6 +447,38 @@ class MoneyOutWireTest < WireMockTestCase
     )
   end
 
+  def test_money_out_get_next_check_number_with_wiremock
+    test_id = "money_out.get_next_check_number.0"
+
+    @client.money_out.get_next_check_number(
+      paypoint_id: 3040,
+      account_id: "123-456",
+      request_options: {
+        additional_headers: {
+          "X-Test-Id" => "money_out.get_next_check_number.0"
+        }
+      }
+    )
+
+    verify_request_count(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyOut/nextCheckNumber/3040/123-456",
+      query_params: nil,
+      expected: 1
+    )
+
+    verify_auth_headers(
+      test_id: test_id,
+      method: "GET",
+      url_path: "/MoneyOut/nextCheckNumber/3040/123-456",
+      matchers: [
+        { name: "Authorization", kind: "present" },
+        { name: "requestToken", kind: "absent" }
+      ]
+    )
+  end
+
   def test_money_out_reissue_out_with_wiremock
     test_id = "money_out.reissue_out.0"
 
