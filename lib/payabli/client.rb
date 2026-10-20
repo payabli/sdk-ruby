@@ -32,7 +32,7 @@ module Payabli
       @raw_client = Payabli::Internal::Http::RawClient.new(
         base_url: base_url || Payabli::Environment::SANDBOX,
         headers: {
-          "User-Agent" => "payabli/3.0.19",
+          "User-Agent" => "payabli/3.0.20",
           "X-Fern-Language" => "Ruby"
         },
         auth_provider: Payabli::Internal::RoutingAuthProvider.new(
@@ -141,6 +141,36 @@ module Payabli
     # @return [Payabli::LineItem::Client]
     def line_item
       @line_item ||= Payabli::LineItem::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::Businesses::Client]
+    def businesses
+      @businesses ||= Payabli::Businesses::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::People::Client]
+    def people
+      @people ||= Payabli::People::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::Paypoints::Client]
+    def paypoints
+      @paypoints ||= Payabli::Paypoints::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::PaymentMethods::Client]
+    def payment_methods
+      @payment_methods ||= Payabli::PaymentMethods::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::BoardingTemplates::Client]
+    def boarding_templates
+      @boarding_templates ||= Payabli::BoardingTemplates::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::Applications::Client]
+    def applications
+      @applications ||= Payabli::Applications::Client.new(client: @raw_client)
     end
 
     # @return [Payabli::Boarding::Client]

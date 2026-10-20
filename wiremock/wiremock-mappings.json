@@ -5123,6 +5123,1605 @@
       }
     },
     {
+      "id": "3baa4558-583e-4eca-9b57-86b005198a81",
+      "name": "List businesses - ListBusinesses",
+      "request": {
+        "urlPathTemplate": "/v2/businesses",
+        "method": "GET",
+        "queryParameters": {
+          "limit": {
+            "equalTo": "1"
+          },
+          "page": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Businesses retrieved successfully\",\n  \"traceId\": \"0HNNKQIN7BJO2:00000024\",\n  \"data\": {\n    \"data\": [\n      {\n        \"_links\": {\n          \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n        },\n        \"businessUuid\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n        \"legalName\": \"Rose Gardens LLC\",\n        \"businessStatus\": \"Draft\",\n        \"parentReference\": \"8cfec329267\",\n        \"createdAt\": \"2026-08-10T19:15:47.694655\",\n        \"lastUpdated\": \"2026-08-10T19:15:47.694655\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"totalPages\": 1,\n      \"totalRecords\": 1,\n      \"pageSize\": 1,\n      \"hasNext\": false,\n      \"hasPrevious\": false\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3baa4558-583e-4eca-9b57-86b005198a81",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "e382ff1d-6a42-4f94-b93e-b270cb424597",
+      "name": "Create a business - CreateBusiness",
+      "request": {
+        "urlPathTemplate": "/v2/businesses",
+        "method": "POST"
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Business created successfully\",\n  \"traceId\": \"0HNNKQIN7BJO1:00000015\",\n  \"data\": {\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    },\n    \"businessUuid\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"businessStatus\": \"Draft\",\n    \"createdAt\": \"2026-08-10T19:15:47.6946557Z\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e382ff1d-6a42-4f94-b93e-b270cb424597",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "221e0505-42ca-4285-aa7c-fd8adcab134b",
+      "name": "Get a business - GetBusiness",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}",
+        "method": "GET",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Business retrieved successfully\",\n  \"traceId\": \"0HNNKQIN7BJO3:00000008\",\n  \"data\": {\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    },\n    \"businessUuid\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"taxReference\": \"****8993\",\n    \"businessStatus\": \"Draft\",\n    \"parentReference\": \"8cfec329267\",\n    \"externalId\": \"rg-001\",\n    \"legalName\": \"Rose Gardens LLC\",\n    \"legalStructure\": \"LimitedLiabilityCompany\",\n    \"incorporationState\": \"GA\",\n    \"taxIdCountry\": \"US\",\n    \"website\": \"https://example.com\",\n    \"merchantCatCode\": \"5814\",\n    \"phone\": [\n      \"3055551212\"\n    ],\n    \"emails\": [\n      \"ops@example.com\"\n    ],\n    \"addressDetails\": [],\n    \"paymentMethods\": [\n      {\n        \"type\": \"bank_account\",\n        \"name\": \"Operating account\",\n        \"financialInstitution\": \"Bank of Example\",\n        \"ownerType\": \"business\",\n        \"accountType\": \"checking\",\n        \"accountNumber\": \"****6789\",\n        \"routingNumber\": \"****0021\",\n        \"usage\": [\n          \"deposits\",\n          \"billing\"\n        ],\n        \"isDefault\": true\n      },\n      {\n        \"type\": \"bank_account\",\n        \"name\": \"Payout account\",\n        \"financialInstitution\": \"Bank of Example\",\n        \"ownerType\": \"business\",\n        \"accountType\": \"checking\",\n        \"accountNumber\": \"****4321\",\n        \"routingNumber\": \"****0021\",\n        \"usage\": [\n          \"payOutFunding\"\n        ],\n        \"isDefault\": false\n      }\n    ],\n    \"certificationDetails\": [],\n    \"isTaxExempt\": false,\n    \"taxExemptClassification\": null,\n    \"license\": \"LIC-48213\",\n    \"licenseState\": \"GA\",\n    \"createdAt\": \"2026-08-10T19:15:47.694655\",\n    \"lastUpdated\": \"2026-08-10T19:15:47.694655\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "221e0505-42ca-4285-aa7c-fd8adcab134b",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "662dbc1d-7e3c-4184-8f7b-70fc59fb2fcf",
+      "name": "Deactivate a business - DeactivateBusiness",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}",
+        "method": "DELETE",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed33-615d-77b6-afaa-46e7ac9bf36e"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Business deactivated successfully\",\n  \"traceId\": \"0HNNKQIN7BJQM:0000003D\",\n  \"data\": {\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed33-615d-77b6-afaa-46e7ac9bf36e\"\n    },\n    \"businessUuid\": \"019fed33-615d-77b6-afaa-46e7ac9bf36e\",\n    \"businessStatus\": \"Deactivated\",\n    \"deactivatedAt\": \"2026-08-10T19:43:15.3804295Z\",\n    \"reason\": \"Duplicate record\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "662dbc1d-7e3c-4184-8f7b-70fc59fb2fcf",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "3d4b5ade-351f-435c-801c-df66101344a4",
+      "name": "Update a business - UpdateBusiness",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}",
+        "method": "PATCH",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Business updated successfully\",\n  \"traceId\": \"0HNNKQIN7BJO1:00000016\",\n  \"data\": {\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    },\n    \"businessUuid\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"lastUpdated\": \"2026-08-10T19:15:47.9553337Z\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3d4b5ade-351f-435c-801c-df66101344a4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a3835a04-f979-4946-9aed-ebb8461ecd9d",
+      "name": "Get a business (unmasked) - GetBusinessUnmasked",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/unmasked",
+        "method": "GET",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Business retrieved successfully\",\n  \"traceId\": \"0HNNKQIN7BJO3:00000009\",\n  \"data\": {\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    },\n    \"businessUuid\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"taxReference\": \"477498993\",\n    \"businessStatus\": \"Draft\",\n    \"parentReference\": \"8cfec329267\",\n    \"externalId\": \"rg-001\",\n    \"legalName\": \"Rose Gardens LLC\",\n    \"legalStructure\": \"LimitedLiabilityCompany\",\n    \"incorporationState\": \"GA\",\n    \"taxIdCountry\": \"US\",\n    \"website\": \"https://example.com\",\n    \"merchantCatCode\": \"5814\",\n    \"phone\": [\n      \"3055551212\"\n    ],\n    \"emails\": [\n      \"ops@example.com\"\n    ],\n    \"addressDetails\": [],\n    \"paymentMethods\": [\n      {\n        \"type\": \"bank_account\",\n        \"name\": \"Operating account\",\n        \"financialInstitution\": \"Bank of Example\",\n        \"ownerType\": \"business\",\n        \"accountType\": \"checking\",\n        \"accountNumber\": \"123456789\",\n        \"routingNumber\": \"021000021\",\n        \"usage\": [\n          \"deposits\",\n          \"billing\"\n        ],\n        \"isDefault\": true\n      },\n      {\n        \"type\": \"bank_account\",\n        \"name\": \"Payout account\",\n        \"financialInstitution\": \"Bank of Example\",\n        \"ownerType\": \"business\",\n        \"accountType\": \"checking\",\n        \"accountNumber\": \"987654321\",\n        \"routingNumber\": \"021000021\",\n        \"usage\": [\n          \"payOutFunding\"\n        ],\n        \"isDefault\": false\n      }\n    ],\n    \"certificationDetails\": [],\n    \"isTaxExempt\": false,\n    \"taxExemptClassification\": null,\n    \"license\": \"LIC-48213\",\n    \"licenseState\": \"GA\",\n    \"createdAt\": \"2026-08-10T19:15:47.694655\",\n    \"lastUpdated\": \"2026-08-10T19:15:47.694655\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a3835a04-f979-4946-9aed-ebb8461ecd9d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "ee8ec15c-4428-4334-9520-c7736b1c3880",
+      "name": "List business addresses - ListBusinessAddresses",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/addresses",
+        "method": "GET",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Addresses retrieved successfully\",\n  \"traceId\": \"0HNOF89NNTM7O:00000026\",\n  \"data\": [\n    {\n      \"_links\": {\n        \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55/addresses/019fed1a-849f-729f-be21-d6395f155ccd\",\n        \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n      },\n      \"businessAddressReference\": \"019fed1a-849f-729f-be21-d6395f155ccd\",\n      \"type\": \"legal\",\n      \"location\": \"office\",\n      \"addressLine1\": \"200 Sesame Blvd\",\n      \"addressLine2\": \"Suite 150\",\n      \"cityLocality\": \"New York\",\n      \"stateProvince\": \"NY\",\n      \"postalCode\": \"10001\",\n      \"country\": \"US\",\n      \"floor\": null,\n      \"suiteApartNumber\": null\n    },\n    {\n      \"_links\": {\n        \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55/addresses/019fed1a-84a6-7043-a6c0-e8aa2d4bec36\",\n        \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n      },\n      \"businessAddressReference\": \"019fed1a-84a6-7043-a6c0-e8aa2d4bec36\",\n      \"type\": \"shipping\",\n      \"location\": \"warehouse\",\n      \"addressLine1\": \"201 Warehouse Ln\",\n      \"addressLine2\": null,\n      \"cityLocality\": \"Austin\",\n      \"stateProvince\": \"TX\",\n      \"postalCode\": \"73302\",\n      \"country\": \"US\",\n      \"floor\": null,\n      \"suiteApartNumber\": null\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ee8ec15c-4428-4334-9520-c7736b1c3880",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "409f1713-2fc2-48e7-841b-e63fe79508b2",
+      "name": "Add a business address - CreateBusinessAddress",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/addresses",
+        "method": "POST",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Address added successfully\",\n  \"traceId\": \"0HNOF89NNTM7O:00000092\",\n  \"data\": {\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55/addresses/019fed1a-67d6-768a-b4cc-29d4299e21d9\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    },\n    \"businessAddressReference\": \"019fed1a-67d6-768a-b4cc-29d4299e21d9\",\n    \"type\": \"mailing\",\n    \"location\": \"warehouse\",\n    \"addressLine1\": \"202 Warehouse Ln\",\n    \"addressLine2\": null,\n    \"cityLocality\": \"Austin\",\n    \"stateProvince\": \"TX\",\n    \"postalCode\": \"73302\",\n    \"country\": \"US\",\n    \"floor\": null,\n    \"suiteApartNumber\": null\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "409f1713-2fc2-48e7-841b-e63fe79508b2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "5add8498-2a49-482f-ab71-29a1980bd3a7",
+      "name": "Get a business address - GetBusinessAddress",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/addresses/{businessAddressReference}",
+        "method": "GET",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          },
+          "businessAddressReference": {
+            "equalTo": "019fed1a-84a6-7043-a6c0-e8aa2d4bec36"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Address retrieved successfully\",\n  \"traceId\": \"0HNOF89NNTM7O:00000058\",\n  \"data\": {\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55/addresses/019fed1a-84a6-7043-a6c0-e8aa2d4bec36\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    },\n    \"businessAddressReference\": \"019fed1a-84a6-7043-a6c0-e8aa2d4bec36\",\n    \"type\": \"shipping\",\n    \"location\": \"warehouse\",\n    \"addressLine1\": \"201 Warehouse Ln\",\n    \"addressLine2\": null,\n    \"cityLocality\": \"Austin\",\n    \"stateProvince\": \"TX\",\n    \"postalCode\": \"73302\",\n    \"country\": \"US\",\n    \"floor\": null,\n    \"suiteApartNumber\": null\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "5add8498-2a49-482f-ab71-29a1980bd3a7",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "191987c3-e1bd-4e34-99b8-b89668658263",
+      "name": "Remove a business address - DeleteBusinessAddress",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/addresses/{businessAddressReference}",
+        "method": "DELETE",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          },
+          "businessAddressReference": {
+            "equalTo": "019fed1a-67d6-768a-b4cc-29d4299e21d9"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Address removed successfully\",\n  \"traceId\": \"0HNOF89NNTM7N:000000DF\",\n  \"data\": {\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    },\n    \"businessUuid\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"businessAddressReference\": \"019fed1a-67d6-768a-b4cc-29d4299e21d9\",\n    \"deletedAt\": \"2026-09-10T16:15:44.3546441Z\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "191987c3-e1bd-4e34-99b8-b89668658263",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "b77435b3-72df-4dc2-94c9-29b6389ca3d7",
+      "name": "Update a business address - UpdateBusinessAddress",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/addresses/{businessAddressReference}",
+        "method": "PATCH",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          },
+          "businessAddressReference": {
+            "equalTo": "019fed1a-67d6-768a-b4cc-29d4299e21d9"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Address updated successfully\",\n  \"traceId\": \"0HNOF89NNTM7O:000000C9\",\n  \"data\": {\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55/addresses/019fed1a-67d6-768a-b4cc-29d4299e21d9\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    },\n    \"businessAddressReference\": \"019fed1a-67d6-768a-b4cc-29d4299e21d9\",\n    \"type\": \"billing\",\n    \"location\": \"warehouse\",\n    \"addressLine1\": \"202 Warehouse Ln\",\n    \"addressLine2\": null,\n    \"cityLocality\": \"Austin\",\n    \"stateProvince\": \"TX\",\n    \"postalCode\": \"73302\",\n    \"country\": \"US\",\n    \"floor\": null,\n    \"suiteApartNumber\": null\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b77435b3-72df-4dc2-94c9-29b6389ca3d7",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "30cc4100-526d-485e-919b-10de036b06ae",
+      "name": "List a business's people - ListBusinessPeople",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/people",
+        "method": "GET",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Business people retrieved successfully\",\n  \"traceId\": \"0HNOIME81PD14:00000004\",\n  \"data\": [\n    {\n      \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n      \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n      \"personType\": \"owner\",\n      \"ownershipPercentage\": 100,\n      \"beneficialOwner\": true,\n      \"isPrimaryController\": true,\n      \"isSigner\": true,\n      \"title\": \"CEO\",\n      \"primaryEmail\": \"contact@example.com\",\n      \"secondaryEmail\": \"contact.alt@example.net\",\n      \"primaryPhoneNumber\": \"3055551212\",\n      \"secondaryPhoneNumber\": \"3055559876\",\n      \"createdAt\": \"2026-08-14T17:24:31.3877241Z\",\n      \"updatedAt\": \"2026-08-14T17:24:31.3877241Z\",\n      \"_links\": {\n        \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n        \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n        \"person\": \"/v2/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\"\n      }\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "30cc4100-526d-485e-919b-10de036b06ae",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "3019486b-d7cf-4edc-8a04-cd2bb29c575a",
+      "name": "Link a person to a business - LinkBusinessPerson",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/people",
+        "method": "POST",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Person linked to business successfully\",\n  \"traceId\": \"0HNOIMDG0IS4U:00000147\",\n  \"data\": {\n    \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n    \"personType\": \"owner\",\n    \"ownershipPercentage\": 100,\n    \"beneficialOwner\": true,\n    \"isPrimaryController\": true,\n    \"isSigner\": true,\n    \"title\": \"CEO\",\n    \"primaryEmail\": \"contact@example.com\",\n    \"secondaryEmail\": \"contact.alt@example.net\",\n    \"primaryPhoneNumber\": \"3055551212\",\n    \"secondaryPhoneNumber\": \"3055559876\",\n    \"billingAddressUuid\": \"019fed1a-6e41-7194-84c8-98ae0219799a\",\n    \"mailingAddressUuid\": \"019fed1a-6e43-7768-b3b4-607c374f7730\",\n    \"createdAt\": \"2026-08-14T17:24:31.3877241Z\",\n    \"updatedAt\": \"2026-08-14T17:24:31.3877241Z\",\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n      \"person\": \"/v2/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3019486b-d7cf-4edc-8a04-cd2bb29c575a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "d6cc1216-f082-4328-ba8d-bb60872bf300",
+      "name": "Get a business-person link - GetBusinessPerson",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/people/{personReference}",
+        "method": "GET",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          },
+          "personReference": {
+            "equalTo": "01a0014d-ce1a-7110-9bac-c4c59647a88d"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Business person retrieved successfully\",\n  \"traceId\": \"0HNOIME81PCS8:00000410\",\n  \"data\": {\n    \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n    \"personType\": \"owner\",\n    \"ownershipPercentage\": 100,\n    \"beneficialOwner\": true,\n    \"isPrimaryController\": true,\n    \"isSigner\": true,\n    \"title\": \"CEO\",\n    \"primaryEmail\": \"contact@example.com\",\n    \"secondaryEmail\": \"contact.alt@example.net\",\n    \"primaryPhoneNumber\": \"3055551212\",\n    \"secondaryPhoneNumber\": \"3055559876\",\n    \"createdAt\": \"2026-08-14T17:24:31.3877241Z\",\n    \"updatedAt\": \"2026-08-14T17:24:31.3877241Z\",\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n      \"person\": \"/v2/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "d6cc1216-f082-4328-ba8d-bb60872bf300",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "56950a7c-9ce4-4b77-96c1-27326889f4f3",
+      "name": "Unlink a person from a business - UnlinkBusinessPerson",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/people/{personReference}",
+        "method": "DELETE",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          },
+          "personReference": {
+            "equalTo": "01a0014d-ce1a-7110-9bac-c4c59647a88d"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "56950a7c-9ce4-4b77-96c1-27326889f4f3",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f6ab7e7e-a366-4aae-bfb0-e077d77468e4",
+      "name": "Update a business-person link - UpdateBusinessPerson",
+      "request": {
+        "urlPathTemplate": "/v2/businesses/{businessReference}/people/{personReference}",
+        "method": "PATCH",
+        "pathParameters": {
+          "businessReference": {
+            "equalTo": "019fed1a-3d6e-75d3-a81e-cba3874b0a55"
+          },
+          "personReference": {
+            "equalTo": "01a0014d-ce1a-7110-9bac-c4c59647a88d"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Business person updated successfully\",\n  \"traceId\": \"0HNOIME81PCS8:00000582\",\n  \"data\": {\n    \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n    \"personType\": \"owner\",\n    \"ownershipPercentage\": 100,\n    \"beneficialOwner\": true,\n    \"isPrimaryController\": true,\n    \"isSigner\": true,\n    \"title\": \"CEO\",\n    \"primaryEmail\": \"updated.contact@example.com\",\n    \"secondaryEmail\": \"contact.alt@example.net\",\n    \"primaryPhoneNumber\": \"3055551212\",\n    \"secondaryPhoneNumber\": \"3055559876\",\n    \"createdAt\": \"2026-08-14T17:24:31.3877241Z\",\n    \"updatedAt\": \"2026-08-14T17:26:08.9110000Z\",\n    \"_links\": {\n      \"self\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n      \"person\": \"/v2/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f6ab7e7e-a366-4aae-bfb0-e077d77468e4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "0e7bf3e1-b831-4b72-ba52-b61a54d9a469",
+      "name": "List people - ListPeople",
+      "request": {
+        "urlPathTemplate": "/v2/people",
+        "method": "GET",
+        "queryParameters": {
+          "limit": {
+            "equalTo": "1"
+          },
+          "page": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"People retrieved successfully\",\n  \"traceId\": \"0HNNQ4R2OT25J:0000005A\",\n  \"data\": {\n    \"data\": [\n      {\n        \"_links\": {\n          \"self\": \"/v2/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\"\n        },\n        \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n        \"firstName\": \"Marcus\",\n        \"lastName\": \"Delgado\",\n        \"email\": \"marcus.delgado@example.com\",\n        \"verificationStatus\": \"notstarted\",\n        \"createdAt\": \"2026-08-14T17:24:31.387724\",\n        \"lastUpdated\": \"2026-08-14T17:24:31.387724\"\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"totalPages\": 1587,\n      \"totalRecords\": 1587,\n      \"pageSize\": 1,\n      \"hasNext\": true,\n      \"hasPrevious\": false\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "0e7bf3e1-b831-4b72-ba52-b61a54d9a469",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "d58fd0e4-ff09-4bc0-b6fe-2f9f597851c2",
+      "name": "Create a person - CreatePerson",
+      "request": {
+        "urlPathTemplate": "/v2/people",
+        "method": "POST"
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Person created successfully\",\n  \"traceId\": \"0HNNQ4R2OT26Q:0000001D\",\n  \"data\": {\n    \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n    \"externalId\": \"person-001\",\n    \"firstName\": \"Marcus\",\n    \"middleName\": \"James\",\n    \"lastName\": \"Delgado\",\n    \"primaryEmail\": \"marcus.delgado@example.com\",\n    \"secondaryEmail\": \"m.delgado@example.net\",\n    \"primaryPhoneNumber\": \"3055551212\",\n    \"secondaryPhoneNumber\": \"3055559876\",\n    \"dateOfBirth\": \"****-**-14\",\n    \"ssn\": \"***-**-9021\",\n    \"nationality\": \"US\",\n    \"driversLicenseNumber\": \"D1***567\",\n    \"driversLicenseState\": \"FL\",\n    \"customData\": {\n      \"department\": \"finance\"\n    },\n    \"verificationStatus\": \"not_started\",\n    \"businessRelationship\": {\n      \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n      \"personType\": \"owner\",\n      \"ownershipPercentage\": 100,\n      \"beneficialOwner\": true,\n      \"isPrimaryController\": true,\n      \"isSigner\": true,\n      \"title\": \"CEO\",\n      \"primaryEmail\": \"contact@example.com\",\n      \"secondaryEmail\": \"contact.alt@example.net\",\n      \"primaryPhoneNumber\": \"3055551212\",\n      \"secondaryPhoneNumber\": \"3055559876\",\n      \"billingAddressUuid\": \"01a0014d-ce1a-7110-9bac-c4c59647a891\",\n      \"mailingAddressUuid\": \"01a0014d-ce1a-7110-9bac-c4c59647a892\"\n    },\n    \"createdAt\": \"2026-08-14T17:24:31.3877241Z\",\n    \"lastUpdated\": \"2026-08-14T17:24:31.3877242Z\",\n    \"_links\": {\n      \"self\": \"/v2/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "d58fd0e4-ff09-4bc0-b6fe-2f9f597851c2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "da807b54-1a78-4121-9ef1-5249050f68f5",
+      "name": "Get a person - GetPerson",
+      "request": {
+        "urlPathTemplate": "/v2/people/{personReference}",
+        "method": "GET",
+        "pathParameters": {
+          "personReference": {
+            "equalTo": "01a0014d-ce1a-7110-9bac-c4c59647a88d"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Person retrieved successfully\",\n  \"traceId\": \"0HNNQ4R2OT25J:00000069\",\n  \"data\": {\n    \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n    \"externalId\": \"person-001\",\n    \"firstName\": \"Marcus\",\n    \"middleName\": \"James\",\n    \"lastName\": \"Delgado\",\n    \"primaryEmail\": \"marcus.delgado@example.com\",\n    \"secondaryEmail\": \"m.delgado@example.net\",\n    \"primaryPhoneNumber\": \"3055551212\",\n    \"secondaryPhoneNumber\": \"3055559876\",\n    \"dateOfBirth\": \"****-**-14\",\n    \"ssn\": \"***-**-9021\",\n    \"nationality\": \"US\",\n    \"driversLicenseNumber\": \"D1***567\",\n    \"driversLicenseState\": \"FL\",\n    \"customData\": {\n      \"department\": \"finance\"\n    },\n    \"verificationStatus\": \"not_started\",\n    \"addresses\": [\n      {\n        \"addressLine1\": \"123 Main Street\",\n        \"addressLine2\": \"Suite 400\",\n        \"cityLocality\": \"Miami\",\n        \"stateProvince\": \"FL\",\n        \"postalCode\": \"33101\",\n        \"country\": \"US\",\n        \"type\": \"legal\"\n      }\n    ],\n    \"identificationDocuments\": [\n      {\n        \"type\": \"passport\",\n        \"number\": \"****4567\",\n        \"issuingCountry\": \"US\",\n        \"expirationDate\": \"2030-06-30\"\n      }\n    ],\n    \"createdAt\": \"2026-08-14T17:24:31.387724\",\n    \"lastUpdated\": \"2026-08-14T17:24:31.387724\",\n    \"_links\": {\n      \"self\": \"/v2/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "da807b54-1a78-4121-9ef1-5249050f68f5",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "b1af6ba7-debb-49ac-869a-c0c8be209e21",
+      "name": "Update a person - UpdatePerson",
+      "request": {
+        "urlPathTemplate": "/v2/people/{personReference}",
+        "method": "PATCH",
+        "pathParameters": {
+          "personReference": {
+            "equalTo": "01a0014d-ce1a-7110-9bac-c4c59647a88d"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Person updated successfully\",\n  \"traceId\": \"0HNNQ4R2OT26Q:00000027\",\n  \"data\": {\n    \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n    \"lastUpdated\": \"2026-08-14T17:27:06.4473841Z\",\n    \"_links\": {\n      \"self\": \"/v2/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b1af6ba7-debb-49ac-869a-c0c8be209e21",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "0ce1ba1d-1f37-4b90-a899-537db734e4db",
+      "name": "Get a person (unmasked) - GetPersonUnmasked",
+      "request": {
+        "urlPathTemplate": "/v2/people/{personReference}/unmasked",
+        "method": "GET",
+        "pathParameters": {
+          "personReference": {
+            "equalTo": "01a0014d-ce1a-7110-9bac-c4c59647a88d"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Person retrieved successfully\",\n  \"traceId\": \"0HNNQ4R2OT26Q:0000001E\",\n  \"data\": {\n    \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n    \"externalId\": \"person-001\",\n    \"firstName\": \"Marcus\",\n    \"middleName\": \"James\",\n    \"lastName\": \"Delgado\",\n    \"primaryEmail\": \"marcus.delgado@example.com\",\n    \"secondaryEmail\": \"m.delgado@example.net\",\n    \"primaryPhoneNumber\": \"3055551212\",\n    \"secondaryPhoneNumber\": \"3055559876\",\n    \"dateOfBirth\": \"1985-03-14\",\n    \"ssn\": \"412-55-9021\",\n    \"nationality\": \"US\",\n    \"driversLicenseNumber\": \"D1234567\",\n    \"driversLicenseState\": \"FL\",\n    \"customData\": {\n      \"department\": \"finance\"\n    },\n    \"verificationStatus\": \"not_started\",\n    \"addresses\": [\n      {\n        \"addressLine1\": \"123 Main Street\",\n        \"addressLine2\": \"Suite 400\",\n        \"cityLocality\": \"Miami\",\n        \"stateProvince\": \"FL\",\n        \"postalCode\": \"33101\",\n        \"country\": \"US\",\n        \"type\": \"legal\"\n      }\n    ],\n    \"identificationDocuments\": [\n      {\n        \"type\": \"passport\",\n        \"number\": \"X1234567\",\n        \"issuingCountry\": \"US\",\n        \"expirationDate\": \"2030-06-30\"\n      }\n    ],\n    \"createdAt\": \"2026-08-14T17:24:31.387724\",\n    \"lastUpdated\": \"2026-08-14T17:24:31.387724\",\n    \"_links\": {\n      \"self\": \"/v2/people/01a0014d-ce1a-7110-9bac-c4c59647a88d\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "0ce1ba1d-1f37-4b90-a899-537db734e4db",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "4a99f3ae-44da-4e86-a79e-955214f58dd1",
+      "name": "Search people - SearchPeople",
+      "request": {
+        "urlPathTemplate": "/v2/people/search",
+        "method": "POST",
+        "queryParameters": {
+          "entry": {
+            "equalTo": "8cfec329267"
+          },
+          "orgId": {
+            "equalTo": "123"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"People search completed\",\n  \"traceId\": \"0HNONVR8FH4GO:00000030\",\n  \"data\": {\n    \"results\": [\n      {\n        \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n        \"firstName\": \"Marcus\",\n        \"lastName\": \"Delgado\",\n        \"dateOfBirth\": \"****-**-14\",\n        \"primaryEmail\": \"marcus.delgado@example.com\",\n        \"primaryPhone\": \"+13055551212\",\n        \"riskDecision\": null,\n        \"matchScore\": 0.6,\n        \"isTopMatch\": true,\n        \"isFromVendor\": false,\n        \"phones\": [\n          \"+13055551212\"\n        ],\n        \"emails\": [\n          \"marcus.delgado@example.com\"\n        ],\n        \"addressCount\": 0,\n        \"phoneCount\": 1,\n        \"emailCount\": 1\n      }\n    ],\n    \"total\": 1,\n    \"isEnrichedByVendor\": false\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4a99f3ae-44da-4e86-a79e-955214f58dd1",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "20bfca7e-5c33-4904-bb5b-03a2e6245b86",
+      "name": "Search people (unmasked) - SearchPeopleUnmasked",
+      "request": {
+        "urlPathTemplate": "/v2/people/search/unmasked",
+        "method": "POST",
+        "queryParameters": {
+          "entry": {
+            "equalTo": "8cfec329267"
+          },
+          "orgId": {
+            "equalTo": "123"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"People search completed\",\n  \"traceId\": \"0HNP99BPE1LNM:00000060\",\n  \"data\": {\n    \"results\": [\n      {\n        \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n        \"firstName\": \"Marcus\",\n        \"lastName\": \"Delgado\",\n        \"dateOfBirth\": \"1985-03-14\",\n        \"primaryEmail\": \"marcus.delgado@example.com\",\n        \"primaryPhone\": \"+13055551212\",\n        \"riskDecision\": null,\n        \"matchScore\": 0.6,\n        \"isTopMatch\": true,\n        \"isFromVendor\": false,\n        \"phones\": [\n          \"+13055551212\"\n        ],\n        \"emails\": [\n          \"marcus.delgado@example.com\"\n        ],\n        \"addressCount\": 0,\n        \"phoneCount\": 1,\n        \"emailCount\": 1\n      }\n    ],\n    \"total\": 1,\n    \"isEnrichedByVendor\": false\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "20bfca7e-5c33-4904-bb5b-03a2e6245b86",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "00e0e253-faa2-4756-89ba-18ac8657ef18",
+      "name": "List paypoints - ListPaypoints",
+      "request": {
+        "urlPathTemplate": "/v2/paypoints",
+        "method": "GET",
+        "queryParameters": {
+          "limit": {
+            "equalTo": "1"
+          },
+          "page": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Paypoints retrieved successfully\",\n  \"traceId\": \"0HNNN6HH5NDBG:00000018\",\n  \"data\": {\n    \"items\": [\n      {\n        \"paypointReference\": \"019ff064-c690-7679-a73e-688418aadc7c\",\n        \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n        \"parentPaypointReference\": \"a8806f02-23b3-4f6d-bba3-42e1b94326ea\",\n        \"paypointType\": \"merchant\",\n        \"paypointStatus\": \"pending\",\n        \"doingBusinessAs\": \"Rose Gardens\",\n        \"entryName\": \"8cfec329267\",\n        \"description\": \"Boutique flower shop\",\n        \"website\": \"https://example.com\",\n        \"timezone\": \"America/New_York\",\n        \"customerServicePhone\": \"3055551212\",\n        \"customerServiceEmail\": \"support@example.com\",\n        \"createdAt\": \"2026-08-11T10:36:04.115771\",\n        \"updatedAt\": \"2026-08-11T10:36:04.115788\",\n        \"_links\": {\n          \"self\": \"/v2/paypoints/019ff064-c690-7679-a73e-688418aadc7c\",\n          \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n        }\n      }\n    ],\n    \"total\": 1,\n    \"page\": 1,\n    \"pageSize\": 1\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "00e0e253-faa2-4756-89ba-18ac8657ef18",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "fc9dc718-cace-434b-8f3d-7484383fdd74",
+      "name": "Create a paypoint - CreatePaypoint",
+      "request": {
+        "urlPathTemplate": "/v2/paypoints",
+        "method": "POST"
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Paypoint created successfully\",\n  \"traceId\": \"0HNNN6HH5NDB3:00000001\",\n  \"data\": {\n    \"paypointReference\": \"019ff064-c690-7679-a73e-688418aadc7c\",\n    \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"doingBusinessAs\": \"Rose Gardens\",\n    \"paypointStatus\": \"pending\",\n    \"timezone\": \"America/New_York\",\n    \"createdAt\": \"2026-08-11T10:36:04.1157718Z\",\n    \"_links\": {\n      \"self\": \"/v2/paypoints/019ff064-c690-7679-a73e-688418aadc7c\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fc9dc718-cace-434b-8f3d-7484383fdd74",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c8b913e1-39ee-4c0b-86ac-5f8db6209983",
+      "name": "Get a paypoint - GetPaypoint",
+      "request": {
+        "urlPathTemplate": "/v2/paypoints/{paypointReference}",
+        "method": "GET",
+        "pathParameters": {
+          "paypointReference": {
+            "equalTo": "019ff064-c690-7679-a73e-688418aadc7c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Paypoint retrieved successfully\",\n  \"traceId\": \"0HNNN6HH5NDB3:00000002\",\n  \"data\": {\n    \"paypointReference\": \"019ff064-c690-7679-a73e-688418aadc7c\",\n    \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"parentPaypointReference\": \"a8806f02-23b3-4f6d-bba3-42e1b94326ea\",\n    \"paypointType\": \"merchant\",\n    \"paypointStatus\": \"pending\",\n    \"doingBusinessAs\": \"Rose Gardens\",\n    \"entryName\": \"8cfec329267\",\n    \"description\": \"Boutique flower shop\",\n    \"website\": \"https://example.com\",\n    \"timezone\": \"America/New_York\",\n    \"customerServicePhone\": \"3055551212\",\n    \"customerServiceEmail\": \"support@example.com\",\n    \"createdAt\": \"2026-08-11T10:36:04.115771\",\n    \"updatedAt\": \"2026-08-11T10:36:04.115788\",\n    \"_links\": {\n      \"self\": \"/v2/paypoints/019ff064-c690-7679-a73e-688418aadc7c\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c8b913e1-39ee-4c0b-86ac-5f8db6209983",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f048de59-a925-4449-a295-50b1e7f30c4d",
+      "name": "Update a paypoint - UpdatePaypoint",
+      "request": {
+        "urlPathTemplate": "/v2/paypoints/{paypointReference}",
+        "method": "PATCH",
+        "pathParameters": {
+          "paypointReference": {
+            "equalTo": "019ff064-c690-7679-a73e-688418aadc7c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Paypoint updated successfully\",\n  \"traceId\": \"0HNNN6HH5ND71:00000268\",\n  \"data\": {\n    \"paypointReference\": \"019ff064-c690-7679-a73e-688418aadc7c\",\n    \"updatedAt\": \"2026-08-11T10:36:04.462751Z\",\n    \"_links\": {\n      \"self\": \"/v2/paypoints/019ff064-c690-7679-a73e-688418aadc7c\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f048de59-a925-4449-a295-50b1e7f30c4d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2de14667-f22f-479d-9027-fc90c440b12c",
+      "name": "List payment methods - ListPaymentMethods",
+      "request": {
+        "urlPathTemplate": "/v2/payment-methods",
+        "method": "GET",
+        "queryParameters": {
+          "limit": {
+            "equalTo": "1"
+          },
+          "page": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Payment methods retrieved successfully\",\n  \"traceId\": \"0HNNN6HH5NE0R:00000014\",\n  \"data\": {\n    \"data\": [\n      {\n        \"isDefault\": false,\n        \"paymentMethodReference\": \"019ff142-454b-7721-96a3-c8628b9d568f\",\n        \"type\": \"bank_account\",\n        \"accountOwner\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n        \"ownerType\": \"business\",\n        \"nickname\": \"Operating account\",\n        \"financialInstitution\": \"Bank of Example\",\n        \"accountType\": \"Checking\",\n        \"accountNumber\": \"****6789\",\n        \"routingNumber\": \"*****0021\",\n        \"status\": \"PENDING\",\n        \"usage\": [\n          \"deposits\",\n          \"billing\"\n        ],\n        \"createdAt\": \"2026-08-11T14:38:00.011776\",\n        \"lastUpdated\": \"2026-08-11T14:38:00.011776\",\n        \"_links\": {\n          \"self\": \"/api/v2/payment-methods/019ff142-454b-7721-96a3-c8628b9d568f\",\n          \"owner\": \"/api/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n        }\n      }\n    ],\n    \"pagination\": {\n      \"page\": 1,\n      \"totalPages\": 1,\n      \"totalRecords\": 1,\n      \"pageSize\": 1,\n      \"hasNext\": false,\n      \"hasPrevious\": false\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2de14667-f22f-479d-9027-fc90c440b12c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "a2d7256c-5c19-46bb-8488-02460388c180",
+      "name": "Create payment methods - CreatePaymentMethods",
+      "request": {
+        "urlPathTemplate": "/v2/payment-methods",
+        "method": "POST"
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Payment method created successfully\",\n  \"traceId\": \"0HNNN6HH5NE18:00000010\",\n  \"data\": [\n    {\n      \"paymentMethodReference\": \"019ff142-454b-7721-96a3-c8628b9d568f\",\n      \"type\": \"bank_account\",\n      \"fingerprint\": \"2a0c2a64d03492ba45af4d01f329f22b41513411cab7658072739d17ed570675\",\n      \"tokenReference\": \"deacc32d-81eb-470b-9cff-0ad2fab87096\",\n      \"accountOwner\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n      \"ownerType\": \"business\",\n      \"nickname\": \"Operating account\",\n      \"financialInstitution\": \"Bank of Example\",\n      \"accountType\": \"Checking\",\n      \"accountNumber\": \"****6789\",\n      \"routingNumber\": \"*****0021\",\n      \"status\": \"PENDING\",\n      \"usage\": [\n        \"deposits\",\n        \"billing\"\n      ],\n      \"createdAt\": \"2026-08-11T14:38:00.0117762Z\",\n      \"lastUpdated\": \"2026-08-11T14:38:00.0117763Z\",\n      \"_links\": {\n        \"self\": \"/api/v2/payment-methods/019ff142-454b-7721-96a3-c8628b9d568f\",\n        \"owner\": \"/api/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n      }\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a2d7256c-5c19-46bb-8488-02460388c180",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f0a5d580-a0f3-47c4-be4d-70eca9ce09f0",
+      "name": "Get a payment method - GetPaymentMethod",
+      "request": {
+        "urlPathTemplate": "/v2/payment-methods/{paymentMethodReference}",
+        "method": "GET",
+        "pathParameters": {
+          "paymentMethodReference": {
+            "equalTo": "019ff142-454b-7721-96a3-c8628b9d568f"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Payment method retrieved successfully\",\n  \"traceId\": \"0HNNN6HH5NE0R:00000015\",\n  \"data\": {\n    \"paymentMethodReference\": \"019ff142-454b-7721-96a3-c8628b9d568f\",\n    \"type\": \"bank_account\",\n    \"accountOwner\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"ownerType\": \"business\",\n    \"nickname\": \"Operating account\",\n    \"financialInstitution\": \"Bank of Example\",\n    \"accountType\": \"Checking\",\n    \"accountNumber\": \"****6789\",\n    \"routingNumber\": \"*****0021\",\n    \"status\": \"PENDING\",\n    \"usage\": [\n      \"deposits\",\n      \"billing\"\n    ],\n    \"createdAt\": \"2026-08-11T14:38:00.011776\",\n    \"lastUpdated\": \"2026-08-11T14:38:00.011776\",\n    \"_links\": {\n      \"self\": \"/api/v2/payment-methods/019ff142-454b-7721-96a3-c8628b9d568f\",\n      \"owner\": \"/api/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f0a5d580-a0f3-47c4-be4d-70eca9ce09f0",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "beb73042-e7bc-419c-b947-da1a5c343e18",
+      "name": "Deactivate a payment method - DeactivatePaymentMethod",
+      "request": {
+        "urlPathTemplate": "/v2/payment-methods/{paymentMethodReference}",
+        "method": "DELETE",
+        "pathParameters": {
+          "paymentMethodReference": {
+            "equalTo": "019ff142-454b-7721-96a3-c8628b9d568f"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Payment method deactivated successfully\",\n  \"traceId\": \"0HNNN6HH5NE2S:0000000A\",\n  \"data\": {\n    \"paymentMethodReference\": \"019ff142-454b-7721-96a3-c8628b9d568f\",\n    \"type\": \"bank_account\",\n    \"fingerprint\": \"2a0c2a64d03492ba45af4d01f329f22b41513411cab7658072739d17ed570675\",\n    \"tokenReference\": \"deacc32d-81eb-470b-9cff-0ad2fab87096\",\n    \"accountOwner\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"ownerType\": \"business\",\n    \"nickname\": \"Primary operating account\",\n    \"financialInstitution\": \"Bank of Example\",\n    \"accountType\": \"Checking\",\n    \"accountNumber\": \"****6789\",\n    \"routingNumber\": \"*****0021\",\n    \"status\": \"INACTIVE\",\n    \"usage\": [\n      \"deposits\",\n      \"billing\"\n    ],\n    \"createdAt\": \"2026-08-11T14:38:00.0117762Z\",\n    \"lastUpdated\": \"2026-08-11T14:40:03.1182233Z\",\n    \"_links\": {\n      \"self\": \"/api/v2/payment-methods/019ff142-454b-7721-96a3-c8628b9d568f\",\n      \"owner\": \"/api/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "beb73042-e7bc-419c-b947-da1a5c343e18",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "565d140b-d481-4d72-ad58-9daf7cf06d3b",
+      "name": "Update a payment method - UpdatePaymentMethod",
+      "request": {
+        "urlPathTemplate": "/v2/payment-methods/{paymentMethodReference}",
+        "method": "PATCH",
+        "pathParameters": {
+          "paymentMethodReference": {
+            "equalTo": "019ff142-454b-7721-96a3-c8628b9d568f"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Payment method updated successfully\",\n  \"traceId\": \"0HNNN6HH5NE2H:00000016\",\n  \"data\": {\n    \"paymentMethodReference\": \"019ff142-454b-7721-96a3-c8628b9d568f\",\n    \"type\": \"bank_account\",\n    \"fingerprint\": \"2a0c2a64d03492ba45af4d01f329f22b41513411cab7658072739d17ed570675\",\n    \"tokenReference\": \"deacc32d-81eb-470b-9cff-0ad2fab87096\",\n    \"accountOwner\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"ownerType\": \"business\",\n    \"nickname\": \"Primary operating account\",\n    \"financialInstitution\": \"Bank of Example\",\n    \"accountType\": \"Checking\",\n    \"accountNumber\": \"****6789\",\n    \"routingNumber\": \"*****0021\",\n    \"status\": \"PENDING\",\n    \"usage\": [\n      \"deposits\",\n      \"billing\"\n    ],\n    \"createdAt\": \"2026-08-11T14:38:00.0117762Z\",\n    \"lastUpdated\": \"2026-08-11T14:39:12.4471182Z\",\n    \"_links\": {\n      \"self\": \"/api/v2/payment-methods/019ff142-454b-7721-96a3-c8628b9d568f\",\n      \"owner\": \"/api/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "565d140b-d481-4d72-ad58-9daf7cf06d3b",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "ac5a1510-02ba-4070-9280-4419ded6f76c",
+      "name": "List templates - ListTemplates",
+      "request": {
+        "urlPathTemplate": "/v2/templates",
+        "method": "GET",
+        "queryParameters": {
+          "orgId": {
+            "equalTo": "123"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"Summary\": {\n    \"totalPages\": 1,\n    \"totalRecords\": 1,\n    \"pageSize\": 20\n  },\n  \"Records\": [\n    {\n      \"uuid\": \"019ff129-d393-7761-9a31-e5afe85b4081\",\n      \"orgId\": 123,\n      \"orgName\": \"PropertyManager Pro\",\n      \"name\": \"Standard boarding template\",\n      \"description\": null,\n      \"slug\": null,\n      \"status\": \"active\",\n      \"currentVersionUuid\": \"019ff129-d396-74c4-86da-ae3d082d7ef9\",\n      \"currentVersion\": {\n        \"uuid\": \"019ff129-d396-74c4-86da-ae3d082d7ef9\",\n        \"version\": 1,\n        \"services\": {\n          \"ach\": \"merchantDecision\",\n          \"card\": \"preSelected\",\n          \"checkRdc\": \"merchantDecision\"\n        },\n        \"fieldConfigurations\": [\n          {\n            \"label\": \"Website\",\n            \"hint\": null,\n            \"defaultValue\": null,\n            \"attributes\": [\n              \"required\",\n              \"visible\"\n            ],\n            \"fieldPath\": \"business.website\"\n          },\n          {\n            \"label\": \"Sales Channel\",\n            \"hint\": null,\n            \"defaultValue\": null,\n            \"questionType\": \"multipleChoiceSingle\",\n            \"options\": [\n              \"In-Store\",\n              \"Online\",\n              \"Both\"\n            ],\n            \"attributes\": [\n              \"required\",\n              \"visible\"\n            ],\n            \"fieldPath\": \"business.salesChannel\",\n            \"custom\": true\n          },\n          {\n            \"label\": \"Primary Customer Type\",\n            \"hint\": null,\n            \"defaultValue\": null,\n            \"questionType\": \"multipleChoiceSingle\",\n            \"options\": [\n              \"B2B\",\n              \"B2C\",\n              \"Both\"\n            ],\n            \"attributes\": [\n              \"required\",\n              \"visible\"\n            ],\n            \"fieldPath\": \"business.customerType\",\n            \"custom\": true\n          },\n          {\n            \"label\": \"Years in Business\",\n            \"hint\": null,\n            \"defaultValue\": null,\n            \"questionType\": \"dropdown\",\n            \"options\": [\n              \"Less than 1\",\n              \"1-3\",\n              \"3-5\",\n              \"5-10\",\n              \"10+\"\n            ],\n            \"attributes\": [\n              \"required\",\n              \"visible\"\n            ],\n            \"fieldPath\": \"business.yearsInBusiness\",\n            \"custom\": true\n          },\n          {\n            \"label\": \"Describe your refund policy\",\n            \"hint\": null,\n            \"defaultValue\": null,\n            \"questionType\": \"textarea\",\n            \"options\": null,\n            \"attributes\": [\n              \"visible\"\n            ],\n            \"fieldPath\": \"business.refundPolicy\",\n            \"custom\": true\n          }\n        ],\n        \"conditionalRules\": [\n          {\n            \"ruleName\": \"require-website-online\",\n            \"description\": \"Require the website field when sales happen online.\",\n            \"enabled\": true,\n            \"matchMode\": \"all\",\n            \"conditions\": [\n              {\n                \"fieldPath\": \"business.salesChannel\",\n                \"operator\": \"equals\",\n                \"value\": \"Online\"\n              }\n            ],\n            \"actions\": [\n              {\n                \"actionType\": \"setFieldAttributes\",\n                \"fieldPath\": \"business.website\",\n                \"visible\": null,\n                \"required\": true,\n                \"readOnly\": null\n              }\n            ]\n          },\n          {\n            \"ruleName\": \"require-refund-policy-airlines\",\n            \"description\": \"Require the refund policy field when the merchant category code (MCC) is 3000 (airlines).\",\n            \"enabled\": true,\n            \"matchMode\": \"all\",\n            \"conditions\": [\n              {\n                \"fieldPath\": \"business.merchantCatCode\",\n                \"operator\": \"equals\",\n                \"value\": \"3000\"\n              }\n            ],\n            \"actions\": [\n              {\n                \"actionType\": \"setFieldAttributes\",\n                \"fieldPath\": \"business.refundPolicy\",\n                \"visible\": true,\n                \"required\": true,\n                \"readOnly\": null\n              }\n            ]\n          }\n        ],\n        \"documents\": [\n          {\n            \"fieldPath\": \"documents.bankStatement\",\n            \"preset\": true,\n            \"label\": \"Bank Statement\",\n            \"hint\": \"3 most recent months\",\n            \"maxUploads\": 3,\n            \"allowedFormats\": [\n              \"pdf\",\n              \"jpg\",\n              \"png\"\n            ],\n            \"attributes\": [\n              \"required\",\n              \"visible\"\n            ]\n          }\n        ],\n        \"devices\": [\n          {\n            \"deviceId\": \"ingenico_axium_dx8\",\n            \"preSelected\": false\n          },\n          {\n            \"deviceId\": \"ingenico_axium_rx9000\",\n            \"preSelected\": false\n          }\n        ],\n        \"hiddenSections\": [\n          \"welcome\"\n        ],\n        \"allowedMccs\": [\n          5200,\n          8998\n        ],\n        \"underwriting\": \"automatic\",\n        \"mpaContent\": \"<p>Merchant Processing Agreement</p>\",\n        \"payinPricingId\": 1289,\n        \"payoutPricingId\": null,\n        \"allowGuidedTour\": false,\n        \"allowBusinessPrefill\": true,\n        \"allowSaveForLater\": true,\n        \"allowMultipleBanks\": true,\n        \"allowServiceSelection\": true,\n        \"allowDeviceSelection\": true,\n        \"allowAmigoChat\": true,\n        \"allowUserCreation\": true,\n        \"allowPeoplePrefill\": false,\n        \"verticalProgress\": true,\n        \"useFloatingInputs\": false,\n        \"centerContent\": true,\n        \"allowRealTimeBankVerification\": true,\n        \"allowCheckboxSigning\": true,\n        \"allowTypedSignature\": true,\n        \"allowWrittenSignature\": true,\n        \"allowMultiOwnerEsign\": false,\n        \"allowConfirmationAndAttestation\": true,\n        \"allowPCIAttestation\": false,\n        \"createdAt\": \"2026-07-01T15:00:01.038310\",\n        \"createdBy\": \"0\"\n      },\n      \"isInherited\": false,\n      \"readOnly\": false,\n      \"createdBy\": \"0\",\n      \"updatedBy\": \"0\",\n      \"createdAt\": \"2026-07-01T15:00:01.035727\",\n      \"updatedAt\": \"2026-07-01T15:00:01.040548\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ac5a1510-02ba-4070-9280-4419ded6f76c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "2feea2de-8402-4193-8c7e-3d9387d80c6e",
+      "name": "Get a template - GetTemplate",
+      "request": {
+        "urlPathTemplate": "/v2/templates/{uuid}",
+        "method": "GET",
+        "pathParameters": {
+          "uuid": {
+            "equalTo": "019ff129-d393-7761-9a31-e5afe85b4081"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"uuid\": \"019ff129-d393-7761-9a31-e5afe85b4081\",\n  \"orgId\": 123,\n  \"orgName\": \"PropertyManager Pro\",\n  \"name\": \"Standard boarding template\",\n  \"description\": null,\n  \"slug\": null,\n  \"status\": \"active\",\n  \"currentVersionUuid\": \"019ff129-d396-74c4-86da-ae3d082d7ef9\",\n  \"currentVersion\": {\n    \"uuid\": \"019ff129-d396-74c4-86da-ae3d082d7ef9\",\n    \"version\": 1,\n    \"services\": {\n      \"ach\": \"merchantDecision\",\n      \"card\": \"preSelected\",\n      \"checkRdc\": \"merchantDecision\"\n    },\n    \"fieldConfigurations\": [\n      {\n        \"label\": \"Website\",\n        \"hint\": null,\n        \"defaultValue\": null,\n        \"attributes\": [\n          \"required\",\n          \"visible\"\n        ],\n        \"fieldPath\": \"business.website\"\n      },\n      {\n        \"label\": \"Sales Channel\",\n        \"hint\": null,\n        \"defaultValue\": null,\n        \"questionType\": \"multipleChoiceSingle\",\n        \"options\": [\n          \"In-Store\",\n          \"Online\",\n          \"Both\"\n        ],\n        \"attributes\": [\n          \"required\",\n          \"visible\"\n        ],\n        \"fieldPath\": \"business.salesChannel\",\n        \"custom\": true\n      },\n      {\n        \"label\": \"Primary Customer Type\",\n        \"hint\": null,\n        \"defaultValue\": null,\n        \"questionType\": \"multipleChoiceSingle\",\n        \"options\": [\n          \"B2B\",\n          \"B2C\",\n          \"Both\"\n        ],\n        \"attributes\": [\n          \"required\",\n          \"visible\"\n        ],\n        \"fieldPath\": \"business.customerType\",\n        \"custom\": true\n      },\n      {\n        \"label\": \"Years in Business\",\n        \"hint\": null,\n        \"defaultValue\": null,\n        \"questionType\": \"dropdown\",\n        \"options\": [\n          \"Less than 1\",\n          \"1-3\",\n          \"3-5\",\n          \"5-10\",\n          \"10+\"\n        ],\n        \"attributes\": [\n          \"required\",\n          \"visible\"\n        ],\n        \"fieldPath\": \"business.yearsInBusiness\",\n        \"custom\": true\n      },\n      {\n        \"label\": \"Describe your refund policy\",\n        \"hint\": null,\n        \"defaultValue\": null,\n        \"questionType\": \"textarea\",\n        \"options\": null,\n        \"attributes\": [\n          \"visible\"\n        ],\n        \"fieldPath\": \"business.refundPolicy\",\n        \"custom\": true\n      }\n    ],\n    \"conditionalRules\": [\n      {\n        \"ruleName\": \"require-website-online\",\n        \"description\": \"Require the website field when sales happen online.\",\n        \"enabled\": true,\n        \"matchMode\": \"all\",\n        \"conditions\": [\n          {\n            \"fieldPath\": \"business.salesChannel\",\n            \"operator\": \"equals\",\n            \"value\": \"Online\"\n          }\n        ],\n        \"actions\": [\n          {\n            \"actionType\": \"setFieldAttributes\",\n            \"fieldPath\": \"business.website\",\n            \"visible\": null,\n            \"required\": true,\n            \"readOnly\": null\n          }\n        ]\n      },\n      {\n        \"ruleName\": \"require-refund-policy-airlines\",\n        \"description\": \"Require the refund policy field when the merchant category code (MCC) is 3000 (airlines).\",\n        \"enabled\": true,\n        \"matchMode\": \"all\",\n        \"conditions\": [\n          {\n            \"fieldPath\": \"business.merchantCatCode\",\n            \"operator\": \"equals\",\n            \"value\": \"3000\"\n          }\n        ],\n        \"actions\": [\n          {\n            \"actionType\": \"setFieldAttributes\",\n            \"fieldPath\": \"business.refundPolicy\",\n            \"visible\": true,\n            \"required\": true,\n            \"readOnly\": null\n          }\n        ]\n      }\n    ],\n    \"documents\": [\n      {\n        \"fieldPath\": \"documents.bankStatement\",\n        \"preset\": true,\n        \"label\": \"Bank Statement\",\n        \"hint\": \"3 most recent months\",\n        \"maxUploads\": 3,\n        \"allowedFormats\": [\n          \"pdf\",\n          \"jpg\",\n          \"png\"\n        ],\n        \"attributes\": [\n          \"required\",\n          \"visible\"\n        ]\n      }\n    ],\n    \"devices\": [\n      {\n        \"deviceId\": \"ingenico_axium_dx8\",\n        \"preSelected\": false\n      },\n      {\n        \"deviceId\": \"ingenico_axium_rx9000\",\n        \"preSelected\": false\n      }\n    ],\n    \"hiddenSections\": [\n      \"welcome\"\n    ],\n    \"allowedMccs\": [\n      5200,\n      8998\n    ],\n    \"underwriting\": \"automatic\",\n    \"mpaContent\": \"<p>Merchant Processing Agreement</p>\",\n    \"payinPricingId\": 1289,\n    \"payoutPricingId\": null,\n    \"allowGuidedTour\": false,\n    \"allowBusinessPrefill\": true,\n    \"allowSaveForLater\": true,\n    \"allowMultipleBanks\": true,\n    \"allowServiceSelection\": true,\n    \"allowDeviceSelection\": true,\n    \"allowAmigoChat\": true,\n    \"allowUserCreation\": true,\n    \"allowPeoplePrefill\": false,\n    \"verticalProgress\": true,\n    \"useFloatingInputs\": false,\n    \"centerContent\": true,\n    \"allowRealTimeBankVerification\": true,\n    \"allowCheckboxSigning\": true,\n    \"allowTypedSignature\": true,\n    \"allowWrittenSignature\": true,\n    \"allowMultiOwnerEsign\": false,\n    \"allowConfirmationAndAttestation\": true,\n    \"allowPCIAttestation\": false,\n    \"createdAt\": \"2026-07-01T15:00:01.038310\",\n    \"createdBy\": \"0\"\n  },\n  \"isInherited\": false,\n  \"readOnly\": false,\n  \"createdBy\": \"0\",\n  \"updatedBy\": \"0\",\n  \"createdAt\": \"2026-07-01T15:00:01.035727\",\n  \"updatedAt\": \"2026-07-01T15:00:01.040548\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2feea2de-8402-4193-8c7e-3d9387d80c6e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "1e7adf78-acee-4dee-935c-e01b590dc922",
+      "name": "Archive a template - ArchiveTemplate",
+      "request": {
+        "urlPathTemplate": "/v2/templates/{uuid}",
+        "method": "DELETE",
+        "pathParameters": {
+          "uuid": {
+            "equalTo": "019ff129-d393-7761-9a31-e5afe85b4081"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "1e7adf78-acee-4dee-935c-e01b590dc922",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "658bc5e7-cb40-4578-989e-a63d600385c5",
+      "name": "Get a template version - GetTemplateVersion",
+      "request": {
+        "urlPathTemplate": "/v2/templates/{uuid}/versions/{versionUuid}",
+        "method": "GET",
+        "pathParameters": {
+          "uuid": {
+            "equalTo": "019ff129-d393-7761-9a31-e5afe85b4081"
+          },
+          "versionUuid": {
+            "equalTo": "019ff129-d396-74c4-86da-ae3d082d7ef9"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"uuid\": \"019ff129-d396-74c4-86da-ae3d082d7ef9\",\n  \"version\": 1,\n  \"services\": {\n    \"ach\": \"merchantDecision\",\n    \"card\": \"preSelected\",\n    \"checkRdc\": \"merchantDecision\"\n  },\n  \"fieldConfigurations\": [\n    {\n      \"label\": \"Website\",\n      \"hint\": null,\n      \"defaultValue\": null,\n      \"attributes\": [\n        \"required\",\n        \"visible\"\n      ],\n      \"fieldPath\": \"business.website\"\n    },\n    {\n      \"label\": \"Sales Channel\",\n      \"hint\": null,\n      \"defaultValue\": null,\n      \"questionType\": \"multipleChoiceSingle\",\n      \"options\": [\n        \"In-Store\",\n        \"Online\",\n        \"Both\"\n      ],\n      \"attributes\": [\n        \"required\",\n        \"visible\"\n      ],\n      \"fieldPath\": \"business.salesChannel\",\n      \"custom\": true\n    },\n    {\n      \"label\": \"Primary Customer Type\",\n      \"hint\": null,\n      \"defaultValue\": null,\n      \"questionType\": \"multipleChoiceSingle\",\n      \"options\": [\n        \"B2B\",\n        \"B2C\",\n        \"Both\"\n      ],\n      \"attributes\": [\n        \"required\",\n        \"visible\"\n      ],\n      \"fieldPath\": \"business.customerType\",\n      \"custom\": true\n    },\n    {\n      \"label\": \"Years in Business\",\n      \"hint\": null,\n      \"defaultValue\": null,\n      \"questionType\": \"dropdown\",\n      \"options\": [\n        \"Less than 1\",\n        \"1-3\",\n        \"3-5\",\n        \"5-10\",\n        \"10+\"\n      ],\n      \"attributes\": [\n        \"required\",\n        \"visible\"\n      ],\n      \"fieldPath\": \"business.yearsInBusiness\",\n      \"custom\": true\n    },\n    {\n      \"label\": \"Describe your refund policy\",\n      \"hint\": null,\n      \"defaultValue\": null,\n      \"questionType\": \"textarea\",\n      \"options\": null,\n      \"attributes\": [\n        \"visible\"\n      ],\n      \"fieldPath\": \"business.refundPolicy\",\n      \"custom\": true\n    }\n  ],\n  \"conditionalRules\": [\n    {\n      \"ruleName\": \"require-website-online\",\n      \"description\": \"Require the website field when sales happen online.\",\n      \"enabled\": true,\n      \"matchMode\": \"all\",\n      \"conditions\": [\n        {\n          \"fieldPath\": \"business.salesChannel\",\n          \"operator\": \"equals\",\n          \"value\": \"Online\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"actionType\": \"setFieldAttributes\",\n          \"fieldPath\": \"business.website\",\n          \"visible\": null,\n          \"required\": true,\n          \"readOnly\": null\n        }\n      ]\n    },\n    {\n      \"ruleName\": \"require-refund-policy-airlines\",\n      \"description\": \"Require the refund policy field when the merchant category code (MCC) is 3000 (airlines).\",\n      \"enabled\": true,\n      \"matchMode\": \"all\",\n      \"conditions\": [\n        {\n          \"fieldPath\": \"business.merchantCatCode\",\n          \"operator\": \"equals\",\n          \"value\": \"3000\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"actionType\": \"setFieldAttributes\",\n          \"fieldPath\": \"business.refundPolicy\",\n          \"visible\": true,\n          \"required\": true,\n          \"readOnly\": null\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"fieldPath\": \"documents.bankStatement\",\n      \"preset\": true,\n      \"label\": \"Bank Statement\",\n      \"hint\": \"3 most recent months\",\n      \"maxUploads\": 3,\n      \"allowedFormats\": [\n        \"pdf\",\n        \"jpg\",\n        \"png\"\n      ],\n      \"attributes\": [\n        \"required\",\n        \"visible\"\n      ]\n    }\n  ],\n  \"devices\": [\n    {\n      \"deviceId\": \"ingenico_axium_dx8\",\n      \"preSelected\": false\n    },\n    {\n      \"deviceId\": \"ingenico_axium_rx9000\",\n      \"preSelected\": false\n    }\n  ],\n  \"hiddenSections\": [\n    \"welcome\"\n  ],\n  \"allowedMccs\": [\n    5200,\n    8998\n  ],\n  \"underwriting\": \"automatic\",\n  \"mpaContent\": \"<p>Merchant Processing Agreement</p>\",\n  \"payinPricingId\": 1289,\n  \"payoutPricingId\": null,\n  \"allowGuidedTour\": false,\n  \"allowBusinessPrefill\": true,\n  \"allowSaveForLater\": true,\n  \"allowMultipleBanks\": true,\n  \"allowServiceSelection\": true,\n  \"allowDeviceSelection\": true,\n  \"allowAmigoChat\": true,\n  \"allowUserCreation\": true,\n  \"allowPeoplePrefill\": false,\n  \"verticalProgress\": true,\n  \"useFloatingInputs\": false,\n  \"centerContent\": true,\n  \"allowRealTimeBankVerification\": true,\n  \"allowCheckboxSigning\": true,\n  \"allowTypedSignature\": true,\n  \"allowWrittenSignature\": true,\n  \"allowMultiOwnerEsign\": false,\n  \"allowConfirmationAndAttestation\": true,\n  \"allowPCIAttestation\": false,\n  \"createdAt\": \"2026-07-01T15:00:01.038310\",\n  \"createdBy\": \"0\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "658bc5e7-cb40-4578-989e-a63d600385c5",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "df5bd5d5-93fe-4aa6-b500-b80d81b0ac45",
+      "name": "List applications - ListApplications",
+      "request": {
+        "urlPathTemplate": "/v2/requests",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Applications retrieved successfully\",\n  \"traceId\": \"0HNNNPRPLVN3G:00000004\",\n  \"data\": {\n    \"data\": [\n      {\n        \"requestsReference\": \"3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n        \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n        \"parent\": \"a8806f02-23b3-4f6d-bba3-42e1b94326ea\",\n        \"parentOrgName\": \"PropertyManager Pro\",\n        \"paypointName\": \"Rose Gardens\",\n        \"paypointLegalName\": \"Rose Gardens LLC\",\n        \"ein\": \"****8993\",\n        \"primaryOwnerName\": \"Marcus Delgado\",\n        \"primaryOwnerReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n        \"externalId\": \"APP-2025-0417\",\n        \"applicationStatus\": \"draft\",\n        \"applicationStatusCode\": 1,\n        \"allowedActions\": [\n          \"submit\",\n          \"withdraw\",\n          \"abandon\"\n        ],\n        \"tags\": [\n          \"priority\"\n        ],\n        \"createdAt\": \"2026-07-01T15:00:01.734346\",\n        \"_links\": {\n          \"self\": \"/v2/requests/3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n          \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n        }\n      }\n    ],\n    \"total\": 1,\n    \"page\": 1,\n    \"pageSize\": 20\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "df5bd5d5-93fe-4aa6-b500-b80d81b0ac45",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "345c7752-6d94-46e7-a22f-f802cdf66483",
+      "name": "Create an application - CreateApplication",
+      "request": {
+        "urlPathTemplate": "/v2/requests",
+        "method": "POST"
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Application created successfully\",\n  \"traceId\": \"0HNNNPRPLVN40:00000012\",\n  \"data\": {\n    \"requestsReference\": \"3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n    \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"externalId\": \"APP-2025-0417\",\n    \"paypointReference\": \"019ff064-c690-7679-a73e-688418aadc7c\",\n    \"paypointStatus\": \"pending\",\n    \"applicationStatus\": \"draft\",\n    \"applicationStatusCode\": 1,\n    \"allowedActions\": [\n      \"submit\",\n      \"withdraw\",\n      \"abandon\"\n    ],\n    \"tags\": [\n      \"priority\"\n    ],\n    \"createdAt\": \"2026-07-01T15:00:01.734346\",\n    \"_links\": {\n      \"self\": \"/v2/requests/3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "345c7752-6d94-46e7-a22f-f802cdf66483",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "91def5f9-985e-4300-b570-ba1709d8cb3a",
+      "name": "Get an application - GetApplication",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}",
+        "method": "GET",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Application retrieved successfully\",\n  \"traceId\": \"0HNNNPRPLVN3H:00000009\",\n  \"data\": {\n    \"requestsReference\": \"3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n    \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"externalId\": \"APP-2025-0417\",\n    \"paypointReference\": \"019ff064-c690-7679-a73e-688418aadc7c\",\n    \"paypointStatus\": \"pending\",\n    \"applicationStatus\": \"draft\",\n    \"applicationStatusCode\": 1,\n    \"allowedActions\": [\n      \"submit\",\n      \"withdraw\",\n      \"abandon\"\n    ],\n    \"tags\": [\n      \"priority\"\n    ],\n    \"createdAt\": \"2026-07-01T15:00:01.734346\",\n    \"_links\": {\n      \"self\": \"/v2/requests/3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "91def5f9-985e-4300-b570-ba1709d8cb3a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "67ffb891-a788-4bc4-90ad-56d972d924d4",
+      "name": "Update an application - UpdateApplication",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}",
+        "method": "PATCH",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Application updated successfully\",\n  \"traceId\": \"0HNNNPRPLVN3H:00000011\",\n  \"data\": {\n    \"requestsReference\": \"3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n    \"businessReference\": \"019fed1a-3d6e-75d3-a81e-cba3874b0a55\",\n    \"externalId\": \"APP-2025-0417-REV2\",\n    \"paypointReference\": \"019ff064-c690-7679-a73e-688418aadc7c\",\n    \"paypointStatus\": \"pending\",\n    \"applicationStatus\": \"draft\",\n    \"applicationStatusCode\": 1,\n    \"allowedActions\": [\n      \"submit\",\n      \"withdraw\",\n      \"abandon\"\n    ],\n    \"tags\": [\n      \"priority\",\n      \"expedited\"\n    ],\n    \"createdAt\": \"2026-07-01T15:00:01.734346\",\n    \"_links\": {\n      \"self\": \"/v2/requests/3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n      \"business\": \"/v2/businesses/019fed1a-3d6e-75d3-a81e-cba3874b0a55\"\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "67ffb891-a788-4bc4-90ad-56d972d924d4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "3c5ddfea-7dce-4b25-a4ae-f1bc09e42092",
+      "name": "Validate an application - ValidateNewApplication",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/validate",
+        "method": "POST",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Validation completed\",\n  \"traceId\": \"0HNP4OM1AUIEG:00000008\",\n  \"data\": {\n    \"valid\": true,\n    \"servicesEvaluated\": [\n      \"payInCard\",\n      \"payInAch\",\n      \"payOutAch\",\n      \"payOutCheck\"\n    ],\n    \"sections\": {\n      \"business\": {\n        \"complete\": true,\n        \"missingFields\": []\n      },\n      \"salesAndPayments\": {\n        \"complete\": true,\n        \"missingFields\": []\n      },\n      \"banking\": {\n        \"complete\": true,\n        \"missingFields\": []\n      },\n      \"people\": {\n        \"complete\": true,\n        \"missingFields\": []\n      }\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3c5ddfea-7dce-4b25-a4ae-f1bc09e42092",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f273701d-7053-4e10-9585-fb9a526db724",
+      "name": "Submit an application - SubmitApplication",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/submit",
+        "method": "POST",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Application submitted\",\n  \"traceId\": \"0HNONVRI1SMEU:0000068E\",\n  \"data\": {\n    \"requestsReference\": \"3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n    \"applicationStatus\": \"submitted\",\n    \"allowedActions\": [\n      \"startVerification\",\n      \"withdraw\",\n      \"abandon\",\n      \"markError\"\n    ]\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f273701d-7053-4e10-9585-fb9a526db724",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "0d71acde-c760-40fd-94a6-7a7e0074a849",
+      "name": "Provide documents - ProvideDocuments",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/provide-documents",
+        "method": "POST",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Documents provided\",\n  \"traceId\": \"0HNONVR8FH0H0:00000182\",\n  \"data\": {\n    \"requestsReference\": \"3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n    \"applicationStatus\": \"pendingreview\",\n    \"allowedActions\": [\n      \"approve\",\n      \"deny\",\n      \"escalate\",\n      \"requestDocuments\",\n      \"requestResponse\",\n      \"markError\"\n    ]\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "0d71acde-c760-40fd-94a6-7a7e0074a849",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "84eff81c-a539-4d4c-9889-7402c5ddab6b",
+      "name": "Provide information - ProvideResponse",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/provide-response",
+        "method": "POST",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Information provided\",\n  \"traceId\": \"0HNONVR8FH0HG:000000A7\",\n  \"data\": {\n    \"requestsReference\": \"3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n    \"applicationStatus\": \"pendingreview\",\n    \"allowedActions\": [\n      \"approve\",\n      \"deny\",\n      \"escalate\",\n      \"requestDocuments\",\n      \"requestResponse\",\n      \"markError\"\n    ]\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "84eff81c-a539-4d4c-9889-7402c5ddab6b",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "39422650-0b67-4e74-9f10-8014c62608c8",
+      "name": "Withdraw an application - WithdrawApplication",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/withdraw",
+        "method": "POST",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Application withdrawn\",\n  \"traceId\": \"0HNNNPRPLVN4C:0000001B\",\n  \"data\": {\n    \"requestsReference\": \"3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n    \"applicationStatus\": \"withdrawn\",\n    \"allowedActions\": []\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "39422650-0b67-4e74-9f10-8014c62608c8",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "95f0c131-c09b-4b8f-a443-a7404c935a32",
+      "name": "Get application status history - GetApplicationHistory",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/history",
+        "method": "GET",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Application status history\",\n  \"traceId\": \"0HNNNPRPLVN4C:0000001C\",\n  \"data\": {\n    \"requestsReference\": \"3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n    \"history\": [\n      {\n        \"fromStatus\": \"none\",\n        \"toStatus\": \"draft\",\n        \"trigger\": \"Create\",\n        \"actor\": \"0\",\n        \"reason\": null,\n        \"metadata\": null,\n        \"createdAt\": \"2026-07-01T15:00:01.734346\"\n      },\n      {\n        \"fromStatus\": \"draft\",\n        \"toStatus\": \"withdrawn\",\n        \"trigger\": \"Withdraw\",\n        \"actor\": \"0\",\n        \"reason\": \"Duplicate application\",\n        \"metadata\": null,\n        \"createdAt\": \"2026-07-01T15:12:44.132073\"\n      }\n    ]\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "95f0c131-c09b-4b8f-a443-a7404c935a32",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "6df7cbf3-3e21-4825-9b23-6e414d9e5655",
+      "name": "Get application enablement progress - GetApplicationEnablement",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/enablement",
+        "method": "GET",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Application boarding status\",\n  \"traceId\": \"0HNP4OL9M4GDO:00000001\",\n  \"data\": {\n    \"requestsReference\": \"3f3caa7b-bdfe-4bf1-814b-30d54859247c\",\n    \"state\": \"Submitted\",\n    \"services\": [\n      {\n        \"service\": \"Card\",\n        \"rail\": \"MoneyIn\",\n        \"state\": \"Submitted\",\n        \"message\": null,\n        \"missingFields\": null\n      }\n    ],\n    \"blockedOn\": \"processor\",\n    \"message\": \"Boarding is waiting on a processor for at least one service and is retried automatically. The service list says which. It has been attempted 63 times so far.\",\n    \"attempts\": 63,\n    \"firstAttemptAt\": \"2026-10-12T18:41:18.945616+00:00\",\n    \"lastAttemptAt\": \"2026-10-12T19:43:10.983059+00:00\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "6df7cbf3-3e21-4825-9b23-6e414d9e5655",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "6ff30964-4e29-40f2-9248-3489f34ca36d",
+      "name": "List application document requirements - ListApplicationDocumentRequirements",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/documents/requirements",
+        "method": "GET",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Document requirements retrieved successfully\",\n  \"traceId\": \"0HNPA847I3953:0000001E\",\n  \"data\": [\n    {\n      \"fieldPath\": \"documents.bankStatement\",\n      \"label\": \"Bank Statements\",\n      \"source\": \"businessRule\",\n      \"subjectTypes\": [\n        \"paypoint\",\n        \"business\"\n      ],\n      \"required\": true,\n      \"maxUploads\": 3,\n      \"allowedFormats\": [\n        \"pdf\",\n        \"jpg\",\n        \"jpeg\",\n        \"png\"\n      ],\n      \"uploadedCount\": 0\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "6ff30964-4e29-40f2-9248-3489f34ca36d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e8f9bac9-10e1-47f6-b1e7-9c3172e1f42f",
+      "name": "List application documents - ListApplicationDocuments",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/documents",
+        "method": "GET",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Documents retrieved successfully\",\n  \"traceId\": \"0HNPA8416RDEU:00000001\",\n  \"data\": [\n    {\n      \"documentReference\": \"019ff1d7-5c2e-7a41-9b3d-2f6e8c1a4d90\",\n      \"kind\": \"applicantUpload\",\n      \"subjectType\": \"business\",\n      \"personReference\": null,\n      \"fieldPath\": \"documents.bankStatement\",\n      \"fileName\": \"bank-statement-september.pdf\",\n      \"mimeType\": \"application/pdf\",\n      \"fileSizeBytes\": 482113,\n      \"uploadedAt\": \"2026-10-16T13:20:22.876789Z\"\n    },\n    {\n      \"documentReference\": \"019ff1d7-6e14-7c8b-a2f5-91d3b7e04c62\",\n      \"kind\": \"applicantUpload\",\n      \"subjectType\": \"person\",\n      \"personReference\": \"01a0014d-ce1a-7110-9bac-c4c59647a88d\",\n      \"fieldPath\": \"person.documents.w9\",\n      \"fileName\": \"w9-marcus-delgado.pdf\",\n      \"mimeType\": \"application/pdf\",\n      \"fileSizeBytes\": 96270,\n      \"uploadedAt\": \"2026-10-16T13:34:51.3779Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e8f9bac9-10e1-47f6-b1e7-9c3172e1f42f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "ad7d371e-b086-4d78-8424-594027191a53",
+      "name": "Upload an application document - UploadApplicationDocument",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/documents",
+        "method": "POST",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Document uploaded successfully\",\n  \"traceId\": \"0HNPA847I395C:00000013\",\n  \"data\": {\n    \"documentReference\": \"019ff1d7-5c2e-7a41-9b3d-2f6e8c1a4d90\",\n    \"kind\": \"applicantUpload\",\n    \"subjectType\": \"business\",\n    \"personReference\": null,\n    \"fieldPath\": \"documents.bankStatement\",\n    \"fileName\": \"bank-statement-september.pdf\",\n    \"mimeType\": \"application/pdf\",\n    \"fileSizeBytes\": 482113,\n    \"uploadedAt\": \"2026-10-16T13:20:22.8767892Z\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ad7d371e-b086-4d78-8424-594027191a53",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2a444dc7-b924-4be5-b597-2f9222a5b62c",
+      "name": "Delete an application document - DeleteApplicationDocument",
+      "request": {
+        "urlPathTemplate": "/v2/requests/{requestsReference}/documents/{documentReference}",
+        "method": "DELETE",
+        "pathParameters": {
+          "requestsReference": {
+            "equalTo": "3f3caa7b-bdfe-4bf1-814b-30d54859247c"
+          },
+          "documentReference": {
+            "equalTo": "019ff1d7-6e14-7c8b-a2f5-91d3b7e04c62"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2a444dc7-b924-4be5-b597-2f9222a5b62c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
       "id": "7a52c058-e877-420f-b91e-8e0dcc14c646",
       "name": "Create boarding application - PayIn",
       "request": {
@@ -9491,6 +11090,6 @@
     }
   ],
   "meta": {
-    "total": 275
+    "total": 326
   }
 }
