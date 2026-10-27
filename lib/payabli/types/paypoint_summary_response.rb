@@ -26,6 +26,8 @@ module Payabli
 
       field :customer_service_email, -> { String }, optional: true, nullable: false, api_name: "customerServiceEmail"
 
+      field :external_id, -> { String }, optional: true, nullable: false, api_name: "externalId"
+
       field :entry_name, -> { String }, optional: false, nullable: false, api_name: "entryName"
 
       field :created_at, -> { String }, optional: false, nullable: false, api_name: "createdAt"

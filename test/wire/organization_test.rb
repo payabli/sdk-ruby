@@ -164,7 +164,7 @@ class OrganizationWireTest < WireMockTestCase
     test_id = "organization.get_basic_organization.0"
 
     @client.organization.get_basic_organization(
-      entry: "8cfec329267",
+      entry: "pilgrim-planner",
       request_options: {
         additional_headers: {
           "X-Test-Id" => "organization.get_basic_organization.0"
@@ -175,7 +175,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Organization/basic/8cfec329267",
+      url_path: "/Organization/basic/pilgrim-planner",
       query_params: nil,
       expected: 1
     )
@@ -183,7 +183,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Organization/basic/8cfec329267",
+      url_path: "/Organization/basic/pilgrim-planner",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }

@@ -7,9 +7,9 @@ module Payabli
 
       field :mode, -> { Integer }, optional: true, nullable: false, api_name: "Mode"
 
-      field :min_ticket, -> { Integer }, optional: true, nullable: false, api_name: "MinTicket"
+      field :minticket, -> { Integer }, optional: true, nullable: false, api_name: "Minticket"
 
-      field :max_ticket, -> { Integer }, optional: true, nullable: false, api_name: "MaxTicket"
+      field :maxticket, -> { Integer }, optional: true, nullable: false, api_name: "Maxticket"
 
       field :cfee_fix, -> { Integer }, optional: true, nullable: false, api_name: "CfeeFix"
 

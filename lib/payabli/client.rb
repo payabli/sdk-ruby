@@ -32,7 +32,7 @@ module Payabli
       @raw_client = Payabli::Internal::Http::RawClient.new(
         base_url: base_url || Payabli::Environment::SANDBOX,
         headers: {
-          "User-Agent" => "payabli/3.0.20",
+          "User-Agent" => "payabli/3.0.21",
           "X-Fern-Language" => "Ruby"
         },
         auth_provider: Payabli::Internal::RoutingAuthProvider.new(
@@ -156,6 +156,11 @@ module Payabli
     # @return [Payabli::Paypoints::Client]
     def paypoints
       @paypoints ||= Payabli::Paypoints::Client.new(client: @raw_client)
+    end
+
+    # @return [Payabli::Organizations::Client]
+    def organizations
+      @organizations ||= Payabli::Organizations::Client.new(client: @raw_client)
     end
 
     # @return [Payabli::PaymentMethods::Client]

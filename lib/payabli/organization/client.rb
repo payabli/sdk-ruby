@@ -209,9 +209,9 @@ module Payabli
       # @option params [String] :entry
       #
       # @example
-      #   client.organization.get_basic_organization(entry: "8cfec329267")
+      #   client.organization.get_basic_organization(entry: "pilgrim-planner")
       #
-      # @return [Payabli::Types::OrganizationQueryRecord]
+      # @return [Payabli::Types::GetBasicOrganizationResponse]
       def get_basic_organization(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
@@ -229,7 +229,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::OrganizationQueryRecord.load(response.body)
+          Payabli::Types::GetBasicOrganizationResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -250,7 +250,7 @@ module Payabli
       # @example
       #   client.organization.get_basic_organization_by_id(org_id: 123)
       #
-      # @return [Payabli::Types::OrganizationQueryRecord]
+      # @return [Payabli::Types::GetBasicOrganizationResponse]
       def get_basic_organization_by_id(request_options: {}, **params)
         params = Payabli::Internal::Types::Utils.normalize_keys(params)
         headers = @client.auth_headers_for_endpoint(security: [{ "BearerAuth" => [] }, { "APIKeyAuth" => [] }])
@@ -268,7 +268,7 @@ module Payabli
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Payabli::Types::OrganizationQueryRecord.load(response.body)
+          Payabli::Types::GetBasicOrganizationResponse.load(response.body)
         else
           error_class = Payabli::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

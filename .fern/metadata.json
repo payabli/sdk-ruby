@@ -7,10 +7,10 @@
     "rubocopVariableNumberStyle": "snake_case",
     "respectOptionalRequestBody": true
   },
-  "originGitCommit": "b86804f7b7e691004b32c4c2703fa51f494c4eec",
+  "originGitCommit": "794e4e445022509f2199080b61dd748f2c6ea9e6",
   "originGitCommitIsDirty": true,
   "invokedBy": "ci",
-  "requestedVersion": "3.0.20",
+  "requestedVersion": "3.0.21",
   "ciProvider": "github",
-  "sdkVersion": "3.0.20"
+  "sdkVersion": "3.0.21"
 }

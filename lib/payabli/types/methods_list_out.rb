@@ -8,7 +8,11 @@ module Payabli
 
       field :check, -> { Internal::Types::Boolean }, optional: true, nullable: false
 
+      field :rtp, -> { Internal::Types::Boolean }, optional: true, nullable: false
+
       field :vcard, -> { Internal::Types::Boolean }, optional: true, nullable: false
+
+      field :wire, -> { Internal::Types::Boolean }, optional: true, nullable: false
     end
   end
 end
