@@ -47,6 +47,8 @@ module Payabli
 
       field :status, -> { Integer }, optional: true, nullable: false, api_name: "Status"
 
+      field :status_label, -> { String }, optional: true, nullable: false, api_name: "StatusLabel"
+
       field :created_at, -> { String }, optional: true, nullable: false, api_name: "CreatedAt"
 
       field :end_date, -> { String }, optional: false, nullable: true, api_name: "EndDate"

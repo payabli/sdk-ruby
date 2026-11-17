@@ -84,7 +84,7 @@ class BoardingWireTest < WireMockTestCase
       mcountry: "US",
       mstate: "TN",
       mzip: "37615",
-      org_id: 123,
+      org_id: 900123,
       ownership: [{
         oaddress: "33 North St",
         ocity: "Any City",
@@ -131,7 +131,7 @@ class BoardingWireTest < WireMockTestCase
       },
       startdate: "01/01/1990",
       tax_fill_name: "Sunshine LLC",
-      template_id: 22,
+      template_id: 900022,
       ticketamt: 1000,
       website: "www.example.com",
       when_charged: "When Service Provided",
@@ -325,7 +325,7 @@ class BoardingWireTest < WireMockTestCase
     test_id = "boarding.get_by_template_id_link_application.0"
 
     @client.boarding.get_by_template_id_link_application(
-      template_id: 80,
+      template_id: 900022,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "boarding.get_by_template_id_link_application.0"
@@ -336,7 +336,7 @@ class BoardingWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Boarding/linkbyTemplate/80",
+      url_path: "/Boarding/linkbyTemplate/900022",
       query_params: nil,
       expected: 1
     )
@@ -344,7 +344,7 @@ class BoardingWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Boarding/linkbyTemplate/80",
+      url_path: "/Boarding/linkbyTemplate/900022",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -419,7 +419,7 @@ class BoardingWireTest < WireMockTestCase
     test_id = "boarding.list_applications.0"
 
     @client.boarding.list_applications(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -433,7 +433,7 @@ class BoardingWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/boarding/123",
+      url_path: "/Query/boarding/900123",
       query_params: nil,
       expected: 1
     )
@@ -441,7 +441,7 @@ class BoardingWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/boarding/123",
+      url_path: "/Query/boarding/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -453,7 +453,7 @@ class BoardingWireTest < WireMockTestCase
     test_id = "boarding.list_boarding_links.0"
 
     @client.boarding.list_boarding_links(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -467,7 +467,7 @@ class BoardingWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/boardinglinks/123",
+      url_path: "/Query/boardinglinks/900123",
       query_params: nil,
       expected: 1
     )
@@ -475,7 +475,7 @@ class BoardingWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/boardinglinks/123",
+      url_path: "/Query/boardinglinks/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -488,7 +488,7 @@ class BoardingWireTest < WireMockTestCase
 
     @client.boarding.add_service_to_paypoint_from_app(
       paypoint_id: 3040,
-      template_id: 456,
+      template_id: 900022,
       recipient_email: "merchant@example.com",
       return_boarding_access_info_in_line: true,
       on_create: ["submitApplication"],

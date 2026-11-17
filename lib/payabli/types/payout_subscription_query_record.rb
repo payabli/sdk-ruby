@@ -7,6 +7,8 @@ module Payabli
 
       field :status, -> { Integer }, optional: true, nullable: false
 
+      field :status_label, -> { String }, optional: true, nullable: false, api_name: "statusLabel"
+
       field :events, -> { Internal::Types::Array[Payabli::Types::GeneralEvents] }, optional: true, nullable: false
 
       field :vendor, -> { Payabli::Types::PayoutSubscriptionVendor }, optional: true, nullable: false

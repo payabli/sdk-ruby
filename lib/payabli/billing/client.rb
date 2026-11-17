@@ -33,7 +33,7 @@ module Payabli
       #
       # @example
       #   client.billing.list_profiles(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     limit_record: 20,
       #     from_record: 0
       #   )
@@ -97,7 +97,7 @@ module Payabli
       #   client.billing.get_profile(
       #     service_group: "PayIn",
       #     entity_type: "Organization",
-      #     entity_id: 123
+      #     entity_id: 900123
       #   )
       #
       # @return [Payabli::Types::BillingProfileResponse]

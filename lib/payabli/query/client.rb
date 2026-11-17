@@ -89,7 +89,7 @@ module Payabli
       #
       # @example
       #   client.query.list_batch_details_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -205,7 +205,7 @@ module Payabli
       #
       # @example
       #   client.query.list_batches_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -321,7 +321,7 @@ module Payabli
       #
       # @example
       #   client.query.list_batches_out_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -437,7 +437,7 @@ module Payabli
       #
       # @example
       #   client.query.list_chargebacks_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -553,7 +553,7 @@ module Payabli
       #
       # @example
       #   client.query.list_customers_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -669,7 +669,7 @@ module Payabli
       #
       # @example
       #   client.query.list_devices_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 0,
       #     limit_record: 20,
       #     sort_by: "desc(createdAt)"
@@ -781,7 +781,7 @@ module Payabli
       #
       # @example
       #   client.query.list_notification_reports_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -891,7 +891,7 @@ module Payabli
       #
       # @example
       #   client.query.list_notifications_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -949,7 +949,7 @@ module Payabli
       #
       # @example
       #   client.query.list_organizations(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -1065,7 +1065,7 @@ module Payabli
       #
       # @example
       #   client.query.list_payout_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -1123,7 +1123,7 @@ module Payabli
       #
       # @example
       #   client.query.list_paypoints(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -1239,7 +1239,7 @@ module Payabli
       #
       # @example
       #   client.query.list_settlements_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -1355,7 +1355,7 @@ module Payabli
       #
       # @example
       #   client.query.list_subscriptions_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -1473,7 +1473,7 @@ module Payabli
       #
       # @example
       #   client.query.list_payout_subscriptions_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 0,
       #     limit_record: 20,
       #     sort_by: "desc(field_name)"
@@ -1613,7 +1613,7 @@ module Payabli
       #
       # @example
       #   client.query.list_transactions_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -1785,7 +1785,7 @@ module Payabli
       #
       # @example
       #   client.query.list_transfers_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 0,
       #     limit_record: 20
       #   )
@@ -1840,7 +1840,7 @@ module Payabli
       #
       # @example
       #   client.query.list_transfers_out_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 0,
       #     limit_record: 20
       #   )
@@ -2004,7 +2004,7 @@ module Payabli
       #
       # @example
       #   client.query.list_users_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -2174,7 +2174,7 @@ module Payabli
       #
       # @example
       #   client.query.list_vendors_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -2343,7 +2343,7 @@ module Payabli
       #
       # @example
       #   client.query.list_vcards_transactions_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 0,
       #     limit_record: 20,
       #     sort_by: "desc(CreatedOn)"
@@ -2400,7 +2400,7 @@ module Payabli
       #
       # @example
       #   client.query.list_vcards_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"

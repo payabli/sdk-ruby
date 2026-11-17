@@ -23,7 +23,7 @@ class NotificationlogsWireTest < WireMockTestCase
       end_date: "2024-01-31T23:59:59Z",
       notification_event: "approvedpayment",
       succeeded: true,
-      org_id: 123,
+      org_id: 900123,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "notificationlogs.search_notification_logs.0"

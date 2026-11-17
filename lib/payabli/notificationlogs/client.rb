@@ -33,7 +33,7 @@ module Payabli
       #     end_date: "2024-01-31T23:59:59Z",
       #     notification_event: "approvedpayment",
       #     succeeded: true,
-      #     org_id: 123
+      #     org_id: 900123
       #   )
       #
       # @return [Array[Payabli::Types::NotificationLog]]

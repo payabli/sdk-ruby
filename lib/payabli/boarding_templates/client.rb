@@ -32,7 +32,7 @@ module Payabli
       # @option params [Integer, nil] :limit_record
       #
       # @example
-      #   client.boarding_templates.list_templates(org_id: 123)
+      #   client.boarding_templates.list_templates(org_id: 900123)
       #
       # @return [Payabli::Types::ListTemplatesResponse]
       def list_templates(request_options: {}, **params)

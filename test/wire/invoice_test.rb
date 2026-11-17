@@ -311,7 +311,7 @@ class InvoiceWireTest < WireMockTestCase
     test_id = "invoice.list_invoices_org.0"
 
     @client.invoice.list_invoices_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -325,7 +325,7 @@ class InvoiceWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/invoices/org/123",
+      url_path: "/Query/invoices/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -333,7 +333,7 @@ class InvoiceWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/invoices/org/123",
+      url_path: "/Query/invoices/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }

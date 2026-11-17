@@ -11,7 +11,8 @@ module Payabli
       end
 
       # Creates a payout subscription to automatically send payouts to a vendor on a recurring schedule. See [Manage
-      # payout subscriptions](/guides/pay-out-developer-payout-subscriptions-manage) for a step-by-step guide.
+      # payout subscriptions](/guides/pay-out-developer-payout-subscriptions-manage) for a step-by-step guide. Temporary
+      # API tokens can't call this endpoint, and a request made with one returns HTTP `401` with response code `9001`.
       #
       # @param request_options [Hash]
       # @param params [Payabli::PayoutSubscription::Types::RequestPayoutSchedule]
@@ -127,7 +128,8 @@ module Payabli
       end
 
       # Updates a payout subscription's details. See [Manage payout
-      # subscriptions](/guides/pay-out-developer-payout-subscriptions-manage) for more information.
+      # subscriptions](/guides/pay-out-developer-payout-subscriptions-manage) for more information. Temporary API tokens
+      # can't call this endpoint, and a request made with one returns HTTP `401` with response code `9001`.
       #
       # @param request_options [Hash]
       # @param params [Payabli::PayoutSubscription::Types::UpdatePayoutSubscriptionBody]
@@ -175,7 +177,8 @@ module Payabli
       end
 
       # Deletes a payout subscription and prevents future payouts. See [Manage payout
-      # subscriptions](/guides/pay-out-developer-payout-subscriptions-manage) for more information.
+      # subscriptions](/guides/pay-out-developer-payout-subscriptions-manage) for more information. Temporary API tokens
+      # can't call this endpoint, and a request made with one returns HTTP `401` with response code `9001`.
       #
       # @param request_options [Hash]
       # @param params [Hash]

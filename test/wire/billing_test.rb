@@ -18,7 +18,7 @@ class BillingWireTest < WireMockTestCase
     test_id = "billing.list_profiles.0"
 
     @client.billing.list_profiles(
-      org_id: 123,
+      org_id: 900123,
       limit_record: 20,
       from_record: 0,
       request_options: {
@@ -31,7 +31,7 @@ class BillingWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/billing/configuration/org/123",
+      url_path: "/billing/configuration/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -39,7 +39,7 @@ class BillingWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/billing/configuration/org/123",
+      url_path: "/billing/configuration/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -53,7 +53,7 @@ class BillingWireTest < WireMockTestCase
     @client.billing.get_profile(
       service_group: "PayIn",
       entity_type: "Organization",
-      entity_id: 123,
+      entity_id: 900123,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "billing.get_profile.0"
@@ -64,7 +64,7 @@ class BillingWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/billing/configuration/PayIn/Organization/123",
+      url_path: "/billing/configuration/PayIn/Organization/900123",
       query_params: nil,
       expected: 1
     )
@@ -72,7 +72,7 @@ class BillingWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/billing/configuration/PayIn/Organization/123",
+      url_path: "/billing/configuration/PayIn/Organization/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }

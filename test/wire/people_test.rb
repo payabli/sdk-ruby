@@ -234,7 +234,7 @@ class PeopleWireTest < WireMockTestCase
 
     @client.people.search_people(
       entry: "8cfec329267",
-      org_id: 123,
+      org_id: 900123,
       request: {
         firstName: "Marcus",
         lastName: "Delgado"
@@ -250,7 +250,7 @@ class PeopleWireTest < WireMockTestCase
       test_id: test_id,
       method: "POST",
       url_path: "/v2/people/search",
-      query_params: { "entry" => "8cfec329267", "orgId" => "123" },
+      query_params: { "entry" => "8cfec329267", "orgId" => "900123" },
       expected: 1
     )
 
@@ -270,7 +270,7 @@ class PeopleWireTest < WireMockTestCase
 
     @client.people.search_people_unmasked(
       entry: "8cfec329267",
-      org_id: 123,
+      org_id: 900123,
       request: {
         firstName: "Marcus",
         lastName: "Delgado"
@@ -286,7 +286,7 @@ class PeopleWireTest < WireMockTestCase
       test_id: test_id,
       method: "POST",
       url_path: "/v2/people/search/unmasked",
-      query_params: { "entry" => "8cfec329267", "orgId" => "123" },
+      query_params: { "entry" => "8cfec329267", "orgId" => "900123" },
       expected: 1
     )
 

@@ -49,6 +49,8 @@ module Payabli
 
       field :status, -> { Integer }, optional: true, nullable: false, api_name: "Status"
 
+      field :status_label, -> { String }, optional: true, nullable: false, api_name: "StatusLabel"
+
       field :status_text, -> { String }, optional: true, nullable: false, api_name: "StatusText"
 
       field :total_amount, -> { Integer }, optional: true, nullable: false, api_name: "TotalAmount"

@@ -3,6 +3,12 @@
 module Payabli
   module Types
     class PayabliCredentialsPascal < Internal::Types::Model
+      field :active, -> { Internal::Types::Boolean }, optional: true, nullable: false
+
+      field :customer_id, -> { String }, optional: true, nullable: false, api_name: "customerId"
+
+      field :client_id, -> { String }, optional: true, nullable: false, api_name: "clientId"
+
       field :service, -> { String }, optional: true, nullable: false, api_name: "Service"
 
       field :mode, -> { Integer }, optional: true, nullable: false, api_name: "Mode"

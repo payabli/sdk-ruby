@@ -96,7 +96,7 @@ module Payabli
       #     mcountry: "US",
       #     mstate: "TN",
       #     mzip: "37615",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     ownership: [{
       #       oaddress: "33 North St",
       #       ocity: "Any City",
@@ -143,7 +143,7 @@ module Payabli
       #     },
       #     startdate: "01/01/1990",
       #     tax_fill_name: "Sunshine LLC",
-      #     template_id: 22,
+      #     template_id: 900022,
       #     ticketamt: 1000,
       #     website: "www.example.com",
       #     when_charged: "When Service Provided",
@@ -188,6 +188,11 @@ module Payabli
       #
       #
       # Updates a boarding application by ID. This endpoint requires an application API token.
+      #
+      #
+      # If you send `ownership`, it replaces the application's owners. Include every owner, and set `primaryOwner` again
+      # on the primary owner, or the application loses its primary owner. If you leave `ownership` out, the owners don't
+      # change.
       #
       # @param request_options [Hash]
       # @param params [Payabli::Types::ApplicationData]
@@ -440,7 +445,7 @@ module Payabli
       # @option params [Integer] :template_id
       #
       # @example
-      #   client.boarding.get_by_template_id_link_application(template_id: 80)
+      #   client.boarding.get_by_template_id_link_application(template_id: 900022)
       #
       # @return [Payabli::Types::BoardingLinkQueryRecord]
       def get_by_template_id_link_application(request_options: {}, **params)
@@ -595,7 +600,7 @@ module Payabli
       #
       # @example
       #   client.boarding.list_applications(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -658,7 +663,7 @@ module Payabli
       #
       # @example
       #   client.boarding.list_boarding_links(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"
@@ -720,7 +725,7 @@ module Payabli
       # @example
       #   client.boarding.add_service_to_paypoint_from_app(
       #     paypoint_id: 3040,
-      #     template_id: 456,
+      #     template_id: 900022,
       #     recipient_email: "merchant@example.com",
       #     return_boarding_access_info_in_line: true,
       #     on_create: ["submitApplication"]

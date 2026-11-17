@@ -326,7 +326,7 @@ module Payabli
       # @example
       #   client.people.search_people(
       #     entry: "8cfec329267",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     request: {
       #       firstName: "Marcus",
       #       lastName: "Delgado"
@@ -384,7 +384,7 @@ module Payabli
       # @example
       #   client.people.search_people_unmasked(
       #     entry: "8cfec329267",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     request: {
       #       firstName: "Marcus",
       #       lastName: "Delgado"

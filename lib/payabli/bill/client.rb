@@ -543,7 +543,7 @@ module Payabli
       #
       # @example
       #   client.bill.list_bills_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"

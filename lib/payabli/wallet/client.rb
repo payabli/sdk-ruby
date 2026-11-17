@@ -24,7 +24,7 @@ module Payabli
       #   client.wallet.configure_apple_pay_organization(
       #     cascade: true,
       #     is_enabled: true,
-      #     org_id: 123
+      #     org_id: 900123
       #   )
       #
       # @return [Payabli::Types::ConfigureApplePayOrganizationApiResponse]
@@ -109,7 +109,7 @@ module Payabli
       #   client.wallet.configure_google_pay_organization(
       #     cascade: true,
       #     is_enabled: true,
-      #     org_id: 123
+      #     org_id: 900123
       #   )
       #
       # @return [Payabli::Types::ConfigureApplePayOrganizationApiResponse]

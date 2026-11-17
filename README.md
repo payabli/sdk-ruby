@@ -1,12 +1,11 @@
 # Payabli Ruby Library
 
-[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fpayabli%2Fsdk-ruby)
+[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=Payabli%2FRuby)
 
 The Payabli Ruby library provides convenient access to the Payabli APIs from Ruby.
 
 ## Table of Contents
 
-- [Documentation](#documentation)
 - [Reference](#reference)
 - [Changelog](#changelog)
 - [Getting Started](#getting-started)
@@ -21,13 +20,9 @@ The Payabli Ruby library provides convenient access to the Payabli APIs from Rub
   - [Additional Query Parameters](#additional-query-parameters)
 - [Contributing](#contributing)
 
-## Documentation
-
-API reference documentation is available [here](https://docs.payabli.com).
-
 ## Reference
 
-A full reference for this library is available [here](https://github.com/payabli/sdk-ruby/blob/HEAD/./reference.md).
+A full reference for this library is available [here](./reference.md).
 
 ## Changelog
 

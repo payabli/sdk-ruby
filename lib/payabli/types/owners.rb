@@ -34,6 +34,8 @@ module Payabli
       field :ozip, -> { String }, optional: true, nullable: false
 
       field :additional_data, -> { Internal::Types::Hash[String, String] }, optional: true, nullable: false, api_name: "additionalData"
+
+      field :primary_owner, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "primaryOwner"
     end
   end
 end

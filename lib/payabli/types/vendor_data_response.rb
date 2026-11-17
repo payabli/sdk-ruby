@@ -43,6 +43,8 @@ module Payabli
 
       field :vendor_status, -> { Integer }, optional: false, nullable: false, api_name: "VendorStatus"
 
+      field :vendor_status_label, -> { String }, optional: true, nullable: false, api_name: "VendorStatusLabel"
+
       field :vendor_id, -> { Integer }, optional: false, nullable: false, api_name: "VendorId"
 
       field :enrollment_status, -> { String }, optional: true, nullable: false, api_name: "EnrollmentStatus"

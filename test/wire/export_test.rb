@@ -19,7 +19,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_applications(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -33,7 +33,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/boarding/csv/123",
+      url_path: "/Export/boarding/csv/900123",
       query_params: nil,
       expected: 1
     )
@@ -41,7 +41,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/boarding/csv/123",
+      url_path: "/Export/boarding/csv/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -89,7 +89,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_batch_details_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -103,7 +103,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/batchDetails/csv/org/123",
+      url_path: "/Export/batchDetails/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -111,7 +111,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/batchDetails/csv/org/123",
+      url_path: "/Export/batchDetails/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -159,7 +159,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_batches_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -173,7 +173,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/batches/csv/org/123",
+      url_path: "/Export/batches/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -181,7 +181,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/batches/csv/org/123",
+      url_path: "/Export/batches/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -229,7 +229,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_batches_out_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -243,7 +243,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/batchesOut/csv/org/123",
+      url_path: "/Export/batchesOut/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -251,7 +251,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/batchesOut/csv/org/123",
+      url_path: "/Export/batchesOut/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -299,7 +299,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_bills_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -313,7 +313,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/bills/csv/org/123",
+      url_path: "/Export/bills/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -321,7 +321,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/bills/csv/org/123",
+      url_path: "/Export/bills/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -369,7 +369,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_chargebacks_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -383,7 +383,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/chargebacks/csv/org/123",
+      url_path: "/Export/chargebacks/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -391,7 +391,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/chargebacks/csv/org/123",
+      url_path: "/Export/chargebacks/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -439,7 +439,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_customers_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -453,7 +453,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/customers/csv/org/123",
+      url_path: "/Export/customers/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -461,7 +461,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/customers/csv/org/123",
+      url_path: "/Export/customers/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -509,7 +509,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_invoices_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -523,7 +523,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/invoices/csv/org/123",
+      url_path: "/Export/invoices/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -531,7 +531,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/invoices/csv/org/123",
+      url_path: "/Export/invoices/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -544,7 +544,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_organizations(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -558,7 +558,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/organizations/csv/org/123",
+      url_path: "/Export/organizations/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -566,7 +566,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/organizations/csv/org/123",
+      url_path: "/Export/organizations/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -614,7 +614,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_payout_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -628,7 +628,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/payouts/csv/org/123",
+      url_path: "/Export/payouts/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -636,7 +636,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/payouts/csv/org/123",
+      url_path: "/Export/payouts/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -649,7 +649,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_paypoints(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -663,7 +663,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/paypoints/csv/123",
+      url_path: "/Export/paypoints/csv/900123",
       query_params: nil,
       expected: 1
     )
@@ -671,7 +671,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/paypoints/csv/123",
+      url_path: "/Export/paypoints/csv/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -719,7 +719,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_settlements_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -733,7 +733,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/settlements/csv/org/123",
+      url_path: "/Export/settlements/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -741,7 +741,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/settlements/csv/org/123",
+      url_path: "/Export/settlements/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -789,7 +789,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_subscriptions_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -803,7 +803,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/subscriptions/csv/org/123",
+      url_path: "/Export/subscriptions/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -811,7 +811,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/subscriptions/csv/org/123",
+      url_path: "/Export/subscriptions/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -859,7 +859,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_transactions_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -873,7 +873,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/transactions/csv/org/123",
+      url_path: "/Export/transactions/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -881,7 +881,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/transactions/csv/org/123",
+      url_path: "/Export/transactions/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -1001,7 +1001,7 @@ class ExportWireTest < WireMockTestCase
 
     @client.export.export_vendors_org(
       format: "csv",
-      org_id: 123,
+      org_id: 900123,
       columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       from_record: 251,
       limit_record: 1000,
@@ -1015,7 +1015,7 @@ class ExportWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/vendors/csv/org/123",
+      url_path: "/Export/vendors/csv/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -1023,7 +1023,7 @@ class ExportWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Export/vendors/csv/org/123",
+      url_path: "/Export/vendors/csv/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }

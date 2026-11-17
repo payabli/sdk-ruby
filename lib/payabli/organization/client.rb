@@ -45,7 +45,7 @@ module Payabli
       #     org_city: "Johnson City",
       #     org_country: "US",
       #     org_entry_name: "pilgrim-planner",
-      #     org_id: "123",
+      #     org_id: "900123",
       #     org_logo: {
       #       f_content: "TXkgdGVzdCBmaWxlHJ==...",
       #       filename: "my-doc.pdf",
@@ -53,7 +53,7 @@ module Payabli
       #       furl: "https://mysite.com/my-doc.pdf"
       #     },
       #     org_name: "Pilgrim Planner",
-      #     org_parent_id: 236,
+      #     org_parent_id: 900123,
       #     org_state: "TN",
       #     org_timezone: -5,
       #     org_type: 0,
@@ -108,7 +108,7 @@ module Payabli
       #
       # @example
       #   client.organization.edit_organization(
-      #     org_id_path_param: 123,
+      #     org_id_path_param: 900123,
       #     contacts: [{
       #       contact_email: "herman@hermanscoatings.com",
       #       contact_name: "Herman Martinez",
@@ -119,7 +119,7 @@ module Payabli
       #     org_city: "Johnson City",
       #     org_country: "US",
       #     org_entry_name: "pilgrim-planner",
-      #     org_id: "123",
+      #     org_id: "900123",
       #     org_name: "Pilgrim Planner",
       #     org_state: "TN",
       #     org_timezone: -5,
@@ -170,7 +170,7 @@ module Payabli
       # @option params [Integer] :org_id
       #
       # @example
-      #   client.organization.delete_organization(org_id: 123)
+      #   client.organization.delete_organization(org_id: 900123)
       #
       # @return [Payabli::Types::DeleteOrganizationResponse]
       def delete_organization(request_options: {}, **params)
@@ -248,7 +248,7 @@ module Payabli
       # @option params [Integer] :org_id
       #
       # @example
-      #   client.organization.get_basic_organization_by_id(org_id: 123)
+      #   client.organization.get_basic_organization_by_id(org_id: 900123)
       #
       # @return [Payabli::Types::GetBasicOrganizationResponse]
       def get_basic_organization_by_id(request_options: {}, **params)
@@ -287,7 +287,7 @@ module Payabli
       # @option params [Integer] :org_id
       #
       # @example
-      #   client.organization.get_organization(org_id: 123)
+      #   client.organization.get_organization(org_id: 900123)
       #
       # @return [Payabli::Types::OrganizationQueryRecord]
       def get_organization(request_options: {}, **params)
@@ -326,7 +326,7 @@ module Payabli
       # @option params [Integer] :org_id
       #
       # @example
-      #   client.organization.get_settings_organization(org_id: 123)
+      #   client.organization.get_settings_organization(org_id: 900123)
       #
       # @return [Payabli::Types::SettingsQueryRecord]
       def get_settings_organization(request_options: {}, **params)

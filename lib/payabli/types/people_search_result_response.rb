@@ -24,6 +24,10 @@ module Payabli
 
       field :is_from_vendor, -> { Internal::Types::Boolean }, optional: true, nullable: false, api_name: "isFromVendor"
 
+      field :primary_address, -> { Payabli::Types::PeopleSearchAddressResponse }, optional: true, nullable: false, api_name: "primaryAddress"
+
+      field :addresses, -> { Internal::Types::Array[Payabli::Types::PeopleSearchAddressResponse] }, optional: true, nullable: false
+
       field :phones, -> { Internal::Types::Array[String] }, optional: true, nullable: false
 
       field :emails, -> { Internal::Types::Array[String] }, optional: true, nullable: false

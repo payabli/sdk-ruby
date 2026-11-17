@@ -40,7 +40,7 @@ class OrganizationWireTest < WireMockTestCase
       org_city: "Johnson City",
       org_country: "US",
       org_entry_name: "pilgrim-planner",
-      org_id: "123",
+      org_id: "900123",
       org_logo: {
         f_content: "TXkgdGVzdCBmaWxlHJ==...",
         filename: "my-doc.pdf",
@@ -48,7 +48,7 @@ class OrganizationWireTest < WireMockTestCase
         furl: "https://mysite.com/my-doc.pdf"
       },
       org_name: "Pilgrim Planner",
-      org_parent_id: 236,
+      org_parent_id: 900123,
       org_state: "TN",
       org_timezone: -5,
       org_type: 0,
@@ -85,7 +85,7 @@ class OrganizationWireTest < WireMockTestCase
     test_id = "organization.edit_organization.0"
 
     @client.organization.edit_organization(
-      org_id_path_param: 123,
+      org_id_path_param: 900123,
       contacts: [{
         contact_email: "herman@hermanscoatings.com",
         contact_name: "Herman Martinez",
@@ -96,7 +96,7 @@ class OrganizationWireTest < WireMockTestCase
       org_city: "Johnson City",
       org_country: "US",
       org_entry_name: "pilgrim-planner",
-      org_id: "123",
+      org_id: "900123",
       org_name: "Pilgrim Planner",
       org_state: "TN",
       org_timezone: -5,
@@ -113,7 +113,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "PUT",
-      url_path: "/Organization/123",
+      url_path: "/Organization/900123",
       query_params: nil,
       expected: 1
     )
@@ -121,7 +121,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "PUT",
-      url_path: "/Organization/123",
+      url_path: "/Organization/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -133,7 +133,7 @@ class OrganizationWireTest < WireMockTestCase
     test_id = "organization.delete_organization.0"
 
     @client.organization.delete_organization(
-      org_id: 123,
+      org_id: 900123,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "organization.delete_organization.0"
@@ -144,7 +144,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "DELETE",
-      url_path: "/Organization/123",
+      url_path: "/Organization/900123",
       query_params: nil,
       expected: 1
     )
@@ -152,7 +152,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "DELETE",
-      url_path: "/Organization/123",
+      url_path: "/Organization/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -195,7 +195,7 @@ class OrganizationWireTest < WireMockTestCase
     test_id = "organization.get_basic_organization_by_id.0"
 
     @client.organization.get_basic_organization_by_id(
-      org_id: 123,
+      org_id: 900123,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "organization.get_basic_organization_by_id.0"
@@ -206,7 +206,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Organization/basicById/123",
+      url_path: "/Organization/basicById/900123",
       query_params: nil,
       expected: 1
     )
@@ -214,7 +214,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Organization/basicById/123",
+      url_path: "/Organization/basicById/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -226,7 +226,7 @@ class OrganizationWireTest < WireMockTestCase
     test_id = "organization.get_organization.0"
 
     @client.organization.get_organization(
-      org_id: 123,
+      org_id: 900123,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "organization.get_organization.0"
@@ -237,7 +237,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Organization/read/123",
+      url_path: "/Organization/read/900123",
       query_params: nil,
       expected: 1
     )
@@ -245,7 +245,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Organization/read/123",
+      url_path: "/Organization/read/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -257,7 +257,7 @@ class OrganizationWireTest < WireMockTestCase
     test_id = "organization.get_settings_organization.0"
 
     @client.organization.get_settings_organization(
-      org_id: 123,
+      org_id: 900123,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "organization.get_settings_organization.0"
@@ -268,7 +268,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Organization/settings/123",
+      url_path: "/Organization/settings/900123",
       query_params: nil,
       expected: 1
     )
@@ -276,7 +276,7 @@ class OrganizationWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Organization/settings/123",
+      url_path: "/Organization/settings/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }

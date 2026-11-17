@@ -4,6 +4,8 @@ module Payabli
   module Types
     # An address sent when creating a business. `country` is required.
     class BusinessAddressCreate < Internal::Types::Model
+      field :country, -> { String }, optional: false, nullable: false
+
       field :type, -> { Payabli::Types::AddressType }, optional: true, nullable: false
 
       field :location, -> { Payabli::Types::BusinessAddressLocation }, optional: true, nullable: false
@@ -17,8 +19,6 @@ module Payabli
       field :state_province, -> { String }, optional: true, nullable: false, api_name: "stateProvince"
 
       field :postal_code, -> { String }, optional: true, nullable: false, api_name: "postalCode"
-
-      field :country, -> { String }, optional: true, nullable: false
 
       field :floor, -> { String }, optional: true, nullable: false
 

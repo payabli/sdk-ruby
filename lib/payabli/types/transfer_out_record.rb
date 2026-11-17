@@ -48,6 +48,8 @@ module Payabli
 
       field :transfer_status, -> { Integer }, optional: false, nullable: true, api_name: "transferStatus"
 
+      field :transfer_status_label, -> { String }, optional: false, nullable: true, api_name: "transferStatusLabel"
+
       field :gross_amount, -> { Integer }, optional: false, nullable: true, api_name: "grossAmount"
 
       field :charge_back_amount, -> { Integer }, optional: false, nullable: true, api_name: "chargeBackAmount"

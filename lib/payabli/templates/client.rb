@@ -28,7 +28,7 @@ module Payabli
       # @option params [Integer] :template_id
       #
       # @example
-      #   client.templates.delete_template(template_id: 80)
+      #   client.templates.delete_template(template_id: 900022)
       #
       # @return [Payabli::Types::PayabliApiResponseTemplateId]
       def delete_template(request_options: {}, **params)
@@ -76,7 +76,7 @@ module Payabli
       #
       # @example
       #   client.templates.getlink_template(
-      #     template_id: 80,
+      #     template_id: 900022,
       #     ignore_empty: true
       #   )
       #
@@ -123,7 +123,7 @@ module Payabli
       # @option params [Integer] :template_id
       #
       # @example
-      #   client.templates.get_template(template_id: 80)
+      #   client.templates.get_template(template_id: 900022)
       #
       # @return [Payabli::Types::TemplateQueryRecord]
       def get_template(request_options: {}, **params)
@@ -175,7 +175,7 @@ module Payabli
       #
       # @example
       #   client.templates.list_templates(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"

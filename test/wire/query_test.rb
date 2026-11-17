@@ -52,7 +52,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_batch_details_org.0"
 
     @client.query.list_batch_details_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -66,7 +66,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/batchDetails/org/123",
+      url_path: "/Query/batchDetails/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -74,7 +74,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/batchDetails/org/123",
+      url_path: "/Query/batchDetails/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -120,7 +120,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_batches_org.0"
 
     @client.query.list_batches_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -134,7 +134,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/batches/org/123",
+      url_path: "/Query/batches/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -142,7 +142,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/batches/org/123",
+      url_path: "/Query/batches/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -188,7 +188,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_batches_out_org.0"
 
     @client.query.list_batches_out_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -202,7 +202,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/batchesOut/org/123",
+      url_path: "/Query/batchesOut/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -210,7 +210,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/batchesOut/org/123",
+      url_path: "/Query/batchesOut/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -256,7 +256,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_chargebacks_org.0"
 
     @client.query.list_chargebacks_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -270,7 +270,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/chargebacks/org/123",
+      url_path: "/Query/chargebacks/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -278,7 +278,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/chargebacks/org/123",
+      url_path: "/Query/chargebacks/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -324,7 +324,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_customers_org.0"
 
     @client.query.list_customers_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -338,7 +338,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/customers/org/123",
+      url_path: "/Query/customers/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -346,7 +346,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/customers/org/123",
+      url_path: "/Query/customers/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -392,7 +392,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_devices_org.0"
 
     @client.query.list_devices_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 0,
       limit_record: 20,
       sort_by: "desc(createdAt)",
@@ -406,7 +406,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/devices/org/123",
+      url_path: "/Query/devices/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -414,7 +414,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/devices/org/123",
+      url_path: "/Query/devices/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -460,7 +460,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_notification_reports_org.0"
 
     @client.query.list_notification_reports_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -474,7 +474,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/notificationReports/org/123",
+      url_path: "/Query/notificationReports/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -482,7 +482,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/notificationReports/org/123",
+      url_path: "/Query/notificationReports/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -528,7 +528,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_notifications_org.0"
 
     @client.query.list_notifications_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -542,7 +542,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/notifications/org/123",
+      url_path: "/Query/notifications/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -550,7 +550,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/notifications/org/123",
+      url_path: "/Query/notifications/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -562,7 +562,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_organizations.0"
 
     @client.query.list_organizations(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -576,7 +576,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/organizations/123",
+      url_path: "/Query/organizations/900123",
       query_params: nil,
       expected: 1
     )
@@ -584,7 +584,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/organizations/123",
+      url_path: "/Query/organizations/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -630,7 +630,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_payout_org.0"
 
     @client.query.list_payout_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -644,7 +644,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/payouts/org/123",
+      url_path: "/Query/payouts/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -652,7 +652,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/payouts/org/123",
+      url_path: "/Query/payouts/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -664,7 +664,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_paypoints.0"
 
     @client.query.list_paypoints(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -678,7 +678,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/paypoints/123",
+      url_path: "/Query/paypoints/900123",
       query_params: nil,
       expected: 1
     )
@@ -686,7 +686,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/paypoints/123",
+      url_path: "/Query/paypoints/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -732,7 +732,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_settlements_org.0"
 
     @client.query.list_settlements_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -746,7 +746,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/settlements/org/123",
+      url_path: "/Query/settlements/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -754,7 +754,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/settlements/org/123",
+      url_path: "/Query/settlements/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -800,7 +800,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_subscriptions_org.0"
 
     @client.query.list_subscriptions_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -814,7 +814,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/subscriptions/org/123",
+      url_path: "/Query/subscriptions/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -822,7 +822,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/subscriptions/org/123",
+      url_path: "/Query/subscriptions/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -868,7 +868,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_payout_subscriptions_org.0"
 
     @client.query.list_payout_subscriptions_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 0,
       limit_record: 20,
       sort_by: "desc(field_name)",
@@ -882,7 +882,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/payoutsubscriptions/org/123",
+      url_path: "/Query/payoutsubscriptions/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -890,7 +890,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/payoutsubscriptions/org/123",
+      url_path: "/Query/payoutsubscriptions/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -936,7 +936,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_transactions_org.0"
 
     @client.query.list_transactions_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -950,7 +950,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transactions/org/123",
+      url_path: "/Query/transactions/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -958,7 +958,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transactions/org/123",
+      url_path: "/Query/transactions/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -1035,7 +1035,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_transfers_org.0"
 
     @client.query.list_transfers_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 0,
       limit_record: 20,
       request_options: {
@@ -1048,7 +1048,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transfers/org/123",
+      url_path: "/Query/transfers/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -1056,7 +1056,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transfers/org/123",
+      url_path: "/Query/transfers/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -1068,7 +1068,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_transfers_out_org.0"
 
     @client.query.list_transfers_out_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 0,
       limit_record: 20,
       request_options: {
@@ -1081,7 +1081,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transfersOut/org/123",
+      url_path: "/Query/transfersOut/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -1089,7 +1089,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/transfersOut/org/123",
+      url_path: "/Query/transfersOut/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -1168,7 +1168,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_users_org.0"
 
     @client.query.list_users_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -1182,7 +1182,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/users/org/123",
+      url_path: "/Query/users/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -1190,7 +1190,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/users/org/123",
+      url_path: "/Query/users/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -1270,7 +1270,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_vendors_org.0"
 
     @client.query.list_vendors_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -1284,7 +1284,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/vendors/org/123",
+      url_path: "/Query/vendors/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -1292,7 +1292,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/vendors/org/123",
+      url_path: "/Query/vendors/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -1372,7 +1372,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_vcards_transactions_org.0"
 
     @client.query.list_vcards_transactions_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 0,
       limit_record: 20,
       sort_by: "desc(CreatedOn)",
@@ -1386,7 +1386,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/vcardsTransactions/org/123",
+      url_path: "/Query/vcardsTransactions/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -1394,7 +1394,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/vcardsTransactions/org/123",
+      url_path: "/Query/vcardsTransactions/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -1406,7 +1406,7 @@ class QueryWireTest < WireMockTestCase
     test_id = "query.list_vcards_org.0"
 
     @client.query.list_vcards_org(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -1420,7 +1420,7 @@ class QueryWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/vcards/org/123",
+      url_path: "/Query/vcards/org/900123",
       query_params: nil,
       expected: 1
     )
@@ -1428,7 +1428,7 @@ class QueryWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/vcards/org/123",
+      url_path: "/Query/vcards/org/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }

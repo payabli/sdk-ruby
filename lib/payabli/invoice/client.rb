@@ -443,7 +443,7 @@ module Payabli
       #
       # @example
       #   client.invoice.list_invoices_org(
-      #     org_id: 123,
+      #     org_id: 900123,
       #     from_record: 251,
       #     limit_record: 0,
       #     sort_by: "desc(field_name)"

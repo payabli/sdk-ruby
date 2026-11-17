@@ -37,6 +37,8 @@ module Payabli
 
       field :batch_status, -> { Integer }, optional: true, nullable: false, api_name: "BatchStatus"
 
+      field :batch_status_label, -> { String }, optional: true, nullable: false, api_name: "BatchStatusLabel"
+
       field :batch_status_text, -> { String }, optional: true, nullable: false, api_name: "BatchStatusText"
 
       field :card_amount, -> { Integer }, optional: true, nullable: false, api_name: "CardAmount"
@@ -68,6 +70,8 @@ module Payabli
       field :paypoint_id, -> { Integer }, optional: true, nullable: false, api_name: "PaypointId"
 
       field :paypoint_name, -> { String }, optional: true, nullable: false, api_name: "PaypointName"
+
+      field :transfer_date, -> { String }, optional: true, nullable: false, api_name: "TransferDate"
 
       field :vcard_amount, -> { Integer }, optional: true, nullable: false, api_name: "VcardAmount"
 

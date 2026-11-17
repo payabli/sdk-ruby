@@ -199,7 +199,7 @@ module Payabli
       #
       # @example
       #   client.case_management.list_cases(
-      #     organization_id: 123,
+      #     organization_id: 900123,
       #     from_record: 0,
       #     limit_record: 20
       #   )

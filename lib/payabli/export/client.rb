@@ -34,7 +34,7 @@ module Payabli
       # @example
       #   client.export.export_applications(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -160,7 +160,7 @@ module Payabli
       # @example
       #   client.export.export_batch_details_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -286,7 +286,7 @@ module Payabli
       # @example
       #   client.export.export_batches_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -412,7 +412,7 @@ module Payabli
       # @example
       #   client.export.export_batches_out_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -538,7 +538,7 @@ module Payabli
       # @example
       #   client.export.export_bills_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -664,7 +664,7 @@ module Payabli
       # @example
       #   client.export.export_chargebacks_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -790,7 +790,7 @@ module Payabli
       # @example
       #   client.export.export_customers_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -916,7 +916,7 @@ module Payabli
       # @example
       #   client.export.export_invoices_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -979,7 +979,7 @@ module Payabli
       # @example
       #   client.export.export_organizations(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -1105,7 +1105,7 @@ module Payabli
       # @example
       #   client.export.export_payout_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -1168,7 +1168,7 @@ module Payabli
       # @example
       #   client.export.export_paypoints(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -1294,7 +1294,7 @@ module Payabli
       # @example
       #   client.export.export_settlements_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -1420,7 +1420,7 @@ module Payabli
       # @example
       #   client.export.export_subscriptions_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -1548,7 +1548,7 @@ module Payabli
       # @example
       #   client.export.export_transactions_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000
@@ -1806,7 +1806,7 @@ module Payabli
       # @example
       #   client.export.export_vendors_org(
       #     format: "csv",
-      #     org_id: 123,
+      #     org_id: 900123,
       #     columns_export: "BatchDate:Batch_Date,PaypointName:Legal_name",
       #     from_record: 251,
       #     limit_record: 1000

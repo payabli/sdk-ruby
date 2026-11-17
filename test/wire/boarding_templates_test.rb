@@ -18,7 +18,7 @@ class BoardingTemplatesWireTest < WireMockTestCase
     test_id = "boarding_templates.list_templates.0"
 
     @client.boarding_templates.list_templates(
-      org_id: 123,
+      org_id: 900123,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "boarding_templates.list_templates.0"
@@ -30,7 +30,7 @@ class BoardingTemplatesWireTest < WireMockTestCase
       test_id: test_id,
       method: "GET",
       url_path: "/v2/templates",
-      query_params: { "orgId" => "123" },
+      query_params: { "orgId" => "900123" },
       expected: 1
     )
 

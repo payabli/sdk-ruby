@@ -18,7 +18,7 @@ class TemplatesWireTest < WireMockTestCase
     test_id = "templates.delete_template.0"
 
     @client.templates.delete_template(
-      template_id: 80,
+      template_id: 900022,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "templates.delete_template.0"
@@ -29,7 +29,7 @@ class TemplatesWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "DELETE",
-      url_path: "/Templates/80",
+      url_path: "/Templates/900022",
       query_params: nil,
       expected: 1
     )
@@ -37,7 +37,7 @@ class TemplatesWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "DELETE",
-      url_path: "/Templates/80",
+      url_path: "/Templates/900022",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -49,7 +49,7 @@ class TemplatesWireTest < WireMockTestCase
     test_id = "templates.getlink_template.0"
 
     @client.templates.getlink_template(
-      template_id: 80,
+      template_id: 900022,
       ignore_empty: true,
       request_options: {
         additional_headers: {
@@ -61,7 +61,7 @@ class TemplatesWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Templates/getlink/80/true",
+      url_path: "/Templates/getlink/900022/true",
       query_params: nil,
       expected: 1
     )
@@ -69,7 +69,7 @@ class TemplatesWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Templates/getlink/80/true",
+      url_path: "/Templates/getlink/900022/true",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -81,7 +81,7 @@ class TemplatesWireTest < WireMockTestCase
     test_id = "templates.get_template.0"
 
     @client.templates.get_template(
-      template_id: 80,
+      template_id: 900022,
       request_options: {
         additional_headers: {
           "X-Test-Id" => "templates.get_template.0"
@@ -92,7 +92,7 @@ class TemplatesWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Templates/get/80",
+      url_path: "/Templates/get/900022",
       query_params: nil,
       expected: 1
     )
@@ -100,7 +100,7 @@ class TemplatesWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Templates/get/80",
+      url_path: "/Templates/get/900022",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
@@ -112,7 +112,7 @@ class TemplatesWireTest < WireMockTestCase
     test_id = "templates.list_templates.0"
 
     @client.templates.list_templates(
-      org_id: 123,
+      org_id: 900123,
       from_record: 251,
       limit_record: 0,
       sort_by: "desc(field_name)",
@@ -126,7 +126,7 @@ class TemplatesWireTest < WireMockTestCase
     verify_request_count(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/templates/123",
+      url_path: "/Query/templates/900123",
       query_params: nil,
       expected: 1
     )
@@ -134,7 +134,7 @@ class TemplatesWireTest < WireMockTestCase
     verify_auth_headers(
       test_id: test_id,
       method: "GET",
-      url_path: "/Query/templates/123",
+      url_path: "/Query/templates/900123",
       matchers: [
         { name: "Authorization", kind: "present" },
         { name: "requestToken", kind: "absent" }
